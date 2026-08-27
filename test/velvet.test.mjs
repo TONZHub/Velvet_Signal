@@ -111,7 +111,7 @@ test("OpenRouter structured output becomes a proposed, unapproved edition", asyn
   assert.equal(result.consent.memory_delivery_approved, false);
   assert.equal(result.engine.model, "test/model");
   assert.equal((requestBody?.response_format).type, "json_schema");
-  assert.equal((requestBody?.provider).require_parameters, true);
+  assert.deepEqual((requestBody?.provider).only, ["novita"]);\n  assert.equal((requestBody?.provider).allow_fallbacks, false);\n  assert.equal((requestBody?.provider).require_parameters, true);
   assert.equal((requestBody?.reasoning).effort, "high");
   assert.equal((requestBody?.reasoning).exclude, true);
   assert.equal(requestBody?.max_tokens, 4200);
