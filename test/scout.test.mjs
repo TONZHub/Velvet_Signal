@@ -53,11 +53,16 @@ test("the scheduled scout publishes all public desks and skips unchanged packets
     `${JSON.stringify({ schema_version: 1, generated_at: null, desks: {}, issues: [] })}\n`,
   );
   let composeCalls = 0;
+  const searches = [];
   const options = {
     catalogPath,
     now: () => new Date("2026-08-27T10:00:00.000Z"),
-    searchImpl: async (_config, { deskId, fallback }) =>
-      deskId === "pantry" && !fallback ? { results: [] } : searchResponse(deskId),
+    searchImpl: async (config, { deskId, fallback }) => {
+      searches.push({ config, deskId, fallback });
+      return deskId === "pantry" && !fallback
+        ? { results: [] }
+        : searchResponse(deskId);
+    },
     composeImpl: async (input) => {
       composeCalls += 1;
       return editionFor(input);
@@ -70,6 +75,13 @@ test("the scheduled scout publishes all public desks and skips unchanged packets
     assert.equal(first.summary.published.every((id) => id.endsWith("-002")), true);
     assert.equal(first.summary.published.some((id) => id.startsWith("your-people")), false);
     assert.deepEqual(first.summary.fallback, ["pantry"]);
+    const pantryFallback = searches.find(
+      (search) => search.deskId === "pantry" && search.fallback,
+    );
+    assert.match(pantryFallback.config.query, /^site:fsis\.usda\.gov/);
+    assert.equal(pantryFallback.config.includeDomains, undefined);
+    assert.equal(pantryFallback.config.searchDepth, "advanced");
+    assert.equal(pantryFallback.config.maxResults, 8);
     assert.equal(composeCalls, 5);
 
     const stored = JSON.parse(await readFile(catalogPath, "utf8"));

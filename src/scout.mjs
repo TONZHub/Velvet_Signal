@@ -46,6 +46,8 @@ export const SCOUT_CONFIG = {
     topic: "general",
     timeRange: "year",
     allowTimelessFallback: true,
+    fallbackQuery:
+      "site:fsis.usda.gov leftovers food safety refrigeration storage guidance",
     includeDomains: ["fsis.usda.gov", "fda.gov", "foodsafety.gov", "cdc.gov"],
   },
   wellbeing: {
@@ -60,6 +62,8 @@ export const SCOUT_CONFIG = {
     topic: "general",
     timeRange: "year",
     allowTimelessFallback: true,
+    fallbackQuery:
+      "site:nhlbi.nih.gov healthy sleep habits sleep hygiene official guidance",
     includeDomains: ["cdc.gov", "nih.gov", "who.int", "nhlbi.nih.gov"],
   },
   culture: {
@@ -173,9 +177,9 @@ export async function tavilySearch(config, options = {}) {
     },
     body: JSON.stringify({
       query: config.query,
-      search_depth: "basic",
+      search_depth: config.searchDepth ?? "basic",
       chunks_per_source: 2,
-      max_results: 5,
+      max_results: config.maxResults ?? 5,
       topic: config.topic,
       time_range: config.timeRange,
       include_answer: false,
@@ -344,8 +348,16 @@ export async function runScout(options = {}) {
       let searchResponse = await searchImpl(config, { deskId, fallback: false });
       let sources = sourcePackets(deskId, searchResponse);
       if (!sources.length && config.allowTimelessFallback) {
+        const fallbackConfig = {
+          ...config,
+          query: config.fallbackQuery ?? config.query,
+          timeRange: undefined,
+          includeDomains: undefined,
+          searchDepth: "advanced",
+          maxResults: 8,
+        };
         const fallbackResponse = await searchImpl(
-          { ...config, timeRange: undefined },
+          fallbackConfig,
           { deskId, fallback: true },
         );
         searchResponse = {
