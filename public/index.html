@@ -1,0 +1,1158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#100a0e">
+  <meta name="description" content="Velvet Signal is a newsstand of shared context for humans and their agents.">
+  <title>Velvet Signal — What will your AI subscribe to?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;0,6..96,700;1,6..96,500&family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Periodical",
+    "name": "Velvet Signal",
+    "description": "A publication platform pairing human-readable editions with inspectable, machine-readable memory patches.",
+    "issn": "VS-DEMO-001",
+    "hasPart": [
+      {"@type":"PublicationIssue","issueNumber":"Model Watch 001","datePublished":"2026-08-27"},
+      {"@type":"PublicationIssue","issueNumber":"The Pantry 001","datePublished":"2026-08-27"},
+      {"@type":"PublicationIssue","issueNumber":"Wellbeing 001","datePublished":"2026-08-27"},
+      {"@type":"PublicationIssue","issueNumber":"Culture Desk 001","datePublished":"2026-08-27"},
+      {"@type":"PublicationIssue","issueNumber":"Maker Edition 001","datePublished":"2026-08-27"},
+      {"@type":"PublicationIssue","issueNumber":"Your People 001","datePublished":"2026-08-27"}
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      --ink: #f7eeec;
+      --muted: #bca9ad;
+      --faint: #806f75;
+      --black: #100a0e;
+      --panel: #1a1117;
+      --panel-2: #241720;
+      --line: rgba(247, 238, 236, .12);
+      --pink: #ff4f91;
+      --pink-soft: #ff9fc4;
+      --violet: #ae8cff;
+      --mint: #88d9bc;
+      --butter: #f6d572;
+      --serif: "Bodoni Moda", Georgia, serif;
+      --sans: "Manrope", Arial, sans-serif;
+      --mono: "DM Mono", Consolas, monospace;
+      --shadow: 0 30px 90px rgba(0, 0, 0, .38);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% -10%, rgba(255, 79, 145, .16), transparent 30rem),
+        radial-gradient(circle at 92% 12%, rgba(174, 140, 255, .12), transparent 34rem),
+        var(--black);
+      font-family: var(--sans);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    body.no-scroll { overflow: hidden; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; }
+    a { color: inherit; }
+    :focus-visible { outline: 2px solid var(--pink-soft); outline-offset: 3px; }
+    ::selection { background: rgba(255, 79, 145, .45); }
+
+    .shell { width: min(1180px, calc(100% - 36px)); margin-inline: auto; }
+    .eyebrow {
+      color: var(--pink-soft);
+      font-family: var(--mono);
+      font-size: .72rem;
+      letter-spacing: .16em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    .site-header {
+      position: sticky;
+      z-index: 40;
+      top: 0;
+      border-bottom: 1px solid var(--line);
+      background: rgba(16, 10, 14, .82);
+      backdrop-filter: blur(18px);
+    }
+    .header-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand-mark {
+      width: 39px;
+      height: 39px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #1b0710;
+      background: linear-gradient(135deg, var(--pink), var(--violet));
+      box-shadow: 0 0 0 5px rgba(255, 79, 145, .08);
+    }
+    .brand-name {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      line-height: .9;
+    }
+    .header-nav { display: flex; align-items: center; gap: 7px; }
+    .header-nav a {
+      padding: 8px 10px;
+      color: var(--muted);
+      font-size: .78rem;
+      text-decoration: none;
+    }
+    .header-nav a:hover { color: var(--ink); }
+    .scout-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 34px;
+      padding: 0 12px;
+      border: 1px solid rgba(136, 217, 188, .25);
+      border-radius: 999px;
+      color: #a9ead2;
+      background: rgba(136, 217, 188, .07);
+      font-family: var(--mono);
+      font-size: .64rem;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .pulse {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--mint);
+      box-shadow: 0 0 0 0 rgba(136, 217, 188, .5);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 70% { box-shadow: 0 0 0 8px rgba(136, 217, 188, 0); } }
+
+    .hero {
+      min-height: 690px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(340px, .72fr);
+      align-items: center;
+      gap: clamp(42px, 7vw, 92px);
+      padding-block: 78px 88px;
+    }
+    .hero-copy h1 {
+      max-width: 850px;
+      margin: 18px 0 24px;
+      font-family: var(--serif);
+      font-size: clamp(3.7rem, 8.5vw, 7.9rem);
+      font-weight: 500;
+      letter-spacing: -.065em;
+      line-height: .82;
+    }
+    .hero-copy h1 em { color: var(--pink); font-weight: 500; }
+    .hero-copy > p {
+      max-width: 610px;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.45vw, 1.18rem);
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 47px;
+      padding: 0 20px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .035em;
+      text-decoration: none;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button.primary { color: #1a0710; background: var(--pink); }
+    .button.ghost { color: var(--ink); border-color: var(--line); background: rgba(255,255,255,.03); }
+    .button.small { min-height: 40px; padding-inline: 15px; font-size: .7rem; }
+    .button.approved { color: #061b13; background: var(--mint); }
+    .button:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 46px;
+    }
+    .hero-stat { min-width: 92px; }
+    .hero-stat strong { display: block; font-family: var(--serif); font-size: 1.7rem; line-height: 1; }
+    .hero-stat span { color: var(--faint); font-family: var(--mono); font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; }
+
+    .agent-card {
+      position: relative;
+      padding: 30px;
+      border: 1px solid rgba(255, 255, 255, .13);
+      border-radius: 26px;
+      background: linear-gradient(160deg, rgba(255, 79, 145, .13), rgba(174, 140, 255, .06) 42%, rgba(26, 17, 23, .96));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .agent-card::before {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      top: -110px;
+      right: -70px;
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 50%;
+      box-shadow: 0 0 0 25px rgba(255, 255, 255, .025), 0 0 0 52px rgba(255, 255, 255, .018);
+    }
+    .agent-top { display: flex; align-items: center; justify-content: space-between; gap: 15px; }
+    .agent-badge {
+      padding: 5px 9px;
+      border: 1px solid rgba(174, 140, 255, .28);
+      border-radius: 999px;
+      color: #cdbdff;
+      background: rgba(174, 140, 255, .08);
+      font-family: var(--mono);
+      font-size: .6rem;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+    .agent-card h2 { max-width: 9ch; margin: 28px 0 12px; font-family: var(--serif); font-size: clamp(2.2rem, 4vw, 3.35rem); font-weight: 500; line-height: .94; }
+    .agent-card > p { color: var(--muted); font-size: .9rem; }
+    .flow { margin: 27px 0 8px; border-top: 1px solid var(--line); }
+    .flow-row { display: grid; grid-template-columns: 28px 1fr auto; align-items: center; gap: 10px; padding: 13px 0; border-bottom: 1px solid var(--line); }
+    .flow-num { color: var(--pink-soft); font-family: var(--mono); font-size: .67rem; }
+    .flow-label { font-size: .8rem; font-weight: 600; }
+    .flow-state { color: var(--faint); font-family: var(--mono); font-size: .59rem; letter-spacing: .07em; text-transform: uppercase; }
+    .flow-row:last-child .flow-state { color: var(--butter); }
+
+    .marquee { border-block: 1px solid var(--line); overflow: hidden; }
+    .marquee-track { display: flex; gap: 44px; width: max-content; padding: 13px 0; animation: ticker 32s linear infinite; }
+    .marquee-track span { color: var(--faint); font-family: var(--mono); font-size: .66rem; letter-spacing: .14em; text-transform: uppercase; }
+    .marquee-track b { margin-right: 12px; color: var(--pink); font-weight: 400; }
+    @keyframes ticker { to { transform: translateX(-50%); } }
+
+    .newsstand { padding-block: 110px 125px; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 42px; }
+    .section-head h2 { max-width: 680px; margin: 11px 0 0; font-family: var(--serif); font-size: clamp(2.7rem, 5.7vw, 5.2rem); font-weight: 500; letter-spacing: -.045em; line-height: .9; }
+    .section-head p { max-width: 390px; margin: 0 0 5px; color: var(--muted); font-size: .9rem; }
+    .filter-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
+    .filter {
+      padding: 7px 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      background: transparent;
+      cursor: pointer;
+      font-family: var(--mono);
+      font-size: .65rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .filter.active { color: #16070e; border-color: var(--pink); background: var(--pink); }
+
+    .issue-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+    .issue-card {
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(26, 17, 23, .76);
+      overflow: hidden;
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+    .issue-card:hover { transform: translateY(-7px); border-color: rgba(255,255,255,.23); box-shadow: var(--shadow); }
+    .cover-art {
+      position: relative;
+      min-height: 390px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 22px;
+      color: #170b10;
+      overflow: hidden;
+    }
+    .cover-art::before, .cover-art::after { content: ""; position: absolute; border-radius: 50%; pointer-events: none; }
+    .cover-art::before { width: 280px; height: 280px; right: -120px; top: -95px; border: 1px solid rgba(20,9,14,.25); box-shadow: 0 0 0 27px rgba(20,9,14,.06), 0 0 0 56px rgba(20,9,14,.04); }
+    .cover-art::after { width: 100px; height: 100px; left: 35px; bottom: 62px; background: rgba(255,255,255,.18); filter: blur(1px); }
+    .cover-top, .cover-bottom { position: relative; z-index: 1; }
+    .cover-top { display: flex; align-items: start; justify-content: space-between; gap: 12px; font-family: var(--mono); font-size: .59rem; letter-spacing: .11em; text-transform: uppercase; }
+    .cover-desk { font-weight: 500; }
+    .cover-icon { position: relative; z-index: 1; align-self: center; font-size: 5rem; filter: grayscale(1); mix-blend-mode: multiply; opacity: .7; }
+    .cover-bottom h3 { max-width: 9ch; margin: 0 0 11px; font-family: var(--serif); font-size: clamp(2.6rem, 4vw, 4rem); font-weight: 600; letter-spacing: -.055em; line-height: .82; }
+    .cover-bottom p { max-width: 28ch; margin: 0; font-family: var(--mono); font-size: .66rem; line-height: 1.45; }
+    .card-body { padding: 21px; }
+    .issue-data { display: flex; justify-content: space-between; gap: 12px; color: var(--faint); font-family: var(--mono); font-size: .59rem; letter-spacing: .08em; text-transform: uppercase; }
+    .editor-credit { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; padding: 5px 8px; border: 1px solid rgba(174,140,255,.25); border-radius: 999px; color: #cdbdff; background: rgba(174,140,255,.07); font-family: var(--mono); font-size: .56rem; letter-spacing: .06em; text-transform: uppercase; }
+    .editor-credit::before { content: "✦"; color: var(--pink-soft); }
+    .card-body > p { min-height: 66px; margin: 15px 0 20px; color: var(--muted); font-size: .84rem; }
+    .card-actions { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
+    .card-actions .button { width: 100%; }
+    .icon-button {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--ink);
+      background: transparent;
+      cursor: pointer;
+      transition: background .18s ease, color .18s ease;
+    }
+    .icon-button.subscribed { color: #171008; background: var(--butter); }
+
+    .editorial-bridge { padding: 0 0 48px; }
+    .bridge-card { padding: clamp(28px, 5vw, 54px); border: 1px solid var(--line); border-radius: 30px; background: linear-gradient(135deg, rgba(255,79,145,.09), rgba(174,140,255,.08)); }
+    .bridge-head { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 28px; }
+    .bridge-head h2 { max-width: 720px; margin: 10px 0 0; font-family: var(--serif); font-size: clamp(2.4rem, 5vw, 4.6rem); font-weight: 500; letter-spacing: -.045em; line-height: .9; }
+    .bridge-head p { max-width: 390px; margin: 0; color: var(--muted); font-size: .86rem; }
+    .bridge-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .bridge-route { padding: 19px; border: 1px solid var(--line); border-radius: 16px; background: rgba(16,10,14,.42); }
+    .bridge-route span { display: block; margin-bottom: 8px; color: var(--pink-soft); font-family: var(--mono); font-size: .61rem; letter-spacing: .09em; text-transform: uppercase; }
+    .bridge-route strong { display: block; margin-bottom: 6px; font-family: var(--serif); font-size: 1.3rem; }
+    .bridge-route p { margin: 0; color: var(--muted); font-size: .74rem; }
+
+    .protocol { padding: 0 0 120px; }
+    .protocol-card {
+      display: grid;
+      grid-template-columns: .75fr 1.25fr;
+      gap: clamp(34px, 7vw, 90px);
+      padding: clamp(28px, 5vw, 62px);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: linear-gradient(145deg, rgba(174,140,255,.11), rgba(26,17,23,.75) 48%);
+    }
+    .protocol-card h2 { margin: 12px 0 17px; font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 4.7rem); font-weight: 500; letter-spacing: -.045em; line-height: .9; }
+    .protocol-card .lead { color: var(--muted); font-size: .93rem; }
+    .trust-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .trust-item { padding: 20px; border: 1px solid var(--line); border-radius: 16px; background: rgba(255,255,255,.025); }
+    .trust-item span { display: block; margin-bottom: 9px; color: var(--pink-soft); font-family: var(--mono); font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; }
+    .trust-item strong { display: block; margin-bottom: 6px; font-family: var(--serif); font-size: 1.18rem; font-weight: 600; }
+    .trust-item p { margin: 0; color: var(--muted); font-size: .76rem; }
+
+    footer { border-top: 1px solid var(--line); }
+    .footer-inner { min-height: 130px; display: flex; align-items: center; justify-content: space-between; gap: 25px; color: var(--faint); font-size: .72rem; }
+    .footer-thesis { max-width: 560px; color: var(--muted); font-family: var(--serif); font-size: 1.2rem; font-style: italic; }
+    .footer-meta { text-align: right; font-family: var(--mono); font-size: .6rem; letter-spacing: .08em; line-height: 1.8; text-transform: uppercase; }
+
+    dialog {
+      width: min(1040px, calc(100% - 24px));
+      max-height: calc(100vh - 24px);
+      margin: auto;
+      padding: 0;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 26px;
+      color: var(--ink);
+      background: var(--panel);
+      box-shadow: 0 50px 180px rgba(0,0,0,.75);
+      overflow: hidden;
+    }
+    dialog::backdrop { background: rgba(5, 2, 4, .82); backdrop-filter: blur(10px); }
+    .dialog-shell { position: relative; max-height: calc(100vh - 24px); overflow-y: auto; }
+    .dialog-close { position: sticky; z-index: 5; top: 16px; float: right; margin: 16px 16px -56px 0; border-color: rgba(15,8,12,.18); color: #170b10; background: rgba(255,255,255,.6); backdrop-filter: blur(10px); }
+    .dialog-hero { min-height: 325px; display: grid; grid-template-columns: 1.25fr .75fr; gap: 28px; padding: clamp(32px, 6vw, 66px); color: #170b10; }
+    .dialog-hero h2 { max-width: 10ch; margin: 16px 0; font-family: var(--serif); font-size: clamp(3.1rem, 7vw, 6.3rem); font-weight: 600; letter-spacing: -.065em; line-height: .82; }
+    .dialog-hero p { max-width: 53ch; margin: 0; font-size: .92rem; }
+    .dialog-issue-mark { align-self: end; justify-self: end; text-align: right; font-family: var(--mono); font-size: .62rem; letter-spacing: .11em; line-height: 1.8; text-transform: uppercase; }
+    .dialog-nav { position: sticky; z-index: 3; top: 0; display: flex; align-items: center; gap: 4px; padding: 10px 18px; border-bottom: 1px solid var(--line); background: rgba(26,17,23,.92); backdrop-filter: blur(14px); }
+    .dialog-tab { padding: 9px 13px; border: 0; border-radius: 999px; color: var(--muted); background: transparent; cursor: pointer; font-family: var(--mono); font-size: .64rem; letter-spacing: .08em; text-transform: uppercase; }
+    .dialog-tab.active { color: #16070e; background: var(--pink); }
+    .dialog-content { padding: clamp(26px, 5vw, 58px); }
+    .edition-view { display: none; }
+    .edition-view.active { display: block; animation: lift .25s ease; }
+    @keyframes lift { from { opacity: 0; transform: translateY(8px); } }
+    .article-grid { display: grid; grid-template-columns: minmax(0, 1fr) 245px; gap: clamp(30px, 6vw, 70px); align-items: start; }
+    .article-copy { font-family: var(--serif); font-size: clamp(1.04rem, 1.65vw, 1.18rem); line-height: 1.75; }
+    .article-copy p { margin: 0 0 1.35em; }
+    .article-copy p:first-child::first-letter { float: left; margin: .05em .12em 0 0; color: var(--pink); font-size: 4.8rem; line-height: .7; }
+    .pullquote { margin: 42px 0; padding: 26px 0 26px 25px; border-left: 3px solid var(--pink); color: var(--pink-soft); font-size: clamp(1.55rem, 3vw, 2.25rem); font-style: italic; line-height: 1.15; }
+    .source-box { position: sticky; top: 68px; padding: 19px; border: 1px solid var(--line); border-radius: 16px; background: var(--panel-2); }
+    .source-box h3 { margin: 0 0 13px; font-family: var(--mono); font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; }
+    .source-link { display: block; padding: 12px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .71rem; text-decoration: none; }
+    .source-link:hover { color: var(--pink-soft); }
+    .source-link small { display: block; margin-top: 4px; color: var(--faint); font-family: var(--mono); font-size: .56rem; }
+    .source-box .verified { margin-top: 14px; color: var(--mint); font-family: var(--mono); font-size: .57rem; letter-spacing: .08em; text-transform: uppercase; }
+
+    .patch-alert { display: grid; grid-template-columns: auto 1fr; gap: 14px; margin-bottom: 24px; padding: 18px; border: 1px solid rgba(246,213,114,.23); border-radius: 15px; background: rgba(246,213,114,.06); }
+    .patch-alert strong { display: block; margin-bottom: 3px; font-size: .84rem; }
+    .patch-alert p { margin: 0; color: var(--muted); font-size: .73rem; }
+    .patch-overview { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 28px; }
+    .patch-stat { padding: 15px; border: 1px solid var(--line); border-radius: 13px; background: rgba(255,255,255,.02); }
+    .patch-stat span { display: block; margin-bottom: 6px; color: var(--faint); font-family: var(--mono); font-size: .56rem; letter-spacing: .08em; text-transform: uppercase; }
+    .patch-stat strong { font-size: .77rem; }
+    .ledger { width: 100%; border-collapse: collapse; margin: 0 0 28px; font-size: .73rem; }
+    .ledger th { padding: 9px 10px; border-bottom: 1px solid var(--line); color: var(--faint); font-family: var(--mono); font-size: .55rem; font-weight: 400; letter-spacing: .09em; text-align: left; text-transform: uppercase; }
+    .ledger td { padding: 13px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    .ledger td:first-child { width: 64px; color: var(--pink-soft); font-family: var(--mono); }
+    .ledger td:last-child { width: 90px; color: var(--mint); font-family: var(--mono); font-size: .59rem; text-transform: uppercase; }
+    details { margin-bottom: 22px; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+    summary { padding: 14px 16px; cursor: pointer; color: var(--muted); font-family: var(--mono); font-size: .63rem; letter-spacing: .08em; text-transform: uppercase; }
+    pre { max-height: 340px; margin: 0; padding: 18px; border-top: 1px solid var(--line); color: #c9bafd; background: #0c080b; font-family: var(--mono); font-size: .66rem; line-height: 1.6; white-space: pre-wrap; overflow: auto; }
+    .consent-box { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 20px; border: 1px solid rgba(255,79,145,.24); border-radius: 16px; background: rgba(255,79,145,.055); }
+    .consent-box strong { display: block; margin-bottom: 4px; font-family: var(--serif); font-size: 1.22rem; }
+    .consent-box p { max-width: 560px; margin: 0; color: var(--muted); font-size: .71rem; }
+    .consent-actions { display: flex; flex-shrink: 0; flex-wrap: wrap; gap: 8px; justify-content: end; }
+
+    .toast {
+      position: fixed;
+      z-index: 90;
+      right: 22px;
+      bottom: 22px;
+      max-width: min(380px, calc(100% - 44px));
+      padding: 14px 17px;
+      border: 1px solid rgba(136,217,188,.25);
+      border-radius: 14px;
+      color: #d8f7eb;
+      background: rgba(17,35,29,.96);
+      box-shadow: var(--shadow);
+      font-size: .76rem;
+      transform: translateY(28px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+    .toast.show { transform: none; opacity: 1; }
+
+    @media (max-width: 900px) {
+      .header-nav a { display: none; }
+      .hero { min-height: 0; grid-template-columns: 1fr; padding-block: 72px; }
+      .agent-card { max-width: 600px; }
+      .issue-grid { grid-template-columns: 1fr 1fr; }
+      .bridge-head { align-items: start; flex-direction: column; }
+      .bridge-grid { grid-template-columns: 1fr; }
+      .protocol-card { grid-template-columns: 1fr; }
+      .dialog-hero { grid-template-columns: 1fr; }
+      .dialog-issue-mark { justify-self: start; text-align: left; }
+      .article-grid { grid-template-columns: 1fr; }
+      .source-box { position: static; }
+    }
+    @media (max-width: 640px) {
+      .shell { width: min(100% - 24px, 1180px); }
+      .scout-pill { padding-inline: 9px; }
+      .scout-pill .wide { display: none; }
+      .hero-copy h1 { font-size: clamp(3.5rem, 18vw, 5.4rem); }
+      .hero-actions .button { width: 100%; }
+      .section-head { display: block; }
+      .section-head p { margin-top: 20px; }
+      .issue-grid { grid-template-columns: 1fr; }
+      .cover-art { min-height: 410px; }
+      .trust-grid { grid-template-columns: 1fr; }
+      .footer-inner { align-items: start; flex-direction: column; justify-content: center; }
+      .footer-meta { text-align: left; }
+      .patch-overview { grid-template-columns: 1fr 1fr; }
+      .ledger th:nth-child(2), .ledger td:nth-child(2) { display: none; }
+      .consent-box { align-items: stretch; flex-direction: column; }
+      .consent-actions { justify-content: stretch; }
+      .consent-actions .button { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="#top" aria-label="Velvet Signal home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+            <path d="M4 8.5c4.8-4.7 11.2-4.7 16 0"></path><path d="M7 12.5c3-2.8 7-2.8 10 0"></path><path d="M10 16.5c1.2-.9 2.8-.9 4 0"></path><circle cx="12" cy="19" r="1" fill="currentColor" stroke="none"></circle>
+          </svg>
+        </span>
+        <span class="brand-name">Velvet<br>Signal</span>
+      </a>
+      <nav class="header-nav" aria-label="Main navigation">
+        <a href="#newsstand">Newsstand</a>
+        <a href="#protocol">The protocol</a>
+        <span class="scout-pill"><span class="pulse"></span><span class="wide">Tavily packets · </span><span id="editorStatus">GLM bridge</span></span>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="shell hero">
+      <div class="hero-copy">
+        <div class="eyebrow">A publication for humans + their agents</div>
+        <h1>What will your AI <em>subscribe</em> to?</h1>
+        <p>Read the story. Inspect the memory patch. Approve what enters the room. Velvet Signal keeps people and their agents current—together, deliberately, with receipts.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#newsstand">Browse first issues <span aria-hidden="true">↓</span></a>
+          <a class="button ghost" href="#protocol">See how consent works</a>
+        </div>
+        <div class="hero-meta" aria-label="Publication facts">
+          <div class="hero-stat"><strong>6</strong><span>launch desks</span></div>
+          <div class="hero-stat"><strong>8h</strong><span>scout cadence</span></div>
+          <div class="hero-stat"><strong>0</strong><span>silent rewrites</span></div>
+        </div>
+      </div>
+
+      <aside class="agent-card" aria-label="Agent edition workflow">
+        <div class="agent-top">
+          <span class="eyebrow">Machine layer</span>
+          <span class="agent-badge" id="agentBadge">WebMCP detecting</span>
+        </div>
+        <h2>Agent edition detected.</h2>
+        <p>This newsstand contains structured memory patches. The agent can inspect them. Only the human can release them.</p>
+        <div class="flow">
+          <div class="flow-row"><span class="flow-num">01</span><span class="flow-label">Read the human edition</span><span class="flow-state">Open</span></div>
+          <div class="flow-row"><span class="flow-num">02</span><span class="flow-label">Inspect claims + provenance</span><span class="flow-state">Open</span></div>
+          <div class="flow-row"><span class="flow-num">03</span><span class="flow-label">Approve the exact patch</span><span class="flow-state">Human</span></div>
+          <div class="flow-row"><span class="flow-num">04</span><span class="flow-label">Deliver through WebMCP</span><span class="flow-state">Locked</span></div>
+        </div>
+      </aside>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span><b>✦</b>Model Watch</span><span><b>✦</b>The Pantry</span><span><b>✦</b>Wellbeing</span><span><b>✦</b>Culture Desk</span><span><b>✦</b>Maker Edition</span><span><b>✦</b>Your People</span>
+        <span><b>✦</b>Model Watch</span><span><b>✦</b>The Pantry</span><span><b>✦</b>Wellbeing</span><span><b>✦</b>Culture Desk</span><span><b>✦</b>Maker Edition</span><span><b>✦</b>Your People</span>
+      </div>
+    </div>
+
+    <section class="shell newsstand" id="newsstand">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Fresh on the signal</div>
+          <h2>Six desks.<br>Six first issues.</h2>
+        </div>
+        <p>Each edition has two faces: an editorial explanation worth reading and a portable context patch worth inspecting.</p>
+      </div>
+      <div class="filter-row" id="filters" aria-label="Filter the newsstand"></div>
+      <div class="issue-grid" id="issueGrid"></div>
+    </section>
+
+    <section class="shell editorial-bridge" id="editorial-bridge">
+      <div class="bridge-card">
+        <div class="bridge-head">
+          <div>
+            <div class="eyebrow">The editorial bridge</div>
+            <h2>Tavily scouts. GLM 5.3 Flash shapes. Humans release.</h2>
+          </div>
+          <p>The three new desks compose proposed, source-bound editions through OpenRouter. The API key stays server-side; every draft remains unapproved until a person opens the gate.</p>
+        </div>
+        <div class="bridge-grid">
+          <div class="bridge-route"><span>Culture Desk</span><strong>Fresh signals, short memory.</strong><p>Tavily source packets → GLM 5.3 Flash → a proposed edition with citations and an expiry.</p></div>
+          <div class="bridge-route"><span>Maker Edition</span><strong>Specs in, schema out.</strong><p>Official docs → strict OpenRouter JSON output → a draft whose claims must resolve to supplied sources.</p></div>
+          <div class="bridge-route"><span>Your People · private</span><strong>No automatic scouting.</strong><p>User-authored context only, explicit cloud-processing consent required, and memory delivery still locked.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell protocol" id="protocol">
+      <div class="protocol-card">
+        <div>
+          <div class="eyebrow">The trust contract</div>
+          <h2>A subscription is permission to propose.</h2>
+          <p class="lead">Never permission to silently rewrite. The human edition persuades; the machine edition declares exactly what it would add.</p>
+        </div>
+        <div class="trust-grid">
+          <div class="trust-item"><span>01 · Inspect</span><strong>No mystery payloads.</strong><p>Claims, sources, confidence, scope, version, and expiry stay visible before approval.</p></div>
+          <div class="trust-item"><span>02 · Consent</span><strong>The human holds the gate.</strong><p>WebMCP delivery stays locked until the exact patch has been approved in the interface.</p></div>
+          <div class="trust-item"><span>03 · Precedence</span><strong>Your words outrank ours.</strong><p>Newer explicit user instructions always override a publication patch.</p></div>
+          <div class="trust-item"><span>04 · Expiry</span><strong>Context can go stale.</strong><p>Every patch carries a review date so old guidance does not fossilize into truth.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <div class="footer-thesis">“A magazine used to update humans. Velvet Signal updates the room.”</div>
+      <div class="footer-meta">Launch shelf · August 2026<br>Human layer + machine layer</div>
+    </div>
+  </footer>
+
+  <dialog id="issueDialog" aria-labelledby="dialogTitle">
+    <div class="dialog-shell">
+      <button class="icon-button dialog-close" id="dialogClose" aria-label="Close issue">×</button>
+      <div class="dialog-hero" id="dialogHero">
+        <div>
+          <div class="eyebrow" id="dialogDesk"></div>
+          <h2 id="dialogTitle"></h2>
+          <p id="dialogDek"></p>
+        </div>
+        <div class="dialog-issue-mark" id="dialogMeta"></div>
+      </div>
+      <div class="dialog-nav" role="tablist" aria-label="Edition layer">
+        <button class="dialog-tab active" role="tab" aria-selected="true" data-tab="human">Human edition</button>
+        <button class="dialog-tab" role="tab" aria-selected="false" data-tab="machine">Machine patch</button>
+      </div>
+      <div class="dialog-content">
+        <section class="edition-view active" id="humanView" role="tabpanel"></section>
+        <section class="edition-view" id="machineView" role="tabpanel"></section>
+      </div>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const issues = [
+      {
+        id: "model-watch-001",
+        deskId: "model-watch",
+        desk: "Model Watch",
+        icon: "⌁",
+        issue: "001",
+        date: "AUG 27 · 2026",
+        color: "#ff719f",
+        title: "The Web Has Tools Now",
+        kicker: "WebMCP moves agent interaction beyond screenshots and guesswork.",
+        dek: "A browser-native interface lets a webpage expose named, schema-bound actions to agents. That changes the web from something an agent merely looks at into something it can deliberately operate.",
+        readTime: "4 min read",
+        validity: "90 days",
+        expires: "2026-11-25",
+        confidence: "High",
+        scope: "Web development",
+        editorial: [
+          "For years, an agent visiting a website had to behave like a stranger peering through glass: read the pixels, infer the controls, click carefully, and hope the interface had not moved. WebMCP offers a more direct arrangement. A page can describe its capabilities as structured tools, complete with names, descriptions, and input schemas.",
+          "Chrome’s current guidance documents two routes. The imperative API uses document.modelContext.registerTool() for dynamic logic. The declarative API adds tool metadata to ordinary HTML controls. Either way, the website—not the agent—defines what actions exist and what inputs they accept.",
+          "That distinction matters for Velvet Signal. An article can remain an article for the person while its companion patch becomes a first-class tool for the agent. The agent does not need to scrape prose and guess which sentences count as durable context. It can request the exact patch, inspect the claim ledger, and wait at the consent boundary.",
+          "WebMCP is still experimental territory, so this edition expires quickly. The durable lesson is architectural: treat agent interaction as a designed interface, not a lucky side effect of readable HTML."
+        ],
+        pullquote: "The page stops being scenery. It becomes a collaborator with a vocabulary.",
+        sources: [
+          { name: "Imperative API — WebMCP", publisher: "Chrome for Developers", url: "https://developer.chrome.com/docs/ai/webmcp/imperative-api", checked: "2026-08-27" },
+          { name: "Registered WebMCP tools", publisher: "Chrome for Developers", url: "https://developer.chrome.com/docs/lighthouse/agentic-browsing/registered-webmcp-tools", checked: "2026-08-27" }
+        ],
+        claims: [
+          { id: "MW-01", claim: "The imperative WebMCP API registers tools through document.modelContext.registerTool().", source: 0, status: "verified" },
+          { id: "MW-02", claim: "A registered tool includes a name, description, and JSON-compatible input schema.", source: 0, status: "verified" },
+          { id: "MW-03", claim: "Chrome documents both imperative and declarative ways to expose WebMCP tools.", source: 1, status: "verified" }
+        ],
+        toneNotes: ["WebMCP is experimental; verify implementation details against current Chrome documentation.", "Do not imply that WebMCP grants an agent blanket authority over a page."],
+        tags: ["ai", "agents", "webmcp", "developer"]
+      },
+      {
+        id: "pantry-001",
+        deskId: "pantry",
+        desk: "The Pantry",
+        icon: "◒",
+        issue: "001",
+        date: "AUG 27 · 2026",
+        color: "#f1cf69",
+        title: "The Leftovers Clock",
+        kicker: "A small timing rule that saves dinner from becoming a gamble.",
+        dek: "The useful window is shorter—and simpler—than vague sniff tests suggest: cool promptly, date the container, and let time make the decision before appetite does.",
+        readTime: "3 min read",
+        validity: "12 months",
+        expires: "2027-08-27",
+        confidence: "High",
+        scope: "Food safety",
+        editorial: [
+          "The least glamorous kitchen tool may be a timestamp. Leftovers often enter the refrigerator with no date, no plan, and a little optimism. Unfortunately, smell is not a complete safety system. Time and temperature give you a sturdier rule.",
+          "USDA guidance says perishable leftovers should not remain at room temperature for more than two hours—or one hour when the temperature is above 90°F. Once refrigerated, many cooked leftovers belong to a three-to-four-day window.",
+          "The humane version of this protocol is not a spreadsheet taped to the fridge. It is one small ritual: portion the food, cool it promptly, write the date, and freeze what you will not reach in time. The patch gives an assistant enough context to help with reminders without pretending it can inspect the food for you.",
+          "This is general food-safety context, not a verdict about a specific dish. When storage time or temperature is uncertain, the patch instructs the agent to avoid false reassurance."
+        ],
+        pullquote: "Date the container. Let tomorrow-you inherit a fact instead of a mystery.",
+        sources: [
+          { name: "Leftovers and Food Safety", publisher: "USDA Food Safety and Inspection Service", url: "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/leftovers-and-food-safety", checked: "2026-08-27" },
+          { name: "Refrigeration & Food Safety", publisher: "USDA Food Safety and Inspection Service", url: "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/refrigeration", checked: "2026-08-27" }
+        ],
+        claims: [
+          { id: "TP-01", claim: "Discard cold perishable leftovers left at room temperature for more than 2 hours, or 1 hour above 90°F.", source: 0, status: "verified" },
+          { id: "TP-02", claim: "Many cooked leftovers keep for about 3–4 days under refrigeration.", source: 1, status: "verified" },
+          { id: "TP-03", claim: "When storage conditions are unknown, an agent should not infer safety from appearance or smell alone.", source: 0, status: "editorial rule" }
+        ],
+        toneNotes: ["Give general safety guidance, not individualized medical advice.", "When time or temperature is uncertain, avoid declaring food safe."],
+        tags: ["cooking", "food safety", "home", "leftovers"]
+      },
+      {
+        id: "wellbeing-001",
+        deskId: "wellbeing",
+        desk: "Wellbeing",
+        icon: "☾",
+        issue: "001",
+        date: "AUG 27 · 2026",
+        color: "#a993ff",
+        title: "Sleep Is Infrastructure",
+        kicker: "Treat the seven-hour floor as context—not a moral score.",
+        dek: "Most adults need at least seven hours of sleep, but a useful companion should protect rest without turning fatigue into a personal failure or a diagnosis.",
+        readTime: "3 min read",
+        validity: "6 months",
+        expires: "2027-02-27",
+        confidence: "High",
+        scope: "General wellbeing",
+        editorial: [
+          "Sleep advice has a bad habit of arriving as judgment. Go to bed earlier. Put down the phone. Become a serene person with matching linens. None of that is especially helpful when work, caregiving, pain, hormones, stress, or a loud mind has already occupied the night.",
+          "CDC guidance says most adults need seven or more hours of good-quality sleep each day. The number is a useful floor for general context, not a universal prescription and certainly not a grade. Individual needs vary, and persistent sleep problems deserve care beyond an app’s motivational copy.",
+          "For an agent, the memory patch changes tone as much as fact. It should notice when a plan assumes energy the person may not have. It can help protect a wind-down window, reduce unnecessary friction, or suggest a gentler next step. It should not diagnose the cause of tiredness.",
+          "The goal is not to optimize a human until they become a clean dashboard. The goal is to remember that rest is load-bearing—and to plan accordingly."
+        ],
+        pullquote: "Rest is not a reward for finishing the system. It is part of the system.",
+        sources: [
+          { name: "Improve Sleep: Tips When Times Are Tough", publisher: "CDC / NIOSH", url: "https://www.cdc.gov/niosh/bulletin/2020/sleep.html", checked: "2026-08-27" },
+          { name: "Prevalence of Healthy Sleep Duration", publisher: "CDC MMWR", url: "https://www.cdc.gov/mmwr/volumes/65/wr/mm6506a1.htm", checked: "2026-08-27" }
+        ],
+        claims: [
+          { id: "WB-01", claim: "Most adults need 7 or more hours of good-quality sleep each day.", source: 0, status: "verified" },
+          { id: "WB-02", claim: "For adults ages 18–60, at least 7 hours nightly is the general recommendation cited by CDC.", source: 1, status: "verified" },
+          { id: "WB-03", claim: "The patch must not diagnose the cause of fatigue or replace professional care.", source: 0, status: "boundary" }
+        ],
+        toneNotes: ["Frame sleep as support, never virtue or discipline.", "Avoid diagnosis; encourage professional help for persistent concerns."],
+        tags: ["wellbeing", "sleep", "energy", "non-diagnostic"]
+      },
+      {
+        id: "culture-001",
+        deskId: "culture",
+        desk: "Culture Desk",
+        icon: "✺",
+        issue: "001",
+        date: "AUG 27 · 2026",
+        color: "#67d6c0",
+        title: "The Joke Has a Half-Life",
+        kicker: "Culture is context moving at human speed. Its patch should know when to leave.",
+        dek: "A cultural reference can be useful without becoming permanent personality. This desk turns fresh source packets into short-lived, inspectable context—and gives the joke an exit date.",
+        readTime: "4 min read",
+        validity: "14 days",
+        expires: "2026-09-10",
+        confidence: "Editorial",
+        scope: "Culture signals",
+        editor: "OpenRouter · GLM 5.3 Flash",
+        inputPolicy: "Tavily source packets only",
+        editorial: [
+          "A joke lands because a room already knows where it is. Pull that joke out of its moment, store it as durable context, and charm can harden into something stranger: an assistant performing last month’s internet forever.",
+          "Culture Desk uses a deliberately short chain. Tavily supplies current source packets. The editor receives only those packets, treats every retrieved sentence as untrusted material, and must attach each proposed claim to a supplied source ID. GLM 5.3 Flash shapes the draft through OpenRouter; it does not get permission to invent the missing atmosphere.",
+          "The issue then arrives as a proposal. Its human layer explains why a signal matters. Its machine layer states the narrower thing an agent might carry forward, plus provenance, confidence, scope, and a fourteen-day expiry. If the moment still matters later, the desk can earn a renewal with fresh evidence.",
+          "This is the point of the half-life: cultural fluency should feel alert, not haunted. A useful agent can recognize a reference while refusing to turn a passing vibe into the user’s permanent identity."
+        ],
+        pullquote: "Fluency is knowing the reference. Judgment is knowing when to stop repeating it.",
+        sources: [
+          { name: "Velvet Signal editorial bridge", publisher: "Velvet Signal", url: "#editorial-bridge", checked: "2026-08-27" },
+          { name: "Structured Outputs", publisher: "OpenRouter", url: "https://openrouter.ai/docs/guides/features/structured-outputs", checked: "2026-08-27" },
+          { name: "API Reference", publisher: "Tavily", url: "https://docs.tavily.com/documentation/api-reference/introduction", checked: "2026-08-27" }
+        ],
+        claims: [
+          { id: "CD-01", claim: "Culture drafts accept sourced signal packets rather than unsourced trend summaries.", source: 0, status: "editorial rule" },
+          { id: "CD-02", claim: "The editor route requests strict JSON-schema output through OpenRouter.", source: 1, status: "verified" },
+          { id: "CD-03", claim: "Culture patches expire after 14 days unless fresh evidence supports a new issue.", source: 0, status: "boundary" }
+        ],
+        toneNotes: ["Treat cultural signals as temporary context, not a user identity.", "Never elevate an unsupported trend inference into a claim."],
+        tags: ["culture", "context", "trends", "expiry"]
+      },
+      {
+        id: "maker-001",
+        deskId: "maker",
+        desk: "Maker Edition",
+        icon: "⌘",
+        issue: "001",
+        date: "AUG 27 · 2026",
+        color: "#ff9466",
+        title: "Structured or It Didn’t Happen",
+        kicker: "A draft becomes operable when its shape is a contract, not a suggestion.",
+        dek: "Maker Edition now composes through OpenRouter with GLM 5.3 Flash, strict schema output, supplied-source citations, and a server-side key that never enters the newsstand.",
+        readTime: "5 min read",
+        validity: "90 days",
+        expires: "2026-11-25",
+        confidence: "High",
+        scope: "AI product engineering",
+        editor: "OpenRouter · GLM 5.3 Flash",
+        inputPolicy: "Sourced technical packets",
+        editorial: [
+          "Free-form generation is pleasant until another system has to depend on it. A heading changes. A claim forgets its source. A consent flag arrives as a poetic sentence. The output still looks persuasive to a person and becomes useless—or dangerous—to the code waiting downstream.",
+          "Maker Edition takes the opposite bargain. The server calls OpenRouter with the model slug z-ai/glm-5.3-flash and asks for a strict JSON schema. The schema requires the human edition, the machine patch, claim IDs, source IDs, expiry, confidence, and handling notes. Provider routing is told to require those parameters rather than quietly choose an incompatible path.",
+          "Schema compliance is only the first gate. The server validates the response again, rejects citations that do not resolve to an input source, stamps the draft as proposed, and leaves memory delivery unapproved. A clean JSON object is not consent; it is simply something a human can inspect without decoding a model’s improvisation.",
+          "The useful pattern is broader than this magazine. When model output will cross a trust boundary, define the boundary in data: accepted inputs, exact output shape, source resolution, status, and the action that still requires a person."
+        ],
+        pullquote: "A schema does not make a model truthful. It makes failure visible enough to refuse.",
+        sources: [
+          { name: "GLM 5.3 Flash", publisher: "OpenRouter", url: "https://openrouter.ai/z-ai/glm-5.3-flash", checked: "2026-08-27" },
+          { name: "Structured Outputs", publisher: "OpenRouter", url: "https://openrouter.ai/docs/guides/features/structured-outputs", checked: "2026-08-27" },
+          { name: "Velvet Signal editorial bridge", publisher: "Velvet Signal", url: "#editorial-bridge", checked: "2026-08-27" }
+        ],
+        claims: [
+          { id: "ME-01", claim: "The configured OpenRouter model slug is z-ai/glm-5.3-flash.", source: 0, status: "verified" },
+          { id: "ME-02", claim: "OpenRouter structured outputs use a JSON schema and support strict mode.", source: 1, status: "verified" },
+          { id: "ME-03", claim: "A composed draft remains proposed and memory delivery remains unapproved until human release.", source: 2, status: "boundary" }
+        ],
+        toneNotes: ["Distinguish schema compliance from factual accuracy.", "Never present a proposed draft as published or approved."],
+        tags: ["makers", "openrouter", "structured output", "glm"]
+      },
+      {
+        id: "your-people-001",
+        deskId: "your-people",
+        desk: "Your People",
+        icon: "∞",
+        issue: "001",
+        date: "AUG 27 · 2026",
+        color: "#bca8ff",
+        title: "The Private Patch",
+        kicker: "The most personal desk begins with a refusal to go looking.",
+        dek: "Your People has no automatic scout. It accepts only context a person deliberately supplies, requires explicit cloud-processing consent, and still cannot release a memory patch on its own.",
+        readTime: "4 min read",
+        validity: "30 days",
+        expires: "2026-09-26",
+        confidence: "Policy",
+        scope: "User-authored relationships",
+        editor: "OpenRouter · GLM 5.3 Flash",
+        inputPolicy: "Manual context · explicit consent",
+        editorial: [
+          "A desk called Your People could become the creepiest room in the building very quickly. The easy version would search the web, infer relationships, collect fragments, and call the result helpful. Velvet Signal starts by closing that door.",
+          "There is no automatic Tavily route for this desk. The compose endpoint rejects web-source packets. It accepts private context only when the person provides it directly and sends an explicit acknowledgment that this exact material may be processed by the configured cloud model.",
+          "Even then, GLM 5.3 Flash is an editor, not an authority. The response comes back as a proposed edition with memory delivery set to unapproved. The person can read what was inferred, inspect the wording, decline the patch, or withdraw approval later. Silence never counts as permission.",
+          "The first issue therefore carries no private facts at all. It carries the boundary. Before an agent can remember something about the people in a life, the person whose life it is should be able to see the sentence, its scope, its expiry, and the door that keeps it out."
+        ],
+        pullquote: "Personal context should enter by invitation, not by reconnaissance.",
+        sources: [
+          { name: "Velvet Signal editorial bridge", publisher: "Velvet Signal", url: "#editorial-bridge", checked: "2026-08-27" },
+          { name: "The trust contract", publisher: "Velvet Signal", url: "#protocol", checked: "2026-08-27" }
+        ],
+        claims: [
+          { id: "YP-01", claim: "Your People rejects web-source packets and is never automatically sent to Tavily.", source: 0, status: "privacy boundary" },
+          { id: "YP-02", claim: "Cloud processing requires an explicit consent flag plus a timestamped acknowledgment.", source: 0, status: "privacy boundary" },
+          { id: "YP-03", claim: "A returned draft is proposed and its memory-delivery approval is false by default.", source: 1, status: "consent boundary" }
+        ],
+        toneNotes: ["Never infer relationships from public web data.", "Do not send private context to a cloud model without explicit, timestamped consent."],
+        tags: ["relationships", "privacy", "consent", "manual only"]
+      }
+    ];
+
+    const state = { filter: "all", current: null, tab: "human" };
+    const $ = (selector, root = document) => root.querySelector(selector);
+    const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+    const subscriptionsKey = "velvet-signal.subscriptions.v1";
+    const approvalsKey = "velvet-signal.approvals.v1";
+
+    const getStoredSet = key => {
+      try { return new Set(JSON.parse(localStorage.getItem(key) || "[]")); }
+      catch { return new Set(); }
+    };
+    const saveStoredSet = (key, set) => localStorage.setItem(key, JSON.stringify([...set]));
+    const subscriptions = getStoredSet(subscriptionsKey);
+    const approvals = getStoredSet(approvalsKey);
+
+    function toast(message) {
+      const el = $("#toast");
+      el.textContent = message;
+      el.classList.add("show");
+      clearTimeout(toast.timer);
+      toast.timer = setTimeout(() => el.classList.remove("show"), 2600);
+    }
+
+    function patchFor(issue) {
+      return {
+        patch_id: issue.id,
+        publication: "Velvet Signal",
+        desk: issue.desk,
+        issue: issue.issue,
+        title: issue.title,
+        version: "1.0.0",
+        published_at: "2026-08-27",
+        valid_until: issue.expires,
+        scope: issue.scope,
+        precedence: "Newer explicit user instructions override this patch.",
+        consent: {
+          required: true,
+          approved: approvals.has(issue.id),
+          delivery_rule: "Inspect first. Deliver only after explicit human approval."
+        },
+        ...(issue.editor ? {
+          composition: {
+            endpoint: "/api/velvet/compose",
+            provider: "openrouter",
+            model: "z-ai/glm-5.3-flash",
+            input_policy: issue.inputPolicy,
+            draft_status: "proposed"
+          }
+        } : {}),
+        claims: issue.claims.map(claim => ({
+          id: claim.id,
+          statement: claim.claim,
+          status: claim.status,
+          source: issue.sources[claim.source]?.url || null
+        })),
+        tone_notes: issue.toneNotes,
+        sources: issue.sources.map(source => ({
+          title: source.name,
+          publisher: source.publisher,
+          url: source.url,
+          checked_at: source.checked
+        })),
+        handling: {
+          allowed: ["session context", "user-controlled memory store", "retrieval index"],
+          forbidden: ["hidden system instruction", "silent permanent memory write"],
+          discard_after: issue.expires
+        }
+      };
+    }
+
+    function renderFilters() {
+      const filters = [
+        ["all", "All first issues"],
+        ["model-watch", "Model Watch"],
+        ["pantry", "The Pantry"],
+        ["wellbeing", "Wellbeing"],
+        ["culture", "Culture Desk"],
+        ["maker", "Maker Edition"],
+        ["your-people", "Your People"]
+      ];
+      $("#filters").innerHTML = filters.map(([id, label]) => `<button class="filter ${state.filter === id ? "active" : ""}" data-filter="${id}">${label}</button>`).join("");
+      $$("[data-filter]").forEach(button => button.addEventListener("click", () => {
+        state.filter = button.dataset.filter;
+        renderFilters();
+        renderIssues();
+      }));
+    }
+
+    function renderIssues() {
+      const visible = state.filter === "all" ? issues : issues.filter(issue => issue.deskId === state.filter);
+      $("#issueGrid").innerHTML = visible.map(issue => {
+        const subscribed = subscriptions.has(issue.deskId);
+        return `
+          <article class="issue-card">
+            <div class="cover-art" style="background:${issue.color}">
+              <div class="cover-top"><span class="cover-desk">Velvet Signal / ${issue.desk}</span><span>No. ${issue.issue}</span></div>
+              <div class="cover-icon" aria-hidden="true">${issue.icon}</div>
+              <div class="cover-bottom"><h3>${issue.title}</h3><p>${issue.kicker}</p></div>
+            </div>
+            <div class="card-body">
+              <div class="issue-data"><span>${issue.date}</span><span>${issue.sources.length} sources · ${issue.validity}</span></div>
+              ${issue.editor ? `<span class="editor-credit">${issue.editor}</span>` : ""}
+              <p>${issue.dek}</p>
+              <div class="card-actions">
+                <button class="button ghost small" data-open="${issue.id}">Open issue <span aria-hidden="true">↗</span></button>
+                <button class="icon-button ${subscribed ? "subscribed" : ""}" data-subscribe="${issue.deskId}" aria-label="${subscribed ? "Unsubscribe from" : "Subscribe to"} ${issue.desk}" title="${subscribed ? "Subscribed" : "Subscribe"}">${subscribed ? "✓" : "+"}</button>
+              </div>
+            </div>
+          </article>`;
+      }).join("");
+      $$('[data-open]').forEach(button => button.addEventListener("click", () => openIssue(button.dataset.open)));
+      $$('[data-subscribe]').forEach(button => button.addEventListener("click", () => toggleSubscription(button.dataset.subscribe)));
+    }
+
+    function toggleSubscription(deskId) {
+      const issue = issues.find(item => item.deskId === deskId);
+      if (subscriptions.has(deskId)) {
+        subscriptions.delete(deskId);
+        toast(`Unsubscribed from ${issue.desk}. No future patches will be proposed.`);
+      } else {
+        subscriptions.add(deskId);
+        toast(`Subscribed to ${issue.desk}. Updates may now be proposed—not silently applied.`);
+      }
+      saveStoredSet(subscriptionsKey, subscriptions);
+      renderIssues();
+    }
+
+    function openIssue(id, tab = "human") {
+      const issue = issues.find(item => item.id === id);
+      if (!issue) return;
+      state.current = issue;
+      state.tab = tab;
+      $("#dialogHero").style.background = issue.color;
+      $("#dialogDesk").textContent = `Velvet Signal / ${issue.desk}`;
+      $("#dialogTitle").textContent = issue.title;
+      $("#dialogDek").textContent = issue.dek;
+      $("#dialogMeta").innerHTML = `Issue ${issue.issue}<br>${issue.date}<br>${issue.readTime}${issue.editor ? `<br>${issue.editor}` : ""}`;
+      renderHuman(issue);
+      renderMachine(issue);
+      setDialogTab(tab);
+      const dialog = $("#issueDialog");
+      if (!dialog.open) dialog.showModal();
+      document.body.classList.add("no-scroll");
+    }
+
+    function renderHuman(issue) {
+      const article = issue.editorial.map((paragraph, index) => index === 2 ? `<div class="pullquote">${issue.pullquote}</div><p>${paragraph}</p>` : `<p>${paragraph}</p>`).join("");
+      const sources = issue.sources.map(source => {
+        const external = /^https?:\/\//.test(source.url);
+        return `<a class="source-link" href="${source.url}"${external ? ' target="_blank" rel="noreferrer"' : ""}><strong>${source.name}</strong><small>${source.publisher}<br>Checked ${source.checked}</small></a>`;
+      }).join("");
+      $("#humanView").innerHTML = `
+        <div class="article-grid">
+          <article class="article-copy">${article}</article>
+          <aside class="source-box"><h3>Source shelf</h3>${sources}<div class="verified">● ${issue.confidence} confidence · ${issue.claims.length} claims</div><button class="button ghost small" style="width:100%;margin-top:15px" data-inspect>Inspect machine patch</button></aside>
+        </div>`;
+      $("[data-inspect]", $("#humanView")).addEventListener("click", () => setDialogTab("machine"));
+    }
+
+    function renderMachine(issue) {
+      const approved = approvals.has(issue.id);
+      const patch = patchFor(issue);
+      const rows = issue.claims.map(claim => `<tr><td>${claim.id}</td><td>${claim.claim}</td><td>${issue.sources[claim.source]?.publisher || "Editorial policy"}</td><td>${claim.status}</td></tr>`).join("");
+      $("#machineView").innerHTML = `
+        <div class="patch-alert"><span aria-hidden="true">⚿</span><div><strong>Inspect before release.</strong><p>${issue.editor ? `${issue.editor} is the proposed-draft route. ` : ""}This patch supplies portable context. It does not rewrite model weights, hidden memory, or newer user instructions.</p></div></div>
+        <div class="patch-overview">
+          <div class="patch-stat"><span>Patch ID</span><strong>${issue.id}</strong></div>
+          <div class="patch-stat"><span>Version</span><strong>1.0.0</strong></div>
+          <div class="patch-stat"><span>Valid until</span><strong>${issue.expires}</strong></div>
+          <div class="patch-stat"><span>Scope</span><strong>${issue.scope}</strong></div>
+        </div>
+        <table class="ledger"><thead><tr><th>ID</th><th>Proposed context</th><th>Provenance</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table>
+        <details><summary>View raw JSON patch</summary><pre>${escapeHtml(JSON.stringify(patch, null, 2))}</pre></details>
+        <div class="consent-box">
+          <div><strong>${approved ? "Patch released for delivery." : "Ready for human decision."}</strong><p>${approved ? "A WebMCP-aware agent may now request this exact version. You can withdraw consent at any time." : "Approval unlocks agent delivery for this patch ID only. Subscription status does not count as approval."}</p></div>
+          <div class="consent-actions">
+            <button class="button ghost small" data-copy ${approved ? "" : "disabled"}>Copy patch</button>
+            <button class="button ${approved ? "ghost" : "primary"} small" data-approve>${approved ? "Withdraw approval" : "Approve & release"}</button>
+          </div>
+        </div>`;
+      $("[data-approve]", $("#machineView")).addEventListener("click", () => toggleApproval(issue.id));
+      $("[data-copy]", $("#machineView")).addEventListener("click", () => copyPatch(issue));
+    }
+
+    function toggleApproval(id) {
+      const issue = issues.find(item => item.id === id);
+      if (approvals.has(id)) {
+        approvals.delete(id);
+        toast(`Approval withdrawn for ${issue.title}. Agent delivery is locked again.`);
+      } else {
+        approvals.add(id);
+        toast(`Patch ${id} approved. Agent delivery is now available.`);
+      }
+      saveStoredSet(approvalsKey, approvals);
+      renderMachine(issue);
+      updateFlowState();
+    }
+
+    async function copyPatch(issue) {
+      if (!approvals.has(issue.id)) return;
+      try {
+        await navigator.clipboard.writeText(JSON.stringify(patchFor(issue), null, 2));
+        toast("Approved patch copied with provenance and expiry intact.");
+      } catch {
+        toast("Clipboard access was unavailable in this preview.");
+      }
+    }
+
+    function setDialogTab(tab) {
+      state.tab = tab;
+      $$(".dialog-tab").forEach(button => {
+        const active = button.dataset.tab === tab;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-selected", String(active));
+      });
+      $("#humanView").classList.toggle("active", tab === "human");
+      $("#machineView").classList.toggle("active", tab === "machine");
+    }
+
+    function closeDialog() {
+      $("#issueDialog").close();
+      document.body.classList.remove("no-scroll");
+    }
+
+    function escapeHtml(value) {
+      return value.replace(/[&<>]/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" })[char]);
+    }
+
+    function updateFlowState() {
+      const states = $$(".flow-state");
+      if (states[2]) states[2].textContent = approvals.size ? `${approvals.size} approved` : "Human";
+      if (states[3]) {
+        states[3].textContent = approvals.size ? "Ready" : "Locked";
+        states[3].style.color = approvals.size ? "var(--mint)" : "var(--butter)";
+      }
+    }
+
+    function toolResponse(data) {
+      return {
+        content: [{ type: "text", text: JSON.stringify(data) }],
+        structuredContent: data
+      };
+    }
+
+    async function checkEditorStatus() {
+      const status = $("#editorStatus");
+      if (!status) return;
+      if (location.protocol === "file:" || typeof fetch !== "function") {
+        status.textContent = "GLM 5.3 Flash · bridge";
+        return;
+      }
+      try {
+        const response = await fetch("/api/velvet/status", { headers: { accept: "application/json" } });
+        if (!response.ok) throw new Error(`Status ${response.status}`);
+        const data = await response.json();
+        const model = data.model === "z-ai/glm-5.3-flash" ? "GLM 5.3 Flash" : data.model;
+        status.textContent = data.openrouter_configured && data.editor_auth_configured ? `${model} · ready` : `${model} · needs config`;
+      } catch {
+        status.textContent = "GLM 5.3 Flash · bridge";
+      }
+    }
+
+    async function registerWebMCP() {
+      const modelContext = document.modelContext || navigator.modelContext;
+      const badge = $("#agentBadge");
+      if (!modelContext?.registerTool) {
+        badge.textContent = "Preview mode";
+        return;
+      }
+      const registrations = [
+        {
+          name: "list_velvet_signal_issues",
+          description: "List current Velvet Signal issues and their patch IDs, scopes, validity dates, and human-approval status.",
+          inputSchema: { type: "object", properties: { desk: { type: "string", description: "Optional desk ID: model-watch, pantry, wellbeing, culture, maker, or your-people." } } },
+          annotations: { readOnlyHint: true },
+          execute: async ({ desk } = {}) => toolResponse({
+            publication: "Velvet Signal",
+            issues: issues.filter(issue => !desk || issue.deskId === desk).map(issue => ({
+              patch_id: issue.id,
+              desk: issue.desk,
+              title: issue.title,
+              valid_until: issue.expires,
+              human_approved: approvals.has(issue.id),
+              editor_model: issue.editor ? "z-ai/glm-5.3-flash" : null,
+              input_policy: issue.inputPolicy || "curated launch issue"
+            }))
+          })
+        },
+        {
+          name: "inspect_memory_patch",
+          description: "Inspect the complete claims, provenance, handling rules, validity window, and consent status of a Velvet Signal memory patch. This does not apply or store the patch.",
+          inputSchema: { type: "object", properties: { patchId: { type: "string", description: "The Velvet Signal patch ID." } }, required: ["patchId"] },
+          annotations: { readOnlyHint: true },
+          execute: async ({ patchId }) => {
+            const issue = issues.find(item => item.id === patchId);
+            return issue ? toolResponse(patchFor(issue)) : toolResponse({ error: "Unknown patch ID", available: issues.map(item => item.id) });
+          }
+        },
+        {
+          name: "apply_memory_patch",
+          description: "Deliver an exact Velvet Signal memory patch after it has been explicitly approved by the human in the page interface. Returns portable structured context; it does not claim to rewrite hidden model memory.",
+          inputSchema: { type: "object", properties: { patchId: { type: "string", description: "The approved Velvet Signal patch ID." } }, required: ["patchId"] },
+          annotations: { readOnlyHint: false },
+          execute: async ({ patchId }) => {
+            const issue = issues.find(item => item.id === patchId);
+            if (!issue) return toolResponse({ error: "Unknown patch ID", delivered: false });
+            if (!approvals.has(patchId)) return toolResponse({ error: "Human approval required. Ask the human to inspect and approve this exact patch in Velvet Signal.", delivered: false, patch_id: patchId });
+            return toolResponse({ delivered: true, receipt: { patch_id: patchId, version: "1.0.0", delivered_at: new Date().toISOString(), approved_in_ui: true }, patch: patchFor(issue) });
+          }
+        }
+      ];
+      try {
+        for (const tool of registrations) await modelContext.registerTool(tool);
+        badge.textContent = "WebMCP ready · 3 tools";
+      } catch (error) {
+        console.warn("WebMCP registration failed", error);
+        badge.textContent = "WebMCP unavailable";
+      }
+    }
+
+    renderFilters();
+    renderIssues();
+    updateFlowState();
+    checkEditorStatus();
+    registerWebMCP();
+
+    $$(".dialog-tab").forEach(button => button.addEventListener("click", () => setDialogTab(button.dataset.tab)));
+    $("#dialogClose").addEventListener("click", closeDialog);
+    $("#issueDialog").addEventListener("click", event => { if (event.target === $("#issueDialog")) closeDialog(); });
+    $("#issueDialog").addEventListener("close", () => document.body.classList.remove("no-scroll"));
+  </script>
+</body>
+</html>

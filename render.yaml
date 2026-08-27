@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: velvet-signal
+    runtime: node
+    plan: free
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /api/healthz
+    envVars:
+      - key: NODE_VERSION
+        value: 22.16.0
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: VELVET_EDITOR_TOKEN
+        generateValue: true

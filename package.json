@@ -1,0 +1,14 @@
+{
+  "name": "velvet-signal",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A publication for humans and their agents, with inspectable memory patches and a consent-gated OpenRouter editor.",
+  "scripts": {
+    "start": "node src/server.mjs",
+    "test": "node --test test/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
