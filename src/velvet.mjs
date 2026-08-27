@@ -397,7 +397,11 @@ async function composeEdition(input, options = {}) {
     max_tokens: 4200,
     temperature: 0.2,
     reasoning: { effort: "high", exclude: true },
-    provider: {\n      only: ["novita"],\n      allow_fallbacks: false,\n      require_parameters: true,\n    },
+    provider: {
+      only: ["novita"],
+      allow_fallbacks: false,
+      require_parameters: true,
+    },
     response_format: {
       type: "json_schema",
       json_schema: {
