@@ -112,7 +112,56 @@ test("OpenRouter structured output becomes a proposed, unapproved edition", asyn
   assert.equal(result.engine.model, "test/model");
   assert.equal((requestBody?.response_format).type, "json_schema");
   assert.equal((requestBody?.provider).require_parameters, true);
+  assert.equal((requestBody?.reasoning).effort, "high");
+  assert.equal((requestBody?.reasoning).exclude, true);
+  assert.equal(requestBody?.max_tokens, 4200);
   assert.equal((requestBody?.response_format).json_schema?.strict, true);
+});
+test("OpenRouter retries an empty GLM completion without changing models", async () => {
+  const input = parseComposeEditionInput({ desk: "model-watch", sources: [source] });
+  let calls = 0;
+  const fetchImpl = async (_input, init) => {
+    calls += 1;
+    const body = JSON.parse(String(init?.body));
+    assert.equal(body.model, "z-ai/glm-5.3-flash");
+    if (calls === 1) {
+      return new Response(JSON.stringify({ choices: [{ message: { content: "" } }] }), {
+        status: 200,
+      });
+    }
+    return new Response(
+      JSON.stringify({
+        choices: [
+          {
+            message: {
+              content: JSON.stringify({
+                title: "The retry landed",
+                kicker: "Same model, complete response.",
+                dek: "An empty completion is retried once.",
+                editorial: ["One.", "Two.", "Three."],
+                pull_quote: "Transient is not terminal.",
+                claims: [
+                  {
+                    statement: "WebMCP exposes structured tools.",
+                    source_ids: ["SRC-CHROME"],
+                    confidence: "high",
+                    status: "verified",
+                  },
+                ],
+                tone_notes: ["Keep retries bounded."],
+                tags: ["reliability"],
+                validity_days: 30,
+              }),
+            },
+          },
+        ],
+      }),
+      { status: 200 },
+    );
+  };
+  const edition = await composeEdition(input, { apiKey: "test-key", fetchImpl });
+  assert.equal(edition.title, "The retry landed");
+  assert.equal(calls, 2);
 });
 test("OpenRouter cannot cite a source that was not supplied", async () => {
   const input = parseComposeEditionInput({

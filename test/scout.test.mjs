@@ -56,7 +56,8 @@ test("the scheduled scout publishes all public desks and skips unchanged packets
   const options = {
     catalogPath,
     now: () => new Date("2026-08-27T10:00:00.000Z"),
-    searchImpl: async (_config, { deskId }) => searchResponse(deskId),
+    searchImpl: async (_config, { deskId, fallback }) =>
+      deskId === "pantry" && !fallback ? { results: [] } : searchResponse(deskId),
     composeImpl: async (input) => {
       composeCalls += 1;
       return editionFor(input);
@@ -68,12 +69,17 @@ test("the scheduled scout publishes all public desks and skips unchanged packets
     assert.equal(first.summary.published.length, 5);
     assert.equal(first.summary.published.every((id) => id.endsWith("-002")), true);
     assert.equal(first.summary.published.some((id) => id.startsWith("your-people")), false);
+    assert.deepEqual(first.summary.fallback, ["pantry"]);
     assert.equal(composeCalls, 5);
 
     const stored = JSON.parse(await readFile(catalogPath, "utf8"));
     assert.equal(stored.issues.length, 5);
     assert.equal(stored.issues.every((issue) => issue.generated === true), true);
     assert.equal(stored.issues.every((issue) => issue.scout.provider === "tavily"), true);
+    assert.equal(
+      stored.issues.find((issue) => issue.deskId === "pantry")?.scout.search_mode,
+      "timeless-official-fallback",
+    );
     assert.equal(stored.issues.some((issue) => issue.deskId === "your-people"), false);
 
     const second = await runScout(options);

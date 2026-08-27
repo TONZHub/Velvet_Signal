@@ -44,7 +44,8 @@ export const SCOUT_CONFIG = {
     brief:
       "Turn one authoritative food-safety update into a practical kitchen edition. Never decide whether a specific food is safe when storage history is missing.",
     topic: "general",
-    timeRange: "month",
+    timeRange: "year",
+    allowTimelessFallback: true,
     includeDomains: ["fsis.usda.gov", "fda.gov", "foodsafety.gov", "cdc.gov"],
   },
   wellbeing: {
@@ -57,7 +58,8 @@ export const SCOUT_CONFIG = {
     brief:
       "Explain one useful general-wellbeing update without diagnosis, moral judgment, or individualized medical advice. Keep individual variation visible.",
     topic: "general",
-    timeRange: "month",
+    timeRange: "year",
+    allowTimelessFallback: true,
     includeDomains: ["cdc.gov", "nih.gov", "who.int", "nhlbi.nih.gov"],
   },
   culture: {
@@ -292,6 +294,7 @@ function editionToIssue(deskId, edition, sources, searchResponse, catalog, now) 
       provider: "tavily",
       request_id: searchResponse.request_id ?? null,
       credits: searchResponse.usage?.credits ?? null,
+      search_mode: searchResponse.velvet_search_mode ?? "bounded",
     },
   };
 }
@@ -325,15 +328,33 @@ export async function runScout(options = {}) {
   const composeImpl = options.composeImpl ?? composeEdition;
   const catalogPath = options.catalogPath ?? generatedIssuesPath;
   const catalog = await readCatalog(catalogPath);
-  const summary = { checked: [], published: [], unchanged: [], failed: [] };
+  const summary = {
+    checked: [],
+    published: [],
+    unchanged: [],
+    fallback: [],
+    failed: [],
+  };
   let changed = false;
 
   for (const deskId of PUBLIC_SCOUT_DESKS) {
     const config = SCOUT_CONFIG[deskId];
     summary.checked.push(deskId);
     try {
-      const searchResponse = await searchImpl(config, { deskId });
-      const sources = sourcePackets(deskId, searchResponse);
+      let searchResponse = await searchImpl(config, { deskId, fallback: false });
+      let sources = sourcePackets(deskId, searchResponse);
+      if (!sources.length && config.allowTimelessFallback) {
+        const fallbackResponse = await searchImpl(
+          { ...config, timeRange: undefined },
+          { deskId, fallback: true },
+        );
+        searchResponse = {
+          ...fallbackResponse,
+          velvet_search_mode: "timeless-official-fallback",
+        };
+        sources = sourcePackets(deskId, searchResponse);
+        summary.fallback.push(deskId);
+      }
       if (!sources.length) throw new Error("Tavily returned no usable source packets.");
       const fingerprint = fingerprintSources(sources);
       if (catalog.desks[deskId]?.fingerprint === fingerprint) {

@@ -388,84 +388,109 @@ async function composeEdition(input, options = {}) {
   const model = options.model ?? VELVET_EDITOR_MODEL;
   const fetchImpl = options.fetchImpl ?? fetch;
   const now = options.now ?? (() => /* @__PURE__ */ new Date());
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 45e3);
-  let response;
-  try {
-    response = await fetchImpl(`${baseUrl}/chat/completions`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-        "HTTP-Referer":
-          process.env.VELVET_PUBLIC_URL ?? "https://velvetsignal.local",
-        "X-Title": "Velvet Signal",
+  const requestBody = {
+    model,
+    messages: [
+      { role: "system", content: SYSTEM_PROMPT },
+      { role: "user", content: buildUserPrompt(input) },
+    ],
+    max_tokens: 4200,
+    temperature: 0.2,
+    reasoning: { effort: "high", exclude: true },
+    provider: { require_parameters: true },
+    response_format: {
+      type: "json_schema",
+      json_schema: {
+        name: "velvet_signal_edition",
+        strict: true,
+        schema: EDITION_SCHEMA,
       },
-      body: JSON.stringify({
-        model,
-        messages: [
-          { role: "system", content: SYSTEM_PROMPT },
-          { role: "user", content: buildUserPrompt(input) },
-        ],
-        max_tokens: 2200,
-        temperature: 0.25,
-        provider: { require_parameters: true },
-        response_format: {
-          type: "json_schema",
-          json_schema: {
-            name: "velvet_signal_edition",
-            strict: true,
-            schema: EDITION_SCHEMA,
-          },
-        },
-      }),
-      signal: controller.signal,
-    });
-  } catch (error) {
-    const message =
-      error instanceof Error && error.name === "AbortError"
-        ? "OpenRouter request timed out."
-        : "OpenRouter request failed.";
-    throw new VelvetUpstreamError(message);
-  } finally {
-    clearTimeout(timeout);
-  }
-  if (!response.ok) {
-    const errorBody = await response.text().catch(() => "");
-    const detail = errorBody.slice(0, 500).replace(/\s+/g, " ");
-    throw new VelvetUpstreamError(
-      `OpenRouter returned ${response.status}${detail ? `: ${detail}` : "."}`,
-    );
-  }
-  const envelope = await response.json();
-  const content = envelope.choices?.[0]?.message?.content;
-  if (!content) {
-    throw new VelvetUpstreamError("OpenRouter returned an empty edition.");
-  }
-  let parsed;
-  try {
-    parsed = JSON.parse(content);
-  } catch {
-    throw new VelvetUpstreamError("OpenRouter returned invalid JSON.");
-  }
-  const validated = validateDraftPayload(parsed, input);
-  return {
-    draft_id: randomUUID(),
-    status: "proposed",
-    desk: input.desk,
-    ...validated,
-    engine: {
-      provider: "openrouter",
-      model,
-      created_at: now().toISOString(),
-    },
-    consent: {
-      cloud_processing_approved:
-        input.desk !== "your-people" ||
-        input.consent?.allowCloudProcessing === true,
-      memory_delivery_approved: false,
     },
   };
+  let lastError = new VelvetUpstreamError("OpenRouter returned no edition.");
+
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 75e3);
+    let response;
+    try {
+      response = await fetchImpl(`${baseUrl}/chat/completions`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          "Content-Type": "application/json",
+          "HTTP-Referer":
+            process.env.VELVET_PUBLIC_URL ?? "https://velvetsignal.local",
+          "X-Title": "Velvet Signal",
+        },
+        body: JSON.stringify(requestBody),
+        signal: controller.signal,
+      });
+    } catch (error) {
+      lastError = new VelvetUpstreamError(
+        error instanceof Error && error.name === "AbortError"
+          ? "OpenRouter request timed out."
+          : "OpenRouter request failed.",
+      );
+      if (attempt === 0) continue;
+      throw lastError;
+    } finally {
+      clearTimeout(timeout);
+    }
+    if (!response.ok) {
+      const errorBody = await response.text().catch(() => "");
+      const detail = errorBody.slice(0, 500).replace(/\s+/g, " ");
+      lastError = new VelvetUpstreamError(
+        `OpenRouter returned ${response.status}${detail ? `: ${detail}` : "."}`,
+      );
+      if (attempt === 0 && response.status >= 500) continue;
+      throw lastError;
+    }
+    const envelope = await response.json();
+    const rawContent = envelope.choices?.[0]?.message?.content;
+    const content = Array.isArray(rawContent)
+      ? rawContent
+          .map((part) => (typeof part === "string" ? part : part?.text ?? ""))
+          .join("")
+      : rawContent;
+    if (typeof content !== "string" || !content.trim()) {
+      lastError = new VelvetUpstreamError("OpenRouter returned an empty edition.");
+      continue;
+    }
+    let parsed;
+    try {
+      parsed = JSON.parse(content);
+    } catch {
+      lastError = new VelvetUpstreamError("OpenRouter returned invalid JSON.");
+      continue;
+    }
+    let validated;
+    try {
+      validated = validateDraftPayload(parsed, input);
+    } catch (error) {
+      if (!(error instanceof VelvetUpstreamError)) throw error;
+      lastError = error;
+      continue;
+    }
+    return {
+      draft_id: randomUUID(),
+      status: "proposed",
+      desk: input.desk,
+      ...validated,
+      engine: {
+        provider: "openrouter",
+        model,
+        created_at: now().toISOString(),
+      },
+      consent: {
+        cloud_processing_approved:
+          input.desk !== "your-people" ||
+          input.consent?.allowCloudProcessing === true,
+        memory_delivery_approved: false,
+      },
+    };
+  }
+  throw lastError;
 }
 export {
   VELVET_DESKS,
