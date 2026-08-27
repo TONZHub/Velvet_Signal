@@ -29,7 +29,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm test
-      - name: Scout and compose public desks
+      - name: Request Render scout over OIDC
         run: node src/request-scout.mjs
         env:
           VELVET_SCOUT_URL: https://velvetsignal.lol/api/velvet/scout
