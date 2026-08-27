@@ -1,27 +1,663 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-27T13:45:32.319Z",
+  "generated_at": "2026-08-27T13:50:40.083Z",
   "desks": {
     "maker": {
-      "fingerprint": "5a3c52e311cac59812517194c9e73c0d04b832659e2bb4222f53fdd58e47641c",
-      "latest_patch_id": "maker-003",
-      "published_at": "2026-08-27T13:45:32.319Z",
-      "tavily_request_id": "1cee6f20-c4eb-44e1-9d6d-a4b0809e1db7"
+      "fingerprint": "cea2a31336376070965b33e77db182018fab797e7eafdb59833072dfa5a79d42",
+      "latest_patch_id": "maker-004",
+      "published_at": "2026-08-27T13:50:40.083Z",
+      "tavily_request_id": "0298a2fc-8007-45cd-b0d4-245a0ec30d7e"
     },
     "model-watch": {
-      "fingerprint": "4e1e68dbfad957884c79978ee26c76ce26122738e398d959026f386819be5122",
-      "latest_patch_id": "model-watch-002",
-      "published_at": "2026-08-27T13:44:34.450Z",
-      "tavily_request_id": "b27e0e24-f882-4be4-b85e-b2abc808f323"
+      "fingerprint": "99b549c81094978557bc99ff39bf405fd047c0d2e9cfbf6a687bc189112fb506",
+      "latest_patch_id": "model-watch-003",
+      "published_at": "2026-08-27T13:49:21.764Z",
+      "tavily_request_id": "9bb87b3a-a034-435b-8dea-935092791469"
     },
     "culture": {
       "fingerprint": "cbe69432a8e53c9da2cbd7f035bd96f6f6a7ef0a0ebb49dad779c2a76f90e426",
       "latest_patch_id": "culture-002",
       "published_at": "2026-08-27T13:44:59.747Z",
       "tavily_request_id": "f240560d-f720-4385-9f52-f2bc8062e23a"
+    },
+    "pantry": {
+      "fingerprint": "382c609e9472db94fd7a241e65fbdc496da903636e0941f655ead50fe3b9683e",
+      "latest_patch_id": "pantry-002",
+      "published_at": "2026-08-27T13:49:59.590Z",
+      "tavily_request_id": "343eadf0-e9e5-4da9-8191-a37756f3b048"
+    },
+    "wellbeing": {
+      "fingerprint": "e29bbb215b7a68207c41a96d53990a5fb6baf1aa8a85386629d7234b8f4d8632",
+      "latest_patch_id": "wellbeing-002",
+      "published_at": "2026-08-27T13:50:19.953Z",
+      "tavily_request_id": "49743f7a-436e-44c5-b81f-48b907fc2163"
     }
   },
   "issues": [
+    {
+      "id": "maker-004",
+      "deskId": "maker",
+      "desk": "Maker Edition",
+      "icon": "⌘",
+      "issue": "004",
+      "version": "1.0.0",
+      "date": "AUG 27 · 2026",
+      "publishedAt": "2026-08-27T13:50:40.083Z",
+      "color": "#ff9466",
+      "title": "Velvet Signal — Maker Desk Draft",
+      "kicker": "Proposed edition · pending human approval",
+      "dek": "Local models are becoming first-class citizens in agent tooling — and the default network bindings of inference servers are the quiet security detail most builders skip.",
+      "readTime": "3 min read",
+      "validity": "7 days",
+      "expires": "2026-09-03",
+      "confidence": "Mixed",
+      "scope": "AI product engineering",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "The through-line across this week's packets is that wiring a local model into an agent stack has stopped being a hack. CSGLite positions itself as a lightweight local inference platform where a single command downloads a model, starts a server, and opens a chat session, with models staying loaded until you stop them manually and optional CSGHub access tokens for private models (M-SRC-1). QwenPaw makes the same bet from the assistant side: if you run local models — QwenPaw Local, Ollama, or LM Studio — no API keys or cloud services are required at all (M-SRC-5).",
+        "oh-my-pi shows how far the custom-provider pattern has spread: beyond built-in Ollama, LM Studio, llama.cpp, and vLLM local backends, you can define any OpenAI-compatible endpoint in ~/.omp/agent/models.yml, specifying baseUrl, an apiKey placeholder, and per-model contextWindow and maxTokens values — their example configures MiniMax M3 with a 100000-token context window and 32000 max tokens (M-SRC-4).",
+        "The security note worth pinning above your desk: inference servers do not agree on a safe default bind address. Per the hermes-agent provider docs, Ollama, LM Studio, and llama-server all default to 127.0.0.1, while vLLM already binds to 0.0.0.0 — all interfaces — out of the box (M-SRC-2). If you flip a local server to 0.0.0.0 to reach it from another machine — OLLAMA_HOST=0.0.0.0 for Ollama, \"Serve on Network\" in LM Studio's Developer tab, or --host 0.0.0.0 for llama-server — you are exposing an unauthenticated inference endpoint to your network. Check what vLLM is already doing before you assume your setup is loopback-only.",
+        "One configuration detail that saves an afternoon: when hermes configures a custom endpoint via `hermes model`, it prompts for context length and auto-detects if you leave it blank — but their documented examples set it explicitly (qwen3.5:27b at 64000, deepseek-r1:70b at 65536). Manual setting is the fix when auto-detection gets a custom endpoint wrong (M-SRC-2)."
+      ],
+      "pullquote": "vLLM binds to 0.0.0.0 by default. Your other local servers don't. Know which one you're running before you assume your model is loopback-only.",
+      "sources": [
+        {
+          "id": "M-SRC-1",
+          "name": "CSGLite is a lightweight local LLM inference platform. ...",
+          "publisher": "github.com",
+          "url": "https://github.com/OpenCSGs/csglite",
+          "checked": "2026-08-27",
+          "publishedAt": "Sun, 23 Aug 2026 13:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-2",
+          "name": "hermes-agent/website/docs/integrations/providers.md ...",
+          "publisher": "github.com",
+          "url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/integrations/providers.md",
+          "checked": "2026-08-27",
+          "publishedAt": "Tue, 25 Aug 2026 13:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-3",
+          "name": "GitHub - kaushikb11/awesome-llm-agents: A curated list of awesome LLM agents frameworks. · GitHub",
+          "publisher": "github.com",
+          "url": "https://github.com/kaushikb11/awesome-llm-agents",
+          "checked": "2026-08-27",
+          "publishedAt": "Sun, 23 Aug 2026 13:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-4",
+          "name": "can1357/oh-my-pi: ⌥ Coding agent with the IDE wired in",
+          "publisher": "github.com",
+          "url": "https://github.com/can1357/oh-my-pi",
+          "checked": "2026-08-27",
+          "publishedAt": "Tue, 25 Aug 2026 13:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-5",
+          "name": "agentscope-ai/QwenPaw: Your Personal AI Assistant ...",
+          "publisher": "github.com",
+          "url": "https://github.com/agentscope-ai/QwenPaw",
+          "checked": "2026-08-27",
+          "publishedAt": "Tue, 25 Aug 2026 13:00:00 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "M-01",
+          "claim": "CSGLite is a lightweight local LLM inference platform where running a model downloads it, starts a server, and opens chat automatically; models remain loaded until manually stopped, and a CSGHub access token can be set optionally for private models.",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-02",
+          "claim": "In the hermes-agent provider configuration, Ollama, LM Studio, and llama-server default to binding 127.0.0.1, while vLLM already binds to 0.0.0.0 by default.",
+          "source": 1,
+          "sourceIds": [
+            "M-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-03",
+          "claim": "To expose a local inference server on the network: set OLLAMA_HOST=0.0.0.0 for Ollama, enable \"Serve on Network\" in LM Studio's Developer tab → Server settings, or add --host 0.0.0.0 to the llama-server startup command.",
+          "source": 1,
+          "sourceIds": [
+            "M-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-04",
+          "claim": "`hermes model` prompts for context length when configuring a custom endpoint and auto-detects it if left blank; documented example models include qwen3.5:27b with context_length 64000 and deepseek-r1:70b with context_length 65536.",
+          "source": 1,
+          "sourceIds": [
+            "M-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-05",
+          "claim": "oh-my-pi supports Ollama, Ollama Cloud, LM Studio, llama.cpp, and vLLM as local backends plus LiteLLM, and allows custom OpenAI-compatible providers defined in ~/.omp/agent/models.yml; its example defines MiniMax M3 with contextWindow 100000 and maxTokens 32000.",
+          "source": 3,
+          "sourceIds": [
+            "M-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-06",
+          "claim": "QwenPaw can run LLMs entirely on a local machine with no API keys or cloud services when using QwenPaw Local, Ollama, or LM Studio; tools needing extra keys (e.g. TAVILY_API_KEY for web search) are configured via Console Settings → Environment variables.",
+          "source": 4,
+          "sourceIds": [
+            "M-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-07",
+          "claim": "Exposing a local inference server on 0.0.0.0 makes it reachable from the network, which carries security risk if the endpoint is unauthenticated.",
+          "source": 1,
+          "sourceIds": [
+            "M-SRC-2"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        },
+        {
+          "id": "M-08",
+          "claim": "The broader ecosystem of LLM agent frameworks remains active, with the awesome-llm-agents curated list last updated 2026-08-23; Flowise (55,384 stars) is marked archived as of 2026-08, while SuperAGI, OpenAgents (XLang), and Agent Protocol appear with their listed licenses and update dates.",
+          "source": 2,
+          "sourceIds": [
+            "M-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Lead with the workflow shift (local models as first-class), land on the bind-address security detail as the actionable takeaway.",
+        "All versions, context lengths, and configuration values quoted exactly as they appear in the packets.",
+        "No compatibility claims made beyond what the packets state; the unauthenticated-endpoint risk framing is flagged needs-review since the packets document the bind addresses but not the authentication posture of each server."
+      ],
+      "tags": [
+        "local-llm",
+        "agent-tooling",
+        "security",
+        "configuration"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "0298a2fc-8007-45cd-b0d4-245a0ec30d7e",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "wellbeing-002",
+      "deskId": "wellbeing",
+      "desk": "Wellbeing",
+      "icon": "☾",
+      "issue": "002",
+      "version": "1.0.0",
+      "date": "AUG 27 · 2026",
+      "publishedAt": "2026-08-27T13:50:19.953Z",
+      "color": "#a993ff",
+      "title": "The Sleep Reset: Small Habits, Honest Variance",
+      "kicker": "Wellbeing",
+      "dek": "A federal sleep guide offers practical, non-judgmental steps for better rest — and a reminder that what 'enough' means varies from person to person.",
+      "readTime": "3 min read",
+      "validity": "120 days",
+      "expires": "2026-12-25",
+      "confidence": "Mixed",
+      "scope": "General wellbeing",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Sleep is often the first thing busy people squeeze out of their schedules, according to the National Heart, Lung, and Blood Institute (NHLBI). Their guidance reframes the trade: making time to sleep may help protect your health and well-being now and in the future, and with enough sleep each night you may find you're happier and more productive during the day. [W-SRC-2]",
+        "The mechanics matter here. NHLBI explains that internal body clocks running on roughly 24-hour cycles — regulated by light, darkness, and sleep schedules — govern when you're awake and when your body is ready for sleep. Once asleep, you cycle through sleep stages in a predictable pattern. [W-SRC-5]",
+        "One concrete, evidence-backed habit: power down devices. Artificial light from screens — phones, laptops, televisions — can signal the brain that it's time to be awake, and NHLBI-funded research has linked smartphone use before bed with shorter sleep duration and worse sleep quality. Experts cited by NHLBI suggest powering down at least 30 minutes before getting into bed. [W-SRC-3]",
+        "Naps get a nuanced treatment rather than a blanket rule. NHLBI notes that daytime napping may boost alertness and performance, but if you have trouble falling asleep at night, it may help to limit naps or take them earlier in the afternoon — and adults should nap for no more than 20 minutes. [W-SRC-2]",
+        "The honest caveat: individual sleep needs vary. NHLBI itself distinguishes between the sleep needed to feel awake and the sleep needed to be healthy. [W-SRC-4] This edition offers general guidance from a public-health source, not a diagnosis or a substitute for professional care — if you suspect a sleep disorder such as insomnia or sleep apnea, NHLBI's resources cover these conditions and point toward professional evaluation. [W-SRC-1]"
+      ],
+      "pullquote": "Sleep is often the first thing that busy people squeeze out of their schedules. [W-SRC-2]",
+      "sources": [
+        {
+          "id": "W-SRC-1",
+          "name": "Your Guide to Healthy Sleep | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/resources/your-guide-healthy-sleep",
+          "checked": "2026-08-27"
+        },
+        {
+          "id": "W-SRC-2",
+          "name": "Sleep Deprivation and Deficiency - Healthy Sleep Habits | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits",
+          "checked": "2026-08-27"
+        },
+        {
+          "id": "W-SRC-3",
+          "name": "Sweet dreams: Researchers explore link between sleep and health | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/news/2018/sweet-dreams-researchers-explore-link-between-sleep-and-health",
+          "checked": "2026-08-27"
+        },
+        {
+          "id": "W-SRC-4",
+          "name": "Sleep Brochure | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/resources/sleep-brochure",
+          "checked": "2026-08-27"
+        },
+        {
+          "id": "W-SRC-5",
+          "name": "How Sleep Works - How Sleep Works | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/health/sleep",
+          "checked": "2026-08-27"
+        }
+      ],
+      "claims": [
+        {
+          "id": "W-01",
+          "claim": "Sleep is often the first thing busy people squeeze out of their schedules, and making time to sleep may help protect health and well-being.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-02",
+          "claim": "Internal body clocks with roughly 24-hour cycles, regulated by light, darkness, and sleep schedules, control wakefulness and sleep readiness; sleep proceeds in predictable stage cycles.",
+          "source": 4,
+          "sourceIds": [
+            "W-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-03",
+          "claim": "Artificial light from screens can signal the brain that it's time to be awake, and smartphone use before bed is associated with shorter sleep duration and worse sleep quality.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-04",
+          "claim": "Experts suggest powering down devices at least 30 minutes before bed to enhance sleep quality.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-05",
+          "claim": "Daytime napping may boost alertness and performance; adults should nap no more than 20 minutes, and those with trouble falling asleep at night may limit naps or nap earlier in the afternoon.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-06",
+          "claim": "Individual sleep needs vary; the sleep needed to feel awake can differ from the sleep needed to be healthy.",
+          "source": 3,
+          "sourceIds": [
+            "W-SRC-4"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        },
+        {
+          "id": "W-07",
+          "claim": "Readers who suspect a sleep disorder such as insomnia or sleep apnea should seek professional evaluation; NHLBI resources provide overviews of these conditions.",
+          "source": 0,
+          "sourceIds": [
+            "W-SRC-1"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        }
+      ],
+      "toneNotes": [
+        "No diagnosis, moralizing, or individualized medical advice.",
+        "Individual variation kept visible via the awake-vs-healthy sleep distinction.",
+        "General guidance sourced to NHLBI public-health materials only."
+      ],
+      "tags": [
+        "wellbeing",
+        "sleep",
+        "sleep-hygiene",
+        "public-health"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "49743f7a-436e-44c5-b81f-48b907fc2163",
+        "credits": 2,
+        "search_mode": "timeless-official-fallback"
+      }
+    },
+    {
+      "id": "pantry-002",
+      "deskId": "pantry",
+      "desk": "The Pantry",
+      "icon": "◒",
+      "issue": "002",
+      "version": "1.0.0",
+      "date": "AUG 27 · 2026",
+      "publishedAt": "2026-08-27T13:49:59.590Z",
+      "color": "#f1cf69",
+      "title": "The Leftover Ledger: A Calm Guide to What Keeps and What Goes",
+      "kicker": "Pantry",
+      "dek": "USDA cold-storage windows, the two-hour rule, and a weekly fridge ritual — practical guidance for leftovers without guesswork.",
+      "readTime": "3 min read",
+      "validity": "365 days",
+      "expires": "2027-08-27",
+      "confidence": "High",
+      "scope": "Food safety",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Leftovers are one of the most common points of kitchen uncertainty: the container in the back of the fridge with no label and no story. The USDA's Food Safety and Inspection Service offers unusually clear, specific guidance here — not vague warnings, but actual day counts for cooked leftovers, raw meats, deli items, and more. This edition turns those numbers into a practical rhythm for your kitchen.",
+        "The core numbers are simple. Cooked leftovers keep 3 to 4 days in the refrigerator or 3 to 4 months in the freezer (P-SRC-2). Raw poultry and ground meats are shorter-lived: 1 to 2 days in the fridge (P-SRC-1). Deli salads, store-cooked entrees, and casseroles fall in the 3-to-5-day range (P-SRC-1). These are validity windows, not judgment calls — when the storage history is unknown, the guidance is to discard rather than guess.",
+        "The two-hour rule is the other anchor. Perishable food left at room temperature longer than 2 hours should be discarded — 1 hour if the room is above 90°F (P-SRC-3). Above 40°F and below 140°F is the 'Danger Zone' where bacteria multiply quickly (P-SRC-4). Reheat leftovers to 165°F, checking with a thermometer in several places (P-SRC-4).",
+        "Cooling matters as much as storage. Divide large batches — soup, roasts, turkey — into shallow containers or smaller pieces so food reaches 40°F or below quickly (P-SRC-2). Wrap well or use airtight containers to keep bacteria out and moisture in (P-SRC-2).",
+        "Finally, a weekly ritual: once a week, go through the fridge and discard perishables past their window (P-SRC-1). An open box of baking soda on a shelf keeps things smelling fresh (P-SRC-1). This is not alarmism — it is a small, repeatable habit that replaces uncertainty with a known answer."
+      ],
+      "pullquote": "Cooked leftovers: 3 to 4 days refrigerated, 3 to 4 months frozen. Raw poultry and ground meats: 1 to 2 days. When the clock is unknown, discard — don't guess.",
+      "sources": [
+        {
+          "id": "P-SRC-1",
+          "name": "Refrigeration & Food Safety | Food Safety and Inspection Service",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/refrigeration",
+          "checked": "2026-08-27"
+        },
+        {
+          "id": "P-SRC-2",
+          "name": "Leftovers and Food Safety | Food Safety and Inspection Service",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/leftovers-and-food-safety",
+          "checked": "2026-08-27"
+        },
+        {
+          "id": "P-SRC-3",
+          "name": "Safe Handling of Take-Out Foods | Food Safety and Inspection Service",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-handling-take-out-foods",
+          "checked": "2026-08-27"
+        },
+        {
+          "id": "P-SRC-4",
+          "name": "Keep Food Safe from Kickoff to Leftovers | Food Safety and Inspection Service",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/news-events/news-press-releases/keep-food-safe-kickoff-leftovers",
+          "checked": "2026-08-27"
+        },
+        {
+          "id": "P-SRC-5",
+          "name": "Keep Food Safe! Food Safety Basics | Food Safety and Inspection Service",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/steps-keep-food-safe",
+          "checked": "2026-08-27"
+        }
+      ],
+      "claims": [
+        {
+          "id": "P-01",
+          "claim": "Cooked leftovers can be kept in the refrigerator for 3 to 4 days or frozen for 3 to 4 months.",
+          "source": 1,
+          "sourceIds": [
+            "P-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-02",
+          "claim": "Raw poultry and ground meats keep 1 to 2 days in the refrigerator.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-03",
+          "claim": "Perishable foods left at room temperature longer than 2 hours should be discarded; 1 hour if air temperature is above 90°F.",
+          "source": 2,
+          "sourceIds": [
+            "P-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-04",
+          "claim": "The Danger Zone is 40°F to 140°F, where bacteria multiply quickly; perishable foods should not sit in this range more than two hours.",
+          "source": 3,
+          "sourceIds": [
+            "P-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-05",
+          "claim": "Leftovers should be reheated to 165°F, checked with a food thermometer in several places.",
+          "source": 3,
+          "sourceIds": [
+            "P-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-06",
+          "claim": "Large amounts of food should be divided into shallow containers or smaller pieces to cool rapidly to 40°F or below.",
+          "source": 1,
+          "sourceIds": [
+            "P-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-07",
+          "claim": "Leftovers should be wrapped well or sealed in airtight containers to keep bacteria out, retain moisture, and prevent odor transfer.",
+          "source": 1,
+          "sourceIds": [
+            "P-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-08",
+          "claim": "Once a week, discard perishable foods that should no longer be eaten.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Non-alarmist: present windows as practical rhythms, not warnings.",
+        "Never infer safety of a specific food with unknown history — always default to discard.",
+        "Prefer 180–365 day validity for this edition since the underlying USDA guidance is stable and non-fast-moving."
+      ],
+      "tags": [
+        "food-safety",
+        "leftovers",
+        "refrigeration",
+        "usda-fsis",
+        "pantry"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "343eadf0-e9e5-4da9-8191-a37756f3b048",
+        "credits": 2,
+        "search_mode": "timeless-official-fallback"
+      }
+    },
+    {
+      "id": "model-watch-003",
+      "deskId": "model-watch",
+      "desk": "Model Watch",
+      "icon": "⌁",
+      "issue": "003",
+      "version": "1.0.0",
+      "date": "AUG 27 · 2026",
+      "publishedAt": "2026-08-27T13:49:21.764Z",
+      "color": "#ff719f",
+      "title": "Velvet Signal — proposed edition, desk: model-watch",
+      "kicker": "Model Watch",
+      "dek": "A cybersecurity-specific model opens to approved defenders, a 30B open-weight multimodal model lands under Apache 2.0, and an MCP connector failure shows where agent plumbing still creaks.",
+      "readTime": "3 min read",
+      "validity": "60 days",
+      "expires": "2026-10-26",
+      "confidence": "Mixed",
+      "scope": "AI models and agent interfaces",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "OpenAI expanded its Daybreak program and released GPT-5.6-Cyber, a cybersecurity-specific model trained to reduce refusals on higher-risk tasks, alongside two access tiers for approved defenders (MW-SRC-4). The packet here is a news roundup rather than OpenAI's own release notes, so the exact tier names, eligibility criteria, and availability boundaries are not yet on file — treat the shape of the change as solid, the details as needs-review until primary documentation surfaces.",
+        "Meta released Muse Glimmer, a 30B open-weight multimodal model under Apache 2.0, with day-0 support across major inference libraries according to Hugging Face and developer Simon Willison (MW-SRC-4). For builders running local or agentic workloads, an Apache 2.0 license at this size is the part that matters: it permits commercial use without negotiation. The same sourcing caveat applies — this is aggregated reporting, not Meta's announcement.",
+        "On the agent-interface side, developers report a `424 Failed Dependency` error when connecting the Stripe remote MCP connector, surfacing during `tools/list` or connector registration; the reporter dates the onset to Monday 27/08/2026 around 6 pm CET and suggests the fault sits in the OpenAI MCP proxy runtime rather than Stripe's endpoint (MW-SRC-1). This is a community bug report, not an official acknowledgment — worth watching if your agents depend on remote MCP connectors, but not yet a confirmed platform change."
+      ],
+      "pullquote": "An Apache 2.0 license at 30B parameters is the part that matters: commercial use without negotiation.",
+      "sources": [
+        {
+          "id": "MW-SRC-1",
+          "name": "424 Failed Dependency error when connecting to Stripe remote MCP connector - Bugs - OpenAI Developer Community",
+          "publisher": "community.openai.com",
+          "url": "https://community.openai.com/t/424-failed-dependency-error-when-connecting-to-stripe-remote-mcp-connector/1392967",
+          "checked": "2026-08-27",
+          "publishedAt": "Thu, 27 Aug 2026 09:45:05 GMT"
+        },
+        {
+          "id": "MW-SRC-2",
+          "name": "Kleinunternehmen",
+          "publisher": "openai.com",
+          "url": "https://openai.com/de-DE/business/why-openai/small-business",
+          "checked": "2026-08-27",
+          "publishedAt": "Wed, 26 Aug 2026 13:00:00 GMT"
+        },
+        {
+          "id": "MW-SRC-3",
+          "name": "docs: record Q5 DGX Spark serving profile",
+          "publisher": "huggingface.co",
+          "url": "https://huggingface.co/Baekpica/Qwen3.8-Flash-Next-Mixed-Quant-SSD-PLE-GGUF/commit/f77e47a8db4781db7d51e7d0e9a29ecf595a57e2",
+          "checked": "2026-08-27",
+          "publishedAt": "Thu, 27 Aug 2026 10:00:00 GMT"
+        },
+        {
+          "id": "MW-SRC-4",
+          "name": "The Current — AI news, and what it means for you - RiverfrontAI",
+          "publisher": "riverfrontai.com",
+          "url": "https://riverfrontai.com/journal",
+          "checked": "2026-08-27",
+          "publishedAt": "Thu, 27 Aug 2026 02:00:00 GMT"
+        },
+        {
+          "id": "MW-SRC-5",
+          "name": "AI Signal Daily | Cloud Intelligence™ - DoiT",
+          "publisher": "doit.com",
+          "url": "https://www.doit.com/ai-daily",
+          "checked": "2026-08-27",
+          "publishedAt": "Thu, 27 Aug 2026 08:00:00 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "MW-01",
+          "claim": "OpenAI expanded its Daybreak program and released a cybersecurity-specific model named GPT-5.6-Cyber, trained to reduce refusals on higher-risk tasks, with two access tiers for approved defenders.",
+          "source": 3,
+          "sourceIds": [
+            "MW-SRC-4"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        },
+        {
+          "id": "MW-02",
+          "claim": "Meta released Muse Glimmer, a 30B open-weight multimodal model under the Apache 2.0 license, with day-0 support across major inference libraries as reported by Hugging Face and Simon Willison.",
+          "source": 3,
+          "sourceIds": [
+            "MW-SRC-4"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        },
+        {
+          "id": "MW-03",
+          "claim": "Developers report a `424 Failed Dependency` status during `tools/list` or connector registration when connecting the Stripe remote MCP connector, with onset dated Monday 27/08/2026 around 6 pm CET, and the reporter attributes the failure to the OpenAI MCP proxy runtime rather than Stripe's endpoint.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        },
+        {
+          "id": "MW-04",
+          "claim": "OpenAI's small-business page promotes using QuickBooks in ChatGPT for financial decision-making, dated 25 August 2026, 9:30 AM PT.",
+          "source": 1,
+          "sourceIds": [
+            "MW-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Lead with the GPT-5.6-Cyber / Daybreak story as the most consequential change for builders and agent users, but keep the secondary-source caveat visible in the body, not buried.",
+        "Frame the 424 MCP bug as a watchlist item for agent reliability, explicitly labeled as community-reported and unconfirmed.",
+        "Preserve exact strings: 'GPT-5.6-Cyber', 'Daybreak', 'Muse Glimmer', 'Apache 2.0', '424 Failed Dependency', 'tools/list', '27/08/2026'."
+      ],
+      "tags": [
+        "model-watch",
+        "openai",
+        "meta",
+        "mcp",
+        "open-weights",
+        "agent-reliability"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "9bb87b3a-a034-435b-8dea-935092791469",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
     {
       "id": "maker-003",
       "deskId": "maker",
