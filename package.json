@@ -6,6 +6,7 @@
   "description": "A publication for humans and their agents, with inspectable memory patches and a consent-gated OpenRouter editor.",
   "scripts": {
     "start": "node src/server.mjs",
+    "scout": "node src/scout.mjs",
     "test": "node --test test/*.test.mjs"
   },
   "engines": {

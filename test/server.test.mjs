@@ -39,9 +39,91 @@ test("reports the pinned editor model without exposing secrets", async () => {
     assert.equal(response.status, 200);
     const status = await response.json();
     assert.equal(status.model, "z-ai/glm-5.3-flash");
-    assert.deepEqual(status.desks, ["culture", "maker", "your-people"]);
+    assert.deepEqual(status.desks, [
+      "model-watch",
+      "pantry",
+      "wellbeing",
+      "culture",
+      "maker",
+      "your-people",
+    ]);
+    assert.deepEqual(status.scout_desks, [
+      "model-watch",
+      "pantry",
+      "wellbeing",
+      "culture",
+      "maker",
+    ]);
+    assert.equal(status.scout_mode, "scheduled-github-actions");
     assert.equal("api_key" in status, false);
   });
+});
+
+test("serves the canonical issue catalog", async () => {
+  await withServer(async (baseUrl) => {
+    const response = await fetch(`${baseUrl}/api/velvet/issues`);
+    assert.equal(response.status, 200);
+    const catalog = await response.json();
+    assert.equal(catalog.issues.length >= 6, true);
+    assert.equal(catalog.issues.some((issue) => issue.id === "culture-001"), true);
+    assert.deepEqual(catalog.private_desks, ["your-people"]);
+    assert.equal(catalog.scout_desks.includes("your-people"), false);
+  });
+});
+
+test("releases canonical patches with verifiable content-bound receipts", async () => {
+  const previousSecret = process.env.VELVET_RECEIPT_SECRET;
+  process.env.VELVET_RECEIPT_SECRET = "test-receipt-secret-at-least-16-characters";
+  try {
+    await withServer(async (baseUrl) => {
+      const release = await fetch(`${baseUrl}/api/velvet/release`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ patch_id: "culture-001" }),
+      });
+      assert.equal(release.status, 201);
+      const delivery = await release.json();
+      assert.equal(delivery.delivered, true);
+      assert.equal(delivery.patch.delivery.status, "delivered");
+      assert.equal(delivery.patch.delivery.approved, true);
+      assert.equal(delivery.patch.editorial_provenance.role, "informational origin metadata only");
+      assert.equal("composition" in delivery.patch, false);
+      assert.equal(delivery.receipt.algorithm, "Ed25519");
+      assert.match(delivery.receipt.content_sha256, /^[a-f0-9]{64}$/);
+
+      const verify = await fetch(`${baseUrl}/api/velvet/verify-receipt`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ patch: delivery.patch, receipt: delivery.receipt }),
+      });
+      assert.equal(verify.status, 200);
+      const verified = await verify.json();
+      assert.equal(verified.valid, true);
+      assert.equal(verified.signature_valid, true);
+      assert.equal(verified.content_hash_valid, true);
+
+      const tampered = structuredClone(delivery.patch);
+      tampered.title = "Tampered";
+      const reject = await fetch(`${baseUrl}/api/velvet/verify-receipt`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ patch: tampered, receipt: delivery.receipt }),
+      });
+      const rejected = await reject.json();
+      assert.equal(rejected.valid, false);
+      assert.equal(rejected.content_hash_valid, false);
+
+      const key = await fetch(`${baseUrl}/api/velvet/receipt-key`);
+      assert.equal(key.status, 200);
+      const publicKey = await key.json();
+      assert.equal(publicKey.key_id, delivery.receipt.key_id);
+      assert.equal(publicKey.public_key_jwk.kty, "OKP");
+      assert.equal("d" in publicKey.public_key_jwk, false);
+    });
+  } finally {
+    if (previousSecret === undefined) delete process.env.VELVET_RECEIPT_SECRET;
+    else process.env.VELVET_RECEIPT_SECRET = previousSecret;
+  }
 });
 
 test("compose remains closed until server-side secrets are configured", async () => {

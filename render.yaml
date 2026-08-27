@@ -13,3 +13,7 @@ services:
         sync: false
       - key: VELVET_EDITOR_TOKEN
         generateValue: true
+      - key: VELVET_RECEIPT_SECRET
+        generateValue: true
+      - key: VELVET_PUBLIC_URL
+        value: https://velvetsignal.lol

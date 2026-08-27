@@ -3,6 +3,14 @@ import { timingSafeEqual } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
+import { findIssue, listIssues, PUBLIC_SCOUT_DESKS } from "./catalog.mjs";
+import { patchForIssue } from "./patch.mjs";
+import {
+  createDeliveryReceipt,
+  publicReceiptKey,
+  receiptSigningConfigured,
+  verifyDeliveryReceipt,
+} from "./receipts.mjs";
 import {
   composeEdition,
   parseComposeEditionInput,
@@ -46,7 +54,8 @@ function securityHeaders(request) {
       "frame-ancestors 'none'",
     ].join("; "),
     "Cross-Origin-Opener-Policy": "same-origin",
-    "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
+    "Permissions-Policy":
+      "camera=(), microphone=(), geolocation=(), tools=(self)",
     "Referrer-Policy": "no-referrer",
     "X-Content-Type-Options": "nosniff",
     "X-Frame-Options": "DENY",
@@ -162,6 +171,46 @@ async function handleCompose(request, response) {
   sendJson(response, request, 201, draft);
 }
 
+async function handleRelease(request, response) {
+  if (!receiptSigningConfigured()) {
+    request.resume();
+    sendJson(response, request, 503, {
+      error: "receipt_signing_not_configured",
+      message:
+        "VELVET_RECEIPT_SECRET must be configured before releasing patches.",
+    });
+    return;
+  }
+  const body = await readJson(request);
+  const patchId =
+    body && typeof body === "object" && !Array.isArray(body)
+      ? body.patch_id
+      : null;
+  if (typeof patchId !== "string" || !patchId.trim()) {
+    throw new HttpError(400, "patch_id is required.");
+  }
+  const issue = await findIssue(patchId.trim());
+  if (!issue) {
+    throw new HttpError(404, "Unknown patch ID.");
+  }
+  const patch = patchForIssue(issue, { deliveryStatus: "delivered" });
+  const receipt = createDeliveryReceipt(patch);
+  sendJson(response, request, 201, {
+    delivered: true,
+    receipt,
+    patch,
+  });
+}
+
+async function handleReceiptVerification(request, response) {
+  const body = await readJson(request);
+  if (!body || typeof body !== "object" || Array.isArray(body)) {
+    throw new HttpError(400, "A patch and receipt are required.");
+  }
+  const result = verifyDeliveryReceipt(body.patch, body.receipt);
+  sendJson(response, request, 200, result);
+}
+
 async function requestHandler(request, response) {
   try {
     const url = new URL(request.url ?? "/", "http://velvet-signal.local");
@@ -178,18 +227,54 @@ async function requestHandler(request, response) {
       (method === "GET" || method === "HEAD") &&
       url.pathname === "/api/velvet/status"
     ) {
+      const catalog = await listIssues();
       sendJson(response, request, 200, {
         status: "ok",
         openrouter_configured: openRouterConfigured(),
         editor_auth_configured: Boolean(process.env.VELVET_EDITOR_TOKEN),
+        receipt_signing_configured: receiptSigningConfigured(),
         model: VELVET_EDITOR_MODEL,
         desks: VELVET_DESKS,
+        scout_desks: PUBLIC_SCOUT_DESKS,
+        scout_mode: "scheduled-github-actions",
+        scout_last_published_at: catalog.generated_at,
         private_context_policy: "explicit-cloud-consent-required",
       });
       return;
     }
+    if (
+      (method === "GET" || method === "HEAD") &&
+      url.pathname === "/api/velvet/issues"
+    ) {
+      sendJson(response, request, 200, await listIssues());
+      return;
+    }
+    if (
+      (method === "GET" || method === "HEAD") &&
+      url.pathname === "/api/velvet/receipt-key"
+    ) {
+      if (!receiptSigningConfigured()) {
+        sendJson(response, request, 503, {
+          error: "receipt_signing_not_configured",
+        });
+      } else {
+        sendJson(response, request, 200, publicReceiptKey());
+      }
+      return;
+    }
     if (method === "POST" && url.pathname === "/api/velvet/compose") {
       await handleCompose(request, response);
+      return;
+    }
+    if (method === "POST" && url.pathname === "/api/velvet/release") {
+      await handleRelease(request, response);
+      return;
+    }
+    if (
+      method === "POST" &&
+      url.pathname === "/api/velvet/verify-receipt"
+    ) {
+      await handleReceiptVerification(request, response);
       return;
     }
     if (

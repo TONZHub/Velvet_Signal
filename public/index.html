@@ -407,6 +407,7 @@
     .consent-box { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 20px; border: 1px solid rgba(255,79,145,.24); border-radius: 16px; background: rgba(255,79,145,.055); }
     .consent-box strong { display: block; margin-bottom: 4px; font-family: var(--serif); font-size: 1.22rem; }
     .consent-box p { max-width: 560px; margin: 0; color: var(--muted); font-size: .71rem; }
+    .consent-box .receipt-line { margin-top: 8px; color: var(--mint); font-family: var(--mono); font-size: .58rem; overflow-wrap: anywhere; }
     .consent-actions { display: flex; flex-shrink: 0; flex-wrap: wrap; gap: 8px; justify-content: end; }
 
     .toast {
@@ -492,7 +493,7 @@
         <h1>What will your AI <em>subscribe</em> to?</h1>
         <p>Read the story. Inspect the memory patch. Approve what enters the room. Velvet Signal keeps people and their agents current—together, deliberately, with receipts.</p>
         <div class="hero-actions">
-          <a class="button primary" href="#newsstand">Browse first issues <span aria-hidden="true">↓</span></a>
+          <a class="button primary" href="#newsstand">Browse current issues <span aria-hidden="true">↓</span></a>
           <a class="button ghost" href="#protocol">See how consent works</a>
         </div>
         <div class="hero-meta" aria-label="Publication facts">
@@ -529,7 +530,7 @@
       <div class="section-head">
         <div>
           <div class="eyebrow">Fresh on the signal</div>
-          <h2>Six desks.<br>Six first issues.</h2>
+          <h2>Six desks.<br>A living shelf.</h2>
         </div>
         <p>Each edition has two faces: an editorial explanation worth reading and a portable context patch worth inspecting.</p>
       </div>
@@ -544,11 +545,11 @@
             <div class="eyebrow">The editorial bridge</div>
             <h2>Tavily scouts. GLM 5.3 Flash shapes. Humans release.</h2>
           </div>
-          <p>The three new desks compose proposed, source-bound editions through OpenRouter. The API key stays server-side; every draft remains unapproved until a person opens the gate.</p>
+          <p>Five public desks receive scheduled, source-bound Tavily packets and compose through OpenRouter. Your People stays private by design. Every patch remains locked until a person opens the gate.</p>
         </div>
         <div class="bridge-grid">
-          <div class="bridge-route"><span>Culture Desk</span><strong>Fresh signals, short memory.</strong><p>Tavily source packets → GLM 5.3 Flash → a proposed edition with citations and an expiry.</p></div>
-          <div class="bridge-route"><span>Maker Edition</span><strong>Specs in, schema out.</strong><p>Official docs → strict OpenRouter JSON output → a draft whose claims must resolve to supplied sources.</p></div>
+          <div class="bridge-route"><span>Model · Culture · Maker</span><strong>Fresh signals, bounded memory.</strong><p>Tavily source packets → GLM 5.3 Flash → a proposed edition with citations and an expiry.</p></div>
+          <div class="bridge-route"><span>Pantry · Wellbeing</span><strong>Authority before novelty.</strong><p>Public-health and food-safety sources → guarded composition → general guidance that never pretends to inspect or diagnose.</p></div>
           <div class="bridge-route"><span>Your People · private</span><strong>No automatic scouting.</strong><p>User-authored context only, explicit cloud-processing consent required, and memory delivery still locked.</p></div>
         </div>
       </div>
@@ -603,7 +604,7 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script>
-    const issues = [
+    let issues = [
       {
         id: "model-watch-001",
         deskId: "model-watch",
@@ -825,10 +826,18 @@
     ];
 
     const state = { filter: "all", current: null, tab: "human" };
+    const deskThemes = {
+      "model-watch": { color: "#ff719f", icon: "⌁" },
+      pantry: { color: "#f1cf69", icon: "◒" },
+      wellbeing: { color: "#a993ff", icon: "☾" },
+      culture: { color: "#67d6c0", icon: "✺" },
+      maker: { color: "#ff9466", icon: "⌘" },
+      "your-people": { color: "#bca8ff", icon: "∞" }
+    };
     const $ = (selector, root = document) => root.querySelector(selector);
     const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
     const subscriptionsKey = "velvet-signal.subscriptions.v1";
-    const approvalsKey = "velvet-signal.approvals.v1";
+    const deliveriesKey = "velvet-signal.deliveries.v2";
 
     const getStoredSet = key => {
       try { return new Set(JSON.parse(localStorage.getItem(key) || "[]")); }
@@ -836,7 +845,14 @@
     };
     const saveStoredSet = (key, set) => localStorage.setItem(key, JSON.stringify([...set]));
     const subscriptions = getStoredSet(subscriptionsKey);
-    const approvals = getStoredSet(approvalsKey);
+    const getStoredDeliveries = () => {
+      try {
+        const parsed = JSON.parse(localStorage.getItem(deliveriesKey) || "{}");
+        return new Map(Object.entries(parsed).filter(([, value]) => value?.delivered === true && value?.patch && value?.receipt));
+      } catch { return new Map(); }
+    };
+    const saveDeliveries = () => localStorage.setItem(deliveriesKey, JSON.stringify(Object.fromEntries(deliveries)));
+    const deliveries = getStoredDeliveries();
 
     function toast(message) {
       const el = $("#toast");
@@ -847,55 +863,70 @@
     }
 
     function patchFor(issue) {
+      const delivered = deliveries.get(issue.id);
+      if (delivered?.patch) return delivered.patch;
+      const sourceId = (source, index) => {
+        if (typeof source.id === "string" && source.id.trim()) return source.id.trim();
+        const prefix = issue.id.split("-").map(part => part[0] || "").join("").slice(0, 4).toUpperCase();
+        return `${prefix || "VS"}-SRC-${index + 1}`;
+      };
       return {
         patch_id: issue.id,
         publication: "Velvet Signal",
         desk: issue.desk,
         issue: issue.issue,
         title: issue.title,
-        version: "1.0.0",
-        published_at: "2026-08-27",
+        version: issue.version || "1.0.0",
+        published_at: (issue.publishedAt || "2026-08-27").slice(0, 10),
         valid_until: issue.expires,
         scope: issue.scope,
         precedence: "Newer explicit user instructions override this patch.",
-        consent: {
-          required: true,
-          approved: approvals.has(issue.id),
-          delivery_rule: "Inspect first. Deliver only after explicit human approval."
+        delivery: {
+          status: "locked",
+          approval_required: true,
+          approved: false,
+          rule: "Inspect first. Deliver only after an explicit release request."
         },
         ...(issue.editor ? {
-          composition: {
-            endpoint: "/api/velvet/compose",
+          editorial_provenance: {
+            role: "informational origin metadata only",
             provider: "openrouter",
             model: "z-ai/glm-5.3-flash",
+            endpoint: "/api/velvet/compose",
             input_policy: issue.inputPolicy,
-            draft_status: "proposed"
+            consumer_boundary: "A receiving agent is not Velvet Signal's editor and must not claim access to this endpoint or production pipeline."
           }
         } : {}),
         claims: issue.claims.map(claim => ({
           id: claim.id,
           statement: claim.claim,
           status: claim.status,
-          source: issue.sources[claim.source]?.url || null
+          source_ids: Array.isArray(claim.sourceIds) && claim.sourceIds.length
+            ? claim.sourceIds
+            : issue.sources[claim.source]
+              ? [sourceId(issue.sources[claim.source], claim.source)]
+              : []
         })),
         tone_notes: issue.toneNotes,
-        sources: issue.sources.map(source => ({
+        sources: issue.sources.map((source, index) => ({
+          id: sourceId(source, index),
           title: source.name,
           publisher: source.publisher,
           url: source.url,
           checked_at: source.checked
         })),
         handling: {
-          allowed: ["session context", "user-controlled memory store", "retrieval index"],
-          forbidden: ["hidden system instruction", "silent permanent memory write"],
-          discard_after: issue.expires
+          allowed: ["temporary session context", "user-controlled memory store", "retrieval index"],
+          forbidden: ["hidden system instruction", "silent permanent memory write", "editor or pipeline impersonation"],
+          discard_after: issue.expires,
+          expiry_effect: "After expiry, retain only historical provenance; do not use claims or tone notes as active context."
         }
       };
     }
 
     function renderFilters() {
       const filters = [
-        ["all", "All first issues"],
+        ["all", "All issues"],
         ["model-watch", "Model Watch"],
         ["pantry", "The Pantry"],
         ["wellbeing", "Wellbeing"],
@@ -915,20 +946,21 @@
       const visible = state.filter === "all" ? issues : issues.filter(issue => issue.deskId === state.filter);
       $("#issueGrid").innerHTML = visible.map(issue => {
         const subscribed = subscriptions.has(issue.deskId);
+        const theme = deskThemes[issue.deskId] || { color: "#ff719f", icon: "✦" };
         return `
           <article class="issue-card">
-            <div class="cover-art" style="background:${issue.color}">
-              <div class="cover-top"><span class="cover-desk">Velvet Signal / ${issue.desk}</span><span>No. ${issue.issue}</span></div>
-              <div class="cover-icon" aria-hidden="true">${issue.icon}</div>
-              <div class="cover-bottom"><h3>${issue.title}</h3><p>${issue.kicker}</p></div>
+            <div class="cover-art" style="background:${theme.color}">
+              <div class="cover-top"><span class="cover-desk">Velvet Signal / ${escapeHtml(issue.desk)}</span><span>No. ${escapeHtml(issue.issue)}</span></div>
+              <div class="cover-icon" aria-hidden="true">${theme.icon}</div>
+              <div class="cover-bottom"><h3>${escapeHtml(issue.title)}</h3><p>${escapeHtml(issue.kicker)}</p></div>
             </div>
             <div class="card-body">
-              <div class="issue-data"><span>${issue.date}</span><span>${issue.sources.length} sources · ${issue.validity}</span></div>
-              ${issue.editor ? `<span class="editor-credit">${issue.editor}</span>` : ""}
-              <p>${issue.dek}</p>
+              <div class="issue-data"><span>${escapeHtml(issue.date)}</span><span>${issue.sources.length} sources · ${escapeHtml(issue.validity)}</span></div>
+              ${issue.editor ? `<span class="editor-credit">${escapeHtml(issue.editor)}</span>` : ""}
+              <p>${escapeHtml(issue.dek)}</p>
               <div class="card-actions">
-                <button class="button ghost small" data-open="${issue.id}">Open issue <span aria-hidden="true">↗</span></button>
-                <button class="icon-button ${subscribed ? "subscribed" : ""}" data-subscribe="${issue.deskId}" aria-label="${subscribed ? "Unsubscribe from" : "Subscribe to"} ${issue.desk}" title="${subscribed ? "Subscribed" : "Subscribe"}">${subscribed ? "✓" : "+"}</button>
+                <button class="button ghost small" data-open="${escapeHtml(issue.id)}">Open issue <span aria-hidden="true">↗</span></button>
+                <button class="icon-button ${subscribed ? "subscribed" : ""}" data-subscribe="${escapeHtml(issue.deskId)}" aria-label="${subscribed ? "Unsubscribe from" : "Subscribe to"} ${escapeHtml(issue.desk)}" title="${subscribed ? "Subscribed" : "Subscribe"}">${subscribed ? "✓" : "+"}</button>
               </div>
             </div>
           </article>`;
@@ -955,11 +987,11 @@
       if (!issue) return;
       state.current = issue;
       state.tab = tab;
-      $("#dialogHero").style.background = issue.color;
+      $("#dialogHero").style.background = (deskThemes[issue.deskId] || deskThemes["model-watch"]).color;
       $("#dialogDesk").textContent = `Velvet Signal / ${issue.desk}`;
       $("#dialogTitle").textContent = issue.title;
       $("#dialogDek").textContent = issue.dek;
-      $("#dialogMeta").innerHTML = `Issue ${issue.issue}<br>${issue.date}<br>${issue.readTime}${issue.editor ? `<br>${issue.editor}` : ""}`;
+      $("#dialogMeta").innerHTML = `Issue ${escapeHtml(issue.issue)}<br>${escapeHtml(issue.date)}<br>${escapeHtml(issue.readTime)}${issue.editor ? `<br>${escapeHtml(issue.editor)}` : ""}`;
       renderHuman(issue);
       renderMachine(issue);
       setDialogTab(tab);
@@ -969,37 +1001,42 @@
     }
 
     function renderHuman(issue) {
-      const article = issue.editorial.map((paragraph, index) => index === 2 ? `<div class="pullquote">${issue.pullquote}</div><p>${paragraph}</p>` : `<p>${paragraph}</p>`).join("");
+      const article = issue.editorial.map((paragraph, index) => index === 2 ? `<div class="pullquote">${escapeHtml(issue.pullquote)}</div><p>${escapeHtml(paragraph)}</p>` : `<p>${escapeHtml(paragraph)}</p>`).join("");
       const sources = issue.sources.map(source => {
         const external = /^https?:\/\//.test(source.url);
-        return `<a class="source-link" href="${source.url}"${external ? ' target="_blank" rel="noreferrer"' : ""}><strong>${source.name}</strong><small>${source.publisher}<br>Checked ${source.checked}</small></a>`;
+        const href = safeHref(source.url);
+        return `<a class="source-link" href="${escapeHtml(href)}"${external ? ' target="_blank" rel="noreferrer"' : ""}><strong>${escapeHtml(source.name)}</strong><small>${escapeHtml(source.publisher)}<br>Checked ${escapeHtml(source.checked)}</small></a>`;
       }).join("");
       $("#humanView").innerHTML = `
         <div class="article-grid">
           <article class="article-copy">${article}</article>
-          <aside class="source-box"><h3>Source shelf</h3>${sources}<div class="verified">● ${issue.confidence} confidence · ${issue.claims.length} claims</div><button class="button ghost small" style="width:100%;margin-top:15px" data-inspect>Inspect machine patch</button></aside>
+          <aside class="source-box"><h3>Source shelf</h3>${sources}<div class="verified">● ${escapeHtml(issue.confidence)} confidence · ${issue.claims.length} claims</div><button class="button ghost small" style="width:100%;margin-top:15px" data-inspect>Inspect machine patch</button></aside>
         </div>`;
       $("[data-inspect]", $("#humanView")).addEventListener("click", () => setDialogTab("machine"));
     }
 
     function renderMachine(issue) {
-      const approved = approvals.has(issue.id);
+      const approved = deliveries.has(issue.id);
+      const delivery = deliveries.get(issue.id);
       const patch = patchFor(issue);
-      const rows = issue.claims.map(claim => `<tr><td>${claim.id}</td><td>${claim.claim}</td><td>${issue.sources[claim.source]?.publisher || "Editorial policy"}</td><td>${claim.status}</td></tr>`).join("");
+      const rows = issue.claims.map(claim => `<tr><td>${escapeHtml(claim.id)}</td><td>${escapeHtml(claim.claim)}</td><td>${escapeHtml(issue.sources[claim.source]?.publisher || "Editorial policy")}</td><td>${escapeHtml(claim.status)}</td></tr>`).join("");
+      const receiptLine = approved
+        ? `<p class="receipt-line">Signed ${escapeHtml(delivery.receipt.algorithm)} receipt · ${escapeHtml(delivery.receipt.key_id)} · hash ${escapeHtml(delivery.receipt.content_sha256.slice(0, 16))}…</p>`
+        : "";
       $("#machineView").innerHTML = `
-        <div class="patch-alert"><span aria-hidden="true">⚿</span><div><strong>Inspect before release.</strong><p>${issue.editor ? `${issue.editor} is the proposed-draft route. ` : ""}This patch supplies portable context. It does not rewrite model weights, hidden memory, or newer user instructions.</p></div></div>
+        <div class="patch-alert"><span aria-hidden="true">⚿</span><div><strong>Inspect before release.</strong><p>${issue.editor ? `${escapeHtml(issue.editor)} is origin provenance only. ` : ""}This patch supplies portable context. It does not rewrite model weights, hidden memory, or newer user instructions.</p></div></div>
         <div class="patch-overview">
-          <div class="patch-stat"><span>Patch ID</span><strong>${issue.id}</strong></div>
-          <div class="patch-stat"><span>Version</span><strong>1.0.0</strong></div>
-          <div class="patch-stat"><span>Valid until</span><strong>${issue.expires}</strong></div>
-          <div class="patch-stat"><span>Scope</span><strong>${issue.scope}</strong></div>
+          <div class="patch-stat"><span>Patch ID</span><strong>${escapeHtml(issue.id)}</strong></div>
+          <div class="patch-stat"><span>Version</span><strong>${escapeHtml(issue.version || "1.0.0")}</strong></div>
+          <div class="patch-stat"><span>Valid until</span><strong>${escapeHtml(issue.expires)}</strong></div>
+          <div class="patch-stat"><span>Scope</span><strong>${escapeHtml(issue.scope)}</strong></div>
         </div>
         <table class="ledger"><thead><tr><th>ID</th><th>Proposed context</th><th>Provenance</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table>
         <details><summary>View raw JSON patch</summary><pre>${escapeHtml(JSON.stringify(patch, null, 2))}</pre></details>
         <div class="consent-box">
-          <div><strong>${approved ? "Patch released for delivery." : "Ready for human decision."}</strong><p>${approved ? "A WebMCP-aware agent may now request this exact version. You can withdraw consent at any time." : "Approval unlocks agent delivery for this patch ID only. Subscription status does not count as approval."}</p></div>
+          <div><strong>${approved ? "Patch released with a signed receipt." : "Ready for human decision."}</strong><p>${approved ? "A WebMCP-aware agent may now request this exact version and verify its content hash. You can withdraw future delivery at any time." : "Approval requests a canonical, signed delivery for this patch ID only. Subscription status does not count as approval."}</p>${receiptLine}</div>
           <div class="consent-actions">
-            <button class="button ghost small" data-copy ${approved ? "" : "disabled"}>Copy patch</button>
+            <button class="button ghost small" data-copy ${approved ? "" : "disabled"}>Copy signed bundle</button>
             <button class="button ${approved ? "ghost" : "primary"} small" data-approve>${approved ? "Withdraw approval" : "Approve & release"}</button>
           </div>
         </div>`;
@@ -1007,25 +1044,39 @@
       $("[data-copy]", $("#machineView")).addEventListener("click", () => copyPatch(issue));
     }
 
-    function toggleApproval(id) {
+    async function toggleApproval(id) {
       const issue = issues.find(item => item.id === id);
-      if (approvals.has(id)) {
-        approvals.delete(id);
+      if (deliveries.has(id)) {
+        deliveries.delete(id);
+        saveDeliveries();
         toast(`Approval withdrawn for ${issue.title}. Agent delivery is locked again.`);
       } else {
-        approvals.add(id);
-        toast(`Patch ${id} approved. Agent delivery is now available.`);
+        toast(`Signing ${id}…`);
+        try {
+          const response = await fetch("/api/velvet/release", {
+            method: "POST",
+            headers: { "content-type": "application/json", accept: "application/json" },
+            body: JSON.stringify({ patch_id: id })
+          });
+          const result = await response.json();
+          if (!response.ok || result.delivered !== true) throw new Error(result.message || `Release failed with ${response.status}`);
+          deliveries.set(id, result);
+          saveDeliveries();
+          toast(`Patch ${id} released with a signed receipt.`);
+        } catch (error) {
+          toast(error instanceof Error ? error.message : "The signed release failed.");
+        }
       }
-      saveStoredSet(approvalsKey, approvals);
       renderMachine(issue);
       updateFlowState();
     }
 
     async function copyPatch(issue) {
-      if (!approvals.has(issue.id)) return;
+      const delivery = deliveries.get(issue.id);
+      if (!delivery) return;
       try {
-        await navigator.clipboard.writeText(JSON.stringify(patchFor(issue), null, 2));
-        toast("Approved patch copied with provenance and expiry intact.");
+        await navigator.clipboard.writeText(JSON.stringify(delivery, null, 2));
+        toast("Signed delivery bundle copied with receipt and patch intact.");
       } catch {
         toast("Clipboard access was unavailable in this preview.");
       }
@@ -1048,15 +1099,23 @@
     }
 
     function escapeHtml(value) {
-      return value.replace(/[&<>]/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" })[char]);
+      return String(value ?? "").replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]);
+    }
+
+    function safeHref(value) {
+      if (typeof value === "string" && value.startsWith("#")) return value;
+      try {
+        const url = new URL(value, location.href);
+        return ["http:", "https:"].includes(url.protocol) ? url.href : "#";
+      } catch { return "#"; }
     }
 
     function updateFlowState() {
       const states = $$(".flow-state");
-      if (states[2]) states[2].textContent = approvals.size ? `${approvals.size} approved` : "Human";
+      if (states[2]) states[2].textContent = deliveries.size ? `${deliveries.size} approved` : "Human";
       if (states[3]) {
-        states[3].textContent = approvals.size ? "Ready" : "Locked";
-        states[3].style.color = approvals.size ? "var(--mint)" : "var(--butter)";
+        states[3].textContent = deliveries.size ? "Ready" : "Locked";
+        states[3].style.color = deliveries.size ? "var(--mint)" : "var(--butter)";
       }
     }
 
@@ -1105,7 +1164,7 @@
               desk: issue.desk,
               title: issue.title,
               valid_until: issue.expires,
-              human_approved: approvals.has(issue.id),
+              human_approved: deliveries.has(issue.id),
               editor_model: issue.editor ? "z-ai/glm-5.3-flash" : null,
               input_policy: issue.inputPolicy || "curated launch issue"
             }))
@@ -1123,31 +1182,68 @@
         },
         {
           name: "apply_memory_patch",
-          description: "Deliver an exact Velvet Signal memory patch after it has been explicitly approved by the human in the page interface. Returns portable structured context; it does not claim to rewrite hidden model memory.",
+          description: "Deliver an exact Velvet Signal memory patch and its signed, content-bound receipt after explicit human release. It does not claim to rewrite hidden model memory.",
           inputSchema: { type: "object", properties: { patchId: { type: "string", description: "The approved Velvet Signal patch ID." } }, required: ["patchId"] },
           annotations: { readOnlyHint: false },
           execute: async ({ patchId }) => {
             const issue = issues.find(item => item.id === patchId);
             if (!issue) return toolResponse({ error: "Unknown patch ID", delivered: false });
-            if (!approvals.has(patchId)) return toolResponse({ error: "Human approval required. Ask the human to inspect and approve this exact patch in Velvet Signal.", delivered: false, patch_id: patchId });
-            return toolResponse({ delivered: true, receipt: { patch_id: patchId, version: "1.0.0", delivered_at: new Date().toISOString(), approved_in_ui: true }, patch: patchFor(issue) });
+            const delivery = deliveries.get(patchId);
+            if (!delivery) return toolResponse({ error: "Human approval required. Ask the human to inspect and approve this exact patch in Velvet Signal.", delivered: false, patch_id: patchId });
+            return toolResponse(delivery);
+          }
+        },
+        {
+          name: "verify_delivery_receipt",
+          description: "Verify that a delivered patch matches its Velvet Signal Ed25519 receipt and report whether the patch is still active. This does not apply or store the patch.",
+          inputSchema: { type: "object", properties: { patchId: { type: "string", description: "The delivered Velvet Signal patch ID." } }, required: ["patchId"] },
+          annotations: { readOnlyHint: true },
+          execute: async ({ patchId }) => {
+            const delivery = deliveries.get(patchId);
+            if (!delivery) return toolResponse({ error: "No signed delivery is available for this patch ID.", valid: false, patch_id: patchId });
+            try {
+              const response = await fetch("/api/velvet/verify-receipt", {
+                method: "POST",
+                headers: { "content-type": "application/json", accept: "application/json" },
+                body: JSON.stringify({ patch: delivery.patch, receipt: delivery.receipt })
+              });
+              return toolResponse({ patch_id: patchId, ...(await response.json()) });
+            } catch {
+              return toolResponse({ error: "Receipt verification service unavailable.", valid: false, patch_id: patchId });
+            }
           }
         }
       ];
       try {
         for (const tool of registrations) await modelContext.registerTool(tool);
-        badge.textContent = "WebMCP ready · 3 tools";
+        badge.textContent = "WebMCP ready · 4 tools";
       } catch (error) {
         console.warn("WebMCP registration failed", error);
         badge.textContent = "WebMCP unavailable";
       }
     }
 
-    renderFilters();
-    renderIssues();
-    updateFlowState();
-    checkEditorStatus();
-    registerWebMCP();
+    async function loadCatalog() {
+      try {
+        const response = await fetch("/api/velvet/issues", { headers: { accept: "application/json" } });
+        if (!response.ok) throw new Error(`Catalog ${response.status}`);
+        const catalog = await response.json();
+        if (Array.isArray(catalog.issues) && catalog.issues.length) issues = catalog.issues;
+      } catch (error) {
+        console.warn("Using embedded launch shelf", error);
+      }
+    }
+
+    async function bootstrap() {
+      await loadCatalog();
+      renderFilters();
+      renderIssues();
+      updateFlowState();
+      checkEditorStatus();
+      registerWebMCP();
+    }
+
+    bootstrap();
 
     $$(".dialog-tab").forEach(button => button.addEventListener("click", () => setDialogTab(button.dataset.tab)));
     $("#dialogClose").addEventListener("click", closeDialog);

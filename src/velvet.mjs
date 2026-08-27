@@ -1,5 +1,12 @@
 import { randomUUID } from "node:crypto";
-const VELVET_DESKS = ["culture", "maker", "your-people"];
+const VELVET_DESKS = [
+  "model-watch",
+  "pantry",
+  "wellbeing",
+  "culture",
+  "maker",
+  "your-people",
+];
 const VELVET_EDITOR_MODEL = "z-ai/glm-5.3-flash";
 class VelvetValidationError extends Error {
   constructor(message) {
@@ -14,8 +21,14 @@ class VelvetUpstreamError extends Error {
   }
 }
 const DESK_GUIDANCE = {
+  "model-watch":
+    "Explain model, platform, and agent-interface changes from primary release notes and official documentation. Preserve exact model names, versions, dates, experimental status, and availability boundaries. Prefer validity windows of 30 to 90 days.",
+  pantry:
+    "Turn authoritative food-safety and kitchen guidance into practical, non-alarmist context. Never infer whether a specific food is safe when time, temperature, or storage history is unknown. Prefer validity windows of 180 to 365 days unless guidance is fast-moving.",
+  wellbeing:
+    "Explain general wellbeing guidance from authoritative public-health or research sources without diagnosing, moralizing, or replacing professional care. Keep individual variation visible. Prefer validity windows of 90 to 180 days.",
   culture:
-    "Explain fast-moving language, memes, media, and social context without flattening ambiguity. Prefer short validity windows. Distinguish observed usage from universal meaning.",
+    "Explain fast-moving language, memes, media, and social context without flattening ambiguity. Prefer validity windows of 7 to 14 days. Distinguish observed usage from universal meaning and never turn cultural exposure into a user identity claim.",
   maker:
     "Explain framework, API, tooling, security, and implementation changes for builders. Preserve exact versions and deprecation dates. Never invent compatibility claims.",
   "your-people":

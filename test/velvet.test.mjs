@@ -12,15 +12,20 @@ const source = {
   url: "https://developer.chrome.com/docs/ai/webmcp/imperative-api",
   excerpt: "The imperative API registers tools through document.modelContext.",
 };
-test("Culture and Maker require sourced signal packets", () => {
-  assert.throws(
-    () => parseComposeEditionInput({ desk: "culture", sources: [] }),
-    VelvetValidationError,
-  );
-  assert.equal(
-    parseComposeEditionInput({ desk: "maker", sources: [source] }).desk,
+test("every public desk requires sourced signal packets", () => {
+  for (const desk of [
+    "model-watch",
+    "pantry",
+    "wellbeing",
+    "culture",
     "maker",
-  );
+  ]) {
+    assert.throws(
+      () => parseComposeEditionInput({ desk, sources: [] }),
+      VelvetValidationError,
+    );
+    assert.equal(parseComposeEditionInput({ desk, sources: [source] }).desk, desk);
+  }
 });
 test("Your People requires explicit cloud-processing consent", () => {
   assert.throws(
