@@ -1,15 +1,472 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-27T11:20:47.036Z",
+  "generated_at": "2026-08-27T13:45:32.319Z",
   "desks": {
     "maker": {
-      "fingerprint": "540ad757fae99e7b332a18211fdb077c19c2e2dd74b48d406418fb44c84e825f",
-      "latest_patch_id": "maker-002",
-      "published_at": "2026-08-27T11:20:47.036Z",
-      "tavily_request_id": "648302d6-beae-405b-b1fb-085c35b1439b"
+      "fingerprint": "5a3c52e311cac59812517194c9e73c0d04b832659e2bb4222f53fdd58e47641c",
+      "latest_patch_id": "maker-003",
+      "published_at": "2026-08-27T13:45:32.319Z",
+      "tavily_request_id": "1cee6f20-c4eb-44e1-9d6d-a4b0809e1db7"
+    },
+    "model-watch": {
+      "fingerprint": "4e1e68dbfad957884c79978ee26c76ce26122738e398d959026f386819be5122",
+      "latest_patch_id": "model-watch-002",
+      "published_at": "2026-08-27T13:44:34.450Z",
+      "tavily_request_id": "b27e0e24-f882-4be4-b85e-b2abc808f323"
+    },
+    "culture": {
+      "fingerprint": "cbe69432a8e53c9da2cbd7f035bd96f6f6a7ef0a0ebb49dad779c2a76f90e426",
+      "latest_patch_id": "culture-002",
+      "published_at": "2026-08-27T13:44:59.747Z",
+      "tavily_request_id": "f240560d-f720-4385-9f52-f2bc8062e23a"
     }
   },
   "issues": [
+    {
+      "id": "maker-003",
+      "deskId": "maker",
+      "desk": "Maker Edition",
+      "icon": "⌘",
+      "issue": "003",
+      "version": "1.0.0",
+      "date": "AUG 27 · 2026",
+      "publishedAt": "2026-08-27T13:45:32.319Z",
+      "color": "#ff9466",
+      "title": "Velvet Signal — Maker Desk Draft",
+      "kicker": "Proposed edition — not yet approved for delivery",
+      "dek": "Hugging Face ships a skills repository aimed squarely at agent builders, while a new proposal sketches how far the Workers-plus-D1 pattern can stretch. No version numbers or deprecation dates appear in this cycle's packets, so none are asserted.",
+      "readTime": "3 min read",
+      "validity": "3 days",
+      "expires": "2026-08-30",
+      "confidence": "Mixed",
+      "scope": "AI product engineering",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "This draft is built only from the two packets supplied this cycle. Where the packets describe a proposal rather than a shipped change, we say so. Where they go quiet — on compatibility, on APIs, on how anything wires together — we flag it for review instead of filling the silence.",
+        "No exact version numbers or deprecation dates were present in the source packets, so none appear in this edition. Per desk guidance, we would rather publish an honest gap than an invented compatibility claim.",
+        "lead_story_title",
+        "lead_story_title",
+        "lead_story_title"
+      ],
+      "pullquote": "Give your agents the power of the Hugging Face ecosystem.",
+      "sources": [
+        {
+          "id": "M-SRC-1",
+          "name": "Nidra Dreams — 2026-08-27",
+          "publisher": "gist.github.com",
+          "url": "https://gist.github.com/tardis-create/99ca4529835eeeb65b3747bf6403193d",
+          "checked": "2026-08-27",
+          "publishedAt": "Thu, 27 Aug 2026 04:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-2",
+          "name": "Hugging Face",
+          "publisher": "github.com",
+          "url": "https://github.com/huggingface",
+          "checked": "2026-08-27",
+          "publishedAt": "Thu, 27 Aug 2026 10:00:00 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "M-01",
+          "claim": "Hugging Face maintains a public repository called 'skills', described in its listing as a way to 'Give your agents the power of the Hugging Face ecosystem'.",
+          "source": 1,
+          "sourceIds": [
+            "M-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-02",
+          "claim": "The huggingface/skills repository is written in Python, licensed Apache-2.0, shows 10,964 stars, and was updated Aug 26, 2026 per the org page listing.",
+          "source": 1,
+          "sourceIds": [
+            "M-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "medium"
+        },
+        {
+          "id": "M-03",
+          "claim": "Hugging Face's transformers project is described as the model-definition framework for state-of-the-art ML models across text, vision, audio, and multimodal use, for both inference and training.",
+          "source": 1,
+          "sourceIds": [
+            "M-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-04",
+          "claim": "A proposal dated 2026-08-27 describes a Cloudflare Worker prototype that accepts a mathematical statement, routes it to an LLM plus a proof assistant, and stores the result and dependency graph in D1.",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "medium"
+        },
+        {
+          "id": "M-05",
+          "claim": "The same proposal outlines usage-based fees via AI Gateway for proof-generation and knowledge-graph queries, alongside subscription API pricing for research teams and edtech platforms.",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "medium"
+        },
+        {
+          "id": "M-06",
+          "claim": "The skills repository integrates with specific agent frameworks or runtimes in a particular way.",
+          "source": 1,
+          "sourceIds": [
+            "M-SRC-2"
+          ],
+          "status": "needs-review",
+          "confidence": "low"
+        },
+        {
+          "id": "M-07",
+          "claim": "Any version numbers, release dates, or deprecation timelines for skills, transformers, Workers, D1, or AI Gateway.",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1",
+            "M-SRC-2"
+          ],
+          "status": "needs-review",
+          "confidence": "low"
+        }
+      ],
+      "toneNotes": [
+        "Warm, lucid, stylish, and specific — explain why the skills repo matters to builders without hype.",
+        "Frame the Nidra Dreams material explicitly as a proposal, not a shipped platform change.",
+        "Do not invent compatibility claims, version numbers, or deprecation dates; the packets contain none.",
+        "Keep the needs-review items visible in the human edition, not buried in the machine patch."
+      ],
+      "tags": [
+        "agents",
+        "hugging-face",
+        "cloudflare-workers",
+        "d1",
+        "ai-gateway",
+        "tooling",
+        "needs-review"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "1cee6f20-c4eb-44e1-9d6d-a4b0809e1db7",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "culture-002",
+      "deskId": "culture",
+      "desk": "Culture Desk",
+      "icon": "✺",
+      "issue": "002",
+      "version": "1.0.0",
+      "date": "AUG 27 · 2026",
+      "publishedAt": "2026-08-27T13:44:59.747Z",
+      "color": "#67d6c0",
+      "title": "Aura Farming: The Charisma Contest That Walked Off the Screen",
+      "kicker": "Culture Signal",
+      "dek": "A TikTok-born ritual of poses and references has moved into the streets — and its meaning is still up for grabs.",
+      "readTime": "3 min read",
+      "validity": "10 days",
+      "expires": "2026-09-06",
+      "confidence": "Mixed",
+      "scope": "Culture signals",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "\"Aura farming\" started as a TikTok meme and has grown into a kind of street-level contest: two people face off, cycling through poses, gestures, and references, and the crowd decides who has more \"aura\" — an unspoken blend of charisma, style, and self-confidence [C-SRC-1].",
+        "What makes it interesting is how much of the game is legible only to insiders. To an outsider, the performances can look like nonsense; to participants, spotting the references is the point [C-SRC-1]. The Spanish-language variant \"farmear aura\" shows the format traveling across languages [C-SRC-1].",
+        "We're not going to tell you what \"aura\" universally means — the term is doing different work in different corners of the internet, and the packets don't settle it. What we can say: it's a competition format, it rewards performative cool, and it's currently visible enough that it's crossing from feeds into physical spaces [C-SRC-1].",
+        "If you've seen it and felt out of the loop, that's not a gap in your cultural knowledge — the in-group legibility is a designed feature of the format, not a bug [C-SRC-1]."
+      ],
+      "pullquote": "\"For the participants, spotting the references is part of the game.\"",
+      "sources": [
+        {
+          "id": "C-SRC-1",
+          "name": "What is \"aura farming\"? TikTok's strange viral battles hit the streets - Euronews.com",
+          "publisher": "euronews.com",
+          "url": "https://www.euronews.com/culture/2026/08/22/what-is-aura-farming-tiktoks-strange-viral-battles-hit-the-streets",
+          "checked": "2026-08-27",
+          "publishedAt": "Sat, 22 Aug 2026 10:00:49 GMT"
+        },
+        {
+          "id": "C-SRC-2",
+          "name": "This U.S. City Was Named the Best Place to Work—with Strong Career Opportunities, High Pay, and Quality of Life - Travel + Leisure",
+          "publisher": "travelandleisure.com",
+          "url": "https://www.travelandleisure.com/25-best-us-cities-for-work-indeed-analysis-12066166",
+          "checked": "2026-08-27",
+          "publishedAt": "Tue, 25 Aug 2026 09:00:00 GMT"
+        },
+        {
+          "id": "C-SRC-3",
+          "name": "Trump denies US pushed Canada on French language - Politico",
+          "publisher": "politico.com",
+          "url": "https://www.politico.com/news/2026/08/25/trump-canada-quebec-french-01048724",
+          "checked": "2026-08-27",
+          "publishedAt": "Tue, 25 Aug 2026 13:43:00 GMT"
+        },
+        {
+          "id": "C-SRC-4",
+          "name": "The Chinese internet is looking to the country's weirdest viral movie for hints at Ox Alpha's origins - Business Insider",
+          "publisher": "businessinsider.com",
+          "url": "https://www.businessinsider.com/chinese-internet-ox-alpha-niu-lai-origin-story-2026-8",
+          "checked": "2026-08-27",
+          "publishedAt": "Mon, 24 Aug 2026 08:44:23 GMT"
+        },
+        {
+          "id": "C-SRC-5",
+          "name": "Champions League format 2026-27, explained: How league phase and knockout bracket works - sportingnews.com",
+          "publisher": "sportingnews.com",
+          "url": "https://www.sportingnews.com/in/football/news/champions-league-format-2026-27/91d28c9af2533660b7cf5150",
+          "checked": "2026-08-27",
+          "publishedAt": "Thu, 27 Aug 2026 06:00:01 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "C-01",
+          "claim": "\"Aura farming\" is a TikTok-originated contest format in which participants compete through poses, memes, and gestures to demonstrate who has more \"aura.\"",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-02",
+          "claim": "The format has moved from social media into in-person street battles, sometimes referred to by the Spanish term \"farmear aura.\"",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-03",
+          "claim": "Understanding the references embedded in aura farming performances is itself part of the appeal for participants, making the format partly illegible to outsiders.",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-04",
+          "claim": "\"Aura\" in this context refers to a blend of charisma, style, and self-confidence.",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        },
+        {
+          "id": "C-05",
+          "claim": "The term \"aura farming\" carries a single, stable meaning across all communities using it.",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "needs-review",
+          "confidence": "low"
+        }
+      ],
+      "toneNotes": [
+        "Avoid declaring a universal definition of \"aura\" — flag it as context-dependent.",
+        "Do not infer anything about the reader's familiarity with or participation in the trend.",
+        "Keep the framing descriptive: observed usage, not identity assignment."
+      ],
+      "tags": [
+        "culture",
+        "memes",
+        "tiktok",
+        "language",
+        "youth-culture"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "f240560d-f720-4385-9f52-f2bc8062e23a",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "model-watch-002",
+      "deskId": "model-watch",
+      "desk": "Model Watch",
+      "icon": "⌁",
+      "issue": "002",
+      "version": "1.0.0",
+      "date": "AUG 27 · 2026",
+      "publishedAt": "2026-08-27T13:44:34.450Z",
+      "color": "#ff719f",
+      "title": "Velvet Signal — Proposed Edition",
+      "kicker": "model-watch",
+      "dek": "A cybersecurity-tuned frontier model widens its defender program, an open-weight multimodal model lands with day-0 support, and a live MCP connector bug is worth watching before you ship.",
+      "readTime": "3 min read",
+      "validity": "60 days",
+      "expires": "2026-10-26",
+      "confidence": "Mixed",
+      "scope": "AI models and agent interfaces",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "OpenAI expanded its Daybreak program and released GPT-5.6-Cyber, a cybersecurity-specific model described as trained to reduce refusals on higher-risk tasks, with two access tiers for approved defenders [MW-SRC-1]. For security teams and agent builders, the refusal posture is the story: a model explicitly tuned to say yes more often on cyber work changes what defenders can automate, and what guardrails they must rebuild around it. Both items are dated August 11, 2026 in the source roundup [MW-SRC-1]. Because these details arrive via a secondary news digest rather than OpenAI's primary release notes, treat specifics as needs-review until confirmed against official documentation.",
+        "Meta released Muse Glimmer, a 30B open-weight multimodal model under Apache 2.0, described as a local, agentic model with day-0 support across major inference libraries according to Hugging Face and developer Simon Willison [MW-SRC-1]. A permissively licensed, locally runnable agentic model at 30B lowers the barrier for builders who need agent behavior without sending data to a hosted API. As with the lead item, this is sourced from a news roundup, so exact availability boundaries need-review against the primary model card.",
+        "Agent-interface watch item: OpenAI Developer Community users report 424 Failed Dependency errors when connecting the Stripe remote MCP connector, occurring during tools/list or connector registration, with reports beginning Monday, August 27, 2026 around 6 pm CET [MW-SRC-3]. The reporter suggests the fault lies in the OpenAI MCP proxy runtime rather than Stripe's endpoint, but that attribution is unconfirmed; related forum threads show a pattern of similar 424 and TaskGroup errors on custom connectors [MW-SRC-3]. If your agents depend on MCP connector registration, verify your integrations before relying on new connections this week.",
+        "License hygiene note: a community GGUF conversion, Baekpica/Qwen3.8-Flash-Next-Mixed-Quant-SSD-PLE-GGUF, states its converted weights remain governed by the original Qwen Community License 1.0 and explicitly claims no Apache-2.0 license [MW-SRC-5]. A useful reminder that quantized or repackaged artifacts inherit upstream terms, and that a permissive-sounding repo name is not a license grant."
+      ],
+      "pullquote": "A model explicitly tuned to reduce refusals on higher-risk cyber tasks changes what defenders can automate, and what guardrails they must rebuild around it.",
+      "sources": [
+        {
+          "id": "MW-SRC-1",
+          "name": "The Current — AI news, and what it means for you - RiverfrontAI",
+          "publisher": "riverfrontai.com",
+          "url": "https://riverfrontai.com/journal",
+          "checked": "2026-08-27",
+          "publishedAt": "Thu, 27 Aug 2026 02:00:00 GMT"
+        },
+        {
+          "id": "MW-SRC-2",
+          "name": "AI Signal Daily | Cloud Intelligence™ - DoiT",
+          "publisher": "doit.com",
+          "url": "https://www.doit.com/ai-daily",
+          "checked": "2026-08-27",
+          "publishedAt": "Thu, 27 Aug 2026 08:00:00 GMT"
+        },
+        {
+          "id": "MW-SRC-3",
+          "name": "424 Failed Dependency error when connecting to Stripe remote MCP connector - Bugs - OpenAI Developer Community",
+          "publisher": "community.openai.com",
+          "url": "https://community.openai.com/t/424-failed-dependency-error-when-connecting-to-stripe-remote-mcp-connector/1392967",
+          "checked": "2026-08-27",
+          "publishedAt": "Thu, 27 Aug 2026 09:45:05 GMT"
+        },
+        {
+          "id": "MW-SRC-4",
+          "name": "Kleinunternehmen",
+          "publisher": "openai.com",
+          "url": "https://openai.com/de-DE/business/why-openai/small-business",
+          "checked": "2026-08-27",
+          "publishedAt": "Wed, 26 Aug 2026 13:00:00 GMT"
+        },
+        {
+          "id": "MW-SRC-5",
+          "name": "Baekpica/Qwen3.8-Flash-Next-Mixed ... - Hugging Face",
+          "publisher": "huggingface.co",
+          "url": "https://huggingface.co/Baekpica/Qwen3.8-Flash-Next-Mixed-Quant-SSD-PLE-GGUF",
+          "checked": "2026-08-27",
+          "publishedAt": "Wed, 26 Aug 2026 20:12:23 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "MW-01",
+          "claim": "OpenAI released GPT-5.6-Cyber, a cybersecurity-specific model trained to reduce refusals on higher-risk tasks.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        },
+        {
+          "id": "MW-02",
+          "claim": "OpenAI expanded the Daybreak program with two access tiers for approved defenders.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        },
+        {
+          "id": "MW-03",
+          "claim": "The GPT-5.6-Cyber release and Daybreak expansion were dated August 11, 2026 in the source roundup.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "MW-04",
+          "claim": "Meta released Muse Glimmer, a 30B open-weight multimodal model under Apache 2.0, described as local and agentic with day-0 support across major inference libraries per Hugging Face and Simon Willison.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        },
+        {
+          "id": "MW-05",
+          "claim": "OpenAI Developer Community users report 424 Failed Dependency errors during tools/list or connector registration for the Stripe remote MCP connector, beginning August 27, 2026 around 6 pm CET.",
+          "source": 2,
+          "sourceIds": [
+            "MW-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "MW-06",
+          "claim": "The 424 errors are attributed by the reporter to the OpenAI MCP proxy runtime rather than Stripe's endpoint; this attribution is unconfirmed by OpenAI.",
+          "source": 2,
+          "sourceIds": [
+            "MW-SRC-3"
+          ],
+          "status": "needs-review",
+          "confidence": "low"
+        },
+        {
+          "id": "MW-07",
+          "claim": "The Baekpica/Qwen3.8-Flash-Next-Mixed-Quant-SSD-PLE-GGUF artifact states its weights remain governed by Qwen Community License 1.0 and claims no Apache-2.0 license.",
+          "source": 4,
+          "sourceIds": [
+            "MW-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Lead with the Daybreak/GPT-5.6-Cyber expansion as the most consequential change for builders and agent users, but flag that primary release notes were not among the supplied packets.",
+        "Keep the MCP 424 bug framed as a live, community-reported issue with unconfirmed root cause; do not state OpenAI has acknowledged it.",
+        "Preserve exact names, versions, dates, and license terms verbatim throughout."
+      ],
+      "tags": [
+        "GPT-5.6-Cyber",
+        "Daybreak",
+        "Muse Glimmer",
+        "MCP",
+        "open-weights",
+        "licensing"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "b27e0e24-f882-4be4-b85e-b2abc808f323",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
     {
       "id": "maker-002",
       "deskId": "maker",
