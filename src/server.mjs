@@ -293,6 +293,7 @@ async function requestHandler(request, response) {
         scout_desks: PUBLIC_SCOUT_DESKS,
         scout_mode: "github-actions-oidc-to-render",
         scout_provider_keys: "render-only",
+        deployment_commit: process.env.RENDER_GIT_COMMIT ?? null,
         scout_last_published_at: catalog.generated_at,
         private_context_policy: "explicit-cloud-consent-required",
       });

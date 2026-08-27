@@ -3,6 +3,40 @@ import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import { generatedIssuesPath } from "./catalog.mjs";
 
+export async function waitForRenderDeployment(options = {}) {
+  const expectedCommit = options.expectedCommit ?? process.env.GITHUB_SHA;
+  if (!expectedCommit) return null;
+  const scoutUrl =
+    options.scoutUrl ??
+    process.env.VELVET_SCOUT_URL ??
+    "https://velvetsignal.lol/api/velvet/scout";
+  const statusUrl = new URL("/api/velvet/status", scoutUrl);
+  const fetchImpl = options.fetchImpl ?? fetch;
+  const delayImpl =
+    options.delayImpl ??
+    ((milliseconds) =>
+      new Promise((resolveDelay) => setTimeout(resolveDelay, milliseconds)));
+  const attempts = options.deploymentAttempts ?? 36;
+
+  for (let attempt = 0; attempt < attempts; attempt += 1) {
+    try {
+      const response = await fetchImpl(statusUrl, {
+        headers: { accept: "application/json" },
+      });
+      if (response.ok) {
+        const status = await response.json();
+        if (status.deployment_commit === expectedCommit) return status;
+      }
+    } catch {
+      // Render may briefly change instances during a zero-downtime deploy.
+    }
+    if (attempt < attempts - 1) await delayImpl(10_000);
+  }
+  throw new Error(
+    `Render did not report GitHub commit ${expectedCommit.slice(0, 12)} before the scout deadline.`,
+  );
+}
+
 export async function requestRenderScout(options = {}) {
   const scoutUrl =
     options.scoutUrl ??
@@ -16,6 +50,7 @@ export async function requestRenderScout(options = {}) {
     throw new Error("GitHub Actions OIDC is unavailable. Grant id-token: write.");
   }
   const fetchImpl = options.fetchImpl ?? fetch;
+  await waitForRenderDeployment({ ...options, scoutUrl, fetchImpl });
   const identityUrl = new URL(requestUrl);
   identityUrl.searchParams.set("audience", scoutUrl);
   const identityResponse = await fetchImpl(identityUrl, {

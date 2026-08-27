@@ -56,6 +56,7 @@ test("reports the pinned editor model without exposing secrets", async () => {
     ]);
     assert.equal(status.scout_mode, "github-actions-oidc-to-render");
     assert.equal(status.scout_provider_keys, "render-only");
+    assert.equal("deployment_commit" in status, true);
     assert.equal("api_key" in status, false);
   });
 });

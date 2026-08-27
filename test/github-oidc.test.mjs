@@ -8,7 +8,10 @@ import {
   GitHubOidcError,
   verifyGitHubActionsOidc,
 } from "../src/github-oidc.mjs";
-import { requestRenderScout } from "../src/request-scout.mjs";
+import {
+  requestRenderScout,
+  waitForRenderDeployment,
+} from "../src/request-scout.mjs";
 
 const now = new Date("2026-08-27T12:00:00.000Z");
 const nowSeconds = Math.floor(now.getTime() / 1000);
@@ -114,4 +117,30 @@ test("the Actions client writes Render's returned catalog without provider keys"
   } finally {
     await rm(directory, { recursive: true, force: true });
   }
+});
+
+test("the Actions client waits for Render's exact Git commit", async () => {
+  let checks = 0;
+  let delays = 0;
+  const fetchImpl = async () => {
+    checks += 1;
+    return new Response(
+      JSON.stringify({
+        deployment_commit: checks === 1 ? "older-commit" : "expected-commit",
+      }),
+      { status: 200 },
+    );
+  };
+  const status = await waitForRenderDeployment({
+    expectedCommit: "expected-commit",
+    scoutUrl: "https://velvetsignal.lol/api/velvet/scout",
+    deploymentAttempts: 3,
+    fetchImpl,
+    delayImpl: async () => {
+      delays += 1;
+    },
+  });
+  assert.equal(status.deployment_commit, "expected-commit");
+  assert.equal(checks, 2);
+  assert.equal(delays, 1);
 });
