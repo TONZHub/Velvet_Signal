@@ -18,9 +18,12 @@ function hashHex(value) {
 
 function signingMaterial(secret) {
   if (typeof secret !== "string" || secret.length < 16) {
-    throw new Error("VELVET_RECEIPT_SECRET must contain at least 16 characters.");
+    throw new Error("A receipt-signing secret must contain at least 16 characters.");
   }
-  const seed = createHash("sha256").update(secret).digest();
+  const seed = createHash("sha256")
+    .update("velvet-signal:receipt-signing:v1\0")
+    .update(secret)
+    .digest();
   const privateKey = createPrivateKey({
     key: Buffer.concat([ed25519Pkcs8SeedPrefix, seed]),
     format: "der",
@@ -33,7 +36,11 @@ function signingMaterial(secret) {
 }
 
 function configuredSecret(options = {}) {
-  return options.secret ?? process.env.VELVET_RECEIPT_SECRET;
+  return (
+    options.secret ??
+    process.env.VELVET_RECEIPT_SECRET ??
+    process.env.VELVET_EDITOR_TOKEN
+  );
 }
 
 export function receiptSigningConfigured(options = {}) {

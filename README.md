@@ -25,7 +25,7 @@ Five public desks use a guarded editorial bridge:
 
 1. Click **Deploy to Render** above, or create a Blueprint from this repository.
 2. Enter your `OPENROUTER_API_KEY` when Render prompts for it.
-3. Render generates `VELVET_EDITOR_TOKEN` and `VELVET_RECEIPT_SECRET` automatically. Keep both server-side.
+3. Render generates `VELVET_EDITOR_TOKEN` and `VELVET_RECEIPT_SECRET` automatically. Keep both server-side. Existing services that have not materialized the new receipt secret use a domain-separated signing key derived from the server-only editor token until the dedicated value is added.
 4. After deployment, open `/api/velvet/status` and confirm the OpenRouter, editor-auth, and receipt-signing flags are `true`.
 
 The OpenRouter key, editor token, and receipt secret are server-side secrets. Never place them in `public/index.html` or another browser bundle.

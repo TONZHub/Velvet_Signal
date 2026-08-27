@@ -4,6 +4,7 @@ import { listIssues } from "../src/catalog.mjs";
 import { patchForIssue } from "../src/patch.mjs";
 import {
   createDeliveryReceipt,
+  receiptSigningConfigured,
   verifyDeliveryReceipt,
 } from "../src/receipts.mjs";
 
@@ -47,4 +48,19 @@ test("expiry deactivates context without invalidating historical provenance", as
   assert.equal(afterExpiry.signature_valid, true);
   assert.equal(afterExpiry.content_hash_valid, true);
   assert.equal(afterExpiry.patch_active, false);
+});
+
+test("existing deployments can derive receipt signing from the server editor token", () => {
+  const previousReceiptSecret = process.env.VELVET_RECEIPT_SECRET;
+  const previousEditorToken = process.env.VELVET_EDITOR_TOKEN;
+  delete process.env.VELVET_RECEIPT_SECRET;
+  process.env.VELVET_EDITOR_TOKEN = "existing-render-editor-token-at-least-16";
+  try {
+    assert.equal(receiptSigningConfigured(), true);
+  } finally {
+    if (previousReceiptSecret === undefined) delete process.env.VELVET_RECEIPT_SECRET;
+    else process.env.VELVET_RECEIPT_SECRET = previousReceiptSecret;
+    if (previousEditorToken === undefined) delete process.env.VELVET_EDITOR_TOKEN;
+    else process.env.VELVET_EDITOR_TOKEN = previousEditorToken;
+  }
 });
