@@ -1,6 +1,185 @@
 {
   "schema_version": 1,
-  "generated_at": null,
-  "desks": {},
-  "issues": []
+  "generated_at": "2026-08-27T11:20:47.036Z",
+  "desks": {
+    "maker": {
+      "fingerprint": "540ad757fae99e7b332a18211fdb077c19c2e2dd74b48d406418fb44c84e825f",
+      "latest_patch_id": "maker-002",
+      "published_at": "2026-08-27T11:20:47.036Z",
+      "tavily_request_id": "648302d6-beae-405b-b1fb-085c35b1439b"
+    }
+  },
+  "issues": [
+    {
+      "id": "maker-002",
+      "deskId": "maker",
+      "desk": "Maker Edition",
+      "icon": "⌘",
+      "issue": "002",
+      "version": "1.0.0",
+      "date": "AUG 27 · 2026",
+      "publishedAt": "2026-08-27T11:20:47.036Z",
+      "color": "#ff9466",
+      "title": "Velvet Signal — Maker Desk: Proposed Edition",
+      "kicker": "vLLM's Transformers v5 pivot and a new auth surface for /v2 endpoints",
+      "dek": "The week's most consequential builder change: vLLM now targets Transformers v5, and its OpenAI-compatible /v2 endpoints gained API-key authorization. Both touch deployment and security posture directly.",
+      "readTime": "3 min read",
+      "validity": "7 days",
+      "expires": "2026-09-03",
+      "confidence": "Mixed",
+      "scope": "AI product engineering",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "vLLM's latest release shifts the project to target Transformers v5, with vendored MiniCPM-V/O processors and compatibility fixes for Sarvam and Voxtral (M-SRC-3). If you pin Transformers in your serving stack, this is the release to test against before it tests you.",
+        "The multi-tier KV cache offloading framework grew an object-store secondary tier, HMA is now enabled by default for capable connectors, tiering support landed for HMA models, and a per-request offloading policy is available via the on_new_request lifecycle hook (M-SRC-3). Offloading is moving from an optimization to a first-class architecture.",
+        "On the frontend: configurable truncation side for OpenAI endpoints, normalization of reasoning_content to reasoning, a reworked fastokens integration, consolidated Speech-to-Text entrypoints, beam-search consolidation via BeamSearchMixin, and score/rerank chat-template instructions (M-SRC-3).",
+        "Security note worth acting on: API-key authorization for /v2 endpoints landed in this release (M-SRC-3). If you expose /v2, review your auth configuration as part of upgrading.",
+        "Offline API restructuring: the pooling offline API was split into PoolingOfflineMixin, and offline inference APIs/utils were split (M-SRC-3). Import paths may have moved — check before upgrading scripts that call these directly."
+      ],
+      "pullquote": "Offloading is moving from an optimization to a first-class architecture.",
+      "sources": [
+        {
+          "id": "M-SRC-1",
+          "name": "GitHub - kaushikb11/awesome-llm-agents: A curated list of awesome LLM agents frameworks. · GitHub",
+          "publisher": "github.com",
+          "url": "https://github.com/kaushikb11/awesome-llm-agents",
+          "checked": "2026-08-27",
+          "publishedAt": "Sun, 23 Aug 2026 11:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-2",
+          "name": "12britz/awesome-free-models",
+          "publisher": "github.com",
+          "url": "https://github.com/12britz/awesome-free-models",
+          "checked": "2026-08-27",
+          "publishedAt": "Tue, 25 Aug 2026 11:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-3",
+          "name": "Releases · vllm-project/vllm - GitHub",
+          "publisher": "github.com",
+          "url": "https://github.com/vllm-project/vllm/releases",
+          "checked": "2026-08-27",
+          "publishedAt": "Wed, 26 Aug 2026 18:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-4",
+          "name": "Releases · ollama/ollama",
+          "publisher": "github.com",
+          "url": "https://github.com/ollama/ollama/releases",
+          "checked": "2026-08-27",
+          "publishedAt": "Thu, 27 Aug 2026 04:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-5",
+          "name": "Picrew/awesome-agent-harness - GitHub",
+          "publisher": "github.com",
+          "url": "https://github.com/Picrew/awesome-agent-harness",
+          "checked": "2026-08-27",
+          "publishedAt": "Mon, 24 Aug 2026 11:00:00 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "M-01",
+          "claim": "vLLM now targets Transformers v5, with vendored MiniCPM-V/O processors.",
+          "source": 2,
+          "sourceIds": [
+            "M-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-02",
+          "claim": "vLLM includes compatibility fixes for Sarvam (#38804) and Voxtral (#44559).",
+          "source": 2,
+          "sourceIds": [
+            "M-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-03",
+          "claim": "vLLM's KV cache offloading framework gained an object-store secondary tier (#41968), HMA enabled by default for capable connectors (#41847), tiering support for HMA models (#44287), and per-request offloading policy via the on_new_request lifecycle hook (#43205).",
+          "source": 2,
+          "sourceIds": [
+            "M-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-04",
+          "claim": "vLLM frontend changes include truncation side for OpenAI endpoints (#43260), normalize reasoning_content to reasoning (#42664), reworked fastokens integration (#43168), consolidated Speech-to-Text entrypoints (#42370, #42274), BeamSearchMixin consolidation (#42946), and score/rerank chat-template instructions (#42412).",
+          "source": 2,
+          "sourceIds": [
+            "M-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-05",
+          "claim": "vLLM added API-key authorization for /v2 endpoints (#42594).",
+          "source": 2,
+          "sourceIds": [
+            "M-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-06",
+          "claim": "vLLM split the pooling offline API into PoolingOfflineMixin (#42267) and split offline inference APIs/utils (#43553).",
+          "source": 2,
+          "sourceIds": [
+            "M-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-07",
+          "claim": "The specific vLLM release version number for these changes.",
+          "source": 2,
+          "sourceIds": [
+            "M-SRC-3"
+          ],
+          "status": "needs-review",
+          "confidence": "low"
+        },
+        {
+          "id": "M-08",
+          "claim": "Whether the Transformers v5 target constitutes a breaking change for existing vLLM deployments pinning Transformers v4.",
+          "source": 2,
+          "sourceIds": [
+            "M-SRC-3"
+          ],
+          "status": "needs-review",
+          "confidence": "low"
+        }
+      ],
+      "toneNotes": [
+        "No compatibility claims beyond what M-SRC-3 states; the release excerpt does not name a version number, so the edition avoids one.",
+        "Security implication (API-key auth on /v2) is surfaced as an action item, not buried.",
+        "Secondary items (Ollama v0.32.14, archived projects) were considered but vLLM was selected as the single most useful change per the brief."
+      ],
+      "tags": [
+        "vllm",
+        "transformers-v5",
+        "kv-cache",
+        "api-auth",
+        "serving"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "648302d6-beae-405b-b1fb-085c35b1439b",
+        "credits": 1
+      }
+    }
+  ]
 }
