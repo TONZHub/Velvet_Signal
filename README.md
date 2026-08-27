@@ -2,8 +2,6 @@
 
 Velvet Signal is a publication for humans and their agents. Each issue pairs a readable editorial layer with an inspectable context patch carrying claims, provenance, scope, expiry, and an explicit human consent gate.
 
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/TONZHub/Velvet_Signal)
-
 ## Launch shelf
 
 - Model Watch
@@ -17,18 +15,9 @@ Five public desks use a guarded editorial bridge:
 
 - **Model Watch**, **The Pantry**, **Wellbeing**, **Culture Desk**, and **Maker Edition** receive bounded Tavily source packets on an eight-hour schedule.
 - **Your People** rejects web-source packets and accepts only explicitly supplied private context after timestamped cloud-processing consent.
-- OpenRouter composes strict structured output with the pinned model `z-ai/glm-5.3-flash`.
+- OpenRouter composes strict structured output with the pinned model `novita/glm-5.3-flash`.
 - Changed source packets create a new proposed issue; unchanged packets consume no OpenRouter generation.
 - Every canonical patch remains locked until a human releases it. Release returns an Ed25519-signed receipt bound to the exact patch hash.
-
-## Deploy on Render
-
-1. Click **Deploy to Render** above, or create a Blueprint from this repository.
-2. Enter `OPENROUTER_API_KEY` and `TAVILY_API_KEY` when Render prompts for them.
-3. Render generates `VELVET_EDITOR_TOKEN` and `VELVET_RECEIPT_SECRET` automatically. Keep both server-side. Existing services that have not materialized the new receipt secret use a domain-separated signing key derived from the server-only editor token until the dedicated value is added.
-4. After deployment, open `/api/velvet/status` and confirm the Tavily, OpenRouter, editor-auth, and receipt-signing flags are `true`.
-
-The Tavily key, OpenRouter key, editor token, and receipt secret stay on Render. Never place them in GitHub Actions, `public/index.html`, or another browser bundle.
 
 ## Schedule the public scout
 
