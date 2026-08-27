@@ -24,20 +24,17 @@ Five public desks use a guarded editorial bridge:
 ## Deploy on Render
 
 1. Click **Deploy to Render** above, or create a Blueprint from this repository.
-2. Enter your `OPENROUTER_API_KEY` when Render prompts for it.
+2. Enter `OPENROUTER_API_KEY` and `TAVILY_API_KEY` when Render prompts for them.
 3. Render generates `VELVET_EDITOR_TOKEN` and `VELVET_RECEIPT_SECRET` automatically. Keep both server-side. Existing services that have not materialized the new receipt secret use a domain-separated signing key derived from the server-only editor token until the dedicated value is added.
-4. After deployment, open `/api/velvet/status` and confirm the OpenRouter, editor-auth, and receipt-signing flags are `true`.
+4. After deployment, open `/api/velvet/status` and confirm the Tavily, OpenRouter, editor-auth, and receipt-signing flags are `true`.
 
-The OpenRouter key, editor token, and receipt secret are server-side secrets. Never place them in `public/index.html` or another browser bundle.
+The Tavily key, OpenRouter key, editor token, and receipt secret stay on Render. Never place them in GitHub Actions, `public/index.html`, or another browser bundle.
 
 ## Schedule the public scout
 
-The repository workflow `.github/workflows/refresh-editions.yml` runs at minute 17 every eight hours and can also be triggered manually. Add these repository **Actions secrets** before the first run:
+The repository workflow `.github/workflows/refresh-editions.yml` runs at minute 17 every eight hours and can also be triggered manually. It needs no provider secrets. GitHub requests a short-lived OIDC identity token and presents it to Render's protected scout endpoint. Render verifies that the token belongs to this exact repository, branch, and workflow before using its own Tavily and OpenRouter credentials.
 
-- `TAVILY_API_KEY`
-- `OPENROUTER_API_KEY`
-
-Each run searches all five public desks with Tavily. It calls GLM only when the source fingerprint changed, updates `data/generated-issues.json`, and commits the new editions. Render then deploys the durable catalog from Git. Your People is intentionally absent from this workflow.
+Each run searches all five public desks on Render. It calls GLM only when the source fingerprint changed, returns the resulting catalog to the workflow, and commits `data/generated-issues.json`. Render then deploys the durable catalog from Git. Your People is intentionally absent from this workflow.
 
 ## Run locally
 
@@ -106,6 +103,10 @@ Private-context request:
   }
 }
 ```
+
+### `POST /api/velvet/scout`
+
+Runs the five public scouts using provider credentials held only by Render. The endpoint accepts only a current GitHub Actions OIDC token issued to this repository's `refresh-editions.yml` workflow on `main`; no long-lived scout secret is shared with GitHub.
 
 ### `POST /api/velvet/release`
 

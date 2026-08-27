@@ -54,8 +54,19 @@ test("reports the pinned editor model without exposing secrets", async () => {
       "culture",
       "maker",
     ]);
-    assert.equal(status.scout_mode, "scheduled-github-actions");
+    assert.equal(status.scout_mode, "github-actions-oidc-to-render");
+    assert.equal(status.scout_provider_keys, "render-only");
     assert.equal("api_key" in status, false);
+  });
+});
+
+test("the Render scout endpoint rejects requests without GitHub OIDC", async () => {
+  await withServer(async (baseUrl) => {
+    const response = await fetch(`${baseUrl}/api/velvet/scout`, {
+      method: "POST",
+    });
+    assert.equal(response.status, 401);
+    assert.equal((await response.json()).error, "unauthorized");
   });
 });
 

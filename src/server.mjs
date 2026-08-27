@@ -4,6 +4,10 @@ import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { findIssue, listIssues, PUBLIC_SCOUT_DESKS } from "./catalog.mjs";
+import {
+  GitHubOidcError,
+  verifyGitHubActionsOidc,
+} from "./github-oidc.mjs";
 import { patchForIssue } from "./patch.mjs";
 import {
   createDeliveryReceipt,
@@ -11,6 +15,7 @@ import {
   receiptSigningConfigured,
   verifyDeliveryReceipt,
 } from "./receipts.mjs";
+import { runScout } from "./scout.mjs";
 import {
   composeEdition,
   parseComposeEditionInput,
@@ -38,6 +43,10 @@ function openRouterConfigured() {
     process.env.AI_INTEGRATIONS_OPENROUTER_API_KEY ??
     process.env.OPENROUTER_API_KEY,
   );
+}
+
+function tavilyConfigured() {
+  return Boolean(process.env.TAVILY_API_KEY);
 }
 
 function securityHeaders(request) {
@@ -211,6 +220,51 @@ async function handleReceiptVerification(request, response) {
   sendJson(response, request, 200, result);
 }
 
+async function handleScout(request, response) {
+  request.resume();
+  const token = bearerToken(request);
+  if (!token) {
+    sendJson(response, request, 401, {
+      error: "unauthorized",
+      message: "A GitHub Actions identity token is required.",
+    });
+    return;
+  }
+  let identity;
+  try {
+    identity = await verifyGitHubActionsOidc(token);
+  } catch (error) {
+    if (error instanceof GitHubOidcError) {
+      sendJson(response, request, 401, {
+        error: "unauthorized",
+        message: error.message,
+      });
+      return;
+    }
+    throw error;
+  }
+  if (!tavilyConfigured() || !openRouterConfigured()) {
+    sendJson(response, request, 503, {
+      error: "scout_not_configured",
+      message:
+        "Render must have TAVILY_API_KEY and OPENROUTER_API_KEY before scouting.",
+    });
+    return;
+  }
+  try {
+    const result = await runScout();
+    sendJson(response, request, 200, {
+      requested_by: identity,
+      ...result,
+    });
+  } catch (error) {
+    sendJson(response, request, 502, {
+      error: "scout_failed",
+      message: error instanceof Error ? error.message : "The scout failed.",
+    });
+  }
+}
+
 async function requestHandler(request, response) {
   try {
     const url = new URL(request.url ?? "/", "http://velvet-signal.local");
@@ -231,12 +285,14 @@ async function requestHandler(request, response) {
       sendJson(response, request, 200, {
         status: "ok",
         openrouter_configured: openRouterConfigured(),
+        tavily_configured: tavilyConfigured(),
         editor_auth_configured: Boolean(process.env.VELVET_EDITOR_TOKEN),
         receipt_signing_configured: receiptSigningConfigured(),
         model: VELVET_EDITOR_MODEL,
         desks: VELVET_DESKS,
         scout_desks: PUBLIC_SCOUT_DESKS,
-        scout_mode: "scheduled-github-actions",
+        scout_mode: "github-actions-oidc-to-render",
+        scout_provider_keys: "render-only",
         scout_last_published_at: catalog.generated_at,
         private_context_policy: "explicit-cloud-consent-required",
       });
@@ -264,6 +320,10 @@ async function requestHandler(request, response) {
     }
     if (method === "POST" && url.pathname === "/api/velvet/compose") {
       await handleCompose(request, response);
+      return;
+    }
+    if (method === "POST" && url.pathname === "/api/velvet/scout") {
+      await handleScout(request, response);
       return;
     }
     if (method === "POST" && url.pathname === "/api/velvet/release") {

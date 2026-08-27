@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  id-token: write
 
 concurrency:
   group: velvet-signal-scout
@@ -25,11 +26,9 @@ jobs:
       - run: npm ci
       - run: npm test
       - name: Scout and compose public desks
-        run: npm run scout
+        run: node src/request-scout.mjs
         env:
-          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
-          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-          VELVET_PUBLIC_URL: https://velvetsignal.lol
+          VELVET_SCOUT_URL: https://velvetsignal.lol/api/velvet/scout
       - name: Publish changed editions
         run: |
           if git diff --quiet -- data/generated-issues.json; then

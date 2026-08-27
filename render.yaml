@@ -11,6 +11,8 @@ services:
         value: 22.16.0
       - key: OPENROUTER_API_KEY
         sync: false
+      - key: TAVILY_API_KEY
+        sync: false
       - key: VELVET_EDITOR_TOKEN
         generateValue: true
       - key: VELVET_RECEIPT_SECRET
