@@ -87,7 +87,11 @@ export async function verifyGitHubActionsOidc(token, options = {}) {
   const expectedWorkflow =
     options.workflowRef ??
     "TONZHub/Velvet_Signal/.github/workflows/refresh-editions.yml@refs/heads/main";
-  const permittedEvents = options.permittedEvents ?? ["schedule", "workflow_dispatch"];
+  const permittedEvents = options.permittedEvents ?? [
+    "schedule",
+    "workflow_dispatch",
+    "push",
+  ];
   const temporalClaimsValid =
     Number.isFinite(claims.iat) &&
     Number.isFinite(claims.nbf) &&

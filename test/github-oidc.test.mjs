@@ -53,6 +53,12 @@ test("accepts only the pinned GitHub Actions workflow identity", async () => {
   assert.equal(identity.repository, "TONZHub/Velvet_Signal");
   assert.equal(identity.event_name, "workflow_dispatch");
 
+  const pushIdentity = await verifyGitHubActionsOidc(
+    identityToken({ event_name: "push" }),
+    { keys: [publicJwk], now: () => now },
+  );
+  assert.equal(pushIdentity.event_name, "push");
+
   await assert.rejects(
     () =>
       verifyGitHubActionsOidc(identityToken({ repository: "someone/else" }), {
