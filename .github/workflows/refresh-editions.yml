@@ -1,6 +1,10 @@
 name: Refresh Velvet Signal editions
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/refresh-editions.yml"
   schedule:
     - cron: "17 */8 * * *"
   workflow_dispatch:
