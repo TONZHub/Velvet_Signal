@@ -4,7 +4,9 @@ import { pathToFileURL } from "node:url";
 import { generatedIssuesPath } from "./catalog.mjs";
 
 export async function waitForRenderDeployment(options = {}) {
-  const expectedCommit = options.expectedCommit ?? process.env.GITHUB_SHA;
+  const expectedCommit = Object.hasOwn(options, "expectedCommit")
+    ? options.expectedCommit
+    : process.env.GITHUB_SHA;
   if (!expectedCommit) return null;
   const scoutUrl =
     options.scoutUrl ??

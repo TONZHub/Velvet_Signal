@@ -107,6 +107,7 @@ test("the Actions client writes Render's returned catalog without provider keys"
       scoutUrl: "https://velvetsignal.lol/api/velvet/scout",
       oidcRequestUrl: "https://actions.example.test/token?job=1",
       oidcRequestToken: "actions-request-token",
+      expectedCommit: null,
       outputPath,
       fetchImpl,
     });
