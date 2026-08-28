@@ -334,6 +334,13 @@
     .issue-data { display: flex; justify-content: space-between; gap: 12px; color: var(--faint); font-family: var(--mono); font-size: .59rem; letter-spacing: .08em; text-transform: uppercase; }
     .editor-credit { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; padding: 5px 8px; border: 1px solid rgba(174,140,255,.25); border-radius: 999px; color: #cdbdff; background: rgba(174,140,255,.07); font-family: var(--mono); font-size: .56rem; letter-spacing: .06em; text-transform: uppercase; }
     .editor-credit::before { content: "✦"; color: var(--pink-soft); }
+    .related-signal { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; color: var(--butter); font-family: var(--mono); font-size: .56rem; letter-spacing: .06em; text-transform: uppercase; }
+    .related-signal::before { content: "≠"; }
+    .distinction-box { margin-top: 16px; padding: 14px; border: 1px solid rgba(246,213,114,.24); border-radius: 13px; background: rgba(246,213,114,.055); }
+    .distinction-box h4 { margin: 0 0 7px; color: var(--butter); font-family: var(--mono); font-size: .61rem; letter-spacing: .09em; text-transform: uppercase; }
+    .distinction-box p { margin: 0; color: var(--muted); font-size: .72rem; }
+    .distinction-box ul { margin: 9px 0 0; padding-left: 17px; color: var(--ink); font-size: .69rem; }
+    .distinction-box li + li { margin-top: 6px; }
     .card-body > p { min-height: 66px; margin: 15px 0 20px; color: var(--muted); font-size: .84rem; }
     .card-actions { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
     .card-actions .button { width: 100%; }
@@ -1081,6 +1088,7 @@
             <div class="card-body">
               <div class="issue-data"><span>${escapeHtml(issue.date)}</span><span>${issue.sources.length} sources · ${escapeHtml(issue.validity)}</span></div>
               ${issue.editor ? `<span class="editor-credit">${escapeHtml(issue.editor)}</span>` : ""}
+              ${relatedEditionDetails(issue) ? `<span class="related-signal">Related, not repeated</span>` : ""}
               <p>${escapeHtml(issue.dek)}</p>
               <div class="card-actions">
                 <button class="button ghost small" data-open="${escapeHtml(issue.id)}">Open issue <span aria-hidden="true">↗</span></button>
@@ -1124,8 +1132,34 @@
       document.body.classList.add("no-scroll");
     }
 
+    function normalizedClaim(value) {
+      return String(value || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+    }
+
+    function relatedEditionDetails(issue) {
+      const siblings = issues
+        .filter(item => item.deskId === issue.deskId && item.id !== issue.id)
+        .sort((left, right) => String(right.publishedAt || right.date).localeCompare(String(left.publishedAt || left.date)));
+      if (!siblings.length) return null;
+      const related = siblings[0];
+      const relatedClaims = new Set((related.claims || []).map(claim => normalizedClaim(claim.claim)));
+      const uniqueClaims = (issue.claims || [])
+        .filter(claim => !relatedClaims.has(normalizedClaim(claim.claim)))
+        .map(claim => claim.claim)
+        .filter(Boolean);
+      return {
+        related,
+        uniqueClaims,
+        summary: uniqueClaims.length
+          ? `This edition stays separate from ${related.id} because it contributes ${uniqueClaims.length} claim${uniqueClaims.length === 1 ? "" : "s"} not carried there.`
+          : `This edition covers the same desk as ${related.id}, but preserves its own source packet, scope, and validity record.`
+      };
+    }
+
     function renderHuman(issue) {
       const article = issue.editorial.map((paragraph, index) => index === 2 ? `<div class="pullquote">${escapeHtml(issue.pullquote)}</div><p>${escapeHtml(paragraph)}</p>` : `<p>${escapeHtml(paragraph)}</p>`).join("");
+      const relation = relatedEditionDetails(issue);
+      const distinction = relation ? `<div class="distinction-box"><h4>Why both matter</h4><p>${escapeHtml(relation.summary)}</p>${relation.uniqueClaims.length ? `<ul>${relation.uniqueClaims.slice(0, 2).map(claim => `<li>${escapeHtml(claim)}</li>`).join("")}</ul>` : ""}</div>` : "";
       const sources = issue.sources.map(source => {
         const external = /^https?:\/\//.test(source.url);
         const href = safeHref(source.url);
@@ -1134,7 +1168,7 @@
       $("#humanView").innerHTML = `
         <div class="article-grid">
           <article class="article-copy">${article}</article>
-          <aside class="source-box"><h3>Source shelf</h3>${sources}<div class="verified">● ${escapeHtml(issue.confidence)} confidence · ${issue.claims.length} claims</div><button class="button ghost small" style="width:100%;margin-top:15px" data-inspect>Inspect machine patch</button></aside>
+          <aside class="source-box"><h3>Source shelf</h3>${sources}${distinction}<div class="verified">● ${escapeHtml(issue.confidence)} confidence · ${issue.claims.length} claims</div><button class="button ghost small" style="width:100%;margin-top:15px" data-inspect>Inspect machine patch</button></aside>
         </div>`;
       $("[data-inspect]", $("#humanView")).addEventListener("click", () => setDialogTab("machine"));
     }
