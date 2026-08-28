@@ -52,5 +52,6 @@ test("serves a machine-readable chronological product log", async () => {
     assert.equal(log.entries.some((entry) => entry.kind === "benchmark"), true);
     assert.equal(log.entries.some((entry) => entry.kind === "publication"), true);
     assert.equal(log.entries.some((entry) => entry.id === "2026-08-28-local-rag-merged"), true);
+    assert.equal(log.entries.some((entry) => entry.id === "2026-08-28-relationship-aware-rag"), true);
   });
 });

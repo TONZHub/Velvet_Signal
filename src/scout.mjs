@@ -243,6 +243,41 @@ function confidenceLabel(claims) {
   return "Medium";
 }
 
+export function priorClaimsForDesk(deskId, catalog) {
+  const issues = [
+    ...(Array.isArray(catalog?.issues) ? catalog.issues : []),
+    ...LAUNCH_ISSUES,
+  ]
+    .filter((issue) => issue.deskId === deskId)
+    .sort((left, right) =>
+      String(right.publishedAt ?? "").localeCompare(
+        String(left.publishedAt ?? ""),
+      ),
+    );
+  const priorClaims = [];
+  const seen = new Set();
+  for (const issue of issues) {
+    for (const claim of Array.isArray(issue.claims) ? issue.claims : []) {
+      if (!nonempty(issue.id) || !nonempty(claim?.id) || !nonempty(claim?.claim)) {
+        continue;
+      }
+      if (["withdrawn", "rejected", "superseded"].includes(claim.status)) {
+        continue;
+      }
+      const id = `${issue.id}:${claim.id}`;
+      if (seen.has(id)) continue;
+      seen.add(id);
+      priorClaims.push({
+        id,
+        statement: claim.claim,
+        publishedAt: issue.publishedAt,
+      });
+      if (priorClaims.length === 24) return priorClaims;
+    }
+  }
+  return priorClaims;
+}
+
 function editionToIssue(deskId, edition, sources, searchResponse, catalog, now) {
   const config = SCOUT_CONFIG[deskId];
   const number = issueNumber(deskId, catalog.issues);
@@ -279,18 +314,24 @@ function editionToIssue(deskId, edition, sources, searchResponse, catalog, now) 
       checked: dateOnly(now),
       publishedAt: source.publishedAt,
     })),
-    claims: edition.claims.map((claim, index) => ({
-      id: `${deskId
-        .split("-")
-        .map((part) => part[0])
-        .join("")
-        .toUpperCase()}-${String(index + 1).padStart(2, "0")}`,
-      claim: claim.statement,
-      source: sourceIndex.get(claim.source_ids[0]) ?? 0,
-      sourceIds: claim.source_ids,
-      status: claim.status,
-      confidence: claim.confidence,
-    })),
+    claims: edition.claims.map((claim, index) => {
+      const relationships = Array.isArray(claim.relationships)
+        ? claim.relationships
+        : [];
+      return {
+        id: `${deskId
+          .split("-")
+          .map((part) => part[0])
+          .join("")
+          .toUpperCase()}-${String(index + 1).padStart(2, "0")}`,
+        claim: claim.statement,
+        source: sourceIndex.get(claim.source_ids[0]) ?? 0,
+        sourceIds: claim.source_ids,
+        status: claim.status,
+        confidence: claim.confidence,
+        ...(relationships.length ? { relationships } : {}),
+      };
+    }),
     toneNotes: edition.tone_notes,
     tags: edition.tags,
     generated: true,
@@ -377,6 +418,7 @@ export async function runScout(options = {}) {
         desk: deskId,
         brief: config.brief,
         sources,
+        priorClaims: priorClaimsForDesk(deskId, catalog),
       });
       const edition = await composeImpl(input);
       const timestamp = now();

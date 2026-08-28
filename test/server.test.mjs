@@ -36,6 +36,7 @@ test("serves the six-desk newsstand with security headers and first-class projec
     assert.match(html, /See VS-Bench/);
     assert.match(html, /href="https:\/\/ko-fi\.com\/mosslet"/);
     assert.match(html, /Support Velvet Signal on Ko-fi/);
+    assert.match(html, /<th>Relationship<\/th>/);
   });
 });
 
@@ -73,7 +74,11 @@ test("serves VS-Bench as a first-class evidence page", async () => {
     assert.match(html, /VS-Bench separates/);
     assert.match(html, /Dolphin 3:8B/);
     assert.match(html, /Llama 2 7B/);
-    assert.match(html, /Synthetic supersession/);
+    assert.match(html, /Synthetic relationship suite/);
+    assert.match(html, /replaces/);
+    assert.match(html, /narrows/);
+    assert.match(html, /confirms/);
+    assert.match(html, /conflicts/);
   });
 });
 

@@ -63,6 +63,13 @@ test("OpenRouter structured output becomes a proposed, unapproved edition", asyn
   const input = parseComposeEditionInput({
     desk: "maker",
     sources: [source],
+    priorClaims: [
+      {
+        id: "maker-001:ME-01",
+        statement: "The earlier fixture exposes structured tools.",
+        publishedAt: "2026-08-20T00:00:00.000Z",
+      },
+    ],
   });
   let requestBody;
   const fetchImpl = async (_input, init) => {
@@ -88,6 +95,13 @@ test("OpenRouter structured output becomes a proposed, unapproved edition", asyn
                     source_ids: ["SRC-CHROME"],
                     confidence: "high",
                     status: "verified",
+                    relationships: [
+                      {
+                        type: "narrows",
+                        target_id: "maker-001:ME-01",
+                        reason: "The new source limits the claim to registered page tools.",
+                      },
+                    ],
                   },
                 ],
                 tone_notes: ["Verify experimental API details."],
@@ -119,6 +133,20 @@ test("OpenRouter structured output becomes a proposed, unapproved edition", asyn
   assert.equal((requestBody?.reasoning).exclude, true);
   assert.equal(requestBody?.max_tokens, 4200);
   assert.equal((requestBody?.response_format).json_schema?.strict, true);
+  assert.deepEqual(result.claims[0].relationships, [
+    {
+      type: "narrows",
+      target_id: "maker-001:ME-01",
+      reason: "The new source limits the claim to registered page tools.",
+    },
+  ]);
+  const prompt = JSON.parse(requestBody.messages[1].content);
+  assert.equal(prompt.prior_claims[0].id, "maker-001:ME-01");
+  assert.equal(prompt.prior_claims_are_relationship_targets_only, true);
+  assert.deepEqual(
+    requestBody.response_format.json_schema.schema.properties.claims.items.properties.relationships.items.properties.type.enum,
+    ["replaces", "narrows", "confirms", "conflicts"],
+  );
 });
 test("OpenRouter retries an empty GLM completion without changing models", async () => {
   const input = parseComposeEditionInput({ desk: "model-watch", sources: [source] });
@@ -149,6 +177,7 @@ test("OpenRouter retries an empty GLM completion without changing models", async
                     source_ids: ["SRC-CHROME"],
                     confidence: "high",
                     status: "verified",
+                    relationships: [],
                   },
                 ],
                 tone_notes: ["Keep retries bounded."],
@@ -165,6 +194,60 @@ test("OpenRouter retries an empty GLM completion without changing models", async
   const edition = await composeEdition(input, { apiKey: "test-key", fetchImpl });
   assert.equal(edition.title, "The retry landed");
   assert.equal(calls, 2);
+});
+test("OpenRouter cannot invent a prior claim relationship target", async () => {
+  const input = parseComposeEditionInput({
+    desk: "maker",
+    sources: [source],
+    priorClaims: [
+      {
+        id: "maker-001:ME-01",
+        statement: "A known prior claim.",
+        publishedAt: "2026-08-20T00:00:00.000Z",
+      },
+    ],
+  });
+  const fetchImpl = async () =>
+    new Response(
+      JSON.stringify({
+        choices: [
+          {
+            message: {
+              content: JSON.stringify({
+                title: "A related change",
+                kicker: "Typed links need exact targets.",
+                dek: "Unknown prior claims are rejected.",
+                editorial: ["One.", "Two.", "Three."],
+                pull_quote: "A relation is a claim too.",
+                claims: [
+                  {
+                    statement: "WebMCP exposes structured tools.",
+                    source_ids: ["SRC-CHROME"],
+                    confidence: "high",
+                    status: "verified",
+                    relationships: [
+                      {
+                        type: "replaces",
+                        target_id: "invented:CLAIM-99",
+                        reason: "This target was not supplied.",
+                      },
+                    ],
+                  },
+                ],
+                tone_notes: ["Reject unknown targets."],
+                tags: ["relationships"],
+                validity_days: 30,
+              }),
+            },
+          },
+        ],
+      }),
+      { status: 200 },
+    );
+  await assert.rejects(
+    () => composeEdition(input, { apiKey: "test-key", fetchImpl }),
+    VelvetUpstreamError,
+  );
 });
 test("OpenRouter cannot cite a source that was not supplied", async () => {
   const input = parseComposeEditionInput({
@@ -189,6 +272,7 @@ test("OpenRouter cannot cite a source that was not supplied", async () => {
                     source_ids: ["INVENTED"],
                     confidence: "high",
                     status: "verified",
+                    relationships: [],
                   },
                 ],
                 tone_notes: ["Keep ambiguity visible."],

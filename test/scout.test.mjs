@@ -3,7 +3,7 @@ import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
-import { runScout, SCOUT_CONFIG, tavilySearch } from "../src/scout.mjs";
+import { priorClaimsForDesk, runScout, SCOUT_CONFIG, tavilySearch } from "../src/scout.mjs";
 
 function searchResponse(deskId) {
   return {
@@ -37,6 +37,7 @@ function editionFor(input) {
         source_ids: [input.sources[0].id],
         confidence: "high",
         status: "verified",
+        relationships: [],
       },
     ],
     tone_notes: ["Keep the boundary visible."],
@@ -65,6 +66,11 @@ test("the scheduled scout publishes all public desks and skips unchanged packets
     },
     composeImpl: async (input) => {
       composeCalls += 1;
+      assert.equal(input.priorClaims.length > 0, true);
+      assert.equal(
+        input.priorClaims.every((claim) => claim.id.includes(":")),
+        true,
+      );
       return editionFor(input);
     },
   };
@@ -107,6 +113,34 @@ test("the scheduled scout publishes all public desks and skips unchanged packets
   } finally {
     await rm(temporaryDirectory, { recursive: true, force: true });
   }
+});
+
+test("the editor receives bounded fully-qualified prior claims from the same desk", () => {
+  const catalog = {
+    issues: [
+      {
+        id: "pantry-003",
+        deskId: "pantry",
+        publishedAt: "2026-08-28T12:00:00.000Z",
+        claims: [
+          { id: "P-01", claim: "A newer synthetic pantry claim.", status: "verified" },
+        ],
+      },
+      {
+        id: "maker-002",
+        deskId: "maker",
+        publishedAt: "2026-08-28T11:00:00.000Z",
+        claims: [
+          { id: "M-01", claim: "An unrelated maker claim.", status: "verified" },
+        ],
+      },
+    ],
+  };
+  const claims = priorClaimsForDesk("pantry", catalog);
+  assert.equal(claims[0].id, "pantry-003:P-01");
+  assert.equal(claims.some((claim) => claim.id === "pantry-001:TP-01"), true);
+  assert.equal(claims.some((claim) => claim.id.startsWith("maker-")), false);
+  assert.equal(claims.length <= 24, true);
 });
 
 test("Tavily search uses bounded, cost-controlled packets", async () => {

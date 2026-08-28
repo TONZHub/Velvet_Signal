@@ -40,6 +40,36 @@ test("patch generation preserves explicit supersession references", () => {
   };
   const patch = patchForIssue(issue, { deliveryStatus: "delivered" });
   assert.deepEqual(patch.claims[0].supersedes, ["bench-shape-001:SHAPE-01"]);
+  assert.deepEqual(patch.claims[0].relationships, [
+    {
+      type: "replaces",
+      target_id: "bench-shape-001:SHAPE-01",
+      reason: "Explicit legacy supersession reference.",
+    },
+  ]);
+});
+
+test("patch generation preserves typed claim relationships and compatibility supersession", () => {
+  const issue = {
+    id: "bench-scope-002", desk: "Maker Edition", issue: "BENCH", title: "Synthetic scope fixture",
+    publishedAt: "2026-08-28T12:00:00.000Z", expires: "2027-08-28", scope: "VS-Bench",
+    claims: [{
+      id: "SCOPE-02",
+      claim: "The synthetic notice appears only for new subscribed issues.",
+      status: "verified",
+      source: 0,
+      relationships: [
+        { type: "narrows", target_id: "bench-scope-001:SCOPE-01", reason: "The newer claim adds a new-issue boundary." },
+        { type: "replaces", target_id: "bench-old-001:OLD-01", reason: "The old fixture was retired." },
+      ],
+    }],
+    sources: [{ name: "VS-Bench fixture", publisher: "Velvet Signal", url: "https://example.test", checked: "2026-08-28" }],
+    toneNotes: ["Synthetic fixture only."],
+  };
+  const patch = patchForIssue(issue, { deliveryStatus: "delivered" });
+  assert.equal(patch.published_at, "2026-08-28T12:00:00.000Z");
+  assert.equal(patch.claims[0].relationships.length, 2);
+  assert.deepEqual(patch.claims[0].supersedes, ["bench-old-001:OLD-01"]);
 });
 
 test("expiry deactivates context without invalidating historical provenance", async () => {
