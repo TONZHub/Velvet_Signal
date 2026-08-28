@@ -28,6 +28,9 @@ import {
 const indexPath = fileURLToPath(
   new URL("../public/index.html", import.meta.url),
 );
+const faviconPath = fileURLToPath(
+  new URL("../public/favicon.svg", import.meta.url),
+);
 const installPath = fileURLToPath(
   new URL("../public/install.html", import.meta.url),
 );
@@ -41,6 +44,7 @@ const productLogPath = fileURLToPath(
   new URL("../data/product-log.json", import.meta.url),
 );
 const maximumBodyBytes = 64 * 1024;
+let faviconCache;
 let indexCache;
 let installCache;
 let benchmarkCache;
@@ -164,6 +168,13 @@ function decorateIndex(html) {
       '<a class="button ghost" href="#protocol">See how consent works</a>',
       '<a class="button ghost" href="/install">Install on your laptop</a>\n          <a class="button ghost" href="/benchmark">See VS-Bench</a>\n          <a class="button ghost" href="/log">Read the Signal Log</a>\n          <a class="button ghost" href="#protocol">See how consent works</a>',
     );
+}
+
+async function serveFavicon(request, response) {
+  faviconCache ??= await readFile(faviconPath);
+  send(response, request, 200, faviconCache, "image/svg+xml; charset=utf-8", {
+    "Cache-Control": "public, max-age=86400",
+  });
 }
 
 async function serveIndex(request, response) {
@@ -429,6 +440,10 @@ async function requestHandler(request, response) {
       (url.pathname === "/log" || url.pathname === "/log.html")
     ) {
       await serveLog(request, response);
+      return;
+    }
+    if ((method === "GET" || method === "HEAD") && url.pathname === "/favicon.svg") {
+      await serveFavicon(request, response);
       return;
     }
     if (method === "GET" && url.pathname === "/favicon.ico") {
