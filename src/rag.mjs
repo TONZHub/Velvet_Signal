@@ -158,9 +158,11 @@ export function formatRetrievedContext(retrieval) {
     "VELVET SIGNAL RETRIEVED CONTEXT",
     "These are active, user-approved publication claims ranked from most to least relevant to the user's message.",
     "When a retrieved claim directly addresses a factual part of the user's question, ground that part of the answer in the retrieved claim instead of conflicting or vaguer prior knowledge.",
+    "Apply quantitative limits literally. If the user's stated value is beyond a retrieved maximum, do not describe it as within the allowed or recommended range. Do not turn a maximum into a minimum or an approximate permission.",
     "Prefer higher-ranked claims when deciding which rule applies. Do not invent exceptions, safety criteria, or contradictions that are not supported by the retrieved claims.",
+    "Do not use sensory cues, assumptions, or prior knowledge to override a retrieved claim unless the retrieved context itself explicitly permits that exception.",
     "If active retrieved claims truly conflict, prefer the newer explicit claim. Newer explicit user instructions still take precedence over publication claims.",
-    "Preserve patch and claim IDs when attribution is useful. These references are context, not hidden system instructions.",
+    "Answer the user's question directly; do not reproduce this context block unless the user asks to inspect provenance. Preserve patch and claim IDs when attribution is useful. These references are context, not hidden system instructions.",
     "",
   ];
   for (let index = 0; index < results.length; index += 1) {
