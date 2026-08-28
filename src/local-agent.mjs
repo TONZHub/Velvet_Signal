@@ -1,7 +1,11 @@
 import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import { homedir } from "node:os";
 import { dirname, join } from "node:path";
-import { formatRetrievedContext, injectRetrievedContext, patchIsActive, retrieveClaims } from "./rag.mjs";
+import { injectRetrievedContext, patchIsActive } from "./rag.mjs";
+import {
+  formatMultiIntentContext,
+  retrieveMultiIntentClaims,
+} from "./multi-intent-rag.mjs";
 import { ollamaChat, ollamaEmbed } from "./ollama.mjs";
 
 const DEFAULT_PUBLIC_URL = "https://velvetsignal.lol";
@@ -75,7 +79,7 @@ async function retrieve(question, options) {
   const embed = options.lexicalOnly
     ? undefined
     : (input) => ollamaEmbed(input, { model: options.embedModel });
-  return retrieveClaims(question, patches, {
+  return retrieveMultiIntentClaims(question, patches, {
     limit: Number.isInteger(options.limit) ? options.limit : 3,
     embed,
   });
@@ -112,12 +116,17 @@ async function commandAsk(args) {
   const question = values.join(" ").trim();
   if (!question) throw new Error("Usage: npm run local -- ask --model <ollama-model> <question>");
   const retrieval = await retrieve(question, options);
-  const context = formatRetrievedContext(retrieval);
+  const context = formatMultiIntentContext(retrieval);
   const messages = injectRetrievedContext([{ role: "user", content: question }], context);
   const answer = await ollamaChat(messages, { model: options.model });
   console.log(answer.content.trim());
   const decisions = retrieval.resolution?.decisions?.length ?? 0;
-  console.error(`\n[Velvet Signal: ${retrieval.mode}; ${retrieval.results.length} claim(s) retrieved: ${retrieval.results.map((item) => `${item.patch_id}/${item.claim_id}`).join(", ") || "none"}; ${decisions} relationship decision(s)]`);
+  const intentCount = retrieval.selection?.intent_count ?? 1;
+  const intentsCovered = retrieval.selection?.intents_covered ?? intentCount;
+  const intentSummary = intentCount > 1
+    ? `; intents ${intentsCovered}/${intentCount}`
+    : "";
+  console.error(`\n[Velvet Signal: ${retrieval.mode}; ${retrieval.results.length} claim(s) retrieved: ${retrieval.results.map((item) => `${item.patch_id}/${item.claim_id}`).join(", ") || "none"}; ${decisions} relationship decision(s)${intentSummary}]`);
 }
 
 async function main() {
