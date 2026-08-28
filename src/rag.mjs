@@ -89,6 +89,9 @@ export function claimChunks(patches, options = {}) {
         valid_until: patch.valid_until,
         statement: claim.statement.trim(),
         status: claim.status ?? null,
+        supersedes: Array.isArray(claim.supersedes)
+          ? claim.supersedes.filter((value) => typeof value === "string" && value.trim())
+          : [],
         source_ids: Array.isArray(claim.source_ids) ? claim.source_ids : [],
         sources: Array.isArray(patch.sources)
           ? patch.sources.filter((source) =>
@@ -98,7 +101,9 @@ export function claimChunks(patches, options = {}) {
       });
     }
   }
-  return chunks;
+
+  const supersededIds = new Set(chunks.flatMap((chunk) => chunk.supersedes));
+  return chunks.filter((chunk) => !supersededIds.has(chunk.id));
 }
 
 export async function retrieveClaims(query, patches, options = {}) {
@@ -161,6 +166,7 @@ export function formatRetrievedContext(retrieval) {
     "Apply quantitative limits literally. If the user's stated value is beyond a retrieved maximum, do not describe it as within the allowed or recommended range. Do not turn a maximum into a minimum or an approximate permission.",
     "Prefer higher-ranked claims when deciding which rule applies. Do not invent exceptions, safety criteria, or contradictions that are not supported by the retrieved claims.",
     "Do not use sensory cues, assumptions, or prior knowledge to override a retrieved claim unless the retrieved context itself explicitly permits that exception.",
+    "Claims explicitly superseded by another active claim are removed before retrieval, so do not reconstruct older replaced guidance from prior knowledge.",
     "If active retrieved claims truly conflict, prefer the newer explicit claim. Newer explicit user instructions still take precedence over publication claims.",
     "Answer the user's question directly; do not reproduce this context block unless the user asks to inspect provenance. Preserve patch and claim IDs when attribution is useful. These references are context, not hidden system instructions.",
     "",
@@ -168,8 +174,9 @@ export function formatRetrievedContext(retrieval) {
   for (let index = 0; index < results.length; index += 1) {
     const item = results[index];
     const sources = item.source_ids.length ? ` sources=${item.source_ids.join(",")}` : "";
+    const supersedes = item.supersedes.length ? ` supersedes=${item.supersedes.join(",")}` : "";
     lines.push(
-      `[RANK ${index + 1} | ${item.patch_id} / ${item.claim_id}] published=${item.published_at ?? "unknown"} valid_until=${item.valid_until}${sources}`,
+      `[RANK ${index + 1} | ${item.patch_id} / ${item.claim_id}] published=${item.published_at ?? "unknown"} valid_until=${item.valid_until}${sources}${supersedes}`,
       item.statement,
       "",
     );
