@@ -93,6 +93,9 @@ test("retrieved context is ranked and injected into user context with provenance
   const messages = injectRetrievedContext([{ role: "user", content: "Can I eat it?" }], context);
   assert.match(messages[0].content, /RANK 1 \| pantry-003 \/ P-06/);
   assert.match(messages[0].content, /ground that part of the answer in the retrieved claim/);
+  assert.match(messages[0].content, /Apply quantitative limits literally/);
+  assert.match(messages[0].content, /beyond a retrieved maximum/);
+  assert.match(messages[0].content, /Do not use sensory cues/);
   assert.match(messages[0].content, /USER MESSAGE\nCan I eat it\?/);
   assert.equal(messages[0].role, "user");
 });
