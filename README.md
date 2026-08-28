@@ -2,6 +2,202 @@
 
 Velvet Signal is a publication for humans and their agents. Each issue pairs a readable editorial layer with an inspectable context patch carrying claims, provenance, scope, expiry, and an explicit human consent gate.
 
+## How to install Velvet Signal on your laptop
+
+This setup gives a local Ollama model access to Velvet Signal's user-approved memory patches. Your local prompts stay on your machine; Velvet Signal only contacts the hosted publication when you explicitly release a public patch into your local store.
+
+### What you need
+
+Before installing Velvet Signal, install:
+
+1. **Git** — used to download and update Velvet Signal.
+2. **Node.js 22 or newer** — includes `npm`, which runs Velvet Signal.
+3. **Ollama** — runs the local language model and embedding model.
+
+On Windows, you can install Node.js from PowerShell with:
+
+```powershell
+winget install OpenJS.NodeJS.LTS
+```
+
+Close and reopen PowerShell afterward, then check:
+
+```powershell
+node -v
+npm.cmd -v
+ollama --version
+git --version
+```
+
+If each command prints a version number, you are ready.
+
+> **Windows note:** PowerShell may block `npm.ps1` with a message saying that running scripts is disabled. You do not need to change your security settings. Use `npm.cmd` instead of `npm` in the commands below.
+
+### 1. Download Velvet Signal
+
+Open PowerShell or a terminal in your user folder. On Windows:
+
+```powershell
+cd $HOME
+git clone https://github.com/TONZHub/Velvet_Signal.git
+cd Velvet_Signal
+```
+
+On macOS or Linux, the same Git commands work from your home folder:
+
+```bash
+cd ~
+git clone https://github.com/TONZHub/Velvet_Signal.git
+cd Velvet_Signal
+```
+
+During development of the local memory bridge, switch to the preview branch:
+
+```bash
+git switch codex/local-rag-ollama
+```
+
+Once that branch is merged into `main`, this step can be skipped.
+
+### 2. Install Velvet Signal's Node dependencies
+
+**Windows PowerShell:**
+
+```powershell
+npm.cmd install
+```
+
+**macOS/Linux:**
+
+```bash
+npm install
+```
+
+Make sure you run this command from inside the `Velvet_Signal` folder. If npm says it cannot find `package.json`, run:
+
+```powershell
+cd $HOME\Velvet_Signal
+```
+
+If npm tries to write to `C:\Windows\System32`, you are in the wrong folder. Do not run the setup from System32 and do not run it as Administrator; return to your user folder and enter `Velvet_Signal` first.
+
+### 3. Install the local embedding model
+
+Velvet Signal uses a small local embedding model to decide which claims are relevant to a question:
+
+```bash
+ollama pull embeddinggemma
+```
+
+Then make sure you have a local chat model. For example:
+
+```bash
+ollama pull dolphin3:8b
+```
+
+You can see your installed Ollama models with:
+
+```bash
+ollama list
+```
+
+### 4. Release a Velvet Signal patch into local memory
+
+A patch is not silently written into memory. You explicitly choose which released patches your local installation stores.
+
+On Windows:
+
+```powershell
+npm.cmd run local -- release pantry-003
+npm.cmd run local -- list
+```
+
+On macOS/Linux:
+
+```bash
+npm run local -- release pantry-003
+npm run local -- list
+```
+
+By default, released patches are stored at:
+
+```text
+~/.velvet-signal/patches.json
+```
+
+That file survives terminal, Ollama, and computer restarts. The language model itself does not need persistent memory; Velvet Signal retrieves the relevant active claims again whenever you ask a question.
+
+### 5. Check what Velvet Signal remembers
+
+Before involving a chat model, inspect the retrieval result directly.
+
+**Windows:**
+
+```powershell
+npm.cmd run local -- inspect "I cooked chicken five days ago and kept it refrigerated. It smells fine. Can I eat it?"
+```
+
+**macOS/Linux:**
+
+```bash
+npm run local -- inspect "I cooked chicken five days ago and kept it refrigerated. It smells fine. Can I eat it?"
+```
+
+The output should show relevant claims from `pantry-003`, including their patch IDs, claim IDs, sources, validity dates, and retrieval scores.
+
+### 6. Ask your local model using Velvet Signal memory
+
+Replace `dolphin3:8b` with any Ollama chat model you have installed.
+
+**Windows:**
+
+```powershell
+npm.cmd run local -- ask --model dolphin3:8b "I cooked chicken five days ago and kept it refrigerated. It smells fine. Can I eat it?"
+```
+
+**macOS/Linux:**
+
+```bash
+npm run local -- ask --model dolphin3:8b "I cooked chicken five days ago and kept it refrigerated. It smells fine. Can I eat it?"
+```
+
+Velvet Signal will retrieve the most relevant active claims, attach their provenance, and give that context to the local model for the current turn.
+
+### Updating Velvet Signal later
+
+Return to the repository folder and pull the newest code:
+
+```bash
+cd ~/Velvet_Signal
+git pull
+```
+
+On Windows PowerShell, this also works:
+
+```powershell
+cd $HOME\Velvet_Signal
+git pull
+```
+
+Your locally released patch ledger is stored outside the repository, so updating the code does not erase it.
+
+### Common Windows problems
+
+**`npm` is not recognized**  
+Install Node.js, close PowerShell, reopen it, then try `npm.cmd -v`.
+
+**`npm.ps1 cannot be loaded because running scripts is disabled`**  
+Use `npm.cmd` instead of `npm`.
+
+**`EPERM ... C:\Windows\System32\package-lock.json`**  
+You are running npm from System32. Run `cd $HOME\Velvet_Signal` first.
+
+**`ENOENT ... C:\Users\<you>\package.json`**  
+You are in your user folder instead of the repository. Run `cd $HOME\Velvet_Signal` first.
+
+**Ollama cannot find the model**  
+Run `ollama list`, then `ollama pull <model-name>` for the model you want to use.
+
 ## Launch shelf
 
 - Model Watch
