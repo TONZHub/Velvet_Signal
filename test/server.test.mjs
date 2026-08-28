@@ -37,6 +37,17 @@ test("serves the six-desk newsstand with security headers and first-class projec
   });
 });
 
+test("serves the Velvet Signal favicon", async () => {
+  await withServer(async (baseUrl) => {
+    const response = await fetch(`${baseUrl}/favicon.svg`);
+    assert.equal(response.status, 200);
+    assert.match(response.headers.get("content-type") ?? "", /image\/svg\+xml/);
+    const svg = await response.text();
+    assert.match(svg, /<title id="title">Velvet Signal<\/title>/);
+    assert.match(svg, /#ff4f91/);
+  });
+});
+
 test("serves the laptop installation guide as a first-class page", async () => {
   await withServer(async (baseUrl) => {
     const response = await fetch(`${baseUrl}/install`);
