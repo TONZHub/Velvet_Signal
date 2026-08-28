@@ -13,9 +13,9 @@ const receiptOptions = {
   issuer: "https://velvetsignal.lol",
 };
 
-test("every launch issue has the same signed delivery and expiry contract", async () => {
+test("every published issue has the same signed delivery and expiry contract", async () => {
   const catalog = await listIssues();
-  assert.equal(catalog.issues.length >= 6, true);
+  assert.equal(catalog.issues.length >= 7, true);
 
   for (const issue of catalog.issues) {
     const patch = patchForIssue(issue, { deliveryStatus: "delivered" });
@@ -30,6 +30,38 @@ test("every launch issue has the same signed delivery and expiry contract", asyn
     assert.equal(verified.valid, true, issue.id);
     assert.equal(verified.content_hash_valid, true, issue.id);
   }
+});
+
+test("the laptop installation guide is published through the normal catalog", async () => {
+  const catalog = await listIssues();
+  const guide = catalog.issues.find((issue) => issue.id === "maker-install-001");
+  assert(guide);
+  assert.equal(guide.deskId, "maker");
+  assert.match(guide.title, /Install Velvet Signal/);
+  assert.equal(guide.editorial.length >= 3, true);
+});
+
+test("patch generation preserves explicit supersession references", () => {
+  const issue = {
+    id: "bench-shape-002",
+    desk: "Maker Edition",
+    issue: "BENCH",
+    title: "Synthetic fixture",
+    publishedAt: "2026-08-28T00:00:00.000Z",
+    expires: "2027-08-28",
+    scope: "VS-Bench",
+    claims: [{
+      id: "SHAPE-02",
+      claim: "The synthetic demo badge uses a circle icon.",
+      status: "verified",
+      source: 0,
+      supersedes: ["bench-shape-001:SHAPE-01"],
+    }],
+    sources: [{ name: "VS-Bench fixture", publisher: "Velvet Signal", url: "https://example.test", checked: "2026-08-28" }],
+    toneNotes: ["Synthetic fixture only."],
+  };
+  const patch = patchForIssue(issue, { deliveryStatus: "delivered" });
+  assert.deepEqual(patch.claims[0].supersedes, ["bench-shape-001:SHAPE-01"]);
 });
 
 test("expiry deactivates context without invalidating historical provenance", async () => {
