@@ -24,6 +24,18 @@ function patch(overrides = {}) {
         status: "verified",
         source_ids: ["P-SRC-1"],
       },
+      {
+        id: "P-02",
+        statement: "Perishable foods left at room temperature longer than 2 hours should be discarded.",
+        status: "verified",
+        source_ids: ["P-SRC-1"],
+      },
+      {
+        id: "P-07",
+        statement: "Fresh fish can be refrigerated for 1 to 2 days.",
+        status: "verified",
+        source_ids: ["P-SRC-1"],
+      },
     ],
     sources: [{ id: "P-SRC-1", publisher: "USDA FSIS", url: "https://example.test/usda" }],
     ...overrides,
@@ -47,6 +59,13 @@ test("lexical retrieval finds the cooked-leftover rule", async () => {
   assert.equal(result.results[0].claim_id, "P-06");
 });
 
+test("retrieval defaults to a focused three-claim context", async () => {
+  const result = await retrieveClaims("leftover food safety", [patch()], {
+    now: new Date("2026-08-28T12:00:00Z"),
+  });
+  assert.equal(result.results.length, 3);
+});
+
 test("semantic retrieval can rank a claim through an embedding adapter", async () => {
   const embed = async (input) => input.map((_, index) => index === 0 ? [1, 0] : index === 1 ? [1, 0] : [0, 1]);
   const result = await retrieveClaims("leftover safety", [patch()], {
@@ -66,13 +85,14 @@ test("failed embeddings fall back to lexical retrieval", async () => {
   assert.equal(result.results[0].claim_id, "P-06");
 });
 
-test("retrieved context is injected into user context with provenance", async () => {
+test("retrieved context is ranked and injected into user context with provenance", async () => {
   const retrieval = await retrieveClaims("five day cooked chicken", [patch()], {
     now: new Date("2026-08-28T12:00:00Z"),
   });
   const context = formatRetrievedContext(retrieval);
   const messages = injectRetrievedContext([{ role: "user", content: "Can I eat it?" }], context);
-  assert.match(messages[0].content, /pantry-003 \/ P-06/);
+  assert.match(messages[0].content, /RANK 1 \| pantry-003 \/ P-06/);
+  assert.match(messages[0].content, /ground that part of the answer in the retrieved claim/);
   assert.match(messages[0].content, /USER MESSAGE\nCan I eat it\?/);
   assert.equal(messages[0].role, "user");
 });
