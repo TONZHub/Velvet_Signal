@@ -9,22 +9,15 @@ async function withServer(run) {
   await once(server, "listening");
   const address = server.address();
   assert(address && typeof address === "object");
-  try {
-    await run(`http://127.0.0.1:${address.port}`);
-  } finally {
-    server.close();
-    await once(server, "close");
-  }
+  try { await run(`http://127.0.0.1:${address.port}`); }
+  finally { server.close(); await once(server, "close"); }
 }
 
-test("serves the six-desk newsstand with security headers and install links", async () => {
+test("serves the six-desk newsstand with security headers and first-class project links", async () => {
   await withServer(async (baseUrl) => {
     const response = await fetch(baseUrl);
     assert.equal(response.status, 200);
-    assert.match(
-      response.headers.get("content-security-policy") ?? "",
-      /frame-ancestors 'none'/,
-    );
+    assert.match(response.headers.get("content-security-policy") ?? "", /frame-ancestors 'none'/);
     const html = await response.text();
     assert.match(html, /Six desks/);
     assert.match(html, /Culture Desk/);
@@ -34,7 +27,9 @@ test("serves the six-desk newsstand with security headers and install links", as
     assert.match(html, /velvet-signal\.visit\.v1/);
     assert.match(html, /data-show-updates/);
     assert.match(html, /href="\/install">Install</);
+    assert.match(html, /href="\/benchmark">VS-Bench</);
     assert.match(html, /Install on your laptop/);
+    assert.match(html, /See VS-Bench/);
   });
 });
 
@@ -51,27 +46,27 @@ test("serves the laptop installation guide as a first-class page", async () => {
   });
 });
 
+test("serves VS-Bench as a first-class evidence page", async () => {
+  await withServer(async (baseUrl) => {
+    const response = await fetch(`${baseUrl}/benchmark`);
+    assert.equal(response.status, 200);
+    assert.match(response.headers.get("content-type") ?? "", /text\/html/);
+    const html = await response.text();
+    assert.match(html, /VS-Bench separates/);
+    assert.match(html, /Dolphin 3:8B/);
+    assert.match(html, /Llama 2 7B/);
+    assert.match(html, /Synthetic supersession/);
+  });
+});
+
 test("reports the pinned editor model without exposing secrets", async () => {
   await withServer(async (baseUrl) => {
     const response = await fetch(`${baseUrl}/api/velvet/status`);
     assert.equal(response.status, 200);
     const status = await response.json();
     assert.equal(status.model, "z-ai/glm-5.3-flash");
-    assert.deepEqual(status.desks, [
-      "model-watch",
-      "pantry",
-      "wellbeing",
-      "culture",
-      "maker",
-      "your-people",
-    ]);
-    assert.deepEqual(status.scout_desks, [
-      "model-watch",
-      "pantry",
-      "wellbeing",
-      "culture",
-      "maker",
-    ]);
+    assert.deepEqual(status.desks, ["model-watch", "pantry", "wellbeing", "culture", "maker", "your-people"]);
+    assert.deepEqual(status.scout_desks, ["model-watch", "pantry", "wellbeing", "culture", "maker"]);
     assert.equal(status.scout_mode, "github-actions-oidc-to-render");
     assert.equal(status.scout_provider_keys, "render-only");
     assert.equal("deployment_commit" in status, true);
@@ -81,9 +76,7 @@ test("reports the pinned editor model without exposing secrets", async () => {
 
 test("the Render scout endpoint rejects requests without GitHub OIDC", async () => {
   await withServer(async (baseUrl) => {
-    const response = await fetch(`${baseUrl}/api/velvet/scout`, {
-      method: "POST",
-    });
+    const response = await fetch(`${baseUrl}/api/velvet/scout`, { method: "POST" });
     assert.equal(response.status, 401);
     assert.equal((await response.json()).error, "unauthorized");
   });
@@ -106,11 +99,7 @@ test("releases canonical patches with verifiable content-bound receipts", async 
   process.env.VELVET_RECEIPT_SECRET = "test-receipt-secret-at-least-16-characters";
   try {
     await withServer(async (baseUrl) => {
-      const release = await fetch(`${baseUrl}/api/velvet/release`, {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ patch_id: "culture-001" }),
-      });
+      const release = await fetch(`${baseUrl}/api/velvet/release`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ patch_id: "culture-001" }) });
       assert.equal(release.status, 201);
       const delivery = await release.json();
       assert.equal(delivery.delivered, true);
@@ -121,24 +110,15 @@ test("releases canonical patches with verifiable content-bound receipts", async 
       assert.equal(delivery.receipt.algorithm, "Ed25519");
       assert.match(delivery.receipt.content_sha256, /^[a-f0-9]{64}$/);
 
-      const verify = await fetch(`${baseUrl}/api/velvet/verify-receipt`, {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ patch: delivery.patch, receipt: delivery.receipt }),
-      });
+      const verify = await fetch(`${baseUrl}/api/velvet/verify-receipt`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ patch: delivery.patch, receipt: delivery.receipt }) });
       assert.equal(verify.status, 200);
       const verified = await verify.json();
       assert.equal(verified.valid, true);
       assert.equal(verified.signature_valid, true);
       assert.equal(verified.content_hash_valid, true);
 
-      const tampered = structuredClone(delivery.patch);
-      tampered.title = "Tampered";
-      const reject = await fetch(`${baseUrl}/api/velvet/verify-receipt`, {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ patch: tampered, receipt: delivery.receipt }),
-      });
+      const tampered = structuredClone(delivery.patch); tampered.title = "Tampered";
+      const reject = await fetch(`${baseUrl}/api/velvet/verify-receipt`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ patch: tampered, receipt: delivery.receipt }) });
       const rejected = await reject.json();
       assert.equal(rejected.valid, false);
       assert.equal(rejected.content_hash_valid, false);
@@ -151,32 +131,22 @@ test("releases canonical patches with verifiable content-bound receipts", async 
       assert.equal("d" in publicKey.public_key_jwk, false);
     });
   } finally {
-    if (previousSecret === undefined) delete process.env.VELVET_RECEIPT_SECRET;
-    else process.env.VELVET_RECEIPT_SECRET = previousSecret;
+    if (previousSecret === undefined) delete process.env.VELVET_RECEIPT_SECRET; else process.env.VELVET_RECEIPT_SECRET = previousSecret;
   }
 });
 
 test("compose remains closed until server-side secrets are configured", async () => {
   const previousEditorToken = process.env.VELVET_EDITOR_TOKEN;
   const previousOpenRouterKey = process.env.OPENROUTER_API_KEY;
-  delete process.env.VELVET_EDITOR_TOKEN;
-  delete process.env.OPENROUTER_API_KEY;
+  delete process.env.VELVET_EDITOR_TOKEN; delete process.env.OPENROUTER_API_KEY;
   try {
     await withServer(async (baseUrl) => {
-      const response = await fetch(`${baseUrl}/api/velvet/compose`, {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ desk: "culture", sources: [] }),
-      });
+      const response = await fetch(`${baseUrl}/api/velvet/compose`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ desk: "culture", sources: [] }) });
       assert.equal(response.status, 503);
       assert.equal((await response.json()).error, "editor_auth_not_configured");
     });
   } finally {
-    if (previousEditorToken === undefined)
-      delete process.env.VELVET_EDITOR_TOKEN;
-    else process.env.VELVET_EDITOR_TOKEN = previousEditorToken;
-    if (previousOpenRouterKey === undefined)
-      delete process.env.OPENROUTER_API_KEY;
-    else process.env.OPENROUTER_API_KEY = previousOpenRouterKey;
+    if (previousEditorToken === undefined) delete process.env.VELVET_EDITOR_TOKEN; else process.env.VELVET_EDITOR_TOKEN = previousEditorToken;
+    if (previousOpenRouterKey === undefined) delete process.env.OPENROUTER_API_KEY; else process.env.OPENROUTER_API_KEY = previousOpenRouterKey;
   }
 });
