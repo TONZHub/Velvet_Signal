@@ -76,7 +76,7 @@ async function retrieve(question, options) {
     ? undefined
     : (input) => ollamaEmbed(input, { model: options.embedModel });
   return retrieveClaims(question, patches, {
-    limit: Number.isInteger(options.limit) ? options.limit : 6,
+    limit: Number.isInteger(options.limit) ? options.limit : 3,
     embed,
   });
 }
@@ -102,7 +102,7 @@ async function commandList() {
 async function commandInspect(args) {
   const { values, options } = parseOptions(args);
   const question = values.join(" ").trim();
-  if (!question) throw new Error("Usage: npm run local -- inspect [--lexical] <question>");
+  if (!question) throw new Error("Usage: npm run local -- inspect [--lexical] [--limit N] <question>");
   const result = await retrieve(question, options);
   console.log(JSON.stringify(result, null, 2));
 }
@@ -110,7 +110,7 @@ async function commandInspect(args) {
 async function commandAsk(args) {
   const { values, options } = parseOptions(args);
   const question = values.join(" ").trim();
-  if (!question) throw new Error("Usage: npm run local -- ask --model <ollama-model> <question>");
+  if (!question) throw new Error("Usage: npm run local -- ask --model <ollama-model> [--limit N] <question>");
   const retrieval = await retrieve(question, options);
   const context = formatRetrievedContext(retrieval);
   const messages = injectRetrievedContext([{ role: "user", content: question }], context);
@@ -128,11 +128,12 @@ async function main() {
   console.log([
     "Velvet Signal local memory bridge",
     "",
-    "  release <patch-id>                 Explicitly release and store a patch locally",
-    "  list                               List locally stored patches",
-    "  inspect [--lexical] <question>     Show retrieved claims without calling a chat model",
-    "  ask --model <name> <question>      Retrieve context and ask a local Ollama model",
+    "  release <patch-id>                         Explicitly release and store a patch locally",
+    "  list                                       List locally stored patches",
+    "  inspect [--lexical] [--limit N] <question> Show retrieved claims without calling a chat model",
+    "  ask --model <name> [--limit N] <question>  Retrieve context and ask a local Ollama model",
     "",
+    "Retrieval defaults to the three most relevant claims to keep weak-model context focused.",
     "Environment: VELVET_PUBLIC_URL, VELVET_LOCAL_STORE, OLLAMA_HOST, OLLAMA_MODEL, VELVET_EMBED_MODEL",
   ].join("\n"));
 }
