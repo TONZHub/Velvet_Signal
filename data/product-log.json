@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-08-28T21:00:00.000Z",
+  "entries": [
+    {
+      "id": "2026-08-28-install-bench-supersession",
+      "date": "2026-08-28",
+      "kind": "product",
+      "title": "Install, VS-Bench, and explicit supersession moved into the product",
+      "summary": "Velvet Signal gained first-class install and benchmark destinations, focused three-claim retrieval for weaker models, and deterministic claim supersession before ranking.",
+      "status": "proposed",
+      "references": ["PR #4", "/install", "/benchmark"]
+    },
+    {
+      "id": "2026-08-28-llama2-local-rag",
+      "date": "2026-08-28",
+      "kind": "benchmark",
+      "title": "Llama 2 7B applied a retrieved current food-safety update",
+      "summary": "The stale local model correctly treated five refrigerated days as beyond the retrieved 3–4 day cooked-leftover window. One sentence still contradicted a retrieved discard rule, so claim fidelity was scored partial rather than hidden inside a generic pass.",
+      "status": "observed",
+      "references": ["Llama 2 7B", "pantry-003/P-06", "pantry-003/P-01", "pantry-003/P-08"]
+    },
+    {
+      "id": "2026-08-28-dolphin-restart",
+      "date": "2026-08-28",
+      "kind": "benchmark",
+      "title": "Dolphin 3:8B proved local patch persistence across restart",
+      "summary": "After the terminal was closed and reopened, Velvet Signal retrieved pantry-003 again from the local ledger. The model itself did not need conversation memory for the update to survive.",
+      "status": "observed",
+      "references": ["Dolphin 3:8B", "pantry-003"]
+    },
+    {
+      "id": "2026-08-28-semantic-retrieval-proof",
+      "date": "2026-08-28",
+      "kind": "benchmark",
+      "title": "Semantic retrieval found a relevant claim with zero lexical overlap",
+      "summary": "For the five-day cooked-chicken prompt, pantry-003/P-08 ranked through embedding similarity even though its lexical score was zero, demonstrating retrieval beyond keyword matching.",
+      "status": "observed",
+      "references": ["pantry-003/P-08", "embeddinggemma"]
+    },
+    {
+      "id": "2026-08-28-local-rag-merged",
+      "date": "2026-08-28",
+      "kind": "infrastructure",
+      "title": "Local Ollama RAG memory bridge merged",
+      "summary": "Approved patches can persist in a user-controlled local ledger, retrieve active claim-level context with Ollama embeddings or lexical fallback, and inject provenance-preserving context into a local chat model.",
+      "status": "released",
+      "references": ["PR #3", "~/.velvet-signal/patches.json"]
+    },
+    {
+      "id": "2026-08-28-updates-since-last-visit",
+      "date": "2026-08-28",
+      "kind": "product",
+      "title": "Updates since last visit added to the newsstand",
+      "summary": "Returning readers can distinguish newly published editions from issues they have already seen instead of manually comparing a small catalog.",
+      "status": "released",
+      "references": ["PR #1"]
+    },
+    {
+      "id": "2026-08-28-provider-fallbacks",
+      "date": "2026-08-28",
+      "kind": "infrastructure",
+      "title": "OpenRouter provider fallbacks enabled",
+      "summary": "The pinned editorial model can use compatible provider fallbacks rather than failing the entire publication path when the preferred provider is unavailable.",
+      "status": "released",
+      "references": ["PR #2"]
+    },
+    {
+      "id": "2026-08-27-launch",
+      "date": "2026-08-27",
+      "kind": "publication",
+      "title": "Velvet Signal launch shelf went live",
+      "summary": "Six desks launched with human-readable editions and inspectable machine patches. Public desks use bounded source packets; Your People remains manual and consent-gated.",
+      "status": "released",
+      "references": ["Model Watch", "The Pantry", "Wellbeing", "Culture Desk", "Maker Edition", "Your People"]
+    }
+  ]
+}
