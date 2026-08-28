@@ -1137,6 +1137,7 @@
     }
 
     function relatedEditionDetails(issue) {
+      if (!newIssueIds.has(issue.id)) return null;
       const siblings = issues
         .filter(item => item.deskId === issue.deskId && item.id !== issue.id)
         .sort((left, right) => String(right.publishedAt || right.date).localeCompare(String(left.publishedAt || left.date)));
