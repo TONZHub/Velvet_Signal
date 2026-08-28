@@ -15,7 +15,7 @@ Five public desks use a guarded editorial bridge:
 
 - **Model Watch**, **The Pantry**, **Wellbeing**, **Culture Desk**, and **Maker Edition** receive bounded Tavily source packets on an eight-hour schedule.
 - **Your People** rejects web-source packets and accepts only explicitly supplied private context after timestamped cloud-processing consent.
-- OpenRouter composes strict structured output with the pinned model `novita/glm-5.3-flash`.
+- OpenRouter composes strict structured output with the pinned model `z-ai/glm-5.3-flash`, preferring Novita while allowing compatible provider fallbacks.
 - Changed source packets create a new proposed issue; unchanged packets consume no OpenRouter generation.
 - Every canonical patch remains locked until a human releases it. Release returns an Ed25519-signed receipt bound to the exact patch hash.
 

@@ -398,8 +398,8 @@ async function composeEdition(input, options = {}) {
     temperature: 0.2,
     reasoning: { effort: "high", exclude: true },
     provider: {
-      only: ["novita"],
-      allow_fallbacks: false,
+      order: ["novita"],
+      allow_fallbacks: true,
       require_parameters: true,
     },
     response_format: {
