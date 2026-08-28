@@ -1,18 +1,18 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-27T13:50:40.083Z",
+  "generated_at": "2026-08-28T12:05:54.226Z",
   "desks": {
     "maker": {
-      "fingerprint": "cea2a31336376070965b33e77db182018fab797e7eafdb59833072dfa5a79d42",
-      "latest_patch_id": "maker-004",
-      "published_at": "2026-08-27T13:50:40.083Z",
-      "tavily_request_id": "0298a2fc-8007-45cd-b0d4-245a0ec30d7e"
+      "fingerprint": "09bf7d2d1dc6c40e75832fb69dce7ccb9bba83034e9255830d9fc74e50e55c0c",
+      "latest_patch_id": "maker-005",
+      "published_at": "2026-08-28T12:05:54.226Z",
+      "tavily_request_id": "6a95904d-2279-49d3-8d17-498bb5e65782"
     },
     "model-watch": {
-      "fingerprint": "99b549c81094978557bc99ff39bf405fd047c0d2e9cfbf6a687bc189112fb506",
-      "latest_patch_id": "model-watch-003",
-      "published_at": "2026-08-27T13:49:21.764Z",
-      "tavily_request_id": "9bb87b3a-a034-435b-8dea-935092791469"
+      "fingerprint": "6b210642acb825f5e0261900aaf6eed93ad9a88da89ce735a48560c74b8b50d4",
+      "latest_patch_id": "model-watch-004",
+      "published_at": "2026-08-28T12:04:54.505Z",
+      "tavily_request_id": "a50dc1da-e937-41c5-b219-099e5cdbac1c"
     },
     "culture": {
       "fingerprint": "cbe69432a8e53c9da2cbd7f035bd96f6f6a7ef0a0ebb49dad779c2a76f90e426",
@@ -21,19 +21,690 @@
       "tavily_request_id": "f240560d-f720-4385-9f52-f2bc8062e23a"
     },
     "pantry": {
-      "fingerprint": "382c609e9472db94fd7a241e65fbdc496da903636e0941f655ead50fe3b9683e",
-      "latest_patch_id": "pantry-002",
-      "published_at": "2026-08-27T13:49:59.590Z",
-      "tavily_request_id": "343eadf0-e9e5-4da9-8191-a37756f3b048"
+      "fingerprint": "f1dcaa8fcb3259145a0b51067487aab136efbccd19067ff6248a6c918a50d9d6",
+      "latest_patch_id": "pantry-003",
+      "published_at": "2026-08-28T12:05:11.228Z",
+      "tavily_request_id": "30440e38-5a69-4597-b5fd-604fda4a44e7"
     },
     "wellbeing": {
-      "fingerprint": "e29bbb215b7a68207c41a96d53990a5fb6baf1aa8a85386629d7234b8f4d8632",
-      "latest_patch_id": "wellbeing-002",
-      "published_at": "2026-08-27T13:50:19.953Z",
-      "tavily_request_id": "49743f7a-436e-44c5-b81f-48b907fc2163"
+      "fingerprint": "59ec09605bbd75b7e5cae204593dbbc3ff9d51c72068e0ad33847942270bb9b6",
+      "latest_patch_id": "wellbeing-003",
+      "published_at": "2026-08-28T12:05:32.380Z",
+      "tavily_request_id": "a4b641c8-f91a-4aad-8438-710390b083ed"
     }
   },
   "issues": [
+    {
+      "id": "maker-005",
+      "deskId": "maker",
+      "desk": "Maker Edition",
+      "icon": "⌘",
+      "issue": "005",
+      "version": "1.0.0",
+      "date": "AUG 28 · 2026",
+      "publishedAt": "2026-08-28T12:05:54.226Z",
+      "color": "#ff9466",
+      "title": "vLLM v0.26.0: API-key auth for /v2 endpoints, reasoning field normalization, and a serving-toolkit shake-up",
+      "kicker": "Maker Desk — serving & tooling",
+      "dek": "The latest vLLM release adds authorization to its /v2 endpoints and renames reasoning_content to reasoning — plus two widely-used agent/serving projects were archived this month, which changes where builders should look for active maintenance.",
+      "readTime": "3 min read",
+      "validity": "14 days",
+      "expires": "2026-09-11",
+      "confidence": "High",
+      "scope": "AI product engineering",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "vLLM v0.26.0 shipped 27 July with 411 commits from 212 contributors (61 new) [M-SRC-5]. The security-relevant change: API-key authorization for /v2 endpoints (#42594) [M-SRC-5]. If you expose /v2 endpoints, you can now gate them with API keys rather than leaving them open behind your network boundary.",
+        "Frontend changes builders will feel: OpenAI endpoints gained a truncation-side option (#43260), and reasoning_content is normalized to reasoning (#42664) — clients parsing the old field name should verify compatibility [M-SRC-5]. Also: reworked fastokens integration (#43168), consolidated Speech-to-Text entrypoints (#42370, #42274), beam-search consolidation via BeamSearchMixin (#42946), and score/rerank chat-template instructions (#42412). Offline APIs were split into PoolingOfflineMixin (#42267) and separate inference APIs/utils (#43553) [M-SRC-5].",
+        "Maintenance warning: Hugging Face TGI (10.9K★) was archived by Hugging Face in March 2026; the source recommends vLLM, SGLang, or TGI forks for active development [M-SRC-2]. Separately, Flowise was acquired by Workday and its repo archived read-only on Aug 13, 2026 [M-SRC-2].",
+        "On the agent-framework side, the awesome-llm-agents list (refreshed 2026-08-23) tracks newer entries including GNAP (a git-native protocol draft for agent coordination, MIT, 2026-03), agent-opt (prompt/workflow optimization, Apache-2.0, 2026-06), and AVP (transfers KV-cache between agents rather than text, Apache-2.0, 2026-04) [M-SRC-1].",
+        "If you want a full assistant stack rather than a serving layer: QwenPaw v2.1.0 (2026-08-13) added QwenPaw OS Shell, unified Files workspace, workspace checkpoints, and long-running conversation continuity; v2.0.1 (2026-07-24) added the PawApp mini-app platform and user-editable Agent Modes [M-SRC-3]."
+      ],
+      "pullquote": "API-key authorization for /v2 endpoints — the kind of quiet change that matters more than any benchmark.",
+      "sources": [
+        {
+          "id": "M-SRC-1",
+          "name": "GitHub - kaushikb11/awesome-llm-agents: A curated list of awesome LLM agents frameworks. · GitHub",
+          "publisher": "github.com",
+          "url": "https://github.com/kaushikb11/awesome-llm-agents",
+          "checked": "2026-08-28",
+          "publishedAt": "Sun, 23 Aug 2026 12:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-2",
+          "name": "12britz/awesome-free-models",
+          "publisher": "github.com",
+          "url": "https://github.com/12britz/awesome-free-models",
+          "checked": "2026-08-28",
+          "publishedAt": "Tue, 25 Aug 2026 12:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-3",
+          "name": "agentscope-ai/QwenPaw: Your Personal AI Assistant; easy ... - GitHub",
+          "publisher": "github.com",
+          "url": "https://github.com/agentscope-ai/QwenPaw",
+          "checked": "2026-08-28",
+          "publishedAt": "Thu, 27 Aug 2026 15:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-4",
+          "name": "GitHub - open-multi-agent/open-multi-agent: TypeScript AI agent orchestration framework with dynamic workflows. Describe the goal, not the graph: a coordinator plans the task DAG at runtime and runs it on any LLM (Claude, ChatGPT, Gemini, D",
+          "publisher": "github.com",
+          "url": "https://github.com/open-multi-agent/open-multi-agent",
+          "checked": "2026-08-28",
+          "publishedAt": "Mon, 24 Aug 2026 12:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-5",
+          "name": "Releases · vllm-project/vllm - GitHub",
+          "publisher": "github.com",
+          "url": "https://github.com/vllm-project/vllm/releases",
+          "checked": "2026-08-28",
+          "publishedAt": "Wed, 26 Aug 2026 12:00:00 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "M-01",
+          "claim": "vLLM v0.26.0 was released 27 July with 411 commits from 212 contributors, 61 of them new.",
+          "source": 4,
+          "sourceIds": [
+            "M-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-02",
+          "claim": "vLLM v0.26.0 adds API-key authorization for /v2 endpoints (#42594).",
+          "source": 4,
+          "sourceIds": [
+            "M-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-03",
+          "claim": "vLLM v0.26.0 normalizes reasoning_content to reasoning (#42664); clients relying on the old field name may need updates.",
+          "source": 4,
+          "sourceIds": [
+            "M-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-04",
+          "claim": "vLLM v0.26.0 includes truncation-side option for OpenAI endpoints (#43260), reworked fastokens integration (#43168), consolidated Speech-to-Text entrypoints (#42370, #42274), BeamSearchMixin consolidation (#42946), score/rerank chat-template instructions (#42412), PoolingOfflineMixin split (#42267), and offline inference API/utils split (#43553).",
+          "source": 4,
+          "sourceIds": [
+            "M-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-05",
+          "claim": "Hugging Face TGI (10.9K stars) was archived by Hugging Face in March 2026; the source recommends vLLM, SGLang, or TGI forks for active development.",
+          "source": 1,
+          "sourceIds": [
+            "M-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-06",
+          "claim": "Flowise was acquired by Workday and its repository was archived read-only on Aug 13, 2026.",
+          "source": 1,
+          "sourceIds": [
+            "M-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-07",
+          "claim": "QwenPaw v2.1.0 (2026-08-13) added QwenPaw OS Shell, unified Files workspace, QwenPaw Creator, Codex/Qoder Agent integration, Browser-use, Computer-use, workspace checkpoints, and long-running conversation continuity.",
+          "source": 2,
+          "sourceIds": [
+            "M-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-08",
+          "claim": "QwenPaw v2.0.1 (2026-07-24) added the PawApp mini-app platform, user-editable Agent Modes, Oh-My-Paw plugins, and ReMe memory enhancements.",
+          "source": 2,
+          "sourceIds": [
+            "M-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Lead with the security-relevant change (API-key auth) — that's the maker-desk hook.",
+        "Keep PR numbers and dates exact; no compatibility claims beyond what sources state.",
+        "The TGI/Flowise archival items are the 'why this matters now' context for the vLLM lead."
+      ],
+      "tags": [
+        "vllm",
+        "serving",
+        "security",
+        "api",
+        "agent-frameworks",
+        "deprecations"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "6a95904d-2279-49d3-8d17-498bb5e65782",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "wellbeing-003",
+      "deskId": "wellbeing",
+      "desk": "Wellbeing",
+      "icon": "☾",
+      "issue": "003",
+      "version": "1.0.0",
+      "date": "AUG 28 · 2026",
+      "publishedAt": "2026-08-28T12:05:32.380Z",
+      "color": "#a993ff",
+      "title": "Sleep Hygiene: Small Adjustments, Real Returns",
+      "kicker": "Wellbeing",
+      "dek": "A refresher on healthy sleep habits from the National Heart, Lung, and Blood Institute — why timing, environment, and device use matter, and why the right routine varies from person to person.",
+      "readTime": "3 min read",
+      "validity": "180 days",
+      "expires": "2027-02-24",
+      "confidence": "Medium",
+      "scope": "General wellbeing",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Sleep is easy to deprioritize. The National Heart, Lung, and Blood Institute (NHLBI) notes that sleep is often the first thing busy people cut from their schedules, and recommends protecting time for it as a foundation for health and wellbeing [W-SRC-3].",
+        "NHLBI's guidance centers on a few practical habits: give yourself enough time to sleep; keep naps short (no more than 20 minutes for adults) and earlier in the afternoon if nighttime sleep is a struggle; and power down screens at least 30 minutes before bed, since artificial light from phones, laptops, and TVs can signal the brain that it's time to be awake [W-SRC-3][W-SRC-4].",
+        "A study partly funded by NHLBI found that smartphone use before bed is associated with shorter sleep duration and worse sleep quality — a correlation, not a proven cause, but one consistent with other research [W-SRC-4].",
+        "Individual variation matters. What 'enough sleep' means differs from person to person, and NHLBI distinguishes between the sleep needed to feel awake and the sleep needed to be healthy [W-SRC-5]. Persistent sleep problems — such as insomnia, sleep apnea, or restless legs syndrome — are recognized sleep disorders, not personal failings, and are worth discussing with a healthcare professional [W-SRC-2][W-SRC-4]."
+      ],
+      "pullquote": "Sleep is often the first thing that busy people squeeze out of their schedules. Making time to sleep will help you protect your health and well-being now and in the future. — NHLBI [W-SRC-3]",
+      "sources": [
+        {
+          "id": "W-SRC-1",
+          "name": "En resumen: su guía para un sueño saludable (In Brief: Your Guide to Healthy Sleep (Spanish) | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/es/resources/en-resumen-su-guia-para-un-sueno-saludable-brief-your-guide-healthy-sleep-spanish",
+          "checked": "2026-08-28"
+        },
+        {
+          "id": "W-SRC-2",
+          "name": "Your Guide to Healthy Sleep | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/resources/your-guide-healthy-sleep",
+          "checked": "2026-08-28"
+        },
+        {
+          "id": "W-SRC-3",
+          "name": "Sleep Deprivation and Deficiency - Healthy Sleep Habits | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits",
+          "checked": "2026-08-28"
+        },
+        {
+          "id": "W-SRC-4",
+          "name": "Sweet dreams: Researchers explore link between sleep and health | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/news/2018/sweet-dreams-researchers-explore-link-between-sleep-and-health",
+          "checked": "2026-08-28"
+        },
+        {
+          "id": "W-SRC-5",
+          "name": "Sleep Brochure | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/resources/sleep-brochure",
+          "checked": "2026-08-28"
+        }
+      ],
+      "claims": [
+        {
+          "id": "W-01",
+          "claim": "Sleep is often the first thing busy people cut from their schedules, and making time for it supports health and wellbeing.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-02",
+          "claim": "For adults, NHLBI recommends limiting naps to no more than 20 minutes, and taking them earlier in the afternoon if falling asleep at night is difficult.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-03",
+          "claim": "Artificial light from screens (phones, laptops, TVs) can signal the brain that it's time to be awake, potentially reducing sleep duration and regularity.",
+          "source": 3,
+          "sourceIds": [
+            "W-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-04",
+          "claim": "A study partly funded by NHLBI found smartphone use before bed is associated with shorter sleep duration and worse sleep quality.",
+          "source": 3,
+          "sourceIds": [
+            "W-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-05",
+          "claim": "Experts suggest powering down devices at least 30 minutes before bed to support sleep quality.",
+          "source": 3,
+          "sourceIds": [
+            "W-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-06",
+          "claim": "There is a difference between the amount of sleep needed to feel awake and the amount needed to be healthy.",
+          "source": 4,
+          "sourceIds": [
+            "W-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-07",
+          "claim": "Insomnia, sleep apnea, restless legs syndrome, and narcolepsy are recognized sleep disorders.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2",
+            "W-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-08",
+          "claim": "The exact amount of sleep each individual needs varies from person to person.",
+          "source": 4,
+          "sourceIds": [
+            "W-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "medium"
+        }
+      ],
+      "toneNotes": [
+        "No diagnosis, no moralizing, no individualized medical advice.",
+        "Frame the smartphone-sleep link as an association, not proven causation.",
+        "Keep individual variation visible throughout.",
+        "Point readers toward professional care for persistent sleep problems without being prescriptive."
+      ],
+      "tags": [
+        "sleep",
+        "wellbeing",
+        "sleep hygiene",
+        "public health",
+        "NHLBI"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "a4b641c8-f91a-4aad-8438-710390b083ed",
+        "credits": 2,
+        "search_mode": "timeless-official-fallback"
+      }
+    },
+    {
+      "id": "pantry-003",
+      "deskId": "pantry",
+      "desk": "The Pantry",
+      "icon": "◒",
+      "issue": "003",
+      "version": "1.0.0",
+      "date": "AUG 28 · 2026",
+      "publishedAt": "2026-08-28T12:05:11.228Z",
+      "color": "#f1cf69",
+      "title": "The Leftover Ledger: A Calm Guide to What Keeps and What Goes",
+      "kicker": "Pantry Desk — Food Safety Basics",
+      "dek": "USDA guidance on leftovers is refreshingly unglamorous: cool fast, chill cold, reheat hot, and keep a running count. Here is the practical version for your kitchen.",
+      "readTime": "3 min read",
+      "validity": "365 days",
+      "expires": "2027-08-28",
+      "confidence": "High",
+      "scope": "Food safety",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Leftovers inspire two competing instincts: save everything forever, or quietly distrust anything older than yesterday. The USDA's guidance lands sensibly in between. Cooked leftovers keep 3 to 4 days in the refrigerator, or 3 to 4 months in the freezer — after that, frozen food remains safe indefinitely but loses moisture and flavor [P-SRC-1].",
+        "The clock starts before the food reaches the fridge. Perishable foods — meat, poultry, eggs, casseroles, and restaurant take-home leftovers — should be discarded if left at room temperature longer than 2 hours, or 1 hour if the air temperature is above 90°F [P-SRC-3]. If takeout arrives early, hold it hot at 140°F or above, or keep cold dishes at 40°F or below on ice [P-SRC-4].",
+        "Cooling speed matters more than most cooks realize. A big pot of soup cools slowly, giving bacteria time to multiply; the fix is to divide large amounts into shallow containers and cut large items — roasts, hams, turkey — into smaller pieces before refrigerating. Turkey legs, wings, and thighs may be left whole [P-SRC-1].",
+        "When it's time to eat, reheat leftovers to 165°F. In the microwave, spread food evenly and cover it for even heating, and use a food thermometer to check the temperature in several places [P-SRC-4].",
+        "One honest limitation: this guidance tells you how long properly handled food keeps. It cannot tell you whether the container in the back of your fridge — with no record of when it was cooked or how it was stored — is safe. When storage history is unknown, the guidance is clear in spirit: foods stored longer may begin to spoil or become unsafe, and the advice is not to taste [P-SRC-3]."
+      ],
+      "pullquote": "Refrigerate 3 to 4 days. Freeze 3 to 4 months. When the history is unknown, don't taste.",
+      "sources": [
+        {
+          "id": "P-SRC-1",
+          "name": "Leftovers and Food Safety",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/leftovers-and-food-safety",
+          "checked": "2026-08-28"
+        },
+        {
+          "id": "P-SRC-2",
+          "name": "Refrigeration & Food Safety",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/refrigeration",
+          "checked": "2026-08-28"
+        },
+        {
+          "id": "P-SRC-3",
+          "name": "Safe Handling of Take-Out Foods",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-handling-take-out-foods",
+          "checked": "2026-08-28"
+        },
+        {
+          "id": "P-SRC-4",
+          "name": "Keep Food Safe from Kickoff to Leftovers | Food Safety and Inspection Service",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/news-events/news-press-releases/keep-food-safe-kickoff-leftovers",
+          "checked": "2026-08-28"
+        },
+        {
+          "id": "P-SRC-5",
+          "name": "Keep Food Safe! Food Safety Basics",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/steps-keep-food-safe",
+          "checked": "2026-08-28"
+        }
+      ],
+      "claims": [
+        {
+          "id": "P-01",
+          "claim": "Cooked leftovers can be kept in the refrigerator for 3 to 4 days or frozen for 3 to 4 months; frozen leftovers stay safe indefinitely but lose moisture and flavor over longer storage.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-02",
+          "claim": "Perishable foods left at room temperature longer than 2 hours — or 1 hour above 90°F — should be discarded, including restaurant take-home leftovers; exceptions include cookies, crackers, bread, and whole fruits.",
+          "source": 2,
+          "sourceIds": [
+            "P-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-03",
+          "claim": "Large amounts of food should be divided into shallow containers and cut into smaller pieces to cool rapidly to 40°F or below; turkey legs, wings, and thighs may be left whole.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1",
+            "P-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-04",
+          "claim": "Leftovers should be reheated to 165°F; in the microwave, spread food evenly and cover it, and verify temperature with a food thermometer in several places.",
+          "source": 3,
+          "sourceIds": [
+            "P-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-05",
+          "claim": "Takeout arriving early should be refrigerated or held hot at 140°F or above; cold foods should be kept at 40°F or below on ice.",
+          "source": 3,
+          "sourceIds": [
+            "P-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-06",
+          "claim": "A general rule of thumb is 4 days of refrigerator storage for cooked leftovers and 1 to 2 days for raw poultry and ground meats, with a weekly habit of discarding perishables that should no longer be eaten.",
+          "source": 1,
+          "sourceIds": [
+            "P-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-07",
+          "claim": "Specific cold-storage windows include: soups and stews 3–4 days refrigerated / 2–3 months frozen; pizza 3–4 days / 1–2 months; gravy and meat broth 3–4 days / 2–3 months; stuffing 3–4 days / 1 month; fresh fish 1–2 days / 3–8 months; cooked fish and shellfish leftovers 3–4 days / 3 months.",
+          "source": 4,
+          "sourceIds": [
+            "P-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-08",
+          "claim": "Whether any specific leftover in a reader's refrigerator is safe cannot be determined from this guidance when the time, temperature, or storage history is unknown; the packets advise discarding foods stored too long and not tasting them.",
+          "source": 2,
+          "sourceIds": [
+            "P-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Non-alarmist: frame the 2-hour rule as a simple habit, not a threat.",
+        "Explicitly decline to judge specific foods with unknown storage history, per desk guidance.",
+        "No claims beyond the supplied packets; all figures trace to USDA FSIS pages."
+      ],
+      "tags": [
+        "food-safety",
+        "leftovers",
+        "storage",
+        "usda-fsis",
+        "pantry"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "30440e38-5a69-4597-b5fd-604fda4a44e7",
+        "credits": 2,
+        "search_mode": "timeless-official-fallback"
+      }
+    },
+    {
+      "id": "model-watch-004",
+      "deskId": "model-watch",
+      "desk": "Model Watch",
+      "icon": "⌁",
+      "issue": "004",
+      "version": "1.0.0",
+      "date": "AUG 28 · 2026",
+      "publishedAt": "2026-08-28T12:04:54.505Z",
+      "color": "#ff719f",
+      "title": "Gemini 3.7 Flash lands three weeks after 3.6 — Google's agent workhorse gets cheaper",
+      "kicker": "Model Watch",
+      "dek": "Google shipped Gemini 3.7 Flash on August 13, 2026, positioning it as its smartest workhorse for coding and AI agents — at a price point aimed at production volume.",
+      "readTime": "3 min read",
+      "validity": "60 days",
+      "expires": "2026-10-27",
+      "confidence": "Mixed",
+      "scope": "AI models and agent interfaces",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Google released Gemini 3.7 Flash on August 13, 2026, calling it its smartest workhorse yet for coding and AI agents (MW-SRC-5).",
+        "The cadence is notable: 3.7 Flash arrived just three weeks after Gemini 3.6 Flash (MW-SRC-5).",
+        "Per Google's model card, this is an algorithmic improvement built on 3.6 rather than a new architecture (MW-SRC-5). For builders, that suggests an incremental upgrade path rather than a migration event — but the pricing is where Google is making its move.",
+        "Gemini 3.7 Flash costs $0.75 per 1 million input tokens (MW-SRC-5). The output price appears to be $3.75 per 1 million tokens, though our source excerpt is truncated at exactly that figure, so treat the output-side number as needs-review until confirmed against Google's official pricing page (MW-SRC-5).",
+        "Google is targeting developers building software, web apps, knowledge systems, and production agents (MW-SRC-5). If you route agent workloads to Flash-class models, this is the release to benchmark this cycle."
+      ],
+      "pullquote": "An algorithmic improvement built on 3.6 rather than a new architecture — an upgrade path, not a migration.",
+      "sources": [
+        {
+          "id": "MW-SRC-1",
+          "name": "New Models Today — AI & LLM Releases Last 24 Hours",
+          "publisher": "pricepertoken.com",
+          "url": "https://pricepertoken.com/news/model-releases",
+          "checked": "2026-08-28",
+          "publishedAt": "Thu, 27 Aug 2026 22:00:00 GMT"
+        },
+        {
+          "id": "MW-SRC-2",
+          "name": "AI News | What's Viral in AI",
+          "publisher": "ainews.imrenagi.com",
+          "url": "https://ainews.imrenagi.com/ai-news",
+          "checked": "2026-08-28",
+          "publishedAt": "Mon, 24 Aug 2026 12:00:00 GMT"
+        },
+        {
+          "id": "MW-SRC-3",
+          "name": "AI Updates: The Daily Signal",
+          "publisher": "aiexperts.com",
+          "url": "https://www.aiexperts.com/updates",
+          "checked": "2026-08-28",
+          "publishedAt": "Tue, 25 Aug 2026 10:00:00 GMT"
+        },
+        {
+          "id": "MW-SRC-4",
+          "name": "The Current — AI news, and what it means for you - RiverfrontAI",
+          "publisher": "riverfrontai.com",
+          "url": "https://riverfrontai.com/journal",
+          "checked": "2026-08-28",
+          "publishedAt": "Thu, 27 Aug 2026 12:00:00 GMT"
+        },
+        {
+          "id": "MW-SRC-5",
+          "name": "Latest News on AI, Cybersecurity, Data Science & More",
+          "publisher": "timesofai.com",
+          "url": "https://www.timesofai.com/news",
+          "checked": "2026-08-28",
+          "publishedAt": "Thu, 27 Aug 2026 08:00:00 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "MW-01",
+          "claim": "Google released Gemini 3.7 Flash on August 13, 2026.",
+          "source": 4,
+          "sourceIds": [
+            "MW-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "MW-02",
+          "claim": "Google described Gemini 3.7 Flash as its smartest workhorse yet for coding and AI agents.",
+          "source": 4,
+          "sourceIds": [
+            "MW-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "MW-03",
+          "claim": "Gemini 3.7 Flash launched three weeks after Gemini 3.6 Flash.",
+          "source": 4,
+          "sourceIds": [
+            "MW-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "MW-04",
+          "claim": "Google's model card describes Gemini 3.7 Flash as an algorithmic improvement built on 3.6 rather than a new architecture.",
+          "source": 4,
+          "sourceIds": [
+            "MW-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "MW-05",
+          "claim": "Gemini 3.7 Flash is priced at $0.75 per 1 million input tokens.",
+          "source": 4,
+          "sourceIds": [
+            "MW-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "MW-06",
+          "claim": "Gemini 3.7 Flash output pricing is $3.75 per 1 million tokens.",
+          "source": 4,
+          "sourceIds": [
+            "MW-SRC-5"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        },
+        {
+          "id": "MW-07",
+          "claim": "Google targets Gemini 3.7 Flash at developers building software, web apps, knowledge systems, and production agents.",
+          "source": 4,
+          "sourceIds": [
+            "MW-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Lead with the cadence-and-pricing story, not the version number.",
+        "Keep the truncated output-price caveat visible in the human edition, not just the ledger.",
+        "No hype language; frame 3.7 as an incremental upgrade with a pricing strategy."
+      ],
+      "tags": [
+        "google",
+        "gemini-3.7-flash",
+        "pricing",
+        "agents",
+        "model-release"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "a50dc1da-e937-41c5-b219-099e5cdbac1c",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
     {
       "id": "maker-004",
       "deskId": "maker",
