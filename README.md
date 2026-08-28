@@ -41,6 +41,42 @@ Open <http://localhost:3000>. Run the test suite with:
 npm test
 ```
 
+## Local Ollama memory bridge
+
+Velvet Signal can act as an external memory layer for an Ollama model. The model itself does not need persistent memory: explicitly released patches are stored on the user's machine, relevant claim-level chunks are retrieved for each question, and only those active claims are injected into the current user turn.
+
+The bridge uses Ollama's local `/api/embed` endpoint for semantic retrieval and `/api/chat` for generation. If the embedding model is unavailable, retrieval falls back to deterministic lexical scoring rather than sending the query to a cloud service.
+
+Prepare Ollama and an embedding model:
+
+```bash
+ollama pull embeddinggemma
+# Pull whichever local chat model you want to test as well.
+```
+
+Explicitly release a patch into the local store:
+
+```bash
+npm run local -- release pantry-003
+npm run local -- list
+```
+
+Inspect what RAG would retrieve without calling the chat model:
+
+```bash
+npm run local -- inspect "I cooked chicken five days ago and kept it refrigerated. Can I eat it?"
+```
+
+Then ask a local model with retrieved Velvet Signal context:
+
+```bash
+npm run local -- ask --model <your-ollama-model> "I cooked chicken five days ago and kept it refrigerated. Can I eat it?"
+```
+
+By default the durable local store is `~/.velvet-signal/patches.json`. Override it with `VELVET_LOCAL_STORE`; override the Ollama server with `OLLAMA_HOST` and the embedding model with `VELVET_EMBED_MODEL`. Use `--lexical` with `inspect` or `ask` to disable embeddings for a controlled comparison.
+
+Only delivered, approved, unexpired patches participate in retrieval. Expired patches remain in the local ledger for provenance but are not injected as active context. Local questions and conversation text are sent only to the configured Ollama server; the hosted Velvet Signal service is contacted only when the user explicitly runs `release` to fetch a public patch and its receipt.
+
 ## API
 
 ### `GET /api/healthz`
