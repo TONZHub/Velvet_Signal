@@ -1,24 +1,24 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-28T12:05:54.226Z",
+  "generated_at": "2026-08-28T20:13:11.168Z",
   "desks": {
     "maker": {
-      "fingerprint": "09bf7d2d1dc6c40e75832fb69dce7ccb9bba83034e9255830d9fc74e50e55c0c",
-      "latest_patch_id": "maker-005",
-      "published_at": "2026-08-28T12:05:54.226Z",
-      "tavily_request_id": "6a95904d-2279-49d3-8d17-498bb5e65782"
+      "fingerprint": "2b34e1eec3b55e251b6ea3b3c5ecd5051f481c9b03f2af0b24565f49bfa21147",
+      "latest_patch_id": "maker-006",
+      "published_at": "2026-08-28T20:13:11.168Z",
+      "tavily_request_id": "594ee677-b5ba-46e9-ac3c-a5592384d15c"
     },
     "model-watch": {
-      "fingerprint": "6b210642acb825f5e0261900aaf6eed93ad9a88da89ce735a48560c74b8b50d4",
-      "latest_patch_id": "model-watch-004",
-      "published_at": "2026-08-28T12:04:54.505Z",
-      "tavily_request_id": "a50dc1da-e937-41c5-b219-099e5cdbac1c"
+      "fingerprint": "ccb4a6f43c292a1d4bd6b57144bc8a9a5b06c39da8061d7046c38c707ff2c96e",
+      "latest_patch_id": "model-watch-005",
+      "published_at": "2026-08-28T20:12:13.517Z",
+      "tavily_request_id": "ec873a66-05a3-4d7a-99be-31706fc89404"
     },
     "culture": {
-      "fingerprint": "cbe69432a8e53c9da2cbd7f035bd96f6f6a7ef0a0ebb49dad779c2a76f90e426",
-      "latest_patch_id": "culture-002",
-      "published_at": "2026-08-27T13:44:59.747Z",
-      "tavily_request_id": "f240560d-f720-4385-9f52-f2bc8062e23a"
+      "fingerprint": "c75f765ecb036efc452b71832a5c64bdb4282f40bf482103ef86fce790d561c4",
+      "latest_patch_id": "culture-003",
+      "published_at": "2026-08-28T20:12:54.477Z",
+      "tavily_request_id": "8039fc67-b852-46f7-ad6e-ce210d9fe207"
     },
     "pantry": {
       "fingerprint": "f1dcaa8fcb3259145a0b51067487aab136efbccd19067ff6248a6c918a50d9d6",
@@ -27,13 +27,606 @@
       "tavily_request_id": "30440e38-5a69-4597-b5fd-604fda4a44e7"
     },
     "wellbeing": {
-      "fingerprint": "59ec09605bbd75b7e5cae204593dbbc3ff9d51c72068e0ad33847942270bb9b6",
-      "latest_patch_id": "wellbeing-003",
-      "published_at": "2026-08-28T12:05:32.380Z",
-      "tavily_request_id": "a4b641c8-f91a-4aad-8438-710390b083ed"
+      "fingerprint": "3893f750fd371d3f582fd2db17dc8f9cd2c0e21a51ec8cf53e26cd616eebe380",
+      "latest_patch_id": "wellbeing-004",
+      "published_at": "2026-08-28T20:12:32.271Z",
+      "tavily_request_id": "22c4e0d9-55d5-4ec1-96cc-aad7550b8cce"
     }
   },
   "issues": [
+    {
+      "id": "maker-006",
+      "deskId": "maker",
+      "desk": "Maker Edition",
+      "icon": "⌘",
+      "issue": "006",
+      "version": "1.0.0",
+      "date": "AUG 28 · 2026",
+      "publishedAt": "2026-08-28T20:13:11.168Z",
+      "color": "#ff9466",
+      "title": "Velvet Signal — Maker Edition",
+      "kicker": "When the archive button gets pressed",
+      "dek": "Two widely used builder tools moved to read-only this year. Here is what the packets actually say, what they don't, and where the migration pressure lands.",
+      "readTime": "3 min read",
+      "validity": "7 days",
+      "expires": "2026-09-04",
+      "confidence": "Mixed",
+      "scope": "AI product engineering",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Archival is quiet deprecation. No banner, no breaking change — just a repo that stops accepting fixes. This issue covers two such moments from the packets: Flowise, acquired and archived this month, and Hugging Face's TGI, archived in the spring. Neither packet tells us what happens to hosted services or forks, so we've marked those gaps honestly rather than filling them with guesswork.",
+        "The useful move is the same in both cases: treat an archived dependency as a clock, not a crisis. Inventory what you run on it, decide whether a fork or a successor fits, and do it while the community conversation is still warm.",
+        "One caveat worth repeating: the packets describe repository state, not service state. If you use a managed Flowise or TGI deployment, the packet evidence here doesn't cover its fate — verify with the vendor before you plan around it."
+      ],
+      "pullquote": "Treat an archived dependency as a clock, not a crisis.",
+      "sources": [
+        {
+          "id": "M-SRC-1",
+          "name": "A curated list of awesome LLM agents frameworks.",
+          "publisher": "github.com",
+          "url": "https://github.com/kaushikb11/awesome-llm-agents",
+          "checked": "2026-08-28",
+          "publishedAt": "Sat, 22 Aug 2026 19:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-2",
+          "name": "AI Updates Today (August 2026) – Latest AI Model Releases",
+          "publisher": "llm-stats.com",
+          "url": "https://llm-stats.com/llm-updates",
+          "checked": "2026-08-28",
+          "publishedAt": "Wed, 26 Aug 2026 20:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-3",
+          "name": "12britz/awesome-free-models",
+          "publisher": "github.com",
+          "url": "https://github.com/12britz/awesome-free-models",
+          "checked": "2026-08-28",
+          "publishedAt": "Tue, 25 Aug 2026 20:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-4",
+          "name": "GitHub - NousResearch/hermes-agent: The agent that grows with you · GitHub",
+          "publisher": "github.com",
+          "url": "https://github.com/nousresearch/hermes-agent",
+          "checked": "2026-08-28",
+          "publishedAt": "Fri, 28 Aug 2026 04:00:00 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "M-01",
+          "claim": "Flowise, a low-code visual LLM flow builder with a drag-and-drop interface, was acquired by Workday and its repository was archived (made read-only) on August 13, 2026.",
+          "source": 2,
+          "sourceIds": [
+            "M-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-02",
+          "claim": "An archived, read-only repository will not receive ongoing maintenance or security patches from its original maintainers.",
+          "source": 2,
+          "sourceIds": [
+            "M-SRC-3"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        },
+        {
+          "id": "M-03",
+          "claim": "Hugging Face's TGI, a production-grade serving toolkit for large language models with roughly 10.9K stars, was archived by Hugging Face in March 2026.",
+          "source": 2,
+          "sourceIds": [
+            "M-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-04",
+          "claim": "For teams seeking an actively developed alternative to TGI, the source packet points to vLLM, SGLang, or TGI forks.",
+          "source": 2,
+          "sourceIds": [
+            "M-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-05",
+          "claim": "The packet does not state whether managed/hosted Flowise or TGI services are affected by the repository archives, nor the maintenance status of any specific TGI fork.",
+          "source": 2,
+          "sourceIds": [
+            "M-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Lead with the operational consequence (read-only repos), not the acquisition news.",
+        "Keep the hosted-service gap visible; do not imply the archives prove service shutdowns.",
+        "No compatibility claims beyond what M-SRC-3 states."
+      ],
+      "tags": [
+        "deprecations",
+        "serving",
+        "tooling",
+        "migration"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "594ee677-b5ba-46e9-ac3c-a5592384d15c",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "culture-003",
+      "deskId": "culture",
+      "desk": "Culture Desk",
+      "icon": "✺",
+      "issue": "003",
+      "version": "1.0.0",
+      "date": "AUG 28 · 2026",
+      "publishedAt": "2026-08-28T20:12:54.477Z",
+      "color": "#67d6c0",
+      "title": "Aura Farming: The Charisma Contest That Turned TikTok Into a Sport",
+      "kicker": "Culture Desk — Fast-Moving Language",
+      "dek": "Teenagers are staging street-level 'aura farming' battles, turning memes, poses, and viral gestures into a measurable contest of charisma. What the term describes, and what it deliberately leaves open.",
+      "readTime": "3 min read",
+      "validity": "14 days",
+      "expires": "2026-09-11",
+      "confidence": "Mixed",
+      "scope": "Culture signals",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "The phrase of the moment is 'aura farming' — or, in its Spanish-language variant, 'farmear aura.' According to Euronews, these battles have moved off the feed and into the streets: two participants face off, deploy poses, memes, and viral gestures, and the crowd judges who has more 'aura' [C-SRC-1].",
+        "What makes the format interesting is that the references are the point. For anyone outside TikTok's codes, the performances can be genuinely hard to decipher — but for participants, spotting the references is part of the game [C-SRC-1]. That makes aura farming less a fixed vocabulary than a shared test of cultural fluency: you win by showing you know what's circulating and can perform it with style and self-confidence [C-SRC-1].",
+        "A note on limits: the packets describe observed usage — a contest format popular with young people, reported in August 2026. They do not establish a single universal meaning for 'aura,' and we won't invent one. If someone in your life uses the term, treat it as an invitation to ask what they're referencing, not a label to decode from the outside.",
+        "One thing this signal is not: a statement about any particular reader. Exposure to a meme says nothing about who you are — it's just a thing that's happening in public culture right now."
+      ],
+      "pullquote": "For the participants, spotting the references is part of the game. [C-SRC-1]",
+      "sources": [
+        {
+          "id": "C-SRC-1",
+          "name": "What is \"aura farming\"? TikTok's strange viral battles hit the streets - Euronews.com",
+          "publisher": "euronews.com",
+          "url": "https://www.euronews.com/culture/2026/08/22/what-is-aura-farming-tiktoks-strange-viral-battles-hit-the-streets",
+          "checked": "2026-08-28",
+          "publishedAt": "Sat, 22 Aug 2026 10:00:49 GMT"
+        },
+        {
+          "id": "C-SRC-2",
+          "name": "This U.S. City Was Named the Best Place to Work—with Strong Career Opportunities, High Pay, and Quality of Life - Travel + Leisure",
+          "publisher": "travelandleisure.com",
+          "url": "https://www.travelandleisure.com/25-best-us-cities-for-work-indeed-analysis-12066166",
+          "checked": "2026-08-28",
+          "publishedAt": "Tue, 25 Aug 2026 09:00:00 GMT"
+        },
+        {
+          "id": "C-SRC-3",
+          "name": "Artist Sues Memes Apps, Alleging Comic Was Offered As Ad Template 07/28/2026 - MediaPost",
+          "publisher": "mediapost.com",
+          "url": "https://www.mediapost.com/publications/article/416853/artist-sues-memes-apps-alleging-comic-was-offered.html?edition=143352",
+          "checked": "2026-08-28",
+          "publishedAt": "Sun, 23 Aug 2026 00:44:06 GMT"
+        },
+        {
+          "id": "C-SRC-4",
+          "name": "Trump denies US pushed Canada on French language - Politico",
+          "publisher": "politico.com",
+          "url": "https://www.politico.com/news/2026/08/25/trump-canada-quebec-french-01048724",
+          "checked": "2026-08-28",
+          "publishedAt": "Tue, 25 Aug 2026 13:43:00 GMT"
+        },
+        {
+          "id": "C-SRC-5",
+          "name": "The Chinese internet is looking to the country's weirdest viral movie for hints at Ox Alpha's origins - Business Insider",
+          "publisher": "businessinsider.com",
+          "url": "https://www.businessinsider.com/chinese-internet-ox-alpha-niu-lai-origin-story-2026-8",
+          "checked": "2026-08-28",
+          "publishedAt": "Mon, 24 Aug 2026 08:44:23 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "C-01",
+          "claim": "'Aura farming' battles (also called 'farmear aura') are a contest format in which participants compete to show who has more 'aura,' using memes, poses, and viral gestures.",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-02",
+          "claim": "The battles have moved from social media into street-level, in-person contests among young people.",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-03",
+          "claim": "For participants, recognizing the meme references embedded in performances is part of the appeal; for outsiders, the performances can be hard to decipher.",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-04",
+          "claim": "The term 'aura' in this context denotes charisma, style, and self-confidence as judged by peers.",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        },
+        {
+          "id": "C-05",
+          "claim": "'Aura farming' carries a single, stable meaning across all communities and contexts where it is used.",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "needs-review",
+          "confidence": "low"
+        },
+        {
+          "id": "C-06",
+          "claim": "The signal was current as of the source publication date of 22 August 2026; meme vocabulary shifts quickly, so this entry should be re-checked within 7–14 days.",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "No universal-meaning claims: the ledger explicitly flags that 'aura' is context-dependent.",
+        "No user-identity inference: the edition frames this as public cultural observation, not a statement about the reader.",
+        "Validity window: 7–14 days from 22 August 2026, per desk guidance for fast-moving language."
+      ],
+      "tags": [
+        "culture",
+        "language",
+        "tiktok",
+        "memes",
+        "youth",
+        "fast-moving"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "8039fc67-b852-46f7-ad6e-ce210d9fe207",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "wellbeing-004",
+      "deskId": "wellbeing",
+      "desk": "Wellbeing",
+      "icon": "☾",
+      "issue": "004",
+      "version": "1.0.0",
+      "date": "AUG 28 · 2026",
+      "publishedAt": "2026-08-28T20:12:32.271Z",
+      "color": "#a993ff",
+      "title": "The Case for a Softer Landing Into Sleep",
+      "kicker": "Wellbeing",
+      "dek": "A federal sleep guide offers refreshingly unglamorous advice: protect your sleep time, dim the screens, and keep naps short. Here's what the evidence-backed basics actually say.",
+      "readTime": "3 min read",
+      "validity": "180 days",
+      "expires": "2027-02-24",
+      "confidence": "High",
+      "scope": "General wellbeing",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Sleep is easy to deprioritize. The National Heart, Lung, and Blood Institute (NHLBI) notes that sleep is often the first thing busy people squeeze out of their schedules, and it suggests the opposite approach: give yourself enough time to sleep, since adequate rest may leave you happier and more productive during the day [W-SRC-3].",
+        "The mechanism matters, too. NHLBI explains that internal body clocks running on roughly 24-hour cycles regulate when you feel awake and ready for sleep, and that these clocks are influenced by light, darkness, and your sleep schedule. Skimping on sleep quantity or quality, the agency says, raises risk for heart and respiratory problems and affects metabolism and the ability to think clearly and focus [W-SRC-5].",
+        "One of the most practical updates concerns screens. Artificial light from phones, laptops, and televisions can signal the brain that it's time to be awake, and research partly funded by NHLBI found that smartphone use before bed is associated with shorter sleep duration and worse sleep quality. Experts cited by NHLBI suggest powering down devices at least 30 minutes before bed [W-SRC-4].",
+        "If you nap, the guidance is specific: daytime napping may boost alertness and performance, but adults should nap for no more than 20 minutes, and if you have trouble falling asleep at night, limit naps or take them earlier in the afternoon [W-SRC-3].",
+        "A note on individual variation: these are general public-health habits, not a prescription. NHLBI's materials also cover sleep disorders such as insomnia, sleep apnea, restless legs syndrome, and narcolepsy, plus drowsy driving and shift work [W-SRC-2]. If sleep problems persist, that's a conversation for a healthcare professional, not a newsletter."
+      ],
+      "pullquote": "Sleep is often the first thing that busy people squeeze out of their schedules. [W-SRC-3]",
+      "sources": [
+        {
+          "id": "W-SRC-1",
+          "name": "En resumen: su guía para un sueño saludable (In Brief: Your Guide to Healthy Sleep (Spanish) | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/es/resources/en-resumen-su-guia-para-un-sueno-saludable-brief-your-guide-healthy-sleep-spanish",
+          "checked": "2026-08-28"
+        },
+        {
+          "id": "W-SRC-2",
+          "name": "Your Guide to Healthy Sleep | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/resources/your-guide-healthy-sleep",
+          "checked": "2026-08-28"
+        },
+        {
+          "id": "W-SRC-3",
+          "name": "Sleep Deprivation and Deficiency - Healthy Sleep Habits",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits",
+          "checked": "2026-08-28"
+        },
+        {
+          "id": "W-SRC-4",
+          "name": "Sweet dreams: Researchers explore link between sleep and health | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/news/2018/sweet-dreams-researchers-explore-link-between-sleep-and-health",
+          "checked": "2026-08-28"
+        },
+        {
+          "id": "W-SRC-5",
+          "name": "How Sleep Works - How Sleep Works | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/health/sleep",
+          "checked": "2026-08-28"
+        }
+      ],
+      "claims": [
+        {
+          "id": "W-01",
+          "claim": "Sleep is often the first thing busy people cut from their schedules, and NHLBI advises making time for sleep to protect health and well-being.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-02",
+          "claim": "With enough sleep each night, people may find they are happier and more productive during the day.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-03",
+          "claim": "Internal body clocks with cycles of approximately 24 hours regulate wakefulness and sleep readiness, influenced by light, darkness, and sleep schedules.",
+          "source": 4,
+          "sourceIds": [
+            "W-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-04",
+          "claim": "Not getting enough sleep or enough quality sleep raises risk for heart and respiratory problems and affects metabolism and the ability to think clearly and focus.",
+          "source": 4,
+          "sourceIds": [
+            "W-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-05",
+          "claim": "Artificial light from screens can signal the brain that it's time to be awake, potentially reducing sleep duration and regularity in children and adults.",
+          "source": 3,
+          "sourceIds": [
+            "W-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-06",
+          "claim": "A study partly funded by NHLBI found smartphone use before bed is associated with shorter sleep duration and worse sleep quality.",
+          "source": 3,
+          "sourceIds": [
+            "W-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-07",
+          "claim": "Experts suggest powering down devices at least 30 minutes before bed to enhance sleep quality.",
+          "source": 3,
+          "sourceIds": [
+            "W-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-08",
+          "claim": "Adults should nap no more than 20 minutes; those with trouble falling asleep at night should limit naps or take them earlier in the afternoon.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "No diagnosis, moralizing, or individualized medical advice; persistent sleep problems should prompt consultation with a healthcare professional.",
+        "Individual variation kept visible: guidance framed as general public-health habits, with sleep disorders and shift work acknowledged as out of scope for this edition [W-SRC-2]."
+      ],
+      "tags": [
+        "sleep",
+        "wellbeing",
+        "sleep-hygiene",
+        "screens",
+        "naps"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "22c4e0d9-55d5-4ec1-96cc-aad7550b8cce",
+        "credits": 2,
+        "search_mode": "timeless-official-fallback"
+      }
+    },
+    {
+      "id": "model-watch-005",
+      "deskId": "model-watch",
+      "desk": "Model Watch",
+      "icon": "⌁",
+      "issue": "005",
+      "version": "1.0.0",
+      "date": "AUG 28 · 2026",
+      "publishedAt": "2026-08-28T20:12:13.517Z",
+      "color": "#ff719f",
+      "title": "Velvet Signal — Model Watch",
+      "kicker": "model-watch",
+      "dek": "A proposed edition and claim ledger. Nothing here is approved or delivered until a human says so.",
+      "readTime": "3 min read",
+      "validity": "60 days",
+      "expires": "2026-10-27",
+      "confidence": "Mixed",
+      "scope": "AI models and agent interfaces",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Gemini in Chrome brings agentic browsing to Android",
+        "Google has made Gemini in Chrome available to all Android users in the United States, with the auto browse capability reserved for AI Pro and Ultra subscribers. Auto browse can handle tasks such as booking parking, updating recurring orders, and organizing travel, and Google says it will ask for confirmation before some sensitive actions. [MW-SRC-2]",
+        "Why it matters: this moves agentic browsing from a desktop curiosity to a default surface on the world's largest mobile platform. The subscriber tier and the confirmation gate are the two details builders should design around: agent-driven flows will increasingly run on phones, and users will expect a checkpoint before anything sensitive happens. [MW-SRC-2]",
+        "Caveat: our packet for this item is a secondary aggregator rather than Google's own announcement, so the availability boundaries and the confirmation behavior are marked needs-review until checked against primary documentation. [MW-SRC-2]",
+        "Also on the radar this cycle: DeepSeek published DeepSeek-V4-Flash-0731 on Hugging Face and moved the official V4-Flash API into public beta on July 31, 2026, with the model card described as explicit about its boundaries. [MW-SRC-1] OpenAI published 'Advancing price-performance for developers with GPT-5.6 in Kiro' on August 24, 2026, from its own product desk. [MW-SRC-4] And Meta released Muse Glimmer, a 30B open-weight multimodal model under Apache 2.0 with day-0 support across major inference libraries, per Hugging Face and Simon Willison. [MW-SRC-3]"
+      ],
+      "pullquote": "Agent-driven flows will increasingly run on phones, and users will expect a checkpoint before anything sensitive happens.",
+      "sources": [
+        {
+          "id": "MW-SRC-1",
+          "name": "Tech News Category - MarkTechPost",
+          "publisher": "marktechpost.com",
+          "url": "https://www.marktechpost.com/category/tech-news",
+          "checked": "2026-08-28",
+          "publishedAt": "Wed, 26 Aug 2026 20:00:00 GMT"
+        },
+        {
+          "id": "MW-SRC-2",
+          "name": "AI Updates: The Daily Signal | AI Experts",
+          "publisher": "aiexperts.com",
+          "url": "https://www.aiexperts.com/updates",
+          "checked": "2026-08-28",
+          "publishedAt": "Mon, 24 Aug 2026 20:00:00 GMT"
+        },
+        {
+          "id": "MW-SRC-3",
+          "name": "The Current — AI news, and what it means for you - RiverfrontAI",
+          "publisher": "riverfrontai.com",
+          "url": "https://riverfrontai.com/journal",
+          "checked": "2026-08-28",
+          "publishedAt": "Wed, 26 Aug 2026 18:00:00 GMT"
+        },
+        {
+          "id": "MW-SRC-4",
+          "name": "Previewing GPT-5.6 Sol: a next-generation model",
+          "publisher": "openai.com",
+          "url": "https://openai.com/index/previewing-gpt-5-6-sol",
+          "checked": "2026-08-28",
+          "publishedAt": "Tue, 25 Aug 2026 20:00:00 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "MW-01",
+          "claim": "Gemini in Chrome is now available to all Android users in the United States.",
+          "source": 1,
+          "sourceIds": [
+            "MW-SRC-2"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        },
+        {
+          "id": "MW-02",
+          "claim": "Auto browse in Gemini in Chrome is available to AI Pro and Ultra subscribers and can perform tasks such as booking parking, updating recurring orders, and organizing travel.",
+          "source": 1,
+          "sourceIds": [
+            "MW-SRC-2"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        },
+        {
+          "id": "MW-03",
+          "claim": "Gemini in Chrome's auto browse asks for confirmation before some sensitive actions.",
+          "source": 1,
+          "sourceIds": [
+            "MW-SRC-2"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        },
+        {
+          "id": "MW-04",
+          "claim": "DeepSeek published DeepSeek-V4-Flash-0731 on Hugging Face and moved the official V4-Flash API into public beta on July 31, 2026.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        },
+        {
+          "id": "MW-05",
+          "claim": "OpenAI published 'Advancing price-performance for developers with GPT-5.6 in Kiro' on August 24, 2026.",
+          "source": 3,
+          "sourceIds": [
+            "MW-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "MW-06",
+          "claim": "Meta released Muse Glimmer, a 30B open-weight multimodal model under Apache 2.0, with day-0 support across major inference libraries per Hugging Face and Simon Willison.",
+          "source": 2,
+          "sourceIds": [
+            "MW-SRC-3"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        }
+      ],
+      "toneNotes": [
+        "Preserve exact product names: Gemini in Chrome, auto browse, AI Pro, Ultra, DeepSeek-V4-Flash-0731, GPT-5.6 in Kiro, Muse Glimmer.",
+        "Keep the U.S.-only Android availability and the subscriber tier visible; do not generalize to global availability.",
+        "Flag the lead story as secondary-sourced; do not upgrade to verified without a primary Google source."
+      ],
+      "tags": [
+        "agentic-browsing",
+        "android",
+        "gemini",
+        "open-weights",
+        "model-releases"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "ec873a66-05a3-4d7a-99be-31706fc89404",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
     {
       "id": "maker-005",
       "deskId": "maker",
