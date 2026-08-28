@@ -16,12 +16,10 @@ const receiptOptions = {
 test("every launch issue has the same signed delivery and expiry contract", async () => {
   const catalog = await listIssues();
   assert.equal(catalog.issues.length >= 6, true);
-
   for (const issue of catalog.issues) {
     const patch = patchForIssue(issue, { deliveryStatus: "delivered" });
     const receipt = createDeliveryReceipt(patch, receiptOptions);
     const verified = verifyDeliveryReceipt(patch, receipt, receiptOptions);
-
     assert.equal(patch.patch_id, issue.id);
     assert.equal(patch.delivery.status, "delivered");
     assert.equal(patch.delivery.approved, true);
@@ -32,18 +30,25 @@ test("every launch issue has the same signed delivery and expiry contract", asyn
   }
 });
 
+test("patch generation preserves explicit supersession references", () => {
+  const issue = {
+    id: "bench-shape-002", desk: "Maker Edition", issue: "BENCH", title: "Synthetic fixture",
+    publishedAt: "2026-08-28T00:00:00.000Z", expires: "2027-08-28", scope: "VS-Bench",
+    claims: [{ id: "SHAPE-02", claim: "The synthetic demo badge uses a circle icon.", status: "verified", source: 0, supersedes: ["bench-shape-001:SHAPE-01"] }],
+    sources: [{ name: "VS-Bench fixture", publisher: "Velvet Signal", url: "https://example.test", checked: "2026-08-28" }],
+    toneNotes: ["Synthetic fixture only."],
+  };
+  const patch = patchForIssue(issue, { deliveryStatus: "delivered" });
+  assert.deepEqual(patch.claims[0].supersedes, ["bench-shape-001:SHAPE-01"]);
+});
+
 test("expiry deactivates context without invalidating historical provenance", async () => {
   const catalog = await listIssues();
   const issue = catalog.issues.find((candidate) => candidate.id === "culture-001");
   assert(issue);
-
   const patch = patchForIssue(issue, { deliveryStatus: "delivered" });
   const receipt = createDeliveryReceipt(patch, receiptOptions);
-  const afterExpiry = verifyDeliveryReceipt(patch, receipt, {
-    ...receiptOptions,
-    now: () => new Date("2026-09-11T00:00:00.000Z"),
-  });
-
+  const afterExpiry = verifyDeliveryReceipt(patch, receipt, { ...receiptOptions, now: () => new Date("2026-09-11T00:00:00.000Z") });
   assert.equal(afterExpiry.valid, true);
   assert.equal(afterExpiry.signature_valid, true);
   assert.equal(afterExpiry.content_hash_valid, true);
@@ -55,12 +60,9 @@ test("existing deployments can derive receipt signing from the server editor tok
   const previousEditorToken = process.env.VELVET_EDITOR_TOKEN;
   delete process.env.VELVET_RECEIPT_SECRET;
   process.env.VELVET_EDITOR_TOKEN = "existing-render-editor-token-at-least-16";
-  try {
-    assert.equal(receiptSigningConfigured(), true);
-  } finally {
-    if (previousReceiptSecret === undefined) delete process.env.VELVET_RECEIPT_SECRET;
-    else process.env.VELVET_RECEIPT_SECRET = previousReceiptSecret;
-    if (previousEditorToken === undefined) delete process.env.VELVET_EDITOR_TOKEN;
-    else process.env.VELVET_EDITOR_TOKEN = previousEditorToken;
+  try { assert.equal(receiptSigningConfigured(), true); }
+  finally {
+    if (previousReceiptSecret === undefined) delete process.env.VELVET_RECEIPT_SECRET; else process.env.VELVET_RECEIPT_SECRET = previousReceiptSecret;
+    if (previousEditorToken === undefined) delete process.env.VELVET_EDITOR_TOKEN; else process.env.VELVET_EDITOR_TOKEN = previousEditorToken;
   }
 });
