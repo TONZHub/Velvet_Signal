@@ -121,7 +121,9 @@ export function assessRetrievalAnswerability(retrieval) {
       hasCurrentClaims && !hasHistoricalGap && !hasUncoveredFacets,
     current_claim_count: results.length,
     intent_count: coverage.intent_count,
-    covered_intent_count: coverage.covered.length || (coverage.intents.length ? 0 : hasCurrentClaims ? 1 : 0),
+    covered_intent_count:
+      coverage.covered.length ||
+      (coverage.intents.length ? 0 : hasCurrentClaims ? 1 : 0),
     uncovered_intents: coverage.uncovered.map((intent) => ({
       id: intent.id,
       text: intent.text,
@@ -158,7 +160,6 @@ export async function retrieveAnswerableClaims(query, patches, options = {}) {
 
 export function formatAnswerabilityContext(retrieval) {
   const base = formatEvidenceAwareContext(retrieval);
-  if (!base) return base;
   const answerability =
     retrieval?.selection?.answerability ?? assessRetrievalAnswerability(retrieval);
   const lines = [
@@ -177,6 +178,16 @@ export function formatAnswerabilityContext(retrieval) {
     );
   }
   lines.push("");
+
+  if (!base) {
+    return [
+      "VELVET SIGNAL RETRIEVED CONTEXT",
+      ...lines,
+      "No active publication claim was selected for this query.",
+      "Do not present the absence of a Velvet Signal patch as evidence that the model's prior knowledge is current.",
+    ].join("\n").trim();
+  }
+
   return base.replace(
     "VELVET SIGNAL RETRIEVED CONTEXT\n",
     `VELVET SIGNAL RETRIEVED CONTEXT\n${lines.join("\n")}`,
