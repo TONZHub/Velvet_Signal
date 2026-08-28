@@ -28,8 +28,12 @@ import {
 const indexPath = fileURLToPath(
   new URL("../public/index.html", import.meta.url),
 );
+const installPath = fileURLToPath(
+  new URL("../public/install.html", import.meta.url),
+);
 const maximumBodyBytes = 64 * 1024;
 let indexCache;
+let installCache;
 
 class HttpError extends Error {
   constructor(status, message) {
@@ -139,9 +143,28 @@ async function readJson(request) {
   }
 }
 
+function decorateIndex(html) {
+  return html
+    .replace(
+      '<a href="#protocol">The protocol</a>',
+      '<a href="/install">Install</a>\n        <a href="#protocol">The protocol</a>',
+    )
+    .replace(
+      '<a class="button ghost" href="#protocol">See how consent works</a>',
+      '<a class="button ghost" href="/install">Install on your laptop</a>\n          <a class="button ghost" href="#protocol">See how consent works</a>',
+    );
+}
+
 async function serveIndex(request, response) {
-  indexCache ??= await readFile(indexPath);
+  indexCache ??= decorateIndex(await readFile(indexPath, "utf8"));
   send(response, request, 200, indexCache, "text/html; charset=utf-8", {
+    "Cache-Control": "no-cache",
+  });
+}
+
+async function serveInstall(request, response) {
+  installCache ??= await readFile(installPath);
+  send(response, request, 200, installCache, "text/html; charset=utf-8", {
     "Cache-Control": "no-cache",
   });
 }
@@ -343,6 +366,13 @@ async function requestHandler(request, response) {
       (url.pathname === "/" || url.pathname === "/index.html")
     ) {
       await serveIndex(request, response);
+      return;
+    }
+    if (
+      (method === "GET" || method === "HEAD") &&
+      (url.pathname === "/install" || url.pathname === "/install.html")
+    ) {
+      await serveInstall(request, response);
       return;
     }
     if (method === "GET" && url.pathname === "/favicon.ico") {
