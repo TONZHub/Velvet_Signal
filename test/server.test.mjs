@@ -30,6 +30,9 @@ test("serves the six-issue newsstand with security headers", async () => {
     assert.match(html, /Culture Desk/);
     assert.match(html, /Maker Edition/);
     assert.match(html, /Your People/);
+    assert.match(html, /Updates since last visit/);
+    assert.match(html, /velvet-signal\.visit\.v1/);
+    assert.match(html, /data-show-updates/);
   });
 });
 

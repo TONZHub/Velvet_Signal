@@ -252,6 +252,22 @@
     .section-head { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 42px; }
     .section-head h2 { max-width: 680px; margin: 11px 0 0; font-family: var(--serif); font-size: clamp(2.7rem, 5.7vw, 5.2rem); font-weight: 500; letter-spacing: -.045em; line-height: .9; }
     .section-head p { max-width: 390px; margin: 0 0 5px; color: var(--muted); font-size: .9rem; }
+    .visit-summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 16px;
+      padding: 17px 19px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(26, 17, 23, .62);
+    }
+    .visit-summary.has-updates { border-color: rgba(255,113,159,.46); background: linear-gradient(105deg, rgba(255,113,159,.12), rgba(174,140,255,.06)); }
+    .visit-summary-copy { display: grid; gap: 3px; }
+    .visit-summary-label { color: var(--pink-soft); font-family: var(--mono); font-size: .59rem; letter-spacing: .12em; text-transform: uppercase; }
+    .visit-summary strong { font-family: var(--serif); font-size: 1.35rem; font-weight: 500; }
+    .visit-summary p { margin: 0; color: var(--muted); font-size: .76rem; }
     .filter-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
     .filter {
       padding: 7px 13px;
@@ -276,6 +292,7 @@
       overflow: hidden;
       transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
     }
+    .issue-card.is-new { border-color: rgba(255,113,159,.58); box-shadow: 0 0 0 1px rgba(255,113,159,.08); }
     .issue-card:hover { transform: translateY(-7px); border-color: rgba(255,255,255,.23); box-shadow: var(--shadow); }
     .cover-art {
       position: relative;
@@ -293,6 +310,23 @@
     .cover-top, .cover-bottom { position: relative; z-index: 1; }
     .cover-top { display: flex; align-items: start; justify-content: space-between; gap: 12px; font-family: var(--mono); font-size: .59rem; letter-spacing: .11em; text-transform: uppercase; }
     .cover-desk { font-weight: 500; }
+    .new-signal {
+      position: absolute;
+      z-index: 2;
+      top: 52px;
+      right: 22px;
+      padding: 6px 9px;
+      border: 1px solid rgba(23,11,16,.35);
+      border-radius: 999px;
+      color: #170b10;
+      background: rgba(255,255,255,.48);
+      font-family: var(--mono);
+      font-size: .54rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px);
+    }
     .cover-icon { position: relative; z-index: 1; align-self: center; font-size: 5rem; filter: grayscale(1); mix-blend-mode: multiply; opacity: .7; }
     .cover-bottom h3 { max-width: 9ch; margin: 0 0 11px; font-family: var(--serif); font-size: clamp(2.6rem, 4vw, 4rem); font-weight: 600; letter-spacing: -.055em; line-height: .82; }
     .cover-bottom p { max-width: 28ch; margin: 0; font-family: var(--mono); font-size: .66rem; line-height: 1.45; }
@@ -451,6 +485,8 @@
       .hero-actions .button { width: 100%; }
       .section-head { display: block; }
       .section-head p { margin-top: 20px; }
+      .visit-summary { align-items: stretch; flex-direction: column; gap: 14px; }
+      .visit-summary .button { width: 100%; }
       .issue-grid { grid-template-columns: 1fr; }
       .cover-art { min-height: 410px; }
       .trust-grid { grid-template-columns: 1fr; }
@@ -533,6 +569,14 @@
           <h2>Six desks.<br>A living shelf.</h2>
         </div>
         <p>Each edition has two faces: an editorial explanation worth reading and a portable context patch worth inspecting.</p>
+      </div>
+      <div class="visit-summary" id="visitSummary" aria-live="polite">
+        <div class="visit-summary-copy">
+          <span class="visit-summary-label">Updates since last visit</span>
+          <strong id="visitHeadline">Checking the shelf…</strong>
+          <p id="visitDetail">Comparing publication dates on this device.</p>
+        </div>
+        <button class="button ghost small" type="button" data-show-updates hidden>Show updates</button>
       </div>
       <div class="filter-row" id="filters" aria-label="Filter the newsstand"></div>
       <div class="issue-grid" id="issueGrid"></div>
@@ -838,6 +882,9 @@
     const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
     const subscriptionsKey = "velvet-signal.subscriptions.v1";
     const deliveriesKey = "velvet-signal.deliveries.v2";
+    const visitKey = "velvet-signal.visit.v1";
+    const currentVisitAt = new Date().toISOString();
+    const newIssueIds = new Set();
 
     const getStoredSet = key => {
       try { return new Set(JSON.parse(localStorage.getItem(key) || "[]")); }
@@ -853,6 +900,76 @@
     };
     const saveDeliveries = () => localStorage.setItem(deliveriesKey, JSON.stringify(Object.fromEntries(deliveries)));
     const deliveries = getStoredDeliveries();
+    const getStoredVisit = () => {
+      try {
+        const parsed = JSON.parse(localStorage.getItem(visitKey) || "null");
+        if (!parsed || typeof parsed !== "object") return null;
+        if (!Number.isFinite(Date.parse(parsed.visitedAt))) return null;
+        if (!Number.isFinite(Date.parse(parsed.latestPublishedAt))) return null;
+        return parsed;
+      } catch { return null; }
+    };
+    const previousVisit = getStoredVisit();
+
+    function issuePublishedAt(issue) {
+      const timestamp = Date.parse(issue?.publishedAt);
+      return Number.isFinite(timestamp) ? timestamp : null;
+    }
+
+    function prepareVisitUpdates() {
+      newIssueIds.clear();
+      const previousLatest = previousVisit ? Date.parse(previousVisit.latestPublishedAt) : null;
+      const publicationTimes = issues.map(issuePublishedAt).filter(Number.isFinite);
+      if (previousLatest !== null) {
+        issues.forEach(issue => {
+          const publishedAt = issuePublishedAt(issue);
+          if (publishedAt !== null && publishedAt > previousLatest) newIssueIds.add(issue.id);
+        });
+      }
+      if (!publicationTimes.length) return;
+      try {
+        localStorage.setItem(visitKey, JSON.stringify({
+          visitedAt: currentVisitAt,
+          latestPublishedAt: new Date(Math.max(...publicationTimes)).toISOString()
+        }));
+      } catch {
+        // The newsstand still works when storage is unavailable.
+      }
+    }
+
+    function formatVisitDate(value) {
+      try {
+        return new Intl.DateTimeFormat(undefined, {
+          month: "short",
+          day: "numeric",
+          hour: "numeric",
+          minute: "2-digit"
+        }).format(new Date(value));
+      } catch { return "your previous"; }
+    }
+
+    function renderVisitSummary() {
+      const summary = $("#visitSummary");
+      const headline = $("#visitHeadline");
+      const detail = $("#visitDetail");
+      const button = $("[data-show-updates]", summary);
+      const count = newIssueIds.size;
+      summary.classList.toggle("has-updates", count > 0);
+      button.hidden = count === 0;
+      if (!previousVisit) {
+        headline.textContent = "This visit sets your baseline.";
+        detail.textContent = "Future editions will be marked as new on this device.";
+        return;
+      }
+      if (count > 0) {
+        headline.textContent = `${count} new edition${count === 1 ? "" : "s"} landed.`;
+        detail.textContent = `Published since your ${formatVisitDate(previousVisit.visitedAt)} visit. New covers are marked below.`;
+        button.textContent = `Show ${count} update${count === 1 ? "" : "s"}`;
+        return;
+      }
+      headline.textContent = "Nothing new. You’re caught up.";
+      detail.textContent = `Last visit ${formatVisitDate(previousVisit.visitedAt)}. The desks checked the signal and kept quiet.`;
+    }
 
     function toast(message) {
       const el = $("#toast");
@@ -927,6 +1044,7 @@
     function renderFilters() {
       const filters = [
         ["all", "All issues"],
+        ...(newIssueIds.size ? [["updates", `Updates since last visit · ${newIssueIds.size}`]] : []),
         ["model-watch", "Model Watch"],
         ["pantry", "The Pantry"],
         ["wellbeing", "Wellbeing"],
@@ -943,14 +1061,20 @@
     }
 
     function renderIssues() {
-      const visible = state.filter === "all" ? issues : issues.filter(issue => issue.deskId === state.filter);
+      const visible = state.filter === "all"
+        ? issues
+        : state.filter === "updates"
+          ? issues.filter(issue => newIssueIds.has(issue.id))
+          : issues.filter(issue => issue.deskId === state.filter);
       $("#issueGrid").innerHTML = visible.map(issue => {
         const subscribed = subscriptions.has(issue.deskId);
         const theme = deskThemes[issue.deskId] || { color: "#ff719f", icon: "✦" };
+        const isNew = newIssueIds.has(issue.id);
         return `
-          <article class="issue-card">
+          <article class="issue-card${isNew ? " is-new" : ""}">
             <div class="cover-art" style="background:${theme.color}">
               <div class="cover-top"><span class="cover-desk">Velvet Signal / ${escapeHtml(issue.desk)}</span><span>No. ${escapeHtml(issue.issue)}</span></div>
+              ${isNew ? '<span class="new-signal">New since last visit</span>' : ""}
               <div class="cover-icon" aria-hidden="true">${theme.icon}</div>
               <div class="cover-bottom"><h3>${escapeHtml(issue.title)}</h3><p>${escapeHtml(issue.kicker)}</p></div>
             </div>
@@ -1236,6 +1360,8 @@
 
     async function bootstrap() {
       await loadCatalog();
+      prepareVisitUpdates();
+      renderVisitSummary();
       renderFilters();
       renderIssues();
       updateFlowState();
@@ -1244,6 +1370,12 @@
     }
 
     bootstrap();
+
+    $("[data-show-updates]").addEventListener("click", () => {
+      state.filter = "updates";
+      renderFilters();
+      renderIssues();
+    });
 
     $$(".dialog-tab").forEach(button => button.addEventListener("click", () => setDialogTab(button.dataset.tab)));
     $("#dialogClose").addEventListener("click", closeDialog);
