@@ -39,7 +39,8 @@ test("serves the laptop installation guide as a first-class page", async () => {
     assert.equal(response.status, 200);
     assert.match(response.headers.get("content-type") ?? "", /text\/html/);
     const html = await response.text();
-    assert.match(html, /Install Velvet Signal locally/);
+    assert.match(html, /<title>Install Velvet Signal<\/title>/);
+    assert.match(html, /Install Velvet Signal\s*<em>locally\.<\/em>/);
     assert.match(html, /ollama pull embeddinggemma/);
     assert.match(html, /npm\.cmd run local -- release pantry-003/);
     assert.match(html, /Windows troubleshooting/);
