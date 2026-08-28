@@ -1,15 +1,15 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-08-28T21:00:00.000Z",
+  "updated_at": "2026-08-28T20:57:30.000Z",
   "entries": [
     {
       "id": "2026-08-28-install-bench-supersession",
       "date": "2026-08-28",
       "kind": "product",
-      "title": "Install, VS-Bench, and explicit supersession moved into the product",
-      "summary": "Velvet Signal gained first-class install and benchmark destinations, focused three-claim retrieval for weaker models, and deterministic claim supersession before ranking.",
-      "status": "proposed",
-      "references": ["PR #4", "/install", "/benchmark"]
+      "title": "Install, VS-Bench, Signal Log, and explicit supersession moved into the product",
+      "summary": "Velvet Signal gained first-class install, benchmark, and product-history destinations, focused three-claim retrieval for weaker models, and deterministic claim supersession before ranking.",
+      "status": "released",
+      "references": ["PR #4", "/install", "/benchmark", "/log"]
     },
     {
       "id": "2026-08-28-llama2-local-rag",
