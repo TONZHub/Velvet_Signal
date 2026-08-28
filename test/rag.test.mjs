@@ -42,6 +42,26 @@ function patch(overrides = {}) {
   };
 }
 
+function benchmarkPatch({ patchId, publishedAt, claimId, statement, supersedes = [] }) {
+  return {
+    patch_id: patchId,
+    desk: "Maker Edition",
+    title: "Synthetic supersession fixture",
+    scope: "VS-Bench synthetic fixture",
+    published_at: publishedAt,
+    valid_until: "2027-08-28",
+    delivery: { status: "delivered", approved: true },
+    claims: [{
+      id: claimId,
+      statement,
+      status: "verified",
+      source_ids: ["BENCH-SRC-1"],
+      ...(supersedes.length ? { supersedes } : {}),
+    }],
+    sources: [{ id: "BENCH-SRC-1", publisher: "VS-Bench", url: "https://example.test/fixture" }],
+  };
+}
+
 test("only delivered, approved, unexpired patches are active", () => {
   const now = new Date("2026-08-28T12:00:00Z");
   assert.equal(patchIsActive(patch(), now), true);
@@ -64,6 +84,29 @@ test("retrieval defaults to a focused three-claim context", async () => {
     now: new Date("2026-08-28T12:00:00Z"),
   });
   assert.equal(result.results.length, 3);
+});
+
+test("active superseding claims remove replaced claims before ranking", async () => {
+  const oldPatch = benchmarkPatch({
+    patchId: "bench-shape-001",
+    publishedAt: "2026-08-20",
+    claimId: "SHAPE-01",
+    statement: "The synthetic demo badge uses a square icon.",
+  });
+  const newPatch = benchmarkPatch({
+    patchId: "bench-shape-002",
+    publishedAt: "2026-08-28",
+    claimId: "SHAPE-02",
+    statement: "The synthetic demo badge uses a circle icon.",
+    supersedes: ["bench-shape-001:SHAPE-01"],
+  });
+  const result = await retrieveClaims("What shape does the synthetic demo badge use?", [oldPatch, newPatch], {
+    now: new Date("2026-08-28T12:00:00Z"),
+    limit: 5,
+  });
+  assert.equal(result.results.some((item) => item.id === "bench-shape-001:SHAPE-01"), false);
+  assert.equal(result.results[0].id, "bench-shape-002:SHAPE-02");
+  assert.deepEqual(result.results[0].supersedes, ["bench-shape-001:SHAPE-01"]);
 });
 
 test("semantic retrieval can rank a claim through an embedding adapter", async () => {
@@ -96,6 +139,7 @@ test("retrieved context is ranked and injected into user context with provenance
   assert.match(messages[0].content, /Apply quantitative limits literally/);
   assert.match(messages[0].content, /beyond a retrieved maximum/);
   assert.match(messages[0].content, /Do not use sensory cues/);
+  assert.match(messages[0].content, /Claims explicitly superseded/);
   assert.match(messages[0].content, /USER MESSAGE\nCan I eat it\?/);
   assert.equal(messages[0].role, "user");
 });
