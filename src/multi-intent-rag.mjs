@@ -300,7 +300,9 @@ export async function retrieveMultiIntentClaims(query, patches, options = {}) {
   const decisions = Array.isArray(base?.resolution?.decisions)
     ? base.resolution.decisions.filter(
         (decision) =>
-          resultIds.has(decision.source_id) || resultIds.has(decision.target_id),
+          decision.action === "target_withheld_by_historical_tombstone" ||
+          resultIds.has(decision.source_id) ||
+          resultIds.has(decision.target_id),
       )
     : [];
   const historyIds = new Set(
@@ -352,6 +354,7 @@ export function formatMultiIntentContext(retrieval) {
   const lines = [
     "MULTI-INTENT QUERY FACETS",
     "The user asked a compound question. Address each listed facet that has retrieved support; do not let the first facet crowd out later facets.",
+    "If a facet has covered_by=none, do not fill it from stale history. If the relationship trail shows an update gap for that facet, say that current publication context is unavailable.",
     ...intents.map((intent) =>
       `[FACET ${intent.id}] ${intent.text} | covered_by=${intent.covered_by.join(",") || "none"}`,
     ),
