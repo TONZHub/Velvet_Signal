@@ -17,7 +17,7 @@ async function withServer(run) {
   }
 }
 
-test("serves the six-issue newsstand with security headers", async () => {
+test("serves the six-desk newsstand with security headers and install links", async () => {
   await withServer(async (baseUrl) => {
     const response = await fetch(baseUrl);
     assert.equal(response.status, 200);
@@ -33,6 +33,21 @@ test("serves the six-issue newsstand with security headers", async () => {
     assert.match(html, /Updates since last visit/);
     assert.match(html, /velvet-signal\.visit\.v1/);
     assert.match(html, /data-show-updates/);
+    assert.match(html, /href="\/install">Install</);
+    assert.match(html, /Install on your laptop/);
+  });
+});
+
+test("serves the laptop installation guide as a first-class page", async () => {
+  await withServer(async (baseUrl) => {
+    const response = await fetch(`${baseUrl}/install`);
+    assert.equal(response.status, 200);
+    assert.match(response.headers.get("content-type") ?? "", /text\/html/);
+    const html = await response.text();
+    assert.match(html, /Install Velvet Signal locally/);
+    assert.match(html, /ollama pull embeddinggemma/);
+    assert.match(html, /npm\.cmd run local -- release pantry-003/);
+    assert.match(html, /Windows troubleshooting/);
   });
 });
 
