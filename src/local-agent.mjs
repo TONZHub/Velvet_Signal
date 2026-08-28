@@ -2,10 +2,8 @@ import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import { homedir } from "node:os";
 import { dirname, join } from "node:path";
 import { injectRetrievedContext, patchIsActive } from "./rag.mjs";
-import {
-  formatDeltaAwareContext,
-  retrieveDeltaAwareClaims,
-} from "./claim-delta-rag.mjs";
+import { retrieveDeltaAwareClaims } from "./claim-delta-rag.mjs";
+import { buildBudgetedContext } from "./context-budget.mjs";
 import { ollamaChat, ollamaEmbed } from "./ollama.mjs";
 
 const DEFAULT_PUBLIC_URL = "https://velvetsignal.lol";
@@ -63,6 +61,7 @@ function parseOptions(argv) {
     if (current === "--model") options.model = argv[++index];
     else if (current === "--embed-model") options.embedModel = argv[++index];
     else if (current === "--limit") options.limit = Number.parseInt(argv[++index], 10);
+    else if (current === "--context-budget") options.contextBudget = Number.parseInt(argv[++index], 10);
     else if (current === "--lexical") options.lexicalOnly = true;
     else values.push(current);
   }
@@ -116,8 +115,10 @@ async function commandAsk(args) {
   const question = values.join(" ").trim();
   if (!question) throw new Error("Usage: npm run local -- ask --model <ollama-model> <question>");
   const retrieval = await retrieve(question, options);
-  const context = formatDeltaAwareContext(retrieval);
-  const messages = injectRetrievedContext([{ role: "user", content: question }], context);
+  const packed = buildBudgetedContext(retrieval, {
+    maxChars: options.contextBudget,
+  });
+  const messages = injectRetrievedContext([{ role: "user", content: question }], packed.text);
   const answer = await ollamaChat(messages, { model: options.model });
   console.log(answer.content.trim());
   const decisions = retrieval.resolution?.decisions?.length ?? 0;
@@ -138,7 +139,8 @@ async function commandAsk(args) {
   const overlapSummary = overlap?.overlapping_pair_count
     ? `; overlap ${overlap.overlapping_pair_count} pair(s)/${overlap.distinct_detail_pair_count} with delta`
     : "";
-  console.error(`\n[Velvet Signal: ${retrieval.mode}; ${retrieval.results.length} claim(s) retrieved: ${retrieval.results.map((item) => `${item.patch_id}/${item.claim_id}`).join(", ") || "none"}; ${decisions} relationship decision(s)${intentSummary}${evidenceSummary}${answerabilitySummary}${overlapSummary}]`);
+  const packingSummary = `; context ${packed.diagnostics.used_chars}/${packed.diagnostics.budget_chars} chars (~${packed.diagnostics.approximate_tokens} tokens), optional omitted=${packed.diagnostics.omitted_optional_count}${packed.diagnostics.hard_minimum_exceeded ? ", hard minimum exceeded" : ""}`;
+  console.error(`\n[Velvet Signal: ${retrieval.mode}; ${retrieval.results.length} claim(s) retrieved: ${retrieval.results.map((item) => `${item.patch_id}/${item.claim_id}`).join(", ") || "none"}; ${decisions} relationship decision(s)${intentSummary}${evidenceSummary}${answerabilitySummary}${overlapSummary}${packingSummary}]`);
 }
 
 async function main() {
@@ -153,7 +155,8 @@ async function main() {
     "  release <patch-id>                 Explicitly release and store a patch locally",
     "  list                               List locally stored patches",
     "  inspect [--lexical] <question>     Show retrieved claims without calling a chat model",
-    "  ask --model <name> <question>      Retrieve context and ask a local Ollama model",
+    "  ask --model <name> [--context-budget <chars>] <question>",
+    "                                     Retrieve compact current context and ask a local Ollama model",
     "",
     "Environment: VELVET_PUBLIC_URL, VELVET_LOCAL_STORE, OLLAMA_HOST, OLLAMA_MODEL, VELVET_EMBED_MODEL",
   ].join("\n"));
