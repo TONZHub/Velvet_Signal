@@ -205,10 +205,14 @@ export function buildBudgetedContext(retrieval, options = {}) {
   const omitted = [];
 
   for (const candidate of candidates) {
+    if (mandatoryChars > budgetChars) {
+      omitted.push(candidate);
+      continue;
+    }
     const section = sections.get(candidate.section);
     section.lines.push(candidate.line);
     const proposed = renderSections(SECTION_ORDER, sections);
-    if (proposed.length <= budgetChars || mandatoryChars > budgetChars) {
+    if (proposed.length <= budgetChars) {
       included.push(candidate);
     } else {
       section.lines.pop();
@@ -226,7 +230,7 @@ export function buildBudgetedContext(retrieval, options = {}) {
       .join(",")} — use inspect for full diagnostics.`;
     sections.get("packing").lines.push(summary);
     const proposed = renderSections(SECTION_ORDER, sections);
-    if (proposed.length > budgetChars && mandatoryChars <= budgetChars) {
+    if (proposed.length > budgetChars || mandatoryChars > budgetChars) {
       sections.get("packing").lines.pop();
     }
   }
