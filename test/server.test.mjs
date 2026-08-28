@@ -26,6 +26,9 @@ test("serves the six-desk newsstand with security headers and first-class projec
     assert.match(html, /Updates since last visit/);
     assert.match(html, /velvet-signal\.visit\.v1/);
     assert.match(html, /data-show-updates/);
+    assert.match(html, /Related, not repeated/);
+    assert.match(html, /Why both matter/);
+    assert.match(html, /relatedEditionDetails/);
     assert.match(html, /href="\/install">Install</);
     assert.match(html, /href="\/benchmark">VS-Bench</);
     assert.match(html, /Install on your laptop/);
