@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
+import { GUIDE_ISSUES } from "./guide-issues.mjs";
 import { LAUNCH_ISSUES } from "./launch-issues.mjs";
 
 const generatedIssuesPath = fileURLToPath(
@@ -86,7 +87,7 @@ export async function listIssues() {
     generated_at: generated.generated_at,
     scout_desks: PUBLIC_SCOUT_DESKS,
     private_desks: ["your-people"],
-    issues: [...live, ...LAUNCH_ISSUES],
+    issues: [...GUIDE_ISSUES, ...live, ...LAUNCH_ISSUES],
   };
 }
 
