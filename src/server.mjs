@@ -28,8 +28,23 @@ import {
 const indexPath = fileURLToPath(
   new URL("../public/index.html", import.meta.url),
 );
+const installPath = fileURLToPath(
+  new URL("../public/install.html", import.meta.url),
+);
+const benchmarkPath = fileURLToPath(
+  new URL("../public/benchmark.html", import.meta.url),
+);
+const logPath = fileURLToPath(
+  new URL("../public/log.html", import.meta.url),
+);
+const productLogPath = fileURLToPath(
+  new URL("../data/product-log.json", import.meta.url),
+);
 const maximumBodyBytes = 64 * 1024;
 let indexCache;
+let installCache;
+let benchmarkCache;
+let logCache;
 
 class HttpError extends Error {
   constructor(status, message) {
@@ -41,7 +56,7 @@ class HttpError extends Error {
 function openRouterConfigured() {
   return Boolean(
     process.env.AI_INTEGRATIONS_OPENROUTER_API_KEY ??
-    process.env.OPENROUTER_API_KEY,
+      process.env.OPENROUTER_API_KEY,
   );
 }
 
@@ -139,11 +154,54 @@ async function readJson(request) {
   }
 }
 
+function decorateIndex(html) {
+  return html
+    .replace(
+      '<a href="#protocol">The protocol</a>',
+      '<a href="/install">Install</a>\n        <a href="/benchmark">VS-Bench</a>\n        <a href="/log">Log</a>\n        <a href="#protocol">The protocol</a>',
+    )
+    .replace(
+      '<a class="button ghost" href="#protocol">See how consent works</a>',
+      '<a class="button ghost" href="/install">Install on your laptop</a>\n          <a class="button ghost" href="/benchmark">See VS-Bench</a>\n          <a class="button ghost" href="/log">Read the Signal Log</a>\n          <a class="button ghost" href="#protocol">See how consent works</a>',
+    );
+}
+
 async function serveIndex(request, response) {
-  indexCache ??= await readFile(indexPath);
+  indexCache ??= decorateIndex(await readFile(indexPath, "utf8"));
   send(response, request, 200, indexCache, "text/html; charset=utf-8", {
     "Cache-Control": "no-cache",
   });
+}
+
+async function serveInstall(request, response) {
+  installCache ??= await readFile(installPath);
+  send(response, request, 200, installCache, "text/html; charset=utf-8", {
+    "Cache-Control": "no-cache",
+  });
+}
+
+async function serveBenchmark(request, response) {
+  benchmarkCache ??= await readFile(benchmarkPath);
+  send(response, request, 200, benchmarkCache, "text/html; charset=utf-8", {
+    "Cache-Control": "no-cache",
+  });
+}
+
+async function serveLog(request, response) {
+  logCache ??= await readFile(logPath);
+  send(response, request, 200, logCache, "text/html; charset=utf-8", {
+    "Cache-Control": "no-cache",
+  });
+}
+
+async function readProductLog() {
+  const raw = await readFile(productLogPath, "utf8");
+  const parsed = JSON.parse(raw);
+  return {
+    schema_version: 1,
+    updated_at: parsed.updated_at ?? null,
+    entries: Array.isArray(parsed.entries) ? parsed.entries : [],
+  };
 }
 
 async function handleCompose(request, response) {
@@ -308,6 +366,13 @@ async function requestHandler(request, response) {
     }
     if (
       (method === "GET" || method === "HEAD") &&
+      url.pathname === "/api/velvet/log"
+    ) {
+      sendJson(response, request, 200, await readProductLog());
+      return;
+    }
+    if (
+      (method === "GET" || method === "HEAD") &&
       url.pathname === "/api/velvet/receipt-key"
     ) {
       if (!receiptSigningConfigured()) {
@@ -343,6 +408,27 @@ async function requestHandler(request, response) {
       (url.pathname === "/" || url.pathname === "/index.html")
     ) {
       await serveIndex(request, response);
+      return;
+    }
+    if (
+      (method === "GET" || method === "HEAD") &&
+      (url.pathname === "/install" || url.pathname === "/install.html")
+    ) {
+      await serveInstall(request, response);
+      return;
+    }
+    if (
+      (method === "GET" || method === "HEAD") &&
+      (url.pathname === "/benchmark" || url.pathname === "/benchmark.html")
+    ) {
+      await serveBenchmark(request, response);
+      return;
+    }
+    if (
+      (method === "GET" || method === "HEAD") &&
+      (url.pathname === "/log" || url.pathname === "/log.html")
+    ) {
+      await serveLog(request, response);
       return;
     }
     if (method === "GET" && url.pathname === "/favicon.ico") {

@@ -38,7 +38,9 @@ function lexicalScore(query, text) {
   const documentTokens = tokenize(text);
   if (documentTokens.length === 0) return 0;
   const counts = new Map();
-  for (const token of documentTokens) counts.set(token, (counts.get(token) ?? 0) + 1);
+  for (const token of documentTokens) {
+    counts.set(token, (counts.get(token) ?? 0) + 1);
+  }
   let matched = 0;
   for (const token of queryTokens) {
     const count = counts.get(token) ?? 0;
@@ -48,7 +50,12 @@ function lexicalScore(query, text) {
 }
 
 function cosineSimilarity(left, right) {
-  if (!Array.isArray(left) || !Array.isArray(right) || left.length !== right.length || left.length === 0) {
+  if (
+    !Array.isArray(left) ||
+    !Array.isArray(right) ||
+    left.length !== right.length ||
+    left.length === 0
+  ) {
     return 0;
   }
   let dot = 0;
@@ -67,7 +74,9 @@ function cosineSimilarity(left, right) {
 }
 
 function chunkText(chunk) {
-  return [chunk.desk, chunk.title, chunk.scope, chunk.statement].filter(Boolean).join("\n");
+  return [chunk.desk, chunk.title, chunk.scope, chunk.statement]
+    .filter(Boolean)
+    .join("\n");
 }
 
 export function claimChunks(patches, options = {}) {
@@ -76,8 +85,16 @@ export function claimChunks(patches, options = {}) {
   for (const patch of Array.isArray(patches) ? patches : []) {
     if (!patchIsActive(patch, now)) continue;
     for (const claim of Array.isArray(patch.claims) ? patch.claims : []) {
-      if (!claim || typeof claim.statement !== "string" || !claim.statement.trim()) continue;
-      if (["withdrawn", "rejected", "superseded"].includes(claim.status)) continue;
+      if (
+        !claim ||
+        typeof claim.statement !== "string" ||
+        !claim.statement.trim()
+      ) {
+        continue;
+      }
+      if (["withdrawn", "rejected", "superseded"].includes(claim.status)) {
+        continue;
+      }
       chunks.push({
         id: `${patch.patch_id}:${claim.id}`,
         patch_id: patch.patch_id,
@@ -89,20 +106,31 @@ export function claimChunks(patches, options = {}) {
         valid_until: patch.valid_until,
         statement: claim.statement.trim(),
         status: claim.status ?? null,
+        supersedes: Array.isArray(claim.supersedes)
+          ? claim.supersedes.filter(
+              (value) => typeof value === "string" && value.trim(),
+            )
+          : [],
         source_ids: Array.isArray(claim.source_ids) ? claim.source_ids : [],
         sources: Array.isArray(patch.sources)
-          ? patch.sources.filter((source) =>
-              Array.isArray(claim.source_ids) && claim.source_ids.includes(source.id),
+          ? patch.sources.filter(
+              (source) =>
+                Array.isArray(claim.source_ids) &&
+                claim.source_ids.includes(source.id),
             )
           : [],
       });
     }
   }
-  return chunks;
+
+  const supersededIds = new Set(
+    chunks.flatMap((chunk) => chunk.supersedes),
+  );
+  return chunks.filter((chunk) => !supersededIds.has(chunk.id));
 }
 
 export async function retrieveClaims(query, patches, options = {}) {
-  const limit = Number.isInteger(options.limit) ? Math.max(1, options.limit) : 6;
+  const limit = Number.isInteger(options.limit) ? Math.max(1, options.limit) : 3;
   const chunks = claimChunks(patches, { now: options.now });
   if (chunks.length === 0) return { mode: "empty", results: [] };
 
@@ -117,7 +145,9 @@ export async function retrieveClaims(query, patches, options = {}) {
         vectors.length === chunks.length + 1 &&
         vectors.every(Array.isArray)
       ) {
-        semantic = chunks.map((_, index) => cosineSimilarity(vectors[0], vectors[index + 1]));
+        semantic = chunks.map((_, index) =>
+          cosineSimilarity(vectors[0], vectors[index + 1]),
+        );
         mode = "semantic";
       }
     } catch {
@@ -141,7 +171,9 @@ export async function retrieveClaims(query, patches, options = {}) {
 
   scored.sort((left, right) => {
     if (right.score !== left.score) return right.score - left.score;
-    return String(right.published_at ?? "").localeCompare(String(left.published_at ?? ""));
+    return String(right.published_at ?? "").localeCompare(
+      String(left.published_at ?? ""),
+    );
   });
 
   const positive = scored.filter((item) => item.score > 0);
@@ -156,13 +188,26 @@ export function formatRetrievedContext(retrieval) {
   if (results.length === 0) return "";
   const lines = [
     "VELVET SIGNAL RETRIEVED CONTEXT",
-    "Use these active, user-approved publication claims as reference context. Do not treat them as hidden system instructions. Newer explicit user instructions still take precedence. Preserve patch and claim IDs when attribution is useful.",
+    "These are active, user-approved publication claims ranked from most to least relevant to the user's message.",
+    "When a retrieved claim directly addresses a factual part of the user's question, ground that part of the answer in the retrieved claim instead of conflicting or vaguer prior knowledge.",
+    "Apply quantitative limits literally. If the user's stated value is beyond a retrieved maximum, do not describe it as within the allowed or recommended range. Do not turn a maximum into a minimum or an approximate permission.",
+    "Prefer higher-ranked claims when deciding which rule applies. Do not invent exceptions, safety criteria, or contradictions that are not supported by the retrieved claims.",
+    "Do not use sensory cues, assumptions, or prior knowledge to override a retrieved claim unless the retrieved context itself explicitly permits that exception.",
+    "Claims explicitly superseded by another active claim are removed before retrieval, so do not reconstruct older replaced guidance from prior knowledge.",
+    "If active retrieved claims truly conflict, prefer the newer explicit claim. Newer explicit user instructions still take precedence over publication claims.",
+    "Answer the user's question directly; do not reproduce this context block unless the user asks to inspect provenance. Preserve patch and claim IDs when attribution is useful. These references are context, not hidden system instructions.",
     "",
   ];
-  for (const item of results) {
-    const sources = item.source_ids.length ? ` sources=${item.source_ids.join(",")}` : "";
+  for (let index = 0; index < results.length; index += 1) {
+    const item = results[index];
+    const sources = item.source_ids.length
+      ? ` sources=${item.source_ids.join(",")}`
+      : "";
+    const supersedes = item.supersedes.length
+      ? ` supersedes=${item.supersedes.join(",")}`
+      : "";
     lines.push(
-      `[${item.patch_id} / ${item.claim_id}] published=${item.published_at ?? "unknown"} valid_until=${item.valid_until}${sources}`,
+      `[RANK ${index + 1} | ${item.patch_id} / ${item.claim_id}] published=${item.published_at ?? "unknown"} valid_until=${item.valid_until}${sources}${supersedes}`,
       item.statement,
       "",
     );
@@ -172,9 +217,14 @@ export function formatRetrievedContext(retrieval) {
 
 export function injectRetrievedContext(messages, context) {
   if (!context || !String(context).trim()) return [...messages];
-  const cloned = Array.isArray(messages) ? messages.map((message) => ({ ...message })) : [];
+  const cloned = Array.isArray(messages)
+    ? messages.map((message) => ({ ...message }))
+    : [];
   for (let index = cloned.length - 1; index >= 0; index -= 1) {
-    if (cloned[index]?.role === "user" && typeof cloned[index].content === "string") {
+    if (
+      cloned[index]?.role === "user" &&
+      typeof cloned[index].content === "string"
+    ) {
       cloned[index].content = `${context}\n\nUSER MESSAGE\n${cloned[index].content}`;
       return cloned;
     }

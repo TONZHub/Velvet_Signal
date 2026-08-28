@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#100a0e">
+  <meta name="description" content="Signal Log: a chronological record of meaningful Velvet Signal product, publication, infrastructure, and benchmark changes.">
+  <title>Signal Log — Velvet Signal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,500&family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#f7eeec;--muted:#bca9ad;--faint:#806f75;--black:#100a0e;--panel:#1a1117;--line:rgba(247,238,236,.12);--pink:#ff4f91;--pink-soft:#ff9fc4;--violet:#ae8cff;--mint:#88d9bc;--butter:#f6d572;--serif:"Bodoni Moda",Georgia,serif;--sans:"Manrope",Arial,sans-serif;--mono:"DM Mono",Consolas,monospace}
+    *{box-sizing:border-box}body{margin:0;color:var(--ink);font-family:var(--sans);line-height:1.55;background:radial-gradient(circle at 12% -8%,rgba(255,79,145,.14),transparent 32rem),radial-gradient(circle at 90% 7%,rgba(174,140,255,.13),transparent 32rem),var(--black)}a{color:inherit}.shell{width:min(1040px,calc(100% - 34px));margin:auto}.header{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);background:rgba(16,10,14,.86);backdrop-filter:blur(18px)}.header-in{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:10px;text-decoration:none}.mark{width:36px;height:36px;display:grid;place-items:center;border-radius:50%;color:#18070f;background:linear-gradient(135deg,var(--pink),var(--violet))}.brand strong{font-family:var(--serif);font-size:1rem;line-height:.9}.nav{display:flex;gap:8px;align-items:center}.nav a{padding:8px 10px;color:var(--muted);font-size:.78rem;text-decoration:none}.nav a:hover{color:var(--ink)}.button{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 16px;border:1px solid var(--line);border-radius:999px;text-decoration:none;font-size:.75rem;font-weight:700}
+    .hero{padding:94px 0 50px}.eyebrow{color:var(--pink-soft);font-family:var(--mono);font-size:.7rem;letter-spacing:.15em;text-transform:uppercase}.hero h1{max-width:850px;margin:14px 0 20px;font-family:var(--serif);font-size:clamp(3.5rem,9vw,7rem);font-weight:500;letter-spacing:-.06em;line-height:.84}.hero h1 em{color:var(--pink);font-weight:500}.hero p{max-width:760px;color:var(--muted);font-size:1rem}.hero-note{margin-top:24px;padding:14px 16px;border:1px solid var(--line);border-radius:15px;color:var(--muted);background:rgba(26,17,23,.62);font-size:.78rem}.hero-note strong{color:var(--ink)}
+    .toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.filters{display:flex;flex-wrap:wrap;gap:8px}.filter{appearance:none;padding:8px 11px;border:1px solid var(--line);border-radius:999px;color:var(--muted);background:transparent;font:600 .68rem var(--sans);cursor:pointer}.filter[aria-pressed="true"]{color:#18070f;background:var(--pink-soft);border-color:var(--pink-soft)}.count{color:var(--faint);font:400 .67rem var(--mono)}
+    .timeline{position:relative;padding:34px 0 100px}.timeline:before{content:"";position:absolute;left:114px;top:34px;bottom:100px;width:1px;background:var(--line)}.entry{display:grid;grid-template-columns:92px 1fr;gap:44px;position:relative;padding:0 0 34px}.entry:before{content:"";position:absolute;left:109px;top:10px;width:11px;height:11px;border-radius:50%;background:var(--pink);box-shadow:0 0 0 6px var(--black)}.date{padding-top:5px;color:var(--faint);font:400 .67rem var(--mono)}.card{padding:22px 24px;border:1px solid var(--line);border-radius:18px;background:rgba(26,17,23,.68)}.meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}.pill{padding:5px 8px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font:400 .58rem var(--mono);letter-spacing:.06em;text-transform:uppercase}.pill.status-released{color:var(--mint);border-color:rgba(136,217,188,.25)}.pill.status-observed{color:var(--butter);border-color:rgba(246,213,114,.25)}.pill.status-proposed{color:var(--violet);border-color:rgba(174,140,255,.25)}.card h2{margin:0 0 9px;font-family:var(--serif);font-size:clamp(1.55rem,3vw,2.2rem);font-weight:500;letter-spacing:-.025em;line-height:1.05}.card p{margin:0;color:var(--muted);font-size:.85rem}.refs{display:flex;flex-wrap:wrap;gap:7px;margin-top:15px}.ref{padding:5px 7px;border-radius:8px;color:#d7cafa;background:rgba(174,140,255,.07);font:400 .58rem var(--mono)}.empty{padding:60px 0;color:var(--muted);text-align:center}.footer{border-top:1px solid var(--line)}.footer-in{min-height:120px;display:flex;align-items:center;justify-content:space-between;gap:20px;color:var(--faint);font-size:.72rem}.footer-in em{max-width:570px;color:var(--muted);font-family:var(--serif);font-size:1.1rem}
+    @media(max-width:720px){.nav a:not(.button){display:none}.toolbar{align-items:flex-start;flex-direction:column}.timeline:before{left:8px}.entry{grid-template-columns:1fr;gap:8px;padding-left:30px}.entry:before{left:3px}.date{padding-top:0}.footer-in{align-items:flex-start;flex-direction:column;justify-content:center}}
+  </style>
+</head>
+<body>
+  <header class="header"><div class="shell header-in"><a class="brand" href="/"><span class="mark">⌁</span><strong>Velvet<br>Signal</strong></a><nav class="nav"><a href="/install">Install</a><a href="/benchmark">VS-Bench</a><a href="/#newsstand">Newsstand</a><a class="button" href="/">Home</a></nav></div></header>
+  <main>
+    <section class="shell hero"><div class="eyebrow">Product history · public record</div><h1>The <em>Signal Log.</em></h1><p>A chronological record of meaningful changes to Velvet Signal: publication behavior, local memory infrastructure, benchmark observations, and product releases.</p><div class="hero-note"><strong>Not a raw Git commit dump.</strong> The Signal Log records changes a reader, builder, or judge would reasonably care about. Implementation detail still lives in GitHub.</div></section>
+    <section class="shell"><div class="toolbar"><div class="filters" aria-label="Filter log"><button class="filter" data-kind="all" aria-pressed="true">All</button><button class="filter" data-kind="product" aria-pressed="false">Product</button><button class="filter" data-kind="infrastructure" aria-pressed="false">Infrastructure</button><button class="filter" data-kind="benchmark" aria-pressed="false">Benchmark</button><button class="filter" data-kind="publication" aria-pressed="false">Publication</button></div><div class="count" id="count">Loading log…</div></div><div class="timeline" id="timeline" aria-live="polite"><div class="empty">Loading Signal Log…</div></div></section>
+  </main>
+  <footer class="footer"><div class="shell footer-in"><em>“A memory patch should have a history as inspectable as the claim itself.”</em><div><a class="button" href="/benchmark">VS-Bench</a> <a class="button" href="/install">Install</a></div></div></footer>
+  <script>
+    const timeline = document.querySelector('#timeline');
+    const count = document.querySelector('#count');
+    const filters = [...document.querySelectorAll('.filter')];
+    let entries = [];
+    let selected = 'all';
+
+    function esc(value) {
+      return String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+    }
+
+    function render() {
+      const shown = selected === 'all' ? entries : entries.filter(entry => entry.kind === selected);
+      count.textContent = `${shown.length} ${shown.length === 1 ? 'entry' : 'entries'}`;
+      if (!shown.length) {
+        timeline.innerHTML = '<div class="empty">No entries in this category yet.</div>';
+        return;
+      }
+      timeline.innerHTML = shown.map(entry => `
+        <article class="entry">
+          <time class="date" datetime="${esc(entry.date)}">${esc(entry.date)}</time>
+          <div class="card">
+            <div class="meta"><span class="pill">${esc(entry.kind)}</span><span class="pill status-${esc(entry.status)}">${esc(entry.status)}</span></div>
+            <h2>${esc(entry.title)}</h2>
+            <p>${esc(entry.summary)}</p>
+            <div class="refs">${(entry.references || []).map(ref => `<span class="ref">${esc(ref)}</span>`).join('')}</div>
+          </div>
+        </article>`).join('');
+    }
+
+    filters.forEach(button => button.addEventListener('click', () => {
+      selected = button.dataset.kind;
+      filters.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+      render();
+    }));
+
+    fetch('/api/velvet/log')
+      .then(response => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.json();
+      })
+      .then(data => {
+        entries = Array.isArray(data.entries) ? data.entries : [];
+        render();
+      })
+      .catch(() => {
+        count.textContent = 'Unavailable';
+        timeline.innerHTML = '<div class="empty">The Signal Log could not be loaded.</div>';
+      });
+  </script>
+</body>
+</html>

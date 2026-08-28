@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#100a0e">
+  <meta name="description" content="Install Velvet Signal on a laptop and connect its local memory bridge to Ollama.">
+  <title>Install Velvet Signal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,500&family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:#f7eeec; --muted:#bca9ad; --faint:#806f75; --black:#100a0e;
+      --panel:#1a1117; --line:rgba(247,238,236,.12); --pink:#ff4f91;
+      --pink-soft:#ff9fc4; --violet:#ae8cff; --mint:#88d9bc; --butter:#f6d572;
+      --serif:"Bodoni Moda",Georgia,serif; --sans:"Manrope",Arial,sans-serif;
+      --mono:"DM Mono",Consolas,monospace;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;color:var(--ink);font-family:var(--sans);line-height:1.6;background:radial-gradient(circle at 12% -10%,rgba(255,79,145,.17),transparent 32rem),radial-gradient(circle at 92% 12%,rgba(174,140,255,.12),transparent 34rem),var(--black)}
+    a{color:inherit}.shell{width:min(1040px,calc(100% - 34px));margin-inline:auto}.site-header{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);background:rgba(16,10,14,.86);backdrop-filter:blur(18px)}.header-inner{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:10px;text-decoration:none}.mark{width:36px;height:36px;display:grid;place-items:center;border-radius:50%;color:#19080f;background:linear-gradient(135deg,var(--pink),var(--violet));font-size:1.05rem}.brand strong{font-family:var(--serif);font-size:1rem;line-height:.9}.nav{display:flex;gap:8px;align-items:center}.nav a{padding:8px 10px;color:var(--muted);font-size:.78rem;text-decoration:none}.nav a:hover{color:var(--ink)}
+    .hero{padding:92px 0 62px}.eyebrow{color:var(--pink-soft);font-family:var(--mono);font-size:.7rem;letter-spacing:.15em;text-transform:uppercase}.hero h1{max-width:840px;margin:16px 0 22px;font-family:var(--serif);font-size:clamp(3.3rem,9vw,7rem);font-weight:500;letter-spacing:-.06em;line-height:.84}.hero h1 em{color:var(--pink);font-weight:500}.hero p{max-width:700px;margin:0;color:var(--muted);font-size:clamp(1rem,1.6vw,1.18rem)}.hero-note{display:inline-flex;gap:9px;margin-top:28px;padding:10px 14px;border:1px solid rgba(136,217,188,.24);border-radius:999px;color:#afead5;background:rgba(136,217,188,.07);font-family:var(--mono);font-size:.66rem;letter-spacing:.05em}
+    .install-grid{display:grid;grid-template-columns:230px minmax(0,1fr);gap:52px;padding-bottom:110px}.toc{position:sticky;top:94px;align-self:start;padding:20px;border:1px solid var(--line);border-radius:18px;background:rgba(26,17,23,.72)}.toc strong{display:block;margin-bottom:10px;font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase}.toc a{display:block;padding:7px 0;color:var(--muted);font-size:.76rem;text-decoration:none}.toc a:hover{color:var(--pink-soft)}
+    .steps{display:grid;gap:22px}.step{padding:clamp(24px,4vw,38px);border:1px solid var(--line);border-radius:24px;background:rgba(26,17,23,.72)}.step-num{color:var(--pink-soft);font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase}.step h2{margin:8px 0 12px;font-family:var(--serif);font-size:clamp(2rem,4vw,3.15rem);font-weight:500;letter-spacing:-.04em;line-height:.95}.step p,.step li{color:var(--muted);font-size:.9rem}.step ul{padding-left:20px}.command{position:relative;margin:16px 0;padding:18px 50px 18px 18px;border:1px solid var(--line);border-radius:14px;color:#d7cafa;background:#0c080b;font-family:var(--mono);font-size:.75rem;line-height:1.7;white-space:pre-wrap;overflow-wrap:anywhere}.copy{position:absolute;right:10px;top:10px;padding:6px 8px;border:1px solid var(--line);border-radius:9px;color:var(--muted);background:rgba(255,255,255,.04);cursor:pointer;font-family:var(--mono);font-size:.58rem}.copy:hover{color:var(--ink)}.callout{margin-top:18px;padding:15px 16px;border-left:3px solid var(--butter);border-radius:0 12px 12px 0;background:rgba(246,213,114,.06);color:var(--muted);font-size:.8rem}.success{border-left-color:var(--mint);background:rgba(136,217,188,.06)}
+    .trouble{padding:64px 0 110px;border-top:1px solid var(--line)}.trouble h2{margin:10px 0 28px;font-family:var(--serif);font-size:clamp(2.6rem,6vw,4.8rem);font-weight:500;letter-spacing:-.045em;line-height:.9}.problem{padding:19px 0;border-top:1px solid var(--line)}.problem code{color:var(--pink-soft);font-family:var(--mono);font-size:.72rem}.problem p{margin:7px 0 0;color:var(--muted);font-size:.86rem}footer{border-top:1px solid var(--line)}.footer{min-height:120px;display:flex;align-items:center;justify-content:space-between;gap:24px;color:var(--faint);font-size:.72rem}.footer em{max-width:550px;color:var(--muted);font-family:var(--serif);font-size:1.15rem}.button{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 16px;border:1px solid var(--line);border-radius:999px;text-decoration:none;font-size:.75rem;font-weight:700}.button:hover{border-color:rgba(255,255,255,.28)}
+    @media(max-width:760px){.install-grid{grid-template-columns:1fr}.toc{position:static}.nav a:not(.button){display:none}.hero{padding-top:70px}.footer{align-items:flex-start;flex-direction:column;justify-content:center}}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="/"><span class="mark">⌁</span><strong>Velvet<br>Signal</strong></a>
+      <nav class="nav" aria-label="Install navigation"><a href="/#newsstand">Newsstand</a><a href="/#protocol">Protocol</a><a class="button" href="/">Back to Velvet Signal</a></nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="shell hero">
+      <div class="eyebrow">Local memory bridge · laptop setup</div>
+      <h1>Install Velvet Signal <em>locally.</em></h1>
+      <p>Give an Ollama model a durable, user-controlled shelf of approved context patches. The model itself does not need persistent memory: Velvet Signal stores the patches, retrieves what matters, and supplies the current claims at inference time.</p>
+      <div class="hero-note">● Your local questions stay with your configured Ollama server</div>
+    </section>
+
+    <div class="shell install-grid">
+      <aside class="toc">
+        <strong>Setup path</strong>
+        <a href="#requirements">1 · Install the tools</a>
+        <a href="#clone">2 · Download Velvet Signal</a>
+        <a href="#dependencies">3 · Install dependencies</a>
+        <a href="#ollama">4 · Prepare Ollama</a>
+        <a href="#release">5 · Release a patch</a>
+        <a href="#inspect">6 · Inspect retrieval</a>
+        <a href="#ask">7 · Ask your model</a>
+        <a href="#update">Updating later</a>
+        <a href="#troubleshooting">Windows fixes</a>
+      </aside>
+
+      <div class="steps">
+        <section class="step" id="requirements">
+          <div class="step-num">Step 01</div><h2>Install the three tools.</h2>
+          <p>You need Git, Node.js 22 or newer, and Ollama. Git downloads the project, Node runs Velvet Signal, and Ollama runs the local chat and embedding models.</p>
+          <ul><li>Git</li><li>Node.js 22+</li><li>Ollama</li></ul>
+          <p>On Windows, Node can be installed from PowerShell:</p>
+          <pre class="command">winget install OpenJS.NodeJS.LTS<button class="copy" type="button">copy</button></pre>
+          <p>Close and reopen PowerShell, then verify:</p>
+          <pre class="command">node -v
+npm.cmd -v
+git --version
+ollama --version<button class="copy" type="button">copy</button></pre>
+          <div class="callout">If PowerShell says <strong>npm.ps1 cannot be loaded because running scripts is disabled</strong>, nothing is wrong with Node. Use <code>npm.cmd</code> instead of <code>npm</code>. You do not need to loosen PowerShell security settings.</div>
+        </section>
+
+        <section class="step" id="clone">
+          <div class="step-num">Step 02</div><h2>Download Velvet Signal.</h2>
+          <p>Start from your own user folder—not System32—and clone the repository.</p>
+          <pre class="command">cd $HOME
+git clone https://github.com/TONZHub/Velvet_Signal.git
+cd Velvet_Signal<button class="copy" type="button">copy</button></pre>
+          <p>If you are testing a feature branch before it reaches main, switch to that branch only when the project documentation tells you to.</p>
+        </section>
+
+        <section class="step" id="dependencies">
+          <div class="step-num">Step 03</div><h2>Install the Node dependencies.</h2>
+          <p>Run this while your terminal is inside the <code>Velvet_Signal</code> folder.</p>
+          <pre class="command">npm.cmd install<button class="copy" type="button">copy</button></pre>
+          <div class="callout">macOS/Linux users can use <code>npm install</code>. If npm says it cannot find <code>package.json</code>, you are in the wrong folder. On Windows, run <code>cd $HOME\Velvet_Signal</code> first.</div>
+        </section>
+
+        <section class="step" id="ollama">
+          <div class="step-num">Step 04</div><h2>Prepare Ollama.</h2>
+          <p>Velvet Signal uses a small local embedding model to decide which claims are relevant. Then it can send the selected context to whichever Ollama chat model you choose.</p>
+          <pre class="command">ollama pull embeddinggemma
+ollama list<button class="copy" type="button">copy</button></pre>
+          <p>If you need a chat model, pull one. For example:</p>
+          <pre class="command">ollama pull dolphin3:8b<button class="copy" type="button">copy</button></pre>
+        </section>
+
+        <section class="step" id="release">
+          <div class="step-num">Step 05</div><h2>Release a patch into local memory.</h2>
+          <p>Velvet Signal does not silently write publication patches into your local ledger. You choose which patch enters it.</p>
+          <pre class="command">npm.cmd run local -- release pantry-003
+npm.cmd run local -- list<button class="copy" type="button">copy</button></pre>
+          <div class="callout success">Released patches live in <code>~/.velvet-signal/patches.json</code>, outside the repository. That ledger survives terminal, Ollama, code-update, and computer restarts.</div>
+        </section>
+
+        <section class="step" id="inspect">
+          <div class="step-num">Step 06</div><h2>See what Velvet Signal remembers.</h2>
+          <p>Inspect retrieval before asking a language model. This lets you separate a retrieval problem from a model reasoning problem.</p>
+          <pre class="command">npm.cmd run local -- inspect "I cooked chicken five days ago and kept it refrigerated. It smells fine. Can I eat it?"<button class="copy" type="button">copy</button></pre>
+          <p>You should see ranked claims with patch IDs, claim IDs, source IDs, validity dates, and semantic/lexical scores.</p>
+        </section>
+
+        <section class="step" id="ask">
+          <div class="step-num">Step 07</div><h2>Ask your local model.</h2>
+          <p>Replace the model name with anything shown by <code>ollama list</code>.</p>
+          <pre class="command">npm.cmd run local -- ask --model dolphin3:8b "I cooked chicken five days ago and kept it refrigerated. It smells fine. Can I eat it?"<button class="copy" type="button">copy</button></pre>
+          <p>Velvet Signal retrieves a small set of active claims, keeps their provenance attached, and supplies that context to the current user turn. The local model is free to reason over it; Velvet Signal does not rewrite model weights.</p>
+        </section>
+
+        <section class="step" id="update">
+          <div class="step-num">Later</div><h2>Update the code without erasing memory.</h2>
+          <pre class="command">cd $HOME\Velvet_Signal
+git pull
+npm.cmd install<button class="copy" type="button">copy</button></pre>
+          <p>Your patch ledger is stored outside the repository, so pulling new code does not delete previously released local patches.</p>
+        </section>
+      </div>
+    </div>
+
+    <section class="trouble" id="troubleshooting">
+      <div class="shell">
+        <div class="eyebrow">Windows troubleshooting</div><h2>The errors we already stepped on.</h2>
+        <div class="problem"><code>npm : The term 'npm' is not recognized</code><p>Install Node.js, close PowerShell completely, reopen it, then try <code>node -v</code> and <code>npm.cmd -v</code>.</p></div>
+        <div class="problem"><code>npm.ps1 cannot be loaded because running scripts is disabled</code><p>Use <code>npm.cmd</code>. No execution-policy change is required.</p></div>
+        <div class="problem"><code>EPERM ... C:\Windows\System32\package-lock.json</code><p>You are running npm from System32. Do not run as Administrator to force it. Run <code>cd $HOME\Velvet_Signal</code> and try again.</p></div>
+        <div class="problem"><code>ENOENT ... C:\Users\you\package.json</code><p>You are in your home folder instead of the repository. Run <code>cd $HOME\Velvet_Signal</code>.</p></div>
+        <div class="problem"><code>Ollama cannot find the model</code><p>Run <code>ollama list</code>, then <code>ollama pull &lt;model-name&gt;</code> for the chat or embedding model you want.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="shell footer"><em>“The model can forget. Velvet Signal can still remember the approved update.”</em><a class="button" href="/">Return to the newsstand</a></div></footer>
+  <script>
+    document.querySelectorAll('.copy').forEach(button => button.addEventListener('click', async () => {
+      const text = button.parentElement.textContent.replace(/copy\s*$/i, '').trim();
+      try { await navigator.clipboard.writeText(text); button.textContent = 'copied'; setTimeout(() => button.textContent = 'copy', 1400); }
+      catch { button.textContent = 'select'; }
+    }));
+  </script>
+</body>
+</html>

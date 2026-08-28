@@ -76,7 +76,7 @@ async function retrieve(question, options) {
     ? undefined
     : (input) => ollamaEmbed(input, { model: options.embedModel });
   return retrieveClaims(question, patches, {
-    limit: Number.isInteger(options.limit) ? options.limit : 6,
+    limit: Number.isInteger(options.limit) ? options.limit : 3,
     embed,
   });
 }

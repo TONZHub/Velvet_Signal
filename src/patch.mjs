@@ -18,6 +18,14 @@ function sourceIdsForClaim(issue, claim) {
   return source ? [sourceIdFor(issue, source, index)] : [];
 }
 
+function supersedesForClaim(claim) {
+  return Array.isArray(claim.supersedes)
+    ? claim.supersedes.filter(
+        (value) => typeof value === "string" && value.trim(),
+      )
+    : [];
+}
+
 export function patchForIssue(issue, options = {}) {
   const deliveryStatus = options.deliveryStatus ?? "locked";
   const approved = deliveryStatus === "delivered";
@@ -63,6 +71,9 @@ export function patchForIssue(issue, options = {}) {
       statement: claim.claim,
       status: claim.status,
       source_ids: sourceIdsForClaim(issue, claim),
+      ...(supersedesForClaim(claim).length
+        ? { supersedes: supersedesForClaim(claim) }
+        : {}),
     })),
     tone_notes: issue.toneNotes,
     sources,
