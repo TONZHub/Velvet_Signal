@@ -3,9 +3,9 @@ import { homedir } from "node:os";
 import { dirname, join } from "node:path";
 import { injectRetrievedContext, patchIsActive } from "./rag.mjs";
 import {
-  formatAnswerabilityContext,
-  retrieveAnswerableClaims,
-} from "./answerability-rag.mjs";
+  formatDeltaAwareContext,
+  retrieveDeltaAwareClaims,
+} from "./claim-delta-rag.mjs";
 import { ollamaChat, ollamaEmbed } from "./ollama.mjs";
 
 const DEFAULT_PUBLIC_URL = "https://velvetsignal.lol";
@@ -79,7 +79,7 @@ async function retrieve(question, options) {
   const embed = options.lexicalOnly
     ? undefined
     : (input) => ollamaEmbed(input, { model: options.embedModel });
-  return retrieveAnswerableClaims(question, patches, {
+  return retrieveDeltaAwareClaims(question, patches, {
     limit: Number.isInteger(options.limit) ? options.limit : 3,
     embed,
   });
@@ -116,7 +116,7 @@ async function commandAsk(args) {
   const question = values.join(" ").trim();
   if (!question) throw new Error("Usage: npm run local -- ask --model <ollama-model> <question>");
   const retrieval = await retrieve(question, options);
-  const context = formatAnswerabilityContext(retrieval);
+  const context = formatDeltaAwareContext(retrieval);
   const messages = injectRetrievedContext([{ role: "user", content: question }], context);
   const answer = await ollamaChat(messages, { model: options.model });
   console.log(answer.content.trim());
@@ -134,7 +134,11 @@ async function commandAsk(args) {
   const answerabilitySummary = answerability
     ? `; answerability ${answerability.status}`
     : "";
-  console.error(`\n[Velvet Signal: ${retrieval.mode}; ${retrieval.results.length} claim(s) retrieved: ${retrieval.results.map((item) => `${item.patch_id}/${item.claim_id}`).join(", ") || "none"}; ${decisions} relationship decision(s)${intentSummary}${evidenceSummary}${answerabilitySummary}]`);
+  const overlap = retrieval.selection?.content_overlap;
+  const overlapSummary = overlap?.overlapping_pair_count
+    ? `; overlap ${overlap.overlapping_pair_count} pair(s)/${overlap.distinct_detail_pair_count} with delta`
+    : "";
+  console.error(`\n[Velvet Signal: ${retrieval.mode}; ${retrieval.results.length} claim(s) retrieved: ${retrieval.results.map((item) => `${item.patch_id}/${item.claim_id}`).join(", ") || "none"}; ${decisions} relationship decision(s)${intentSummary}${evidenceSummary}${answerabilitySummary}${overlapSummary}]`);
 }
 
 async function main() {
