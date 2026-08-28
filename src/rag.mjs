@@ -12,6 +12,9 @@ const DEFAULT_STOP_WORDS = new Set([
   "why", "will", "with", "would", "you", "your",
 ]);
 
+const DEFAULT_DIVERSITY_LAMBDA = 0.72;
+const RELATIONSHIP_COMPANION_BONUS = 0.12;
+
 function endOfUtcDay(date) {
   const parsed = Date.parse(`${date}T23:59:59.999Z`);
   return Number.isFinite(parsed) ? parsed : Number.NaN;
@@ -88,6 +91,23 @@ function cosineSimilarity(left, right) {
   return dot / (Math.sqrt(leftNorm) * Math.sqrt(rightNorm));
 }
 
+function tokenJaccard(left, right) {
+  const leftTokens = new Set(tokenize(left));
+  const rightTokens = new Set(tokenize(right));
+  if (leftTokens.size === 0 || rightTokens.size === 0) return 0;
+  let intersection = 0;
+  for (const token of leftTokens) {
+    if (rightTokens.has(token)) intersection += 1;
+  }
+  const union = leftTokens.size + rightTokens.size - intersection;
+  return union > 0 ? intersection / union : 0;
+}
+
+function clampUnit(value) {
+  if (!Number.isFinite(value)) return 0;
+  return Math.max(0, Math.min(1, value));
+}
+
 function chunkText(chunk) {
   return [
     chunk.desk,
@@ -98,6 +118,132 @@ function chunkText(chunk) {
   ]
     .filter(Boolean)
     .join("\n");
+}
+
+function relationshipCompanionType(left, right) {
+  const companionTypes = new Set(["narrows", "confirms"]);
+  for (const relationship of Array.isArray(left.relationships)
+    ? left.relationships
+    : []) {
+    if (
+      companionTypes.has(relationship.type) &&
+      relationship.target_id === right.id
+    ) {
+      return relationship.type;
+    }
+  }
+  for (const relationship of Array.isArray(right.relationships)
+    ? right.relationships
+    : []) {
+    if (
+      companionTypes.has(relationship.type) &&
+      relationship.target_id === left.id
+    ) {
+      return relationship.type;
+    }
+  }
+  return null;
+}
+
+function candidateSimilarity(left, right, vectorsById) {
+  const lexical = tokenJaccard(left.statement, right.statement);
+  const leftVector = vectorsById?.get(left.id);
+  const rightVector = vectorsById?.get(right.id);
+  if (!leftVector || !rightVector) return lexical;
+  return Math.max(
+    lexical,
+    clampUnit(cosineSimilarity(leftVector, rightVector)),
+  );
+}
+
+function compareSelectionCandidates(left, right) {
+  if (right.selection_score !== left.selection_score) {
+    return right.selection_score - left.selection_score;
+  }
+  if (right.item.score !== left.item.score) return right.item.score - left.item.score;
+  const recency = String(right.item.published_at ?? "").localeCompare(
+    String(left.item.published_at ?? ""),
+  );
+  if (recency !== 0) return recency;
+  return left.index - right.index;
+}
+
+function selectDiverseResults(candidates, limit, options = {}) {
+  const requestedLimit = Math.max(1, limit);
+  const pool = Array.isArray(candidates) ? candidates : [];
+  const lambda = Number.isFinite(options.lambda)
+    ? Math.max(0.5, Math.min(1, Number(options.lambda)))
+    : DEFAULT_DIVERSITY_LAMBDA;
+  if (pool.length === 0) {
+    return {
+      results: [],
+      strategy: "relevance",
+      lambda,
+    };
+  }
+
+  const topScore = Math.max(0, ...pool.map((item) => Number(item.score) || 0));
+  const selected = [];
+  const remaining = pool.map((item, index) => ({ item, index }));
+  const useDiversity = pool.length > requestedLimit && topScore > 0;
+
+  while (remaining.length > 0 && selected.length < requestedLimit) {
+    const scored = remaining.map(({ item, index }) => {
+      const relevance = topScore > 0 ? clampUnit(item.score / topScore) : 0;
+      let redundancy = 0;
+      let companionType = null;
+      for (const chosen of selected) {
+        const relationship = relationshipCompanionType(item, chosen);
+        if (relationship && !companionType) companionType = relationship;
+        if (!relationship && useDiversity) {
+          redundancy = Math.max(
+            redundancy,
+            candidateSimilarity(item, chosen, options.vectorsById),
+          );
+        }
+      }
+      const companionBonus = companionType && useDiversity
+        ? RELATIONSHIP_COMPANION_BONUS
+        : 0;
+      const selectionScore = selected.length === 0 || !useDiversity
+        ? relevance + companionBonus
+        : lambda * relevance - (1 - lambda) * redundancy + companionBonus;
+      return {
+        item,
+        index,
+        relevance,
+        redundancy,
+        companionType,
+        selection_score: selectionScore,
+      };
+    });
+
+    scored.sort(compareSelectionCandidates);
+    const winner = scored[0];
+    selected.push({
+      ...winner.item,
+      selection_score: winner.selection_score,
+      redundancy_penalty: winner.redundancy,
+      selection_reason:
+        selected.length === 0
+          ? "top-relevance"
+          : winner.companionType
+            ? `relationship-companion:${winner.companionType}`
+            : winner.redundancy >= 0.35
+              ? "relevance-with-diversity-penalty"
+              : "relevance-and-coverage",
+    });
+    const winnerIndex = remaining.findIndex(
+      (candidate) => candidate.index === winner.index,
+    );
+    remaining.splice(winnerIndex, 1);
+  }
+
+  return {
+    results: selected,
+    strategy: useDiversity ? "maximal-marginal-relevance" : "relevance",
+    lambda,
+  };
 }
 
 function claimRecords(patches, options = {}) {
@@ -349,6 +495,7 @@ export async function retrieveClaims(query, patches, options = {}) {
   );
   let semantic = null;
   let tombstoneSemantic = null;
+  let chunkVectors = null;
   let mode = "lexical";
   if (typeof options.embed === "function") {
     try {
@@ -362,6 +509,7 @@ export async function retrieveClaims(query, patches, options = {}) {
         vectors.length === chunks.length + tombstones.length + 1 &&
         vectors.every(Array.isArray)
       ) {
+        chunkVectors = vectors.slice(1, chunks.length + 1);
         semantic = chunks.map((_, index) =>
           cosineSimilarity(vectors[0], vectors[index + 1]),
         );
@@ -417,9 +565,21 @@ export async function retrieveClaims(query, patches, options = {}) {
     .sort((left, right) => right.score - left.score);
   const positive = scored.filter((item) => item.score > 0);
   const relationshipOnly = positive.length === 0 && scoredTombstones.length > 0;
-  const results = relationshipOnly
-    ? []
-    : (positive.length > 0 ? positive : scored).slice(0, limit);
+  const candidatePool = positive.length > 0 ? positive : scored;
+  const vectorsById = chunkVectors
+    ? new Map(chunks.map((chunk, index) => [chunk.id, chunkVectors[index]]))
+    : null;
+  const selection = relationshipOnly
+    ? {
+        results: [],
+        strategy: "relationship-only",
+        lambda: DEFAULT_DIVERSITY_LAMBDA,
+      }
+    : selectDiverseResults(candidatePool, limit, {
+        vectorsById,
+        lambda: options.diversityLambda,
+      });
+  const results = selection.results;
   const resultIds = new Set(results.map((result) => result.id));
   const relevantDecisions = resolution.decisions.filter(
     (decision) =>
@@ -436,6 +596,11 @@ export async function retrieveClaims(query, patches, options = {}) {
   return {
     mode: relationshipOnly ? `${mode}-relationship-only` : mode,
     results,
+    selection: {
+      strategy: selection.strategy,
+      diversity_lambda: selection.lambda,
+      candidates_considered: relationshipOnly ? 0 : candidatePool.length,
+    },
     resolution: {
       decisions: relevantDecisions,
       history: resolution.history.filter((item) =>
@@ -458,7 +623,7 @@ export function formatRetrievedContext(retrieval) {
   const lines = [
     "VELVET SIGNAL RETRIEVED CONTEXT",
     results.length
-      ? "These are active, user-approved publication claims ranked from most to least relevant to the user's message."
+      ? "These are active, user-approved publication claims selected for relevance and useful coverage of the user's message."
       : "No active publication claim remains for the matched historical relationship. Treat this as an update gap: do not reconstruct either historical statement as current context.",
     "When a retrieved claim directly addresses a factual part of the user's question, ground that part of the answer in the retrieved claim instead of conflicting or vaguer prior knowledge.",
     "Apply quantitative limits literally. If the user's stated value is beyond a retrieved maximum, do not describe it as within the allowed or recommended range. Do not turn a maximum into a minimum or an approximate permission.",
