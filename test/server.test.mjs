@@ -34,6 +34,8 @@ test("serves the six-desk newsstand with security headers and first-class projec
     assert.match(html, /href="\/benchmark">VS-Bench</);
     assert.match(html, /Install on your laptop/);
     assert.match(html, /See VS-Bench/);
+    assert.match(html, /href="https:\/\/ko-fi\.com\/mosslet"/);
+    assert.match(html, /Support Velvet Signal on Ko-fi/);
   });
 });
 
