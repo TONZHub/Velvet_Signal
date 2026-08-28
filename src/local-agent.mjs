@@ -65,13 +65,13 @@ function parseOptions(argv) {
   return { values, options };
 }
 
-async function activePatches() {
+async function releasedPatches() {
   const store = await readStore();
-  return store.releases.map((entry) => entry.patch).filter((patch) => patchIsActive(patch));
+  return store.releases.map((entry) => entry.patch);
 }
 
 async function retrieve(question, options) {
-  const patches = await activePatches();
+  const patches = await releasedPatches();
   const embed = options.lexicalOnly
     ? undefined
     : (input) => ollamaEmbed(input, { model: options.embedModel });
@@ -116,7 +116,8 @@ async function commandAsk(args) {
   const messages = injectRetrievedContext([{ role: "user", content: question }], context);
   const answer = await ollamaChat(messages, { model: options.model });
   console.log(answer.content.trim());
-  console.error(`\n[Velvet Signal: ${retrieval.mode}; ${retrieval.results.length} claim(s) retrieved: ${retrieval.results.map((item) => `${item.patch_id}/${item.claim_id}`).join(", ") || "none"}]`);
+  const decisions = retrieval.resolution?.decisions?.length ?? 0;
+  console.error(`\n[Velvet Signal: ${retrieval.mode}; ${retrieval.results.length} claim(s) retrieved: ${retrieval.results.map((item) => `${item.patch_id}/${item.claim_id}`).join(", ") || "none"}; ${decisions} relationship decision(s)]`);
 }
 
 async function main() {

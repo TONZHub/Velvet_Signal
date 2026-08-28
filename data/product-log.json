@@ -1,7 +1,16 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-08-28T20:57:30.000Z",
+  "updated_at": "2026-08-28T22:00:46.000Z",
   "entries": [
+    {
+      "id": "2026-08-28-relationship-aware-rag",
+      "date": "2026-08-28",
+      "kind": "infrastructure",
+      "title": "Claim relationships gained typed, inspectable resolution",
+      "summary": "The editor can propose exact replaces, narrows, confirms, or conflicts links against known prior claims. The server validates those targets, human release remains mandatory, and local retrieval resolves the approved links deterministically while retaining displaced claims in audit history.",
+      "status": "released",
+      "references": ["VS-Bench", "replaces", "narrows", "confirms", "conflicts"]
+    },
     {
       "id": "2026-08-28-install-bench-supersession",
       "date": "2026-08-28",

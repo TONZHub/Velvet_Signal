@@ -1,3 +1,5 @@
+import { normalizeClaimRelationships } from "./claim-relations.mjs";
+
 function sourceIdFor(issue, source, index) {
   if (typeof source.id === "string" && source.id.trim()) return source.id.trim();
   const prefix = issue.id
@@ -18,14 +20,6 @@ function sourceIdsForClaim(issue, claim) {
   return source ? [sourceIdFor(issue, source, index)] : [];
 }
 
-function supersedesForClaim(claim) {
-  return Array.isArray(claim.supersedes)
-    ? claim.supersedes.filter(
-        (value) => typeof value === "string" && value.trim(),
-      )
-    : [];
-}
-
 export function patchForIssue(issue, options = {}) {
   const deliveryStatus = options.deliveryStatus ?? "locked";
   const approved = deliveryStatus === "delivered";
@@ -43,7 +37,7 @@ export function patchForIssue(issue, options = {}) {
     issue: issue.issue,
     title: issue.title,
     version: issue.version ?? "1.0.0",
-    published_at: (issue.publishedAt ?? "2026-08-27").slice(0, 10),
+    published_at: issue.publishedAt ?? "2026-08-27",
     valid_until: issue.expires,
     scope: issue.scope,
     precedence: "Newer explicit user instructions override this patch.",
@@ -66,15 +60,20 @@ export function patchForIssue(issue, options = {}) {
           },
         }
       : {}),
-    claims: issue.claims.map((claim) => ({
-      id: claim.id,
-      statement: claim.claim,
-      status: claim.status,
-      source_ids: sourceIdsForClaim(issue, claim),
-      ...(supersedesForClaim(claim).length
-        ? { supersedes: supersedesForClaim(claim) }
-        : {}),
-    })),
+    claims: issue.claims.map((claim) => {
+      const relationships = normalizeClaimRelationships(claim);
+      const supersedes = relationships
+        .filter((relationship) => relationship.type === "replaces")
+        .map((relationship) => relationship.target_id);
+      return {
+        id: claim.id,
+        statement: claim.claim,
+        status: claim.status,
+        source_ids: sourceIdsForClaim(issue, claim),
+        ...(relationships.length ? { relationships } : {}),
+        ...(supersedes.length ? { supersedes } : {}),
+      };
+    }),
     tone_notes: issue.toneNotes,
     sources,
     handling: {

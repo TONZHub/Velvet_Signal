@@ -25,6 +25,8 @@ The repository workflow `.github/workflows/refresh-editions.yml` runs at minute 
 
 Each run searches all five public desks on Render. It calls GLM only when the source fingerprint changed, retries one empty or invalid GLM completion, returns the resulting catalog to the workflow, and commits `data/generated-issues.json`. Pantry and Wellbeing stay restricted to official domains while widening their time window when a narrow search has no usable packets. Render then deploys the durable catalog from Git. Your People is intentionally absent from this workflow.
 
+Before composing a changed desk, the scout supplies up to 24 fully qualified prior claim references from that same desk. They are relationship targets only, never factual sources. The editor may propose a typed relationship when the new source packets independently establish one; the server rejects unknown targets, and an empty relationship list is the required answer when two claims merely share a topic.
+
 ## Run locally
 
 Requires Node.js 22 or newer.
@@ -46,6 +48,19 @@ npm test
 Velvet Signal can act as an external memory layer for an Ollama model. The model itself does not need persistent memory: explicitly released patches are stored on the user's machine, relevant claim-level chunks are retrieved for each question, and only those active claims are injected into the current user turn.
 
 The bridge uses Ollama's local `/api/embed` endpoint for semantic retrieval and `/api/chat` for generation. If the embedding model is unavailable, retrieval falls back to deterministic lexical scoring rather than sending the query to a cloud service.
+
+### Relationship-aware resolution
+
+Released claims can carry explicit links to exact older claim IDs:
+
+| Relationship | Active-context behavior |
+| --- | --- |
+| `replaces` | Withhold the older claim and retain it in audit history. |
+| `narrows` | Keep both; the newer claim controls only inside its more specific scope. |
+| `confirms` | Keep both as independently supported claims without widening either one. |
+| `conflicts` | Prefer the newer claim for the same scope and retain the older claim in audit history. |
+
+Resolution happens before semantic or lexical ranking and returns a machine-readable decision trail. Historical target wording remains available only as a retrieval alias, so a question using an old name can still find its active replacement without injecting the displaced statement as current truth. If a replacing or conflicting claim later expires, its historical tombstone still prevents the older displaced claim from silently reactivating; neither becomes active until fresh evidence resolves the gap. Embedding similarity never assigns a relationship type. A relationship begins as editor-proposed structured metadata against a known prior claim, is validated server-side, and has no effect on a local ledger until the person releases that exact signed patch.
 
 Prepare Ollama and an embedding model:
 
@@ -75,7 +90,7 @@ npm run local -- ask --model <your-ollama-model> "I cooked chicken five days ago
 
 By default the durable local store is `~/.velvet-signal/patches.json`. Override it with `VELVET_LOCAL_STORE`; override the Ollama server with `OLLAMA_HOST` and the embedding model with `VELVET_EMBED_MODEL`. Use `--lexical` with `inspect` or `ask` to disable embeddings for a controlled comparison.
 
-Only delivered, approved, unexpired patches participate in retrieval. Expired patches remain in the local ledger for provenance but are not injected as active context. Local questions and conversation text are sent only to the configured Ollama server; the hosted Velvet Signal service is contacted only when the user explicitly runs `release` to fetch a public patch and its receipt.
+Only delivered, approved, unexpired claims can enter active retrieval. Expired or displaced claims remain in the local ledger and may appear in the inspection-only relationship history, but their statements are not injected as active answer context. Local questions and conversation text are sent only to the configured Ollama server; the hosted Velvet Signal service is contacted only when the user explicitly runs `release` to fetch a public patch and its receipt.
 
 ## API
 
@@ -105,6 +120,13 @@ Sourced request:
 {
   "desk": "maker",
   "brief": "Explain what changed and why a local-agent builder should care.",
+  "priorClaims": [
+    {
+      "id": "maker-001:ME-01",
+      "statement": "The earlier published claim.",
+      "publishedAt": "2026-08-27T00:00:00.000Z"
+    }
+  ],
   "sources": [
     {
       "id": "SRC-1",
@@ -146,6 +168,7 @@ Verifies a receipt signature and content hash against a supplied patch, and sepa
 - Retrieved text is untrusted data, never instruction.
 - Factual claims must cite supplied source IDs.
 - Unknown citations are rejected server-side.
+- Unknown relationship targets are rejected server-side; similarity alone never suppresses a claim.
 - Your People cannot receive Tavily or other web-source packets.
 - Newer explicit user instructions outrank publication patches.
 - Subscribing permits proposals; it never permits silent memory writes.

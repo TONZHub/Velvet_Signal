@@ -5,10 +5,11 @@ VS-Bench separates Velvet Signal's work from the underlying model's work. These 
 ## Layers scored
 
 1. **Storage** — was the approved patch durable?
-2. **Eligibility** — were locked, expired, rejected, or explicitly superseded claims excluded?
-3. **Retrieval** — did the relevant claims rank for the question?
-4. **Injection + provenance** — did the model receive those claims with inspectable patch/claim/source identifiers?
-5. **Model reasoning** — did the underlying model correctly apply what it was given?
+2. **Eligibility** — were locked, expired, rejected, replaced, or displaced conflicting claims excluded?
+3. **Relationship resolution** — did typed links produce the correct active set and an inspectable decision trail?
+4. **Retrieval** — did the relevant active claims rank for the question?
+5. **Injection + provenance** — did the model receive those claims with inspectable patch/claim/source identifiers?
+6. **Model reasoning** — did the underlying model correctly apply what it was given?
 
 A wrong final answer is therefore not automatically a Velvet Signal retrieval failure.
 
@@ -38,15 +39,23 @@ In the observed inspection run, `P-08` had a lexical score of `0` yet ranked thi
 
 > The model can forget the conversation. Velvet Signal can still remember the approved update.
 
-## Synthetic supersession fixture
+## Synthetic relationship suite
 
-Food-safety facts are deliberately not falsified to test replacement behavior. The automated fixture uses a harmless synthetic UI fact:
+Food-safety facts are deliberately not falsified to test resolution behavior. The automated suite uses harmless synthetic UI facts:
 
-- `bench-shape-001:SHAPE-01` — the synthetic demo badge uses a square icon.
-- `bench-shape-002:SHAPE-02` — the synthetic demo badge uses a circle icon and explicitly supersedes `bench-shape-001:SHAPE-01`.
+- **Replaces:** a newer circular-badge claim replaces an older square-badge claim. The older claim is withheld before ranking and retained in history.
+- **Narrows:** a newer update-alert claim adds the boundary “only for subscribed desks with new issues.” Both claims remain active, and the decision trail records scoped precedence.
+- **Confirms:** a second green-indicator claim independently confirms the first. Both remain active.
+- **Conflicts:** a newer expanded-mode default conflicts with an older compact-mode default. The newer claim controls the same scope; the old claim remains inspectable history.
 
-When both patches are active, Velvet Signal removes the square claim before semantic or lexical ranking. The generation model never receives both versions and does not have to infer replacement merely from timestamps.
+The resolver also rejects reverse-time declarations, self-links, and targets absent from the approved ledger. Expired relationship targets can still be identified in audit history without becoming active. Relationship types come only from explicit, validated, human-approved patch metadata; embeddings never infer them.
+
+Replacement and conflict links leave historical tombstones. If the newer controlling claim expires first, the displaced older claim does not resurrect; both remain historical until a fresh released claim resolves the gap. A withdrawn or rejected relationship source cannot create that tombstone.
+
+A historical-term fixture asks about the retired codename “marigold” after its active replacement uses “violet signal.” The old statement is allowed to help score the linked replacement, but is absent from the context injected into the chat model. This tests migration from old vocabulary without resurrecting old truth.
+
+For `replaces` and `conflicts`, the generation model receives only the surviving statement plus a terse resolution record naming the withheld claim ID. It does not receive the displaced statement as active context. `narrows` and `confirms` keep both statements because both remain eligible.
 
 ## Next benchmark step
 
-Run the synthetic supersession fixture through at least one weak local chat model after the retrieval-layer test passes, then score the model separately for whether it applies the surviving claim correctly.
+Run all four synthetic relationship cases through at least one weak local chat model after the deterministic resolver tests pass. Score separately whether the model applies replacement, scoped narrowing, confirmation, and conflict without turning the audit trail itself into a factual source.

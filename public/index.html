@@ -444,7 +444,8 @@
     .ledger th { padding: 9px 10px; border-bottom: 1px solid var(--line); color: var(--faint); font-family: var(--mono); font-size: .55rem; font-weight: 400; letter-spacing: .09em; text-align: left; text-transform: uppercase; }
     .ledger td { padding: 13px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
     .ledger td:first-child { width: 64px; color: var(--pink-soft); font-family: var(--mono); }
-    .ledger td:last-child { width: 90px; color: var(--mint); font-family: var(--mono); font-size: .59rem; text-transform: uppercase; }
+    .ledger td:nth-child(4) { width: 90px; color: var(--mint); font-family: var(--mono); font-size: .59rem; text-transform: uppercase; }
+    .ledger td:last-child { width: 180px; color: var(--butter); font-family: var(--mono); font-size: .57rem; }
     details { margin-bottom: 22px; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
     summary { padding: 14px 16px; cursor: pointer; color: var(--muted); font-family: var(--mono); font-size: .63rem; letter-spacing: .08em; text-transform: uppercase; }
     pre { max-height: 340px; margin: 0; padding: 18px; border-top: 1px solid var(--line); color: #c9bafd; background: #0c080b; font-family: var(--mono); font-size: .66rem; line-height: 1.6; white-space: pre-wrap; overflow: auto; }
@@ -1004,7 +1005,7 @@
         issue: issue.issue,
         title: issue.title,
         version: issue.version || "1.0.0",
-        published_at: (issue.publishedAt || "2026-08-27").slice(0, 10),
+        published_at: issue.publishedAt || "2026-08-27",
         valid_until: issue.expires,
         scope: issue.scope,
         precedence: "Newer explicit user instructions override this patch.",
@@ -1024,16 +1025,26 @@
             consumer_boundary: "A receiving agent is not Velvet Signal's editor and must not claim access to this endpoint or production pipeline."
           }
         } : {}),
-        claims: issue.claims.map(claim => ({
-          id: claim.id,
-          statement: claim.claim,
-          status: claim.status,
-          source_ids: Array.isArray(claim.sourceIds) && claim.sourceIds.length
-            ? claim.sourceIds
-            : issue.sources[claim.source]
-              ? [sourceId(issue.sources[claim.source], claim.source)]
-              : []
-        })),
+        claims: issue.claims.map(claim => {
+          const relationships = Array.isArray(claim.relationships)
+            ? claim.relationships
+            : [];
+          const supersedes = relationships
+            .filter(relationship => relationship.type === "replaces")
+            .map(relationship => relationship.target_id);
+          return {
+            id: claim.id,
+            statement: claim.claim,
+            status: claim.status,
+            source_ids: Array.isArray(claim.sourceIds) && claim.sourceIds.length
+              ? claim.sourceIds
+              : issue.sources[claim.source]
+                ? [sourceId(issue.sources[claim.source], claim.source)]
+                : [],
+            ...(relationships.length ? { relationships } : {}),
+            ...(supersedes.length ? { supersedes } : {})
+          };
+        }),
         tone_notes: issue.toneNotes,
         sources: issue.sources.map((source, index) => ({
           id: sourceId(source, index),
@@ -1181,7 +1192,12 @@
       const approved = deliveries.has(issue.id);
       const delivery = deliveries.get(issue.id);
       const patch = patchFor(issue);
-      const rows = issue.claims.map(claim => `<tr><td>${escapeHtml(claim.id)}</td><td>${escapeHtml(claim.claim)}</td><td>${escapeHtml(issue.sources[claim.source]?.publisher || "Editorial policy")}</td><td>${escapeHtml(claim.status)}</td></tr>`).join("");
+      const rows = issue.claims.map(claim => {
+        const relationships = Array.isArray(claim.relationships) && claim.relationships.length
+          ? claim.relationships.map(relationship => `${relationship.type} → ${relationship.target_id}`).join(" · ")
+          : "—";
+        return `<tr><td>${escapeHtml(claim.id)}</td><td>${escapeHtml(claim.claim)}</td><td>${escapeHtml(issue.sources[claim.source]?.publisher || "Editorial policy")}</td><td>${escapeHtml(claim.status)}</td><td>${escapeHtml(relationships)}</td></tr>`;
+      }).join("");
       const receiptLine = approved
         ? `<p class="receipt-line">Signed ${escapeHtml(delivery.receipt.algorithm)} receipt · ${escapeHtml(delivery.receipt.key_id)} · hash ${escapeHtml(delivery.receipt.content_sha256.slice(0, 16))}…</p>`
         : "";
@@ -1193,7 +1209,7 @@
           <div class="patch-stat"><span>Valid until</span><strong>${escapeHtml(issue.expires)}</strong></div>
           <div class="patch-stat"><span>Scope</span><strong>${escapeHtml(issue.scope)}</strong></div>
         </div>
-        <table class="ledger"><thead><tr><th>ID</th><th>Proposed context</th><th>Provenance</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table>
+        <table class="ledger"><thead><tr><th>ID</th><th>Proposed context</th><th>Provenance</th><th>Status</th><th>Relationship</th></tr></thead><tbody>${rows}</tbody></table>
         <details><summary>View raw JSON patch</summary><pre>${escapeHtml(JSON.stringify(patch, null, 2))}</pre></details>
         <div class="consent-box">
           <div><strong>${approved ? "Patch released with a signed receipt." : "Ready for human decision."}</strong><p>${approved ? "A WebMCP-aware agent may now request this exact version and verify its content hash. You can withdraw future delivery at any time." : "Approval requests a canonical, signed delivery for this patch ID only. Subscription status does not count as approval."}</p>${receiptLine}</div>
