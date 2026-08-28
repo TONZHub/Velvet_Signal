@@ -29,6 +29,7 @@ test("serves the six-desk newsstand with security headers and first-class projec
     assert.match(html, /Related, not repeated/);
     assert.match(html, /Why both matter/);
     assert.match(html, /relatedEditionDetails/);
+    assert.match(html, /if \(!newIssueIds\.has\(issue\.id\)\) return null/);
     assert.match(html, /href="\/install">Install</);
     assert.match(html, /href="\/benchmark">VS-Bench</);
     assert.match(html, /Install on your laptop/);
