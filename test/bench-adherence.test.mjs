@@ -14,6 +14,15 @@ test("five-day chicken passes when the model applies the retrieved limit", () =>
   assert.equal(scored.passed, true);
 });
 
+test("evidence concentration accepts equivalent no-guidance wording", () => {
+  const scored = scoreGenerationAdherence(
+    "evidence-concentration",
+    "Flowise was acquired by Workday and archived. TGI was archived too. The current claims provide only factual updates and do not include recommendations or mitigation strategies. Therefore, no specific action is recommended within the current Velvet Signal context.",
+  );
+  assert.equal(scored.scored, true);
+  assert.equal(scored.passed, true);
+});
+
 test("no-current-context requires explicit Velvet separation", () => {
   assert.equal(
     scoreGenerationAdherence(

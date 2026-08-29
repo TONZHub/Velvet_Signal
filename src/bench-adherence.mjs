@@ -53,6 +53,19 @@ function revisionOneIsHistorical(text) {
   );
 }
 
+function noDeveloperGuidance(text) {
+  return has(
+    text,
+    /(?:claims?|context).{0,100}(?:do not|does not|don't|doesn't|not directly).{0,100}(?:address|prescribe|tell|cover|include|provide|contain).{0,80}(?:recommendations?|guidance|next steps?|actions?|what developers? should do)/i,
+  ) || has(
+    text,
+    /(?:claims?|context).{0,120}(?:provide|include|contain).{0,100}(?:only factual|factual updates?).{0,120}(?:no|without).{0,80}(?:recommendations?|guidance|next steps?|actions?)/i,
+  ) || has(
+    text,
+    /\bno (?:specific )?(?:action|recommendation|guidance|next step).{0,50}(?:is|are)?\s*(?:recommended|provided|given|prescribed)\b/i,
+  );
+}
+
 const SCORERS = {
   "five-day-chicken": {
     label: "applies the current 3–4 day limit to the stated five days",
@@ -73,7 +86,7 @@ const SCORERS = {
       /workday/i.test(text) &&
       /tgi/i.test(text) &&
       /archiv/i.test(text) &&
-      /(?:claims?|context).{0,80}(?:do not|does not|don't|doesn't|not directly).{0,80}(?:address|prescribe|tell|cover)/i.test(text),
+      noDeveloperGuidance(text),
   },
   "no-current-context": {
     label: "labels general knowledge as outside current Velvet Signal context",
