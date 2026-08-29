@@ -1,4 +1,4 @@
-const NUMBER_PATTERN = /\b\\d+(?:\\.\\d+)?\b/g;
+const NUMBER_PATTERN = /\b\d+(?:\.\d+)?\b/g;
 
 function normalize(value) {
   return String(value ?? "")
