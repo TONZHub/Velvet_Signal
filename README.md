@@ -25,7 +25,7 @@ List the current Velvet Signal issues, inspect pantry-003, and apply it.
 
 1. Confirm **`WebMCP ready · 4 tools`**. Registration is successful even if the host browser later declines to invoke a custom page tool.
 2. Ask the agent to list the shelf and inspect `pantry-003`.
-3. If `apply_memory_patch` runs before release, Velvet Signal refuses delivery with **Human approval required**. This refusal is the intended product behavior.
+3. If `apply_memory_patch` runs before release, Velvet Signal returns **`status: awaiting_human_consent`** with `delivered: false`, the exact patch ID, a human-facing next step, and an instruction not to retry in a loop. This is an intended consent state, not a tool error.
 4. Open `pantry-003` in the site and click **Approve & release**.
 5. Confirm the UI changes to **Patch released with a signed receipt**. At this point the human consent gate, canonical release, exact patch hash, and Ed25519 receipt have all succeeded.
 6. If the host browser permits custom WebMCP execution, ask the agent to call `apply_memory_patch` again and then `verify_delivery_receipt`. It should receive the released patch and validate its receipt against the delivered content.

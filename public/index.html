@@ -1367,7 +1367,14 @@
             const issue = issues.find(item => item.id === patchId);
             if (!issue) return toolResponse({ error: "Unknown patch ID", delivered: false });
             const delivery = deliveries.get(patchId);
-            if (!delivery) return toolResponse({ error: "Human approval required. Ask the human to inspect and approve this exact patch in Velvet Signal.", delivered: false, patch_id: patchId });
+            if (!delivery) return toolResponse({
+    status: "awaiting_human_consent",
+    delivered: false,
+    patch_id: patchId,
+    reason: "Velvet Signal will not deliver a memory patch until a person inspects and releases this exact ID.",
+    next_step: `Ask the person on this page to open ${patchId} and approve it. Then call apply_memory_patch again.`,
+    agent_must_not: "Do not retry in a loop. Do not treat this as a tool failure."
+  });
             return toolResponse(delivery);
           }
         },
