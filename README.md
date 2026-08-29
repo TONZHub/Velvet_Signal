@@ -6,13 +6,13 @@ Velvet Signal is a publication for humans and their agents. Each issue pairs a r
 
 **Live app:** https://velvetsignal.lol
 
-Open the live site in **ChatGPT's in-app browser** or **Google Chrome with WebMCP enabled**. The page's agent badge should read **`WebMCP ready · 4 tools`**.
+Open the live site in **ChatGPT's in-app browser** or **Google Chrome with WebMCP enabled**. First confirm the page's agent badge reads **`WebMCP ready · 4 tools`**. That proves the page successfully registered its agent interface with the host browser.
 
 Expected WebMCP tools:
 
 - `list_velvet_signal_issues` — list the current shelf, patch IDs, validity windows, and approval state.
 - `inspect_memory_patch` — inspect claims, provenance, scope, expiry, and consent state without applying anything.
-- `apply_memory_patch` — request delivery of one exact patch. This is blocked until a human releases that patch in the UI.
+- `apply_memory_patch` — request delivery of one exact patch. Velvet Signal blocks delivery until a human releases that patch in the UI.
 - `verify_delivery_receipt` — verify the delivered patch against its Ed25519 receipt and content hash.
 
 A simple judge prompt is:
@@ -21,15 +21,27 @@ A simple judge prompt is:
 List the current Velvet Signal issues, inspect pantry-003, and apply it.
 ```
 
-Expected flow:
+### Core judge flow
 
-1. The agent can list the shelf and inspect `pantry-003` immediately.
-2. The first `apply_memory_patch` call is refused with **Human approval required**.
-3. The human opens `pantry-003` in the site and clicks **Approve & release**.
-4. The agent calls `apply_memory_patch` again and receives the exact delivered patch plus its signed receipt.
-5. The agent calls `verify_delivery_receipt`; the receipt should validate against the delivered content.
+1. Confirm **`WebMCP ready · 4 tools`**. Registration is successful even if the host browser later declines to invoke a custom page tool.
+2. Ask the agent to list the shelf and inspect `pantry-003`.
+3. If `apply_memory_patch` runs before release, Velvet Signal refuses delivery with **Human approval required**. This refusal is the intended product behavior.
+4. Open `pantry-003` in the site and click **Approve & release**.
+5. Confirm the UI changes to **Patch released with a signed receipt**. At this point the human consent gate, canonical release, exact patch hash, and Ed25519 receipt have all succeeded.
+6. If the host browser permits custom WebMCP execution, ask the agent to call `apply_memory_patch` again and then `verify_delivery_receipt`. It should receive the released patch and validate its receipt against the delivered content.
 
-**The refusal is a product feature, not an error.** WebMCP gives the agent structured access to the same publication the human is viewing, while the release boundary remains human-controlled.
+### If ChatGPT blocks direct tool invocation
+
+ChatGPT's in-app browser may successfully register Velvet Signal's WebMCP tools while its own browser safety review prevents the agent from invoking one or more custom page tools. **That is a host-client execution restriction, not a failed Velvet Signal release.**
+
+For judging, treat these as separate checkpoints:
+
+- **Agent interface:** `WebMCP ready · 4 tools` confirms registration.
+- **Human consent boundary:** `Approve & release` confirms that the exact patch can only cross the boundary after an explicit human action.
+- **Cryptographic delivery:** `Patch released with a signed receipt` confirms the released artifact is content-bound and verifiable.
+- **Direct agent invocation:** demonstrate `apply_memory_patch` and `verify_delivery_receipt` when the host browser's safety policy permits it.
+
+A host-browser refusal after release should therefore be described as **"WebMCP registered; host policy blocked direct invocation"**, not as a Velvet Signal approval failure.
 
 `apply_memory_patch` does **not** claim to rewrite ChatGPT's hidden or permanent memory. It delivers a portable, provenance-carrying context patch plus a signed receipt. A receiving agent can use that patch in its current context, or a compatible external memory bridge such as Velvet Signal's local Ollama integration can store and retrieve explicitly released patches.
 
