@@ -30,8 +30,8 @@ test("serves the six-desk newsstand with security headers and first-class projec
     assert.match(html, /Why both matter/);
     assert.match(html, /relatedEditionDetails/);
     assert.match(html, /if \(!newIssueIds\.has\(issue\.id\)\) return null/);
-    assert.match(html, /href="\/install">Install</);
-    assert.match(html, /href="\/benchmark">VS-Bench</);
+    assert.match(html, /href="\/install">Install/);
+    assert.match(html, /href="\/benchmark">VS-Bench/);
     assert.match(html, /Install on your laptop/);
     assert.match(html, /See VS-Bench/);
     assert.match(html, /href="https:\/\/ko-fi\.com\/mosslet"/);
@@ -65,7 +65,7 @@ test("serves the laptop installation guide as a first-class page", async () => {
   });
 });
 
-test("serves VS-Bench as a first-class evidence page", async () => {
+test("serves VS-Bench as a first-class cross-model evidence page", async () => {
   await withServer(async (baseUrl) => {
     const response = await fetch(`${baseUrl}/benchmark`);
     assert.equal(response.status, 200);
@@ -73,6 +73,11 @@ test("serves VS-Bench as a first-class evidence page", async () => {
     const html = await response.text();
     assert.match(html, /VS-Bench separates/);
     assert.match(html, /Dolphin 3:8B/);
+    assert.match(html, /Qwen3 4B Instruct/);
+    assert.match(html, /11\/11 retrieval/);
+    assert.match(html, /6\/8 corrected adherence/);
+    assert.match(html, /Who won the 1998 World Cup/);
+    assert.match(html, /Outside current Velvet Signal context/);
     assert.match(html, /Llama 2 7B/);
     assert.match(html, /Synthetic relationship suite/);
     assert.match(html, /replaces/);
