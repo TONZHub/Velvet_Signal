@@ -565,7 +565,7 @@ export async function retrieveClaims(query, patches, options = {}) {
     .sort((left, right) => right.score - left.score);
   const positive = scored.filter((item) => item.score > 0);
   const relationshipOnly = positive.length === 0 && scoredTombstones.length > 0;
-  const candidatePool = positive.length > 0 ? positive : scored;
+  const candidatePool = positive;
   const vectorsById = chunkVectors
     ? new Map(chunks.map((chunk, index) => [chunk.id, chunkVectors[index]]))
     : null;
