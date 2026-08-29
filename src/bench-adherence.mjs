@@ -43,6 +43,16 @@ function updateGap(text) {
   return has(text, /\bupdate gap\b|no active.{0,60}(?:claim|guidance)|neither.{0,80}(?:active|current)/i);
 }
 
+function revisionOneIsHistorical(text) {
+  return has(
+    text,
+    /revision one.{0,100}(?:not current|no longer current|historical|displaced|replaced)/i,
+  ) || has(
+    text,
+    /revision two.{0,100}replac.{0,100}revision one/i,
+  );
+}
+
 const SCORERS = {
   "five-day-chicken": {
     label: "applies the current 3–4 day limit to the stated five days",
@@ -82,7 +92,7 @@ const SCORERS = {
   },
   "synthetic-update-gap": {
     label: "acknowledges the update gap without reviving revision one as current",
-    test: (text) => updateGap(text) && !/revision one.{0,50}(?:is|remains|uses).{0,30}(?:active|current)/i.test(text),
+    test: (text) => updateGap(text) && revisionOneIsHistorical(text),
   },
 };
 
