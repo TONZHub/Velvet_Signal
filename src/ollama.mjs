@@ -1,7 +1,17 @@
 const DEFAULT_OLLAMA_URL = "http://127.0.0.1:11434";
+const DEFAULT_CHAT_CONTEXT = 8192;
 
 function baseUrl(value) {
   return String(value ?? process.env.OLLAMA_HOST ?? DEFAULT_OLLAMA_URL).replace(/\/$/, "");
+}
+
+function chatContext(value) {
+  const parsed = Number.parseInt(
+    String(value ?? process.env.VELVET_OLLAMA_CONTEXT ?? DEFAULT_CHAT_CONTEXT),
+    10,
+  );
+  if (!Number.isFinite(parsed)) return DEFAULT_CHAT_CONTEXT;
+  return Math.max(2048, Math.min(32768, parsed));
 }
 
 async function postJson(path, body, options = {}) {
@@ -51,6 +61,9 @@ export async function ollamaChat(messages, options = {}) {
       model,
       messages,
       stream: false,
+      options: {
+        num_ctx: chatContext(options.numCtx),
+      },
       ...(options.think === undefined ? {} : { think: options.think }),
     },
     options,
