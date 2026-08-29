@@ -1,6 +1,6 @@
 {
   "name": "velvet-signal",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
   "description": "A publication for humans and their agents, with inspectable memory patches and a consent-gated OpenRouter editor.",
@@ -9,6 +9,7 @@
     "scout": "node src/scout.mjs",
     "local": "node src/local-agent.mjs",
     "bench": "node src/bench.mjs",
+    "bench:save": "node src/bench-save.mjs",
     "test": "node --test test/*.test.mjs"
   },
   "engines": {
