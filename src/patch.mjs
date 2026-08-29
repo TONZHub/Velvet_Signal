@@ -1,4 +1,5 @@
 import { normalizeClaimRelationships } from "./claim-relations.mjs";
+import { sourceAgreement } from "./source-conflicts.mjs";
 
 function sourceIdFor(issue, source, index) {
   if (typeof source.id === "string" && source.id.trim()) return source.id.trim();
@@ -30,6 +31,11 @@ export function patchForIssue(issue, options = {}) {
     url: source.url,
     checked_at: source.checked,
   }));
+  const agreement = sourceAgreement(sources.map((source, index) => ({
+    ...source,
+    excerpt: issue.claims.filter((claim) => sourceIdsForClaim(issue, claim).includes(source.id)).map((claim) => claim.claim).join(" "),
+    id: source.id,
+  })));
   return {
     patch_id: issue.id,
     publication: "Velvet Signal",
@@ -40,6 +46,7 @@ export function patchForIssue(issue, options = {}) {
     published_at: issue.publishedAt ?? "2026-08-27",
     valid_until: issue.expires,
     scope: issue.scope,
+    source_agreement: agreement,
     precedence: "Newer explicit user instructions override this patch.",
     delivery: {
       status: deliveryStatus,
