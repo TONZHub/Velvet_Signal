@@ -2,6 +2,37 @@
 
 Velvet Signal is a publication for humans and their agents. Each issue pairs a readable editorial layer with an inspectable context patch carrying claims, provenance, scope, expiry, and an explicit human consent gate.
 
+## Judge path — 90 seconds
+
+**Live app:** https://velvetsignal.lol
+
+Open the live site in **ChatGPT's in-app browser** or **Google Chrome with WebMCP enabled**. The page's agent badge should read **`WebMCP ready · 4 tools`**.
+
+Expected WebMCP tools:
+
+- `list_velvet_signal_issues` — list the current shelf, patch IDs, validity windows, and approval state.
+- `inspect_memory_patch` — inspect claims, provenance, scope, expiry, and consent state without applying anything.
+- `apply_memory_patch` — request delivery of one exact patch. This is blocked until a human releases that patch in the UI.
+- `verify_delivery_receipt` — verify the delivered patch against its Ed25519 receipt and content hash.
+
+A simple judge prompt is:
+
+```text
+List the current Velvet Signal issues, inspect pantry-003, and apply it.
+```
+
+Expected flow:
+
+1. The agent can list the shelf and inspect `pantry-003` immediately.
+2. The first `apply_memory_patch` call is refused with **Human approval required**.
+3. The human opens `pantry-003` in the site and clicks **Approve & release**.
+4. The agent calls `apply_memory_patch` again and receives the exact delivered patch plus its signed receipt.
+5. The agent calls `verify_delivery_receipt`; the receipt should validate against the delivered content.
+
+**The refusal is a product feature, not an error.** WebMCP gives the agent structured access to the same publication the human is viewing, while the release boundary remains human-controlled.
+
+`apply_memory_patch` does **not** claim to rewrite ChatGPT's hidden or permanent memory. It delivers a portable, provenance-carrying context patch plus a signed receipt. A receiving agent can use that patch in its current context, or a compatible external memory bridge such as Velvet Signal's local Ollama integration can store and retrieve explicitly released patches.
+
 ## Launch shelf
 
 - Model Watch
@@ -117,9 +148,9 @@ npm run bench:save -- --model <your-ollama-model> --semantic
 
 Saved runs default to `bench-results/`. JSON is structured for comparison; Markdown preserves the human-readable report and baseline/patched answers. Retrieval failures return a nonzero exit code. Generation adherence remains observational unless `--strict-adherence` is supplied, because a weak model ignoring correct context is not the same failure as Velvet Signal retrieving the wrong context.
 
-The first completed Dolphin 3:8B A/B development run executed all eight scenarios with **11/11 retrieval checks passing** and **6/8 generation-adherence checks passing**. The benchmark also caught a real zero-relevance retrieval bug: unrelated lexical queries could previously fill the result limit with zero-score claims. That fallback was removed and locked behind a regression test.
+Two completed local-model A/B development runs now cover **Dolphin 3:8B** and **Qwen3 4B Instruct**. Both executed all eight scenarios with **11/11 deterministic retrieval checks passing**. Dolphin scored **6/8 generation adherence**. Qwen's saved artifact originally recorded **5/8** under the scorer version used during that run; PR #19 fixed one false negative for equivalent correct limitation wording, so its corrected interpretation is also **6/8**. The models fail differently while the retrieval layer remains independently measurable. VS-Bench also caught a real zero-relevance retrieval bug: unrelated lexical queries could previously fill the result limit with zero-score claims. That fallback was removed and locked behind a regression test.
 
-The website exposes the current evidence story at `/benchmark`.
+The website exposes the current cross-model evidence story at `/benchmark`.
 
 ## API
 
