@@ -92,6 +92,35 @@ By default the durable local store is `~/.velvet-signal/patches.json`. Override 
 
 Only delivered, approved, unexpired claims can enter active retrieval. Expired or displaced claims remain in the local ledger and may appear in the inspection-only relationship history, but their statements are not injected as active answer context. Local questions and conversation text are sent only to the configured Ollama server; the hosted Velvet Signal service is contacted only when the user explicitly runs `release` to fetch a public patch and its receipt.
 
+## VS-Bench
+
+VS-Bench proves retrieval behavior separately from local-model generation behavior. Deterministic checks cover current quantitative limits, compound-query coverage, overlap with meaningful delta, evidence concentration, no-current-context behavior, partial coverage, tight context packing, and historical update gaps.
+
+Run the deterministic benchmark:
+
+```bash
+npm run bench
+```
+
+Run the same model naked and Velvet-patched:
+
+```bash
+npm run bench -- --model <your-ollama-model>
+```
+
+Save a useful run as timestamped JSON and Markdown evidence:
+
+```bash
+npm run bench:save -- --model <your-ollama-model>
+npm run bench:save -- --model <your-ollama-model> --semantic
+```
+
+Saved runs default to `bench-results/`. JSON is structured for comparison; Markdown preserves the human-readable report and baseline/patched answers. Retrieval failures return a nonzero exit code. Generation adherence remains observational unless `--strict-adherence` is supplied, because a weak model ignoring correct context is not the same failure as Velvet Signal retrieving the wrong context.
+
+The first completed Dolphin 3:8B A/B development run executed all eight scenarios with **11/11 retrieval checks passing** and **6/8 generation-adherence checks passing**. The benchmark also caught a real zero-relevance retrieval bug: unrelated lexical queries could previously fill the result limit with zero-score claims. That fallback was removed and locked behind a regression test.
+
+The website exposes the current evidence story at `/benchmark`.
+
 ## API
 
 ### `GET /api/healthz`
