@@ -1,10 +1,10 @@
-const NUMBER_PATTERN = /\\b\\d+(?:\\.\\d+)?\\b/g;
+const NUMBER_PATTERN = /\b\\d+(?:\\.\\d+)?\b/g;
 
 function normalize(value) {
   return String(value ?? "")
     .toLowerCase()
     .replace(/[^a-z0-9%°.-]+/g, " ")
-    .replace(/\\s+/g, " ")
+    .replace(/\s+/g, " ")
     .trim();
 }
 
@@ -14,7 +14,7 @@ function numbers(value) {
 
 function comparableKey(value) {
   const text = normalize(value);
-  return text.replace(/\\b(the|a|an|can|should|may|must|is|are|be|for|of|to|and)\\b/g, " ").replace(/\\s+/g, " ").trim();
+  return text.replace(/\b(the|a|an|can|should|may|must|is|are|be|for|of|to|and)\b/g, " ").replace(/\s+/g, " ").trim();
 }
 
 function overlap(left, right) {
