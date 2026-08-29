@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-28T20:13:11.168Z",
+  "generated_at": "2026-08-29T07:04:43.188Z",
   "desks": {
     "maker": {
       "fingerprint": "2b34e1eec3b55e251b6ea3b3c5ecd5051f481c9b03f2af0b24565f49bfa21147",
@@ -9,10 +9,10 @@
       "tavily_request_id": "594ee677-b5ba-46e9-ac3c-a5592384d15c"
     },
     "model-watch": {
-      "fingerprint": "ccb4a6f43c292a1d4bd6b57144bc8a9a5b06c39da8061d7046c38c707ff2c96e",
-      "latest_patch_id": "model-watch-005",
-      "published_at": "2026-08-28T20:12:13.517Z",
-      "tavily_request_id": "ec873a66-05a3-4d7a-99be-31706fc89404"
+      "fingerprint": "6189ba065893b50a7c85a58b9381c991c2defeed76f753a5005a4fda3ac4d6d6",
+      "latest_patch_id": "model-watch-006",
+      "published_at": "2026-08-29T07:03:10.941Z",
+      "tavily_request_id": "4906099a-659c-4e72-8e55-786b3278270f"
     },
     "culture": {
       "fingerprint": "c75f765ecb036efc452b71832a5c64bdb4282f40bf482103ef86fce790d561c4",
@@ -27,13 +27,337 @@
       "tavily_request_id": "30440e38-5a69-4597-b5fd-604fda4a44e7"
     },
     "wellbeing": {
-      "fingerprint": "3893f750fd371d3f582fd2db17dc8f9cd2c0e21a51ec8cf53e26cd616eebe380",
-      "latest_patch_id": "wellbeing-004",
-      "published_at": "2026-08-28T20:12:32.271Z",
-      "tavily_request_id": "22c4e0d9-55d5-4ec1-96cc-aad7550b8cce"
+      "fingerprint": "59ec09605bbd75b7e5cae204593dbbc3ff9d51c72068e0ad33847942270bb9b6",
+      "latest_patch_id": "wellbeing-005",
+      "published_at": "2026-08-29T07:04:43.188Z",
+      "tavily_request_id": "2e4eb828-24e9-4176-ae16-c1d9f99479cb"
     }
   },
   "issues": [
+    {
+      "id": "wellbeing-005",
+      "deskId": "wellbeing",
+      "desk": "Wellbeing",
+      "icon": "☾",
+      "issue": "005",
+      "version": "1.0.0",
+      "date": "AUG 29 · 2026",
+      "publishedAt": "2026-08-29T07:04:43.188Z",
+      "color": "#a993ff",
+      "title": "wellbeing-005 — The sleep-hygiene audit",
+      "kicker": "wellbeing",
+      "dek": "Habits drift. NHLBI's advice: put your sleep setup and evening routine on a periodic review cycle, not a one-time fix.",
+      "readTime": "3 min read",
+      "validity": "180 days",
+      "expires": "2027-02-25",
+      "confidence": "Medium",
+      "scope": "General wellbeing",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Sleep hygiene isn't a certificate you earn once. The National Heart, Lung, and Blood Institute frames it as something worth periodically taking stock of — the sleep environment you've built and the nighttime habits you've accumulated over the years [W-SRC-4]. The framing matters: what worked last season may have quietly stopped working.",
+        "The most common drift is luminous and pocket-sized. Artificial light from screens — phones, laptops, televisions — can signal the brain that it's time to be awake, and that exposure can translate into shorter sleep and irregular schedules in both children and adults [W-SRC-4]. In a study partly funded by NHLBI, smartphone use before bed was associated with shorter sleep duration than normal and worse sleep quality during the night [W-SRC-4].",
+        "One concrete, low-cost adjustment the experts suggest: power down devices at least 30 minutes before getting into bed [W-SRC-4]. It's a starting point for an audit, not a verdict on your evenings.",
+        "Individual variation is real here. Daytime napping may boost alertness and performance, but adults should nap no more than 20 minutes — and if falling asleep at night is a struggle, limit naps or move them earlier in the afternoon [W-SRC-3]. For preschool-age children, napping is normal and promotes healthy growth and development [W-SRC-3]. Same behavior, different guidance, depending on who you are.",
+        "This is general public-health guidance, not individualized medical advice. NHLBI's sleep resources also cover recognizing sleep disorders such as insomnia and sleep apnea, avoiding dangerous drowsy driving, and coping with jet lag and nighttime shift work [W-SRC-2, W-SRC-1]. Persistent sleep concerns belong with a professional."
+      ],
+      "pullquote": "It pays to periodically take stock of your sleep hygiene — the sleep environment you've created and the nighttime habits you've adopted over the years. [W-SRC-4]",
+      "sources": [
+        {
+          "id": "W-SRC-1",
+          "name": "En resumen: su guía para un sueño saludable (In Brief: Your Guide to Healthy Sleep (Spanish) | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/es/resources/en-resumen-su-guia-para-un-sueno-saludable-brief-your-guide-healthy-sleep-spanish",
+          "checked": "2026-08-29"
+        },
+        {
+          "id": "W-SRC-2",
+          "name": "Your Guide to Healthy Sleep | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/resources/your-guide-healthy-sleep",
+          "checked": "2026-08-29"
+        },
+        {
+          "id": "W-SRC-3",
+          "name": "Sleep Deprivation and Deficiency - Healthy Sleep Habits | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits",
+          "checked": "2026-08-29"
+        },
+        {
+          "id": "W-SRC-4",
+          "name": "Sweet dreams: Researchers explore link between sleep and health | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/news/2018/sweet-dreams-researchers-explore-link-between-sleep-and-health",
+          "checked": "2026-08-29"
+        },
+        {
+          "id": "W-SRC-5",
+          "name": "Sleep Brochure | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/resources/sleep-brochure",
+          "checked": "2026-08-29"
+        }
+      ],
+      "claims": [
+        {
+          "id": "W-01",
+          "claim": "NHLBI advises periodically taking stock of your \"sleep hygiene\" — the sleep environment you've created and the nighttime habits you've adopted over the years.",
+          "source": 3,
+          "sourceIds": [
+            "W-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-02",
+          "claim": "Artificial light from screens — cell phones, laptops, and televisions — can signal the brain that it's time to be awake, and this light exposure can translate into a loss of sleep duration and irregular sleep schedules in both children and adults.",
+          "source": 3,
+          "sourceIds": [
+            "W-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-004:W-05",
+              "reason": "New packet W-SRC-4 independently supports the same screen-light rule."
+            },
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-003:W-03",
+              "reason": "New packet independently supports the same screen-light rule."
+            }
+          ]
+        },
+        {
+          "id": "W-03",
+          "claim": "In a study partly funded by NHLBI, smartphone use before bed was associated with shorter sleep duration than normal and worse sleep quality during the night.",
+          "source": 3,
+          "sourceIds": [
+            "W-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-004:W-06",
+              "reason": "New packet independently supports the same study finding."
+            },
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-003:W-04",
+              "reason": "New packet independently supports the same study finding."
+            }
+          ]
+        },
+        {
+          "id": "W-04",
+          "claim": "Experts suggest sleep quality can be enhanced by powering down devices at least 30 minutes before getting into bed.",
+          "source": 3,
+          "sourceIds": [
+            "W-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-004:W-07",
+              "reason": "New packet independently supports the same expert suggestion."
+            },
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-003:W-05",
+              "reason": "New packet independently supports the same expert suggestion."
+            }
+          ]
+        },
+        {
+          "id": "W-05",
+          "claim": "Daytime napping may boost alertness and performance; adults should nap for no more than 20 minutes, and those with trouble falling asleep at night should limit naps or take them earlier in the afternoon.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-004:W-08",
+              "reason": "New packet independently supports the same nap guidance."
+            },
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-003:W-02",
+              "reason": "New packet independently supports the same nap guidance."
+            }
+          ]
+        },
+        {
+          "id": "W-06",
+          "claim": "Napping in preschool-age children is normal and promotes healthy growth and development.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-07",
+          "claim": "Making time to sleep will help protect your health and well-being now and in the future.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-004:W-01",
+              "reason": "New packet independently supports the same guidance."
+            },
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-003:W-01",
+              "reason": "New packet independently supports the same guidance."
+            }
+          ]
+        },
+        {
+          "id": "W-08",
+          "claim": "NHLBI's sleep resources cover avoiding dangerous drowsy driving, coping with jet lag and nighttime shift work, and overviews of sleep disorders such as insomnia and sleep apnea.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2",
+            "W-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "medium"
+        }
+      ],
+      "toneNotes": [
+        "No diagnosis, moralizing, or individualized medical advice; persistent sleep concerns are pointed toward professional care.",
+        "Individual variation kept visible via the child-vs-adult napping contrast and the 'starting point, not verdict' framing.",
+        "All factual claims cite only supplied packet IDs; prior claims used solely as relationship targets."
+      ],
+      "tags": [
+        "sleep",
+        "sleep-hygiene",
+        "screens",
+        "napping",
+        "public-health-guidance"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "2e4eb828-24e9-4176-ae16-c1d9f99479cb",
+        "credits": 2,
+        "search_mode": "timeless-official-fallback"
+      }
+    },
+    {
+      "id": "model-watch-006",
+      "deskId": "model-watch",
+      "desk": "Model Watch",
+      "icon": "⌁",
+      "issue": "006",
+      "version": "1.0.0",
+      "date": "AUG 29 · 2026",
+      "publishedAt": "2026-08-29T07:03:10.941Z",
+      "color": "#ff719f",
+      "title": "Velvet Signal — model-watch, proposed edition 006",
+      "kicker": "Community quant watch: a Qwen3.8-Flash-Next conversion with a license line worth reading twice",
+      "dek": "A third-party GGUF conversion of Qwen3.8-Flash-Next surfaced on Hugging Face this week. It is not an official Qwen release, and its own model card says it is not yet ready to serve — but its explicit license statement is a useful anchor for anyone tracking how community quant artifacts declare (or dodge) upstream terms.",
+      "readTime": "3 min read",
+      "validity": "60 days",
+      "expires": "2026-10-28",
+      "confidence": "Mixed",
+      "scope": "AI models and agent interfaces",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "The artifact under review is Baekpica/Qwen3.8-Flash-Next-Mixed-Quant-SSD-PLE-GGUF, a community-published conversion, not a first-party Qwen release. Everything below comes from that model card alone [MW-SRC-1].",
+        "The card is unambiguous about licensing: the converted weights remain governed by the original Qwen Community License 1.0, with the pinned upstream license included in the artifact, and it explicitly claims no Apache-2.0 license [MW-SRC-1]. For builders wiring quantized models into products, that explicitness matters — it forecloses any assumption that a community conversion loosens upstream terms.",
+        "The card also points to Baekpica/ds4-mixed-quant-for-spark as a public precedent for region-aware quantization, artifact auditing, and Spark memory budgeting, and says no private handoff bucket is required to understand the model card [MW-SRC-1].",
+        "Readiness is the open question. The card states the repository is 'not yet a drop-in serving release,' but the excerpt cuts off mid-sentence on what exactly is still pending, so we flag that claim for review rather than guess at the gap [MW-SRC-1].",
+        "Desk note: with only this packet in hand, we are covering a community artifact rather than a primary vendor release. Treat this as a license-and-status signal, not a model launch."
+      ],
+      "pullquote": "The converted weights remain governed by the original Qwen Community License 1.0. No Apache-2.0 license is claimed. [MW-SRC-1]",
+      "sources": [
+        {
+          "id": "MW-SRC-1",
+          "name": "Baekpica/Qwen3.8-Flash-Next-Mixed-Quant-SSD-PLE- ...",
+          "publisher": "huggingface.co",
+          "url": "https://huggingface.co/Baekpica/Qwen3.8-Flash-Next-Mixed-Quant-SSD-PLE-GGUF",
+          "checked": "2026-08-29",
+          "publishedAt": "Wed, 26 Aug 2026 20:12:23 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "MW-01",
+          "claim": "The Baekpica/Qwen3.8-Flash-Next-Mixed-Quant-SSD-PLE-GGUF artifact states its converted weights remain governed by the original Qwen Community License 1.0, with the pinned upstream license included, and claims no Apache-2.0 license.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "model-watch-002:MW-07",
+              "reason": "The new packet independently restates the same license position for the same artifact, providing a second supporting source."
+            }
+          ]
+        },
+        {
+          "id": "MW-02",
+          "claim": "The Baekpica/Qwen3.8-Flash-Next-Mixed-Quant-SSD-PLE-GGUF repository is not yet a drop-in serving release, per its own model card.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        },
+        {
+          "id": "MW-03",
+          "claim": "The model card cites Baekpica/ds4-mixed-quant-for-spark as a public precedent for region-aware quantization, artifact auditing, and Spark memory budgeting, and states no private handoff bucket is required to understand the card.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Frame as a community-artifact license signal, not a model launch; the desk had no primary vendor release notes in this packet.",
+        "Keep the needs-review flag on the serving-readiness claim visible in the human edition, since the excerpt is truncated mid-sentence."
+      ],
+      "tags": [
+        "model-watch",
+        "community-quant",
+        "licensing",
+        "qwen",
+        "gguf"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "4906099a-659c-4e72-8e55-786b3278270f",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
     {
       "id": "maker-006",
       "deskId": "maker",
