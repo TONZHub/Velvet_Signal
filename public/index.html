@@ -337,7 +337,7 @@
     .editor-credit::before { content: "✦"; color: var(--pink-soft); }
     .related-signal { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; color: var(--butter); font-family: var(--mono); font-size: .56rem; letter-spacing: .06em; text-transform: uppercase; }
     .related-signal::before { content: "≠"; }
-    .distinction-box { margin-top: 16px; padding: 14px; border: 1px solid rgba(246,213,114,.24); border-radius: 13px; background: rgba(246,213,114,.055); }
+    .source-agreement { display: grid; gap: 4px; margin: 16px 0; padding: 14px; border: 1px solid rgba(136,217,188,.28); border-radius: 13px; color: var(--mint); background: rgba(136,217,188,.06); font-size: .75rem; }\n    .source-agreement span, .source-agreement small { color: var(--muted); }\n    .source-agreement.has-conflict { border-color: rgba(255,113,159,.55); color: var(--pink-soft); background: rgba(255,79,145,.08); }\n    .distinction-box { margin-top: 16px; padding: 14px; border: 1px solid rgba(246,213,114,.24); border-radius: 13px; background: rgba(246,213,114,.055); }
     .distinction-box h4 { margin: 0 0 7px; color: var(--butter); font-family: var(--mono); font-size: .61rem; letter-spacing: .09em; text-transform: uppercase; }
     .distinction-box p { margin: 0; color: var(--muted); font-size: .72rem; }
     .distinction-box ul { margin: 9px 0 0; padding-left: 17px; color: var(--ink); font-size: .69rem; }
@@ -1192,6 +1192,7 @@
       const approved = deliveries.has(issue.id);
       const delivery = deliveries.get(issue.id);
       const patch = patchFor(issue);
+      const agreement = patch.source_agreement || { status: "clear", checked: issue.sources.length, conflicts: [] };
       const rows = issue.claims.map(claim => {
         const relationships = Array.isArray(claim.relationships) && claim.relationships.length
           ? claim.relationships.map(relationship => `${relationship.type} → ${relationship.target_id}`).join(" · ")
@@ -1203,6 +1204,7 @@
         : "";
       $("#machineView").innerHTML = `
         <div class="patch-alert"><span aria-hidden="true">⚿</span><div><strong>Inspect before release.</strong><p>${issue.editor ? `${escapeHtml(issue.editor)} is origin provenance only. ` : ""}This patch supplies portable context. It does not rewrite model weights, hidden memory, or newer user instructions.</p></div></div>
+        <div class="source-agreement ${agreement.status === "conflict" ? "has-conflict" : ""}"><strong>${agreement.status === "conflict" ? "Source conflict needs resolution." : "Sources checked for agreement."}</strong><span>${agreement.checked} source packets · ${agreement.conflicts.length} material conflicts</span>${agreement.conflicts.length ? `<small>${escapeHtml(agreement.conflicts[0].reason)}</small>` : ""}</div>
         <div class="patch-overview">
           <div class="patch-stat"><span>Patch ID</span><strong>${escapeHtml(issue.id)}</strong></div>
           <div class="patch-stat"><span>Version</span><strong>${escapeHtml(issue.version || "1.0.0")}</strong></div>
@@ -1215,7 +1217,7 @@
           <div><strong>${approved ? "Patch released with a signed receipt." : "Ready for human decision."}</strong><p>${approved ? "A WebMCP-aware agent may now request this exact version and verify its content hash. You can withdraw future delivery at any time." : "Approval requests a canonical, signed delivery for this patch ID only. Subscription status does not count as approval."}</p>${receiptLine}</div>
           <div class="consent-actions">
             <button class="button ghost small" data-copy ${approved ? "" : "disabled"}>Copy signed bundle</button>
-            <button class="button ${approved ? "ghost" : "primary"} small" data-approve>${approved ? "Withdraw approval" : "Approve & release"}</button>
+            <button class="button ${approved ? "ghost" : "primary"} small" data-approve ${agreement.status === "conflict" && !approved ? "disabled" : ""}>${approved ? "Withdraw approval" : agreement.status === "conflict" ? "Resolve conflicts first" : "Approve & release"}</button>
           </div>
         </div>`;
       $("[data-approve]", $("#machineView")).addEventListener("click", () => toggleApproval(issue.id));
