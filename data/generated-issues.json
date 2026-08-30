@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-30T05:25:13.504Z",
+  "generated_at": "2026-08-30T13:52:11.733Z",
   "desks": {
     "maker": {
-      "fingerprint": "494a26a6a4f133d61973f6dfd41b941d79e7b32689d5d36f392ff4380006edf5",
-      "latest_patch_id": "maker-008",
-      "published_at": "2026-08-30T05:25:13.504Z",
-      "tavily_request_id": "7feca920-ff61-4040-b33c-71010bae9439"
+      "fingerprint": "50be79ea2296b389028959767a9e0cfc63bbb3aef1ec6a08411ce4a951dd6eaf",
+      "latest_patch_id": "maker-009",
+      "published_at": "2026-08-30T13:52:11.733Z",
+      "tavily_request_id": "02379bca-8590-4bfd-b327-e6b66642838c"
     },
     "model-watch": {
       "fingerprint": "bbb558448e45b84a5653c61b747041362e7c720f030609cfe56c236381f19e64",
@@ -27,13 +27,318 @@
       "tavily_request_id": "34ec898b-c519-4420-8353-6756f012b348"
     },
     "wellbeing": {
-      "fingerprint": "5f33f36aff8d79f650bd3dabb1ee61361571b37e7fe4e6252ae39b2924fbe5ad",
-      "latest_patch_id": "wellbeing-006",
-      "published_at": "2026-08-30T05:24:13.089Z",
-      "tavily_request_id": "95c8647a-80e2-431d-b037-65c6a68ff4f8"
+      "fingerprint": "1eab38c2f717dd3032d6214ed79ec321a13034789762b9f9011ee1925c4b11f3",
+      "latest_patch_id": "wellbeing-007",
+      "published_at": "2026-08-30T13:51:42.614Z",
+      "tavily_request_id": "6beac4f8-fe3d-4754-a0db-93066ac01347"
     }
   },
   "issues": [
+    {
+      "id": "maker-009",
+      "deskId": "maker",
+      "desk": "Maker Edition",
+      "icon": "⌘",
+      "issue": "009",
+      "version": "1.0.0",
+      "date": "AUG 30 · 2026",
+      "publishedAt": "2026-08-30T13:52:11.733Z",
+      "color": "#ff9466",
+      "title": "Velvet Signal — Maker Desk proposal",
+      "kicker": "maker-009",
+      "dek": "Langflow closes two registration-endpoint security holes and tidies a deprecated dependency — the week's most actionable change for builders running agent flows.",
+      "readTime": "3 min read",
+      "validity": "7 days",
+      "expires": "2026-09-06",
+      "confidence": "Mixed",
+      "scope": "AI product engineering",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Langflow's release notes this week read like a security checklist coming due. Two fixes stand out for anyone running a public-facing instance: the project gated public user self-registration to address CWE-862, an improper-authorization weakness, and it now requires authentication for POST /api/v2/registration/, closing a CWE-306 missing-authentication gap [M-SRC-2]. If your deployment exposes registration to the open internet, these are the two doors you want locked.",
+        "The housekeeping matters too. A residual deprecated transitive uuid dependency was bumped to v11 [M-SRC-2], and remote flow fetches are now bounded, which caps how much a remote source can make your instance chew [M-SRC-2]. On the experience side, Agent LLM streaming is now forced on so tokens arrive incrementally rather than in one lump [M-SRC-2].",
+        "One honest caveat: the packet lists these as merged fixes with their PR numbers, but it does not state a version number, release date, or which deployed versions are affected. Before you plan an upgrade window, confirm which release carries these patches — we've marked that gap needs-review rather than guessing."
+      ],
+      "pullquote": "Two registration endpoints, two CWEs, one upgrade decision you shouldn't defer.",
+      "sources": [
+        {
+          "id": "M-SRC-1",
+          "name": "Releases · google/adk-python",
+          "publisher": "github.com",
+          "url": "https://github.com/google/adk-python/releases",
+          "checked": "2026-08-30",
+          "publishedAt": "Fri, 28 Aug 2026 03:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-2",
+          "name": "Releases · langflow-ai/langflow · GitHub",
+          "publisher": "github.com",
+          "url": "https://github.com/langflow-ai/langflow/releases",
+          "checked": "2026-08-30",
+          "publishedAt": "Tue, 25 Aug 2026 13:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-3",
+          "name": "ai-agent-book/book-en/chapter1.md at main",
+          "publisher": "github.com",
+          "url": "https://github.com/bojieli/ai-agent-book/blob/main/book-en/chapter1.md",
+          "checked": "2026-08-30",
+          "publishedAt": "Thu, 27 Aug 2026 09:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-4",
+          "name": "Agent Teams Workflow - claude-code-ultimate-guide",
+          "publisher": "github.com",
+          "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide/blob/main/guide/workflows/agent-teams.md",
+          "checked": "2026-08-30",
+          "publishedAt": "Mon, 24 Aug 2026 19:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-5",
+          "name": "Releases · ollama/ollama",
+          "publisher": "github.com",
+          "url": "https://github.com/ollama/ollama/releases",
+          "checked": "2026-08-30",
+          "publishedAt": "Fri, 28 Aug 2026 13:00:00 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "M-01",
+          "claim": "Langflow merged fix(security) #13706, gating public user self-registration to address CWE-862 (improper authorization).",
+          "source": 1,
+          "sourceIds": [
+            "M-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-02",
+          "claim": "Langflow merged fix(security) #13707, requiring authentication for POST /api/v2/registration/ to address CWE-306 (missing authentication).",
+          "source": 1,
+          "sourceIds": [
+            "M-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-03",
+          "claim": "Langflow bumped a residual deprecated transitive uuid dependency to v11 in fix(security) #13703.",
+          "source": 1,
+          "sourceIds": [
+            "M-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-04",
+          "claim": "Langflow bounded remote flow fetches in fix #13660.",
+          "source": 1,
+          "sourceIds": [
+            "M-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-05",
+          "claim": "Langflow forced streaming on the Agent LLM so tokens stream incrementally, via fix(agent) #13356.",
+          "source": 1,
+          "sourceIds": [
+            "M-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-06",
+          "claim": "The source packet does not state a Langflow version number, release date, deprecation list, or which deployed versions are affected by the registration-endpoint fixes; the packet's publishedAt timestamp is 2026-08-25. Builders should confirm the carrying release before upgrading.",
+          "source": 1,
+          "sourceIds": [
+            "M-SRC-2"
+          ],
+          "status": "needs-review",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Lead with the security fixes; the streaming change is a pleasant footnote, not the headline.",
+        "Do not assert a version number, backport status, or upgrade compatibility — the packet supports none of these.",
+        "No relationship links to prior claims: prior Flowise, TGI, vLLM, and Ollama claims concern different projects or already-covered releases, and no packet evidence ties them to these Langflow fixes."
+      ],
+      "tags": [
+        "langflow",
+        "security",
+        "agents",
+        "tooling"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "02379bca-8590-4bfd-b327-e6b66642838c",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "wellbeing-007",
+      "deskId": "wellbeing",
+      "desk": "Wellbeing",
+      "icon": "☾",
+      "issue": "007",
+      "version": "1.0.0",
+      "date": "AUG 30 · 2026",
+      "publishedAt": "2026-08-30T13:51:42.614Z",
+      "color": "#a993ff",
+      "title": "Velvet Signal — Wellbeing Draft",
+      "kicker": "wellbeing",
+      "dek": "One useful general-wellbeing update, drawn only from the supplied NHLBI source packets. General guidance, not individualized medical advice.",
+      "readTime": "3 min read",
+      "validity": "180 days",
+      "expires": "2027-02-26",
+      "confidence": "Mixed",
+      "scope": "General wellbeing",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Sleep guidance is easier to act on when it arrives in the language you think in. The National Heart, Lung, and Blood Institute publishes a Spanish-language, easy-to-read fact sheet — \"En resumen: su guía para un sueño saludable\" — that condenses the critical messages of its fuller English guide, \"Your Guide to Healthy Sleep,\" into a single readable page [W-SRC-1].",
+        "The fact sheet covers practical ground: tips on getting enough sleep, information on sleep and driving, how to treat jet lag, and an introduction to sleep disorders [W-SRC-1]. If you have been relying on machine-translated health pages, this is an authoritative alternative written in Spanish from the start.",
+        "It sits inside a wider set of NHLBI sleep resources. The institute's flagship guide addresses types of sleep, common sleep myths, practical tips for adequate sleep, and coping with jet lag and nighttime shift work [W-SRC-4]. Its research reporting names the common sleep problems it covers — insomnia, sleep apnea, restless legs syndrome, and narcolepsy [W-SRC-3].",
+        "A note on scope: these are general public-health materials, updated at different times (the Spanish fact sheet dates to 2013 [W-SRC-1]), and sleep needs vary from person to person. Nothing here diagnoses anything or replaces a conversation with a clinician — it is a well-sourced starting point, in whichever language serves you best."
+      ],
+      "pullquote": "An authoritative sleep guide, written in Spanish from the start — not translated as an afterthought.",
+      "sources": [
+        {
+          "id": "W-SRC-1",
+          "name": "En resumen: su guía para un sueño saludable (In Brief: Your Guide to Healthy Sleep (Spanish) | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/es/resources/en-resumen-su-guia-para-un-sueno-saludable-brief-your-guide-healthy-sleep-spanish",
+          "checked": "2026-08-30"
+        },
+        {
+          "id": "W-SRC-2",
+          "name": "Sleep Deprivation and Deficiency - Healthy Sleep Habits | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits",
+          "checked": "2026-08-30"
+        },
+        {
+          "id": "W-SRC-3",
+          "name": "Sweet dreams: Researchers explore link between sleep and health | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/news/2018/sweet-dreams-researchers-explore-link-between-sleep-and-health",
+          "checked": "2026-08-30"
+        },
+        {
+          "id": "W-SRC-4",
+          "name": "Your Guide to Healthy Sleep | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/resources/your-guide-healthy-sleep",
+          "checked": "2026-08-30"
+        },
+        {
+          "id": "W-SRC-5",
+          "name": "Sleep Brochure | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/resources/sleep-brochure",
+          "checked": "2026-08-30"
+        }
+      ],
+      "claims": [
+        {
+          "id": "W-01",
+          "claim": "NHLBI publishes a Spanish-language, easy-to-read fact sheet titled \"En resumen: su guía para un sueño saludable\" that summarizes the critical messages of its English publication \"Your Guide to Healthy Sleep.\"",
+          "source": 0,
+          "sourceIds": [
+            "W-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-02",
+          "claim": "The Spanish-language fact sheet includes tips on getting enough sleep, information on sleep and driving, guidance on treating jet lag, and discussion of sleep disorders, and was updated in 2013.",
+          "source": 0,
+          "sourceIds": [
+            "W-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-005:W-08",
+              "reason": "Independently supports that NHLBI sleep resources cover drowsy driving, jet lag, and sleep disorder overviews."
+            }
+          ]
+        },
+        {
+          "id": "W-03",
+          "claim": "NHLBI's guide \"Your Guide to Healthy Sleep\" covers types of sleep, common sleep myths, practical tips for getting adequate sleep, and coping with jet lag and nighttime shift work.",
+          "source": 3,
+          "sourceIds": [
+            "W-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-005:W-08",
+              "reason": "Independently supports that NHLBI resources address jet lag and nighttime shift work."
+            }
+          ]
+        },
+        {
+          "id": "W-04",
+          "claim": "NHLBI identifies insomnia, sleep apnea, restless legs syndrome, and narcolepsy as common sleep problems.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-05",
+          "claim": "NHLBI's \"Sleep Brochure\" distinguishes between the sleep needed to feel awake and the sleep needed to be healthy, and describes the difference between healthy breathing and obstructed breathing in sleep apnea.",
+          "source": 4,
+          "sourceIds": [
+            "W-SRC-5"
+          ],
+          "status": "needs-review",
+          "confidence": "medium",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-006:W-05",
+              "reason": "Independently supports the awake-versus-healthy sleep distinction from a second source packet."
+            }
+          ]
+        }
+      ],
+      "toneNotes": [
+        "No diagnosis, moralizing, or individualized medical advice; individual variation in sleep needs is stated explicitly.",
+        "The 2013 update date of the Spanish fact sheet is surfaced so readers can judge currency for themselves.",
+        "All facts trace to the supplied NHLBI packets; no outside knowledge introduced."
+      ],
+      "tags": [
+        "sleep",
+        "health-literacy",
+        "spanish-language-resources",
+        "NHLBI"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "6beac4f8-fe3d-4754-a0db-93066ac01347",
+        "credits": 2,
+        "search_mode": "timeless-official-fallback"
+      }
+    },
     {
       "id": "maker-008",
       "deskId": "maker",
