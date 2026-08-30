@@ -1,18 +1,18 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-30T13:52:11.733Z",
+  "generated_at": "2026-08-30T19:21:45.220Z",
   "desks": {
     "maker": {
-      "fingerprint": "50be79ea2296b389028959767a9e0cfc63bbb3aef1ec6a08411ce4a951dd6eaf",
-      "latest_patch_id": "maker-009",
-      "published_at": "2026-08-30T13:52:11.733Z",
-      "tavily_request_id": "02379bca-8590-4bfd-b327-e6b66642838c"
+      "fingerprint": "5339ad86c9374a8a9f0afec737772ac40c7124675b7f0a551eb6b65e3f53c66a",
+      "latest_patch_id": "maker-010",
+      "published_at": "2026-08-30T19:21:45.220Z",
+      "tavily_request_id": "aafea9e9-6431-49d7-8659-a8aa60885898"
     },
     "model-watch": {
-      "fingerprint": "bbb558448e45b84a5653c61b747041362e7c720f030609cfe56c236381f19e64",
-      "latest_patch_id": "model-watch-008",
-      "published_at": "2026-08-30T05:23:02.892Z",
-      "tavily_request_id": "f5f08062-2fd5-4eba-9edc-f3e4bfb146d0"
+      "fingerprint": "6189ba065893b50a7c85a58b9381c991c2defeed76f753a5005a4fda3ac4d6d6",
+      "latest_patch_id": "model-watch-009",
+      "published_at": "2026-08-30T19:19:42.795Z",
+      "tavily_request_id": "d1003c52-cefe-4e34-a22c-6cb82b12d4d7"
     },
     "culture": {
       "fingerprint": "bb59259c953fc9fbd62a76fda1319921a49c955ecbdbb28d8e577e7ac3717e53",
@@ -27,13 +27,462 @@
       "tavily_request_id": "34ec898b-c519-4420-8353-6756f012b348"
     },
     "wellbeing": {
-      "fingerprint": "1eab38c2f717dd3032d6214ed79ec321a13034789762b9f9011ee1925c4b11f3",
-      "latest_patch_id": "wellbeing-007",
-      "published_at": "2026-08-30T13:51:42.614Z",
-      "tavily_request_id": "6beac4f8-fe3d-4754-a0db-93066ac01347"
+      "fingerprint": "59ec09605bbd75b7e5cae204593dbbc3ff9d51c72068e0ad33847942270bb9b6",
+      "latest_patch_id": "wellbeing-008",
+      "published_at": "2026-08-30T19:20:38.586Z",
+      "tavily_request_id": "3c596cc9-acac-47a3-9481-6007710f6e51"
     }
   },
   "issues": [
+    {
+      "id": "maker-010",
+      "deskId": "maker",
+      "desk": "Maker Edition",
+      "icon": "⌘",
+      "issue": "010",
+      "version": "1.0.0",
+      "date": "AUG 30 · 2026",
+      "publishedAt": "2026-08-30T19:21:45.220Z",
+      "color": "#ff9466",
+      "title": "Velvet Signal — Maker Desk, proposed edition maker-010",
+      "kicker": "Proposed for review — not yet delivered. A subscription proposes context; it never silently approves memory.",
+      "dek": "This week's packets are thin on version numbers, so this edition leads with what they actually support: two desktop-app fixes in Ollama's release notes, a new local-first cockpit for coding agents, and an explicit list of what we could not verify.",
+      "readTime": "3 min read",
+      "validity": "7 days",
+      "expires": "2026-09-06",
+      "confidence": "Mixed",
+      "scope": "AI product engineering",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Lead — Ollama restores dark mode and fixes a macOS handoff. The release notes state that Ollama's app now follows the system appearance again, restoring dark mode support, and include a fix so the macOS app properly hands off to an already-running instance [M-SRC-3]. Neither change touches models or APIs, but both are the kind of small desktop polish that compounds for anyone living in the app daily. One honest caveat: the handoff-fix line is truncated in our source packet, so treat the exact scope of that fix as needs-review below.",
+        "Caveat — no version number in this packet. The excerpt does not state which Ollama release carries these fixes, nor a release date, deprecation, or compatibility note. Our prior issue covered v0.32.14, but this packet does not confirm these fixes belong to that release, and we do not carry facts forward from prior issues without fresh support. If you need to pin a version, verify against the release page before upgrading.",
+        "Sidebar — OpenDesign, a local-first home for coding agents. OpenDesign presents as a local-first native desktop app for macOS and Windows that connects to mainstream coding agents, with release notes, milestones, and bug tracking in the open [M-SRC-2]. For builders orchestrating several agents, a native, local-first surface is worth a look; the packet does not state pricing, supported agent versions, or a release version, so we assert none.",
+        "Also in the packets, unverified — Cherry Studio's packet references an August 2026 policy update alongside smart chat, autonomous agents, 300+ assistants, and multiple LLM providers [M-SRC-4], but the excerpt gives no detail on the policy's contents, so no claim is drafted. An AI-agent book chapter describes the LLM as the agent's reasoning engine handling context, tool interfaces, loops, state, permissions, and verification [M-SRC-1]; it is background framing, not a tooling change, so it informs the desk's lens rather than the ledger."
+      ],
+      "pullquote": "The packet does not state which Ollama release carries these fixes — so we don't either.",
+      "sources": [
+        {
+          "id": "M-SRC-1",
+          "name": "ai-agent-book/book-en/chapter1.md at main",
+          "publisher": "github.com",
+          "url": "https://github.com/bojieli/ai-agent-book/blob/main/book-en/chapter1.md",
+          "checked": "2026-08-30"
+        },
+        {
+          "id": "M-SRC-2",
+          "name": "OpenDesign: The open-source Claude Design alternative",
+          "publisher": "github.com",
+          "url": "https://github.com/nexu-io/open-design",
+          "checked": "2026-08-30"
+        },
+        {
+          "id": "M-SRC-3",
+          "name": "Releases · ollama/ollama",
+          "publisher": "github.com",
+          "url": "https://github.com/ollama/ollama/releases",
+          "checked": "2026-08-30"
+        },
+        {
+          "id": "M-SRC-4",
+          "name": "CherryHQ/cherry-studio: AI productivity ...",
+          "publisher": "github.com",
+          "url": "https://github.com/cherryhq/cherry-studio",
+          "checked": "2026-08-30"
+        }
+      ],
+      "claims": [
+        {
+          "id": "M-01",
+          "claim": "Ollama's app now follows the system appearance again, restoring dark mode support, per the project's release notes.",
+          "source": 2,
+          "sourceIds": [
+            "M-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-02",
+          "claim": "Ollama's release notes include a fix for the macOS app to properly hand off to an already-running instance; the source excerpt is truncated mid-sentence, so the full scope of the fix is not established.",
+          "source": 2,
+          "sourceIds": [
+            "M-SRC-3"
+          ],
+          "status": "needs-review",
+          "confidence": "low"
+        },
+        {
+          "id": "M-03",
+          "claim": "The source packet does not state a version number, release date, deprecation list, or compatibility limits for the Ollama desktop fixes; prior coverage of v0.32.14 is not confirmed to include them, and none is asserted here.",
+          "source": 2,
+          "sourceIds": [
+            "M-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-04",
+          "claim": "OpenDesign is a local-first native desktop app for macOS and Windows that connects to mainstream coding agents, with release notes, milestones, and bug tracking published in its repository.",
+          "source": 1,
+          "sourceIds": [
+            "M-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-05",
+          "claim": "The OpenDesign packet does not state a release version, pricing, supported agent versions, or platform requirements beyond macOS and Windows; none is asserted.",
+          "source": 1,
+          "sourceIds": [
+            "M-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-06",
+          "claim": "Cherry Studio's packet references an August 2026 policy update and describes the product as an AI productivity studio with smart chat, autonomous agents, 300+ assistants, and multiple LLM provider support; the contents and effective terms of the policy update are not stated and remain needs-review.",
+          "source": 3,
+          "sourceIds": [
+            "M-SRC-4"
+          ],
+          "status": "needs-review",
+          "confidence": "low"
+        }
+      ],
+      "toneNotes": [
+        "Lead with the Ollama desktop fixes as the most concrete, current tooling change in the packets; keep the version uncertainty visible rather than borrowing v0.32.14 from prior coverage.",
+        "Frame OpenDesign as a watchlist item, not an endorsement — the packet supports only its self-description.",
+        "No relationships were drawn to prior Langflow, vLLM, Flowise, TGI, or DeepSeek-Reasonix claims: the current packets share no facts with them, and shared desk or topic alone is not a relationship."
+      ],
+      "tags": [
+        "ollama",
+        "desktop-apps",
+        "coding-agents",
+        "local-first",
+        "version-uncertainty"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "aafea9e9-6431-49d7-8659-a8aa60885898",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "wellbeing-008",
+      "deskId": "wellbeing",
+      "desk": "Wellbeing",
+      "icon": "☾",
+      "issue": "008",
+      "version": "1.0.0",
+      "date": "AUG 30 · 2026",
+      "publishedAt": "2026-08-30T19:20:38.586Z",
+      "color": "#a993ff",
+      "title": "The 20-Minute Nap Window",
+      "kicker": "Wellbeing · Sleep habits",
+      "dek": "NHLBI's guidance on daytime napping is refreshingly specific — and it comes with a built-in caveat for anyone whose nights are already a struggle.",
+      "readTime": "3 min read",
+      "validity": "180 days",
+      "expires": "2027-02-26",
+      "confidence": "High",
+      "scope": "General wellbeing",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "If your afternoons have a dip in them, a nap can be a legitimate tool, not a guilty one. The National Heart, Lung, and Blood Institute notes that napping during the day may boost your alertness and performance — with a clear boundary attached: adults should nap for no more than 20 minutes [W-SRC-3].",
+        "The individual variation here matters, and NHLBI names it directly. If you have trouble falling asleep at night, the guidance is to limit naps or take them earlier in the afternoon [W-SRC-3]. A nap that restores one person's focus can quietly erode another person's night, so the right nap length and timing is genuinely personal.",
+        "Age changes the picture, too. Napping in preschool-age children is normal and promotes healthy growth and development — a reminder that what counts as good sleep hygiene for an adult is not a universal rule [W-SRC-3].",
+        "As always, this is general public-health guidance, not individualized medical advice. If sleep problems persist or worry you, that's a conversation for a clinician, not a newsletter."
+      ],
+      "pullquote": "Adults should nap for no more than 20 minutes — and if nights are already difficult, earlier or shorter is the move.",
+      "sources": [
+        {
+          "id": "W-SRC-1",
+          "name": "En resumen: su guía para un sueño saludable (In Brief: Your Guide to Healthy Sleep (Spanish) | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/es/resources/en-resumen-su-guia-para-un-sueno-saludable-brief-your-guide-healthy-sleep-spanish",
+          "checked": "2026-08-30"
+        },
+        {
+          "id": "W-SRC-2",
+          "name": "Your Guide to Healthy Sleep | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/resources/your-guide-healthy-sleep",
+          "checked": "2026-08-30"
+        },
+        {
+          "id": "W-SRC-3",
+          "name": "Sleep Deprivation and Deficiency - Healthy Sleep Habits",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits",
+          "checked": "2026-08-30"
+        },
+        {
+          "id": "W-SRC-4",
+          "name": "Sweet dreams: Researchers explore link between sleep and health | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/news/2018/sweet-dreams-researchers-explore-link-between-sleep-and-health",
+          "checked": "2026-08-30"
+        },
+        {
+          "id": "W-SRC-5",
+          "name": "Sleep Brochure | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/resources/sleep-brochure",
+          "checked": "2026-08-30"
+        }
+      ],
+      "claims": [
+        {
+          "id": "W-01",
+          "claim": "Napping during the day may boost alertness and performance.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-005:W-05",
+              "reason": "W-SRC-3 independently supports the alertness-and-performance portion of the same napping rule."
+            }
+          ]
+        },
+        {
+          "id": "W-02",
+          "claim": "Adults should nap for no more than 20 minutes.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-005:W-05",
+              "reason": "W-SRC-3 independently supports the 20-minute cap in the same napping rule."
+            }
+          ]
+        },
+        {
+          "id": "W-03",
+          "claim": "People who have trouble falling asleep at night should limit naps or take them earlier in the afternoon.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-005:W-05",
+              "reason": "W-SRC-3 independently supports the conditional guidance within the same napping rule."
+            }
+          ]
+        },
+        {
+          "id": "W-04",
+          "claim": "Napping in preschool-age children is normal and promotes healthy growth and development.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-005:W-06",
+              "reason": "W-SRC-3 independently supports the same rule about preschool-age napping."
+            }
+          ]
+        }
+      ],
+      "toneNotes": [
+        "No diagnosis, moralizing, or individualized medical advice; a clinician referral is included for persistent sleep problems.",
+        "Individual variation is kept visible: nap timing and length depend on the person, and children's napping follows different norms.",
+        "All factual claims trace to a single authoritative public-health source (NHLBI) supplied in this issue's packets."
+      ],
+      "tags": [
+        "sleep",
+        "napping",
+        "wellbeing",
+        "public-health-guidance"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "3c596cc9-acac-47a3-9481-6007710f6e51",
+        "credits": 2,
+        "search_mode": "timeless-official-fallback"
+      }
+    },
+    {
+      "id": "model-watch-009",
+      "deskId": "model-watch",
+      "desk": "Model Watch",
+      "icon": "⌁",
+      "issue": "009",
+      "version": "1.0.0",
+      "date": "AUG 30 · 2026",
+      "publishedAt": "2026-08-30T19:19:42.795Z",
+      "color": "#ff719f",
+      "title": "Velvet Signal — Model Watch, Proposed Edition 009",
+      "kicker": "model-watch",
+      "dek": "A community quantization artifact gets its licensing story straight — and tells you plainly it is not ready to serve.",
+      "readTime": "3 min read",
+      "validity": "30 days",
+      "expires": "2026-09-29",
+      "confidence": "Mixed",
+      "scope": "AI models and agent interfaces",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "This cycle's packet shelf is deliberately thin: one source, one artifact, and no new primary vendor release notes arrived in the supplied packets. Rather than stretch thin material into news, this edition does the quieter work the model-watch desk exists for — reading a model card closely and telling you exactly what it does and does not promise.",
+        "The artifact under the lamp is Baekpica/Qwen3.8-Flash-Next-Mixed-Quant-SSD-PLE-GGUF on Hugging Face. Three things in its card matter to builders. First, licensing: the converted weights remain governed by the original Qwen Community License 1.0, the exact pinned upstream license ships with the artifact, and the card explicitly claims no Apache-2.0 license. If you are wiring quantized weights into a product, that distinction is the difference between a clean compliance story and a quiet surprise. Second, readiness: the repository states it is not yet a drop-in serving release — the card's own words, and a clear signal to hold off on production deployment. Third, provenance: the workflow cites Baekpica/ds4-mixed-quant-for-spark as a public precedent for region-aware quantization, artifact auditing, and Spark memory budgeting, with no private handoff bucket required to understand the card.",
+        "One honest gap: the excerpt trails off mid-sentence at 'pending, so this repository is not yet a drop-in serving release.' What exactly is pending is not established by the supplied packet, so we flag it for review rather than guess.",
+        "A note on what you will not find here: earlier editions reported OpenAI model retirements and other vendor changes. No supplied packet this cycle independently supports updates to those stories, so they are left untouched — reference history, not fresh fact."
+      ],
+      "pullquote": "The card explicitly claims no Apache-2.0 license — read the pinned upstream terms before you serve.",
+      "sources": [
+        {
+          "id": "MW-SRC-1",
+          "name": "Baekpica/Qwen3.8-Flash-Next-Mixed-Quant-SSD-PLE- ...",
+          "publisher": "huggingface.co",
+          "url": "https://huggingface.co/Baekpica/Qwen3.8-Flash-Next-Mixed-Quant-SSD-PLE-GGUF",
+          "checked": "2026-08-30",
+          "publishedAt": "Wed, 26 Aug 2026 20:12:23 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "MW-01",
+          "claim": "The Baekpica/Qwen3.8-Flash-Next-Mixed-Quant-SSD-PLE-GGUF model card states its converted weights remain governed by the original Qwen Community License 1.0, with the exact pinned upstream license included with the artifact and no Apache-2.0 license claimed.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "model-watch-008:MW-06",
+              "reason": "The supplied packet independently supports the same licensing statement."
+            },
+            {
+              "type": "confirms",
+              "target_id": "model-watch-007:MW-05",
+              "reason": "The supplied packet independently supports the same licensing statement."
+            },
+            {
+              "type": "confirms",
+              "target_id": "model-watch-006:MW-01",
+              "reason": "The supplied packet independently supports the same licensing statement."
+            }
+          ]
+        },
+        {
+          "id": "MW-02",
+          "claim": "The Baekpica/Qwen3.8-Flash-Next-Mixed-Quant-SSD-PLE-GGUF repository states it is not yet a drop-in serving release.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "model-watch-008:MW-05",
+              "reason": "The supplied packet independently supports the same readiness statement."
+            },
+            {
+              "type": "confirms",
+              "target_id": "model-watch-007:MW-04",
+              "reason": "The supplied packet independently supports the same readiness statement."
+            },
+            {
+              "type": "confirms",
+              "target_id": "model-watch-006:MW-02",
+              "reason": "The supplied packet independently supports the same readiness statement."
+            }
+          ]
+        },
+        {
+          "id": "MW-03",
+          "claim": "The Baekpica model card cites Baekpica/ds4-mixed-quant-for-spark as a public precedent for region-aware quantization, artifact auditing, and Spark memory budgeting, and states no private handoff bucket is required to understand the card.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "model-watch-008:MW-07",
+              "reason": "The supplied packet independently supports the same provenance statement."
+            },
+            {
+              "type": "confirms",
+              "target_id": "model-watch-006:MW-03",
+              "reason": "The supplied packet independently supports the same provenance statement."
+            }
+          ]
+        },
+        {
+          "id": "MW-04",
+          "claim": "The supplied excerpt indicates something is 'pending' as the stated reason the repository is not yet a drop-in serving release, but the excerpt does not specify what is pending.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "needs-review",
+          "confidence": "low"
+        },
+        {
+          "id": "MW-05",
+          "claim": "No new primary vendor release notes or official documentation were supplied in this cycle's packets; no updates to previously reported vendor model changes are established by the current sources.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        }
+      ],
+      "toneNotes": [
+        "Lead with the licensing clarity; it is the most consequential fact for builders.",
+        "Keep the 'not yet a drop-in serving release' warning prominent and in the card's own words.",
+        "Do not restate facts from prior editions (OpenAI retirements, Gemini, DeepSeek, Meta) — no current packet supports them.",
+        "Keep the 'pending' gap visible rather than papering over it."
+      ],
+      "tags": [
+        "model-watch",
+        "quantization",
+        "licensing",
+        "gguf",
+        "hugging-face",
+        "needs-review"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "d1003c52-cefe-4e34-a22c-6cb82b12d4d7",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
     {
       "id": "maker-009",
       "deskId": "maker",
