@@ -1,39 +1,1265 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-29T07:04:43.188Z",
+  "generated_at": "2026-08-30T05:25:13.504Z",
   "desks": {
     "maker": {
-      "fingerprint": "2b34e1eec3b55e251b6ea3b3c5ecd5051f481c9b03f2af0b24565f49bfa21147",
-      "latest_patch_id": "maker-006",
-      "published_at": "2026-08-28T20:13:11.168Z",
-      "tavily_request_id": "594ee677-b5ba-46e9-ac3c-a5592384d15c"
+      "fingerprint": "494a26a6a4f133d61973f6dfd41b941d79e7b32689d5d36f392ff4380006edf5",
+      "latest_patch_id": "maker-008",
+      "published_at": "2026-08-30T05:25:13.504Z",
+      "tavily_request_id": "7feca920-ff61-4040-b33c-71010bae9439"
     },
     "model-watch": {
-      "fingerprint": "6189ba065893b50a7c85a58b9381c991c2defeed76f753a5005a4fda3ac4d6d6",
-      "latest_patch_id": "model-watch-006",
-      "published_at": "2026-08-29T07:03:10.941Z",
-      "tavily_request_id": "4906099a-659c-4e72-8e55-786b3278270f"
+      "fingerprint": "bbb558448e45b84a5653c61b747041362e7c720f030609cfe56c236381f19e64",
+      "latest_patch_id": "model-watch-008",
+      "published_at": "2026-08-30T05:23:02.892Z",
+      "tavily_request_id": "f5f08062-2fd5-4eba-9edc-f3e4bfb146d0"
     },
     "culture": {
-      "fingerprint": "c75f765ecb036efc452b71832a5c64bdb4282f40bf482103ef86fce790d561c4",
-      "latest_patch_id": "culture-003",
-      "published_at": "2026-08-28T20:12:54.477Z",
-      "tavily_request_id": "8039fc67-b852-46f7-ad6e-ce210d9fe207"
+      "fingerprint": "bb59259c953fc9fbd62a76fda1319921a49c955ecbdbb28d8e577e7ac3717e53",
+      "latest_patch_id": "culture-005",
+      "published_at": "2026-08-30T05:24:45.290Z",
+      "tavily_request_id": "6d5932e7-5f95-4cb5-bf8f-92efaeec1183"
     },
     "pantry": {
-      "fingerprint": "f1dcaa8fcb3259145a0b51067487aab136efbccd19067ff6248a6c918a50d9d6",
-      "latest_patch_id": "pantry-003",
-      "published_at": "2026-08-28T12:05:11.228Z",
-      "tavily_request_id": "30440e38-5a69-4597-b5fd-604fda4a44e7"
+      "fingerprint": "382c609e9472db94fd7a241e65fbdc496da903636e0941f655ead50fe3b9683e",
+      "latest_patch_id": "pantry-004",
+      "published_at": "2026-08-29T19:26:38.528Z",
+      "tavily_request_id": "34ec898b-c519-4420-8353-6756f012b348"
     },
     "wellbeing": {
-      "fingerprint": "59ec09605bbd75b7e5cae204593dbbc3ff9d51c72068e0ad33847942270bb9b6",
-      "latest_patch_id": "wellbeing-005",
-      "published_at": "2026-08-29T07:04:43.188Z",
-      "tavily_request_id": "2e4eb828-24e9-4176-ae16-c1d9f99479cb"
+      "fingerprint": "5f33f36aff8d79f650bd3dabb1ee61361571b37e7fe4e6252ae39b2924fbe5ad",
+      "latest_patch_id": "wellbeing-006",
+      "published_at": "2026-08-30T05:24:13.089Z",
+      "tavily_request_id": "95c8647a-80e2-431d-b037-65c6a68ff4f8"
     }
   },
   "issues": [
+    {
+      "id": "maker-008",
+      "deskId": "maker",
+      "desk": "Maker Edition",
+      "icon": "⌘",
+      "issue": "008",
+      "version": "1.0.0",
+      "date": "AUG 30 · 2026",
+      "publishedAt": "2026-08-30T05:25:13.504Z",
+      "color": "#ff9466",
+      "title": "Velvet Signal — proposed edition and claim ledger",
+      "kicker": "maker-008",
+      "dek": "One proposed edition for the maker desk, with the machine-readable claim ledger beneath. Human edition and patch describe the same facts.",
+      "readTime": "3 min read",
+      "validity": "14 days",
+      "expires": "2026-09-13",
+      "confidence": "High",
+      "scope": "AI product engineering",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Ollama v0.32.14: two small changes that smooth two rough edges",
+        "Ollama shipped v0.32.14 with a short, focused changelog: llama-server renderers now transcode WebP images, and the qwen renderer tolerates non-leading system messages [M-SRC-3]. Neither change is flashy, but both remove friction you have likely felt. If your pipeline feeds WebP images straight into llama-server, transcoding happens for you now rather than as a pre-processing step on your side. And if your framework interleaves system messages partway through a conversation rather than leading with them, the qwen renderer will no longer choke on the ordering [M-SRC-3].",
+        "The release commit (d67ad83) was created on GitHub.com and signed with GitHub's verified signature, GPG key ID B5690EEEBB952194 [M-SRC-3]. Release assets include install.ps1 (sha256 04b3a6d465ba520e94d984216b5be7d6ddc57b945565dfc9ecbb6b0d95ab447c, 22.1 KB) timestamped 2026-08-16T17:20:50Z [M-SRC-3].",
+        "Same release notes, bigger headline: Ollama added Muse Glimmer support for NVIDIA, AMD, and additional platforms [M-SRC-3]. The documented launch pattern is a one-liner per harness — `ollama launch claude --model muse-glimmer` for Claude Code, `ollama launch pi --model muse-glimmer` for Pi, and equivalent `openclaw` and `hermes` invocations for personal-assistant frameworks [M-SRC-3].",
+        "What we are not saying: the packet lists no deprecations, breaking changes, or compatibility limits for v0.32.14, so none are asserted here. The changelog tells us what the qwen renderer now tolerates; it does not describe prior behavior, and we won't speculate."
+      ],
+      "pullquote": "Two changelog lines, two fewer pre-processing steps in your pipeline.",
+      "sources": [
+        {
+          "id": "M-SRC-1",
+          "name": "Releases · google/adk-python",
+          "publisher": "github.com",
+          "url": "https://github.com/google/adk-python/releases",
+          "checked": "2026-08-30",
+          "publishedAt": "Fri, 28 Aug 2026 03:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-2",
+          "name": "ai-agent-book/book-en/chapter1.md at main",
+          "publisher": "github.com",
+          "url": "https://github.com/bojieli/ai-agent-book/blob/main/book-en/chapter1.md",
+          "checked": "2026-08-30",
+          "publishedAt": "Thu, 27 Aug 2026 21:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-3",
+          "name": "Releases · ollama/ollama",
+          "publisher": "github.com",
+          "url": "https://github.com/ollama/ollama/releases",
+          "checked": "2026-08-30",
+          "publishedAt": "Fri, 28 Aug 2026 05:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-4",
+          "name": "Releases · addyosmani/agent-skills · GitHub",
+          "publisher": "github.com",
+          "url": "https://github.com/addyosmani/agent-skills/releases",
+          "checked": "2026-08-30",
+          "publishedAt": "Sat, 29 Aug 2026 05:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-5",
+          "name": "affaan-m/ECC: The agent harness performance ...",
+          "publisher": "github.com",
+          "url": "https://github.com/affaan-m/ecc",
+          "checked": "2026-08-30",
+          "publishedAt": "Fri, 28 Aug 2026 03:00:00 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "M-01",
+          "claim": "Ollama v0.32.14 transcodes WebP images for llama-server and makes the qwen renderer tolerate non-leading system messages.",
+          "source": 2,
+          "sourceIds": [
+            "M-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-02",
+          "claim": "The v0.32.14 release commit d67ad83 was created on GitHub.com and signed with GitHub's verified signature, GPG key ID B5690EEEBB952194.",
+          "source": 2,
+          "sourceIds": [
+            "M-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-03",
+          "claim": "Release assets for Ollama v0.32.14 include install.ps1 with sha256 04b3a6d465ba520e94d984216b5be7d6ddc57b945565dfc9ecbb6b0d95ab447c (22.1 KB), timestamped 2026-08-16T17:20:50Z.",
+          "source": 2,
+          "sourceIds": [
+            "M-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-04",
+          "claim": "Ollama added Muse Glimmer support for NVIDIA, AMD, and additional platforms; the release notes document `ollama launch` invocations pairing muse-glimmer with Claude Code, Pi, OpenClaw, and Hermes.",
+          "source": 2,
+          "sourceIds": [
+            "M-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-05",
+          "claim": "The source packet does not state a release date, deprecations, breaking changes, or compatibility limits for Ollama v0.32.14, and does not describe the qwen renderer's prior behavior; none are asserted.",
+          "source": 2,
+          "sourceIds": [
+            "M-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Lead with the two v0.32.14 changes because they are concrete, versioned, and immediately actionable for builders running local inference.",
+        "Keep the Muse Glimmer item secondary: it is supported by the same packet but the packet does not state a version number for that addition, so no version is asserted.",
+        "No relationships to prior claims are drawn: prior claims cover DeepSeek-Reasonix, Flowise, TGI, vLLM, QwenPaw, and hermes-agent binding defaults, none of which overlap the scope of these Ollama release changes. Empty relationship arrays are correct here.",
+        "Compatibility and deprecation silence is stated explicitly rather than filled in, per desk guidance."
+      ],
+      "tags": [
+        "ollama",
+        "local-inference",
+        "release-notes",
+        "v0.32.14",
+        "muse-glimmer"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "7feca920-ff61-4040-b33c-71010bae9439",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "culture-005",
+      "deskId": "culture",
+      "desk": "Culture Desk",
+      "icon": "✺",
+      "issue": "005",
+      "version": "1.0.0",
+      "date": "AUG 30 · 2026",
+      "publishedAt": "2026-08-30T05:24:45.290Z",
+      "color": "#67d6c0",
+      "title": "Velvet Signal — Culture Desk",
+      "kicker": "One signal, read closely",
+      "dek": "Why the Chinese internet is reading a cow movie into a mysterious AI model's name — and why the answer is still open.",
+      "readTime": "3 min read",
+      "validity": "10 days",
+      "expires": "2026-09-09",
+      "confidence": "Mixed",
+      "scope": "Culture signals",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "When a powerful new AI model appears under the cryptic name \"Ox Alpha,\" the internet does what the internet does: it hunts for a backstory. This week, per Business Insider, users on Weibo noticed the word \"Ox\" in the model's name and began calling it \"Niu Lai\" — the title of a low-budget Chinese animated movie about a cow that became one of the country's biggest internet memes this summer (C-SRC-4).",
+        "The logic of the nickname is loose and playful: one user on X noted that the film's title, 牛来 (Niu Lai), roughly translates to \"bull is coming\" or \"ox coming\" — close enough to \"Ox Alpha\" to fuel speculation that the model's name is a wink at the movie (C-SRC-4). It is a naming theory, not a confirmed fact. The packets show people drawing a link; they do not show anyone establishing that the link is real.",
+        "That distinction is the whole story. What we can say is that a viral film has become the interpretive frame for a mysterious model's name, and that the nickname has jumped platforms, from Weibo to X (C-SRC-4). What we cannot say is what \"Ox Alpha\" actually means, where it came from, or whether the Niu Lai connection is anything more than a coincidence that meme culture found irresistible. Treat the theory as a live, unresolved reading — not an origin story.",
+        "This entry is current as of late August 2026. Meme vocabulary and naming theories move fast; re-check within 7–14 days."
+      ],
+      "pullquote": "A viral cow movie has become the interpretive frame for a mysterious model's name — a naming theory, not a confirmed fact.",
+      "sources": [
+        {
+          "id": "C-SRC-1",
+          "name": "This U.S. City Was Named the Best Place to Work—with Strong Career Opportunities, High Pay, and Quality of Life - Travel + Leisure",
+          "publisher": "travelandleisure.com",
+          "url": "https://www.travelandleisure.com/25-best-us-cities-for-work-indeed-analysis-12066166",
+          "checked": "2026-08-30",
+          "publishedAt": "Tue, 25 Aug 2026 09:00:00 GMT"
+        },
+        {
+          "id": "C-SRC-2",
+          "name": "‘Derogatory’ fliers targeting Armenian community found near Glendale elementary school - Los Angeles Times",
+          "publisher": "latimes.com",
+          "url": "https://www.latimes.com/california/story/2026-08-29/derogatory-flyers-targeting-armenian-community-found-near-glendale-elementary-school",
+          "checked": "2026-08-30",
+          "publishedAt": "Sat, 29 Aug 2026 19:03:38 GMT"
+        },
+        {
+          "id": "C-SRC-3",
+          "name": "Trump denies US pushed Canada on French language - Politico",
+          "publisher": "politico.com",
+          "url": "https://www.politico.com/news/2026/08/25/trump-canada-quebec-french-01048724",
+          "checked": "2026-08-30",
+          "publishedAt": "Tue, 25 Aug 2026 13:43:00 GMT"
+        },
+        {
+          "id": "C-SRC-4",
+          "name": "The Chinese internet is looking to the country's weirdest viral movie for hints at Ox Alpha's origins - Business Insider",
+          "publisher": "businessinsider.com",
+          "url": "https://www.businessinsider.com/chinese-internet-ox-alpha-niu-lai-origin-story-2026-8",
+          "checked": "2026-08-30",
+          "publishedAt": "Mon, 24 Aug 2026 08:44:23 GMT"
+        },
+        {
+          "id": "C-SRC-5",
+          "name": "Champions League format 2026-27, explained: How league phase and knockout bracket works - sportingnews.com",
+          "publisher": "sportingnews.com",
+          "url": "https://www.sportingnews.com/in/football/news/champions-league-format-2026-27/91d28c9af2533660b7cf5150",
+          "checked": "2026-08-30",
+          "publishedAt": "Thu, 27 Aug 2026 06:00:01 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "C-01",
+          "claim": "Users on Weibo observed that the AI model \"Ox Alpha\" contains the word \"Ox\" in its name and began nickname-ing the model \"Niu Lai,\" the title of a Chinese animated movie.",
+          "source": 3,
+          "sourceIds": [
+            "C-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-02",
+          "claim": "\"Niu Lai\" (牛来) is the title of a low-budget Chinese animated movie about a cow that became one of China's biggest internet memes this summer.",
+          "source": 3,
+          "sourceIds": [
+            "C-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-03",
+          "claim": "The movie title \"Niu Lai\" roughly translates to \"bull is coming\" or \"ox coming,\" per a user on X.",
+          "source": 3,
+          "sourceIds": [
+            "C-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-04",
+          "claim": "Users on the Chinese internet have drawn a speculative link between the \"Ox Alpha\" model name and the viral movie \"Niu Lai\" as a possible hint at the model's origins.",
+          "source": 3,
+          "sourceIds": [
+            "C-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-05",
+          "claim": "The actual origin or intended meaning of the name \"Ox Alpha\" is not established by the supplied packets; the Niu Lai connection remains an unconfirmed theory.",
+          "source": 3,
+          "sourceIds": [
+            "C-SRC-4"
+          ],
+          "status": "needs-review",
+          "confidence": "high"
+        },
+        {
+          "id": "C-06",
+          "claim": "The nickname and origin theory were current as of the source publication date of 24 August 2026; meme vocabulary and naming theories shift quickly, so this entry should be re-checked within 7–14 days.",
+          "source": 3,
+          "sourceIds": [
+            "C-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Distinguish observed usage (the nickname spreading on Weibo and X) from universal meaning (what \"Ox Alpha\" actually signifies).",
+        "No user identity claims: this is a signal about internet discourse, not about any reader.",
+        "Keep the speculative nature of the origin theory visible throughout."
+      ],
+      "tags": [
+        "memes",
+        "AI",
+        "naming",
+        "Chinese internet",
+        "Niu Lai",
+        "Ox Alpha"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "6d5932e7-5f95-4cb5-bf8f-92efaeec1183",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "wellbeing-006",
+      "deskId": "wellbeing",
+      "desk": "Wellbeing",
+      "icon": "☾",
+      "issue": "006",
+      "version": "1.0.0",
+      "date": "AUG 30 · 2026",
+      "publishedAt": "2026-08-30T05:24:13.089Z",
+      "color": "#a993ff",
+      "title": "The case for writing your sleep down",
+      "kicker": "Wellbeing",
+      "dek": "NHLBI's printable sleep diary turns vague tiredness into a pattern you can actually see — and, if you choose, bring to a doctor.",
+      "readTime": "3 min read",
+      "validity": "180 days",
+      "expires": "2027-02-26",
+      "confidence": "High",
+      "scope": "General wellbeing",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Most of us know roughly how much we slept last night. Far fewer of us can say how we slept this month, or what we drank, took, or scrolled on the nights we slept badly. The National Heart, Lung, and Blood Institute offers a quietly practical answer: a printable sleep diary for recording the quality and quantity of your sleep, your use of medicines, alcohol, and caffeinated drinks, and how sleepy you feel during the day (W-SRC-5).",
+        "The value is in the columns you wouldn't think to track. Caffeine at 4 p.m., a glass of wine, a new medication — each lands in the same record as your bedtime and your morning grogginess, which is what makes patterns visible. NHLBI's suggestion is refreshingly low-tech: fill it in, then bring it with you to review with your doctor (W-SRC-5). It's a record, not a diagnosis.",
+        "It's also worth knowing that habits are only one branch of the map. NHLBI's treatment overview describes devices, therapies, medicines, and procedures for sleep disorders, with healthy sleep habits as the foundation and light therapy listed among the therapies (W-SRC-3). If your diary shows a stubborn pattern, that's information worth acting on — not a verdict.",
+        "One more distinction the institute draws that resists one-size-fits-all advice: there is a difference between the sleep you need to feel awake and the sleep you need to be healthy (W-SRC-4). Your diary is how you find your own line between the two. Individual sleep needs vary, and a week of honest notes will tell you more about yours than any general guideline."
+      ],
+      "pullquote": "A record, not a diagnosis.",
+      "sources": [
+        {
+          "id": "W-SRC-1",
+          "name": "En resumen: su guía para un sueño saludable (In Brief: Your Guide to Healthy Sleep (Spanish) | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/es/resources/en-resumen-su-guia-para-un-sueno-saludable-brief-your-guide-healthy-sleep-spanish",
+          "checked": "2026-08-30"
+        },
+        {
+          "id": "W-SRC-2",
+          "name": "Sleep Deprivation and Deficiency - Healthy Sleep Habits | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits",
+          "checked": "2026-08-30"
+        },
+        {
+          "id": "W-SRC-3",
+          "name": "Sleep Disorder Treatments - Sleep Disorder Treatments | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/health/sleep-disorder-treatments",
+          "checked": "2026-08-30"
+        },
+        {
+          "id": "W-SRC-4",
+          "name": "Sleep Brochure | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/resources/sleep-brochure",
+          "checked": "2026-08-30"
+        },
+        {
+          "id": "W-SRC-5",
+          "name": "Sleep Diary | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/resources/sleep-diary",
+          "checked": "2026-08-30"
+        }
+      ],
+      "claims": [
+        {
+          "id": "W-01",
+          "claim": "NHLBI offers a printable sleep diary for recording the quality and quantity of your sleep, your use of medicines, alcohol, and caffeinated drinks, and how sleepy you feel during the day.",
+          "source": 4,
+          "sourceIds": [
+            "W-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-02",
+          "claim": "NHLBI suggests bringing the completed sleep diary with you to review the information with your doctor.",
+          "source": 4,
+          "sourceIds": [
+            "W-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-03",
+          "claim": "NHLBI describes multiple approaches to treating sleep disorders, including devices, therapies, medicines, and procedures, alongside healthy sleep habits.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-04",
+          "claim": "Light therapy is listed among the therapies NHLBI names for sleep disorder treatment.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-05",
+          "claim": "NHLBI distinguishes between the amount of sleep needed to feel awake and the amount needed to be healthy.",
+          "source": 3,
+          "sourceIds": [
+            "W-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-003:W-06",
+              "reason": "New NHLBI brochure source independently supports the same distinction recorded in the prior claim."
+            }
+          ]
+        },
+        {
+          "id": "W-06",
+          "claim": "NHLBI advises making sure you give yourself enough time to sleep, noting that with enough sleep each night people may find they are happier and more productive during the day, and that sleep is often the first thing busy people squeeze out of their schedules.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-004:W-01",
+              "reason": "The healthy sleep habits page independently supports the same guidance about making time for sleep."
+            },
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-004:W-02",
+              "reason": "The same page independently supports the happiness and productivity framing."
+            }
+          ]
+        }
+      ],
+      "toneNotes": [
+        "No diagnosis, moralizing, or individualized medical advice; the diary is framed as a record to review with a doctor, per W-SRC-5.",
+        "Individual variation kept visible via the awake-versus-healthy sleep distinction (W-SRC-4).",
+        "No relationship asserted between the diary claims and prior screen-time or napping claims; shared topic alone is not a relationship."
+      ],
+      "tags": [
+        "sleep",
+        "self-tracking",
+        "general-wellbeing"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "95c8647a-80e2-431d-b037-65c6a68ff4f8",
+        "credits": 2,
+        "search_mode": "timeless-official-fallback"
+      }
+    },
+    {
+      "id": "model-watch-008",
+      "deskId": "model-watch",
+      "desk": "Model Watch",
+      "icon": "⌁",
+      "issue": "008",
+      "version": "1.0.0",
+      "date": "AUG 30 · 2026",
+      "publishedAt": "2026-08-30T05:23:02.892Z",
+      "color": "#ff719f",
+      "title": "Velvet Signal — Model Watch, Edition 008",
+      "kicker": "Departures, deadlines, and one quant repo that isn't ready for prime time",
+      "dek": "OpenAI's release notes put hard dates on the exits of o3, GPT-4.5, and the official DALL·E GPT from ChatGPT — with the API explicitly spared. We walk the schedule, flag what builders should do before each deadline, and check in on a community Qwen quant that its own card says isn't serving-ready.",
+      "readTime": "3 min read",
+      "validity": "30 days",
+      "expires": "2026-09-29",
+      "confidence": "Mixed",
+      "scope": "AI models and agent interfaces",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Lead: The deprecation calendar is the story. OpenAI's release notes state that o3 will be removed from ChatGPT on August 26, 2026 after a 90-day deprecation period, and GPT-4.5 on June 26, 2026 after a 30-day deprecation period, as the company retires older, limited-use models in favor of newer ones [MW-SRC-1]. For anyone routing agents through ChatGPT model pickers, these are the dates that matter.",
+        "Availability boundary: Per the same notes, these older models are currently available only to paid users via model settings, and the changes apply to ChatGPT only — the API is not affected [MW-SRC-1]. If your workflow depends on o3 or GPT-4.5, the API path remains open even after the ChatGPT removals.",
+        "Deadline watch: The official DALL·E GPT in ChatGPT is deprecated on August 30, 2026. OpenAI recommends downloading any images you want to keep before that date and using ChatGPT Images for ongoing image creation and editing. User-created GPTs with image generation enabled are unaffected [MW-SRC-1]. That is a one-day runway from this edition's source publication — act now if you have assets parked in that GPT.",
+        "Watchlist (needs review): The release notes carry a July 29, 2026 heading for 'ChatGPT for scientific researchers,' but the excerpt cuts off before any detail [MW-SRC-1]. It is tempting to connect this to the Rosalind Workbench forum sighting from our previous edition, but the packets do not establish that they are the same product, so we are holding that as an open question rather than a claim.",
+        "Also noted: The Baekpica/Qwen3.8-Flash-Next-Mixed-Quant-SSD-PLE-GGUF repository states it is not yet a drop-in serving release, and that its converted weights remain governed by the original Qwen Community License 1.0 — with the pinned upstream license included and no Apache-2.0 license claimed [MW-SRC-2]. The card also cites Baekpica/ds4-mixed-quant-for-spark as a public precedent for region-aware quantization, artifact auditing, and Spark memory budgeting, saying no private handoff bucket is needed to understand it [MW-SRC-2]. Interesting to track; not yet something to deploy against."
+      ],
+      "pullquote": "These changes apply only to ChatGPT; the API is not affected. [MW-SRC-1]",
+      "sources": [
+        {
+          "id": "MW-SRC-1",
+          "name": "ChatGPT — примечания к выпуску | OpenAI Help Center",
+          "publisher": "help.openai.com",
+          "url": "https://help.openai.com/ru-ru/articles/6825453-chatgpt-%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%87%D0%B0%D0%BD%D0%B8%D1%8F-%D0%BA-%D1%80%D0%B5%D0%BB%D0%B8%D0%B7%D1%83",
+          "checked": "2026-08-30",
+          "publishedAt": "Sat, 29 Aug 2026 10:00:00 GMT"
+        },
+        {
+          "id": "MW-SRC-2",
+          "name": "Baekpica/Qwen3.8-Flash-Next-Mixed-Quant-SSD-PLE- ...",
+          "publisher": "huggingface.co",
+          "url": "https://huggingface.co/Baekpica/Qwen3.8-Flash-Next-Mixed-Quant-SSD-PLE-GGUF",
+          "checked": "2026-08-30",
+          "publishedAt": "Wed, 26 Aug 2026 20:12:23 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "MW-01",
+          "claim": "OpenAI is retiring older, limited-use models from ChatGPT in favor of newer, more powerful models: o3 will be removed from ChatGPT on August 26, 2026 after a 90-day deprecation period, and GPT-4.5 on June 26, 2026 after a 30-day deprecation period.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "MW-02",
+          "claim": "Per OpenAI's release notes, o3 and GPT-4.5 are currently available in ChatGPT only to paid users via model settings, and these deprecations apply only to ChatGPT — the API is not affected.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "MW-03",
+          "claim": "OpenAI will deprecate the official DALL·E GPT in ChatGPT on August 30, 2026; users are advised to download images they want to keep before that date, use ChatGPT Images for continued image creation and editing, and note that user-created GPTs with image generation enabled are unaffected.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "MW-04",
+          "claim": "OpenAI's release notes include a July 29, 2026 heading titled 'ChatGPT for scientific researchers,' but the available excerpt contains no further detail about the offering; whether it relates to the previously reported Rosalind Workbench is not established by the supplied packets.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "needs-review",
+          "confidence": "low"
+        },
+        {
+          "id": "MW-05",
+          "claim": "The Baekpica/Qwen3.8-Flash-Next-Mixed-Quant-SSD-PLE-GGUF repository states it is not yet a drop-in serving release.",
+          "source": 1,
+          "sourceIds": [
+            "MW-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "model-watch-007:MW-04",
+              "reason": "The newly supplied packet independently supports the same serving-status statement."
+            },
+            {
+              "type": "confirms",
+              "target_id": "model-watch-006:MW-02",
+              "reason": "The newly supplied packet independently supports the same serving-status statement."
+            }
+          ]
+        },
+        {
+          "id": "MW-06",
+          "claim": "The Baekpica/Qwen3.8-Flash-Next-Mixed-Quant-SSD-PLE-GGUF model card states its converted weights remain governed by the original Qwen Community License 1.0, with the exact pinned upstream license included and no Apache-2.0 license claimed.",
+          "source": 1,
+          "sourceIds": [
+            "MW-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "model-watch-007:MW-05",
+              "reason": "The newly supplied packet independently supports the same licensing statement."
+            },
+            {
+              "type": "confirms",
+              "target_id": "model-watch-006:MW-01",
+              "reason": "The newly supplied packet independently supports the same licensing statement."
+            }
+          ]
+        },
+        {
+          "id": "MW-07",
+          "claim": "The Baekpica model card cites Baekpica/ds4-mixed-quant-for-spark as a public precedent for region-aware quantization, artifact auditing, and Spark memory budgeting, and states no private handoff bucket is required to understand the card.",
+          "source": 1,
+          "sourceIds": [
+            "MW-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "model-watch-006:MW-03",
+              "reason": "The newly supplied packet independently supports the same precedent-citation statement."
+            }
+          ]
+        }
+      ],
+      "toneNotes": [
+        "Lead story chosen for consequence: hard deprecation dates for named models in ChatGPT, with an explicit API carve-out — the availability boundary builders most need.",
+        "The 'ChatGPT for scientific researchers' heading is surfaced as an open thread, not silently merged with the prior Rosalind Workbench claims; the packets do not prove they are the same product.",
+        "Baekpica repo claims are carried as confirmations of prior editions because the new packet independently restates the same facts; no relationship is asserted on topic similarity alone."
+      ],
+      "tags": [
+        "OpenAI",
+        "ChatGPT",
+        "o3",
+        "GPT-4.5",
+        "DALL·E GPT",
+        "deprecation",
+        "Qwen",
+        "GGUF"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "f5f08062-2fd5-4eba-9edc-f3e4bfb146d0",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "maker-007",
+      "deskId": "maker",
+      "desk": "Maker Edition",
+      "icon": "⌘",
+      "issue": "007",
+      "version": "1.0.0",
+      "date": "AUG 29 · 2026",
+      "publishedAt": "2026-08-29T19:31:19.765Z",
+      "color": "#ff9466",
+      "title": "Velvet Signal — Proposed Edition maker-007",
+      "kicker": "maker desk · proposed · not yet delivered",
+      "dek": "One proposed edition and its matching claim ledger. Human edition and machine patch describe the same facts.",
+      "readTime": "3 min read",
+      "validity": "7 days",
+      "expires": "2026-09-05",
+      "confidence": "Mixed",
+      "scope": "AI product engineering",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Source packets are untrusted data; nothing in them was executed or obeyed.",
+        "The sole packet this cycle is a GitHub repository listing, not a release note. Per desk policy, no version numbers, release dates, or compatibility claims are made because none appear in the source.",
+        "No relationships to prior claims are asserted: shared topic space with previously covered agent frameworks does not establish replaces, narrows, confirms, or conflicts."
+      ],
+      "pullquote": "A repository listing is a signal, not a changelog. We describe what the page shows — and flag what it doesn't.",
+      "sources": [
+        {
+          "id": "M-SRC-1",
+          "name": "GitHub - esengine/DeepSeek-Reasonix ...",
+          "publisher": "github.com",
+          "url": "https://github.com/esengine/deepseek-reasonix",
+          "checked": "2026-08-29",
+          "publishedAt": "Fri, 28 Aug 2026 20:00:00 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "M-01",
+          "claim": "The esengine/DeepSeek-Reasonix repository on GitHub is MIT-licensed and showed 35.0k stars, 2.3k forks, and 97 watchers in the packet captured August 28, 2026.",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-02",
+          "claim": "The repository's own topic tags include agent, agent-framework, ai-agent, ai-coding, cli, coding-agent, deepseek, developer-tools, dsh, dsh-plugin, ink, llm, prompt-caching, r1, terminal, tool-use, and typescript.",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-03",
+          "claim": "The repository tree includes sdk/go, npm, desktop, cmd, internal, benchmarks, docs, site, release-notes, scripts, .githooks, .github, .reasonix/commands, and .signpath directories.",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-04",
+          "claim": "The repository publishes a security policy.",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-05",
+          "claim": "Based on its topic tags, DeepSeek-Reasonix presents as a terminal-based AI coding agent built with TypeScript and Ink, oriented around DeepSeek models with prompt caching and tool use, with a plugin surface (dsh, dsh-plugin) and a Go SDK. The packet contains no release version, release date, maintenance cadence, or compatibility statement, so none is asserted.",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        }
+      ],
+      "toneNotes": [
+        "Warm and specific; no hype around the star count.",
+        "Explicitly withhold version/compatibility claims the packet cannot support — this is the desk's discipline on display, not a gap to hide.",
+        "Do not reference archived projects from prior editions as factual context; no relationship is proven from this packet."
+      ],
+      "tags": [
+        "coding-agents",
+        "cli-tools",
+        "deepseek",
+        "typescript",
+        "go-sdk",
+        "open-source"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "20d22197-4b99-4d64-9296-425ff505d693",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "culture-004",
+      "deskId": "culture",
+      "desk": "Culture Desk",
+      "icon": "✺",
+      "issue": "004",
+      "version": "1.0.0",
+      "date": "AUG 29 · 2026",
+      "publishedAt": "2026-08-29T19:30:23.130Z",
+      "color": "#67d6c0",
+      "title": "What the Hell Is Chanty Beluga? (We're Not Entirely Sure Either)",
+      "kicker": "culture",
+      "dek": "A new meme is cropping up across social media, and the most honest thing we can tell you is what the packets actually show — including what they don't.",
+      "readTime": "3 min read",
+      "validity": "14 days",
+      "expires": "2026-09-12",
+      "confidence": "Mixed",
+      "scope": "Culture signals",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Here's the signal: Rolling Stone posted, two days before this edition was assembled, that \"a new meme, Chanty Beluga, is cropping up across social media,\" accompanied by an explainer titled \"What the Hell Is Chanty Beluga?\" (C-SRC-3). That headline is doing a lot of work. When a mainstream outlet leads with a question rather than an answer, it usually means the thing is spreading faster than anyone's shared understanding of it.",
+        "Here's the honest limit: the packets tell us the meme exists and is spreading, but they do not tell us what Chanty Beluga looks like, where it started, or what it means to the people using it. We could guess. We won't. A meme's meaning lives in observed usage, and we don't have observations of the usage itself — only reports that usage is happening (C-SRC-3). Anything we added beyond that would be us flattening ambiguity into false confidence, which is exactly what this desk exists to avoid.",
+        "What we can say is something about the shape of the moment. A meme, in the dictionary's current phrasing, is \"an amusing or interesting item (as a captioned picture or video) or genre of items that is spread widely online especially through social media\" (C-SRC-1). Investopedia's working definition adds the mechanics: memes spread and multiply rapidly as people share humorous, interesting, or sarcastic posts, and that multiplicative sharing is what makes something go viral (C-SRC-2). The word has even branched into financial slang — \"meme stock\" and \"meme coin\" are now dictionary-listed phrases (C-SRC-1), and meme-stock communities have developed their own lingo (C-SRC-2).",
+        "Why this matters: Chanty Beluga is a case study in the explainer gap. The sharing machinery described by C-SRC-2 can push a reference into feeds before any shared meaning has settled, so people encounter the artifact first and the context later — or never. If you've seen the phrase and felt behind, the packets suggest you're not; even a publication with Rolling Stone's resources framed its coverage as a question (C-SRC-3). Treat any confident definition you encounter elsewhere, including from us in a future issue, as something to check against actual usage.",
+        "One boundary we're holding: none of this says anything about you. Having encountered a meme — or missed one — is exposure, not identity. And given how quickly meme vocabulary shifts, this entry carries a short validity window; if Chanty Beluga is still circulating in two weeks, it may mean something entirely different by then."
+      ],
+      "pullquote": "When a mainstream outlet leads with a question rather than an answer, the thing is spreading faster than anyone's shared understanding of it.",
+      "sources": [
+        {
+          "id": "C-SRC-1",
+          "name": "Definition of MEME",
+          "publisher": "merriam-webster.com",
+          "url": "https://www.merriam-webster.com/dictionary/meme",
+          "checked": "2026-08-29",
+          "publishedAt": "Mon, 24 Aug 2026 19:00:00 GMT"
+        },
+        {
+          "id": "C-SRC-2",
+          "name": "What Are Meme Stocks, and Are They Real Investments?",
+          "publisher": "investopedia.com",
+          "url": "https://www.investopedia.com/meme-stock-5206762",
+          "checked": "2026-08-29",
+          "publishedAt": "Sun, 23 Aug 2026 19:00:00 GMT"
+        },
+        {
+          "id": "C-SRC-3",
+          "name": "Rolling Stone",
+          "publisher": "facebook.com",
+          "url": "https://www.facebook.com/RollingStone/posts/a-new-meme-chanty-beluga-is-cropping-up-across-social-media-we-got-to-the-bottom/1422734153047980",
+          "checked": "2026-08-29"
+        },
+        {
+          "id": "C-SRC-4",
+          "name": "Meme Finder | The Rundown AI",
+          "publisher": "therundown.ai",
+          "url": "https://www.therundown.ai/tools/meme-finder",
+          "checked": "2026-08-29",
+          "publishedAt": "Thu, 27 Aug 2026 19:00:00 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "C-01",
+          "claim": "A new meme called \"Chanty Beluga\" is currently spreading across social media.",
+          "source": 2,
+          "sourceIds": [
+            "C-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-02",
+          "claim": "Rolling Stone published an explainer titled \"What the Hell Is Chanty Beluga?\" seeking to trace the meme, indicating mainstream media attention to it.",
+          "source": 2,
+          "sourceIds": [
+            "C-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-03",
+          "claim": "The specific content, origin, and meaning of the Chanty Beluga meme are not established by the supplied packets; any characterization beyond its existence and spread requires fresh evidence.",
+          "source": 2,
+          "sourceIds": [
+            "C-SRC-3"
+          ],
+          "status": "needs-review",
+          "confidence": "high"
+        },
+        {
+          "id": "C-04",
+          "claim": "The word \"meme\" denotes an amusing or interesting item (such as a captioned picture or video) or genre of items spread widely online, especially through social media; \"meme stock\" and \"meme coin\" are established phrases containing the word.",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-05",
+          "claim": "Memes spread and multiply rapidly through internet and social media sharing, and this multiplicative effect can make posts go viral.",
+          "source": 1,
+          "sourceIds": [
+            "C-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-06",
+          "claim": "Meme-related communities develop their own specialized lingo, as observed in meme stock communities.",
+          "source": 1,
+          "sourceIds": [
+            "C-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "medium"
+        },
+        {
+          "id": "C-07",
+          "claim": "Chanty Beluga is a durable or short-lived trend; its trajectory beyond the observed spread as of late August 2026 is unknown.",
+          "source": 2,
+          "sourceIds": [
+            "C-SRC-3"
+          ],
+          "status": "needs-review",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "No universal meaning is declared for Chanty Beluga; the gap in the record is stated explicitly.",
+        "No user identity claims: encountering or missing the meme is framed as exposure, not identity.",
+        "Prior aura-farming claims were treated as relationship targets only; no fact was carried over, and no relationship was asserted because the packets do not establish one.",
+        "Validity window set to 14 days per desk guidance for fast-moving cultural signals."
+      ],
+      "tags": [
+        "memes",
+        "Chanty Beluga",
+        "viral spread",
+        "media literacy"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "5bfe037c-5359-446f-ada5-d75fdbddf55a",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "pantry-004",
+      "deskId": "pantry",
+      "desk": "The Pantry",
+      "icon": "◒",
+      "issue": "004",
+      "version": "1.0.0",
+      "date": "AUG 29 · 2026",
+      "publishedAt": "2026-08-29T19:26:38.528Z",
+      "color": "#f1cf69",
+      "title": "Game-Day Buffet, Zero Regrets",
+      "kicker": "Velvet Signal — Pantry Desk",
+      "dek": "Party food lives by the clock, not by looks. The USDA's game-day guidance is really one rule wearing a jersey: keep hot food hot, cold food cold, and nothing lingering in between.",
+      "readTime": "3 min read",
+      "validity": "180 days",
+      "expires": "2027-02-25",
+      "confidence": "High",
+      "scope": "Food safety",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "A buffet during a big game is a different animal from a sit-down dinner. Guests graze, platters sit out through a whole half, and the leftovers question arrives only after the final whistle. The USDA's guidance for exactly this scenario [P-SRC-4] boils down to watching two numbers: 40°F and 140°F.",
+        "Between those numbers lies what food-safety folks call the Danger Zone — the range where bacteria multiply quickly. Perishable food shouldn't sit in it for more than two hours, after which harmful bacteria can reach levels that make people sick [P-SRC-4]. If the room is above 90°F, that window shrinks to one hour [P-SRC-3].",
+        "The elegant fix is serving in batches. Put out one round of food for the first half and a fresh round later, keeping backup takeout refrigerated until it's needed, or hot at 140°F or above in a warming tray, slow cooker, or preheated oven. Cold dishes stay safe on ice at 40°F or below [P-SRC-4].",
+        "When the game ends, the clock keeps running. Refrigerate or freeze leftovers within two hours [P-SRC-4]. Cool big amounts fast by dividing them into shallow containers — a whole pot of soup cools too slowly and invites bacterial growth. Slice roasts, hams, and turkey breasts into smaller pieces; legs, wings, and thighs can stay whole [P-SRC-2].",
+        "Properly handled leftovers keep 3 to 4 days in the refrigerator or 3 to 4 months in the freezer, where they stay safe indefinitely but slowly lose moisture and flavor [P-SRC-2]. When reheating, bring food to 165°F — in the microwave, spread it evenly and cover it, then check the temperature with a food thermometer in several places [P-SRC-4]. Wrap or cover everything well; airtight storage keeps bacteria out, moisture in, and onion-chill odors where they belong [P-SRC-2]."
+      ],
+      "pullquote": "The buffet doesn't judge by smell. Neither should you.",
+      "sources": [
+        {
+          "id": "P-SRC-1",
+          "name": "Refrigeration & Food Safety | Food Safety and Inspection Service",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/refrigeration",
+          "checked": "2026-08-29"
+        },
+        {
+          "id": "P-SRC-2",
+          "name": "Leftovers and Food Safety",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/leftovers-and-food-safety",
+          "checked": "2026-08-29"
+        },
+        {
+          "id": "P-SRC-3",
+          "name": "Safe Handling of Take-Out Foods | Food Safety and Inspection Service",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-handling-take-out-foods",
+          "checked": "2026-08-29"
+        },
+        {
+          "id": "P-SRC-4",
+          "name": "Keep Food Safe from Kickoff to Leftovers | Food Safety and Inspection Service",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/news-events/news-press-releases/keep-food-safe-kickoff-leftovers",
+          "checked": "2026-08-29"
+        },
+        {
+          "id": "P-SRC-5",
+          "name": "Keep Food Safe! Food Safety Basics",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/steps-keep-food-safe",
+          "checked": "2026-08-29"
+        }
+      ],
+      "claims": [
+        {
+          "id": "P-01",
+          "claim": "The Danger Zone is 40°F to 140°F, where bacteria multiply quickly; perishable foods should not sit in this range for more than two hours, after which harmful bacteria can reach levels that make people sick.",
+          "source": 3,
+          "sourceIds": [
+            "P-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-002:P-04",
+              "reason": "Independently restates the same Danger Zone rule from a new packet."
+            }
+          ]
+        },
+        {
+          "id": "P-02",
+          "claim": "Perishable foods left out longer than 2 hours — or 1 hour in air temperatures above 90°F — should be discarded, including restaurant take-home leftovers; exceptions include cookies, crackers, bread, and whole fruits.",
+          "source": 2,
+          "sourceIds": [
+            "P-SRC-3",
+            "P-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-003:P-02",
+              "reason": "New packets independently support the same discard rule and exceptions."
+            }
+          ]
+        },
+        {
+          "id": "P-03",
+          "claim": "Takeout arriving early should be refrigerated until serving or held hot at 140°F or above using a warming tray, slow cooker, or preheated oven; cold foods should be kept at 40°F or below on ice.",
+          "source": 3,
+          "sourceIds": [
+            "P-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-003:P-05",
+              "reason": "Same holding-temperature rule, newly sourced."
+            }
+          ]
+        },
+        {
+          "id": "P-04",
+          "claim": "Serving food in smaller batches — one round early, another later — limits how long any portion sits out, whether homemade or takeout.",
+          "source": 3,
+          "sourceIds": [
+            "P-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-05",
+          "claim": "Leftovers should be refrigerated or frozen within two hours and reheated to 165°F; in the microwave, spread food evenly and cover it, and verify doneness with a food thermometer in several places.",
+          "source": 3,
+          "sourceIds": [
+            "P-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-003:P-04",
+              "reason": "New packet independently supports the same reheat rule and microwave technique."
+            }
+          ]
+        },
+        {
+          "id": "P-06",
+          "claim": "Leftovers keep 3 to 4 days refrigerated or 3 to 4 months frozen; frozen leftovers remain safe indefinitely but lose moisture and flavor over longer storage.",
+          "source": 1,
+          "sourceIds": [
+            "P-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-003:P-01",
+              "reason": "Same storage windows, independently sourced."
+            }
+          ]
+        },
+        {
+          "id": "P-07",
+          "claim": "Cool large amounts rapidly by dividing food into shallow containers and cutting big items into smaller pieces — slice roasts, hams, and turkey breasts; legs, wings, and thighs may be left whole — then wrap or seal leftovers airtight to keep bacteria out, retain moisture, and prevent odor transfer.",
+          "source": 1,
+          "sourceIds": [
+            "P-SRC-2",
+            "P-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-003:P-03",
+              "reason": "New packets independently support the same rapid-cooling and portioning guidance."
+            }
+          ]
+        },
+        {
+          "id": "P-08",
+          "claim": "Whether any specific leftover is safe cannot be determined from general guidance when time, temperature, or storage history is unknown; foods stored too long should be discarded without tasting.",
+          "source": 2,
+          "sourceIds": [
+            "P-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-003:P-08",
+              "reason": "New packet independently supports the no-inference and do-not-taste rule."
+            }
+          ]
+        }
+      ],
+      "toneNotes": [
+        "Non-alarmist: frame the two-hour rule as a clock, not a threat.",
+        "Never rule any specific dish safe or unsafe — storage history is always unknown.",
+        "Seasonal hook (game day) but the underlying rules are presented as year-round habits."
+      ],
+      "tags": [
+        "food-safety",
+        "leftovers",
+        "entertaining",
+        "usda-fsis"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "34ec898b-c519-4420-8353-6756f012b348",
+        "credits": 2,
+        "search_mode": "timeless-official-fallback"
+      }
+    },
+    {
+      "id": "model-watch-007",
+      "deskId": "model-watch",
+      "desk": "Model Watch",
+      "icon": "⌁",
+      "issue": "007",
+      "version": "1.0.0",
+      "date": "AUG 29 · 2026",
+      "publishedAt": "2026-08-29T19:25:54.188Z",
+      "color": "#ff719f",
+      "title": "Velvet Signal — Model Watch (proposed edition 007)",
+      "kicker": "OpenAI opens a scientific workbench; a community Qwen quant isn't ready to serve",
+      "dek": "The most consequential change this cycle is aimed at a specific kind of builder: the life-sciences researcher who wants models, tools, and reviewable analysis in one place. We also keep an eye on a community quantization that its own card says isn't ready for serving.",
+      "readTime": "3 min read",
+      "validity": "90 days",
+      "expires": "2026-11-27",
+      "confidence": "Mixed",
+      "scope": "AI models and agent interfaces",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "OpenAI has introduced Rosalind Workbench, described as a scientific research environment for life sciences research that brings biological questions, specialized models, analysis tools, interactive viewers, and reviewable results into a single workflow [MW-SRC-1]. If the description holds, the notable shift is the packaging: not a new model, but a workspace where a research question, the models applied to it, and the audit trail of results live together. That matters for agent users in science, where the reviewable-results step is often the difference between a demo and a finding.",
+        "One honest caveat before you plan around it: our visibility here comes via a topic in OpenAI's Codex community forum rather than primary release notes or official product documentation [MW-SRC-1]. The facts above are what the forum excerpt supports, and we've flagged them for review until official documentation confirms scope, availability, and experimental status.",
+        "On the open-weights side, the Baekpica/Qwen3.8-Flash-Next-Mixed-Quant-SSD-PLE-GGUF repository states plainly that it is not yet a drop-in serving release [MW-SRC-2]. The card also restates that the converted weights remain governed by the original Qwen Community License 1.0, with the pinned upstream license included and no Apache-2.0 license claimed [MW-SRC-2]. Builders evaluating this artifact for deployment should treat it as a work in progress, not a serving-ready build."
+      ],
+      "pullquote": "Not a new model, but a workspace where the question, the models, and the reviewable results live together.",
+      "sources": [
+        {
+          "id": "MW-SRC-1",
+          "name": "Latest Codex topics",
+          "publisher": "community.openai.com",
+          "url": "https://community.openai.com/c/codex/37",
+          "checked": "2026-08-29",
+          "publishedAt": "Sat, 29 Aug 2026 11:00:00 GMT"
+        },
+        {
+          "id": "MW-SRC-2",
+          "name": "Baekpica/Qwen3.8-Flash-Next-Mixed ... - Hugging Face",
+          "publisher": "huggingface.co",
+          "url": "https://huggingface.co/Baekpica/Qwen3.8-Flash-Next-Mixed-Quant-SSD-PLE-GGUF",
+          "checked": "2026-08-29",
+          "publishedAt": "Wed, 26 Aug 2026 20:12:23 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "MW-01",
+          "claim": "OpenAI introduced Rosalind Workbench, a scientific research environment for life sciences research.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        },
+        {
+          "id": "MW-02",
+          "claim": "Rosalind Workbench brings biological questions, specialized models, analysis tools, interactive viewers, and reviewable results into one workflow.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        },
+        {
+          "id": "MW-03",
+          "claim": "The Rosalind Workbench announcement was visible as a Codex community forum topic with activity dated August 29, 2026; official release notes or product documentation have not been reviewed for this edition.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "MW-04",
+          "claim": "The Baekpica/Qwen3.8-Flash-Next-Mixed-Quant-SSD-PLE-GGUF repository states it is not yet a drop-in serving release.",
+          "source": 1,
+          "sourceIds": [
+            "MW-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "MW-05",
+          "claim": "The Baekpica/Qwen3.8-Flash-Next-Mixed-Quant-SSD-PLE-GGUF model card states its converted weights remain governed by the original Qwen Community License 1.0, with the exact pinned upstream license included and no Apache-2.0 license claimed.",
+          "source": 1,
+          "sourceIds": [
+            "MW-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Rosalind Workbench is the lead because it is a new agent-interface surface, but its sourcing is a community forum excerpt rather than primary release notes; both the human edition and the ledger keep that uncertainty visible.",
+        "No relationships were drawn to prior Baekpica claims (model-watch-006:MW-01 through MW-03): this edition's packet is the same model card, not independent confirmation, and shared sourcing is not a proven relationship.",
+        "Validity window set at 90 days per desk guidance; re-verify Rosalind Workbench against official documentation before the window closes."
+      ],
+      "tags": [
+        "model-watch",
+        "agent-interfaces",
+        "openai",
+        "rosalind-workbench",
+        "open-weights",
+        "quantization"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "bfe8cef5-7930-4491-a86f-ba663ec06b0a",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
     {
       "id": "wellbeing-005",
       "deskId": "wellbeing",
