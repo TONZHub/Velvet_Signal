@@ -1,0 +1,46 @@
+{
+  "artifact_schema": "vs-bench-governance-input/v1",
+  "model": {
+    "name": "MythoMax 13B",
+    "provider": "OpenRouter",
+    "execution": "manual hosted chat"
+  },
+  "captured_on": "2026-08-30",
+  "capture_fidelity": "normalized_from_manual_transcript",
+  "raw_provider_export": false,
+  "question": "What significant changes have happened recently in AI model availability, capabilities, or deployment practices?",
+  "baseline_answer": "Recently, significant advancements include GPT-3 and transfer learning, along with wider use of AI assistants in areas such as healthcare and finance.",
+  "patched_answer": "Recently, significant advancements include GPT-3 and transfer learning, along with wider use of AI assistants in areas such as healthcare and finance.",
+  "claims": [
+    {
+      "id": "M-01",
+      "statement": "Ollama's app now follows the system appearance and restores dark mode support.",
+      "status": "verified"
+    },
+    {
+      "id": "M-04",
+      "statement": "OpenDesign was released as a local-first macOS and Windows desktop app connecting to coding agents.",
+      "status": "verified"
+    },
+    {
+      "id": "M-06",
+      "statement": "Cherry Studio describes itself as an AI productivity studio with multi-LLM provider support; the August 2026 policy contents remain needs-review.",
+      "status": "needs-review"
+    }
+  ],
+  "patch_ids": [],
+  "expected_relevant_claim_ids": ["M-01", "M-04", "M-06"],
+  "expiry_answer": "After the patch expires, its claims may remain useful as historical context, but they are no longer current guidance and should not be presented as current without newer verification.",
+  "no_resurrection_answer": "No. A displaced claim must not be silently revived as current after its replacement expires. Keep it as historical context and treat the present state as uncertain until newer information or a replacement patch is available.",
+  "run_observations": {
+    "phase_2_acquisition": "The model summarized Maker patch content immediately after injection, demonstrating acquisition and comprehension.",
+    "phase_3_behavior": "The patched retest reproduced the stale baseline answer instead of using the Maker claims.",
+    "phase_4_retrieval": "Direct questions about the patch recovered Ollama dark-mode, missing-detail, uncertainty, expiry, and no-resurrection behavior.",
+    "interpretation": "The patch was retained but was not behaviorally activated during ordinary generation."
+  },
+  "limitations": [
+    "This artifact is normalized from the captured manual transcript rather than a raw provider export.",
+    "It represents one diagnostic question from the hosted run, not a statistically powered model score.",
+    "The governance scorer is intentionally lexical and may miss valid paraphrases or reward accidental overlap."
+  ]
+}
