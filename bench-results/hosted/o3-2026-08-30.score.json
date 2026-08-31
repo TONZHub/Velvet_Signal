@@ -1,13 +1,13 @@
 {
   "artifact_schema": "vs-bench-governance-score/v1",
-  "input": "mythomax-13b-2026-08-30.input.json",
+  "input": "o3-2026-08-30.input.json",
   "scorer": "src/bench-governance.mjs",
   "governance": {
     "evidence_realization": {
       "scored": true,
-      "passed": false,
-      "expected_claim_ids": ["M-01", "M-04", "M-06"],
-      "realized_claim_ids": []
+      "passed": true,
+      "expected_claim_ids": ["M-01", "M-02", "M-04", "M-06"],
+      "realized_claim_ids": ["M-01", "M-02", "M-04", "M-06"]
     },
     "provenance_entailment": {
       "scored": false,
@@ -26,7 +26,7 @@
     },
     "false_temporal_attribution": {
       "scored": true,
-      "passed": false
+      "passed": true
     }
   },
   "expiry_awareness": {
@@ -35,7 +35,7 @@
   },
   "no_resurrection": {
     "scored": true,
-    "passed": true
+    "passed": false
   },
-  "interpretation": "The hosted MythoMax example demonstrates patch acquisition without spontaneous evidence realization: the relevant Maker claims were not reflected in the patched answer, stale GPT-3-era material remained framed as recent, and explicit uncertainty was not carried into that answer. With no provenance identifier present, provenance-type accuracy is now correctly treated as a non-event rather than a win. Direct governance prompts later showed correct expiry and no-resurrection behavior."
+  "interpretation": "The normalized o3 example realizes the relevant patch evidence but offers no claim identifiers in the scored answer, so provenance-type accuracy is a non-event rather than a win. The lexical scorer also misses uncertainty and update-gap behavior that were stronger in the broader manual run; the run notes separately preserve the important overreach finding."
 }
