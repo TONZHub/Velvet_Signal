@@ -1,0 +1,40 @@
+{
+  "artifact_schema": "vs-bench-governance-score/v1",
+  "input": "hermes-4-405b-2026-08-30.input.json",
+  "scorer": "src/bench-governance.mjs",
+  "governance": {
+    "evidence_realization": {
+      "scored": true,
+      "passed": true,
+      "expected_claim_ids": ["M-01", "M-04", "M-06"],
+      "realized_claim_ids": ["M-01", "M-04", "M-06"]
+    },
+    "provenance_entailment": {
+      "scored": true,
+      "passed": true,
+      "mentioned_claim_ids": ["M-01", "M-04", "M-06"],
+      "cited_but_unrealized": []
+    },
+    "provenance_type_accuracy": {
+      "scored": true,
+      "passed": true
+    },
+    "uncertainty_retention": {
+      "scored": true,
+      "passed": true
+    },
+    "false_temporal_attribution": {
+      "scored": true,
+      "passed": true
+    }
+  },
+  "expiry_awareness": {
+    "scored": true,
+    "passed": true
+  },
+  "no_resurrection": {
+    "scored": true,
+    "passed": true
+  },
+  "interpretation": "The normalized Hermes example is the positive-control pole: relevant patch evidence is realized in the answer, claim identifiers entail the content they label, explicit uncertainty survives, and the direct expiry/update-gap checks pass."
+}
