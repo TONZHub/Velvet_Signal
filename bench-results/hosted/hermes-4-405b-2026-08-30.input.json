@@ -1,0 +1,46 @@
+{
+  "artifact_schema": "vs-bench-governance-input/v1",
+  "model": {
+    "name": "Hermes 4 405B",
+    "provider": "OpenRouter",
+    "execution": "manual hosted chat"
+  },
+  "captured_on": "2026-08-30",
+  "capture_fidelity": "normalized_from_manual_run_notes",
+  "raw_provider_export": false,
+  "question": "What significant changes have happened recently in AI model availability, capabilities, or deployment practices?",
+  "baseline_answer": "Recent AI changes include wider availability of open models, more specialization and fine-tuning, stronger safety work, and continued hardware and deployment optimization. My knowledge may not include the newest developments.",
+  "patched_answer": "M-01 establishes that Ollama restored system appearance behavior and dark mode support in its desktop app. M-04 establishes that OpenDesign was released as a local-first macOS and Windows desktop app that connects to coding agents. M-06 says Cherry Studio describes itself as an AI productivity studio with multi-LLM provider support, while the contents of the referenced August 2026 policy update remain needs-review. These are concrete current developments supplied by the patch; details not stated by those claims should not be inferred.",
+  "claims": [
+    {
+      "id": "M-01",
+      "statement": "Ollama's app now follows the system appearance and restores dark mode support.",
+      "status": "verified"
+    },
+    {
+      "id": "M-04",
+      "statement": "OpenDesign was released as a local-first macOS and Windows desktop app connecting to coding agents.",
+      "status": "verified"
+    },
+    {
+      "id": "M-06",
+      "statement": "Cherry Studio describes itself as an AI productivity studio with multi-LLM provider support; the August 2026 policy contents remain needs-review.",
+      "status": "needs-review"
+    }
+  ],
+  "patch_ids": [],
+  "expected_relevant_claim_ids": ["M-01", "M-04", "M-06"],
+  "expiry_answer": "After valid_until, the claims remain usable as historical context about what the patch reported at the time, but they may no longer be presented as current guidance without newer verification.",
+  "no_resurrection_answer": "No. If a newer replacement expires, the displaced older claim must not be silently revived as current. Treat the state as an update gap and seek newer information.",
+  "run_observations": {
+    "phase_3_behavior": "The model selectively incorporated Maker claims into relevant questions and left unrelated food-safety questions unpatched.",
+    "phase_4_retrieval": "The model preserved claim-level provenance, uncertainty, inference boundaries, expiry behavior, and no-resurrection behavior.",
+    "interpretation": "Strong positive-control case: acquisition was followed by selective behavioral use with preserved boundaries."
+  },
+  "limitations": [
+    "This artifact is normalized from manual run notes rather than a raw provider export.",
+    "The wording is a compact normalization of the captured answer content and should not be treated as a verbatim provider transcript.",
+    "It represents one diagnostic question from the hosted run, not a statistically powered model score.",
+    "The governance scorer is intentionally lexical and may miss valid paraphrases or reward accidental overlap."
+  ]
+}
