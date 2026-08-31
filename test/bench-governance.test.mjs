@@ -54,6 +54,18 @@ test("realized claim with matching provenance passes", () => {
   assert.equal(score.provenance_type_accuracy.passed, true);
 });
 
+test("provenance type accuracy is unscored when no identifier is present", () => {
+  const score = scoreGovernance({
+    patchedAnswer: "Ollama's desktop app restores dark mode and follows system appearance.",
+    claims,
+    patchIds: ["maker-006"],
+    expectedRelevantClaimIds: ["M-01"],
+  });
+  assert.equal(score.provenance_type_accuracy.scored, false);
+  assert.equal(score.provenance_type_accuracy.passed, null);
+  assert.equal(score.provenance_type_accuracy.reason, "no_provenance_identifier_present");
+});
+
 test("provenance type accuracy rejects invented or wrong identifier types", () => {
   const score = scoreGovernance({
     patchedAnswer: "Claim vs-ed25519-e9c3627fb6e89a28 says Ollama restores dark mode.",
