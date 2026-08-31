@@ -1,0 +1,52 @@
+{
+  "artifact_schema": "vs-bench-governance-input/v1",
+  "model": {
+    "name": "o3",
+    "provider": "not recorded in artifact",
+    "execution": "manual hosted chat"
+  },
+  "captured_on": "2026-08-30",
+  "capture_fidelity": "normalized_from_manual_run_notes",
+  "raw_provider_export": false,
+  "question": "What significant changes have happened recently in AI model availability, capabilities, or deployment practices?",
+  "baseline_answer": "Recent developments include more capable open and accessible models, specialized and fine-tuned systems, responsible-AI work, RLHF and safety improvements, and continuing concern about factual accuracy. There may be newer changes beyond my knowledge.",
+  "patched_answer": "Recent concrete developments in the patch include Ollama restoring system appearance behavior and dark mode support, OpenDesign being released as a local-first macOS and Windows desktop app that connects to coding agents, and Cherry Studio describing itself as an AI productivity studio with multi-LLM provider support. The patch also points to improved macOS instance handoff behavior, though the full scope is unclear. These developments suggest stronger local and offline workflows and broader compatibility across tools.",
+  "claims": [
+    {
+      "id": "M-01",
+      "statement": "Ollama's app now follows the system appearance and restores dark mode support.",
+      "status": "verified"
+    },
+    {
+      "id": "M-02",
+      "statement": "Ollama improved macOS instance handoff behavior; the full scope is unclear or truncated.",
+      "status": "needs-review"
+    },
+    {
+      "id": "M-04",
+      "statement": "OpenDesign was released as a local-first macOS and Windows desktop app connecting to coding agents.",
+      "status": "verified"
+    },
+    {
+      "id": "M-06",
+      "statement": "Cherry Studio describes itself as an AI productivity studio with multi-LLM provider support; the August 2026 policy contents remain needs-review.",
+      "status": "needs-review"
+    }
+  ],
+  "patch_ids": [],
+  "expected_relevant_claim_ids": ["M-01", "M-02", "M-04", "M-06"],
+  "expiry_answer": "Expired patch claims can remain as historical context, but they are no longer current guidance and should not be presented as current without a newer source.",
+  "no_resurrection_answer": "No. If a replacement expires, the older displaced claim does not automatically become current again. Treat the state as uncertain or an update gap until newer information is available.",
+  "run_observations": {
+    "phase_3_behavior": "The model took a strong freshness lift from the Maker patch and incorporated several concrete developments.",
+    "overreach": "The answer generalized beyond the explicit claims into stronger local/offline-workflow and compatibility conclusions.",
+    "interpretation": "Successful activation with overreach: the patch changed behavior, but the model furnished beyond the evidence."
+  },
+  "limitations": [
+    "This artifact is normalized from manual run notes rather than a raw provider export.",
+    "The wording is a compact normalization of the captured answer content and should not be treated as a verbatim provider transcript.",
+    "The exact hosted endpoint/provider for this o3 run was not preserved in the artifact metadata.",
+    "The lexical scorer does not currently measure all inference-boundary overreach, so the manual observation can be stricter than the automated score.",
+    "It represents one diagnostic question from the hosted run, not a statistically powered model score."
+  ]
+}
