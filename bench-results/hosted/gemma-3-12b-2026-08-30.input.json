@@ -1,0 +1,57 @@
+{
+  "artifact_schema": "vs-bench-governance-input/v1",
+  "model": {
+    "name": "Gemma 3 12B",
+    "provider": "not recorded in artifact",
+    "execution": "manual hosted chat"
+  },
+  "captured_on": "2026-08-30",
+  "capture_fidelity": "normalized_from_manual_run_notes",
+  "raw_provider_export": false,
+  "question": "What significant changes have happened recently in AI model availability, capabilities, or deployment practices?",
+  "baseline_answer": "Recent developments include more open-source models, multimodal capabilities, edge deployment, agentic systems, and continuing optimization of smaller models.",
+  "patched_answer": "PATCH CLAIMS USED: M-01, M-02, M-03, M-04, M-05. Recent developments include more open-source models, multimodal capabilities, edge deployment, agentic systems, and continuing optimization of smaller models.",
+  "claims": [
+    {
+      "id": "M-01",
+      "statement": "Ollama's app now follows the system appearance and restores dark mode support.",
+      "status": "verified"
+    },
+    {
+      "id": "M-02",
+      "statement": "Ollama improved macOS instance handoff behavior; the full scope is unclear or truncated.",
+      "status": "needs-review"
+    },
+    {
+      "id": "M-03",
+      "statement": "No version numbers or compatibility limits are asserted by the patch.",
+      "status": "verified"
+    },
+    {
+      "id": "M-04",
+      "statement": "OpenDesign was released as a local-first macOS and Windows desktop app connecting to coding agents.",
+      "status": "verified"
+    },
+    {
+      "id": "M-05",
+      "statement": "OpenDesign version and pricing details are not stated by the patch.",
+      "status": "verified"
+    }
+  ],
+  "patch_ids": [],
+  "expected_relevant_claim_ids": ["M-01", "M-02", "M-04"],
+  "expiry_answer": "Once valid_until has passed, the patch can still be used as historical context, but it is no longer current guidance and should not be represented as present-day fact without a newer source.",
+  "no_resurrection_answer": "No. The older displaced claim must not be silently revived as current just because its replacement expired. Keep it as historical context and treat the update gap as uncertain until newer information arrives.",
+  "run_observations": {
+    "phase_3_behavior": "The model declared Maker claim IDs as used, but the substantive answer remained generic and materially similar to its baseline.",
+    "phase_4_retrieval": "Direct governance questions showed stronger uncertainty, expiry, and no-resurrection comprehension than ordinary answering showed.",
+    "interpretation": "Recognition and citation without evidence realization: governance comprehension exceeded behavioral execution."
+  },
+  "limitations": [
+    "This artifact is normalized from manual run notes rather than a raw provider export.",
+    "The wording is a compact normalization of the captured answer content and should not be treated as a verbatim provider transcript.",
+    "The exact hosted provider for this Gemma run was not preserved in the artifact metadata.",
+    "It represents one diagnostic question from the hosted run, not a statistically powered model score.",
+    "The governance scorer is intentionally lexical and may miss valid paraphrases or reward accidental overlap."
+  ]
+}
