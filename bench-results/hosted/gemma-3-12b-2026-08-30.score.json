@@ -1,0 +1,40 @@
+{
+  "artifact_schema": "vs-bench-governance-score/v1",
+  "input": "gemma-3-12b-2026-08-30.input.json",
+  "scorer": "src/bench-governance.mjs",
+  "governance": {
+    "evidence_realization": {
+      "scored": true,
+      "passed": false,
+      "expected_claim_ids": ["M-01", "M-02", "M-04"],
+      "realized_claim_ids": []
+    },
+    "provenance_entailment": {
+      "scored": true,
+      "passed": false,
+      "mentioned_claim_ids": ["M-01", "M-02", "M-03", "M-04", "M-05"],
+      "cited_but_unrealized": ["M-01", "M-02", "M-03", "M-04", "M-05"]
+    },
+    "provenance_type_accuracy": {
+      "scored": true,
+      "passed": true
+    },
+    "uncertainty_retention": {
+      "scored": true,
+      "passed": false
+    },
+    "false_temporal_attribution": {
+      "scored": true,
+      "passed": true
+    }
+  },
+  "expiry_awareness": {
+    "scored": true,
+    "passed": true
+  },
+  "no_resurrection": {
+    "scored": true,
+    "passed": true
+  },
+  "interpretation": "The normalized Gemma example captures decorative provenance: the answer names claim IDs but does not realize their content. Identifier type is valid, while provenance entailment and evidence realization fail; direct expiry and no-resurrection checks still pass."
+}
