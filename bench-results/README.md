@@ -15,4 +15,6 @@ Each saved run writes two timestamped files:
 
 Retrieval correctness and generation adherence are intentionally scored separately. A model may ignore correctly retrieved context; that should remain visible as a model-adherence failure rather than being mislabeled as a retrieval regression.
 
+For capable models with stale training knowledge, also run the manual patch-reasoning protocol in [`docs/vs-bench-manual-protocol.md`](../docs/vs-bench-manual-protocol.md). It measures freshness lift separately from patch selectivity, provenance/uncertainty retention, inference boundaries, expiry/update-gap behavior, instruction hierarchy, and reasoning retention. Record provider/catalog cutoffs separately from model self-reports, and preserve malformed/excluded generations in the raw record.
+
 Commit runs that are useful evidence. Do not treat one model run as an absolute accuracy percentage or a statistically powered benchmark.
