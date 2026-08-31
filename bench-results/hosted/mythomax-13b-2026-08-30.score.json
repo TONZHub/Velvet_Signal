@@ -1,0 +1,40 @@
+{
+  "artifact_schema": "vs-bench-governance-score/v1",
+  "input": "mythomax-13b-2026-08-30.input.json",
+  "scorer": "src/bench-governance.mjs",
+  "governance": {
+    "evidence_realization": {
+      "scored": true,
+      "passed": false,
+      "expected_claim_ids": ["M-01", "M-04", "M-06"],
+      "realized_claim_ids": []
+    },
+    "provenance_entailment": {
+      "scored": false,
+      "passed": null,
+      "mentioned_claim_ids": [],
+      "cited_but_unrealized": []
+    },
+    "provenance_type_accuracy": {
+      "scored": true,
+      "passed": true
+    },
+    "uncertainty_retention": {
+      "scored": true,
+      "passed": false
+    },
+    "false_temporal_attribution": {
+      "scored": true,
+      "passed": false
+    }
+  },
+  "expiry_awareness": {
+    "scored": true,
+    "passed": true
+  },
+  "no_resurrection": {
+    "scored": true,
+    "passed": true
+  },
+  "interpretation": "The hosted MythoMax example demonstrates patch acquisition without spontaneous evidence realization: the relevant Maker claims were not reflected in the patched answer, stale GPT-3-era material remained framed as recent, and explicit uncertainty was not carried into that answer. Direct governance prompts later showed correct expiry and no-resurrection behavior."
+}
