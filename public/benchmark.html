@@ -4,159 +4,100 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#100a0e">
-  <meta name="description" content="VS-Bench: reproducible Velvet Signal retrieval and model-adherence evidence across local models, including baseline-vs-patched runs.">
+  <meta name="description" content="VS-Bench: reproducible Velvet Signal retrieval, freshness, governance, and model-adherence evidence across local and hosted models.">
   <title>VS-Bench — Velvet Signal</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,500&family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{--ink:#f7eeec;--muted:#bca9ad;--faint:#806f75;--black:#100a0e;--panel:#1a1117;--panel2:#21151d;--line:rgba(247,238,236,.12);--pink:#ff4f91;--pink-soft:#ff9fc4;--violet:#ae8cff;--mint:#88d9bc;--butter:#f6d572;--red:#ff8d92;--serif:"Bodoni Moda",Georgia,serif;--sans:"Manrope",Arial,sans-serif;--mono:"DM Mono",Consolas,monospace}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:var(--sans);line-height:1.58;background:radial-gradient(circle at 15% -8%,rgba(174,140,255,.16),transparent 32rem),radial-gradient(circle at 88% 5%,rgba(255,79,145,.12),transparent 30rem),var(--black)}a{color:inherit}.shell{width:min(1140px,calc(100% - 34px));margin:auto}.header{position:sticky;top:0;z-index:10;border-bottom:1px solid var(--line);background:rgba(16,10,14,.86);backdrop-filter:blur(18px)}.header-in{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{text-decoration:none;display:flex;gap:10px;align-items:center}.mark{width:36px;height:36px;display:grid;place-items:center;border-radius:50%;color:#18070f;background:linear-gradient(135deg,var(--pink),var(--violet))}.brand strong{font-family:var(--serif);font-size:1rem;line-height:.9}.nav{display:flex;gap:8px;align-items:center}.nav a{padding:8px 10px;color:var(--muted);font-size:.78rem;text-decoration:none}.nav a:hover{color:var(--ink)}.button{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 16px;border:1px solid var(--line);border-radius:999px;text-decoration:none;font-size:.75rem;font-weight:700}.hero{padding:94px 0 50px}.eyebrow{color:var(--pink-soft);font-family:var(--mono);font-size:.69rem;letter-spacing:.15em;text-transform:uppercase}.hero h1{max-width:980px;margin:14px 0 22px;font-family:var(--serif);font-size:clamp(3.3rem,8.7vw,7rem);font-weight:500;letter-spacing:-.06em;line-height:.86}.hero h1 em{color:var(--violet);font-weight:500}.hero p{max-width:850px;color:var(--muted);font-size:1.02rem}.note{margin-top:26px;padding:15px 17px;border:1px solid rgba(246,213,114,.22);border-radius:15px;color:#e7dcb7;background:rgba(246,213,114,.06);font-size:.8rem}.scores{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:36px}.score{padding:22px;border:1px solid var(--line);border-radius:20px;background:rgba(26,17,23,.7)}.score .num{display:block;font-family:var(--serif);font-size:2.7rem;line-height:1}.score .label{display:block;margin-top:8px;color:var(--muted);font-size:.73rem}.score.pass .num{color:var(--mint)}.score.partial .num{color:var(--butter)}.section{padding:40px 0 88px}.section h2{margin:8px 0 22px;font-family:var(--serif);font-size:clamp(2.45rem,5vw,4.4rem);font-weight:500;letter-spacing:-.04em;line-height:1}.section-intro{max-width:850px;margin:0 0 26px;color:var(--muted)}.model-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.model-card{padding:26px;border:1px solid var(--line);border-radius:22px;background:rgba(26,17,23,.72)}.model-card h3{margin:4px 0 14px;font-family:var(--serif);font-size:2rem;font-weight:500}.model-card p{margin:8px 0;color:var(--muted);font-size:.82rem}.model-stat{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.pill{padding:7px 10px;border:1px solid var(--line);border-radius:999px;font:500 .65rem var(--mono)}.pill.good{color:var(--mint);border-color:rgba(136,217,188,.22)}.pill.warn{color:var(--butter);border-color:rgba(246,213,114,.22)}.ab-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.case{overflow:hidden;border:1px solid var(--line);border-radius:22px;background:rgba(26,17,23,.72)}.case.wide{grid-column:span 3}.case-head{padding:20px 20px 15px;border-bottom:1px solid var(--line)}.case-head span{color:var(--pink-soft);font-family:var(--mono);font-size:.61rem;letter-spacing:.1em;text-transform:uppercase}.case-head strong{display:block;margin-top:6px;font-family:var(--serif);font-size:1.35rem}.split{display:grid;grid-template-columns:1fr 1fr}.answer{padding:18px 20px}.answer+ .answer{border-top:1px solid var(--line)}.split .answer+ .answer{border-top:0;border-left:1px solid var(--line)}.answer small{display:block;margin-bottom:7px;font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase}.answer p{margin:0;color:var(--muted);font-size:.78rem}.answer.bad small{color:var(--red)}.answer.good small{color:var(--mint)}.answer.good{background:rgba(136,217,188,.035)}.quote{margin-top:12px;padding:12px 14px;border-radius:12px;background:#0c080b;color:#ddd0e2;font:400 .72rem/1.6 var(--mono)}.bug{display:grid;grid-template-columns:1.25fr .75fr;gap:16px}.proof,.side-note{padding:28px;border-radius:22px}.proof{border:1px solid rgba(136,217,188,.18);background:linear-gradient(135deg,rgba(136,217,188,.07),rgba(174,140,255,.05))}.side-note{border:1px solid rgba(255,79,145,.16);background:rgba(255,79,145,.045)}.proof code,.side-note code,.run code{color:#d7cafa;font-family:var(--mono)}.proof blockquote{margin:22px 0 0;padding-left:18px;border-left:3px solid var(--pink);color:var(--pink-soft);font-family:var(--serif);font-size:1.45rem;font-style:italic}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{padding:22px;border:1px solid var(--line);border-radius:18px;background:rgba(26,17,23,.62)}.card span{display:block;margin-bottom:8px;color:var(--pink-soft);font-family:var(--mono);font-size:.61rem;letter-spacing:.09em;text-transform:uppercase}.card strong{display:block;margin-bottom:7px;font-family:var(--serif);font-size:1.25rem}.card p{margin:0;color:var(--muted);font-size:.78rem}.misses{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.miss{padding:22px;border:1px solid rgba(246,213,114,.18);border-radius:18px;background:rgba(246,213,114,.045)}.miss strong{display:block;margin-bottom:8px;color:var(--butter)}.miss p{margin:0;color:var(--muted);font-size:.8rem}.run{padding:26px;border:1px solid var(--line);border-radius:22px;background:var(--panel)}pre{overflow:auto;margin:16px 0 0;padding:18px;border-radius:14px;background:#0c080b;color:#eadff0;font:400 .76rem/1.7 var(--mono);white-space:pre}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:20px;background:rgba(26,17,23,.72)}table{width:100%;min-width:900px;border-collapse:collapse}th,td{padding:15px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{color:var(--faint);font-family:var(--mono);font-size:.58rem;letter-spacing:.09em;text-transform:uppercase;font-weight:400}td{color:var(--muted);font-size:.77rem}td:first-child{color:var(--ink);font-weight:700}.pass-text{color:var(--mint)}.partial-text{color:var(--butter)}.footer{border-top:1px solid var(--line)}.footer-in{min-height:120px;display:flex;align-items:center;justify-content:space-between;gap:20px;color:var(--faint);font-size:.72rem}@media(max-width:900px){.scores{grid-template-columns:1fr 1fr}.model-grid,.ab-grid,.cards{grid-template-columns:1fr}.case.wide{grid-column:auto}.split{grid-template-columns:1fr}.split .answer+ .answer{border-left:0;border-top:1px solid var(--line)}.bug{grid-template-columns:1fr}.misses{grid-template-columns:1fr}}@media(max-width:760px){.nav a:not(.button){display:none}.footer-in{align-items:flex-start;flex-direction:column;justify-content:center}}@media(max-width:520px){.scores{grid-template-columns:1fr 1fr}.score .num{font-size:2.2rem}}
+    :root{--ink:#f7eeec;--muted:#bca9ad;--faint:#806f75;--black:#100a0e;--panel:#1a1117;--line:rgba(247,238,236,.12);--pink:#ff4f91;--violet:#ae8cff;--mint:#88d9bc;--butter:#f6d572;--red:#ff8d92;--serif:Georgia,serif;--sans:Arial,sans-serif;--mono:Consolas,monospace}
+    *{box-sizing:border-box}body{margin:0;color:var(--ink);font-family:var(--sans);line-height:1.58;background:radial-gradient(circle at 15% -8%,rgba(174,140,255,.16),transparent 32rem),radial-gradient(circle at 88% 5%,rgba(255,79,145,.12),transparent 30rem),var(--black)}a{color:inherit}.shell{width:min(1140px,calc(100% - 34px));margin:auto}.header{position:sticky;top:0;z-index:10;border-bottom:1px solid var(--line);background:rgba(16,10,14,.88);backdrop-filter:blur(18px)}.header-in{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{text-decoration:none;display:flex;gap:10px;align-items:center}.mark{width:36px;height:36px;display:grid;place-items:center;border-radius:50%;color:#18070f;background:linear-gradient(135deg,var(--pink),var(--violet))}.brand strong{font-family:var(--serif);font-size:1rem;line-height:.9}.nav{display:flex;gap:8px;align-items:center}.nav a{padding:8px 10px;color:var(--muted);font-size:.78rem;text-decoration:none}.button{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 16px;border:1px solid var(--line);border-radius:999px;text-decoration:none;font-size:.75rem;font-weight:700}.hero{padding:94px 0 50px}.eyebrow{color:#ff9fc4;font-family:var(--mono);font-size:.69rem;letter-spacing:.15em;text-transform:uppercase}.hero h1,.section h2{font-family:var(--serif);font-weight:500;letter-spacing:-.04em}.hero h1{max-width:980px;margin:14px 0 22px;font-size:clamp(3.2rem,8vw,6.7rem);line-height:.9}.hero h1 em{color:var(--violet);font-weight:500}.hero p,.section-intro{max-width:860px;color:var(--muted)}.scores{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:36px}.score,.card,.model-card,.run,.case{border:1px solid var(--line);background:rgba(26,17,23,.72);border-radius:20px}.score{padding:22px}.score .num{display:block;font-family:var(--serif);font-size:2.7rem;line-height:1}.score .label{display:block;margin-top:8px;color:var(--muted);font-size:.73rem}.pass .num,.pass-text{color:var(--mint)}.partial .num,.partial-text{color:var(--butter)}.fail-text{color:var(--red)}.note{margin-top:26px;padding:15px 17px;border:1px solid rgba(246,213,114,.22);border-radius:15px;color:#e7dcb7;background:rgba(246,213,114,.06);font-size:.8rem}.section{padding:38px 0 80px}.section h2{margin:8px 0 18px;font-size:clamp(2.35rem,5vw,4.2rem);line-height:1}.model-grid,.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.model-card,.card{padding:24px}.model-card h3,.card strong{font-family:var(--serif);font-weight:500}.model-card h3{margin:4px 0 14px;font-size:1.8rem}.model-card p,.card p{color:var(--muted);font-size:.82rem}.pills{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.pill{padding:6px 9px;border:1px solid var(--line);border-radius:999px;font:500 .64rem var(--mono)}.pill.good{color:var(--mint)}.pill.warn{color:var(--butter)}.pill.bad{color:var(--red)}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:20px;background:rgba(26,17,23,.72)}table{width:100%;min-width:900px;border-collapse:collapse}th,td{padding:14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{color:var(--faint);font:400 .6rem var(--mono);letter-spacing:.09em;text-transform:uppercase}td{color:var(--muted);font-size:.78rem}td:first-child{color:var(--ink);font-weight:700}.case{overflow:hidden}.case-head{padding:18px 20px;border-bottom:1px solid var(--line)}.case-head span{color:#ff9fc4;font:500 .62rem var(--mono);text-transform:uppercase;letter-spacing:.09em}.case-head strong{display:block;margin-top:5px;font-family:var(--serif);font-size:1.35rem}.split{display:grid;grid-template-columns:1fr 1fr}.answer{padding:18px 20px}.answer+.answer{border-left:1px solid var(--line)}.answer small{display:block;margin-bottom:7px;font:500 .58rem var(--mono);letter-spacing:.09em;text-transform:uppercase}.answer.bad small{color:var(--red)}.answer.good small{color:var(--mint)}.answer p{margin:0;color:var(--muted);font-size:.8rem}.quote{margin-top:12px;padding:12px 14px;border-radius:12px;background:#0c080b;color:#ddd0e2;font:400 .72rem/1.6 var(--mono)}.run{padding:24px}.run code{color:#d7cafa;font-family:var(--mono)}pre{overflow:auto;padding:17px;border-radius:14px;background:#0c080b;color:#eadff0;font:400 .76rem/1.7 var(--mono)}.footer{border-top:1px solid var(--line)}.footer-in{min-height:110px;display:flex;align-items:center;justify-content:space-between;gap:20px;color:var(--faint);font-size:.72rem}@media(max-width:850px){.scores,.model-grid,.cards{grid-template-columns:1fr 1fr}.split{grid-template-columns:1fr}.answer+.answer{border-left:0;border-top:1px solid var(--line)}}@media(max-width:620px){.scores,.model-grid,.cards{grid-template-columns:1fr}.nav a:not(.button){display:none}}
   </style>
 </head>
 <body>
-  <header class="header"><div class="shell header-in"><a class="brand" href="/"><span class="mark">⌁</span><strong>Velvet<br>Signal</strong></a><nav class="nav"><a href="/install">Install</a><a href="/log">Log</a><a href="/#newsstand">Newsstand</a><a class="button" href="/">Home</a></nav></div></header>
-  <main>
-    <section class="shell hero">
-      <div class="eyebrow">Observed local A/B · Dolphin 3:8B + Qwen3 4B · August 28–29, 2026</div>
-      <h1>VS-Bench separates retrieval from <em>model obedience.</em></h1>
-      <p>Two different local model families answered the same diagnostic suite naked and Velvet-patched. In both runs, Velvet Signal's deterministic retrieval stayed at 11/11 while downstream model adherence remained separately measurable at 6/8.</p>
-      <div class="scores">
-        <div class="score pass"><span class="num">2</span><span class="label">Different local model families tested</span></div>
-        <div class="score pass"><span class="num">11/11</span><span class="label">Retrieval checks passed in both runs</span></div>
-        <div class="score partial"><span class="num">6/8</span><span class="label">Corrected adherence score for each model</span></div>
-        <div class="score pass"><span class="num">0</span><span class="label">Scenarios skipped in either full run</span></div>
+<header class="header"><div class="shell header-in"><a class="brand" href="/"><span class="mark">⌁</span><strong>Velvet<br>Signal</strong></a><nav class="nav"><a href="/install">Install</a><a href="/log">Log</a><a href="/#newsstand">Newsstand</a><a class="button" href="/">Home</a></nav></div></header>
+<main>
+  <section class="shell hero">
+    <div class="eyebrow">VS-Bench · freshness + governance · August 2026</div>
+    <h1>Did the model merely read the patch—or did it <em>use it?</em></h1>
+    <p>VS-Bench now separates retrieval, model adherence, freshness lift, evidence realization, provenance, uncertainty, expiry behavior, and update-gap handling. The new governance layer grew out of cross-model manual runs where different models failed at different points between receiving current evidence and actually changing their answers.</p>
+    <div class="scores">
+      <div class="score pass"><span class="num">4</span><span class="label">Hosted stale/strong models compared in governance runs</span></div>
+      <div class="score pass"><span class="num">7</span><span class="label">Executable governance dimensions added</span></div>
+      <div class="score pass"><span class="num">11/11</span><span class="label">Retrieval checks stayed stable in local A/B runs</span></div>
+      <div class="score partial"><span class="num">6/8</span><span class="label">Local generation adherence remained separately measurable</span></div>
+    </div>
+    <div class="note">These are development diagnostics, not a statistically powered model leaderboard. The important result is architectural: correct retrieval can coexist with failed utilization, decorative citations, temporal confabulation, or good abstention.</div>
+  </section>
+
+  <section class="shell section" id="governance">
+    <div class="eyebrow">New in VS-Bench</div>
+    <h2>Seven governance dimensions are now executable.</h2>
+    <div class="cards">
+      <div class="card"><span class="eyebrow">Evidence realization</span><strong>Did retrieved evidence change the answer?</strong><p>Distinguishes “patch acknowledged” from observable use of relevant claim content.</p></div>
+      <div class="card"><span class="eyebrow">Provenance entailment</span><strong>Does the cited claim support the sentence?</strong><p>A claim ID does not count merely because it appears next to an unrelated conclusion.</p></div>
+      <div class="card"><span class="eyebrow">Provenance type accuracy</span><strong>Did the model cite the right kind of identifier?</strong><p>Catches cases where a patch/signature ID is presented as though it were an atomic claim ID.</p></div>
+      <div class="card"><span class="eyebrow">Uncertainty retention</span><strong>Did needs-review stay needs-review?</strong><p>Missing versions, truncated scope, unclear policy terms, and unestablished compatibility should not become confident facts.</p></div>
+      <div class="card"><span class="eyebrow">False temporal attribution</span><strong>Did old knowledge get dressed up as “recent”?</strong><p>Flags freshness-shaped prose such as GPT-3 or long-established prompting practices being narrated as new developments.</p></div>
+      <div class="card"><span class="eyebrow">Expiry awareness</span><strong>Historical is not current.</strong><p>Expired claims may remain useful as dated context without being presented as active guidance.</p></div>
+      <div class="card"><span class="eyebrow">No resurrection</span><strong>Replacement expiry does not revive the old claim.</strong><p>If a newer replacement expires, VS-Bench expects an update gap rather than silent rollback.</p></div>
+      <div class="card"><span class="eyebrow">Held back intentionally</span><strong>Instruction hierarchy is not auto-scored yet.</strong><p>The loading prompt itself may prime models to treat patch facts as an instruction layer. That test is being redesigned before automation.</p></div>
+    </div>
+  </section>
+
+  <section class="shell section" id="hosted-models">
+    <div class="eyebrow">Cross-model governance evidence</div>
+    <h2>Same patch. Four very different failure profiles.</h2>
+    <p class="section-intro">The manual protocol tested baseline knowledge, explicit patch injection, patched retesting, and adversarial retention. The key question was not “can the model repeat the patch?” but whether the update becomes behaviorally active.</p>
+    <div class="model-grid">
+      <article class="model-card"><div class="eyebrow">Hermes 4 405B</div><h3>Strong integration</h3><div class="pills"><span class="pill good">selectivity pass</span><span class="pill good">provenance strong</span><span class="pill good">uncertainty strong</span></div><p>Retrieved, incorporated, attributed, and preserved boundaries. The main weakness was simplifying the instruction hierarchy.</p></article>
+      <article class="model-card"><div class="eyebrow">o3</div><h3>Freshness lift with overreach</h3><div class="pills"><span class="pill good">freshness pass</span><span class="pill warn">grounding partial</span><span class="pill warn">provenance partial</span></div><p>Used Maker claims concretely, but sometimes generalized product changes into broader best practices or capabilities the patch did not establish.</p></article>
+      <article class="model-card"><div class="eyebrow">Gemma 3 12B</div><h3>Evidence recognized, incompletely realized</h3><div class="pills"><span class="pill good">selectivity strong</span><span class="pill warn">realization partial</span><span class="pill warn">entailment partial</span></div><p>Could cite the patch and explain governance rules while leaving the actual answer mostly unchanged. This exposed the gap between governance comprehension and governance execution.</p></article>
+      <article class="model-card"><div class="eyebrow">MythoMax 13B</div><h3>Patch retained, not behaviorally activated</h3><div class="pills"><span class="pill bad">Phase 3 utilization fail</span><span class="pill good">Phase 4 retrieval returns</span><span class="pill warn">provenance type error</span></div><p>Demonstrated patch comprehension immediately after injection, reverted to stale answers during normal retesting, then recovered the patch when explicitly asked about it again.</p></article>
+    </div>
+  </section>
+
+  <section class="shell section" id="mythomax">
+    <div class="eyebrow">Patch persistence / activation</div>
+    <h2>MythoMax gave the cleanest counterexample.</h2>
+    <article class="case">
+      <div class="case-head"><span>Recent AI developments</span><strong>Accessible knowledge is not necessarily active knowledge.</strong></div>
+      <div class="split">
+        <div class="answer bad"><small>Patched retest</small><p>Still described GPT-3 and transfer learning as recent advances, essentially reproducing its stale baseline despite having just summarized the Maker patch correctly.</p><div class="quote">Ingest → understand → retain → failed spontaneous utilization.</div></div>
+        <div class="answer good"><small>Direct patch cue afterward</small><p>Correctly recovered Ollama dark-mode/system-appearance information, OpenDesign boundaries, Cherry Studio uncertainty, expiry behavior, and no-resurrection logic.</p><div class="quote">Explicit cue → retrieve patch again.</div></div>
       </div>
-      <div class="note">These are observed development runs, not a statistically powered model leaderboard. Qwen's saved artifact originally recorded 5/8 under the earlier adherence scorer; PR #19 fixed a false negative for equivalent “no recommendation is provided” wording, making the corrected interpretation 6/8. The original artifact remains unchanged as audit history.</div>
-    </section>
+    </article>
+  </section>
 
-    <section class="shell section" id="models">
-      <div class="eyebrow">Cross-model evidence</div>
-      <h2>The retrieval layer stayed stable. The models failed differently.</h2>
-      <p class="section-intro">That distinction is the point of VS-Bench. A model can ignore, misread, or contradict correct context without turning that mistake into a hidden retrieval failure.</p>
-      <div class="model-grid">
-        <article class="model-card">
-          <div class="eyebrow">Dolphin 3:8B</div><h3>11/11 retrieval · 6/8 adherence</h3>
-          <div class="model-stat"><span class="pill good">retrieval stable</span><span class="pill warn">2 model misses</span></div>
-          <p><strong>Miss 1:</strong> answered the World Cup question from general knowledge without explicitly labeling that knowledge outside current Velvet Signal context.</p>
-          <p><strong>Miss 2:</strong> treated a retrieved smell-safety guardrail as uncovered in the tight-context scenario.</p>
-        </article>
-        <article class="model-card">
-          <div class="eyebrow">Qwen3 4B Instruct</div><h3>11/11 retrieval · 6/8 corrected adherence</h3>
-          <div class="model-stat"><span class="pill good">retrieval stable</span><span class="pill warn">2 genuine model misses</span></div>
-          <p><strong>Miss 1:</strong> in the multi-intent case, rejected five-day chicken correctly but attributed an unsupported “safe indefinitely” freezer statement to a current claim instead of preserving the retrieved 3–4 month detail.</p>
-          <p><strong>Miss 2:</strong> like Dolphin, declared the smell-safety facet uncovered even though the relevant claim had been retrieved.</p>
-        </article>
-      </div>
-    </section>
+  <section class="shell section" id="local-ab">
+    <div class="eyebrow">Local A/B foundation</div>
+    <h2>Retrieval stayed at 11/11 while downstream model adherence remained separately measurable at 6/8.</h2>
+    <p class="section-intro">Dolphin 3:8B and Qwen3 4B Instruct remain the local reproducibility proof. The governance work extends that same separation principle from retrieval-vs-generation into patch-acquisition-vs-behavior.</p>
+    <div class="table-wrap"><table><thead><tr><th>Model</th><th>Path</th><th>Retrieval</th><th>Generation</th><th>Characteristic miss</th></tr></thead><tbody>
+      <tr><td>Dolphin 3:8B</td><td>Local Ollama RAG + VS-Bench</td><td class="pass-text">11/11</td><td class="partial-text">6/8</td><td>Missed explicit outside-context labeling and a retrieved smell guardrail.</td></tr>
+      <tr><td>Qwen3 4B Instruct</td><td>Local Ollama RAG + VS-Bench</td><td class="pass-text">11/11</td><td class="partial-text">6/8 corrected</td><td>Invented freezer wording in a multi-intent answer and missed the smell guardrail.</td></tr>
+    </tbody></table></div>
+  </section>
 
-    <section class="shell section" id="qwen-world-cup">
-      <div class="eyebrow">Qwen3 4B · no-current-context</div>
-      <h2>The World Cup case is the clearest before-and-after.</h2>
-      <p class="section-intro">Velvet Signal did not provide a World Cup fact. The correct behavior was to keep the answer explicitly outside Velvet's current patch context instead of letting unrelated publication memory leak in.</p>
-      <article class="case wide">
-        <div class="case-head"><span>Who won the 1998 World Cup?</span><strong>No patch is better than the wrong patch.</strong></div>
-        <div class="split">
-          <div class="answer bad"><small>Naked Qwen</small><p>Gets the winner France, but spirals through a long sequence of invented and self-corrected goal scorers, repeatedly naming players who did not score in the final.</p><div class="quote">“Sébastien Trémoulin — no, that's incorrect … I am making up names … Final answer: France.”</div></div>
-          <div class="answer good"><small>Velvet-patched Qwen</small><p>Returns the answer compactly and clearly marks its provenance boundary: the fact comes from general model knowledge, not current Velvet Signal claims.</p><div class="quote">“Outside current Velvet Signal context … The 1998 FIFA World Cup was won by France.”</div></div>
-        </div>
-      </article>
-    </section>
+  <section class="shell section">
+    <div class="eyebrow">Regression cases still preserved</div>
+    <h2>The old benchmark cases still matter.</h2>
+    <div class="cards">
+      <div class="card"><span>Five-day chicken</span><strong>Apply current storage limits.</strong><p>Checks that a five-day refrigerated chicken case is rejected against the current cooked-leftover rule.</p></div>
+      <div class="card"><span>Maker Edition</span><strong>Facts without invented prescriptions.</strong><p>Tests whether current Maker claims are used without pretending the publication supplied developer recommendations it did not provide.</p></div>
+      <div class="card"><span>Historical update gap</span><strong>No silent rollback.</strong><p>When revision two replaced revision one and later expired, revision one must not quietly become current again.</p></div>
+      <div class="card"><span>Who won the 1998 World Cup?</span><strong>Negative capability.</strong><p>The correct Velvet behavior is <code>no-current-context</code>; a model may answer from general knowledge only if it keeps that source boundary explicit: “Outside current Velvet Signal context.”</p></div>
+    </div>
+    <div class="note">VS-Bench also caught a real retrieval bug here: zero-score lexical results once filled the result limit and made unrelated Pantry claims look grounded. The regression test now preserves <code>no-current-context</code>.</div>
+  </section>
 
-    <section class="shell section" id="ab">
-      <div class="eyebrow">Dolphin 3:8B · same model before and after</div>
-      <h2>The original proof still holds.</h2>
-      <p class="section-intro">These are condensed from the first completed Dolphin A/B run. Full answers remain preserved in the saved benchmark artifact.</p>
-      <div class="ab-grid">
-        <article class="case">
-          <div class="case-head"><span>Five-day chicken</span><strong>Stale reasoning meets a current limit.</strong></div>
-          <div class="answer bad"><small>Baseline model</small><p>Starts with “Yes, you can eat the chicken,” then states the 3–4 day rule and falls back to smell, taste, appearance, or texture.</p></div>
-          <div class="answer good"><small>Velvet-patched model</small><p>Applies the retrieved 3–4 day cooked-leftover window to the stated five days and says the chicken is outside the recommended storage time.</p></div>
-        </article>
-        <article class="case">
-          <div class="case-head"><span>Maker Edition</span><strong>A stale model receives 2026 memory.</strong></div>
-          <div class="answer bad"><small>Baseline model</small><p>Does not recognize the current Flowise/TGI situation and falls back to older or generic archive guidance.</p></div>
-          <div class="answer good"><small>Velvet-patched model</small><p>Identifies Flowise's Workday acquisition and August 2026 archive, TGI's March 2026 archive, and notices that the retrieved claims do not prescribe developer next steps.</p></div>
-        </article>
-        <article class="case">
-          <div class="case-head"><span>Historical update gap</span><strong>Association is not current truth.</strong></div>
-          <div class="answer bad"><small>Baseline model</small><p>Sees “synthetic policy” and invents an unrelated explanation about the Synthetic Control Method.</p></div>
-          <div class="answer good"><small>Velvet-patched model</small><p>Recognizes that revision one was replaced, refuses to silently restore it as current guidance, and names the current update gap.</p></div>
-        </article>
-      </div>
-    </section>
-
-    <section class="shell section">
-      <div class="eyebrow">The benchmark already paid for itself</div>
-      <h2>It caught a real retrieval bug.</h2>
-      <div class="bug">
-        <div class="proof">
-          <p>On the first deterministic run, the query <code>Who won the 1998 World Cup?</code> returned three Pantry claims. Every lexical relevance score was zero, but the core retriever filled the result limit anyway. The answerability layer then saw “current claims” and called the query grounded.</p>
-          <p>VS-Bench exposed the failure immediately. The zero-score fallback was removed and locked behind a regression test. The same query now returns <code>Claims: none</code> and <code>Answerability: no-current-context</code>.</p>
-          <blockquote>Having publications in memory does not mean one of them must answer every question.</blockquote>
-        </div>
-        <aside class="side-note"><div class="eyebrow">Why this matters</div><p style="color:var(--muted);font-size:.82rem">Without a relevance floor, RAG can become random context injection with confidence. Negative capability is part of the product: Velvet Signal must be able to say “I do not have a current patch for that.”</p></aside>
-      </div>
-    </section>
-
-    <section class="shell section">
-      <div class="eyebrow">Why 6/8 is useful</div>
-      <h2>The model still gets to fail.</h2>
-      <p class="section-intro">Both model families reached the same corrected headline score, but not by making the same mistakes. The common smell-guardrail miss is especially useful: Velvet can prove the claim was retrieved even when the generator fails to use it.</p>
-      <div class="misses">
-        <div class="miss"><strong>Dolphin · provenance labeling</strong><p>No claims were retrieved for the World Cup question. Dolphin still answered from general knowledge without explicitly labeling that knowledge outside Velvet Signal context.</p></div>
-        <div class="miss"><strong>Qwen · claim fidelity</strong><p>Qwen had the right multi-intent claims available but invented an “indefinitely safe” freezer statement instead of preserving the retrieved quantitative detail.</p></div>
-        <div class="miss"><strong>Both · smell guardrail</strong><p>In the tight-context scenario the smell-safety claim was actually retrieved. Both models nevertheless treated that facet as uncovered. That is generation behavior, not retrieval behavior.</p></div>
-        <div class="miss"><strong>Scorer auditability</strong><p>Qwen's Maker answer was initially marked wrong despite correctly saying the claims supplied no recommendations. The scorer was widened to accept equivalent limitation wording; the original 5/8 artifact remains preserved.</p></div>
-      </div>
-    </section>
-
-    <section class="shell section">
-      <div class="eyebrow">What gets scored</div>
-      <h2>Six separate layers.</h2>
-      <div class="cards">
-        <div class="card"><span>01 · Storage</span><strong>Did the patch survive?</strong><p>Approved patches should remain in the user-controlled ledger across terminal, Ollama, code, and computer restarts.</p></div>
-        <div class="card"><span>02 · Eligibility</span><strong>Should this claim be active?</strong><p>Locked, expired, rejected, replaced, or displaced conflicting claims should never enter active retrieval.</p></div>
-        <div class="card"><span>03 · Resolution</span><strong>What changed—and why?</strong><p>Explicit replaces, narrows, confirms, and conflicts links must produce the right active set and an inspectable decision trail.</p></div>
-        <div class="card"><span>04 · Retrieval</span><strong>Did the right claims rank?</strong><p>Relevance, diversity, multi-intent coverage, and evidence lineage are inspected only after factual authority is resolved.</p></div>
-        <div class="card"><span>05 · Context packing</span><strong>What did the model receive?</strong><p>Mandatory facts and relationship decisions survive tight budgets; optional diagnostics are dropped first.</p></div>
-        <div class="card"><span>06 · Generation</span><strong>Did the model obey?</strong><p>This is scored separately. Correct context plus a bad answer is a model-adherence failure, not a hidden retrieval failure.</p></div>
-      </div>
-    </section>
-
-    <section class="shell section">
-      <div class="eyebrow">Reproducible evidence</div>
-      <h2>Run it. Save it. Compare it.</h2>
-      <div class="run">
-        <p style="margin:0;color:var(--muted)">The normal benchmark stays lightweight. Use <code>bench:save</code> when a run is worth keeping; it writes timestamped JSON and Markdown artifacts under <code>bench-results/</code>. Velvet caps Ollama chat context at 8192 tokens by default so large advertised model windows do not allocate absurd KV caches for these compact packets.</p>
-        <pre>npm run bench
-npm run bench -- --model dolphin3:8b
+  <section class="shell section">
+    <div class="eyebrow">Run it</div>
+    <h2>Retrieval bench and governance bench stay separate.</h2>
+    <div class="run"><p style="color:var(--muted)">Use <code>bench:save</code> to preserve local A/B artifacts. Use the governance scorer on captured baseline/patched runs to inspect evidence realization and governance behavior.</p><pre>npm run bench
 npm run bench:save -- --model dolphin3:8b
 npm run bench:save -- --model qwen3:4b-instruct
-npm run bench:save -- --model &lt;model&gt; --semantic
-npm run bench -- --model &lt;model&gt; --strict-adherence</pre>
-      </div>
-    </section>
-
-    <section class="shell section">
-      <div class="eyebrow">Compatibility history</div>
-      <h2>Earlier field work still counts.</h2>
-      <div class="table-wrap"><table><thead><tr><th>Model</th><th>Path</th><th>Update application</th><th>Restart persistence</th><th>Provenance</th><th>Claim fidelity</th></tr></thead><tbody>
-        <tr><td>Dolphin 3:8B</td><td>Local Ollama RAG + VS-Bench</td><td class="pass-text">11/11 retrieval checks</td><td class="pass-text">Pass</td><td class="pass-text">Pass</td><td class="partial-text">6/8 generation adherence</td></tr>
-        <tr><td>Qwen3 4B Instruct</td><td>Local Ollama RAG + VS-Bench</td><td class="pass-text">11/11 retrieval checks</td><td>Not separately scored</td><td class="pass-text">Pass on explicit outside-context case</td><td class="partial-text">6/8 corrected adherence; multi-intent fidelity + smell misses</td></tr>
-        <tr><td>Llama 2 7B</td><td>Local Ollama RAG</td><td class="pass-text">Pass</td><td class="pass-text">Ledger persisted</td><td class="pass-text">Pass</td><td class="partial-text">Partial; one sentence contradicted a retrieved discard rule</td></tr>
-        <tr><td>Laguna XS 2.1</td><td>Manual patch injection</td><td class="pass-text">Pass</td><td>Not scored</td><td class="pass-text">Pass</td><td class="pass-text">Pass</td></tr>
-        <tr><td>Hermes 3 70B</td><td>Manual patch injection</td><td class="pass-text">Pass</td><td>Not scored</td><td class="partial-text">Partial evidence</td><td class="pass-text">Pass on explicit cooked-leftover case</td></tr>
-        <tr><td>MythoMax L2 13B</td><td>Manual patch injection</td><td class="pass-text">Pass</td><td>Not scored</td><td class="partial-text">Partial</td><td class="pass-text">Pass; ingestion was metadata-heavy</td></tr>
-      </tbody></table></div>
-    </section>
-
-    <section class="shell section">
-      <div class="eyebrow">Synthetic relationship suite</div>
-      <h2>Four meanings. Zero inference by vibes.</h2>
-      <p class="section-intro">The deterministic suite uses harmless UI facts to test <code>replaces</code>, <code>narrows</code>, <code>confirms</code>, and <code>conflicts</code>. Replacement and conflict withhold the older statement while retaining its ID and history; narrowing and confirmation keep both claims active with explicit scoped instructions. Reverse-time links and missing targets are refused. Historical wording may retrieve its linked replacement, but the displaced statement is never injected as active truth. If a replacement later expires, its tombstone prevents the old claim from quietly resurrecting. Embeddings can rank surviving claims—they never decide what a relationship means.</p>
-    </section>
-  </main>
-  <footer class="footer"><div class="shell footer-in"><span>VS-Bench · cross-model diagnostic evidence · Velvet Signal 0.2.0</span><div><a class="button" href="/install">Install Velvet Signal</a> <a class="button" href="/">Back to newsstand</a></div></div></footer>
+npm run bench:governance -- --input run.json
+npm run test</pre></div>
+  </section>
+</main>
+<footer class="footer"><div class="shell footer-in"><span>VS-Bench · retrieval, freshness, governance, and generation evidence · Velvet Signal</span><div><a class="button" href="/install">Install Velvet Signal</a> <a class="button" href="/">Back to newsstand</a></div></div></footer>
 </body>
 </html>
