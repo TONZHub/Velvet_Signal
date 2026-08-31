@@ -1,39 +1,1948 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-30T19:21:45.220Z",
+  "generated_at": "2026-08-31T21:32:56.211Z",
   "desks": {
     "maker": {
-      "fingerprint": "5339ad86c9374a8a9f0afec737772ac40c7124675b7f0a551eb6b65e3f53c66a",
-      "latest_patch_id": "maker-010",
-      "published_at": "2026-08-30T19:21:45.220Z",
-      "tavily_request_id": "aafea9e9-6431-49d7-8659-a8aa60885898"
+      "fingerprint": "7778cb82937ad41a94f6d070c3e92410da3f8c61ee399d40b9f52b898edb2244",
+      "latest_patch_id": "maker-013",
+      "published_at": "2026-08-31T21:32:56.211Z",
+      "tavily_request_id": "56ead2ff-7ac8-49c8-9ec9-44a3cf1991b1"
     },
     "model-watch": {
-      "fingerprint": "6189ba065893b50a7c85a58b9381c991c2defeed76f753a5005a4fda3ac4d6d6",
-      "latest_patch_id": "model-watch-009",
-      "published_at": "2026-08-30T19:19:42.795Z",
-      "tavily_request_id": "d1003c52-cefe-4e34-a22c-6cb82b12d4d7"
+      "fingerprint": "d88e73c97c2bdf73f3975a73fbbb65b7b27667f5b06167532b007a0f817ae150",
+      "latest_patch_id": "model-watch-012",
+      "published_at": "2026-08-31T21:30:16.836Z",
+      "tavily_request_id": "3339ab38-9360-4988-b4f4-508f5e5943a5"
     },
     "culture": {
-      "fingerprint": "bb59259c953fc9fbd62a76fda1319921a49c955ecbdbb28d8e577e7ac3717e53",
-      "latest_patch_id": "culture-005",
-      "published_at": "2026-08-30T05:24:45.290Z",
-      "tavily_request_id": "6d5932e7-5f95-4cb5-bf8f-92efaeec1183"
+      "fingerprint": "aae3c25a1927e89d03ceb87c8d02e1ead3c2c84c3e999d6c1d7fd8ead0a42868",
+      "latest_patch_id": "culture-006",
+      "published_at": "2026-08-31T21:32:19.851Z",
+      "tavily_request_id": "7c7cb935-6b4d-40eb-80d2-77c5007682c2"
     },
     "pantry": {
-      "fingerprint": "382c609e9472db94fd7a241e65fbdc496da903636e0941f655ead50fe3b9683e",
-      "latest_patch_id": "pantry-004",
-      "published_at": "2026-08-29T19:26:38.528Z",
-      "tavily_request_id": "34ec898b-c519-4420-8353-6756f012b348"
+      "fingerprint": "f1dcaa8fcb3259145a0b51067487aab136efbccd19067ff6248a6c918a50d9d6",
+      "latest_patch_id": "pantry-005",
+      "published_at": "2026-08-31T16:11:09.952Z",
+      "tavily_request_id": "60a5c66d-eb1a-4157-8b8b-e8c66312f185"
     },
     "wellbeing": {
-      "fingerprint": "59ec09605bbd75b7e5cae204593dbbc3ff9d51c72068e0ad33847942270bb9b6",
-      "latest_patch_id": "wellbeing-008",
-      "published_at": "2026-08-30T19:20:38.586Z",
-      "tavily_request_id": "3c596cc9-acac-47a3-9481-6007710f6e51"
+      "fingerprint": "4ade0bea34f305fbe254888f51a86e65c8625f70e3a139cdfdc1f3bf6053db46",
+      "latest_patch_id": "wellbeing-011",
+      "published_at": "2026-08-31T21:31:38.529Z",
+      "tavily_request_id": "d8396d9e-7355-41dc-9409-a7e9968acb00"
     }
   },
   "issues": [
+    {
+      "id": "maker-013",
+      "deskId": "maker",
+      "desk": "Maker Edition",
+      "icon": "⌘",
+      "issue": "013",
+      "version": "1.0.0",
+      "date": "AUG 31 · 2026",
+      "publishedAt": "2026-08-31T21:32:56.211Z",
+      "color": "#ff9466",
+      "title": "ADK Python ships capability reporting, Jinja2 templating, and sharper tool-schema pairing",
+      "kicker": "The release that teaches your agent framework to ask the model what it can do",
+      "dek": "Google's ADK Python release notes describe a capability reporting system for LLM models, Jinja2 templating behind a use_jinja2 flag, and pairing logic that honors model-declared capabilities when an output schema meets tools. No version number appears in the packet, so treat the carrying release as unconfirmed.",
+      "readTime": "3 min read",
+      "validity": "7 days",
+      "expires": "2026-09-07",
+      "confidence": "High",
+      "scope": "AI product engineering",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "The headline change for builders is a capability reporting system for LLM models (M-SRC-1). Frameworks have long guessed at what a model supports; a first-class reporting mechanism means the framework can ask instead. The release pairs this with logic that honors model-declared capabilities when pairing an output schema with tools (M-SRC-1), which should reduce the class of bugs where a schema and a tool disagree about what the model can actually do.",
+        "Templating gets a real upgrade: Jinja2 templating is available behind a use_jinja2 flag, closing issue #2942 (M-SRC-1). The opt-in flag matters — existing prompts should not change behavior until you flip it.",
+        "Tool interop gets two targeted fixes. LangchainTool now honors return_direct on wrapped Langchain tools, closing issue #2157 (M-SRC-1), and HTTP trace debugging has been extended to MCP Toolset operations (M-SRC-1), which should make debugging MCP-backed tools considerably less opaque.",
+        "On the observability side, the release adds a gen_ai.agent.name attribute to execute_tool spans (M-SRC-1), express mode telemetry logging for ADK CLI onboarding (M-SRC-1), and parent terminal grouping with TTL pruning for ADK CLI telemetry (M-SRC-1). Evaluation results can now be saved to CSV, closing issue #2652 (M-SRC-1).",
+        "Smaller but notable: root LlmAgent gains native task mode support (M-SRC-1), the labs OpenAI model accepts a pre-configured client, closing issue #4180 (M-SRC-1), labs AntigravityAgents with mode='single_turn' can now be sub-agents (M-SRC-1), and Eventarc support covers Context callables with corrected OMIT behavior (M-SRC-1)."
+      ],
+      "pullquote": "A framework that reports model capabilities instead of assuming them changes how safely you can pair output schemas with tools.",
+      "sources": [
+        {
+          "id": "M-SRC-1",
+          "name": "Releases · google/adk-python · GitHub",
+          "publisher": "github.com",
+          "url": "https://github.com/google/adk-python/releases",
+          "checked": "2026-08-31",
+          "publishedAt": "Thu, 27 Aug 2026 21:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-2",
+          "name": "Curated list of open source alternatives to proprietary ...",
+          "publisher": "github.com",
+          "url": "https://github.com/piotrkulpinski/open-source-alternatives",
+          "checked": "2026-08-31",
+          "publishedAt": "Fri, 28 Aug 2026 21:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-3",
+          "name": "GitHub - ljbudgie/burgess-principle: The Burgess Principle — a binary institutional accountability standard. One question: was a human mind with proper authority individually applied to the specific facts of this specific person’s case? SOV",
+          "publisher": "github.com",
+          "url": "https://github.com/ljbudgie/burgess-principle",
+          "checked": "2026-08-31",
+          "publishedAt": "Fri, 28 Aug 2026 21:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-4",
+          "name": "GitHub - Yeachan-Heo/oh-my-claudecode: Teams-first Multi-agent orchestration for Claude Code · GitHub",
+          "publisher": "github.com",
+          "url": "https://github.com/yeachan-heo/oh-my-claudecode",
+          "checked": "2026-08-31",
+          "publishedAt": "Sat, 29 Aug 2026 21:00:00 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "M-01",
+          "claim": "Google's ADK Python introduces a capability reporting system for LLM models.",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-02",
+          "claim": "ADK Python honors model-declared capabilities when pairing an output schema with tools (commit dc5dbfa).",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-03",
+          "claim": "ADK Python adds Jinja2 templating behind a use_jinja2 flag (commit 4a00a34), closing issue #2942.",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-04",
+          "claim": "ADK Python honors return_direct on Langchain tools wrapped by LangchainTool (commit c2249f3), closing issue #2157.",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-05",
+          "claim": "ADK Python extends HTTP trace debugging to MCP Toolset operations (commit 6d8045c).",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-06",
+          "claim": "ADK Python adds a gen_ai.agent.name attribute to execute_tool spans (commit 1a80962).",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-07",
+          "claim": "ADK Python adds express mode telemetry logging for ADK CLI onboarding (commit 4ccc6be) and parent terminal grouping with TTL pruning for ADK CLI telemetry (commit 2c6a7ff).",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-08",
+          "claim": "ADK Python adds an option to save eval results to CSV (commit 3bbc8ed), closing issue #2652.",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "The packet's excerpt is truncated and does not state a release version number, deprecation list, or compatibility limits for these ADK Python changes; the carrying release is not established and none is asserted.",
+        "The Eventarc Context callables and OMIT behavior fix (a3bd111), native task mode support for root LlmAgent (dd0de52), pre-configured client on the labs OpenAI model (461205c, closes #4180), and single_turn AntigravityAgents as sub-agents (6ed484d) are noted in the editorial but not carried as ledger claims; promote them with a dedicated packet if they matter to your stack.",
+        "No relationship to prior claims is established: the prior Langflow, Ollama, hermes-agent, and oh-my-pi coverage concerns different projects, and no packet here independently supports or conflicts with those statements."
+      ],
+      "tags": [
+        "adk-python",
+        "agent-frameworks",
+        "observability",
+        "tooling"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "56ead2ff-7ac8-49c8-9ec9-44a3cf1991b1",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "culture-006",
+      "deskId": "culture",
+      "desk": "Culture Desk",
+      "icon": "✺",
+      "issue": "006",
+      "version": "1.0.0",
+      "date": "AUG 31 · 2026",
+      "publishedAt": "2026-08-31T21:32:19.851Z",
+      "color": "#67d6c0",
+      "title": "Oreogate: the group-chat drama everyone's packing Oreos for — and why its authenticity is the actual story",
+      "kicker": "culture",
+      "dek": "A viral Instagram saga about kindergarten Oreos hit a very real nerve. Whether it started as an ad is exactly the kind of ambiguity worth holding open.",
+      "readTime": "3 min read",
+      "validity": "10 days",
+      "expires": "2026-09-10",
+      "confidence": "Mixed",
+      "scope": "Culture signals",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Oreogate is a series of viral Instagram posts from user @ashleighjamz about a fight in a classroom group chat over kindergarteners bringing Oreos for lunch. In the series, the mother of a child called \"Ava\" asks the other parents not to send Oreos in their lunches, because Ava isn't allowed to have them (C-SRC-5).",
+        "The premise landed because it maps onto a widely recognizable situation: one person says something ridiculous in a parent WhatsApp chat, and everyone else has to react with varying degrees of politeness or directness (C-SRC-5). That relatability is the observed mechanism of the spread — not evidence of what the series means about parents, schools, or snack rules.",
+        "The spread itself is well documented: the series went viral with coverage in the New York Post, AdAge, and other outlets, and dozens of moms posted videos of themselves shopping for Oreos or packing them in lunches \"in honor of Ava\" (C-SRC-5).",
+        "Here is the ambiguity worth keeping visible: Business Insider's own framing is that \"something about Oreogate seems fishy,\" and the piece's headline asks whether the whole thing was a fake ad for an AI company (C-SRC-5). The supplied packet raises this question but does not resolve it. Whether Oreogate is organic group-chat drama, staged content, or marketing remains unestablished on the current evidence, so any claim about its authenticity needs review.",
+        "What we can say is bounded: Oreogate is a viral series with a specific premise, documented mainstream coverage, and participatory imitation, whose origin and sincerity are open questions. We are not saying it reveals anything about any reader, any parent community, or group chats in general — only that it struck a nerve widely enough to be covered and imitated (C-SRC-5)."
+      ],
+      "pullquote": "\"Something about Oreogate seems fishy.\" — Business Insider (C-SRC-5)",
+      "sources": [
+        {
+          "id": "C-SRC-1",
+          "name": "This U.S. City Was Named the Best Place to Work—with Strong Career Opportunities, High Pay, and Quality of Life - Travel + Leisure",
+          "publisher": "travelandleisure.com",
+          "url": "https://www.travelandleisure.com/25-best-us-cities-for-work-indeed-analysis-12066166",
+          "checked": "2026-08-31",
+          "publishedAt": "Tue, 25 Aug 2026 09:00:00 GMT"
+        },
+        {
+          "id": "C-SRC-2",
+          "name": "‘Derogatory’ fliers targeting Armenian community found near Glendale elementary school - Los Angeles Times",
+          "publisher": "latimes.com",
+          "url": "https://www.latimes.com/california/story/2026-08-29/derogatory-flyers-targeting-armenian-community-found-near-glendale-elementary-school",
+          "checked": "2026-08-31",
+          "publishedAt": "Sat, 29 Aug 2026 19:03:38 GMT"
+        },
+        {
+          "id": "C-SRC-3",
+          "name": "Trump denies US pushed Canada on French language - Politico",
+          "publisher": "politico.com",
+          "url": "https://www.politico.com/news/2026/08/25/trump-canada-quebec-french-01048724",
+          "checked": "2026-08-31",
+          "publishedAt": "Tue, 25 Aug 2026 13:43:00 GMT"
+        },
+        {
+          "id": "C-SRC-4",
+          "name": "Champions League format 2026-27, explained: How league phase and knockout bracket works - sportingnews.com",
+          "publisher": "sportingnews.com",
+          "url": "https://www.sportingnews.com/in/football/news/champions-league-format-2026-27/91d28c9af2533660b7cf5150",
+          "checked": "2026-08-31",
+          "publishedAt": "Thu, 27 Aug 2026 06:00:01 GMT"
+        },
+        {
+          "id": "C-SRC-5",
+          "name": "\"Oreogate\" on Instagram went viral. But was it all a fake ad for an AI company? - Business Insider",
+          "publisher": "businessinsider.com",
+          "url": "https://www.businessinsider.com/oreogate-mom-drama-suno-ad-fake-2026-8",
+          "checked": "2026-08-31",
+          "publishedAt": "Fri, 28 Aug 2026 17:33:12 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "C-01",
+          "claim": "\"Oreogate\" is a series of viral Instagram posts from user @ashleighjamz about a fight over kindergarteners bringing Oreos for lunch in a classroom group chat.",
+          "source": 4,
+          "sourceIds": [
+            "C-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-02",
+          "claim": "In the Oreogate series, the mother of \"Ava\" asks the other parents in the group chat not to send Oreos in their lunches because Ava isn't allowed to have Oreos.",
+          "source": 4,
+          "sourceIds": [
+            "C-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-03",
+          "claim": "The Oreogate series went viral and received coverage in the New York Post, AdAge, and other news outlets.",
+          "source": 4,
+          "sourceIds": [
+            "C-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-04",
+          "claim": "Dozens of mothers posted videos of themselves shopping for Oreos or packing them in lunches \"in honor of Ava\" as part of the Oreogate spread.",
+          "source": 4,
+          "sourceIds": [
+            "C-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-05",
+          "claim": "Business Insider described Oreogate as relatable to anyone who has been in a parent WhatsApp chat, where one person says something ridiculous and others must react with varying politeness or directness.",
+          "source": 4,
+          "sourceIds": [
+            "C-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-06",
+          "claim": "Business Insider questioned whether Oreogate was a fake ad for an AI company, stating that \"something about Oreogate seems fishy\"; the headline references Suno, but the supplied excerpt does not independently establish the company's involvement.",
+          "source": 4,
+          "sourceIds": [
+            "C-SRC-5"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        },
+        {
+          "id": "C-07",
+          "claim": "Whether Oreogate is organic viral content, staged drama, or marketing is not established by the supplied packets; the authenticity question raised by Business Insider remains open.",
+          "source": 4,
+          "sourceIds": [
+            "C-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-08",
+          "claim": "This entry describes observed usage and spread of Oreogate as of the source publication date of 28 August 2026; it makes no claim about any individual reader's identity or about a universal meaning of the phenomenon, and viral cultural signals shift quickly, so it should be re-checked within 7–14 days.",
+          "source": 4,
+          "sourceIds": [
+            "C-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "No universal meaning assigned to Oreogate; relatability is reported as the outlet's framing, not a fact about all parents.",
+        "No user identity claims derived from cultural exposure.",
+        "Authenticity/sponsorship question kept explicitly open and marked needs-review.",
+        "No relationships asserted to prior claims: prior entries cover other memes (Niu Lai, Chanty Beluga, aura farming), and shared topic alone does not establish a relationship."
+      ],
+      "tags": [
+        "oreogate",
+        "instagram",
+        "viral",
+        "parent-group-chat",
+        "authenticity-question",
+        "needs-review"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "7c7cb935-6b4d-40eb-80d2-77c5007682c2",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "wellbeing-011",
+      "deskId": "wellbeing",
+      "desk": "Wellbeing",
+      "icon": "☾",
+      "issue": "011",
+      "version": "1.0.0",
+      "date": "AUG 31 · 2026",
+      "publishedAt": "2026-08-31T21:31:38.529Z",
+      "color": "#a993ff",
+      "title": "wellbeing-011",
+      "kicker": "wellbeing",
+      "dek": "NHLBI's sleep guidance puts numbers on 'enough' — and explains why those hours do quiet, essential work while you're unconscious.",
+      "readTime": "3 min read",
+      "validity": "180 days",
+      "expires": "2027-02-27",
+      "confidence": "High",
+      "scope": "General wellbeing",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Sleep advice often stops at 'get more of it,' which is about as useful as being told to 'eat better.' This week's update comes from the National Heart, Lung, and Blood Institute (NHLBI), which does something more helpful: it publishes age-by-age ranges for how much sleep people need each day — 7 to 9 hours for adults 18 and older, with different ranges for babies, children, and teens [W-SRC-5].",
+        "Those ranges matter because sleep isn't downtime. NHLBI describes it as the period when your heart and blood vessels heal and repair themselves — and warns that over time, not getting enough quality sleep (what it calls sleep deficiency) can raise the risk of heart disease, obesity, high blood pressure, diabetes, and stroke [W-SRC-5].",
+        "The 'why' runs deeper still. Your body runs on internal clocks with cycles of roughly 24 hours, regulated by light, darkness, and your sleep schedule; once asleep, you cycle through sleep stages in a predictable pattern [W-SRC-4]. Skimp on sleep — or on sleep quality — and NHLBI says the effects reach your heart, your respiratory system, your metabolism, and your ability to think clearly and focus [W-SRC-4].",
+        "One honest caveat: these are population-level ranges, not a prescription. Where you land within 7 to 9 hours — or whether a persistent sleep problem deserves a clinician's attention — is individual. NHLBI's materials are general guidance, not a substitute for professional care.",
+        "If you take one practical step from this issue, make it the one NHLBI keeps returning to: give yourself enough time to sleep in the first place. It's often the first thing busy people squeeze out — and the easiest to protect once you treat it as non-negotiable [W-SRC-1]."
+      ],
+      "pullquote": "Sleep helps heal and repair your heart and blood vessels. — NHLBI [W-SRC-5]",
+      "sources": [
+        {
+          "id": "W-SRC-1",
+          "name": "Sleep Deprivation and Deficiency - Healthy Sleep Habits | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits",
+          "checked": "2026-08-31"
+        },
+        {
+          "id": "W-SRC-2",
+          "name": "Sweet dreams: Researchers explore link between sleep and health | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/news/2018/sweet-dreams-researchers-explore-link-between-sleep-and-health",
+          "checked": "2026-08-31"
+        },
+        {
+          "id": "W-SRC-3",
+          "name": "Sleep Brochure | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/resources/sleep-brochure",
+          "checked": "2026-08-31"
+        },
+        {
+          "id": "W-SRC-4",
+          "name": "How Sleep Works - How Sleep Works | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/health/sleep",
+          "checked": "2026-08-31"
+        },
+        {
+          "id": "W-SRC-5",
+          "name": "Heart-Healthy Living - Get Enough Good-Quality Sleep | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/health/heart-healthy-living/sleep",
+          "checked": "2026-08-31"
+        }
+      ],
+      "claims": [
+        {
+          "id": "W-01",
+          "claim": "NHLBI recommends 7 to 9 hours of sleep per day for adults 18 years or older, with age-specific recommended ranges for babies (4-12 months: 12-16 hours including naps), young children, school-age children (6-12 years: 9-12 hours), and teens (13-18 years: 8-10 hours).",
+          "source": 4,
+          "sourceIds": [
+            "W-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "narrows",
+              "target_id": "wellbeing-010:W-05",
+              "reason": "Adds a specific numeric boundary (7-9 hours for adults) to the broader guidance to give yourself enough time to sleep; the broader claim remains true."
+            }
+          ]
+        },
+        {
+          "id": "W-02",
+          "claim": "NHLBI states that sleep helps heal and repair the heart and blood vessels, and that over time, not getting enough quality sleep (sleep deficiency) can raise the risk of heart disease, obesity, high blood pressure, diabetes, and stroke.",
+          "source": 4,
+          "sourceIds": [
+            "W-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-03",
+          "claim": "NHLBI describes internal body clocks with cycles of approximately 24 hours that regulate wakefulness and readiness for sleep, regulated by factors including light, darkness, and sleep schedules; once asleep, people cycle through sleep stages in a predictable pattern.",
+          "source": 3,
+          "sourceIds": [
+            "W-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-04",
+          "claim": "NHLBI states that not getting enough sleep or enough quality sleep raises the risk for heart and respiratory problems and affects metabolism and the ability to think clearly and focus on tasks.",
+          "source": 3,
+          "sourceIds": [
+            "W-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-05",
+          "claim": "NHLBI advises making sure you give yourself enough time to sleep, noting that sleep is often the first thing busy people squeeze out of their schedules and that making time to sleep helps protect health and well-being now and in the future.",
+          "source": 0,
+          "sourceIds": [
+            "W-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-010:W-05",
+              "reason": "A newly supplied NHLBI packet independently supports the same guidance already on record."
+            }
+          ]
+        }
+      ],
+      "toneNotes": [
+        "Frame the age-by-age table as population-level ranges, not individual prescriptions; keep the door open for readers whose needs differ.",
+        "No diagnosis, no moralizing about screen time or schedules; present NHLBI's guidance as general public-health information.",
+        "Close with a reminder that persistent sleep problems warrant a conversation with a clinician."
+      ],
+      "tags": [
+        "sleep",
+        "sleep-hygiene",
+        "heart-health",
+        "public-health-guidance"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "d8396d9e-7355-41dc-9409-a7e9968acb00",
+        "credits": 2,
+        "search_mode": "timeless-official-fallback"
+      }
+    },
+    {
+      "id": "model-watch-012",
+      "deskId": "model-watch",
+      "desk": "Model Watch",
+      "icon": "⌁",
+      "issue": "012",
+      "version": "1.0.0",
+      "date": "AUG 31 · 2026",
+      "publishedAt": "2026-08-31T21:30:16.836Z",
+      "color": "#ff719f",
+      "title": "Velvet Signal — Model Watch, Edition 012",
+      "kicker": "Two new primary sources this cycle: a flash-tier vision-coding model from Z.AI and an Anthropic research preview that wants to make lab hardware speak agent.",
+      "dek": "One release puts eyes inside the coding loop; the other tries to collapse weeks of lab integration into minutes. Both matter to builders wiring agents into real work.",
+      "readTime": "3 min read",
+      "validity": "60 days",
+      "expires": "2026-10-30",
+      "confidence": "Mixed",
+      "scope": "AI models and agent interfaces",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "This cycle's packets carry two genuinely new primary sources, and they point in complementary directions. Z.AI's developer documentation introduces GLM-5.3-Flash, a model that doesn't just write code but watches what the code produces — observing interfaces, rendered results, and interaction feedback to keep testing and improving its own work [MW-SRC-1]. That closed visual loop, spanning code, browsers, GUIs, Blender 3D scenes, and real-world operation via BUA and CUA, is the kind of agent-interface change that reshapes how builders think about handoffs: fewer of them.",
+        "Anthropic's research preview of a Model Hardware Standard (MHS) attacks a different bottleneck. Most lab devices don't talk to each other, so specialists build bespoke integrations that take weeks or months; MHS claims to cut that to hours or minutes, and to let agents orchestrate autonomous, round-the-clock experiments while reasoning through each step [MW-SRC-2]. It's a research preview, so treat the boundaries as open questions — but the direction of travel is clear.",
+        "A note on limits: the GLM-5.3-Flash excerpt confirms the model's name, capabilities, and positioning at 'flash cost,' but does not state pricing, context limits, or regional availability. We've marked those gaps needs-review rather than filling them with assumption."
+      ],
+      "pullquote": "Visual capabilities are built into the coding loop: the model observes interfaces, rendered results, and interaction feedback to continuously test and improve its work. [MW-SRC-1]",
+      "sources": [
+        {
+          "id": "MW-SRC-1",
+          "name": "GLM-5.3-Flash - Overview - Z.AI DEVELOPER DOCUMENT",
+          "publisher": "docs.z.ai",
+          "url": "https://docs.z.ai/guides/vlm/glm-5.3-flash",
+          "checked": "2026-08-31",
+          "publishedAt": "Wed, 26 Aug 2026 21:00:00 GMT"
+        },
+        {
+          "id": "MW-SRC-2",
+          "name": "Previewing the Model Hardware Standard",
+          "publisher": "anthropic.com",
+          "url": "https://www.anthropic.com/news/model-hardware-standard-research-preview",
+          "checked": "2026-08-31",
+          "publishedAt": "Thu, 27 Aug 2026 18:00:00 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "MW-01",
+          "claim": "Z.AI's developer documentation introduces GLM-5.3-Flash, a model with visual capabilities built into the coding loop: it observes interfaces, rendered results, and interaction feedback to continuously test and improve its work.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "MW-02",
+          "claim": "Per the GLM-5.3-Flash documentation, the model coordinates tasks across code, browsers, and GUIs — from frontend and game development to Blender 3D scenes and real-world operation via BUA and CUA.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "MW-03",
+          "claim": "The GLM-5.3-Flash documentation page lists companion agents: GLM Slide/Poster Agent (beta), Translation Agent, and Video Effect Template Agent; only the Slide/Poster Agent is marked beta in the supplied excerpt.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "MW-04",
+          "claim": "The GLM-5.3-Flash documentation cites 'Competitive Performance at Flash Cost' and 'Serving at Scale on Chinese AI Chips' among its key advancements, but the supplied excerpt does not state pricing, context limits, or regional availability boundaries.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        },
+        {
+          "id": "MW-05",
+          "claim": "Anthropic published a research preview of a Model Hardware Standard (MHS) that reduces lab and manufacturing hardware integration work from weeks or months to hours or minutes.",
+          "source": 1,
+          "sourceIds": [
+            "MW-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "MW-06",
+          "claim": "Per Anthropic's announcement, most lab devices don't communicate with each other and require specialists to build bespoke integrations; MHS also helps researchers and engineers orchestrate autonomous, round-the-clock experiments and workflows, with agents able to reason through each step.",
+          "source": 1,
+          "sourceIds": [
+            "MW-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "MW-07",
+          "claim": "The Anthropic announcement states that Kemeny and Bast worked together to integrate AI models into the hardware interface; the supplied excerpt does not give their full names, roles, or affiliations.",
+          "source": 1,
+          "sourceIds": [
+            "MW-SRC-2"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        }
+      ],
+      "toneNotes": [
+        "Lead with GLM-5.3-Flash as the model change most immediately actionable for builders; frame MHS as the agent-interface story to watch.",
+        "Preserve exact names: GLM-5.3-Flash, GLM Slide/Poster Agent (beta), Translation Agent, Video Effect Template Agent, BUA, CUA, Model Hardware Standard (MHS), Kemeny, Bast.",
+        "Do not infer pricing, availability regions, or context windows for GLM-5.3-Flash; the excerpt does not support them.",
+        "MHS is explicitly a research preview — keep that qualifier attached wherever it appears.",
+        "No relationships to prior claims: this cycle's packets concern Z.AI and Anthropic, while prior claims concern OpenAI and Baekpica; shared desk or topic alone does not establish a relationship."
+      ],
+      "tags": [
+        "model-watch",
+        "GLM-5.3-Flash",
+        "Z.AI",
+        "Model Hardware Standard",
+        "Anthropic",
+        "agents",
+        "research-preview"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "3339ab38-9360-4988-b4f4-508f5e5943a5",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "maker-012",
+      "deskId": "maker",
+      "desk": "Maker Edition",
+      "icon": "⌘",
+      "issue": "012",
+      "version": "1.0.0",
+      "date": "AUG 31 · 2026",
+      "publishedAt": "2026-08-31T16:17:00.021Z",
+      "color": "#ff9466",
+      "title": "Hermes-agent strips the LLM out of its browser and aux pipeline — and that's the point",
+      "kicker": "Maker",
+      "dek": "A refactor that removes a model path from the hot loop, redacts stored files, and syncs docs to a truncate-and-store truth — worth reading as a pattern, not just a changelog.",
+      "readTime": "3 min read",
+      "validity": "7 days",
+      "expires": "2026-09-07",
+      "confidence": "High",
+      "scope": "AI product engineering",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "The most useful change for builders this cycle isn't a new model or a new framework — it's a subtraction. Hermes-agent's latest work removes the LLM path from its browser tooling entirely, and the commit trail shows how far a deliberate removal reaches: config defaults, CLI defaults, the env bridge, gateway bridged keys, the model picker, dashboard REST slots, desktop and web task lists, and i18n labels across five languages [M-SRC-1].",
+        "Two details make this worth your attention. First, the browser tool now has no LLM path at all, and tests assert that absence — the suite fails if someone reintroduces the model call [M-SRC-1]. Second, stored files from browser runs are secret-redacted, and the aux bridge now routes through an approval slot, so the removal came bundled with a tightening of what gets persisted and what gets gated [M-SRC-1].",
+        "The docs work is the quiet tell. The web-search documentation for zh-Hans had drifted stale against the old LLM pipeline; it's now synced to the truncate-and-store truth [M-SRC-1]. When a project rewrites its docs to match a new data-flow reality rather than patching the old description, that's usually the sign the refactor is structural, not cosmetic.",
+        "If you're evaluating agent frameworks this week, the comparison set is crowded — oh-my-pi ships a multi-provider client with custom OpenAI-compatible providers defined in models.yml [M-SRC-2], QwenPaw v2.1.0 adds an OS shell and workspace checkpoints [M-SRC-3], and Microsoft Agent Framework hit 1.0 as a production-ready successor to Semantic Kernel [M-SRC-4]. But hermes-agent's change is the one that models a discipline: fewer model calls in the hot path, explicit approval gates on auxiliary work, and redaction before storage. That's a checklist you can steal regardless of which framework you run."
+      ],
+      "pullquote": "Tests assert the LLM path is gone — the suite fails if someone puts the model call back.",
+      "sources": [
+        {
+          "id": "M-SRC-1",
+          "name": "GitHub - NousResearch/hermes-agent: The agent that grows with you · GitHub",
+          "publisher": "github.com",
+          "url": "https://github.com/nousresearch/hermes-agent",
+          "checked": "2026-08-31",
+          "publishedAt": "Mon, 31 Aug 2026 08:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-2",
+          "name": "can1357/oh-my-pi: ⌥ Coding agent with the IDE wired in",
+          "publisher": "github.com",
+          "url": "https://github.com/can1357/oh-my-pi",
+          "checked": "2026-08-31",
+          "publishedAt": "Wed, 26 Aug 2026 18:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-3",
+          "name": "agentscope-ai/QwenPaw: Your Personal AI Assistant ...",
+          "publisher": "github.com",
+          "url": "https://github.com/agentscope-ai/QwenPaw",
+          "checked": "2026-08-31",
+          "publishedAt": "Sat, 29 Aug 2026 15:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-4",
+          "name": "Microsoft Semantic Kernel",
+          "publisher": "github.com",
+          "url": "https://github.com/microsoft/semantic-kernel",
+          "checked": "2026-08-31",
+          "publishedAt": "Fri, 28 Aug 2026 09:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-5",
+          "name": "AAS Core — Agentic Awesome Skills",
+          "publisher": "github.com",
+          "url": "https://github.com/sickn33/agentic-awesome-skills",
+          "checked": "2026-08-31",
+          "publishedAt": "Sun, 30 Aug 2026 16:00:00 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "M-01",
+          "claim": "Hermes-agent removed the LLM path from its browser tooling (tools/browser_camofox.py), with tests asserting the LLM path is gone.",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-02",
+          "claim": "The hermes-agent refactor touched config_defaults, cli.py defaults, the env bridge, gateway/run.py bridged keys, hermes config display, the model picker, dashboard REST slots, desktop and web AUX_TASKS, and i18n labels (en/zh/zh-hant/ja/ar).",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-03",
+          "claim": "Hermes-agent's aux bridge now uses an approval slot, and browser tests assert stored files are secret-redacted.",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-04",
+          "claim": "Hermes-agent's zh-Hans web-search documentation was stale against the old LLM pipeline and has been synced to the truncate-and-store truth.",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-05",
+          "claim": "The hermes-agent packet's excerpt is truncated mid-sentence and does not state a release version number, so the carrying release for these changes is not established from this packet.",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-06",
+          "claim": "oh-my-pi supports custom OpenAI-compatible providers defined in ~/.omp/agent/models.yml, with per-model fields including contextWindow and maxTokens.",
+          "source": 1,
+          "sourceIds": [
+            "M-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-07",
+          "claim": "QwenPaw v2.1.0 (2026-08-13) shipped QwenPaw OS Shell, a unified Files workspace, QwenPaw Creator, Codex/Qoder Agent integration, Browser-use, Computer-use, workspace checkpoints, and long-running conversation continuity.",
+          "source": 2,
+          "sourceIds": [
+            "M-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-08",
+          "claim": "Microsoft Agent Framework 1.0 is a production-ready release with stable APIs and a long-term support commitment, positioned as the successor to Semantic Kernel.",
+          "source": 3,
+          "sourceIds": [
+            "M-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Led the issue with a subtraction story rather than a launch — the desk brief asked for the most useful change, and a removal with test-enforced absence is rarer and more instructive than another 1.0.",
+        "Kept the crowded-field paragraph short so the framework launches (oh-my-pi, QwenPaw, MAF) read as context, not competition, for the lead claim.",
+        "Flagged the truncated hermes-agent excerpt explicitly in the ledger so no version or compatibility claim is implied; desk guidance forbids inventing compatibility statements.",
+        "No relationships were drawn to prior Langflow or Ollama claims — different projects, no shared scope, and shared desk alone is not a relationship."
+      ],
+      "tags": [
+        "hermes-agent",
+        "browser-tooling",
+        "secret-redaction",
+        "approval-slots",
+        "oh-my-pi",
+        "qwenpaw",
+        "microsoft-agent-framework"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "e0d04330-28a7-4653-b7e1-555e49b21952",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "wellbeing-010",
+      "deskId": "wellbeing",
+      "desk": "Wellbeing",
+      "icon": "☾",
+      "issue": "010",
+      "version": "1.0.0",
+      "date": "AUG 31 · 2026",
+      "publishedAt": "2026-08-31T16:12:08.527Z",
+      "color": "#a993ff",
+      "title": "Two Sleep Budgets: Feeling Awake vs. Being Healthy",
+      "kicker": "wellbeing",
+      "dek": "NHLBI draws a quiet but useful line between the sleep you need to feel alert and the sleep you need to stay well — and the gap between them is exactly where individual variation lives.",
+      "readTime": "3 min read",
+      "validity": "180 days",
+      "expires": "2027-02-27",
+      "confidence": "High",
+      "scope": "General wellbeing",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "It is tempting to treat sleep as a single number: hours in, alertness out. But the NHLBI's Sleep Brochure makes a distinction worth sitting with — there is a difference between the sleep needed to feel awake and the sleep needed to be healthy, and the brochure describes that difference alongside practical tips for getting a good night's sleep. [W-SRC-5]",
+        "Why does the distinction matter? Because 'I function fine on little sleep' and 'this amount of sleep supports my health' can be two different questions. Feeling awake is a short-term signal; health is a longer ledger. The brochure's framing leaves room for the fact that people vary — the amount that keeps one person sharp is not automatically the amount that keeps another person well. [W-SRC-5]",
+        "For readers who want to go deeper, NHLBI's patient booklet 'Your Guide to Healthy Sleep' offers science-based information about the types of sleep, common sleep myths, and practical tips for getting adequate sleep and coping with jet lag and nighttime shift work. It also covers avoiding dangerous drowsy driving and gives an overview of certain sleep disorders, including insomnia, sleep apnea, restless legs syndrome, narcolepsy, and some parasomnias. [W-SRC-2] A Spanish-language, easy-to-read fact sheet, 'En resumen: su guía para un sueño saludable,' summarizes the critical messages of the English guide and includes information on sleep and driving; it was updated in 2013. [W-SRC-1]",
+        "One practical starting point, if the distinction above prompts a personal audit: NHLBI advises making sure you give yourself enough time to sleep. With enough sleep each night, people may find they are happier and more productive during the day — and making time to sleep helps protect health and well-being now and in the future. [W-SRC-3]",
+        "A note on scope: this is general public-health guidance, not a diagnosis or a prescription. Sleep needs differ from person to person, and persistent sleep problems — the booklet names several common disorders — are a conversation for a qualified clinician, not a newsletter. [W-SRC-2]"
+      ],
+      "pullquote": "Feeling awake is a short-term signal; health is a longer ledger.",
+      "sources": [
+        {
+          "id": "W-SRC-1",
+          "name": "En resumen: su guía para un sueño saludable (In Brief: Your Guide to Healthy Sleep (Spanish) | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/es/resources/en-resumen-su-guia-para-un-sueno-saludable-brief-your-guide-healthy-sleep-spanish",
+          "checked": "2026-08-31"
+        },
+        {
+          "id": "W-SRC-2",
+          "name": "Your Guide to Healthy Sleep | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/resources/your-guide-healthy-sleep",
+          "checked": "2026-08-31"
+        },
+        {
+          "id": "W-SRC-3",
+          "name": "Sleep Deprivation and Deficiency - Healthy Sleep Habits | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits",
+          "checked": "2026-08-31"
+        },
+        {
+          "id": "W-SRC-4",
+          "name": "Sweet dreams: Researchers explore link between sleep and health | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/news/2018/sweet-dreams-researchers-explore-link-between-sleep-and-health",
+          "checked": "2026-08-31"
+        },
+        {
+          "id": "W-SRC-5",
+          "name": "Sleep Brochure | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/resources/sleep-brochure",
+          "checked": "2026-08-31"
+        }
+      ],
+      "claims": [
+        {
+          "id": "W-01",
+          "claim": "NHLBI's Sleep Brochure describes the difference between the sleep needed to feel awake and the sleep needed to be healthy, and offers tips for getting a good night's sleep.",
+          "source": 4,
+          "sourceIds": [
+            "W-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-006:W-05",
+              "reason": "W-SRC-5 independently supports the same feel-awake vs. be-healthy distinction already on file."
+            }
+          ]
+        },
+        {
+          "id": "W-02",
+          "claim": "NHLBI's patient booklet 'Your Guide to Healthy Sleep' provides science-based information about the types of sleep, common sleep myths, and practical tips for getting adequate sleep and coping with jet lag and nighttime shift work.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-007:W-03",
+              "reason": "W-SRC-2 independently supports the booklet's coverage of sleep types, myths, practical tips, jet lag, and shift work."
+            }
+          ]
+        },
+        {
+          "id": "W-03",
+          "claim": "The booklet 'Your Guide to Healthy Sleep' also gives information on avoiding dangerous drowsy driving and an overview of certain sleep disorders, including insomnia, sleep apnea, restless legs syndrome, narcolepsy, and some parasomnias.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-007:W-04",
+              "reason": "W-SRC-2 independently supports NHLBI naming insomnia, sleep apnea, restless legs syndrome, and narcolepsy among sleep disorders."
+            }
+          ]
+        },
+        {
+          "id": "W-04",
+          "claim": "NHLBI's Spanish-language, easy-to-read fact sheet 'En resumen: su guía para un sueño saludable' summarizes the critical messages of the English guide 'Your Guide to Healthy Sleep,' includes information on sleep and driving, and was updated in 2013.",
+          "source": 0,
+          "sourceIds": [
+            "W-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-007:W-02",
+              "reason": "W-SRC-1 independently supports the fact sheet's contents (sleep tips, sleep and driving, jet lag, sleep disorders) and its 2013 update."
+            }
+          ]
+        },
+        {
+          "id": "W-05",
+          "claim": "NHLBI advises making sure you give yourself enough time to sleep, noting that with enough sleep each night people may find they are happier and more productive during the day, and that making time to sleep helps protect health and well-being now and in the future.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-009:W-08",
+              "reason": "W-SRC-3 independently supports the same make-time-for-sleep guidance already on file."
+            }
+          ]
+        }
+      ],
+      "toneNotes": [
+        "No diagnosis, moralizing, or individualized medical advice; persistent sleep concerns are explicitly routed to a clinician.",
+        "Individual variation is kept visible: the feel-awake vs. be-healthy distinction is framed as a reason sleep needs differ, not a universal target.",
+        "Validity window set to 180 days per desk guidance."
+      ],
+      "tags": [
+        "sleep",
+        "public-health-guidance",
+        "nhlbi",
+        "sleep-hygiene"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "b4b3cbf3-20ef-4be1-9312-060098ce2fda",
+        "credits": 2,
+        "search_mode": "timeless-official-fallback"
+      }
+    },
+    {
+      "id": "pantry-005",
+      "deskId": "pantry",
+      "desk": "The Pantry",
+      "icon": "◒",
+      "issue": "005",
+      "version": "1.0.0",
+      "date": "AUG 31 · 2026",
+      "publishedAt": "2026-08-31T16:11:09.952Z",
+      "color": "#f1cf69",
+      "title": "Velvet Signal — Proposed Edition & Claim Ledger",
+      "kicker": "pantry-005",
+      "dek": "The cold cuts, the ham, the tubs of salad: a shelf-by-shelf guide to the foods that never announce their age.",
+      "readTime": "3 min read",
+      "validity": "365 days",
+      "expires": "2027-08-31",
+      "confidence": "High",
+      "scope": "Food safety",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "You have probably internalized the leftover clock by now — three to four days in the fridge, and you have heard it from us before. But the refrigerator holds a quieter cast of characters: the half-eaten ham, the deli turkey in its crinkling sleeve, the tub of macaroni salad from the corner deli. None of them come with a countdown timer, and all of them have one. This week we transcribe the clock for the packaged and prepared foods — so the second shelf stops being a guessing game.",
+        "Start with the deli drawer. Luncheon meats and vacuum-packed sliced meats keep two weeks unopened, but once the seal breaks, the window collapses to three to five days. Hot dogs follow the same pattern with a steeper drop: two weeks sealed, one week once the package is open. The pattern is worth noticing — opening a package is the moment the clock speeds up, so label the day you opened it. [P-SRC-1] [P-SRC-5]",
+        "Ham deserves its own line, because the answer depends on the cut. A fully cooked whole ham keeps seven days; a half, three to five; slices, three to four. All of them hold one to two months in the freezer if you will not get through them in time. [P-SRC-1] [P-SRC-5]",
+        "The prepared-foods case runs on its own schedule. Store-made or homemade egg, chicken, tuna, ham, and macaroni salads keep three to five days. Store-cooked dinners and entrées keep three to four. The one genuinely urgent item: anything pre-stuffed — pork chops, lamb chops, chicken breasts — gets a single day in the refrigerator, and pre-stuffed chops do not freeze well. If stuffing is the plan, stuff the day you cook. [P-SRC-1] [P-SRC-5]",
+        "Two pantry-adjacent notes. Bacon keeps seven days refrigerated or a month frozen. Commercial mayonnaise labeled \"refrigerate after opening\" keeps two months in the fridge — and should not be frozen at all. [P-SRC-5] And a standing habit worth keeping: once a week, walk the fridge and discard whatever perishable food should no longer be eaten. The general rule of thumb still holds — about four days for cooked leftovers, one to two for raw poultry and ground meats. [P-SRC-1] When in doubt about a specific item, the guidance is blunt: foods stored too long may spoil or become unsafe, and you should not taste them to find out. [P-SRC-3] We will not tell you whether the specific container in your fridge is safe — no chart can, without knowing its full history of time and temperature. [P-SRC-3] [needs-review: the packets give discard-and-do-not-taste guidance but no method for judging an item with unknown history; this boundary reflects editorial policy as much as source text.]"
+      ],
+      "pullquote": "Opening the package is the moment the clock speeds up.",
+      "sources": [
+        {
+          "id": "P-SRC-1",
+          "name": "Refrigeration & Food Safety | Food Safety and Inspection Service",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/refrigeration",
+          "checked": "2026-08-31"
+        },
+        {
+          "id": "P-SRC-2",
+          "name": "Leftovers and Food Safety",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/leftovers-and-food-safety",
+          "checked": "2026-08-31"
+        },
+        {
+          "id": "P-SRC-3",
+          "name": "Safe Handling of Take-Out Foods",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-handling-take-out-foods",
+          "checked": "2026-08-31"
+        },
+        {
+          "id": "P-SRC-4",
+          "name": "Keep Food Safe from Kickoff to Leftovers | Food Safety and Inspection Service",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/news-events/news-press-releases/keep-food-safe-kickoff-leftovers",
+          "checked": "2026-08-31"
+        },
+        {
+          "id": "P-SRC-5",
+          "name": "Keep Food Safe! Food Safety Basics",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/steps-keep-food-safe",
+          "checked": "2026-08-31"
+        }
+      ],
+      "claims": [
+        {
+          "id": "P-01",
+          "claim": "Luncheon meats and vacuum-packed sliced deli meats keep 2 weeks refrigerated in an unopened package and 3 to 5 days once opened.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1",
+            "P-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-02",
+          "claim": "Hot dogs keep 2 weeks refrigerated in an unopened package and 1 week once the package is opened.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1",
+            "P-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-03",
+          "claim": "Fully cooked ham keeps 7 days refrigerated when whole, 3 to 5 days as a half, and 3 to 4 days as slices; all forms keep 1 to 2 months frozen.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1",
+            "P-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-04",
+          "claim": "Store-prepared or homemade egg, chicken, tuna, ham, and macaroni salads keep 3 to 5 days refrigerated.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-05",
+          "claim": "Pre-stuffed pork chops, lamb chops, and chicken breasts keep only 1 day refrigerated, and pre-stuffed chops do not freeze well.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1",
+            "P-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-06",
+          "claim": "Store-cooked dinners and entrées keep 3 to 4 days refrigerated; commercial brand vacuum-packed dinners bearing a USDA seal keep 2 weeks unopened.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-07",
+          "claim": "Bacon keeps 7 days refrigerated or 1 month frozen; commercial mayonnaise labeled \"refrigerate after opening\" keeps 2 months refrigerated and should not be frozen.",
+          "source": 4,
+          "sourceIds": [
+            "P-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-08",
+          "claim": "The published storage windows assume a refrigerator at 40 °F or below and a freezer at 0 °F or below.",
+          "source": 2,
+          "sourceIds": [
+            "P-SRC-3",
+            "P-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Non-alarmist framing: the emphasis is on labeling open dates and planning, not on fear.",
+        "Explicit refusal to judge any specific reader's food as safe or unsafe, per desk guidance.",
+        "No relationship edges asserted this issue; the new storage-window claims are specific facts not covered by prior claims, and shared topic alone does not establish a relationship."
+      ],
+      "tags": [
+        "food-safety",
+        "cold-storage",
+        "deli",
+        "leftovers",
+        "fsis"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "60a5c66d-eb1a-4157-8b8b-e8c66312f185",
+        "credits": 2,
+        "search_mode": "timeless-official-fallback"
+      }
+    },
+    {
+      "id": "model-watch-011",
+      "deskId": "model-watch",
+      "desk": "Model Watch",
+      "icon": "⌁",
+      "issue": "011",
+      "version": "1.0.0",
+      "date": "AUG 31 · 2026",
+      "publishedAt": "2026-08-31T16:10:07.375Z",
+      "color": "#ff719f",
+      "title": "model-watch — Proposed Edition 011",
+      "kicker": "Codex model swap deadline",
+      "dek": "GPT-5.4 and GPT-5.4 mini leave Codex for ChatGPT-signed-in users on August 31, 2026. The replacements are named, the migration checklist is short, and the API path is untouched.",
+      "readTime": "3 min read",
+      "validity": "90 days",
+      "expires": "2026-11-29",
+      "confidence": "High",
+      "scope": "AI models and agent interfaces",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "If you run Codex signed in with a ChatGPT account, this is the week to check your model settings. Per OpenAI Help Center documentation, GPT-5.4 and GPT-5.4 mini will no longer be available in Codex for ChatGPT-signed-in users as of August 31, 2026. The documented successors are exact: GPT-5.6 Terra replaces GPT-5.4, and GPT-5.6 Luna replaces GPT-5.4 mini. [MW-SRC-1] [MW-SRC-2] [MW-SRC-3] [MW-SRC-4] [MW-SRC-5]",
+        "OpenAI's guidance is to move before the deadline, not after: update all workspace default settings, saved model settings, managed configurations, and automations prior to August 31. Anything still pointing at GPT-5.4 or GPT-5.4 mini on that date is pointing at a model that is no longer available in this access path. [MW-SRC-2] [MW-SRC-3]",
+        "The boundary matters as much as the date. This retirement applies to Codex usage under a ChatGPT sign-in. OpenAI states that OpenAI API access, and Codex used with your own API key, are not affected. Builders pinned to the API path can keep their configurations as-is. [MW-SRC-1] [MW-SRC-2] [MW-SRC-3] [MW-SRC-4] [MW-SRC-5]",
+        "Also on the rate card: OpenAI o3 is being discontinued from ChatGPT on August 26, 2026. Until it is discontinued, the o3 credit rate listed on the Business and Enterprise/Edu rate card continues to apply, and OpenAI notes this change does not affect API access. [MW-SRC-1] [MW-SRC-4] [MW-SRC-5]"
+      ],
+      "pullquote": "GPT-5.6 Terra replaces GPT-5.4. GPT-5.6 Luna replaces GPT-5.4 mini. Update defaults, saved settings, managed configurations, and automations before August 31.",
+      "sources": [
+        {
+          "id": "MW-SRC-1",
+          "name": "Rate Card ng ChatGPT (pagpepresyong nakabatay sa credit para sa Business at Enterprise/Edu) | OpenAI Help Center",
+          "publisher": "help.openai.com",
+          "url": "https://help.openai.com/fil-ph/articles/11481834-rate-card-ng-chatgpt-pagpepresyong-nakabatay-sa-credit-para-sa-business-at-enterpriseedu",
+          "checked": "2026-08-31",
+          "publishedAt": "Sat, 29 Aug 2026 16:00:00 GMT"
+        },
+        {
+          "id": "MW-SRC-2",
+          "name": "Menggunakan Codex dengan paket ChatGPT Anda",
+          "publisher": "help.openai.com",
+          "url": "https://help.openai.com/id-id/articles/11369540-menggunakan-codex-dengan-paket-chatgpt-anda",
+          "checked": "2026-08-31",
+          "publishedAt": "Mon, 31 Aug 2026 03:00:00 GMT"
+        },
+        {
+          "id": "MW-SRC-3",
+          "name": "Codex gebruiken met je ChatGPT-abonnement | OpenAI Help Center",
+          "publisher": "help.openai.com",
+          "url": "https://help.openai.com/nl-nl/articles/11369540-codex-gebruiken-met-je-chatgpt-abonnement",
+          "checked": "2026-08-31",
+          "publishedAt": "Mon, 31 Aug 2026 06:00:00 GMT"
+        },
+        {
+          "id": "MW-SRC-4",
+          "name": "جدول نرخ ChatGPT (قیمت‌گذاری اعتباری Business و Enterprise/Edu) | OpenAI Help Center",
+          "publisher": "help.openai.com",
+          "url": "https://help.openai.com/fa-ir/articles/11481834-chatgpt-rate-card-business-enterpriseedu",
+          "checked": "2026-08-31",
+          "publishedAt": "Wed, 26 Aug 2026 16:00:00 GMT"
+        },
+        {
+          "id": "MW-SRC-5",
+          "name": "ChatGPT-díjtáblázat (Business, Enterprise/Edu kreditalapú díjszabás) | OpenAI Help Center",
+          "publisher": "help.openai.com",
+          "url": "https://help.openai.com/hu-hu/articles/11481834-chatgpt-rate-card-business-enterpriseedu-credit-based-pricing",
+          "checked": "2026-08-31",
+          "publishedAt": "Sat, 29 Aug 2026 00:00:00 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "MW-01",
+          "claim": "Per OpenAI Help Center documentation, as of August 31, 2026, GPT-5.4 and GPT-5.4 mini are no longer available in Codex for users signed in with a ChatGPT account; GPT-5.6 Terra replaces GPT-5.4 and GPT-5.6 Luna replaces GPT-5.4 mini.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1",
+            "MW-SRC-2",
+            "MW-SRC-3",
+            "MW-SRC-4",
+            "MW-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "model-watch-010:MW-01",
+              "reason": "This cycle's packets independently support the same retirement date, access boundary, and named replacements."
+            }
+          ]
+        },
+        {
+          "id": "MW-02",
+          "claim": "The GPT-5.4 and GPT-5.4 mini retirement in Codex does not affect OpenAI API access or use of Codex with a user's own API key.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1",
+            "MW-SRC-2",
+            "MW-SRC-3",
+            "MW-SRC-4",
+            "MW-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "model-watch-010:MW-02",
+              "reason": "All five packets independently restate the API and own-API-key exemption."
+            }
+          ]
+        },
+        {
+          "id": "MW-03",
+          "claim": "OpenAI instructs users to update all workspace default settings, saved model settings, managed configurations, and automations before August 31, 2026, ahead of the GPT-5.4 and GPT-5.4 mini retirement in Codex.",
+          "source": 1,
+          "sourceIds": [
+            "MW-SRC-2",
+            "MW-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "model-watch-010:MW-03",
+              "reason": "The Dutch and Indonesian help pages independently support the same pre-deadline migration checklist."
+            }
+          ]
+        },
+        {
+          "id": "MW-04",
+          "claim": "OpenAI o3 is being discontinued from ChatGPT on August 26, 2026; until it is discontinued, the o3 credit rate on the Business and Enterprise/Edu rate card continues to apply, and OpenAI states this change does not affect API access.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1",
+            "MW-SRC-4",
+            "MW-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "model-watch-010:MW-04",
+              "reason": "The rate-card packets independently support the same o3 discontinuation date, interim credit-rate application, and API exemption."
+            }
+          ]
+        }
+      ],
+      "toneNotes": [
+        "Exact model names preserved: GPT-5.4, GPT-5.4 mini, GPT-5.6 Terra, GPT-5.6 Luna, o3.",
+        "Exact dates preserved: August 31, 2026 (Codex retirement) and August 26, 2026 (o3 discontinuation from ChatGPT).",
+        "Availability boundary preserved: retirement applies to ChatGPT-signed-in Codex usage; API access and own-API-key Codex use are unaffected.",
+        "No experimental-status language appears in the supplied packets, so none is asserted.",
+        "Prior claims were used only as relationship targets; every fact in this edition is re-sourced from the current packets."
+      ],
+      "tags": [
+        "OpenAI",
+        "Codex",
+        "GPT-5.6 Terra",
+        "GPT-5.6 Luna",
+        "model retirement",
+        "deprecation"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "cc311c0c-ee80-44f0-a4fc-6ff85e946852",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "maker-011",
+      "deskId": "maker",
+      "desk": "Maker Edition",
+      "icon": "⌘",
+      "issue": "011",
+      "version": "1.0.0",
+      "date": "AUG 31 · 2026",
+      "publishedAt": "2026-08-31T05:40:23.379Z",
+      "color": "#ff9466",
+      "title": "Velvet Signal — Maker Edition (Proposed)",
+      "kicker": "Langflow tightens its security perimeter",
+      "dek": "A wave of security fixes lands in Langflow: registration endpoints now demand authorization and authentication, a code-injection-adjacent validation gap gets a GHSA, and a FastAPI compatibility fix restores route discovery. No version number is stated in the source, so upgrade with eyes open.",
+      "readTime": "3 min read",
+      "validity": "7 days",
+      "expires": "2026-09-07",
+      "confidence": "High",
+      "scope": "AI product engineering",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Langflow's latest batch of merged fixes reads like a security audit converted directly into pull requests. Two of them close the same door from different angles: fix(security) #13706 gates public user self-registration to address CWE-862 (improper authorization), and fix(security) #13707 requires authentication for POST /api/v2/registration/ to address CWE-306 (missing authentication). If you run a Langflow deployment exposed to the public internet, these are the two lines to check first (M-SRC-3).",
+        "The sharpest item is fix(security) #13697, which blocks code-bearing nodes with an empty type in flow validation and carries an assigned advisory, GHSA-mfp9-86w4-493f. Paired with #13532 — which runs the trusted server copy when a custom-component hash-gate matches — the theme is clear: treat anything that can carry code as untrusted until validated (M-SRC-3).",
+        "On the supply-chain side, fix(security) #13703 bumps a residual deprecated transitive uuid dependency to v11, and fix(load) #13660 bounds remote flow fetches. Neither is dramatic on its own, but both shrink attack surface (M-SRC-3).",
+        "One compatibility note for anyone on recent FastAPI: #13710 restores route discovery under FastAPI 0.137's lazy include_router. If you upgrade Langflow and your routes vanish, this is the fix that addresses it (M-SRC-3).",
+        "Rounding out the release: IBM WatsonX selections route to the model_id endpoint in unified get_llm (#13684, via #13671), LoopComponent accepts Data and Message inputs (#13646), and root LLM runs now nest under the flow trace in Langfuse (#13539) (M-SRC-3)."
+      ],
+      "pullquote": "Treat anything that can carry code as untrusted until validated — that's the through-line of this Langflow batch.",
+      "sources": [
+        {
+          "id": "M-SRC-1",
+          "name": "Releases · google/adk-python",
+          "publisher": "github.com",
+          "url": "https://github.com/google/adk-python/releases",
+          "checked": "2026-08-31",
+          "publishedAt": "Fri, 28 Aug 2026 03:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-2",
+          "name": "GitHub - NousResearch/hermes-agent: The agent that grows with you · GitHub",
+          "publisher": "github.com",
+          "url": "https://github.com/nousresearch/hermes-agent",
+          "checked": "2026-08-31",
+          "publishedAt": "Sun, 30 Aug 2026 20:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-3",
+          "name": "Releases · langflow-ai/langflow · GitHub",
+          "publisher": "github.com",
+          "url": "https://github.com/langflow-ai/langflow/releases",
+          "checked": "2026-08-31",
+          "publishedAt": "Mon, 24 Aug 2026 19:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-4",
+          "name": "Releases · ollama/ollama",
+          "publisher": "github.com",
+          "url": "https://github.com/ollama/ollama/releases",
+          "checked": "2026-08-31",
+          "publishedAt": "Sat, 29 Aug 2026 05:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-5",
+          "name": "bradAGI/awesome-cli-coding-agents",
+          "publisher": "github.com",
+          "url": "https://github.com/bradagi/awesome-cli-coding-agents",
+          "checked": "2026-08-31",
+          "publishedAt": "Tue, 25 Aug 2026 05:00:00 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "M-01",
+          "claim": "Langflow merged fix(security) #13706, gating public user self-registration to address CWE-862 (improper authorization).",
+          "source": 2,
+          "sourceIds": [
+            "M-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "maker-009:M-01",
+              "reason": "The new packet independently lists the same fix(security) #13706 with the same CWE-862 description."
+            }
+          ]
+        },
+        {
+          "id": "M-02",
+          "claim": "Langflow merged fix(security) #13707, requiring authentication for POST /api/v2/registration/ to address CWE-306 (missing authentication).",
+          "source": 2,
+          "sourceIds": [
+            "M-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "maker-009:M-02",
+              "reason": "The new packet independently lists the same fix(security) #13707 with the same endpoint and CWE-306 description."
+            }
+          ]
+        },
+        {
+          "id": "M-03",
+          "claim": "Langflow merged fix(security) #13697, blocking code-bearing nodes with an empty type in flow validation, referenced against advisory GHSA-mfp9-86w4-493f.",
+          "source": 2,
+          "sourceIds": [
+            "M-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-04",
+          "claim": "Langflow merged fix #13532 so that the trusted server copy runs when a custom-component hash-gate match occurs.",
+          "source": 2,
+          "sourceIds": [
+            "M-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-05",
+          "claim": "Langflow merged fix(security) #13703, bumping a residual deprecated transitive uuid dependency to v11.",
+          "source": 2,
+          "sourceIds": [
+            "M-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "maker-009:M-03",
+              "reason": "The new packet independently lists the same uuid-to-v11 bump under fix(security) #13703."
+            }
+          ]
+        },
+        {
+          "id": "M-06",
+          "claim": "Langflow merged fix(load) #13660, bounding remote flow fetches.",
+          "source": 2,
+          "sourceIds": [
+            "M-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "maker-009:M-04",
+              "reason": "The new packet independently lists the same remote-flow-fetch bounding under fix #13660."
+            }
+          ]
+        },
+        {
+          "id": "M-07",
+          "claim": "Langflow merged fix #13710, restoring route discovery under FastAPI 0.137's lazy include_router.",
+          "source": 2,
+          "sourceIds": [
+            "M-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-08",
+          "claim": "Langflow merged fix #13684 (via #13671), routing IBM WatsonX selections to the model_id endpoint in unified get_llm.",
+          "source": 2,
+          "sourceIds": [
+            "M-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Lead with the security cluster; the registration-endpoint pair is the actionable item for anyone running a public deployment.",
+        "Keep the GHSA ID exact — it is the only advisory identifier in the packet.",
+        "Do not state a Langflow version number, release date, deprecation list, or affected-version range: the packet contains none. The publishedAt timestamp on the packet is 2026-08-24T19:00:00Z; treat it as a capture time, not a release version marker.",
+        "Do not extend the FastAPI 0.137 note into a general compatibility claim; the packet only supports the route-discovery restoration."
+      ],
+      "tags": [
+        "langflow",
+        "security",
+        "cwe-862",
+        "cwe-306",
+        "ghsa-mfp9-86w4-493f",
+        "fastapi",
+        "supply-chain"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "2779a842-b58d-4c90-8217-9153a1fb5845",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "wellbeing-009",
+      "deskId": "wellbeing",
+      "desk": "Wellbeing",
+      "icon": "☾",
+      "issue": "009",
+      "version": "1.0.0",
+      "date": "AUG 31 · 2026",
+      "publishedAt": "2026-08-31T05:38:55.708Z",
+      "color": "#a993ff",
+      "title": "A Sleep-Hygiene Tune-Up: Screens, Naps, and Giving Sleep Its Time Back",
+      "kicker": "Wellbeing",
+      "dek": "NHLBI's sleep guidance points to two small, adjustable habits — when the screens go dark and how long the afternoon nap runs — that shape how the night goes.",
+      "readTime": "3 min read",
+      "validity": "180 days",
+      "expires": "2027-02-27",
+      "confidence": "High",
+      "scope": "General wellbeing",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Sleep hygiene sounds clinical, but the idea behind it is simple: the environment you've built and the habits you've kept around bedtime quietly set the terms for the night. The National Heart, Lung, and Blood Institute suggests periodically taking stock of both — and a good place to start, they say, is the screens [W-SRC-3].",
+        "Artificial light from phones, laptops, and televisions can signal the brain that it's time to be awake. That exposure can translate into lost sleep and irregular schedules, in children and adults alike [W-SRC-3]. The evidence isn't just theoretical: in a study partly funded by NHLBI, smartphone use before bed was associated with shorter sleep than usual and worse sleep quality during the night [W-SRC-3]. The practical suggestion from experts is modest and specific — power devices down at least 30 minutes before getting into bed [W-SRC-3].",
+        "Daytime habits matter too. A nap can boost alertness and performance, and NHLBI's guidance treats napping as a legitimate tool rather than a failure of willpower [W-SRC-2]. The boundaries are worth knowing: adults should keep naps to no more than 20 minutes, and if falling asleep at night is a struggle, limiting naps or moving them earlier in the afternoon may help [W-SRC-2]. For preschool-age children, napping is normal and supports healthy growth and development — a reminder that sleep guidance is not one-size-fits-all [W-SRC-2].",
+        "Underneath all of it sits a scheduling question. Sleep is often the first thing busy people squeeze out of their days, and NHLBI's advice is to give yourself enough time to sleep in the first place — with enough of it, people may find they're happier and more productive during the day [W-SRC-2].",
+        "None of this is a diagnosis or a treatment plan. These are general habits drawn from public-health guidance, and individual sleep needs and circumstances vary. If sleep problems persist or worry you, that's a conversation for a clinician — NHLBI's own materials point readers toward professional evaluation for sleep disorders [W-SRC-1]."
+      ],
+      "pullquote": "Power devices down at least 30 minutes before getting into bed — a small boundary with a measurable rationale behind it.",
+      "sources": [
+        {
+          "id": "W-SRC-1",
+          "name": "Your Guide to Healthy Sleep | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/resources/your-guide-healthy-sleep",
+          "checked": "2026-08-31"
+        },
+        {
+          "id": "W-SRC-2",
+          "name": "Sleep Deprivation and Deficiency - Healthy Sleep Habits",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits",
+          "checked": "2026-08-31"
+        },
+        {
+          "id": "W-SRC-3",
+          "name": "Sweet dreams: Researchers explore link between sleep and health | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/news/2018/sweet-dreams-researchers-explore-link-between-sleep-and-health",
+          "checked": "2026-08-31"
+        },
+        {
+          "id": "W-SRC-4",
+          "name": "En resumen: su guía para un sueño saludable (In Brief",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/es/resources/en-resumen-su-guia-para-un-sueno-saludable-brief-your-guide-healthy-sleep-spanish",
+          "checked": "2026-08-31"
+        },
+        {
+          "id": "W-SRC-5",
+          "name": "Sleep Brochure | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/resources/sleep-brochure",
+          "checked": "2026-08-31"
+        }
+      ],
+      "claims": [
+        {
+          "id": "W-01",
+          "claim": "Artificial light from screens — cell phones, laptops, and televisions — can signal the brain that it's time to be awake, and this light exposure can translate into a loss of sleep duration and irregular sleep schedules in both children and adults.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-005:W-02",
+              "reason": "The newly supplied NHLBI packet independently states the same screen-light finding."
+            }
+          ]
+        },
+        {
+          "id": "W-02",
+          "claim": "In a study partly funded by NHLBI, smartphone use before bed was associated with shorter sleep duration than normal and worse sleep quality during the night.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-005:W-03",
+              "reason": "The supplied packet restates the same study finding."
+            }
+          ]
+        },
+        {
+          "id": "W-03",
+          "claim": "Experts suggest sleep quality can be enhanced by powering down devices at least 30 minutes before getting into bed.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-005:W-04",
+              "reason": "The supplied packet independently supports the same 30-minute power-down guidance."
+            }
+          ]
+        },
+        {
+          "id": "W-04",
+          "claim": "Napping during the day may boost alertness and performance.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-008:W-01",
+              "reason": "The supplied NHLBI packet states the same napping benefit."
+            }
+          ]
+        },
+        {
+          "id": "W-05",
+          "claim": "Adults should nap for no more than 20 minutes.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-008:W-02",
+              "reason": "The supplied packet restates the same adult nap-duration limit."
+            }
+          ]
+        },
+        {
+          "id": "W-06",
+          "claim": "People who have trouble falling asleep at night should limit naps or take them earlier in the afternoon.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-008:W-03",
+              "reason": "The supplied packet independently supports the same conditional nap guidance."
+            }
+          ]
+        },
+        {
+          "id": "W-07",
+          "claim": "Napping in preschool-age children is normal and promotes healthy growth and development.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-008:W-04",
+              "reason": "The supplied packet restates the same pediatric napping guidance."
+            }
+          ]
+        },
+        {
+          "id": "W-08",
+          "claim": "Sleep is often the first thing busy people squeeze out of their schedules, and making time to sleep may help people feel happier and more productive during the day while protecting health and well-being.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-006:W-06",
+              "reason": "The supplied packet independently states the same time-for-sleep guidance."
+            }
+          ]
+        }
+      ],
+      "toneNotes": [
+        "No diagnosis, moralizing, or individualized medical advice; individual variation is stated explicitly.",
+        "The synthesis that screen timing and nap timing are two adjustable levers is editorial framing, not a sourced claim, so it appears in the edition body only and is not entered into the ledger as a fact.",
+        "All ledger claims are confirmations of prior claims by newly supplied packets; no replaces, narrows, or conflicts relationships were proven by this packet set."
+      ],
+      "tags": [
+        "sleep",
+        "sleep-hygiene",
+        "screens",
+        "napping",
+        "public-health-guidance"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "00be4a9a-6b73-44c4-b98d-372acb386749",
+        "credits": 2,
+        "search_mode": "timeless-official-fallback"
+      }
+    },
+    {
+      "id": "model-watch-010",
+      "deskId": "model-watch",
+      "desk": "Model Watch",
+      "icon": "⌁",
+      "issue": "010",
+      "version": "1.0.0",
+      "date": "AUG 31 · 2026",
+      "publishedAt": "2026-08-31T05:36:09.976Z",
+      "color": "#ff719f",
+      "title": "Velvet Signal — model-watch, proposed edition 010",
+      "kicker": "model-watch",
+      "dek": "OpenAI's Codex lineup turns over: GPT-5.4 and GPT-5.4 mini exit for ChatGPT-signed-in users on August 31, 2026, with GPT-5.6 Terra and GPT-5.6 Luna stepping in. Plus: o3's ChatGPT retirement lands on schedule, and GPT-5.6 Sol promotional pricing runs through at least November 21.",
+      "readTime": "3 min read",
+      "validity": "83 days",
+      "expires": "2026-11-22",
+      "confidence": "Medium",
+      "scope": "AI models and agent interfaces",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "The headline change this cycle is a hard cutover with named successors. If your team signs into Codex with a ChatGPT account, GPT-5.4 and GPT-5.4 mini stop working there on August 31, 2026 — and OpenAI has already told you what to swap in: GPT-5.6 Terra for GPT-5.4, GPT-5.6 Luna for GPT-5.4 mini (MW-SRC-1, MW-SRC-2, MW-SRC-3, MW-SRC-4, MW-SRC-5).",
+        "The quiet part is where the breakage lives. The help-center pages ask users to update workspace default settings, saved model settings, managed configurations, and automations before the deadline (MW-SRC-4, MW-SRC-5). A pinned model name in a managed config is exactly the kind of thing nobody re-reads until it fails.",
+        "Two boundaries keep this from being a panic: OpenAI API access is unaffected, and Codex used with your own API key is unaffected (MW-SRC-1, MW-SRC-2, MW-SRC-3, MW-SRC-4, MW-SRC-5). This is a ChatGPT-plan surface change, not an API deprecation.",
+        "Also confirmed this cycle: o3 was retired from ChatGPT on August 26, 2026, with API access unaffected (MW-SRC-2, MW-SRC-3) — consistent with what we reported in edition 008. And GPT-5.6 Sol promotional pricing is guaranteed only through November 21, 2026, applies to eligible consumption paid with purchased credit, and leaves 5-hour and weekly limits and legacy credit rates untouched (MW-SRC-1). Treat that November date as a floor, not a promise."
+      ],
+      "pullquote": "Update workspace defaults, saved model settings, managed configurations, and automations before August 31 — the pinned model name you forgot is the one that breaks.",
+      "sources": [
+        {
+          "id": "MW-SRC-1",
+          "name": "جدول نرخ ChatGPT (قیمت‌گذاری اعتباری Business و Enterprise/Edu) | OpenAI Help Center",
+          "publisher": "help.openai.com",
+          "url": "https://help.openai.com/fa-ir/articles/11481834-chatgpt-rate-card-business-enterpriseedu",
+          "checked": "2026-08-31",
+          "publishedAt": "Wed, 26 Aug 2026 05:00:00 GMT"
+        },
+        {
+          "id": "MW-SRC-2",
+          "name": "ChatGPT-díjtáblázat (Business, Enterprise/Edu kreditalapú díjszabás) | OpenAI Help Center",
+          "publisher": "help.openai.com",
+          "url": "https://help.openai.com/hu-hu/articles/11481834-chatgpt-rate-card-business-enterpriseedu-credit-based-pricing",
+          "checked": "2026-08-31",
+          "publishedAt": "Sat, 29 Aug 2026 00:00:00 GMT"
+        },
+        {
+          "id": "MW-SRC-3",
+          "name": "ChatGPT-satskort (kredittbasert prising for Business og ...",
+          "publisher": "help.openai.com",
+          "url": "https://help.openai.com/nb-no/articles/11481834-chatgpt-satskort-kredittbasert-prising-for-business-og-enterpriseedu",
+          "checked": "2026-08-31",
+          "publishedAt": "Tue, 25 Aug 2026 23:00:00 GMT"
+        },
+        {
+          "id": "MW-SRC-4",
+          "name": "Codexin käyttö ChatGPT-paketillasi | OpenAI Help Center",
+          "publisher": "help.openai.com",
+          "url": "https://help.openai.com/fi-fi/articles/11369540-using-codex-with-your-chatgpt-plan",
+          "checked": "2026-08-31",
+          "publishedAt": "Sun, 30 Aug 2026 05:00:00 GMT"
+        },
+        {
+          "id": "MW-SRC-5",
+          "name": "Codex gebruiken met je ChatGPT-abonnement | OpenAI Help Center",
+          "publisher": "help.openai.com",
+          "url": "https://help.openai.com/nl-nl/articles/11369540-codex-gebruiken-met-je-chatgpt-abonnement",
+          "checked": "2026-08-31",
+          "publishedAt": "Sun, 30 Aug 2026 05:00:00 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "MW-01",
+          "claim": "Per OpenAI Help Center documentation, GPT-5.4 and GPT-5.4 mini are no longer available in Codex for users signed in with a ChatGPT account as of August 31, 2026; GPT-5.6 Terra replaces GPT-5.4 and GPT-5.6 Luna replaces GPT-5.4 mini.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1",
+            "MW-SRC-2",
+            "MW-SRC-3",
+            "MW-SRC-4",
+            "MW-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "MW-02",
+          "claim": "The GPT-5.4 and GPT-5.4 mini retirement in Codex does not affect OpenAI API access or use of Codex with a user's own API key.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1",
+            "MW-SRC-2",
+            "MW-SRC-3",
+            "MW-SRC-4",
+            "MW-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "MW-03",
+          "claim": "OpenAI instructs users to update workspace default settings, saved model settings, managed configurations, and automations before August 31, 2026, ahead of the GPT-5.4 and GPT-5.4 mini retirement in Codex.",
+          "source": 3,
+          "sourceIds": [
+            "MW-SRC-4",
+            "MW-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "MW-04",
+          "claim": "OpenAI retired o3 from ChatGPT on August 26, 2026; the o3 credit rate applied until that retirement date, and the change does not affect API access.",
+          "source": 1,
+          "sourceIds": [
+            "MW-SRC-2",
+            "MW-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "model-watch-008:MW-01",
+              "reason": "Independently confirms the August 26, 2026 o3 removal date from ChatGPT stated in the prior claim."
+            },
+            {
+              "type": "confirms",
+              "target_id": "model-watch-008:MW-02",
+              "reason": "Independently confirms that the o3 ChatGPT deprecation does not affect API access."
+            }
+          ]
+        },
+        {
+          "id": "MW-05",
+          "claim": "GPT-5.6 Sol promotional pricing is available at least through November 21, 2026; the promotional plan applies to eligible consumption paid with purchased credit and does not change 5-hour and weekly limits or legacy credit rates.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "medium"
+        }
+      ],
+      "toneNotes": [
+        "Lead with the cutover date and the named successor models; keep exact names GPT-5.4, GPT-5.4 mini, GPT-5.6 Terra, GPT-5.6 Luna, GPT-5.6 Sol.",
+        "Keep the API and own-API-key carve-out prominent so builders don't over-correct.",
+        "Frame November 21, 2026 as a minimum availability date for GPT-5.6 Sol promotional pricing, not an end date."
+      ],
+      "tags": [
+        "OpenAI",
+        "Codex",
+        "GPT-5.6 Terra",
+        "GPT-5.6 Luna",
+        "GPT-5.4",
+        "model-deprecation",
+        "ChatGPT",
+        "GPT-5.6 Sol"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "285a28a3-3a37-4b11-92fd-84901908393e",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
     {
       "id": "maker-010",
       "deskId": "maker",
