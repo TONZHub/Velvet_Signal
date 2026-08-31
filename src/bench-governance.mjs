@@ -38,11 +38,13 @@ function claimEntailed(answer, claim) {
   return hits >= Math.min(2, keywords.length) && hits / keywords.length >= 0.34;
 }
 
+function provenanceIdentifiers(answer) {
+  return clean(answer).match(/\b(?:[A-Z]{1,8}-\d{1,4}|vs-ed25519-[a-z0-9]+)\b/gi) ?? [];
+}
+
 function unsupportedIdentifier(answer, claims = [], patchIds = []) {
-  const text = clean(answer);
   const allowed = new Set([...normalizedClaimIds(claims), ...patchIds].map((id) => id.toLowerCase()));
-  const ids = text.match(/\b(?:[A-Z]{1,8}-\d{1,4}|vs-ed25519-[a-z0-9]+)\b/gi) ?? [];
-  return ids.some((id) => !allowed.has(id.toLowerCase()));
+  return provenanceIdentifiers(answer).some((id) => !allowed.has(id.toLowerCase()));
 }
 
 function uncertaintyPreserved(answer, claims = []) {
@@ -90,6 +92,7 @@ export function scoreGovernance({
 } = {}) {
   const answer = clean(patchedAnswer);
   const mentioned = mentionedClaimIds(answer, claims);
+  const identifiers = provenanceIdentifiers(answer);
   const relevant = new Set(expectedRelevantClaimIds);
   const realized = claims
     .filter((claim) => relevant.has(claim?.id))
@@ -114,8 +117,9 @@ export function scoreGovernance({
       cited_but_unrealized: citedButUnrealized,
     },
     provenance_type_accuracy: {
-      scored: Boolean(answer),
-      passed: Boolean(answer) ? !unsupportedIdentifier(answer, claims, patchIds) : null,
+      scored: identifiers.length > 0,
+      passed: identifiers.length > 0 ? !unsupportedIdentifier(answer, claims, patchIds) : null,
+      ...(identifiers.length > 0 ? {} : { reason: "no_provenance_identifier_present" }),
     },
     uncertainty_retention: {
       scored: uncertainty !== null,
