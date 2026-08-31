@@ -16,8 +16,9 @@
       "cited_but_unrealized": []
     },
     "provenance_type_accuracy": {
-      "scored": true,
-      "passed": true
+      "scored": false,
+      "passed": null,
+      "reason": "no_provenance_identifier_present"
     },
     "uncertainty_retention": {
       "scored": true,
@@ -36,5 +37,5 @@
     "scored": true,
     "passed": true
   },
-  "interpretation": "The hosted MythoMax example demonstrates patch acquisition without spontaneous evidence realization: the relevant Maker claims were not reflected in the patched answer, stale GPT-3-era material remained framed as recent, and explicit uncertainty was not carried into that answer. Direct governance prompts later showed correct expiry and no-resurrection behavior."
+  "interpretation": "The hosted MythoMax example demonstrates patch acquisition without spontaneous evidence realization: the relevant Maker claims were not reflected in the patched answer, stale GPT-3-era material remained framed as recent, and explicit uncertainty was not carried into that answer. With no provenance identifier present, provenance-type accuracy is now correctly treated as a non-event rather than a win. Direct governance prompts later showed correct expiry and no-resurrection behavior."
 }
