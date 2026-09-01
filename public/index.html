@@ -894,6 +894,7 @@
     const subscriptionsKey = "velvet-signal.subscriptions.v1";
     const deliveriesKey = "velvet-signal.deliveries.v2";
     const visitKey = "velvet-signal.visit.v1";
+    const patchSchemaVersion = "1.1";
     const currentVisitAt = new Date().toISOString();
     const newIssueIds = new Set();
 
@@ -1003,6 +1004,7 @@
       const supportingSourceIds = new Set(issue.claims.flatMap(claim => claimSourceIds(issue, claim)));
       const sources = scoutedSources.filter(source => supportingSourceIds.has(source.id));
       return {
+        schema_version: patchSchemaVersion,
         patch_id: issue.id,
         publication: "Velvet Signal",
         desk: issue.desk,
@@ -1207,7 +1209,10 @@
     function currentDeliveryFor(issue) {
       const delivery = deliveries.get(issue.id);
       const currentVersion = issue.version || "1.0.0";
-      return delivery?.receipt?.version === currentVersion ? delivery : null;
+      return (
+        delivery?.receipt?.version === currentVersion &&
+        delivery?.patch?.schema_version === patchSchemaVersion
+      ) ? delivery : null;
     }
 
     function relatedEditionDetails(issue) {
@@ -1285,7 +1290,7 @@
       const receiptLine = approved
         ? `<p class="receipt-line">Signed ${escapeHtml(delivery.receipt.algorithm)} receipt · ${escapeHtml(delivery.receipt.key_id)} · hash ${escapeHtml(delivery.receipt.content_sha256.slice(0, 16))}…</p>`
         : superseded
-          ? `<p class="receipt-line">Historical receipt retained for version ${escapeHtml(historicalDelivery.receipt.version)}. It is not active against version ${escapeHtml(issue.version || "1.0.0")}.</p>`
+          ? `<p class="receipt-line">Historical receipt retained for edition ${escapeHtml(historicalDelivery.receipt.version)} / schema ${escapeHtml(historicalDelivery.patch?.schema_version || "1.0")}. It is not active against edition ${escapeHtml(issue.version || "1.0.0")} / schema ${patchSchemaVersion}.</p>`
           : "";
       const correction = issue.correction
         ? `<div class="patch-alert"><span aria-hidden="true">↺</span><div><strong>Corrected canonical patch.</strong><p>${escapeHtml(issue.correction.summary)} ${escapeHtml(issue.correction.receipt_effect || "")}</p></div></div>`
@@ -1297,17 +1302,17 @@
         <div class="source-agreement ${agreement.status === "conflict" ? "has-conflict" : ""}"><strong>${agreement.status === "conflict" ? "Source conflict needs resolution." : "Supporting sources checked for agreement."}</strong><span>${agreement.checked} supporting source packets · ${agreement.conflicts.length} material conflicts</span>${agreement.conflicts.length ? `<small>${escapeHtml(agreement.conflicts[0].reason)}</small>` : ""}</div>
         <div class="patch-overview">
           <div class="patch-stat"><span>Patch ID</span><strong>${escapeHtml(issue.id)}</strong></div>
-          <div class="patch-stat"><span>Version</span><strong>${escapeHtml(issue.version || "1.0.0")}</strong></div>
+          <div class="patch-stat"><span>Edition / schema</span><strong>${escapeHtml(issue.version || "1.0.0")} / ${patchSchemaVersion}</strong></div>
           <div class="patch-stat"><span>Valid until</span><strong>${escapeHtml(issue.expires)}</strong></div>
           <div class="patch-stat"><span>Scope</span><strong>${escapeHtml(issue.scope)}</strong></div>
         </div>
         <table class="ledger"><thead><tr><th>ID</th><th>Proposed context</th><th>Provenance</th><th>Evidence status</th><th>Relationship</th></tr></thead><tbody>${rows}</tbody></table>
         <details><summary>View raw JSON patch</summary><pre>${escapeHtml(JSON.stringify(patch, null, 2))}</pre></details>
         <div class="consent-box">
-          <div><strong>${approved ? "Patch released with a signed receipt." : superseded ? "Correction requires a new release." : "Ready for human decision."}</strong><p>${approved ? "A WebMCP-aware agent may now request this exact version and verify its content hash. You can withdraw future delivery at any time." : superseded ? "The prior receipt remains historically verifiable but cannot activate the corrected canonical patch. Inspect this version, then approve it explicitly." : "Approval requests a canonical, signed delivery for this patch ID only. Subscription status does not count as approval."}</p>${receiptLine}</div>
+          <div><strong>${approved ? "Patch released with a signed receipt." : superseded ? issue.correction ? "Correction requires a new release." : "Patch semantics changed; new release required." : "Ready for human decision."}</strong><p>${approved ? "A WebMCP-aware agent may now request this exact version and verify its content hash. You can withdraw future delivery at any time." : superseded ? "The prior receipt remains historically verifiable but cannot activate the current canonical patch. Inspect the current edition and schema, then approve them explicitly." : "Approval requests a canonical, signed delivery for this patch ID only. Subscription status does not count as approval."}</p>${receiptLine}</div>
           <div class="consent-actions">
             <button class="button ghost small" data-copy ${approved ? "" : "disabled"}>Copy signed bundle</button>
-            <button class="button ${approved ? "ghost" : "primary"} small" data-approve ${agreement.status === "conflict" && !approved ? "disabled" : ""}>${approved ? "Withdraw approval" : agreement.status === "conflict" ? "Resolve conflicts first" : superseded ? "Approve corrected version" : "Approve & release"}</button>
+            <button class="button ${approved ? "ghost" : "primary"} small" data-approve ${agreement.status === "conflict" && !approved ? "disabled" : ""}>${approved ? "Withdraw approval" : agreement.status === "conflict" ? "Resolve conflicts first" : superseded ? issue.correction ? "Approve corrected version" : "Approve current patch" : "Approve & release"}</button>
           </div>
         </div>`;
       $("[data-approve]", $("#machineView")).addEventListener("click", () => toggleApproval(issue.id));
@@ -1468,8 +1473,10 @@
     delivered: false,
     patch_id: patchId,
     approved_version: delivery.receipt.version,
+    approved_schema_version: delivery.patch?.schema_version || "1.0",
     current_version: issue.version || "1.0.0",
-    reason: "The signed receipt belongs to an earlier canonical version and cannot activate the correction.",
+    current_schema_version: patchSchemaVersion,
+    reason: "The signed receipt belongs to earlier canonical content and cannot activate the current patch.",
     next_step: `Ask the person on this page to inspect and approve version ${issue.version || "1.0.0"} of ${patchId}.`
   });
             if (!currentDelivery) return toolResponse({

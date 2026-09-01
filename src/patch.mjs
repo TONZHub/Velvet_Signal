@@ -1,6 +1,8 @@
 import { normalizeClaimRelationships } from "./claim-relations.mjs";
 import { sourceAgreement } from "./source-conflicts.mjs";
 
+export const PATCH_SCHEMA_VERSION = "1.1";
+
 function sourceIdFor(issue, source, index) {
   if (typeof source.id === "string" && source.id.trim()) return source.id.trim();
   const prefix = issue.id
@@ -78,6 +80,7 @@ export function patchForIssue(issue, options = {}) {
     policy: "Delivered patches include only sources cited by published claims; scouting candidates remain editorial input, not supporting evidence.",
   };
   return {
+    schema_version: PATCH_SCHEMA_VERSION,
     patch_id: issue.id,
     publication: "Velvet Signal",
     desk: issue.desk,
