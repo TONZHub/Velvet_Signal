@@ -30,6 +30,44 @@ test("every launch issue has the same signed delivery and expiry contract", asyn
   }
 });
 
+test("delivered patches expose only sources cited by published claims", () => {
+  const issue = {
+    id: "culture-demo-001",
+    desk: "Culture Desk",
+    issue: "DEMO",
+    title: "Synthetic scouting fixture",
+    publishedAt: "2026-09-01T00:00:00.000Z",
+    expires: "2026-09-10",
+    scope: "Culture signals",
+    claims: [
+      {
+        id: "C-01",
+        claim: "The selected story is the one published in source three.",
+        status: "verified",
+        sourceIds: ["C-SRC-3"],
+      },
+    ],
+    sources: [
+      { id: "C-SRC-1", name: "Unrelated scout one", publisher: "one.test", url: "https://one.test/story", checked: "2026-09-01" },
+      { id: "C-SRC-2", name: "Unrelated scout two", publisher: "two.test", url: "https://two.test/story", checked: "2026-09-01" },
+      { id: "C-SRC-3", name: "Supporting story", publisher: "three.test", url: "https://three.test/story", checked: "2026-09-01" },
+    ],
+    toneNotes: [],
+  };
+
+  const patch = patchForIssue(issue, { deliveryStatus: "delivered" });
+
+  assert.deepEqual(patch.sources.map((source) => source.id), ["C-SRC-3"]);
+  assert.deepEqual(patch.source_selection, {
+    scouted_count: 3,
+    supporting_count: 1,
+    excluded_count: 2,
+    policy: "Delivered patches include only sources cited by published claims; scouting candidates remain editorial input, not supporting evidence.",
+  });
+  assert.equal(patch.source_agreement.checked, 1);
+  assert.deepEqual(patch.claims[0].source_ids, ["C-SRC-3"]);
+});
+
 test("patch generation preserves explicit supersession references", () => {
   const issue = {
     id: "bench-shape-002", desk: "Maker Edition", issue: "BENCH", title: "Synthetic fixture",
