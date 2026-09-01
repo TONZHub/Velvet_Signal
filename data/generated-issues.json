@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-01T05:08:05.865Z",
+  "generated_at": "2026-09-01T19:26:59.080Z",
   "desks": {
     "maker": {
-      "fingerprint": "55b8d2b2484105dcd311cb2baa96e61abe88107b7f17b48f1ff56cf8219072ea",
-      "latest_patch_id": "maker-014",
-      "published_at": "2026-09-01T05:08:05.865Z",
-      "tavily_request_id": "7ebbf7f9-363b-4fa2-a6bc-711ab8a89d8d"
+      "fingerprint": "0cc8fedf33a49e7969a8b06f1cc6850a811ab979bfabf84ac8353ae840a6de08",
+      "latest_patch_id": "maker-015",
+      "published_at": "2026-09-01T13:39:56.949Z",
+      "tavily_request_id": "a5af2bc6-7c97-43fa-83c4-5256eb89c86a"
     },
     "model-watch": {
       "fingerprint": "d88e73c97c2bdf73f3975a73fbbb65b7b27667f5b06167532b007a0f817ae150",
@@ -15,25 +15,918 @@
       "tavily_request_id": "3339ab38-9360-4988-b4f4-508f5e5943a5"
     },
     "culture": {
-      "fingerprint": "aae3c25a1927e89d03ceb87c8d02e1ead3c2c84c3e999d6c1d7fd8ead0a42868",
-      "latest_patch_id": "culture-006",
-      "published_at": "2026-08-31T21:32:19.851Z",
-      "tavily_request_id": "7c7cb935-6b4d-40eb-80d2-77c5007682c2"
+      "fingerprint": "233713accb100b0ce51cd6a5302f40d3384dcd3dd55d8f8cbce256ab1738b2f4",
+      "latest_patch_id": "culture-008",
+      "published_at": "2026-09-01T19:26:59.080Z",
+      "tavily_request_id": "d28b87e6-2217-495f-b128-19028359a75a"
     },
     "pantry": {
-      "fingerprint": "c8bdb7db339661848d4bddcd6bf7261a5628697f0ac1f0a9511992b0844cf23b",
-      "latest_patch_id": "pantry-006",
-      "published_at": "2026-09-01T05:06:50.851Z",
-      "tavily_request_id": "4711ca25-56cc-4b9f-b27c-22a3808009b5"
+      "fingerprint": "89efa219b016040b5f4b328a5c45a688c166630fe128d9c9a1a349221796337e",
+      "latest_patch_id": "pantry-007",
+      "published_at": "2026-09-01T19:25:07.877Z",
+      "tavily_request_id": "f91bdd4e-9f3d-4141-8127-c9d30800c721"
     },
     "wellbeing": {
-      "fingerprint": "305e05e13c5db40da77c13fb079399ea385c0bdec5520e80e334501fe5011ff6",
-      "latest_patch_id": "wellbeing-012",
-      "published_at": "2026-09-01T05:07:22.988Z",
-      "tavily_request_id": "c6416c26-8f62-430e-a7cc-716d50119cfe"
+      "fingerprint": "d3892ced7faac97cd32c8c901c501c89b4c36f8e2bd8938d37a149d3c9c86d13",
+      "latest_patch_id": "wellbeing-013",
+      "published_at": "2026-09-01T13:38:40.884Z",
+      "tavily_request_id": "11295e9e-afd9-42ce-842e-a0e5d2b0e77d"
     }
   },
   "issues": [
+    {
+      "id": "culture-008",
+      "deskId": "culture",
+      "desk": "Culture Desk",
+      "icon": "✺",
+      "issue": "008",
+      "version": "1.0.0",
+      "date": "SEP 01 · 2026",
+      "publishedAt": "2026-09-01T19:26:59.080Z",
+      "color": "#67d6c0",
+      "title": "When a Card Becomes a Joke: Two Lives of the Magic 'Meme Card'",
+      "kicker": "culture",
+      "dek": "Polygon's new ranking of Magic: The Gathering's funniest cards reveals that 'meme card' isn't one thing — it's two, and the difference matters.",
+      "readTime": "3 min read",
+      "validity": "14 days",
+      "expires": "2026-09-15",
+      "confidence": "Mixed",
+      "scope": "Culture signals",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Magic: The Gathering has a funny relationship with humor. Polygon's new ranked list of the game's ten funniest meme cards draws a line that most casual usage blurs: some cards were never meant to be funny but somehow became jokes among players, while newer cards often go out of their way to recreate viral memes and deeply silly pieces of pop culture [C-SRC-1].",
+        "Those are two different phenomena wearing the same label. On one side sit accidents — cards like Indestructible Aura, which dates all the way back to the Legends set in 1994 and which Polygon describes as feeling like it was designed specifically to become a meme, even though it's 'less an internet meme printed on a Magic card and more like a meme Magic accidentally created for itself' [C-SRC-1]. On the other side sit deliberate gestures: the Marvel Super Heroes set turning some of the strangest comic panels into official Magic art, and recent Secret Lair Drops embracing everything from SpongeBob memes to the bizarre corners of internet culture [C-SRC-1].",
+        "Even the deliberate category has texture. Polygon singles out Garfield's Counterspell as 'less of a recreation of one specific internet meme and more of a perfect translation of Garfield's entire comedic personality in Magic' — a third mode that references a comedic sensibility rather than any single image [C-SRC-1].",
+        "What we're flagging here is the vocabulary, not a verdict. 'Meme card' is doing real work in coverage like this, but the packets don't establish that players use the term consistently, or that it has one settled meaning. Accidental in-joke, licensed meme reference, and tonal homage all travel under the same word. If someone tells you a card is 'a meme,' it's worth asking which kind they mean.",
+        "As always: this describes observed usage in games media as of the source's publication date. It says nothing about any reader's identity or taste, and it doesn't claim the term means the same thing everywhere it appears."
+      ],
+      "pullquote": "It's less an internet meme printed on a Magic card and more like a meme Magic accidentally created for itself. — Polygon, on Indestructible Aura [C-SRC-1]",
+      "sources": [
+        {
+          "id": "C-SRC-1",
+          "name": "Magic: The Gathering’s 10 Funniest Meme Cards of All Time, Ranked - Polygon.com",
+          "publisher": "polygon.com",
+          "url": "https://www.polygon.com/mtg-magic-the-gathering-10-best-meme-cards-ranked/",
+          "checked": "2026-09-01",
+          "publishedAt": "Tue, 01 Sep 2026 15:00:14 GMT"
+        },
+        {
+          "id": "C-SRC-2",
+          "name": "\"Oreogate\" on Instagram went viral. But was it all a fake ad for an AI company? - Business Insider",
+          "publisher": "businessinsider.com",
+          "url": "https://www.businessinsider.com/oreogate-mom-drama-suno-ad-fake-2026-8",
+          "checked": "2026-09-01",
+          "publishedAt": "Fri, 28 Aug 2026 17:33:12 GMT"
+        },
+        {
+          "id": "C-SRC-3",
+          "name": "An AI-made Canadian trade-war anthem featuring Mountie bears and battle-ready beavers is going viral - Business Insider",
+          "publisher": "businessinsider.com",
+          "url": "https://www.businessinsider.com/canada-ai-trade-war-anthem-beavers-viral-memes-trump-2026-8",
+          "checked": "2026-09-01",
+          "publishedAt": "Thu, 27 Aug 2026 12:51:12 GMT"
+        },
+        {
+          "id": "C-SRC-4",
+          "name": "Apeing Confirms Upcoming Crypto Presale Launch Date as Bitcoin Breaks From Weeks of Rangebound Trading - markets.businessinsider.com",
+          "publisher": "markets.businessinsider.com",
+          "url": "https://markets.businessinsider.com/news/stocks/apeing-confirms-upcoming-crypto-presale-launch-date-as-bitcoin-breaks-from-weeks-of-rangebound-trading-1036505031",
+          "checked": "2026-09-01",
+          "publishedAt": "Sun, 30 Aug 2026 17:32:36 GMT"
+        },
+        {
+          "id": "C-SRC-5",
+          "name": "‘Derogatory’ fliers targeting Armenian community found near Glendale elementary school - Los Angeles Times",
+          "publisher": "latimes.com",
+          "url": "https://www.latimes.com/california/story/2026-08-29/derogatory-flyers-targeting-armenian-community-found-near-glendale-elementary-school",
+          "checked": "2026-09-01",
+          "publishedAt": "Sat, 29 Aug 2026 19:03:38 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "C-01",
+          "claim": "Polygon published a ranked list of the ten funniest Magic: The Gathering 'meme cards,' describing cards that were never meant to be funny but became jokes among players, while noting that newer cards often deliberately recreate viral memes and pop culture.",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-02",
+          "claim": "Polygon's coverage presents at least two distinct senses of 'meme card' in Magic: cards that accidentally became jokes among players, and cards intentionally created to reference viral memes or internet culture.",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-03",
+          "claim": "The Marvel Super Heroes set turned some of the strangest comic panels into official Magic art, and recent Secret Lair Drops have embraced everything from SpongeBob memes to corners of internet culture.",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-04",
+          "claim": "Polygon describes Garfield's Counterspell as less a recreation of one specific internet meme and more a translation of Garfield's entire comedic personality into Magic.",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-05",
+          "claim": "Indestructible Aura, from the Legends set in 1994, is described by Polygon as feeling designed to become a meme — 'a meme Magic accidentally created for itself.'",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-06",
+          "claim": "In Magic: The Gathering coverage, 'meme card' is used for both organically funny cards and deliberately meme-referencing cards; whether players use the term consistently, or whether it has a single established meaning, is not established by the supplied packets.",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "needs-review",
+          "confidence": "medium",
+          "relationships": [
+            {
+              "type": "narrows",
+              "target_id": "culture-004:C-04",
+              "reason": "This claim applies the general definition of 'meme' to the specific domain of Magic card discourse, adding a more specific boundary while the broader definition may remain true elsewhere."
+            }
+          ]
+        },
+        {
+          "id": "C-07",
+          "claim": "This entry describes observed usage in games media as of the source publication date of 1 September 2026; it makes no claim about any individual reader's identity or about a universal meaning of 'meme card,' and cultural vocabulary shifts quickly, so it should be re-checked within 7–14 days.",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "No universal meaning is declared for 'meme card'; the ambiguity between accidental and deliberate meme status is kept visible.",
+        "No user identity claims are made; the piece describes media usage, not readers.",
+        "The single narrows relationship targets the prior general definition of 'meme' (culture-004:C-04); no other relationships are proven by the packets.",
+        "The crypto presale packet (C-SRC-4) and the Glendale fliers packet (C-SRC-5) were not selected: the former is promotional financial content outside the culture desk's signal, and the latter is a reported hate incident, not a cultural language signal, and deserves different handling than a meme explainer."
+      ],
+      "tags": [
+        "magic-the-gathering",
+        "meme-language",
+        "games-media",
+        "vocabulary"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "d28b87e6-2217-495f-b128-19028359a75a",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "pantry-007",
+      "deskId": "pantry",
+      "desk": "The Pantry",
+      "icon": "◒",
+      "issue": "007",
+      "version": "1.0.0",
+      "date": "SEP 01 · 2026",
+      "publishedAt": "2026-09-01T19:25:07.877Z",
+      "color": "#f1cf69",
+      "title": "Velvet Signal — Proposed Edition & Claim Ledger",
+      "kicker": "pantry-007",
+      "dek": "One authoritative update, translated for the kitchen: the two-hour rule, shallow containers, and a fridge that can prove its own temperature.",
+      "readTime": "3 min read",
+      "validity": "365 days",
+      "expires": "2027-09-01",
+      "confidence": "High",
+      "scope": "Food safety",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "This edition takes a single authoritative thread — FSIS's safe-handling guidance for holiday-style meals, corroborated point-for-point by the CDC's prevention page — and turns it into three habits worth keeping. The rules are old friends; what's new is how cleanly the two sources agree, which lets us re-confirm earlier claims rather than revise them.",
+        "As always: these windows and clocks describe general handling, not the fate of the casserole actually in your refrigerator. When storage history is unknown, the guidance is to discard, not to taste and hope.",
+        "sections",
+        "sections",
+        "sections"
+      ],
+      "pullquote": "Two hours at room temperature, one hour on a hot day — and shallow containers are the whole trick.",
+      "sources": [
+        {
+          "id": "P-SRC-1",
+          "name": "Constituent Update - May 8, 2026 | Food Safety and Inspection Service",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/news-events/news-press-releases/constituent-update-may-8-2026",
+          "checked": "2026-09-01"
+        },
+        {
+          "id": "P-SRC-2",
+          "name": "Your Guide to Safe Spring Holiday Meals | Food Safety and Inspection Service",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/your-guide-safe-spring-holiday-meals",
+          "checked": "2026-09-01"
+        },
+        {
+          "id": "P-SRC-3",
+          "name": "Ukrop's Homestyle Foods Recalls Spaghetti and Chicken Products Due to Possible Foreign Matter Contamination | Food Safety and Inspection Service",
+          "publisher": "fsis.usda.gov",
+          "url": "https://www.fsis.usda.gov/recalls-alerts/ukrops-homestyle-foods-recalls-spaghetti-and-chicken-products-due-possible-foreign",
+          "checked": "2026-09-01"
+        },
+        {
+          "id": "P-SRC-4",
+          "name": "Food Safety",
+          "publisher": "cdc.gov",
+          "url": "https://www.cdc.gov/food-safety/index.html",
+          "checked": "2026-09-01"
+        },
+        {
+          "id": "P-SRC-5",
+          "name": "Preventing Food Poisoning | Food Safety",
+          "publisher": "cdc.gov",
+          "url": "https://www.cdc.gov/food-safety/prevention/index.html",
+          "checked": "2026-09-01"
+        }
+      ],
+      "claims": [
+        {
+          "id": "P-01",
+          "claim": "Refrigerate perishable leftovers within 2 hours of cooking, or within 1 hour if exposed to air temperatures above 90°F; food held above 140°F is exempt from the two-hour clock.",
+          "source": 1,
+          "sourceIds": [
+            "P-SRC-2",
+            "P-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-004:P-02",
+              "reason": "Independently restates the same 2-hour / 1-hour discard rule from a new FSIS source and the CDC."
+            },
+            {
+              "type": "confirms",
+              "target_id": "pantry-003:P-02",
+              "reason": "The CDC packet independently supports the identical 2-hour / 1-hour rule already published."
+            }
+          ]
+        },
+        {
+          "id": "P-02",
+          "claim": "The Danger Zone is 40°F to 140°F, the temperature range in which foodborne-illness-causing bacteria grow rapidly.",
+          "source": 1,
+          "sourceIds": [
+            "P-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-004:P-01",
+              "reason": "FSIS packet states the same 40–140°F Danger Zone definition already on record."
+            }
+          ]
+        },
+        {
+          "id": "P-03",
+          "claim": "Divide leftovers into smaller portions in covered, shallow containers so they cool faster; it is safe to refrigerate small portions of hot food directly.",
+          "source": 1,
+          "sourceIds": [
+            "P-SRC-2",
+            "P-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-004:P-07",
+              "reason": "Both new packets independently support the shallow-container rapid-cooling practice."
+            },
+            {
+              "type": "confirms",
+              "target_id": "pantry-003:P-03",
+              "reason": "CDC packet independently supports dividing food into shallow containers to cool rapidly."
+            }
+          ]
+        },
+        {
+          "id": "P-04",
+          "claim": "Keep the refrigerator at 40°F or below and the freezer at 0°F or below; if the refrigerator lacks a built-in thermometer, keep an appliance thermometer inside to verify.",
+          "source": 4,
+          "sourceIds": [
+            "P-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-005:P-08",
+              "reason": "CDC packet independently confirms the 40°F / 0°F appliance-temperature assumption behind published storage windows."
+            }
+          ]
+        },
+        {
+          "id": "P-05",
+          "claim": "Never leave perishable food out for more than 2 hours, or 1 hour if exposed to temperatures above 90°F.",
+          "source": 4,
+          "sourceIds": [
+            "P-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-004:P-02",
+              "reason": "CDC packet independently restates the same out-of-refrigerator time limit."
+            }
+          ]
+        }
+      ],
+      "toneNotes": [
+        "Non-alarmist: the rules are framed as habits, not warnings.",
+        "No claim infers the safety of any specific food; the boundary claim from pantry-004:P-08 remains the operative caveat and is referenced, not restated as a new fact.",
+        "The Ukrop's recall (P-SRC-3) and the FSIS egg-products/Salmonella policy items (P-SRC-1) were reviewed and deliberately left out of this edition: the recall is product-specific rather than a general handling update, and the Salmonella policy item names no actionable guidance. Both remain available for a future edition."
+      ],
+      "tags": [
+        "leftovers",
+        "two-hour-rule",
+        "danger-zone",
+        "refrigeration",
+        "food-safety"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "f91bdd4e-9f3d-4141-8127-c9d30800c721",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "maker-015",
+      "deskId": "maker",
+      "desk": "Maker Edition",
+      "icon": "⌘",
+      "issue": "015",
+      "version": "1.0.0",
+      "date": "SEP 01 · 2026",
+      "publishedAt": "2026-09-01T13:39:56.949Z",
+      "color": "#ff9466",
+      "title": "Velvet Signal — Maker Desk, proposed edition maker-015",
+      "kicker": "Framework watch",
+      "dek": "Microsoft Agent Framework reaches 1.0 as the designated successor to Semantic Kernel — the first version the project calls production-ready.",
+      "readTime": "3 min read",
+      "validity": "14 days",
+      "expires": "2026-09-15",
+      "confidence": "Mixed",
+      "scope": "AI product engineering",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Semantic Kernel has been Microsoft's flagship LLM orchestration SDK for years, and its repository now carries a clear handoff notice: 'Semantic Kernel is now Microsoft Agent Framework!' The successor, Microsoft Agent Framework (MAF), is described as the enterprise-ready continuation, and version 1.0 is framed as a production-ready release with stable APIs and a commitment to long-term support [M-SRC-5].",
+        "For builders, the 1.0 designation is the signal worth acting on. Pre-1.0 agent frameworks tend to churn; a declared 1.0 with a long-term support commitment is the project's own claim that API surfaces are settling [M-SRC-5]. The framework is pitched at both ends of the scale — a single assistant or 'a fleet of specialized agents' — with enterprise-grade multi-agent orchestration and multi-provider model support [M-SRC-5].",
+        "The Semantic Kernel repository description also sketches the capability surface the framework lineage is known for: connections to OpenAI, Azure OpenAI, Hugging Face, NVidia and other LLM providers; modular agents with tools/plugins, memory, and planning; multi-agent orchestration; and a plugin ecosystem spanning native code functions, prompt templates, OpenAPI specs, and Model Context Protocol (MCP) [M-SRC-5]. Treat that list as describing the Semantic Kernel project's stated capabilities — the packet does not itemize which of these carry into MAF 1.0 unchanged, so migration-specific compatibility claims need-review.",
+        "One caveat for planners: the packet's description of MAF 1.0 is cut off mid-phrase at 'cross-runtime', so any cross-runtime story is incomplete in this source and is marked needs-review below. No deprecation dates for Semantic Kernel appear in the packet — do not assume an end-of-life timeline that isn't stated."
+      ],
+      "pullquote": "Microsoft Agent Framework 1.0 gives you enterprise-grade multi-agent orchestration, multi-provider model support, and cross-runtime — [M-SRC-5, excerpt truncated]",
+      "sources": [
+        {
+          "id": "M-SRC-1",
+          "name": "langfuse/langfuse: Open source AI engineering platform: LLM ... - GitHub",
+          "publisher": "github.com",
+          "url": "https://github.com/langfuse/langfuse",
+          "checked": "2026-09-01",
+          "publishedAt": "Thu, 27 Aug 2026 12:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-2",
+          "name": "bradAGI/awesome-cli-coding-agents",
+          "publisher": "github.com",
+          "url": "https://github.com/bradagi/awesome-cli-coding-agents",
+          "checked": "2026-09-01",
+          "publishedAt": "Mon, 31 Aug 2026 19:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-3",
+          "name": "rcarmo/piclaw: pi coding agent in a technicolor web ...",
+          "publisher": "github.com",
+          "url": "https://github.com/rcarmo/piclaw",
+          "checked": "2026-09-01",
+          "publishedAt": "Sat, 29 Aug 2026 13:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-4",
+          "name": "GitHub - takeshy/obsidian-local-llm-hub: All-in-one local AI hub for Obsidian — LLM chat with vault tools, MCP servers, RAG, workflow automation, encryption, and edit history. Fully private, no cloud required. · GitHub",
+          "publisher": "github.com",
+          "url": "https://github.com/takeshy/obsidian-local-llm-hub",
+          "checked": "2026-09-01",
+          "publishedAt": "Wed, 26 Aug 2026 13:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-5",
+          "name": "Microsoft Semantic Kernel",
+          "publisher": "github.com",
+          "url": "https://github.com/microsoft/semantic-kernel",
+          "checked": "2026-09-01",
+          "publishedAt": "Thu, 27 Aug 2026 13:00:00 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "M-01",
+          "claim": "Microsoft Agent Framework (MAF) 1.0 is a production-ready release with stable APIs and a commitment to long-term support.",
+          "source": 4,
+          "sourceIds": [
+            "M-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "maker-012:M-08",
+              "reason": "The prior claim, drawn from an earlier packet, states the same 1.0 production-ready/stable-API/LTS facts; this packet independently supports them."
+            }
+          ]
+        },
+        {
+          "id": "M-02",
+          "claim": "Microsoft positions Agent Framework as the enterprise-ready successor to Semantic Kernel; the Semantic Kernel repository states 'Semantic Kernel is now Microsoft Agent Framework!'",
+          "source": 4,
+          "sourceIds": [
+            "M-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "maker-012:M-08",
+              "reason": "The prior claim also records MAF as the successor to Semantic Kernel; this packet independently supports that positioning."
+            }
+          ]
+        },
+        {
+          "id": "M-03",
+          "claim": "MAF 1.0 is described as providing enterprise-grade multi-agent orchestration and multi-provider model support, suitable for a single assistant or a fleet of specialized agents.",
+          "source": 4,
+          "sourceIds": [
+            "M-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-04",
+          "claim": "MAF 1.0 includes cross-runtime support.",
+          "source": 4,
+          "sourceIds": [
+            "M-SRC-5"
+          ],
+          "status": "needs-review",
+          "confidence": "low"
+        },
+        {
+          "id": "M-05",
+          "claim": "The Semantic Kernel repository description lists model flexibility (built-in support for OpenAI, Azure OpenAI, Hugging Face, NVidia and more), an agent framework with tools/plugins, memory, and planning, multi-agent orchestration, and a plugin ecosystem extending via native code functions, prompt templates, OpenAPI specs, or Model Context Protocol (MCP).",
+          "source": 4,
+          "sourceIds": [
+            "M-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-06",
+          "claim": "No deprecation date for Semantic Kernel and no migration/compatibility guarantees from Semantic Kernel to MAF are stated in the source packet; builders should not assume a Semantic Kernel end-of-life timeline from this edition.",
+          "source": 4,
+          "sourceIds": [
+            "M-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "The prior-claims ledger contains no YOLO-Master, ADK Python, or Langflow facts relevant to this edition; no replaces, narrows, or conflicts relationships are proven by this packet, so those relationship types are unused.",
+        "maker-012:M-08 is treated strictly as a relationship target: the MAF facts above are re-sourced from M-SRC-5, not copied from the prior claim."
+      ],
+      "tags": [
+        "microsoft",
+        "agent-framework",
+        "semantic-kernel",
+        "multi-agent",
+        "mcp",
+        "1.0-release"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "a5af2bc6-7c97-43fa-83c4-5256eb89c86a",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "culture-007",
+      "deskId": "culture",
+      "desk": "Culture Desk",
+      "icon": "✺",
+      "issue": "007",
+      "version": "1.0.0",
+      "date": "SEP 01 · 2026",
+      "publishedAt": "2026-09-01T13:39:28.458Z",
+      "color": "#67d6c0",
+      "title": "Beavers With Bagpipes: When a Trade War Gets an AI Anthem",
+      "kicker": "A viral music video shows how AI-made content can carry real political feeling — and why the label matters as much as the joke.",
+      "dek": "Velvet Signal culture desk, proposed edition. One signal, observed use, ambiguity kept intact.",
+      "readTime": "3 min read",
+      "validity": "10 days",
+      "expires": "2026-09-11",
+      "confidence": "Mixed",
+      "scope": "Culture signals",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "The latest front in the US-Canada trade war, per Business Insider, isn't tariffs — it's an army of Mountie bears playing bagpipes. The AI-made music video \"Canadian Resistance Army — Trade War\" has gone viral as an expression of Canadian defiance toward US tariffs, and has been picked up as an unlikely patriotic anthem [C-SRC-2].",
+        "The production is openly synthetic. The video's YouTube page labels it \"made with AI,\" and the creator demonflyingfox — who has 490,000 YouTube subscribers — says in the description that it used Kling AI for video generation, ElevenLabs for voice, Suno for music, and InVideo for editing [C-SRC-2].",
+        "What makes it worth your attention is the friction between those two facts. Felix Simon, a research fellow in AI, information, and news at the Reuters Institute for the Study of Journalism, said the video taps into a subject \"that is on people's minds anyway\" and reframes a serious conflict in a more digestible form [C-SRC-2]. In other words: audiences appear to be engaging with AI-generated content not despite its artificiality but as a format for processing a real geopolitical moment.",
+        "We're not declaring a universal meaning here. Whether viewers experience the video as satire, sincere patriotism, or something in between isn't established by the available reporting — and Business Insider notes it's not the first time AI-generated content has turned a political moment into a viral video [C-SRC-2]. What we can say is what was observed: an openly AI-labeled video, made with a disclosed toolchain, circulating as political expression.",
+        "A note on scope: this entry describes observed usage as of the source publication date. It makes no claim about any reader's identity, politics, or relationship to the video. Viral cultural signals shift quickly, so treat this as a 7-to-14-day window, not a permanent definition."
+      ],
+      "pullquote": "\"It taps into a subject that is on people's minds anyway.\" — Felix Simon, Reuters Institute for the Study of Journalism [C-SRC-2]",
+      "sources": [
+        {
+          "id": "C-SRC-1",
+          "name": "\"Oreogate\" on Instagram went viral. But was it all a fake ad for an AI company? - Business Insider",
+          "publisher": "businessinsider.com",
+          "url": "https://www.businessinsider.com/oreogate-mom-drama-suno-ad-fake-2026-8",
+          "checked": "2026-09-01",
+          "publishedAt": "Fri, 28 Aug 2026 17:33:12 GMT"
+        },
+        {
+          "id": "C-SRC-2",
+          "name": "An AI-made Canadian trade-war anthem featuring Mountie bears and battle-ready beavers is going viral - Business Insider",
+          "publisher": "businessinsider.com",
+          "url": "https://www.businessinsider.com/canada-ai-trade-war-anthem-beavers-viral-memes-trump-2026-8",
+          "checked": "2026-09-01",
+          "publishedAt": "Thu, 27 Aug 2026 12:51:12 GMT"
+        },
+        {
+          "id": "C-SRC-3",
+          "name": "Instagram Will Reduce Reach for Undisclosed AI-Generated Human Profiles - Межа. Новини України.",
+          "publisher": "mezha.net",
+          "url": "https://mezha.net/eng/bukvy/adf2a537_instagram_will_reduce/",
+          "checked": "2026-09-01",
+          "publishedAt": "Mon, 31 Aug 2026 19:53:35 GMT"
+        },
+        {
+          "id": "C-SRC-4",
+          "name": "Apeing Confirms Upcoming Crypto Presale Launch Date as Bitcoin Breaks From Weeks of Rangebound Trading - markets.businessinsider.com",
+          "publisher": "markets.businessinsider.com",
+          "url": "https://markets.businessinsider.com/news/stocks/apeing-confirms-upcoming-crypto-presale-launch-date-as-bitcoin-breaks-from-weeks-of-rangebound-trading-1036505031",
+          "checked": "2026-09-01",
+          "publishedAt": "Sun, 30 Aug 2026 17:32:36 GMT"
+        },
+        {
+          "id": "C-SRC-5",
+          "name": "Pokémon Promotes Memecoin Ahead Of Championships - Kotaku",
+          "publisher": "kotaku.com",
+          "url": "https://kotaku.com/pokemon-memecoin-world-championships-hack-twitter-2000729053",
+          "checked": "2026-09-01",
+          "publishedAt": "Thu, 27 Aug 2026 22:20:43 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "C-01",
+          "claim": "An AI-made music video, \"Canadian Resistance Army — Trade War,\" has gone viral as an online expression of Canadian defiance toward US tariffs and has been described as an unlikely patriotic anthem.",
+          "source": 1,
+          "sourceIds": [
+            "C-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-02",
+          "claim": "The video's YouTube page labels it \"made with AI,\" and creator demonflyingfox (490,000 YouTube subscribers) states in the description that it used Kling AI for video generation, ElevenLabs for voice, Suno for music, and InVideo for editing.",
+          "source": 1,
+          "sourceIds": [
+            "C-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-03",
+          "claim": "Felix Simon, a research fellow in AI, information, and news at the Reuters Institute for the Study of Journalism, said the video taps into a subject \"that is on people's minds anyway\" and reframes a serious conflict in a more digestible form.",
+          "source": 1,
+          "sourceIds": [
+            "C-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-04",
+          "claim": "Business Insider reports this is not the first time AI-generated content has turned a political moment into a viral image or video.",
+          "source": 1,
+          "sourceIds": [
+            "C-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-05",
+          "claim": "How audiences interpret the video — as satire, sincere patriotism, or something in between — is not established by the supplied packets; the claim that it functions as a patriotic anthem reflects observed framing in coverage, not a verified universal meaning.",
+          "source": 1,
+          "sourceIds": [
+            "C-SRC-2"
+          ],
+          "status": "needs-review",
+          "confidence": "low"
+        },
+        {
+          "id": "C-06",
+          "claim": "This entry describes observed usage as of the source publication date of 27 August 2026; it makes no claim about any individual reader's identity or about a universal meaning of the phenomenon, and viral cultural signals shift quickly, so it should be re-checked within 7–14 days.",
+          "source": 1,
+          "sourceIds": [
+            "C-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Distinguish observed usage (viral spread, disclosed AI toolchain, expert framing) from meaning (audience interpretation left open).",
+        "No user identity claims: the entry never implies the reader has seen, shared, or holds views on the video.",
+        "No relationship edges drawn to prior claims: prior entries cover Oreogate, Niu Lai, Chanty Beluga, and aura farming; shared AI or meme subject matter alone does not establish a literal claim relationship, even though Suno appears in both C-SRC-1 and C-SRC-2."
+      ],
+      "tags": [
+        "culture",
+        "ai-generated-content",
+        "viral-video",
+        "canada",
+        "trade-war",
+        "validity-7-14-days"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "1e87aa4d-5529-405a-be4c-a166769428db",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "wellbeing-013",
+      "deskId": "wellbeing",
+      "desk": "Wellbeing",
+      "icon": "☾",
+      "issue": "013",
+      "version": "1.0.0",
+      "date": "SEP 01 · 2026",
+      "publishedAt": "2026-09-01T13:38:40.884Z",
+      "color": "#a993ff",
+      "title": "Velvet Signal — Wellbeing Edition",
+      "kicker": "Sleep, gently recalibrated",
+      "dek": "A quiet refresher on screens, naps, and how much sleep adults actually need — drawn from the NIH's National Heart, Lung, and Blood Institute.",
+      "readTime": "3 min read",
+      "validity": "180 days",
+      "expires": "2027-02-28",
+      "confidence": "High",
+      "scope": "General wellbeing",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "If your evenings have started to blur into your bedtime, this edition is a friendly checkpoint rather than a scolding. The National Heart, Lung, and Blood Institute (NHLBI) notes that artificial light from screens — phones, laptops, televisions — can signal the brain that it's time to be awake, and that this light exposure can translate into shorter sleep and irregular sleep schedules in both children and adults [W-SRC-1]. A study partly funded by NHLBI found that smartphone use before bed was associated with shorter sleep duration than normal and worse sleep quality during the night [W-SRC-1].",
+        "The practical suggestion from experts is modest and doable: power down devices at least 30 minutes before getting into bed [W-SRC-1]. Thirty minutes is not a moral test — it's a small buffer that gives your brain a chance to shift gears. Some people will find it easy; others, especially those whose evenings involve caregiving, shift work, or shared screens, will find it harder. Individual variation is real, and this guidance is general, not a prescription.",
+        "On naps, NHLBI's guidance is similarly gentle: a daytime nap may boost alertness and performance, adults should keep naps to no more than 20 minutes, and if you have trouble falling asleep at night, it may help to limit naps or take them earlier in the afternoon [W-SRC-2]. Napping is not a failure state — it's a tool, and the timing and length matter for how it interacts with your night.",
+        "Finally, the baseline: NHLBI, citing recommendations from the American Academy of Sleep Medicine endorsed by the American Academy of Pediatrics, recommends 7 to 9 hours of sleep per day for adults 18 and older, with different ranges for children and teens [W-SRC-5]. Over time, not getting enough quality sleep — what NHLBI calls sleep deficiency — can raise the risk of heart disease, obesity, high blood pressure, diabetes, and stroke [W-SRC-5]. None of this replaces professional care: if sleep problems persist or distress you, a clinician is the right next stop.",
+        "This edition restates and independently re-confirms guidance published in earlier issues; the ledger below marks those confirmations explicitly."
+      ],
+      "pullquote": "Power down devices at least 30 minutes before getting into bed.",
+      "sources": [
+        {
+          "id": "W-SRC-1",
+          "name": "Sweet dreams: Researchers explore link between sleep and health | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/news/2018/sweet-dreams-researchers-explore-link-between-sleep-and-health",
+          "checked": "2026-09-01"
+        },
+        {
+          "id": "W-SRC-2",
+          "name": "Sleep Deprivation and Deficiency - Healthy Sleep Habits | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits",
+          "checked": "2026-09-01"
+        },
+        {
+          "id": "W-SRC-3",
+          "name": "Your Guide to Healthy Sleep | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/resources/your-guide-healthy-sleep",
+          "checked": "2026-09-01"
+        },
+        {
+          "id": "W-SRC-4",
+          "name": "En resumen: su guía para un sueño saludable (In Brief: Your Guide to Healthy Sleep (Spanish) | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/es/resources/en-resumen-su-guia-para-un-sueno-saludable-brief-your-guide-healthy-sleep-spanish",
+          "checked": "2026-09-01"
+        },
+        {
+          "id": "W-SRC-5",
+          "name": "Heart-Healthy Living - Get Enough Good-Quality Sleep | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/health/heart-healthy-living/sleep",
+          "checked": "2026-09-01"
+        }
+      ],
+      "claims": [
+        {
+          "id": "W-01",
+          "claim": "Artificial light from screens — cell phones, laptops, and televisions — can signal the brain that it's time to be awake, and this light exposure can translate into a loss of sleep duration and irregular sleep schedules in both children and adults.",
+          "source": 0,
+          "sourceIds": [
+            "W-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-009:W-01",
+              "reason": "Independently restated from the same NHLBI source packet in this edition's packets."
+            }
+          ]
+        },
+        {
+          "id": "W-02",
+          "claim": "In a study partly funded by NHLBI, smartphone use before bed was associated with shorter sleep duration than normal and worse sleep quality during the night.",
+          "source": 0,
+          "sourceIds": [
+            "W-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-009:W-02",
+              "reason": "Same NHLBI-funded study finding restated from the current source packet."
+            }
+          ]
+        },
+        {
+          "id": "W-03",
+          "claim": "Experts suggest sleep quality can be enhanced by powering down devices at least 30 minutes before getting into bed.",
+          "source": 0,
+          "sourceIds": [
+            "W-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-009:W-03",
+              "reason": "Same expert recommendation restated from the current source packet."
+            }
+          ]
+        },
+        {
+          "id": "W-04",
+          "claim": "Napping during the day may boost alertness and performance; adults should nap for no more than 20 minutes; and people who have trouble falling asleep at night should limit naps or take them earlier in the afternoon.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-009:W-04",
+              "reason": "NHLBI healthy sleep habits page restates the alertness/performance benefit."
+            },
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-009:W-05",
+              "reason": "NHLBI healthy sleep habits page restates the 20-minute adult nap limit."
+            },
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-009:W-06",
+              "reason": "NHLBI healthy sleep habits page restates the timing/limitation advice for poor nighttime sleepers."
+            }
+          ]
+        },
+        {
+          "id": "W-05",
+          "claim": "NHLBI, citing American Academy of Sleep Medicine recommendations endorsed by the American Academy of Pediatrics, recommends 7 to 9 hours of sleep per day for adults 18 years or older, with age-specific ranges for babies, children, and teens.",
+          "source": 4,
+          "sourceIds": [
+            "W-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-011:W-01",
+              "reason": "Adult 7-9 hour recommendation independently restated from the current source packet."
+            }
+          ]
+        },
+        {
+          "id": "W-06",
+          "claim": "NHLBI states that sleep helps heal and repair the heart and blood vessels, and that over time, not getting enough quality sleep (sleep deficiency) can raise the risk of heart disease, obesity, high blood pressure, diabetes, and stroke.",
+          "source": 4,
+          "sourceIds": [
+            "W-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-011:W-02",
+              "reason": "Sleep-deficiency risk list independently restated from the current source packet."
+            }
+          ]
+        },
+        {
+          "id": "W-07",
+          "claim": "NHLBI advises making sure you give yourself enough time to sleep, noting that sleep is often the first thing busy people squeeze out of their schedules and that making time to sleep helps protect health and well-being now and in the future.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-011:W-05",
+              "reason": "Same NHLBI healthy sleep habits guidance restated from the current source packet."
+            },
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-009:W-08",
+              "reason": "Same scheduling guidance restated from the current source packet."
+            }
+          ]
+        }
+      ],
+      "toneNotes": [
+        "No diagnosis, no moralizing, no individualized medical advice.",
+        "Individual variation kept visible: shift work, caregiving, and shared-screen households may find the 30-minute buffer harder.",
+        "Explicit pointer to professional care for persistent sleep problems.",
+        "Validity window: 90-180 days from publication."
+      ],
+      "tags": [
+        "sleep",
+        "sleep-hygiene",
+        "screens",
+        "napping",
+        "wellbeing"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "11295e9e-afd9-42ce-842e-a0e5d2b0e77d",
+        "credits": 2,
+        "search_mode": "timeless-official-fallback"
+      }
+    },
     {
       "id": "maker-014",
       "deskId": "maker",
@@ -6540,148 +7433,6 @@
       "scout": {
         "provider": "tavily",
         "request_id": "9bb87b3a-a034-435b-8dea-935092791469",
-        "credits": 1,
-        "search_mode": "bounded"
-      }
-    },
-    {
-      "id": "maker-003",
-      "deskId": "maker",
-      "desk": "Maker Edition",
-      "icon": "⌘",
-      "issue": "003",
-      "version": "1.0.0",
-      "date": "AUG 27 · 2026",
-      "publishedAt": "2026-08-27T13:45:32.319Z",
-      "color": "#ff9466",
-      "title": "Velvet Signal — Maker Desk Draft",
-      "kicker": "Proposed edition — not yet approved for delivery",
-      "dek": "Hugging Face ships a skills repository aimed squarely at agent builders, while a new proposal sketches how far the Workers-plus-D1 pattern can stretch. No version numbers or deprecation dates appear in this cycle's packets, so none are asserted.",
-      "readTime": "3 min read",
-      "validity": "3 days",
-      "expires": "2026-08-30",
-      "confidence": "Mixed",
-      "scope": "AI product engineering",
-      "editor": "OpenRouter · GLM 5.3 Flash",
-      "inputPolicy": "Scheduled Tavily source packets",
-      "editorial": [
-        "This draft is built only from the two packets supplied this cycle. Where the packets describe a proposal rather than a shipped change, we say so. Where they go quiet — on compatibility, on APIs, on how anything wires together — we flag it for review instead of filling the silence.",
-        "No exact version numbers or deprecation dates were present in the source packets, so none appear in this edition. Per desk guidance, we would rather publish an honest gap than an invented compatibility claim.",
-        "lead_story_title",
-        "lead_story_title",
-        "lead_story_title"
-      ],
-      "pullquote": "Give your agents the power of the Hugging Face ecosystem.",
-      "sources": [
-        {
-          "id": "M-SRC-1",
-          "name": "Nidra Dreams — 2026-08-27",
-          "publisher": "gist.github.com",
-          "url": "https://gist.github.com/tardis-create/99ca4529835eeeb65b3747bf6403193d",
-          "checked": "2026-08-27",
-          "publishedAt": "Thu, 27 Aug 2026 04:00:00 GMT"
-        },
-        {
-          "id": "M-SRC-2",
-          "name": "Hugging Face",
-          "publisher": "github.com",
-          "url": "https://github.com/huggingface",
-          "checked": "2026-08-27",
-          "publishedAt": "Thu, 27 Aug 2026 10:00:00 GMT"
-        }
-      ],
-      "claims": [
-        {
-          "id": "M-01",
-          "claim": "Hugging Face maintains a public repository called 'skills', described in its listing as a way to 'Give your agents the power of the Hugging Face ecosystem'.",
-          "source": 1,
-          "sourceIds": [
-            "M-SRC-2"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "M-02",
-          "claim": "The huggingface/skills repository is written in Python, licensed Apache-2.0, shows 10,964 stars, and was updated Aug 26, 2026 per the org page listing.",
-          "source": 1,
-          "sourceIds": [
-            "M-SRC-2"
-          ],
-          "status": "verified",
-          "confidence": "medium"
-        },
-        {
-          "id": "M-03",
-          "claim": "Hugging Face's transformers project is described as the model-definition framework for state-of-the-art ML models across text, vision, audio, and multimodal use, for both inference and training.",
-          "source": 1,
-          "sourceIds": [
-            "M-SRC-2"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "M-04",
-          "claim": "A proposal dated 2026-08-27 describes a Cloudflare Worker prototype that accepts a mathematical statement, routes it to an LLM plus a proof assistant, and stores the result and dependency graph in D1.",
-          "source": 0,
-          "sourceIds": [
-            "M-SRC-1"
-          ],
-          "status": "verified",
-          "confidence": "medium"
-        },
-        {
-          "id": "M-05",
-          "claim": "The same proposal outlines usage-based fees via AI Gateway for proof-generation and knowledge-graph queries, alongside subscription API pricing for research teams and edtech platforms.",
-          "source": 0,
-          "sourceIds": [
-            "M-SRC-1"
-          ],
-          "status": "verified",
-          "confidence": "medium"
-        },
-        {
-          "id": "M-06",
-          "claim": "The skills repository integrates with specific agent frameworks or runtimes in a particular way.",
-          "source": 1,
-          "sourceIds": [
-            "M-SRC-2"
-          ],
-          "status": "needs-review",
-          "confidence": "low"
-        },
-        {
-          "id": "M-07",
-          "claim": "Any version numbers, release dates, or deprecation timelines for skills, transformers, Workers, D1, or AI Gateway.",
-          "source": 0,
-          "sourceIds": [
-            "M-SRC-1",
-            "M-SRC-2"
-          ],
-          "status": "needs-review",
-          "confidence": "low"
-        }
-      ],
-      "toneNotes": [
-        "Warm, lucid, stylish, and specific — explain why the skills repo matters to builders without hype.",
-        "Frame the Nidra Dreams material explicitly as a proposal, not a shipped platform change.",
-        "Do not invent compatibility claims, version numbers, or deprecation dates; the packets contain none.",
-        "Keep the needs-review items visible in the human edition, not buried in the machine patch."
-      ],
-      "tags": [
-        "agents",
-        "hugging-face",
-        "cloudflare-workers",
-        "d1",
-        "ai-gateway",
-        "tooling",
-        "needs-review"
-      ],
-      "generated": true,
-      "scout": {
-        "provider": "tavily",
-        "request_id": "1cee6f20-c4eb-44e1-9d6d-a4b0809e1db7",
         "credits": 1,
         "search_mode": "bounded"
       }
