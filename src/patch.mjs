@@ -93,6 +93,7 @@ export function patchForIssue(issue, options = {}) {
     },
     source_agreement: agreement,
     precedence: "Newer explicit user instructions override this patch.",
+    ...(issue.correction ? { correction: issue.correction } : {}),
     delivery: {
       status: deliveryStatus,
       approval_required: true,
