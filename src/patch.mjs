@@ -21,6 +21,32 @@ function sourceIdsForClaim(issue, claim) {
   return source ? [sourceIdFor(issue, source, index)] : [];
 }
 
+export function evidenceForClaim(issue, claim) {
+  const sourceIds = sourceIdsForClaim(issue, claim);
+  const sources = issue.sources
+    .map((source, index) => ({
+      id: sourceIdFor(issue, source, index),
+      publisher: String(source.publisher ?? "").trim().toLowerCase(),
+    }))
+    .filter((source) => sourceIds.includes(source.id));
+  const publishers = new Set(
+    sources.map((source) => source.publisher).filter(Boolean),
+  );
+  const editorialStatus = String(claim.status ?? "").trim().toLowerCase();
+  const status = editorialStatus === "needs-review"
+    ? "needs-review"
+    : editorialStatus.includes("editorial")
+      ? "editorial-rule"
+      : publishers.size >= 2
+        ? "independently-verified"
+        : "source-reported";
+  return {
+    status,
+    source_count: sources.length,
+    publisher_count: publishers.size,
+  };
+}
+
 export function patchForIssue(issue, options = {}) {
   const deliveryStatus = options.deliveryStatus ?? "locked";
   const approved = deliveryStatus === "delivered";
@@ -59,6 +85,12 @@ export function patchForIssue(issue, options = {}) {
     valid_until: issue.expires,
     scope: issue.scope,
     source_selection: sourceSelection,
+    claim_status_policy: {
+      "source-reported": "Supported by the cited publication or repository, without independent corroboration.",
+      "independently-verified": "Supported by cited sources from at least two distinct publishers.",
+      "needs-review": "Material uncertainty remains unresolved.",
+      "editorial-rule": "A publication handling rule rather than an externally verified fact.",
+    },
     source_agreement: agreement,
     precedence: "Newer explicit user instructions override this patch.",
     delivery: {
@@ -85,11 +117,17 @@ export function patchForIssue(issue, options = {}) {
       const supersedes = relationships
         .filter((relationship) => relationship.type === "replaces")
         .map((relationship) => relationship.target_id);
+      const evidence = evidenceForClaim(issue, claim);
       return {
         id: claim.id,
         statement: claim.claim,
-        status: claim.status,
+        status: evidence.status,
+        editorial_status: claim.status,
         source_ids: sourceIdsForClaim(issue, claim),
+        evidence: {
+          source_count: evidence.source_count,
+          publisher_count: evidence.publisher_count,
+        },
         ...(relationships.length ? { relationships } : {}),
         ...(supersedes.length ? { supersedes } : {}),
       };
