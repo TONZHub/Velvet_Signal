@@ -2159,7 +2159,7 @@
         "search_mode": "bounded"
       },
       "correction": {
-        "corrected_at": "2026-09-01T20:30:00.000Z",
+        "corrected_at": "2026-09-01T23:20:00.000Z",
         "previous_version": "1.0.0",
         "summary": "The original edition said the LLM path was removed from browser tooling entirely. The verified change applies to oversized snapshot summarization; browser vision still calls an LLM.",
         "receipt_effect": "Receipts for version 1.0.0 remain historical artifacts but are not active against this corrected canonical version.",
