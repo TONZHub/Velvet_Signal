@@ -6,6 +6,10 @@ import { retrieveDeltaAwareClaims } from "./claim-delta-rag.mjs";
 import { buildBudgetedContext } from "./context-budget.mjs";
 import { ollamaChat, ollamaEmbed } from "./ollama.mjs";
 import { patchForIssue } from "./patch.mjs";
+import {
+  applyLocalRelevanceGate,
+  LOCAL_AGENT_SYSTEM_MESSAGE,
+} from "./local-relevance.mjs";
 
 const DEFAULT_PUBLIC_URL = "https://velvetsignal.lol";
 
@@ -137,9 +141,12 @@ async function retrieve(question, options) {
   const embed = options.lexicalOnly
     ? undefined
     : (input) => ollamaEmbed(input, { model: options.embedModel });
-  return retrieveDeltaAwareClaims(question, patches, {
+  const retrieval = await retrieveDeltaAwareClaims(question, patches, {
     limit: Number.isInteger(options.limit) ? options.limit : 3,
     embed,
+  });
+  return applyLocalRelevanceGate(retrieval, {
+    minSemantic: process.env.VELVET_MIN_SEMANTIC_SCORE,
   });
 }
 
@@ -261,7 +268,13 @@ async function commandAsk(args) {
   const packed = buildBudgetedContext(retrieval, {
     maxChars: options.contextBudget,
   });
-  const messages = injectRetrievedContext([{ role: "user", content: question }], packed.text);
+  const messages = injectRetrievedContext(
+    [
+      { role: "system", content: LOCAL_AGENT_SYSTEM_MESSAGE },
+      { role: "user", content: question },
+    ],
+    packed.text,
+  );
   const answer = await ollamaChat(messages, { model: options.model });
   console.log(answer.content.trim());
   const decisions = retrieval.resolution?.decisions?.length ?? 0;
@@ -282,8 +295,12 @@ async function commandAsk(args) {
   const overlapSummary = overlap?.overlapping_pair_count
     ? `; overlap ${overlap.overlapping_pair_count} pair(s)/${overlap.distinct_detail_pair_count} with delta`
     : "";
+  const gate = retrieval.selection?.relevance_gate;
+  const gateSummary = gate
+    ? `; gate ${gate.kept_count}/${gate.original_count} kept @ semantic>=${gate.minimum_semantic_score}`
+    : "";
   const packingSummary = `; context ${packed.diagnostics.used_chars}/${packed.diagnostics.budget_chars} chars (~${packed.diagnostics.approximate_tokens} tokens), optional omitted=${packed.diagnostics.omitted_optional_count}${packed.diagnostics.hard_minimum_exceeded ? ", hard minimum exceeded" : ""}`;
-  console.error(`\n[Velvet Signal: ${retrieval.mode}; ${retrieval.results.length} claim(s) retrieved: ${retrieval.results.map((item) => `${item.patch_id}/${item.claim_id}`).join(", ") || "none"}; ${decisions} relationship decision(s)${intentSummary}${evidenceSummary}${answerabilitySummary}${overlapSummary}${packingSummary}]`);
+  console.error(`\n[Velvet Signal: ${retrieval.mode}; ${retrieval.results.length} claim(s) retrieved: ${retrieval.results.map((item) => `${item.patch_id}/${item.claim_id}`).join(", ") || "none"}; ${decisions} relationship decision(s)${intentSummary}${evidenceSummary}${answerabilitySummary}${overlapSummary}${gateSummary}${packingSummary}]`);
 }
 
 async function main() {
@@ -305,7 +322,7 @@ async function main() {
     "  ask --model <name> [--context-budget <chars>] <question>",
     "                                     Retrieve compact current context and ask a local Ollama model",
     "",
-    "Environment: VELVET_PUBLIC_URL, VELVET_LOCAL_STORE, OLLAMA_HOST, OLLAMA_MODEL, VELVET_EMBED_MODEL",
+    "Environment: VELVET_PUBLIC_URL, VELVET_LOCAL_STORE, OLLAMA_HOST, OLLAMA_MODEL, VELVET_EMBED_MODEL, VELVET_MIN_SEMANTIC_SCORE",
   ].join("\n"));
 }
 
