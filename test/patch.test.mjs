@@ -20,6 +20,7 @@ test("every launch issue has the same signed delivery and expiry contract", asyn
     const patch = patchForIssue(issue, { deliveryStatus: "delivered" });
     const receipt = createDeliveryReceipt(patch, receiptOptions);
     const verified = verifyDeliveryReceipt(patch, receipt, receiptOptions);
+    assert.equal(patch.schema_version, "1.1");
     assert.equal(patch.patch_id, issue.id);
     assert.equal(patch.delivery.status, "delivered");
     assert.equal(patch.delivery.approved, true);
