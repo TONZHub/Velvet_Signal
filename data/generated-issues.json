@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-31T21:32:56.211Z",
+  "generated_at": "2026-09-01T05:08:05.865Z",
   "desks": {
     "maker": {
-      "fingerprint": "7778cb82937ad41a94f6d070c3e92410da3f8c61ee399d40b9f52b898edb2244",
-      "latest_patch_id": "maker-013",
-      "published_at": "2026-08-31T21:32:56.211Z",
-      "tavily_request_id": "56ead2ff-7ac8-49c8-9ec9-44a3cf1991b1"
+      "fingerprint": "55b8d2b2484105dcd311cb2baa96e61abe88107b7f17b48f1ff56cf8219072ea",
+      "latest_patch_id": "maker-014",
+      "published_at": "2026-09-01T05:08:05.865Z",
+      "tavily_request_id": "7ebbf7f9-363b-4fa2-a6bc-711ab8a89d8d"
     },
     "model-watch": {
       "fingerprint": "d88e73c97c2bdf73f3975a73fbbb65b7b27667f5b06167532b007a0f817ae150",
@@ -21,19 +21,428 @@
       "tavily_request_id": "7c7cb935-6b4d-40eb-80d2-77c5007682c2"
     },
     "pantry": {
-      "fingerprint": "f1dcaa8fcb3259145a0b51067487aab136efbccd19067ff6248a6c918a50d9d6",
-      "latest_patch_id": "pantry-005",
-      "published_at": "2026-08-31T16:11:09.952Z",
-      "tavily_request_id": "60a5c66d-eb1a-4157-8b8b-e8c66312f185"
+      "fingerprint": "c8bdb7db339661848d4bddcd6bf7261a5628697f0ac1f0a9511992b0844cf23b",
+      "latest_patch_id": "pantry-006",
+      "published_at": "2026-09-01T05:06:50.851Z",
+      "tavily_request_id": "4711ca25-56cc-4b9f-b27c-22a3808009b5"
     },
     "wellbeing": {
-      "fingerprint": "4ade0bea34f305fbe254888f51a86e65c8625f70e3a139cdfdc1f3bf6053db46",
-      "latest_patch_id": "wellbeing-011",
-      "published_at": "2026-08-31T21:31:38.529Z",
-      "tavily_request_id": "d8396d9e-7355-41dc-9409-a7e9968acb00"
+      "fingerprint": "305e05e13c5db40da77c13fb079399ea385c0bdec5520e80e334501fe5011ff6",
+      "latest_patch_id": "wellbeing-012",
+      "published_at": "2026-09-01T05:07:22.988Z",
+      "tavily_request_id": "c6416c26-8f62-430e-a7cc-716d50119cfe"
     }
   },
   "issues": [
+    {
+      "id": "maker-014",
+      "deskId": "maker",
+      "desk": "Maker Edition",
+      "icon": "⌘",
+      "issue": "014",
+      "version": "1.0.0",
+      "date": "SEP 01 · 2026",
+      "publishedAt": "2026-09-01T05:08:05.865Z",
+      "color": "#ff9466",
+      "title": "YOLO-Master's MoE era: pruning, LoRA, and a faster NMS dial",
+      "kicker": "maker",
+      "dek": "Tencent's YOLO-Master spent January and February 2026 turning its Mixture-of-Experts pipeline into something you can actually operate: diagnose it, prune it, fine-tune it with LoRA, and trade accuracy against speed at inference time.",
+      "readTime": "3 min read",
+      "validity": "30 days",
+      "expires": "2026-10-01",
+      "confidence": "Mixed",
+      "scope": "AI product engineering",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "The most operationally interesting change here is the pruning pair. YOLO-Master added two MoE tools on 2026/01/16: diagnose_model, which visualizes expert utilization and routing behavior to surface redundant experts, and prune_moe_model, which physically removes those redundant experts and reconstructs the routers for efficient inference without retraining [M-SRC-1]. That second half matters: pruning without a retraining pass turns expert cleanup from a research project into a maintenance task.",
+        "Speed-versus-accuracy got an explicit dial on 2026/01/09 with Cluster-Weighted NMS (CW-NMS), exposed as a cluster boolean flag described as cluster NMS (MoE optimized) for trading mAP against speed [M-SRC-1]. If you deploy across heterogeneous hardware, this is the kind of switch worth benchmarking per target rather than setting once.",
+        "Training-side changes landed in the same window. MoE loss was added explicitly to training on 2026/01/07, appearing as its own moe_loss column in the epoch log alongside box, cls, and dfl losses [M-SRC-1], and the MoE script was split into modules that same day [M-SRC-1]. On 2026/02/13 the project added LoRA support for model training and released version v2026.02 [M-SRC-1].",
+        "Deployment paths widened too: ncnn-YOLO-Master-android gained support for deploying YOLO-Master on 2026/01/14 [M-SRC-1], and TensorRT-YOLO was credited with accelerating YOLO-Master on 2026/01/07 [M-SRC-1].",
+        "Provenance note: the repository was transferred from Repo isLinXu to Tencent on 2026/01/16 [M-SRC-1]. The packet is a changelog snapshot rather than a release announcement, and its excerpt is truncated mid-list, so treat the v2026.02 tag as the only explicit version marker in this source."
+      ],
+      "pullquote": "prune_moe_model: physically excise redundant experts and reconstruct routers for efficient inference without retraining.",
+      "sources": [
+        {
+          "id": "M-SRC-1",
+          "name": "Tencent/YOLO-Master: [CVPR2026]🚀🚀 ...",
+          "publisher": "github.com",
+          "url": "https://github.com/Tencent/YOLO-Master",
+          "checked": "2026-09-01",
+          "publishedAt": "Sat, 29 Aug 2026 04:00:00 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "M-01",
+          "claim": "YOLO-Master added LoRA support for model training and released version v2026.02 on 2026/02/13.",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-02",
+          "claim": "YOLO-Master added Cluster-Weighted NMS (CW-NMS) on 2026/01/09, exposed as a cluster boolean flag described as cluster NMS (MoE optimized), for trading mAP against speed.",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-03",
+          "claim": "YOLO-Master added two MoE maintenance tools on 2026/01/16: diagnose_model, which visualizes expert utilization and routing behavior to identify redundant experts, and prune_moe_model, which physically removes redundant experts and reconstructs routers for efficient inference without retraining.",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-04",
+          "claim": "YOLO-Master added MoE loss explicitly into training on 2026/01/07, logged as a moe_loss column alongside box_loss, cls_loss, and dfl_loss, and split the MoE script into modules the same day.",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-05",
+          "claim": "ncnn-YOLO-Master-android added support for deploying YOLO-Master on 2026/01/14, and TensorRT-YOLO was credited with accelerating YOLO-Master on 2026/01/07.",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-06",
+          "claim": "The YOLO-Master repository was transferred from Repo isLinXu to Tencent on 2026/01/16.",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-07",
+          "claim": "The source packet is a truncated changelog snapshot, not a release announcement; v2026.02 is the only explicit version marker it contains, and no compatibility or deprecation information is stated.",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        }
+      ],
+      "toneNotes": [
+        "No compatibility claims are made beyond what the packet states; the packet contains no deprecation dates or version requirements.",
+        "No relationships were drawn to prior ADK, hermes-agent, Langflow, or other claims: the packet concerns a different project and no prior claim independently supports any YOLO-Master fact."
+      ],
+      "tags": [
+        "yolo-master",
+        "moe",
+        "pruning",
+        "lora",
+        "deployment"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "7ebbf7f9-363b-4fa2-a6bc-711ab8a89d8d",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "wellbeing-012",
+      "deskId": "wellbeing",
+      "desk": "Wellbeing",
+      "icon": "☾",
+      "issue": "012",
+      "version": "1.0.0",
+      "date": "SEP 01 · 2026",
+      "publishedAt": "2026-09-01T05:07:22.988Z",
+      "color": "#a993ff",
+      "title": "Movement, Sleep, and Downtime: Why the Full Combo Matters for Student Wellbeing",
+      "kicker": "wellbeing",
+      "dek": "A systematic review of university students finds that the mental-health payoff of healthy routines is largest when physical activity, sleep, and sedentary-time recommendations are met together — and that adherence is uneven across students.",
+      "readTime": "3 min read",
+      "validity": "180 days",
+      "expires": "2027-02-28",
+      "confidence": "Mixed",
+      "scope": "General wellbeing",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "A systematic review examining physical activity and mental health in university students reports that adhering to recommendations for physical activity, sleep, and sedentary behavior was associated with lower distress and higher wellbeing — and that the greatest mental health benefit appeared when all three guideline areas were met at once (W-SRC-2).",
+        "The same review found that students with chronic conditions or disabilities (CCD) were less likely to meet the 24-hour movement guidelines, and that students with multimorbidities or developmental disabilities showed the lowest adherence rates (W-SRC-2). That's a useful corrective to any one-size-fits-all framing: the students who might benefit most from these routines may also face the steepest barriers to following them.",
+        "Methodologically, the review captured updated and postpandemic evidence, combining search terms for physical activity (such as physical activity, exercise, and sedentary) with mental-health terms (stress, anxiety, depression, wellbeing) filtered to college and university populations (W-SRC-2).",
+        "Two honest caveats. First, the findings described here are associations — the review reports that adherence was 'associated with' lower distress and higher wellbeing, not that the routines caused those outcomes (W-SRC-2). Second, our source excerpt is a fragment of the full paper; we can see the headline association and the adherence gaps clearly, but not the full strength-of-evidence assessment, so treat the details as needing fuller review before being treated as settled (W-SRC-2, needs-review).",
+        "This is general wellbeing information, not individualized medical advice. If sleep, movement, or stress feel like problems in your life, a healthcare professional is the right place to start."
+      ],
+      "pullquote": "The greatest mental health benefit appeared when all three guideline areas — activity, sleep, and sedentary time — were met together.",
+      "sources": [
+        {
+          "id": "W-SRC-1",
+          "name": "Dynamic patterns of healthy lifestyle awareness after COVID-19: a study using Google Trends and joinpoint regression",
+          "publisher": "pmc.ncbi.nlm.nih.gov",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12834755",
+          "checked": "2026-09-01"
+        },
+        {
+          "id": "W-SRC-2",
+          "name": "Influence of physical activity on perceived stress and mental health in university students: a systematic review",
+          "publisher": "pmc.ncbi.nlm.nih.gov",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12827587",
+          "checked": "2026-09-01"
+        },
+        {
+          "id": "W-SRC-3",
+          "name": "Tips to Support Healthy Routines for Children and Teens",
+          "publisher": "cdc.gov",
+          "url": "https://www.cdc.gov/healthy-weight-growth/tips-parents-caregivers/index.html",
+          "checked": "2026-09-01"
+        },
+        {
+          "id": "W-SRC-4",
+          "name": "Exploring the health and well-being benefits of reduced working hours with maintained salary: A scoping review and evidence map",
+          "publisher": "pmc.ncbi.nlm.nih.gov",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12956364",
+          "checked": "2026-09-01"
+        },
+        {
+          "id": "W-SRC-5",
+          "name": "Time course of perceptual, cognitive, physical and physiological responses to a single non‐sleep deep rest session in physically active young adults",
+          "publisher": "pmc.ncbi.nlm.nih.gov",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13321136",
+          "checked": "2026-09-01"
+        }
+      ],
+      "claims": [
+        {
+          "id": "W-01",
+          "claim": "A systematic review of physical activity and mental health in university students found that adhering to physical activity, sleep, and sedentary behavior recommendations was associated with lower distress and higher wellbeing, with the greatest mental health benefit when all three guidelines were met.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-02",
+          "claim": "In the same review, students with chronic conditions or disabilities (CCD) were less likely to meet the 24-hour movement guidelines, and students with multimorbidities or developmental disabilities showed the lowest adherence rates.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-03",
+          "claim": "The review captured updated and postpandemic evidence, combining search terms for physical activity (e.g., physical activity, exercise, sedentary) and mental health (e.g., stress, anxiety, depression, wellbeing, mental health) with filters for the university population (college OR university students).",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-04",
+          "claim": "The strength and quality of the underlying evidence for the association between meeting all three movement guidelines and mental health outcomes in university students cannot be fully assessed from the supplied excerpt and should be confirmed against the full paper before being treated as settled.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "needs-review",
+          "confidence": "low"
+        }
+      ],
+      "toneNotes": [
+        "Association language only — no causal claims.",
+        "Individual variation kept visible via the CCD and multimorbidity adherence findings.",
+        "No diagnosis, moralizing, or individualized advice; professional care pointed to explicitly."
+      ],
+      "tags": [
+        "wellbeing",
+        "physical-activity",
+        "sleep",
+        "sedentary-behavior",
+        "students",
+        "mental-health"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "c6416c26-8f62-430e-a7cc-716d50119cfe",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "pantry-006",
+      "deskId": "pantry",
+      "desk": "The Pantry",
+      "icon": "◒",
+      "issue": "006",
+      "version": "1.0.0",
+      "date": "SEP 01 · 2026",
+      "publishedAt": "2026-09-01T05:06:50.851Z",
+      "color": "#f1cf69",
+      "title": "The raw side of the fridge",
+      "kicker": "Pantry · Storage windows",
+      "dek": "Leftovers get all the attention, but the countdown for most proteins starts before the stove is ever lit. This issue covers the raw-storage clock, a calmer way to thaw, and one freezer caveat worth knowing.",
+      "readTime": "3 min read",
+      "validity": "365 days",
+      "expires": "2027-09-01",
+      "confidence": "Medium",
+      "scope": "Food safety",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Most kitchen food-safety advice fixates on the after — the leftovers, the reheating, the mystery container pushed to the back. But the storage clock for meat, poultry, and fish starts at the grocery store, not the dinner table. Two USDA sources agree on the headline numbers: raw poultry and ground meats keep just 1 to 2 days in the refrigerator, a window short enough that the same-week plan matters [P-SRC-1, P-SRC-4].",
+        "Whole cuts get more breathing room. Other red meats — think steaks and roasts rather than ground or minced — keep 3 to 5 days refrigerated [P-SRC-4]. That difference is structural: grinding and processing spread any surface bacteria throughout, which is why the ground versions run on the shorter clock.",
+        "Once those raw days are spent and the food is cooked, the thaw matters too. The take-out guidance recommends thawing wrapped, cooked meat or poultry on a tray in the refrigerator, allowing about 24 hours for every 5 pounds — small packages of stuffing, gravy, or potatoes thaw faster and can go into the fridge later [P-SRC-5]. And if plans change, frozen food can go directly into the oven without thawing at all [P-SRC-5].",
+        "One freezer footnote: salads made with mayonnaise do not freeze well [P-SRC-5]. The refrigerator is their home; the freezer will only change their texture for the worse.",
+        "A note on limits, because it matters: these windows describe how long food keeps at proper refrigerator and freezer temperatures. They cannot tell you whether a specific container is safe when the timeline, the temperature, or the storage history is unknown. The guidance is blunt on that point — when in doubt, throw it out, and don't taste to check [P-SRC-5]."
+      ],
+      "pullquote": "The storage clock for meat, poultry, and fish starts at the grocery store, not the dinner table.",
+      "sources": [
+        {
+          "id": "P-SRC-1",
+          "name": "Refrigeration & Food Safety",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/refrigeration",
+          "checked": "2026-09-01"
+        },
+        {
+          "id": "P-SRC-2",
+          "name": "Leftovers and Food Safety",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/leftovers-and-food-safety",
+          "checked": "2026-09-01"
+        },
+        {
+          "id": "P-SRC-3",
+          "name": "How Temperatures Affect Food | Food Safety and Inspection Service",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/how-temperatures-affect-food",
+          "checked": "2026-09-01"
+        },
+        {
+          "id": "P-SRC-4",
+          "name": "What safe food storage tips can you provide?",
+          "publisher": "ask.fsis.usda.gov",
+          "url": "https://ask.fsis.usda.gov/article/What-storage-tips-do-you-have",
+          "checked": "2026-09-01"
+        },
+        {
+          "id": "P-SRC-5",
+          "name": "Safe Handling of Take-Out Foods | Food Safety and Inspection Service",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-handling-take-out-foods",
+          "checked": "2026-09-01"
+        }
+      ],
+      "claims": [
+        {
+          "id": "P-01",
+          "claim": "Raw poultry and ground meats keep 1 to 2 days in the refrigerator.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1",
+            "P-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-003:P-06",
+              "reason": "Independently re-supports the raw poultry and ground meat portion of the general storage rule from a new packet."
+            }
+          ]
+        },
+        {
+          "id": "P-02",
+          "claim": "Other raw red meats (beyond ground meat, poultry, and fish) keep 3 to 5 days refrigerated.",
+          "source": 3,
+          "sourceIds": [
+            "P-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "medium"
+        },
+        {
+          "id": "P-03",
+          "claim": "Thaw wrapped, cooked meat or poultry on a tray in the refrigerator, allowing about 24 hours for every 5 pounds; small packages of cooked stuffing, gravy, and potatoes thaw faster and can be moved into the refrigerator later. Frozen food can also be placed directly into the oven without thawing.",
+          "source": 4,
+          "sourceIds": [
+            "P-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-04",
+          "claim": "Salads made with mayonnaise do not freeze well.",
+          "source": 4,
+          "sourceIds": [
+            "P-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-05",
+          "claim": "General storage windows cannot determine whether any specific food is safe when its time, temperature, or storage history is unknown; the guidance is to discard questionable food without tasting it.",
+          "source": 4,
+          "sourceIds": [
+            "P-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-004:P-08",
+              "reason": "Independently re-supports the don't-judge-without-history principle and the discard-without-tasting rule from a new packet."
+            }
+          ]
+        }
+      ],
+      "toneNotes": [
+        "Non-alarmist framing: windows are planning tools, not verdicts on specific containers.",
+        "Explicitly preserve the boundary that storage history is unknowable from general guidance.",
+        "P-SRC-3 contained only site navigation text and contributed no usable facts; it was not cited."
+      ],
+      "tags": [
+        "pantry",
+        "storage",
+        "raw meat",
+        "thawing",
+        "freezer"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "4711ca25-56cc-4b9f-b27c-22a3808009b5",
+        "credits": 2,
+        "search_mode": "timeless-official-fallback"
+      }
+    },
     {
       "id": "maker-013",
       "deskId": "maker",
@@ -6578,177 +6987,6 @@
         "request_id": "b27e0e24-f882-4be4-b85e-b2abc808f323",
         "credits": 1,
         "search_mode": "bounded"
-      }
-    },
-    {
-      "id": "maker-002",
-      "deskId": "maker",
-      "desk": "Maker Edition",
-      "icon": "⌘",
-      "issue": "002",
-      "version": "1.0.0",
-      "date": "AUG 27 · 2026",
-      "publishedAt": "2026-08-27T11:20:47.036Z",
-      "color": "#ff9466",
-      "title": "Velvet Signal — Maker Desk: Proposed Edition",
-      "kicker": "vLLM's Transformers v5 pivot and a new auth surface for /v2 endpoints",
-      "dek": "The week's most consequential builder change: vLLM now targets Transformers v5, and its OpenAI-compatible /v2 endpoints gained API-key authorization. Both touch deployment and security posture directly.",
-      "readTime": "3 min read",
-      "validity": "7 days",
-      "expires": "2026-09-03",
-      "confidence": "Mixed",
-      "scope": "AI product engineering",
-      "editor": "OpenRouter · GLM 5.3 Flash",
-      "inputPolicy": "Scheduled Tavily source packets",
-      "editorial": [
-        "vLLM's latest release shifts the project to target Transformers v5, with vendored MiniCPM-V/O processors and compatibility fixes for Sarvam and Voxtral (M-SRC-3). If you pin Transformers in your serving stack, this is the release to test against before it tests you.",
-        "The multi-tier KV cache offloading framework grew an object-store secondary tier, HMA is now enabled by default for capable connectors, tiering support landed for HMA models, and a per-request offloading policy is available via the on_new_request lifecycle hook (M-SRC-3). Offloading is moving from an optimization to a first-class architecture.",
-        "On the frontend: configurable truncation side for OpenAI endpoints, normalization of reasoning_content to reasoning, a reworked fastokens integration, consolidated Speech-to-Text entrypoints, beam-search consolidation via BeamSearchMixin, and score/rerank chat-template instructions (M-SRC-3).",
-        "Security note worth acting on: API-key authorization for /v2 endpoints landed in this release (M-SRC-3). If you expose /v2, review your auth configuration as part of upgrading.",
-        "Offline API restructuring: the pooling offline API was split into PoolingOfflineMixin, and offline inference APIs/utils were split (M-SRC-3). Import paths may have moved — check before upgrading scripts that call these directly."
-      ],
-      "pullquote": "Offloading is moving from an optimization to a first-class architecture.",
-      "sources": [
-        {
-          "id": "M-SRC-1",
-          "name": "GitHub - kaushikb11/awesome-llm-agents: A curated list of awesome LLM agents frameworks. · GitHub",
-          "publisher": "github.com",
-          "url": "https://github.com/kaushikb11/awesome-llm-agents",
-          "checked": "2026-08-27",
-          "publishedAt": "Sun, 23 Aug 2026 11:00:00 GMT"
-        },
-        {
-          "id": "M-SRC-2",
-          "name": "12britz/awesome-free-models",
-          "publisher": "github.com",
-          "url": "https://github.com/12britz/awesome-free-models",
-          "checked": "2026-08-27",
-          "publishedAt": "Tue, 25 Aug 2026 11:00:00 GMT"
-        },
-        {
-          "id": "M-SRC-3",
-          "name": "Releases · vllm-project/vllm - GitHub",
-          "publisher": "github.com",
-          "url": "https://github.com/vllm-project/vllm/releases",
-          "checked": "2026-08-27",
-          "publishedAt": "Wed, 26 Aug 2026 18:00:00 GMT"
-        },
-        {
-          "id": "M-SRC-4",
-          "name": "Releases · ollama/ollama",
-          "publisher": "github.com",
-          "url": "https://github.com/ollama/ollama/releases",
-          "checked": "2026-08-27",
-          "publishedAt": "Thu, 27 Aug 2026 04:00:00 GMT"
-        },
-        {
-          "id": "M-SRC-5",
-          "name": "Picrew/awesome-agent-harness - GitHub",
-          "publisher": "github.com",
-          "url": "https://github.com/Picrew/awesome-agent-harness",
-          "checked": "2026-08-27",
-          "publishedAt": "Mon, 24 Aug 2026 11:00:00 GMT"
-        }
-      ],
-      "claims": [
-        {
-          "id": "M-01",
-          "claim": "vLLM now targets Transformers v5, with vendored MiniCPM-V/O processors.",
-          "source": 2,
-          "sourceIds": [
-            "M-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "M-02",
-          "claim": "vLLM includes compatibility fixes for Sarvam (#38804) and Voxtral (#44559).",
-          "source": 2,
-          "sourceIds": [
-            "M-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "M-03",
-          "claim": "vLLM's KV cache offloading framework gained an object-store secondary tier (#41968), HMA enabled by default for capable connectors (#41847), tiering support for HMA models (#44287), and per-request offloading policy via the on_new_request lifecycle hook (#43205).",
-          "source": 2,
-          "sourceIds": [
-            "M-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "M-04",
-          "claim": "vLLM frontend changes include truncation side for OpenAI endpoints (#43260), normalize reasoning_content to reasoning (#42664), reworked fastokens integration (#43168), consolidated Speech-to-Text entrypoints (#42370, #42274), BeamSearchMixin consolidation (#42946), and score/rerank chat-template instructions (#42412).",
-          "source": 2,
-          "sourceIds": [
-            "M-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "M-05",
-          "claim": "vLLM added API-key authorization for /v2 endpoints (#42594).",
-          "source": 2,
-          "sourceIds": [
-            "M-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "M-06",
-          "claim": "vLLM split the pooling offline API into PoolingOfflineMixin (#42267) and split offline inference APIs/utils (#43553).",
-          "source": 2,
-          "sourceIds": [
-            "M-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "M-07",
-          "claim": "The specific vLLM release version number for these changes.",
-          "source": 2,
-          "sourceIds": [
-            "M-SRC-3"
-          ],
-          "status": "needs-review",
-          "confidence": "low"
-        },
-        {
-          "id": "M-08",
-          "claim": "Whether the Transformers v5 target constitutes a breaking change for existing vLLM deployments pinning Transformers v4.",
-          "source": 2,
-          "sourceIds": [
-            "M-SRC-3"
-          ],
-          "status": "needs-review",
-          "confidence": "low"
-        }
-      ],
-      "toneNotes": [
-        "No compatibility claims beyond what M-SRC-3 states; the release excerpt does not name a version number, so the edition avoids one.",
-        "Security implication (API-key auth on /v2) is surfaced as an action item, not buried.",
-        "Secondary items (Ollama v0.32.14, archived projects) were considered but vLLM was selected as the single most useful change per the brief."
-      ],
-      "tags": [
-        "vllm",
-        "transformers-v5",
-        "kv-cache",
-        "api-auth",
-        "serving"
-      ],
-      "generated": true,
-      "scout": {
-        "provider": "tavily",
-        "request_id": "648302d6-beae-405b-b1fb-085c35b1439b",
-        "credits": 1
       }
     }
   ]
