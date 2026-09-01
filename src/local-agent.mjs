@@ -9,6 +9,7 @@ import { patchForIssue } from "./patch.mjs";
 import {
   applyLocalRelevanceGate,
   LOCAL_AGENT_SYSTEM_MESSAGE,
+  normalizeLocalRetrievalQuery,
 } from "./local-relevance.mjs";
 
 const DEFAULT_PUBLIC_URL = "https://velvetsignal.lol";
@@ -138,16 +139,27 @@ async function releasedPatches() {
 
 async function retrieve(question, options) {
   const patches = await releasedPatches();
-  const embed = options.lexicalOnly
+  const retrievalQuery = normalizeLocalRetrievalQuery(question);
+  const embed = options.lexicalOnly || !retrievalQuery
     ? undefined
     : (input) => ollamaEmbed(input, { model: options.embedModel });
-  const retrieval = await retrieveDeltaAwareClaims(question, patches, {
+  const retrieval = await retrieveDeltaAwareClaims(retrievalQuery, patches, {
     limit: Number.isInteger(options.limit) ? options.limit : 3,
     embed,
   });
-  return applyLocalRelevanceGate(retrieval, {
+  const gated = applyLocalRelevanceGate(retrieval, {
     minSemantic: process.env.VELVET_MIN_SEMANTIC_SCORE,
   });
+  gated.selection = {
+    ...(gated.selection ?? {}),
+    query_normalization: {
+      original: question,
+      retrieval_query: retrievalQuery,
+      stripped_publication_name: retrievalQuery !== question,
+      identity_only: !retrievalQuery,
+    },
+  };
+  return gated;
 }
 
 async function commandDownloadAll() {

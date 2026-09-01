@@ -11,6 +11,29 @@ export const LOCAL_AGENT_SYSTEM_MESSAGE = [
   "Do not invent unrelated products, brands, features, or claims to fill missing Velvet Signal context.",
 ].join(" ");
 
+const LOCAL_QUERY_STOP_WORDS = new Set([
+  "a", "an", "and", "are", "as", "at", "about", "according", "be", "been",
+  "but", "by", "can", "could", "did", "do", "does", "for", "from", "had",
+  "has", "have", "how", "i", "if", "in", "is", "it", "its", "may", "me",
+  "my", "of", "on", "or", "our", "please", "say", "says", "should", "so",
+  "that", "the", "their", "them", "there", "these", "they", "this", "to",
+  "tell", "was", "we", "were", "what", "when", "where", "which", "who",
+  "why", "will", "with", "would", "you", "your",
+]);
+
+export function normalizeLocalRetrievalQuery(value) {
+  const stripped = String(value ?? "")
+    .replace(/\bvelvet\s+signal\b/gi, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  const tokens = stripped
+    .toLowerCase()
+    .normalize("NFKD")
+    .match(/[a-z0-9]+/g) ?? [];
+  const meaningful = tokens.filter((token) => !LOCAL_QUERY_STOP_WORDS.has(token));
+  return meaningful.length > 0 ? stripped : "";
+}
+
 function threshold(value) {
   const parsed = Number.parseFloat(String(value ?? ""));
   if (!Number.isFinite(parsed)) return DEFAULT_MIN_SEMANTIC_RELEVANCE;
