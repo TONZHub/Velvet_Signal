@@ -4,6 +4,7 @@ import {
   applyLocalRelevanceGate,
   DEFAULT_MIN_SEMANTIC_RELEVANCE,
   LOCAL_AGENT_SYSTEM_MESSAGE,
+  normalizeLocalRetrievalQuery,
 } from "../src/local-relevance.mjs";
 
 function retrieval(result) {
@@ -75,6 +76,27 @@ test("lexical evidence can keep a claim below the semantic floor", () => {
   const gated = applyLocalRelevanceGate(retrieval(result));
 
   assert.equal(gated.results.length, 1);
+});
+
+test("pure Velvet Signal identity questions do not become patch retrieval queries", () => {
+  assert.equal(normalizeLocalRetrievalQuery("What is Velvet Signal?"), "");
+  assert.equal(normalizeLocalRetrievalQuery("Tell me about Velvet Signal"), "");
+});
+
+test("Velvet Signal attribution is stripped while substantive query terms remain", () => {
+  assert.equal(
+    normalizeLocalRetrievalQuery(
+      "According to Velvet Signal, can I eat chicken that has been refrigerated for five days?",
+    ),
+    "According to , can I eat chicken that has been refrigerated for five days?",
+  );
+});
+
+test("ordinary retrieval questions are preserved", () => {
+  assert.equal(
+    normalizeLocalRetrievalQuery("Can I eat chicken after five refrigerated days?"),
+    "Can I eat chicken after five refrigerated days?",
+  );
 });
 
 test("local system identity tells the model what Velvet Signal is", () => {
