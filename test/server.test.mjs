@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { once } from "node:events";
 import test from "node:test";
 import { createVelvetServer } from "../src/server.mjs";
+import { createDeliveryReceipt } from "../src/receipts.mjs";
 
 async function withServer(run) {
   const server = createVelvetServer();
@@ -37,6 +38,10 @@ test("serves the six-desk newsstand with security headers and first-class projec
     assert.match(html, /href="https:\/\/ko-fi\.com\/mosslet"/);
     assert.match(html, /Support Velvet Signal on Ko-fi/);
     assert.match(html, /<th>Relationship<\/th>/);
+    assert.match(html, /Evidence labels are literal/);
+    assert.match(html, /source-reported/);
+    assert.match(html, /superseded_release/);
+    assert.match(html, /Correction requires a new release/);
   });
 });
 
@@ -151,6 +156,24 @@ test("releases canonical patches with verifiable content-bound receipts", async 
       assert.equal(verified.valid, true);
       assert.equal(verified.signature_valid, true);
       assert.equal(verified.content_hash_valid, true);
+      assert.equal(verified.canonical_content_valid, true);
+
+      const historicalPatch = structuredClone(delivery.patch);
+      historicalPatch.version = "0.9.0";
+      historicalPatch.title = "Historical title";
+      const historicalReceipt = createDeliveryReceipt(historicalPatch);
+      const historicalVerify = await fetch(`${baseUrl}/api/velvet/verify-receipt`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ patch: historicalPatch, receipt: historicalReceipt }),
+      });
+      const historical = await historicalVerify.json();
+      assert.equal(historical.signature_valid, true);
+      assert.equal(historical.content_hash_valid, true);
+      assert.equal(historical.canonical_content_valid, false);
+      assert.equal(historical.valid, false);
+      assert.equal(historical.patch_active, false);
+      assert.match(historical.reason, /historical/);
 
       const tampered = structuredClone(delivery.patch); tampered.title = "Tampered";
       const reject = await fetch(`${baseUrl}/api/velvet/verify-receipt`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ patch: tampered, receipt: delivery.receipt }) });
