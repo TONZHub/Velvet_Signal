@@ -6,6 +6,7 @@ import { retrieveDeltaAwareClaims } from "./claim-delta-rag.mjs";
 import { buildBudgetedContext } from "./context-budget.mjs";
 import { ollamaChat, ollamaEmbed } from "./ollama.mjs";
 import { patchForIssue } from "./patch.mjs";
+import { runLocalChat } from "./local-chat.mjs";
 import {
   applyLocalRelevanceGate,
   LOCAL_AGENT_SYSTEM_MESSAGE,
@@ -162,6 +163,55 @@ async function retrieve(question, options) {
   return gated;
 }
 
+function retrievalDiagnostic(retrieval, packed) {
+  const decisions = retrieval.resolution?.decisions?.length ?? 0;
+  const intentCount = retrieval.selection?.intent_count ?? 1;
+  const intentsCovered = retrieval.selection?.intents_covered ?? intentCount;
+  const intentSummary = intentCount > 1
+    ? `; intents ${intentsCovered}/${intentCount}`
+    : "";
+  const evidence = retrieval.selection?.evidence;
+  const evidenceSummary = evidence
+    ? `; evidence ${evidence.distinct_evidence_count} distinct/${evidence.distinct_publisher_count} publisher(s)`
+    : "";
+  const answerability = retrieval.selection?.answerability;
+  const answerabilitySummary = answerability
+    ? `; answerability ${answerability.status}`
+    : "";
+  const overlap = retrieval.selection?.content_overlap;
+  const overlapSummary = overlap?.overlapping_pair_count
+    ? `; overlap ${overlap.overlapping_pair_count} pair(s)/${overlap.distinct_detail_pair_count} with delta`
+    : "";
+  const gate = retrieval.selection?.relevance_gate;
+  const gateSummary = gate
+    ? `; gate ${gate.kept_count}/${gate.original_count} kept @ semantic>=${gate.minimum_semantic_score}`
+    : "";
+  const packingSummary = `; context ${packed.diagnostics.used_chars}/${packed.diagnostics.budget_chars} chars (~${packed.diagnostics.approximate_tokens} tokens), optional omitted=${packed.diagnostics.omitted_optional_count}${packed.diagnostics.hard_minimum_exceeded ? ", hard minimum exceeded" : ""}`;
+  return `[Velvet Signal: ${retrieval.mode}; ${retrieval.results.length} claim(s) retrieved: ${retrieval.results.map((item) => `${item.patch_id}/${item.claim_id}`).join(", ") || "none"}; ${decisions} relationship decision(s)${intentSummary}${evidenceSummary}${answerabilitySummary}${overlapSummary}${gateSummary}${packingSummary}]`;
+}
+
+async function bridgeTurn(question, options, history = []) {
+  const retrieval = await retrieve(question, options);
+  const packed = buildBudgetedContext(retrieval, {
+    maxChars: options.contextBudget,
+  });
+  const messages = injectRetrievedContext(
+    [
+      { role: "system", content: LOCAL_AGENT_SYSTEM_MESSAGE },
+      ...history,
+      { role: "user", content: question },
+    ],
+    packed.text,
+  );
+  const response = await ollamaChat(messages, { model: options.model });
+  return {
+    answer: response.content.trim(),
+    retrieval,
+    packed,
+    diagnostic: retrievalDiagnostic(retrieval, packed),
+  };
+}
+
 async function commandDownloadAll() {
   const result = await downloadAllPatches();
   console.log(`Fetched ${result.fetched} published Velvet Signal patch(es).`);
@@ -276,43 +326,40 @@ async function commandAsk(args) {
   const { values, options } = parseOptions(args);
   const question = values.join(" ").trim();
   if (!question) throw new Error("Usage: npm run local -- ask --model <ollama-model> <question>");
-  const retrieval = await retrieve(question, options);
-  const packed = buildBudgetedContext(retrieval, {
-    maxChars: options.contextBudget,
+  const result = await bridgeTurn(question, options);
+  console.log(result.answer);
+  console.error(`\n${result.diagnostic}`);
+}
+
+async function commandChat(args) {
+  const { values, options } = parseOptions(args);
+  if (values.length > 0) {
+    throw new Error("Usage: npm run local -- chat --model <ollama-model>");
+  }
+  const modelName = options.model ?? process.env.OLLAMA_MODEL;
+  if (!modelName) {
+    throw new Error("Set OLLAMA_MODEL or pass --model <name>.");
+  }
+  const chatOptions = { ...options, model: modelName };
+
+  await runLocalChat({
+    modelName,
+    getStatus: async () => {
+      const store = await readStore();
+      return {
+        activePatchCount: store.releases.filter(
+          (entry) => entry?.patch && patchIsActive(entry.patch),
+        ).length,
+      };
+    },
+    turn: async (message, history) => {
+      const result = await bridgeTurn(message, chatOptions, history);
+      return {
+        answer: result.answer,
+        diagnostic: result.diagnostic,
+      };
+    },
   });
-  const messages = injectRetrievedContext(
-    [
-      { role: "system", content: LOCAL_AGENT_SYSTEM_MESSAGE },
-      { role: "user", content: question },
-    ],
-    packed.text,
-  );
-  const answer = await ollamaChat(messages, { model: options.model });
-  console.log(answer.content.trim());
-  const decisions = retrieval.resolution?.decisions?.length ?? 0;
-  const intentCount = retrieval.selection?.intent_count ?? 1;
-  const intentsCovered = retrieval.selection?.intents_covered ?? intentCount;
-  const intentSummary = intentCount > 1
-    ? `; intents ${intentsCovered}/${intentCount}`
-    : "";
-  const evidence = retrieval.selection?.evidence;
-  const evidenceSummary = evidence
-    ? `; evidence ${evidence.distinct_evidence_count} distinct/${evidence.distinct_publisher_count} publisher(s)`
-    : "";
-  const answerability = retrieval.selection?.answerability;
-  const answerabilitySummary = answerability
-    ? `; answerability ${answerability.status}`
-    : "";
-  const overlap = retrieval.selection?.content_overlap;
-  const overlapSummary = overlap?.overlapping_pair_count
-    ? `; overlap ${overlap.overlapping_pair_count} pair(s)/${overlap.distinct_detail_pair_count} with delta`
-    : "";
-  const gate = retrieval.selection?.relevance_gate;
-  const gateSummary = gate
-    ? `; gate ${gate.kept_count}/${gate.original_count} kept @ semantic>=${gate.minimum_semantic_score}`
-    : "";
-  const packingSummary = `; context ${packed.diagnostics.used_chars}/${packed.diagnostics.budget_chars} chars (~${packed.diagnostics.approximate_tokens} tokens), optional omitted=${packed.diagnostics.omitted_optional_count}${packed.diagnostics.hard_minimum_exceeded ? ", hard minimum exceeded" : ""}`;
-  console.error(`\n[Velvet Signal: ${retrieval.mode}; ${retrieval.results.length} claim(s) retrieved: ${retrieval.results.map((item) => `${item.patch_id}/${item.claim_id}`).join(", ") || "none"}; ${decisions} relationship decision(s)${intentSummary}${evidenceSummary}${answerabilitySummary}${overlapSummary}${gateSummary}${packingSummary}]`);
 }
 
 async function main() {
@@ -323,6 +370,7 @@ async function main() {
   if (command === "list") return commandList();
   if (command === "inspect") return commandInspect(args);
   if (command === "ask") return commandAsk(args);
+  if (command === "chat") return commandChat(args);
   console.log([
     "Velvet Signal local memory bridge",
     "",
@@ -333,6 +381,7 @@ async function main() {
     "  inspect [--lexical] <question>     Show retrieved claims without calling a chat model",
     "  ask --model <name> [--context-budget <chars>] <question>",
     "                                     Retrieve compact current context and ask a local Ollama model",
+    "  chat --model <name>                Interactive chat; every turn passes through Velvet Signal",
     "",
     "Environment: VELVET_PUBLIC_URL, VELVET_LOCAL_STORE, OLLAMA_HOST, OLLAMA_MODEL, VELVET_EMBED_MODEL, VELVET_MIN_SEMANTIC_SCORE",
   ].join("\n"));

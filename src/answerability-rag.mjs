@@ -61,8 +61,8 @@ export function assessRetrievalAnswerability(retrieval) {
   const selection = retrieval?.selection ?? {};
   const gaps = historicalGapDecisions(retrieval);
   const coverage = intentCoverage(selection);
-  const caveats = evidenceCaveats(selection);
   const hasCurrentClaims = results.length > 0;
+  const caveats = hasCurrentClaims ? evidenceCaveats(selection) : [];
   const hasHistoricalGap = gaps.length > 0;
   const hasUncoveredFacets = coverage.uncovered.length > 0;
 
@@ -129,7 +129,7 @@ export function assessRetrievalAnswerability(retrieval) {
       text: intent.text,
     })),
     historical_gap_count: gaps.length,
-    evidence_status: selection?.evidence?.status ?? null,
+    evidence_status: hasCurrentClaims ? selection?.evidence?.status ?? null : null,
     reasons,
     missing_context_policy:
       status === "update-gap"
