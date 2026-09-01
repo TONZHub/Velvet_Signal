@@ -157,6 +157,62 @@ async function commandRelease(args) {
   console.log(`Stored ${patch.patch_id} (${patch.title}) until ${patch.valid_until}.`);
 }
 
+async function commandReleaseAll(args) {
+  if (!args.includes("--confirm")) {
+    throw new Error(
+      "release-all activates every current downloaded patch. Re-run with: npm run local -- release-all --confirm",
+    );
+  }
+
+  const store = await readStore();
+  const currentDownloads = store.downloads.filter(
+    (entry) => entry?.patch?.patch_id && patchIsCurrent(entry.patch),
+  );
+  const expiredCount = store.downloads.filter(
+    (entry) => entry?.patch?.patch_id && !patchIsCurrent(entry.patch),
+  ).length;
+
+  if (currentDownloads.length === 0) {
+    console.log("No current downloaded patches are available to release. Run download-all first.");
+    if (expiredCount > 0) {
+      console.log(`Skipped ${expiredCount} expired/historical patch(es).`);
+    }
+    return;
+  }
+
+  const alreadyActiveIds = new Set(
+    store.releases
+      .filter((entry) => entry?.patch?.patch_id && patchIsActive(entry.patch))
+      .map((entry) => entry.patch.patch_id),
+  );
+  const pending = currentDownloads.filter(
+    (entry) => !alreadyActiveIds.has(entry.patch.patch_id),
+  );
+  const alreadyActive = currentDownloads.length - pending.length;
+  const failures = [];
+  let activated = 0;
+
+  for (const entry of pending) {
+    const patchId = entry.patch.patch_id;
+    try {
+      const patch = await releasePatch(patchId);
+      activated += 1;
+      console.log(`released\t${patch.patch_id}\t${patch.title}`);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      failures.push({ patchId, message });
+      console.error(`failed\t${patchId}\t${message}`);
+    }
+  }
+
+  console.log(
+    `Release-all summary: ${activated} activated, ${alreadyActive} already active, ${expiredCount} expired/historical skipped, ${failures.length} failed.`,
+  );
+  if (failures.length > 0) {
+    throw new Error(`${failures.length} patch(es) failed to release.`);
+  }
+}
+
 async function commandList() {
   const store = await readStore();
   if (store.downloads.length === 0 && store.releases.length === 0) {
@@ -234,6 +290,7 @@ async function main() {
   const [command, ...args] = process.argv.slice(2);
   if (command === "download-all") return commandDownloadAll();
   if (command === "release") return commandRelease(args);
+  if (command === "release-all") return commandReleaseAll(args);
   if (command === "list") return commandList();
   if (command === "inspect") return commandInspect(args);
   if (command === "ask") return commandAsk(args);
@@ -242,6 +299,7 @@ async function main() {
     "",
     "  download-all                       Download every published patch without activating it",
     "  release <patch-id>                 Explicitly release and store a patch locally",
+    "  release-all --confirm              Debug: release every current downloaded patch",
     "  list                               List downloaded/released patches and activation state",
     "  inspect [--lexical] <question>     Show retrieved claims without calling a chat model",
     "  ask --model <name> [--context-budget <chars>] <question>",
