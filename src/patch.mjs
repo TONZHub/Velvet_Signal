@@ -33,11 +33,14 @@ export function evidenceForClaim(issue, claim) {
     sources.map((source) => source.publisher).filter(Boolean),
   );
   const editorialStatus = String(claim.status ?? "").trim().toLowerCase();
+  const explicitIndependentVerification =
+    claim.evidenceStatus === "independently-verified" ||
+    claim.verification === "independent";
   const status = editorialStatus === "needs-review"
     ? "needs-review"
     : editorialStatus.includes("editorial")
       ? "editorial-rule"
-      : publishers.size >= 2
+      : explicitIndependentVerification && publishers.size >= 2
         ? "independently-verified"
         : "source-reported";
   return {
@@ -87,7 +90,7 @@ export function patchForIssue(issue, options = {}) {
     source_selection: sourceSelection,
     claim_status_policy: {
       "source-reported": "Supported by the cited publication or repository, without independent corroboration.",
-      "independently-verified": "Supported by cited sources from at least two distinct publishers.",
+      "independently-verified": "Explicitly reviewed as independently corroborated and supported by at least two distinct publishers.",
       "needs-review": "Material uncertainty remains unresolved.",
       "editorial-rule": "A publication handling rule rather than an externally verified fact.",
     },
@@ -123,7 +126,6 @@ export function patchForIssue(issue, options = {}) {
         id: claim.id,
         statement: claim.claim,
         status: evidence.status,
-        editorial_status: claim.status,
         source_ids: sourceIdsForClaim(issue, claim),
         evidence: {
           source_count: evidence.source_count,
