@@ -1,5 +1,5 @@
 import { createServer } from "node:http";
-import { timingSafeEqual } from "node:crypto";
+import { createHash, timingSafeEqual } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
@@ -8,7 +8,7 @@ import {
   GitHubOidcError,
   verifyGitHubActionsOidc,
 } from "./github-oidc.mjs";
-import { patchForIssue } from "./patch.mjs";
+import { canonicalJson, patchForIssue } from "./patch.mjs";
 import {
   createDeliveryReceipt,
   publicReceiptKey,
@@ -158,6 +158,10 @@ async function readJson(request) {
   }
 }
 
+function patchContentHash(patch) {
+  return createHash("sha256").update(canonicalJson(patch)).digest("hex");
+}
+
 function decorateIndex(html) {
   return html
     .replace(
@@ -286,7 +290,30 @@ async function handleReceiptVerification(request, response) {
     throw new HttpError(400, "A patch and receipt are required.");
   }
   const result = verifyDeliveryReceipt(body.patch, body.receipt);
-  sendJson(response, request, 200, result);
+  const patchId = typeof body.receipt?.patch_id === "string"
+    ? body.receipt.patch_id
+    : null;
+  const issue = patchId ? await findIssue(patchId) : null;
+  const canonicalPatch = issue
+    ? patchForIssue(issue, { deliveryStatus: "delivered" })
+    : null;
+  const canonicalContentValid = Boolean(
+    canonicalPatch &&
+    typeof body.receipt?.content_sha256 === "string" &&
+    body.receipt.content_sha256 === patchContentHash(canonicalPatch),
+  );
+  const valid = result.valid && canonicalContentValid;
+  sendJson(response, request, 200, {
+    ...result,
+    valid,
+    canonical_content_valid: canonicalContentValid,
+    patch_active: result.patch_active && canonicalContentValid,
+    reason: valid
+      ? null
+      : canonicalContentValid
+        ? result.reason
+        : "The signed receipt is historical and no longer matches the current canonical patch.",
+  });
 }
 
 async function handleScout(request, response) {
