@@ -1020,7 +1020,7 @@
         },
         claim_status_policy: {
           "source-reported": "Supported by the cited publication or repository, without independent corroboration.",
-          "independently-verified": "Supported by cited sources from at least two distinct publishers.",
+          "independently-verified": "Explicitly reviewed as independently corroborated and supported by at least two distinct publishers.",
           "needs-review": "Material uncertainty remains unresolved.",
           "editorial-rule": "A publication handling rule rather than an externally verified fact."
         },
@@ -1059,7 +1059,6 @@
             id: claim.id,
             statement: claim.claim,
             status: evidence.status,
-            editorial_status: claim.status,
             source_ids: claimSourceIds(issue, claim),
             evidence: {
               source_count: evidence.sourceCount,
@@ -1192,11 +1191,14 @@
         .filter(source => sourceIds.includes(source.id));
       const publisherCount = new Set(sources.map(source => source.publisher).filter(Boolean)).size;
       const editorialStatus = String(claim.status || "").trim().toLowerCase();
+      const explicitIndependentVerification =
+        claim.evidenceStatus === "independently-verified" ||
+        claim.verification === "independent";
       const status = editorialStatus === "needs-review"
         ? "needs-review"
         : editorialStatus.includes("editorial")
           ? "editorial-rule"
-          : publisherCount >= 2
+          : explicitIndependentVerification && publisherCount >= 2
             ? "independently-verified"
             : "source-reported";
       return { status, sourceCount: sources.length, publisherCount };
@@ -1291,7 +1293,7 @@
       $("#machineView").innerHTML = `
         ${correction}
         <div class="patch-alert"><span aria-hidden="true">⚿</span><div><strong>Inspect before release.</strong><p>${issue.editor ? `${escapeHtml(issue.editor)} is origin provenance only. ` : ""}This patch supplies portable context. It does not rewrite model weights, hidden memory, or newer user instructions.</p></div></div>
-        <div class="patch-alert"><span aria-hidden="true">≍</span><div><strong>Evidence labels are literal.</strong><p>Source-reported means the cited publication says it. Independently-verified requires support from at least two publishers. Needs-review means material uncertainty remains.</p></div></div>
+        <div class="patch-alert"><span aria-hidden="true">≍</span><div><strong>Evidence labels are literal.</strong><p>Source-reported means the cited publication says it. Independently-verified requires explicit editorial review plus support from at least two publishers. Needs-review means material uncertainty remains.</p></div></div>
         <div class="source-agreement ${agreement.status === "conflict" ? "has-conflict" : ""}"><strong>${agreement.status === "conflict" ? "Source conflict needs resolution." : "Supporting sources checked for agreement."}</strong><span>${agreement.checked} supporting source packets · ${agreement.conflicts.length} material conflicts</span>${agreement.conflicts.length ? `<small>${escapeHtml(agreement.conflicts[0].reason)}</small>` : ""}</div>
         <div class="patch-overview">
           <div class="patch-stat"><span>Patch ID</span><strong>${escapeHtml(issue.id)}</strong></div>
