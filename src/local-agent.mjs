@@ -5,6 +5,7 @@ import { injectRetrievedContext, patchIsActive } from "./rag.mjs";
 import { retrieveDeltaAwareClaims } from "./claim-delta-rag.mjs";
 import { buildBudgetedContext } from "./context-budget.mjs";
 import { ollamaChat, ollamaEmbed } from "./ollama.mjs";
+import { patchForIssue } from "./patch.mjs";
 
 const DEFAULT_PUBLIC_URL = "https://velvetsignal.lol";
 
@@ -12,16 +13,21 @@ function storePath() {
   return process.env.VELVET_LOCAL_STORE ?? join(homedir(), ".velvet-signal", "patches.json");
 }
 
+function emptyStore() {
+  return { schema_version: 2, downloads: [], releases: [] };
+}
+
 async function readStore() {
   try {
     const parsed = JSON.parse(await readFile(storePath(), "utf8"));
     return {
-      schema_version: 1,
+      schema_version: 2,
+      downloads: Array.isArray(parsed.downloads) ? parsed.downloads : [],
       releases: Array.isArray(parsed.releases) ? parsed.releases : [],
     };
   } catch (error) {
     if (error && typeof error === "object" && error.code === "ENOENT") {
-      return { schema_version: 1, releases: [] };
+      return emptyStore();
     }
     throw error;
   }
@@ -35,9 +41,62 @@ async function writeStore(store) {
   await rename(temporary, path);
 }
 
+function publicUrl() {
+  return String(process.env.VELVET_PUBLIC_URL ?? DEFAULT_PUBLIC_URL).replace(/\/$/, "");
+}
+
+function patchIsCurrent(patch, now = new Date()) {
+  if (!patch || typeof patch !== "object" || Array.isArray(patch)) return false;
+  if (typeof patch.valid_until !== "string") return false;
+  const expiresAt = Date.parse(`${patch.valid_until}T23:59:59.999Z`);
+  return Number.isFinite(expiresAt) && expiresAt >= now.getTime();
+}
+
+async function downloadAllPatches() {
+  const response = await fetch(`${publicUrl()}/api/velvet/issues`, {
+    headers: { Accept: "application/json" },
+  });
+  const payload = await response.json().catch(() => null);
+  if (!response.ok || !Array.isArray(payload?.issues)) {
+    throw new Error(
+      payload?.message ?? payload?.error ?? `Download failed with HTTP ${response.status}.`,
+    );
+  }
+
+  const downloadedAt = new Date().toISOString();
+  const incoming = payload.issues.map((issue) => ({
+    patch: patchForIssue(issue, { deliveryStatus: "locked" }),
+    downloaded_at: downloadedAt,
+  }));
+  const store = await readStore();
+  const downloadsById = new Map(
+    store.downloads
+      .filter((entry) => entry?.patch?.patch_id)
+      .map((entry) => [entry.patch.patch_id, entry]),
+  );
+  for (const entry of incoming) {
+    downloadsById.set(entry.patch.patch_id, entry);
+  }
+  store.downloads = [...downloadsById.values()].sort((left, right) => {
+    const dateOrder = String(right.patch?.published_at ?? "").localeCompare(
+      String(left.patch?.published_at ?? ""),
+    );
+    if (dateOrder !== 0) return dateOrder;
+    return String(left.patch?.patch_id ?? "").localeCompare(String(right.patch?.patch_id ?? ""));
+  });
+  await writeStore(store);
+
+  return {
+    fetched: incoming.length,
+    stored: store.downloads.length,
+    current: store.downloads.filter((entry) => patchIsCurrent(entry.patch)).length,
+    expired: store.downloads.filter((entry) => !patchIsCurrent(entry.patch)).length,
+    released: store.releases.length,
+  };
+}
+
 async function releasePatch(patchId) {
-  const publicUrl = String(process.env.VELVET_PUBLIC_URL ?? DEFAULT_PUBLIC_URL).replace(/\/$/, "");
-  const response = await fetch(`${publicUrl}/api/velvet/release`, {
+  const response = await fetch(`${publicUrl()}/api/velvet/release`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ patch_id: patchId }),
@@ -84,6 +143,14 @@ async function retrieve(question, options) {
   });
 }
 
+async function commandDownloadAll() {
+  const result = await downloadAllPatches();
+  console.log(`Fetched ${result.fetched} published Velvet Signal patch(es).`);
+  console.log(`Local library: ${result.stored} total (${result.current} current, ${result.expired} expired/historical).`);
+  console.log(`Released into active model context: ${result.released}.`);
+  console.log("Downloaded patches remain locked until you explicitly run release <patch-id>.");
+}
+
 async function commandRelease(args) {
   if (!args[0]) throw new Error("Usage: npm run local -- release <patch-id>");
   const patch = await releasePatch(args[0]);
@@ -92,13 +159,33 @@ async function commandRelease(args) {
 
 async function commandList() {
   const store = await readStore();
-  if (store.releases.length === 0) {
-    console.log("No locally released Velvet Signal patches are stored yet.");
+  if (store.downloads.length === 0 && store.releases.length === 0) {
+    console.log("No local Velvet Signal patches are stored yet.");
     return;
   }
+
+  const entries = new Map();
+  for (const entry of store.downloads) {
+    if (!entry?.patch?.patch_id) continue;
+    entries.set(entry.patch.patch_id, {
+      patch: entry.patch,
+      acquisition: "downloaded",
+    });
+  }
   for (const entry of store.releases) {
-    const patch = entry.patch;
-    console.log(`${patchIsActive(patch) ? "active" : "inactive"}\t${patch.patch_id}\t${patch.title}`);
+    if (!entry?.patch?.patch_id) continue;
+    entries.set(entry.patch.patch_id, {
+      patch: entry.patch,
+      acquisition: "released",
+    });
+  }
+
+  for (const { patch, acquisition } of [...entries.values()].sort((left, right) =>
+    String(right.patch.published_at ?? "").localeCompare(String(left.patch.published_at ?? "")),
+  )) {
+    const validity = patchIsCurrent(patch) ? "current" : "expired";
+    const activation = acquisition === "released" && patchIsActive(patch) ? "active" : "inactive";
+    console.log(`${acquisition}\t${validity}\t${activation}\t${patch.patch_id}\t${patch.title}`);
   }
 }
 
@@ -145,6 +232,7 @@ async function commandAsk(args) {
 
 async function main() {
   const [command, ...args] = process.argv.slice(2);
+  if (command === "download-all") return commandDownloadAll();
   if (command === "release") return commandRelease(args);
   if (command === "list") return commandList();
   if (command === "inspect") return commandInspect(args);
@@ -152,8 +240,9 @@ async function main() {
   console.log([
     "Velvet Signal local memory bridge",
     "",
+    "  download-all                       Download every published patch without activating it",
     "  release <patch-id>                 Explicitly release and store a patch locally",
-    "  list                               List locally stored patches",
+    "  list                               List downloaded/released patches and activation state",
     "  inspect [--lexical] <question>     Show retrieved claims without calling a chat model",
     "  ask --model <name> [--context-budget <chars>] <question>",
     "                                     Retrieve compact current context and ask a local Ollama model",
