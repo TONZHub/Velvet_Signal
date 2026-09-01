@@ -83,7 +83,7 @@ test("claim status distinguishes source reporting from independent verification"
     ],
     claims: [
       { id: "E-01", claim: "One outlet reports this.", status: "verified", sourceIds: ["SRC-1"] },
-      { id: "E-02", claim: "Two publishers support this.", status: "verified", sourceIds: ["SRC-1", "SRC-2"] },
+      { id: "E-02", claim: "Two publishers support this.", status: "verified", verification: "independent", sourceIds: ["SRC-1", "SRC-2"] },
       { id: "E-03", claim: "This remains uncertain.", status: "needs-review", sourceIds: ["SRC-1", "SRC-2"] },
     ],
     toneNotes: [],
@@ -104,7 +104,13 @@ test("claim status distinguishes source reporting from independent verification"
     source_count: 2,
     publisher_count: 2,
   });
-  assert.equal(patch.claims[0].editorial_status, "verified");
+  assert.equal("editorial_status" in patch.claims[0], false);
+
+  const unreviewed = patchForIssue({
+    ...issue,
+    claims: [{ id: "E-04", claim: "Two publishers, but no explicit independent review.", status: "verified", sourceIds: ["SRC-1", "SRC-2"] }],
+  }, { deliveryStatus: "delivered" });
+  assert.equal(unreviewed.claims[0].status, "source-reported");
 });
 
 test("the corrected Hermes edition narrows the browser LLM claim and advances the version", async () => {
