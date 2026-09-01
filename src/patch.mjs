@@ -24,18 +24,30 @@ function sourceIdsForClaim(issue, claim) {
 export function patchForIssue(issue, options = {}) {
   const deliveryStatus = options.deliveryStatus ?? "locked";
   const approved = deliveryStatus === "delivered";
-  const sources = issue.sources.map((source, index) => ({
+  const scoutedSources = issue.sources.map((source, index) => ({
     id: sourceIdFor(issue, source, index),
     title: source.name,
     publisher: source.publisher,
     url: source.url,
     checked_at: source.checked,
   }));
-  const agreement = sourceAgreement(sources.map((source, index) => ({
+  const supportingSourceIds = new Set(
+    issue.claims.flatMap((claim) => sourceIdsForClaim(issue, claim)),
+  );
+  const sources = scoutedSources.filter((source) => supportingSourceIds.has(source.id));
+  const agreement = sourceAgreement(sources.map((source) => ({
     ...source,
-    excerpt: issue.claims.filter((claim) => sourceIdsForClaim(issue, claim).includes(source.id)).map((claim) => claim.claim).join(" "),
-    id: source.id,
+    excerpt: issue.claims
+      .filter((claim) => sourceIdsForClaim(issue, claim).includes(source.id))
+      .map((claim) => claim.claim)
+      .join(" "),
   })));
+  const sourceSelection = {
+    scouted_count: scoutedSources.length,
+    supporting_count: sources.length,
+    excluded_count: scoutedSources.length - sources.length,
+    policy: "Delivered patches include only sources cited by published claims; scouting candidates remain editorial input, not supporting evidence.",
+  };
   return {
     patch_id: issue.id,
     publication: "Velvet Signal",
@@ -46,6 +58,7 @@ export function patchForIssue(issue, options = {}) {
     published_at: issue.publishedAt ?? "2026-08-27",
     valid_until: issue.expires,
     scope: issue.scope,
+    source_selection: sourceSelection,
     source_agreement: agreement,
     precedence: "Newer explicit user instructions override this patch.",
     delivery: {
