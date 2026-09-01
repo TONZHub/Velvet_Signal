@@ -68,6 +68,58 @@ test("delivered patches expose only sources cited by published claims", () => {
   assert.deepEqual(patch.claims[0].source_ids, ["C-SRC-3"]);
 });
 
+test("claim status distinguishes source reporting from independent verification", () => {
+  const issue = {
+    id: "evidence-demo-001",
+    desk: "Maker Edition",
+    issue: "DEMO",
+    title: "Evidence status fixture",
+    publishedAt: "2026-09-01T00:00:00.000Z",
+    expires: "2026-09-10",
+    scope: "Testing",
+    sources: [
+      { id: "SRC-1", name: "First report", publisher: "one.test", url: "https://one.test", checked: "2026-09-01" },
+      { id: "SRC-2", name: "Independent report", publisher: "two.test", url: "https://two.test", checked: "2026-09-01" },
+    ],
+    claims: [
+      { id: "E-01", claim: "One outlet reports this.", status: "verified", sourceIds: ["SRC-1"] },
+      { id: "E-02", claim: "Two publishers support this.", status: "verified", sourceIds: ["SRC-1", "SRC-2"] },
+      { id: "E-03", claim: "This remains uncertain.", status: "needs-review", sourceIds: ["SRC-1", "SRC-2"] },
+    ],
+    toneNotes: [],
+  };
+
+  const patch = patchForIssue(issue, { deliveryStatus: "delivered" });
+
+  assert.deepEqual(patch.claims.map((claim) => claim.status), [
+    "source-reported",
+    "independently-verified",
+    "needs-review",
+  ]);
+  assert.deepEqual(patch.claims[0].evidence, {
+    source_count: 1,
+    publisher_count: 1,
+  });
+  assert.deepEqual(patch.claims[1].evidence, {
+    source_count: 2,
+    publisher_count: 2,
+  });
+  assert.equal(patch.claims[0].editorial_status, "verified");
+});
+
+test("the corrected Hermes edition narrows the browser LLM claim and advances the version", async () => {
+  const catalog = await listIssues();
+  const issue = catalog.issues.find((candidate) => candidate.id === "maker-012");
+  assert(issue);
+  assert.equal(issue.version, "1.0.1");
+  assert.match(issue.title, /snapshot summarization/i);
+  assert.match(issue.claims.find((claim) => claim.id === "M-02")?.claim ?? "", /still includes LLM-backed visual analysis/i);
+  const patch = patchForIssue(issue, { deliveryStatus: "delivered" });
+  assert.equal(patch.correction.previous_version, "1.0.0");
+  assert.match(patch.correction.summary, /browser vision still calls an LLM/i);
+  assert.equal(patch.claims.find((claim) => claim.id === "M-01")?.status, "source-reported");
+});
+
 test("patch generation preserves explicit supersession references", () => {
   const issue = {
     id: "bench-shape-002", desk: "Maker Edition", issue: "BENCH", title: "Synthetic fixture",
