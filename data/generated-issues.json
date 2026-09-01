@@ -1969,27 +1969,27 @@
       "desk": "Maker Edition",
       "icon": "⌘",
       "issue": "012",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "date": "AUG 31 · 2026",
       "publishedAt": "2026-08-31T16:17:00.021Z",
       "color": "#ff9466",
-      "title": "Hermes-agent strips the LLM out of its browser and aux pipeline — and that's the point",
+      "title": "Hermes-agent removes LLM snapshot summarization from its browser extraction path",
       "kicker": "Maker",
-      "dek": "A refactor that removes a model path from the hot loop, redacts stored files, and syncs docs to a truncate-and-store truth — worth reading as a pattern, not just a changelog.",
+      "dek": "A useful refactor removes the auxiliary model from oversized snapshot summarization and replaces it with truncate-and-store — while browser vision remains LLM-backed.",
       "readTime": "3 min read",
       "validity": "7 days",
       "expires": "2026-09-07",
-      "confidence": "High",
+      "confidence": "Mixed",
       "scope": "AI product engineering",
       "editor": "OpenRouter · GLM 5.3 Flash",
       "inputPolicy": "Scheduled Tavily source packets",
       "editorial": [
-        "The most useful change for builders this cycle isn't a new model or a new framework — it's a subtraction. Hermes-agent's latest work removes the LLM path from its browser tooling entirely, and the commit trail shows how far a deliberate removal reaches: config defaults, CLI defaults, the env bridge, gateway bridged keys, the model picker, dashboard REST slots, desktop and web task lists, and i18n labels across five languages [M-SRC-1].",
-        "Two details make this worth your attention. First, the browser tool now has no LLM path at all, and tests assert that absence — the suite fails if someone reintroduces the model call [M-SRC-1]. Second, stored files from browser runs are secret-redacted, and the aux bridge now routes through an approval slot, so the removal came bundled with a tightening of what gets persisted and what gets gated [M-SRC-1].",
-        "The docs work is the quiet tell. The web-search documentation for zh-Hans had drifted stale against the old LLM pipeline; it's now synced to the truncate-and-store truth [M-SRC-1]. When a project rewrites its docs to match a new data-flow reality rather than patching the old description, that's usually the sign the refactor is structural, not cosmetic.",
-        "If you're evaluating agent frameworks this week, the comparison set is crowded — oh-my-pi ships a multi-provider client with custom OpenAI-compatible providers defined in models.yml [M-SRC-2], QwenPaw v2.1.0 adds an OS shell and workspace checkpoints [M-SRC-3], and Microsoft Agent Framework hit 1.0 as a production-ready successor to Semantic Kernel [M-SRC-4]. But hermes-agent's change is the one that models a discipline: fewer model calls in the hot path, explicit approval gates on auxiliary work, and redaction before storage. That's a checklist you can steal regardless of which framework you run."
+        "Correction: the useful subtraction in Hermes-agent is narrower than this edition first reported. The project removed the old `_extract_relevant_content` auxiliary-LLM path for oversized browser snapshots and replaced it with truncate-and-store behavior. It did not remove every model call from browser tooling: the current Camofox browser-vision path still calls `call_llm` [M-SRC-6][M-SRC-7].",
+        "The tests support that narrower reading. They assert that `_extract_relevant_content` and `_get_extraction_model` are absent, which protects the snapshot path from quietly regaining an auxiliary summarizer. Separate browser-vision code still performs visual analysis through a model, so 'no LLM path at all' was not a defensible description [M-SRC-6][M-SRC-7].",
+        "The surrounding hardening work remains useful as a pattern: stored browser output is secret-redacted, the auxiliary bridge uses an approval slot, and the web-search documentation was brought into line with the truncate-and-store flow [M-SRC-1]. Those are source-reported details from the project packet, not independent corroboration.",
+        "The broader comparison set is still relevant context. oh-my-pi documents custom OpenAI-compatible providers [M-SRC-2], QwenPaw v2.1.0 describes an OS shell and workspace checkpoints [M-SRC-3], and Microsoft Agent Framework announced its 1.0 production release [M-SRC-4]. The lesson from Hermes is specific: remove the model where deterministic snapshot handling is enough, while keeping model-backed vision where the feature actually requires it."
       ],
-      "pullquote": "Tests assert the LLM path is gone — the suite fails if someone puts the model call back.",
+      "pullquote": "Snapshot summarization is gone; browser vision still uses a model.",
       "sources": [
         {
           "id": "M-SRC-1",
@@ -2030,55 +2030,74 @@
           "url": "https://github.com/sickn33/agentic-awesome-skills",
           "checked": "2026-08-31",
           "publishedAt": "Sun, 30 Aug 2026 16:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-6",
+          "name": "hermes-agent tools/browser_camofox.py at audited commit",
+          "publisher": "github.com",
+          "url": "https://github.com/NousResearch/hermes-agent/blob/180291162ff4df0d42b5dc4fecd08005cf7cebf9/tools/browser_camofox.py",
+          "checked": "2026-09-01",
+          "publishedAt": "Tue, 01 Sep 2026 00:00:00 GMT"
+        },
+        {
+          "id": "M-SRC-7",
+          "name": "hermes-agent snapshot summarization regression test at audited commit",
+          "publisher": "github.com",
+          "url": "https://github.com/NousResearch/hermes-agent/blob/180291162ff4df0d42b5dc4fecd08005cf7cebf9/tests/tools/test_browser_content_none_guard.py",
+          "checked": "2026-09-01",
+          "publishedAt": "Tue, 01 Sep 2026 00:00:00 GMT"
         }
       ],
       "claims": [
         {
           "id": "M-01",
-          "claim": "Hermes-agent removed the LLM path from its browser tooling (tools/browser_camofox.py), with tests asserting the LLM path is gone.",
-          "source": 0,
+          "claim": "Hermes-agent removed the auxiliary LLM snapshot-summarization path (`_extract_relevant_content`) used for oversized browser snapshots; those snapshots now use truncate-and-store behavior.",
+          "source": 6,
           "sourceIds": [
-            "M-SRC-1"
+            "M-SRC-6",
+            "M-SRC-7"
           ],
           "status": "verified",
           "confidence": "high"
         },
         {
           "id": "M-02",
-          "claim": "The hermes-agent refactor touched config_defaults, cli.py defaults, the env bridge, gateway/run.py bridged keys, hermes config display, the model picker, dashboard REST slots, desktop and web AUX_TASKS, and i18n labels (en/zh/zh-hant/ja/ar).",
-          "source": 0,
+          "claim": "Hermes-agent's browser tooling still includes LLM-backed visual analysis: `tools/browser_camofox.py` calls `call_llm` during browser vision.",
+          "source": 5,
           "sourceIds": [
-            "M-SRC-1"
+            "M-SRC-6"
           ],
           "status": "verified",
           "confidence": "high"
         },
         {
           "id": "M-03",
-          "claim": "Hermes-agent's aux bridge now uses an approval slot, and browser tests assert stored files are secret-redacted.",
-          "source": 0,
+          "claim": "Hermes-agent's regression tests assert that the old snapshot summarization helpers are absent; they do not assert that every browser model call is gone.",
+          "source": 6,
           "sourceIds": [
-            "M-SRC-1"
+            "M-SRC-6",
+            "M-SRC-7"
           ],
           "status": "verified",
           "confidence": "high"
         },
         {
           "id": "M-04",
-          "claim": "Hermes-agent's zh-Hans web-search documentation was stale against the old LLM pipeline and has been synced to the truncate-and-store truth.",
+          "claim": "The supplied Hermes-agent packet reports secret redaction for stored browser files, an approval slot for auxiliary work, and documentation synchronized to the truncate-and-store snapshot flow.",
           "source": 0,
           "sourceIds": [
             "M-SRC-1"
           ],
           "status": "verified",
-          "confidence": "high"
+          "confidence": "medium"
         },
         {
           "id": "M-05",
-          "claim": "The hermes-agent packet's excerpt is truncated mid-sentence and does not state a release version number, so the carrying release for these changes is not established from this packet.",
-          "source": 0,
+          "claim": "Version 1.0.0 of this Velvet Signal edition overstated the change as removal of the LLM path from browser tooling entirely; version 1.0.1 narrows the claim to snapshot summarization.",
+          "source": 6,
           "sourceIds": [
-            "M-SRC-1"
+            "M-SRC-6",
+            "M-SRC-7"
           ],
           "status": "verified",
           "confidence": "high"
@@ -2115,10 +2134,10 @@
         }
       ],
       "toneNotes": [
-        "Led the issue with a subtraction story rather than a launch — the desk brief asked for the most useful change, and a removal with test-enforced absence is rarer and more instructive than another 1.0.",
-        "Kept the crowded-field paragraph short so the framework launches (oh-my-pi, QwenPaw, MAF) read as context, not competition, for the lead claim.",
-        "Flagged the truncated hermes-agent excerpt explicitly in the ledger so no version or compatibility claim is implied; desk guidance forbids inventing compatibility statements.",
-        "No relationships were drawn to prior Langflow or Ollama claims — different projects, no shared scope, and shared desk alone is not a relationship."
+        "Correction issued: version 1.0.0 conflated removal of snapshot summarization with removal of all browser LLM use.",
+        "The corrected edition distinguishes deterministic truncate-and-store snapshot handling from LLM-backed browser vision.",
+        "Single-publication claims are labeled source-reported in the machine patch; independent verification requires corroboration from at least two publishers.",
+        "Framework comparison claims remain context, not corroboration for the Hermes-agent refactor."
       ],
       "tags": [
         "hermes-agent",
@@ -2127,7 +2146,10 @@
         "approval-slots",
         "oh-my-pi",
         "qwenpaw",
-        "microsoft-agent-framework"
+        "microsoft-agent-framework",
+        "correction",
+        "snapshot-summarization",
+        "browser-vision"
       ],
       "generated": true,
       "scout": {
@@ -2135,6 +2157,16 @@
         "request_id": "e0d04330-28a7-4653-b7e1-555e49b21952",
         "credits": 1,
         "search_mode": "bounded"
+      },
+      "correction": {
+        "corrected_at": "2026-09-01T20:30:00.000Z",
+        "previous_version": "1.0.0",
+        "summary": "The original edition said the LLM path was removed from browser tooling entirely. The verified change applies to oversized snapshot summarization; browser vision still calls an LLM.",
+        "receipt_effect": "Receipts for version 1.0.0 remain historical artifacts but are not active against this corrected canonical version.",
+        "source_ids": [
+          "M-SRC-6",
+          "M-SRC-7"
+        ]
       }
     },
     {
