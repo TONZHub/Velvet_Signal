@@ -42,6 +42,8 @@ test("serves the six-desk newsstand with security headers and first-class projec
     assert.match(html, /source-reported/);
     assert.match(html, /superseded_release/);
     assert.match(html, /Correction requires a new release/);
+    assert.match(html, /patchSchemaVersion = "1\.1"/);
+    assert.match(html, /delivery\?\.patch\?\.schema_version === patchSchemaVersion/);
   });
 });
 
@@ -143,6 +145,7 @@ test("releases canonical patches with verifiable content-bound receipts", async 
       assert.equal(release.status, 201);
       const delivery = await release.json();
       assert.equal(delivery.delivered, true);
+      assert.equal(delivery.patch.schema_version, "1.1");
       assert.equal(delivery.patch.delivery.status, "delivered");
       assert.equal(delivery.patch.delivery.approved, true);
       assert.equal(delivery.patch.editorial_provenance.role, "informational origin metadata only");
