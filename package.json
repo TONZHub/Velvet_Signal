@@ -8,6 +8,7 @@
     "start": "node src/server.mjs",
     "scout": "node src/scout.mjs",
     "local": "node src/local-agent.mjs",
+    "webmcp:demo": "node src/webmcp-local-demo.mjs",
     "bench": "node src/bench.mjs",
     "bench:governance": "node src/bench-governance-cli.mjs",
     "bench:save": "node src/bench-save.mjs",
@@ -15,5 +16,12 @@
   },
   "engines": {
     "node": ">=22"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/client": "^2.0.0",
+    "@modelcontextprotocol/node": "^2.0.0",
+    "@modelcontextprotocol/server": "^2.0.0",
+    "zod": "^4.5.4"
   }
 }
+

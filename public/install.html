@@ -49,9 +49,10 @@
         <a href="#clone">2 · Download Velvet Signal</a>
         <a href="#dependencies">3 · Install dependencies</a>
         <a href="#ollama">4 · Prepare Ollama</a>
-        <a href="#release">5 · Release a patch</a>
-        <a href="#inspect">6 · Inspect retrieval</a>
-        <a href="#ask">7 · Ask your model</a>
+        <a href="#webmcp-proof">5 · Run the WebMCP proof</a>
+        <a href="#release">6 · Release a patch</a>
+        <a href="#inspect">7 · Inspect retrieval</a>
+        <a href="#ask">8 · Ask your model</a>
         <a href="#update">Updating later</a>
         <a href="#troubleshooting">Windows fixes</a>
       </aside>
@@ -96,8 +97,17 @@ ollama list<button class="copy" type="button">copy</button></pre>
           <pre class="command">ollama pull dolphin3:8b<button class="copy" type="button">copy</button></pre>
         </section>
 
+        <section class="step" id="webmcp-proof">
+          <div class="step-num">Step 05</div><h2>Let a local model call the live tools.</h2>
+          <p>Velvet Signal exposes the server-side counterparts of its four browser WebMCP tools through a standard MCP Streamable HTTP endpoint at <code>https://velvetsignal.lol/mcp</code>. Use a tool-capable Ollama model to discover that endpoint and decide which tools to call.</p>
+          <pre class="command">ollama pull qwen3:4b
+npm.cmd run webmcp:demo -- --model qwen3:4b<button class="copy" type="button">copy</button></pre>
+          <p>The terminal prints each boundary crossing: the tools discovered from the site, each call selected by the local model, and the result returned to it. The default proof asks the model to list Maker Edition issues and inspect <code>maker-012</code>.</p>
+          <div class="callout success">This is an explicit WebMCP-to-MCP bridge, not a claim that Ollama can reach into Chrome. The browser and HTTP endpoint expose the same named publication tools. Browser approvals stay in browser storage; the HTTP bridge can inspect a patch but cannot approve one or mint a receipt.</div>
+        </section>
+
         <section class="step" id="release">
-          <div class="step-num">Step 05</div><h2>Release a patch into local memory.</h2>
+          <div class="step-num">Step 06</div><h2>Release a patch into local memory.</h2>
           <p>Velvet Signal does not silently write publication patches into your local ledger. You choose which patch enters it.</p>
           <pre class="command">npm.cmd run local -- release pantry-003
 npm.cmd run local -- list<button class="copy" type="button">copy</button></pre>
@@ -105,14 +115,14 @@ npm.cmd run local -- list<button class="copy" type="button">copy</button></pre>
         </section>
 
         <section class="step" id="inspect">
-          <div class="step-num">Step 06</div><h2>See what Velvet Signal remembers.</h2>
+          <div class="step-num">Step 07</div><h2>See what Velvet Signal remembers.</h2>
           <p>Inspect retrieval before asking a language model. This lets you separate a retrieval problem from a model reasoning problem.</p>
           <pre class="command">npm.cmd run local -- inspect "I cooked chicken five days ago and kept it refrigerated. It smells fine. Can I eat it?"<button class="copy" type="button">copy</button></pre>
           <p>You should see ranked claims with patch IDs, claim IDs, source IDs, validity dates, and semantic/lexical scores.</p>
         </section>
 
         <section class="step" id="ask">
-          <div class="step-num">Step 07</div><h2>Ask your local model.</h2>
+          <div class="step-num">Step 08</div><h2>Ask your local model.</h2>
           <p>Replace the model name with anything shown by <code>ollama list</code>.</p>
           <pre class="command">npm.cmd run local -- ask --model dolphin3:8b "I cooked chicken five days ago and kept it refrigerated. It smells fine. Can I eat it?"<button class="copy" type="button">copy</button></pre>
           <p>Velvet Signal retrieves a small set of active claims, keeps their provenance attached, and supplies that context to the current user turn. The local model is free to reason over it; Velvet Signal does not rewrite model weights.</p>
@@ -150,3 +160,4 @@ npm.cmd install<button class="copy" type="button">copy</button></pre>
   </script>
 </body>
 </html>
+
