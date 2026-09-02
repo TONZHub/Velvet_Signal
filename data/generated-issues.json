@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-01T19:26:59.080Z",
+  "generated_at": "2026-09-02T12:48:16.443Z",
   "desks": {
     "maker": {
       "fingerprint": "0cc8fedf33a49e7969a8b06f1cc6850a811ab979bfabf84ac8353ae840a6de08",
@@ -9,31 +9,637 @@
       "tavily_request_id": "a5af2bc6-7c97-43fa-83c4-5256eb89c86a"
     },
     "model-watch": {
-      "fingerprint": "d88e73c97c2bdf73f3975a73fbbb65b7b27667f5b06167532b007a0f817ae150",
-      "latest_patch_id": "model-watch-012",
-      "published_at": "2026-08-31T21:30:16.836Z",
-      "tavily_request_id": "3339ab38-9360-4988-b4f4-508f5e5943a5"
+      "fingerprint": "bc5f38d5ba591e3de84eed11827739117a6f54f491fb628c79d6b352f9699f28",
+      "latest_patch_id": "model-watch-013",
+      "published_at": "2026-09-02T12:46:12.480Z",
+      "tavily_request_id": "2d48180e-1ad7-4738-b3b2-3e3504fe3beb"
     },
     "culture": {
-      "fingerprint": "233713accb100b0ce51cd6a5302f40d3384dcd3dd55d8f8cbce256ab1738b2f4",
-      "latest_patch_id": "culture-008",
-      "published_at": "2026-09-01T19:26:59.080Z",
-      "tavily_request_id": "d28b87e6-2217-495f-b128-19028359a75a"
+      "fingerprint": "e3813bcaac91a60615e42946ec66ad9f4cbf1e63eb4c4e460039e25198df9447",
+      "latest_patch_id": "culture-009",
+      "published_at": "2026-09-02T12:48:16.443Z",
+      "tavily_request_id": "02bbbaff-be07-4019-ba9a-6d45f4f2a326"
     },
     "pantry": {
-      "fingerprint": "89efa219b016040b5f4b328a5c45a688c166630fe128d9c9a1a349221796337e",
-      "latest_patch_id": "pantry-007",
-      "published_at": "2026-09-01T19:25:07.877Z",
-      "tavily_request_id": "f91bdd4e-9f3d-4141-8127-c9d30800c721"
+      "fingerprint": "b4f9cb66ab72c70b86d406cbc340c226211f833d648680a78ac560b9294035ea",
+      "latest_patch_id": "pantry-008",
+      "published_at": "2026-09-02T12:47:20.685Z",
+      "tavily_request_id": "600af302-a755-4978-8499-14dba96b18fc"
     },
     "wellbeing": {
-      "fingerprint": "d3892ced7faac97cd32c8c901c501c89b4c36f8e2bd8938d37a149d3c9c86d13",
-      "latest_patch_id": "wellbeing-013",
-      "published_at": "2026-09-01T13:38:40.884Z",
-      "tavily_request_id": "11295e9e-afd9-42ce-842e-a0e5d2b0e77d"
+      "fingerprint": "b287beb1dbbb25fd6b38ac37abf08d43b2ad3674d5811e0f04504c95f542992f",
+      "latest_patch_id": "wellbeing-014",
+      "published_at": "2026-09-02T12:47:51.345Z",
+      "tavily_request_id": "cfdb1fd1-88c7-4f20-807e-c013a5fda614"
     }
   },
   "issues": [
+    {
+      "id": "culture-009",
+      "deskId": "culture",
+      "desk": "Culture Desk",
+      "icon": "✺",
+      "issue": "009",
+      "version": "1.0.0",
+      "date": "SEP 02 · 2026",
+      "publishedAt": "2026-09-02T12:48:16.443Z",
+      "color": "#67d6c0",
+      "title": "Oreogate, Still Unresolved: The Oreo Fight That Might Be an Ad",
+      "kicker": "culture",
+      "dek": "A viral parent-group-chat drama became a participation meme within days. Whether it was ever real is still an open question — and that uncertainty is part of the story.",
+      "readTime": "3 min read",
+      "validity": "14 days",
+      "expires": "2026-09-16",
+      "confidence": "Mixed",
+      "scope": "Culture signals",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Oreogate began, as far as anyone can trace it, as a series of Instagram posts from user @ashleighjamz about a fight in a kindergarten group chat: the mother of a child named \"Ava\" asked other parents not to send Oreos in their lunches, because Ava isn't allowed to have them [C-SRC-5]. The premise hit a nerve. Business Insider described it as relatable to anyone who has been in a parent WhatsApp chat — one person says something ridiculous, and everyone else has to calibrate a response between politeness and directness [C-SRC-5].",
+        "The spread was participatory rather than passive. Dozens of mothers posted videos of themselves shopping for Oreos or packing them into lunches \"in honor of Ava\" [C-SRC-5]. That's the observed use here: Oreogate worked as a template people could perform, not just a story they consumed. The series went viral and drew coverage from the New York Post, AdAge, and other outlets [C-SRC-5].",
+        "But Business Insider flagged a complication: \"something about Oreogate seems fishy,\" and the outlet's headline asks whether the whole thing was a fake ad for an AI company, with Suno named in that headline [C-SRC-5]. The supplied material does not establish that any company was actually involved — the suspicion is the reporter's framing, not a confirmed fact. So the honest read is: Oreogate is a viral phenomenon with an unresolved authenticity question. It may be organic drama, staged content, or marketing; the packets don't say.",
+        "Two cautions before you forward this to the group chat. First, none of this describes what Oreogate \"really means\" — it describes how it spread and how coverage framed it. Second, none of it says anything about you or your lunch-packing habits. Viral formats move fast, and this one's provenance is genuinely uncertain, so treat the whole entry as a snapshot due for a re-check within two weeks."
+      ],
+      "pullquote": "\"Something about Oreogate seems fishy.\" — Business Insider, on the viral series it was covering [C-SRC-5]",
+      "sources": [
+        {
+          "id": "C-SRC-1",
+          "name": "Crypto Price Today - Bitcoin Pulls Back Near $79K While Apeing Locks In September 8 for Its Upcoming Crypto Presale - markets.businessinsider.com",
+          "publisher": "markets.businessinsider.com",
+          "url": "https://markets.businessinsider.com/news/stocks/crypto-price-today---bitcoin-pulls-back-near-79k-while-apeing-locks-in-september-8-for-its-upcoming-crypto-presale-1036514343",
+          "checked": "2026-09-02",
+          "publishedAt": "Wed, 02 Sep 2026 07:34:39 GMT"
+        },
+        {
+          "id": "C-SRC-2",
+          "name": "‘Derogatory’ fliers targeting Armenian community found near Glendale elementary school - Los Angeles Times",
+          "publisher": "latimes.com",
+          "url": "https://www.latimes.com/california/story/2026-08-29/derogatory-flyers-targeting-armenian-community-found-near-glendale-elementary-school",
+          "checked": "2026-09-02",
+          "publishedAt": "Sat, 29 Aug 2026 19:03:38 GMT"
+        },
+        {
+          "id": "C-SRC-3",
+          "name": "Michael Jordan’s Lost Ferrari Has Appeared, And It’s Headed To Auction - Motor1.com",
+          "publisher": "motor1.com",
+          "url": "https://www.motor1.com/news/806827/michael-jordan-lost-ferrari-heads/",
+          "checked": "2026-09-02",
+          "publishedAt": "Wed, 02 Sep 2026 07:14:00 GMT"
+        },
+        {
+          "id": "C-SRC-4",
+          "name": "Champions League format 2026-27, explained: How league phase and knockout bracket works - sportingnews.com",
+          "publisher": "sportingnews.com",
+          "url": "https://www.sportingnews.com/in/football/news/champions-league-format-2026-27/91d28c9af2533660b7cf5150",
+          "checked": "2026-09-02",
+          "publishedAt": "Thu, 27 Aug 2026 06:00:01 GMT"
+        },
+        {
+          "id": "C-SRC-5",
+          "name": "\"Oreogate\" on Instagram went viral. But was it all a fake ad for an AI company? - Business Insider",
+          "publisher": "businessinsider.com",
+          "url": "https://www.businessinsider.com/oreogate-mom-drama-suno-ad-fake-2026-8",
+          "checked": "2026-09-02",
+          "publishedAt": "Fri, 28 Aug 2026 17:33:12 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "C-01",
+          "claim": "\"Oreogate\" is a series of viral Instagram posts from user @ashleighjamz about a fight over kindergarteners bringing Oreos for lunch in a classroom group chat.",
+          "source": 4,
+          "sourceIds": [
+            "C-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "culture-006:C-01",
+              "reason": "The same Business Insider article independently supports the description of the series and its premise."
+            }
+          ]
+        },
+        {
+          "id": "C-02",
+          "claim": "In the Oreogate series, the mother of \"Ava\" asks the other parents in the group chat not to send Oreos in their lunches because Ava isn't allowed to have Oreos.",
+          "source": 4,
+          "sourceIds": [
+            "C-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "culture-006:C-02",
+              "reason": "The same source packet restates the Ava/Oreo premise verbatim."
+            }
+          ]
+        },
+        {
+          "id": "C-03",
+          "claim": "The Oreogate series went viral and received coverage in the New York Post, AdAge, and other news outlets.",
+          "source": 4,
+          "sourceIds": [
+            "C-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "culture-006:C-03",
+              "reason": "The same source packet independently supports the virality and outlet list."
+            }
+          ]
+        },
+        {
+          "id": "C-04",
+          "claim": "Dozens of mothers posted videos of themselves shopping for Oreos or packing them in lunches \"in honor of Ava\" as part of the Oreogate spread.",
+          "source": 4,
+          "sourceIds": [
+            "C-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "culture-006:C-04",
+              "reason": "The same source packet independently supports the participatory response."
+            }
+          ]
+        },
+        {
+          "id": "C-05",
+          "claim": "Business Insider described Oreogate as relatable to anyone who has been in a parent WhatsApp chat, where one person says something ridiculous and others must react with varying politeness or directness.",
+          "source": 4,
+          "sourceIds": [
+            "C-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "culture-006:C-05",
+              "reason": "The same source packet independently supports the outlet's framing."
+            }
+          ]
+        },
+        {
+          "id": "C-06",
+          "claim": "Business Insider questioned whether Oreogate was a fake ad for an AI company, stating that \"something about Oreogate seems fishy\"; the headline references Suno, but the supplied excerpt does not independently establish any company's involvement.",
+          "source": 4,
+          "sourceIds": [
+            "C-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "culture-006:C-06",
+              "reason": "The same source packet independently supports both the skepticism and the limits of what the excerpt establishes about Suno."
+            }
+          ]
+        },
+        {
+          "id": "C-07",
+          "claim": "Whether Oreogate is organic viral content, staged drama, or marketing is not established by the supplied packets; the authenticity question raised by Business Insider remains open.",
+          "source": 4,
+          "sourceIds": [
+            "C-SRC-5"
+          ],
+          "status": "needs-review",
+          "confidence": "medium",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "culture-006:C-07",
+              "reason": "The same source packet leaves the authenticity question equally unresolved, independently confirming that no packet settles it."
+            }
+          ]
+        },
+        {
+          "id": "C-08",
+          "claim": "This entry describes observed usage and spread of Oreogate as of the source publication date of 28 August 2026; it makes no claim about any individual reader's identity or about a universal meaning of the phenomenon, and viral cultural signals shift quickly, so it should be re-checked within 7–14 days.",
+          "source": 4,
+          "sourceIds": [
+            "C-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "culture-006:C-08",
+              "reason": "The same source packet supports the same scope and validity boundaries for this re-examination of the topic."
+            }
+          ]
+        }
+      ],
+      "toneNotes": [
+        "Observed usage only: the entry describes how Oreogate spread and how coverage framed it, never what it universally means.",
+        "No user identity claims: participation in or awareness of Oreogate is not attributed to any reader.",
+        "Ambiguity preserved: the authenticity question (organic vs. staged vs. marketing) is presented as open, with the Suno reference limited to the headline.",
+        "Validity window: 7–14 days from the 28 August 2026 source date; re-check recommended by mid-September 2026."
+      ],
+      "tags": [
+        "oreogate",
+        "viral",
+        "instagram",
+        "parenting",
+        "authenticity",
+        "ai-marketing"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "02bbbaff-be07-4019-ba9a-6d45f4f2a326",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "wellbeing-014",
+      "deskId": "wellbeing",
+      "desk": "Wellbeing",
+      "icon": "☾",
+      "issue": "014",
+      "version": "1.0.0",
+      "date": "SEP 02 · 2026",
+      "publishedAt": "2026-09-02T12:47:51.345Z",
+      "color": "#a993ff",
+      "title": "wellbeing-014",
+      "kicker": "wellbeing",
+      "dek": "A proposed edition on insomnia — what it is, how short-term differs from chronic, and why the distinction matters — drafted from NHLBI public guidance. No diagnosis, no moralizing, no individualized medical advice.",
+      "readTime": "3 min read",
+      "validity": "180 days",
+      "expires": "2027-03-01",
+      "confidence": "Mixed",
+      "scope": "General wellbeing",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Most of us have had a rough night or two. Insomnia, as the National Heart, Lung, and Blood Institute describes it, is something more specific: a common sleep disorder where you may have trouble falling asleep, staying asleep, or getting good-quality sleep — even when you have the time and the right environment to sleep well (W-SRC-1). It can spill into the day, too, leaving you sleepy or interfering with daily activities (W-SRC-1).",
+        "One useful distinction from NHLBI: not all insomnia is the same. Short-term insomnia may be caused by stress or changes in your schedule or environment, and it can last a few days or weeks (W-SRC-1). Chronic insomnia is a different animal — it occurs three or more nights a week, lasts more than three months, and cannot be fully explained by another health problem (W-SRC-1). Where your sleep trouble falls on that spectrum changes what kind of support makes sense, which is exactly why the timeline matters.",
+        "The stakes are real but worth stating plainly rather than alarmingly. NHLBI notes that insomnia can affect memory and concentration, and that chronic insomnia raises the risk of high blood pressure, coronary heart disease, diabetes, and cancer (W-SRC-1). What the summary does not spell out is how large those risks are or how they vary between people — that is a gap we have flagged for review rather than papered over.",
+        "If sleep trouble is persistent, NHLBI's guidance points toward a healthcare provider rather than self-diagnosis. A provider may ask about your sleep habits, ask you to keep a sleep diary, and may recommend healthy lifestyle habits such as a regular sleep schedule, cognitive behavioral therapy for insomnia, and medicines to help manage it (W-SRC-1). Individual variation is the whole point here: what disrupts one person's sleep may not disrupt another's, and the right approach depends on the pattern, not the person.",
+        "For readers who want the broader picture, NHLBI's booklet 'Your Guide to Healthy Sleep' offers science-based information about sleep along with an overview of certain sleep disorders (W-SRC-1) — a resource we have covered before, and one this new material independently corroborates."
+      ],
+      "pullquote": "Where your sleep trouble falls on the short-term-to-chronic spectrum changes what kind of support makes sense.",
+      "sources": [
+        {
+          "id": "W-SRC-1",
+          "name": "Insomnia - What Is Insomnia? | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/health/insomnia",
+          "checked": "2026-09-02"
+        },
+        {
+          "id": "W-SRC-2",
+          "name": "Reputable Health: Home",
+          "publisher": "reputable.health",
+          "url": "https://reputable.health/",
+          "checked": "2026-09-02"
+        },
+        {
+          "id": "W-SRC-3",
+          "name": "Atherosclerosis - What Is Atherosclerosis? | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/health/atherosclerosis",
+          "checked": "2026-09-02"
+        },
+        {
+          "id": "W-SRC-4",
+          "name": "Search Publications | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/resources",
+          "checked": "2026-09-02"
+        },
+        {
+          "id": "W-SRC-5",
+          "name": "Official Languages",
+          "publisher": "un.org",
+          "url": "https://www.un.org/en/our-work/official-languages",
+          "checked": "2026-09-02"
+        }
+      ],
+      "claims": [
+        {
+          "id": "W-01",
+          "claim": "Insomnia is a common sleep disorder in which a person may have trouble falling asleep, staying asleep, or getting good-quality sleep even with the time and environment to sleep well; it can interfere with daily activities and cause daytime sleepiness.",
+          "source": 0,
+          "sourceIds": [
+            "W-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-02",
+          "claim": "Short-term insomnia may be caused by stress or changes in schedule or environment, and can last a few days or weeks.",
+          "source": 0,
+          "sourceIds": [
+            "W-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-03",
+          "claim": "Chronic (long-term) insomnia occurs 3 or more nights a week, lasts more than 3 months, and cannot be fully explained by another health problem.",
+          "source": 0,
+          "sourceIds": [
+            "W-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-04",
+          "claim": "Insomnia can affect memory and concentration, and chronic insomnia raises the risk of high blood pressure, coronary heart disease, diabetes, and cancer.",
+          "source": 0,
+          "sourceIds": [
+            "W-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-05",
+          "claim": "The magnitude of the raised health risks associated with chronic insomnia, and how those risks vary across individuals or populations, is not specified in the supplied excerpt and requires review of fuller NHLBI material before being treated as settled.",
+          "source": 0,
+          "sourceIds": [
+            "W-SRC-1"
+          ],
+          "status": "needs-review",
+          "confidence": "low"
+        },
+        {
+          "id": "W-06",
+          "claim": "To evaluate possible insomnia, a healthcare provider may ask about sleep habits and request a sleep diary, and may recommend healthy lifestyle habits such as a regular sleep schedule, cognitive behavioral therapy for insomnia, and medicines to help manage insomnia.",
+          "source": 0,
+          "sourceIds": [
+            "W-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-07",
+          "claim": "NHLBI's booklet 'Your Guide to Healthy Sleep' provides science-based information about sleep and an overview of certain sleep disorders.",
+          "source": 0,
+          "sourceIds": [
+            "W-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-010:W-02",
+              "reason": "This edition's NHLBI insomnia page independently corroborates the booklet's science-based sleep content, previously sourced in edition 010."
+            },
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-010:W-03",
+              "reason": "The new packet independently corroborates that the booklet includes an overview of certain sleep disorders."
+            }
+          ]
+        }
+      ],
+      "toneNotes": [
+        "W-SRC-2 (Reputable Health) was excluded: it is a commercial vendor page about building datasets for category claims, not an authoritative public-health source, and it supports no factual claim in this edition.",
+        "W-SRC-3 (NHLBI atherosclerosis page) was excluded: it concerns a different condition and no packet evidence links it to the insomnia claims in this edition; connecting them would require unstated background knowledge.",
+        "W-SRC-4 (NHLBI publications index) was excluded: it is a catalog page and supports no specific claim for this brief.",
+        "W-SRC-5 (UN official languages) was excluded as unrelated to the wellbeing desk.",
+        "Prior claims about screen light, napping, sleep duration, and sleep deficiency (editions 009, 011, 012, 013) were treated as relationship targets only. No relationship was asserted where the new packets do not independently establish one; the single confirms relationship reflects independent corroboration of the booklet claims from edition 010."
+      ],
+      "tags": [
+        "sleep",
+        "insomnia",
+        "NHLBI",
+        "public-health-guidance"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "cfdb1fd1-88c7-4f20-807e-c013a5fda614",
+        "credits": 2,
+        "search_mode": "timeless-official-fallback"
+      }
+    },
+    {
+      "id": "pantry-008",
+      "deskId": "pantry",
+      "desk": "The Pantry",
+      "icon": "◒",
+      "issue": "008",
+      "version": "1.0.0",
+      "date": "SEP 02 · 2026",
+      "publishedAt": "2026-09-02T12:47:20.685Z",
+      "color": "#f1cf69",
+      "title": "Velvet Signal — Pantry Desk, Proposed Edition",
+      "kicker": "pantry-008",
+      "dek": "A quiet cycle: no authoritative food-safety update arrived, so no new safety rules are issued. One practical kitchen fact made it through the noise.",
+      "readTime": "3 min read",
+      "validity": "180 days",
+      "expires": "2027-03-01",
+      "confidence": "High",
+      "scope": "Food safety",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "The pantry desk scanned this cycle's packets and found recipes, a folder-organizing app, a television series, and a restaurant video — nothing that qualifies as authoritative food-safety guidance. When no authoritative source speaks, we don't invent rules. No new storage windows, temperature thresholds, or handling guidance are issued in this edition.",
+        "What the packets do support is modest and useful. NYT Cooking's Thanksgiving leftovers pockets combine leftover turkey, stuffing, sweet potatoes, cranberry sauce, and gravy in pizza dough, and — the genuinely handy part — the cooked pockets can be refrigerated and reheated in a toaster oven, about 7 minutes at 425°F [P-SRC-1]. Serious Eats offers a lower-lift idea in the same spirit: leftover turkey and shredded Brussels sprouts in a quesadilla, with pickled jalapeños for acidity [P-SRC-3].",
+        "One standing note, unchanged by this cycle: a recipe telling you how to reheat a dish is not a statement that any particular dish is safe to reheat. Whether last Thursday's turkey is still in bounds depends on its time, temperature, and storage history — and none of this cycle's packets speak to that. If that history is unknown, the desk's position is the one it has always held: don't guess, and don't taste-test to find out.",
+        "The safety ledger carries forward exactly as previously published. Nothing in this cycle confirms, narrows, replaces, or conflicts with it."
+      ],
+      "pullquote": "A reheating instruction is not a safety clearance.",
+      "sources": [
+        {
+          "id": "P-SRC-1",
+          "name": "Thanksgiving Leftovers Hot Pockets Recipe",
+          "publisher": "cooking.nytimes.com",
+          "url": "https://cooking.nytimes.com/recipes/1024863-thanksgiving-leftovers-hot-pockets",
+          "checked": "2026-09-02"
+        },
+        {
+          "id": "P-SRC-2",
+          "name": "Leftovers - Folder Organizer - App Store - Apple",
+          "publisher": "apps.apple.com",
+          "url": "https://apps.apple.com/us/app/leftovers-folder-organizer/id6746164364?mt=12",
+          "checked": "2026-09-02"
+        },
+        {
+          "id": "P-SRC-3",
+          "name": "23 Delicious Thanksgiving Leftovers Recipes",
+          "publisher": "seriouseats.com",
+          "url": "https://www.seriouseats.com/thanksgiving-leftovers",
+          "checked": "2026-09-02"
+        },
+        {
+          "id": "P-SRC-4",
+          "name": "The Leftovers (TV series) - Wikipedia",
+          "publisher": "en.wikipedia.org",
+          "url": "https://en.wikipedia.org/wiki/The_Leftovers_(TV_series)",
+          "checked": "2026-09-02"
+        },
+        {
+          "id": "P-SRC-5",
+          "name": "Leftovers & Travel: where we going next ‍♂️ | Cathy's Kitchen ...",
+          "publisher": "facebook.com",
+          "url": "https://www.facebook.com/CathysKitchenrestaurant/videos/leftovers-travel-where-we-going-next-%EF%B8%8F/2146591389267933",
+          "checked": "2026-09-02"
+        }
+      ],
+      "claims": [
+        {
+          "id": "P-01",
+          "claim": "Cooked Thanksgiving leftovers pockets (turkey, stuffing, sweet potatoes, cranberry sauce, and gravy baked in pizza dough) can be refrigerated and reheated in a toaster oven, about 7 minutes at 425°F.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-02",
+          "claim": "Leftover roast turkey pairs with shredded Brussels sprouts and pickled jalapeños in a quesadilla as a day-after-Thanksgiving preparation.",
+          "source": 2,
+          "sourceIds": [
+            "P-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-03",
+          "claim": "No packet in this cycle constitutes authoritative food-safety guidance; no new storage, temperature, or handling rules are issued, and the existing safety ledger is unchanged.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1",
+            "P-SRC-2",
+            "P-SRC-3",
+            "P-SRC-4",
+            "P-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Non-alarmist: the absence of a safety update is stated plainly, not dramatized.",
+        "The desk declines to infer safety for any specific food, per brief.",
+        "Recipe facts are cited to their packets; safety claims are deliberately absent rather than approximated."
+      ],
+      "tags": [
+        "pantry",
+        "leftovers",
+        "food-safety",
+        "no-update"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "600af302-a755-4978-8499-14dba96b18fc",
+        "credits": 2,
+        "search_mode": "timeless-official-fallback"
+      }
+    },
+    {
+      "id": "model-watch-013",
+      "deskId": "model-watch",
+      "desk": "Model Watch",
+      "icon": "⌁",
+      "issue": "013",
+      "version": "1.0.0",
+      "date": "SEP 02 · 2026",
+      "publishedAt": "2026-09-02T12:46:12.480Z",
+      "color": "#ff719f",
+      "title": "Velvet Signal — Model Watch, Edition 013 (Proposed)",
+      "kicker": "A quiet cycle for model changes — and why we're not forcing one",
+      "dek": "The only packet on the desk this cycle is an OpenAI customer story, not release notes. Here's what it can and cannot support.",
+      "readTime": "3 min read",
+      "validity": "30 days",
+      "expires": "2026-10-02",
+      "confidence": "Mixed",
+      "scope": "AI models and agent interfaces",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "The brief asks for the most consequential model or agent-interface change, and the honest answer this cycle is: the packets don't contain one. The sole source is an OpenAI customer story about law firm Gilbert + Tobin — a governance and adoption narrative, not a model release, deprecation, or platform change. Per desk guidance, we explain changes from primary release notes and official documentation, so we are not manufacturing a model-change story from marketing material.",
+        "What the story does support, within its own boundaries: Gilbert + Tobin reports active usage among enabled ChatGPT users at more than twice the adoption rate the firm typically sees for other tools, and attributes its AI embedding to CEO-led commitment, rigorous governance, and human accountability. The excerpt is fragmentary — it does not state the underlying usage percentage, the products in the deployment beyond ChatGPT and ChatGPT Business references, or any dates beyond publication — so we carry these points as needs-review rather than settled facts.",
+        "No claim in this edition replaces, narrows, confirms, or conflicts with any prior Model Watch claim. The GLM-5.3-Flash documentation, Anthropic's Model Hardware Standard preview, and the Codex GPT-5.4 / GPT-5.4 mini retirement all stand as previously reported; nothing in a customer story about a law firm's deployment bears on any of them.",
+        "If you build or deploy agents, the actionable takeaway is procedural, not technical: when a cycle produces only secondary material, the correct output is a thin edition with visible uncertainty — not a padded claim ledger."
+      ],
+      "pullquote": "When the packets hold no release notes, the ledger holds no model changes.",
+      "sources": [
+        {
+          "id": "MW-SRC-1",
+          "name": "How law firm Gilbert + Tobin governs and scales AI with OpenAI - OpenAI",
+          "publisher": "openai.com",
+          "url": "https://openai.com/index/gilbert-tobin",
+          "checked": "2026-09-02",
+          "publishedAt": "Wed, 02 Sep 2026 01:34:21 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "MW-01",
+          "claim": "No primary vendor release notes or official model or agent-interface documentation were supplied in this cycle's packets; the only source is an OpenAI customer story, so no new model or platform change is established by the current sources.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "needs-review",
+          "confidence": "high"
+        },
+        {
+          "id": "MW-02",
+          "claim": "Per OpenAI's customer story, Gilbert + Tobin reports active usage among enabled ChatGPT users at more than twice the adoption rate the firm typically sees for other tools; the supplied excerpt does not state the underlying usage figure or measurement window.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        },
+        {
+          "id": "MW-03",
+          "claim": "The OpenAI customer story attributes Gilbert + Tobin's embedding of AI into firm operations to CEO-led commitment, rigorous governance, and human accountability; the excerpt references ChatGPT and ChatGPT Business but does not specify the full product deployment, timeline, or availability boundaries.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        }
+      ],
+      "toneNotes": [
+        "Keep the 'no change established' framing factual, not apologetic — it is the desk doing its job.",
+        "Do not imply the Gilbert + Tobin story signals any model, pricing, or availability change; it supports none.",
+        "All three claims carry empty relationships deliberately: a customer story neither replaces nor confirms prior release-note claims."
+      ],
+      "tags": [
+        "model-watch",
+        "no-change-cycle",
+        "customer-story",
+        "needs-review"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "2d48180e-1ad7-4738-b3b2-3e3504fe3beb",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
     {
       "id": "culture-008",
       "deskId": "culture",
@@ -7013,162 +7619,6 @@
         "request_id": "0298a2fc-8007-45cd-b0d4-245a0ec30d7e",
         "credits": 1,
         "search_mode": "bounded"
-      }
-    },
-    {
-      "id": "wellbeing-002",
-      "deskId": "wellbeing",
-      "desk": "Wellbeing",
-      "icon": "☾",
-      "issue": "002",
-      "version": "1.0.0",
-      "date": "AUG 27 · 2026",
-      "publishedAt": "2026-08-27T13:50:19.953Z",
-      "color": "#a993ff",
-      "title": "The Sleep Reset: Small Habits, Honest Variance",
-      "kicker": "Wellbeing",
-      "dek": "A federal sleep guide offers practical, non-judgmental steps for better rest — and a reminder that what 'enough' means varies from person to person.",
-      "readTime": "3 min read",
-      "validity": "120 days",
-      "expires": "2026-12-25",
-      "confidence": "Mixed",
-      "scope": "General wellbeing",
-      "editor": "OpenRouter · GLM 5.3 Flash",
-      "inputPolicy": "Scheduled Tavily source packets",
-      "editorial": [
-        "Sleep is often the first thing busy people squeeze out of their schedules, according to the National Heart, Lung, and Blood Institute (NHLBI). Their guidance reframes the trade: making time to sleep may help protect your health and well-being now and in the future, and with enough sleep each night you may find you're happier and more productive during the day. [W-SRC-2]",
-        "The mechanics matter here. NHLBI explains that internal body clocks running on roughly 24-hour cycles — regulated by light, darkness, and sleep schedules — govern when you're awake and when your body is ready for sleep. Once asleep, you cycle through sleep stages in a predictable pattern. [W-SRC-5]",
-        "One concrete, evidence-backed habit: power down devices. Artificial light from screens — phones, laptops, televisions — can signal the brain that it's time to be awake, and NHLBI-funded research has linked smartphone use before bed with shorter sleep duration and worse sleep quality. Experts cited by NHLBI suggest powering down at least 30 minutes before getting into bed. [W-SRC-3]",
-        "Naps get a nuanced treatment rather than a blanket rule. NHLBI notes that daytime napping may boost alertness and performance, but if you have trouble falling asleep at night, it may help to limit naps or take them earlier in the afternoon — and adults should nap for no more than 20 minutes. [W-SRC-2]",
-        "The honest caveat: individual sleep needs vary. NHLBI itself distinguishes between the sleep needed to feel awake and the sleep needed to be healthy. [W-SRC-4] This edition offers general guidance from a public-health source, not a diagnosis or a substitute for professional care — if you suspect a sleep disorder such as insomnia or sleep apnea, NHLBI's resources cover these conditions and point toward professional evaluation. [W-SRC-1]"
-      ],
-      "pullquote": "Sleep is often the first thing that busy people squeeze out of their schedules. [W-SRC-2]",
-      "sources": [
-        {
-          "id": "W-SRC-1",
-          "name": "Your Guide to Healthy Sleep | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/resources/your-guide-healthy-sleep",
-          "checked": "2026-08-27"
-        },
-        {
-          "id": "W-SRC-2",
-          "name": "Sleep Deprivation and Deficiency - Healthy Sleep Habits | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits",
-          "checked": "2026-08-27"
-        },
-        {
-          "id": "W-SRC-3",
-          "name": "Sweet dreams: Researchers explore link between sleep and health | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/news/2018/sweet-dreams-researchers-explore-link-between-sleep-and-health",
-          "checked": "2026-08-27"
-        },
-        {
-          "id": "W-SRC-4",
-          "name": "Sleep Brochure | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/resources/sleep-brochure",
-          "checked": "2026-08-27"
-        },
-        {
-          "id": "W-SRC-5",
-          "name": "How Sleep Works - How Sleep Works | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/health/sleep",
-          "checked": "2026-08-27"
-        }
-      ],
-      "claims": [
-        {
-          "id": "W-01",
-          "claim": "Sleep is often the first thing busy people squeeze out of their schedules, and making time to sleep may help protect health and well-being.",
-          "source": 1,
-          "sourceIds": [
-            "W-SRC-2"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "W-02",
-          "claim": "Internal body clocks with roughly 24-hour cycles, regulated by light, darkness, and sleep schedules, control wakefulness and sleep readiness; sleep proceeds in predictable stage cycles.",
-          "source": 4,
-          "sourceIds": [
-            "W-SRC-5"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "W-03",
-          "claim": "Artificial light from screens can signal the brain that it's time to be awake, and smartphone use before bed is associated with shorter sleep duration and worse sleep quality.",
-          "source": 2,
-          "sourceIds": [
-            "W-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "W-04",
-          "claim": "Experts suggest powering down devices at least 30 minutes before bed to enhance sleep quality.",
-          "source": 2,
-          "sourceIds": [
-            "W-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "W-05",
-          "claim": "Daytime napping may boost alertness and performance; adults should nap no more than 20 minutes, and those with trouble falling asleep at night may limit naps or nap earlier in the afternoon.",
-          "source": 1,
-          "sourceIds": [
-            "W-SRC-2"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "W-06",
-          "claim": "Individual sleep needs vary; the sleep needed to feel awake can differ from the sleep needed to be healthy.",
-          "source": 3,
-          "sourceIds": [
-            "W-SRC-4"
-          ],
-          "status": "needs-review",
-          "confidence": "medium"
-        },
-        {
-          "id": "W-07",
-          "claim": "Readers who suspect a sleep disorder such as insomnia or sleep apnea should seek professional evaluation; NHLBI resources provide overviews of these conditions.",
-          "source": 0,
-          "sourceIds": [
-            "W-SRC-1"
-          ],
-          "status": "needs-review",
-          "confidence": "medium"
-        }
-      ],
-      "toneNotes": [
-        "No diagnosis, moralizing, or individualized medical advice.",
-        "Individual variation kept visible via the awake-vs-healthy sleep distinction.",
-        "General guidance sourced to NHLBI public-health materials only."
-      ],
-      "tags": [
-        "wellbeing",
-        "sleep",
-        "sleep-hygiene",
-        "public-health"
-      ],
-      "generated": true,
-      "scout": {
-        "provider": "tavily",
-        "request_id": "49743f7a-436e-44c5-b81f-48b907fc2163",
-        "credits": 2,
-        "search_mode": "timeless-official-fallback"
       }
     },
     {
