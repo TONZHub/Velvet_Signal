@@ -64,11 +64,17 @@ export async function ollamaChat(messages, options = {}) {
       options: {
         num_ctx: chatContext(options.numCtx),
       },
+      ...(Array.isArray(options.tools) ? { tools: options.tools } : {}),
       ...(options.think === undefined ? {} : { think: options.think }),
     },
     options,
   );
-  const content = payload?.message?.content;
-  if (typeof content !== "string") throw new Error("Ollama returned no assistant message.");
-  return { content, raw: payload };
+  const message = payload?.message;
+  const content = message?.content;
+  const hasToolCalls = Array.isArray(message?.tool_calls);
+  if (typeof content !== "string" && !hasToolCalls) {
+    throw new Error("Ollama returned no assistant message.");
+  }
+  return { content: typeof content === "string" ? content : "", message, raw: payload };
 }
+

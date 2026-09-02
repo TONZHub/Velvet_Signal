@@ -67,6 +67,9 @@ test("serves the laptop installation guide as a first-class page", async () => {
     assert.match(html, /<title>Install Velvet Signal<\/title>/);
     assert.match(html, /Install Velvet Signal\s*<em>locally\.<\/em>/);
     assert.match(html, /ollama pull embeddinggemma/);
+    assert.match(html, /npm\.cmd run webmcp:demo -- --model qwen3:4b/);
+    assert.match(html, /https:\/\/velvetsignal\.lol\/mcp/);
+    assert.match(html, /cannot approve one or mint a receipt/);
     assert.match(html, /npm\.cmd run local -- release pantry-003/);
     assert.match(html, /Windows troubleshooting/);
   });
@@ -113,6 +116,9 @@ test("reports the pinned editor model without exposing secrets", async () => {
     assert.equal(status.scout_provider_keys, "render-only");
     assert.equal("deployment_commit" in status, true);
     assert.equal("api_key" in status, false);
+    assert.equal(status.mcp_endpoint, "/mcp");
+    assert.equal(status.mcp_transport, "streamable-http");
+    assert.equal(status.mcp_can_grant_approval, false);
   });
 });
 
@@ -211,3 +217,4 @@ test("compose remains closed until server-side secrets are configured", async ()
     if (previousOpenRouterKey === undefined) delete process.env.OPENROUTER_API_KEY; else process.env.OPENROUTER_API_KEY = previousOpenRouterKey;
   }
 });
+

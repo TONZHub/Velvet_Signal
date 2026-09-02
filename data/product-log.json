@@ -1,7 +1,16 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-08-28T22:00:46.000Z",
+  "updated_at": "2026-09-02T12:00:00.000Z",
   "entries": [
+    {
+      "id": "2026-09-02-local-model-webmcp-bridge",
+      "date": "2026-09-02",
+      "kind": "infrastructure",
+      "title": "A local model can now discover and call the publication tools",
+      "summary": "A standards-compatible MCP Streamable HTTP endpoint exposes server-side counterparts of the four browser WebMCP tools. The included Ollama runner prints every discovery, tool call, and result; inspection is open, while activation still requires a signed delivery artifact that the bridge cannot mint.",
+      "status": "released",
+      "references": ["/mcp", "/install", "npm run webmcp:demo"]
+    },
     {
       "id": "2026-08-28-relationship-aware-rag",
       "date": "2026-08-28",
@@ -85,3 +94,4 @@
     }
   ]
 }
+
