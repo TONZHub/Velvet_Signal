@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-02T12:48:16.443Z",
+  "generated_at": "2026-09-03T19:19:48.399Z",
   "desks": {
     "maker": {
       "fingerprint": "0cc8fedf33a49e7969a8b06f1cc6850a811ab979bfabf84ac8353ae840a6de08",
@@ -15,25 +15,1380 @@
       "tavily_request_id": "2d48180e-1ad7-4738-b3b2-3e3504fe3beb"
     },
     "culture": {
-      "fingerprint": "e3813bcaac91a60615e42946ec66ad9f4cbf1e63eb4c4e460039e25198df9447",
-      "latest_patch_id": "culture-009",
-      "published_at": "2026-09-02T12:48:16.443Z",
-      "tavily_request_id": "02bbbaff-be07-4019-ba9a-6d45f4f2a326"
+      "fingerprint": "e3fa1f8f25ef0f62fc6ac0e02694a9439b6106a3ef4f20d92f045d6370984fb1",
+      "latest_patch_id": "culture-010",
+      "published_at": "2026-09-03T12:53:52.513Z",
+      "tavily_request_id": "de8a5498-273d-416b-ab7b-8ca00c16b10e"
     },
     "pantry": {
-      "fingerprint": "b4f9cb66ab72c70b86d406cbc340c226211f833d648680a78ac560b9294035ea",
-      "latest_patch_id": "pantry-008",
-      "published_at": "2026-09-02T12:47:20.685Z",
-      "tavily_request_id": "600af302-a755-4978-8499-14dba96b18fc"
+      "fingerprint": "760eb52aa7d9fd85a2ffc00c1a973ec700960044a477fcf65e389403ff5d5e94",
+      "latest_patch_id": "pantry-012",
+      "published_at": "2026-09-03T19:18:09.656Z",
+      "tavily_request_id": "4b1216f9-abc4-49dc-8116-458f14c680bc"
     },
     "wellbeing": {
-      "fingerprint": "b287beb1dbbb25fd6b38ac37abf08d43b2ad3674d5811e0f04504c95f542992f",
-      "latest_patch_id": "wellbeing-014",
-      "published_at": "2026-09-02T12:47:51.345Z",
-      "tavily_request_id": "cfdb1fd1-88c7-4f20-807e-c013a5fda614"
+      "fingerprint": "eec216a6eee16a02b9bccc0503e94837fea1e9d19522efbabe54e2f00579a1e9",
+      "latest_patch_id": "wellbeing-018",
+      "published_at": "2026-09-03T19:19:48.399Z",
+      "tavily_request_id": "f61fb4e0-28c9-4926-bf92-22887b16bb69"
     }
   },
   "issues": [
+    {
+      "id": "wellbeing-018",
+      "deskId": "wellbeing",
+      "desk": "Wellbeing",
+      "icon": "☾",
+      "issue": "018",
+      "version": "1.0.0",
+      "date": "SEP 03 · 2026",
+      "publishedAt": "2026-09-03T19:19:48.399Z",
+      "color": "#a993ff",
+      "title": "Sleep, the ordinary superpower: what the evidence actually says",
+      "kicker": "wellbeing",
+      "dek": "A CDC-backed refresher on how much sleep adults need, why quality matters as much as quantity, and which habits the evidence keeps pointing to — with room for individual variation.",
+      "readTime": "3 min read",
+      "validity": "180 days",
+      "expires": "2027-03-02",
+      "confidence": "Mixed",
+      "scope": "General wellbeing",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Sleep keeps coming back to the top of the wellbeing desk, and this week the sources are unusually aligned. The CDC's About Sleep page lays out the baseline: adults 18–60 need 7 or more hours a night, while the recommended range shifts with age — 7–9 hours for adults 61–64 and 7–8 hours for those 65 and older [W-SRC-1]. That's not a moral instruction, just a reference range that changes as bodies do.",
+        "The CDC also makes a point worth pausing on: quality sleep means sleep that is uninterrupted and refreshing, and it's not just about how many hours you sleep but how well you sleep [W-SRC-1]. Duration and quality are two different dials, and both matter.",
+        "On the habit side, Mayo Clinic's sleep tips converge on a few moves: keep the same bed and wake time every day, including weekends; avoid heavy or large meals within a couple of hours of bedtime; and if you don't fall asleep within about 20 minutes, leave the bedroom and do something relaxing until you're tired again [W-SRC-2]. Matt Walker's TED talk adds a temperature target — roughly 65°F / 18°C, because the body needs to drop its core temperature to initiate sleep — and flags regularity as the anchor for both quantity and quality [W-SRC-3]. A companion TED piece suggests dimming lights and stepping away from screens in the last hour before bed to support melatonin release [W-SRC-4].",
+        "One caveat the desk wants to keep visible: individual variation is real. Walker's temperature figure is framed as optimal for most people, not everyone [W-SRC-3], and the CDC's own age bands show the target moves across a lifetime [W-SRC-1]. None of this replaces professional care — if sleep problems persist or interfere with daily life, that's a conversation for a clinician, not a newsletter.",
+        "The through-line is refreshingly unglamorous: consistent timing, a cool dark room, and not lying awake in bed for long stretches. Small, repeatable, and supported across independent sources."
+      ],
+      "pullquote": "Quality sleep means you are getting uninterrupted and refreshing sleep — it's not just about how many hours you sleep, but how well you sleep.",
+      "sources": [
+        {
+          "id": "W-SRC-1",
+          "name": "About Sleep",
+          "publisher": "cdc.gov",
+          "url": "https://www.cdc.gov/sleep/about/index.html",
+          "checked": "2026-09-03"
+        },
+        {
+          "id": "W-SRC-2",
+          "name": "Sleep tips: 6 steps to better sleep",
+          "publisher": "mayoclinic.org",
+          "url": "https://www.mayoclinic.org/healthy-lifestyle/adult-health/in-depth/sleep/art-20048379",
+          "checked": "2026-09-03"
+        },
+        {
+          "id": "W-SRC-3",
+          "name": "Sleep Is Your Superpower | Matt Walker | TED - YouTube",
+          "publisher": "youtube.com",
+          "url": "https://www.youtube.com/watch?v=5MuIMqhT8DM",
+          "checked": "2026-09-03"
+        },
+        {
+          "id": "W-SRC-4",
+          "name": "6 tips for better sleep | Sleeping with Science, a TED series",
+          "publisher": "youtube.com",
+          "url": "https://www.youtube.com/watch?v=t0kACis_dJE",
+          "checked": "2026-09-03"
+        },
+        {
+          "id": "W-SRC-5",
+          "name": "Sleep Better Tonight | 10-Minute Bedtime Flow",
+          "publisher": "youtube.com",
+          "url": "https://www.youtube.com/watch?v=3OsBElyha7Y",
+          "checked": "2026-09-03"
+        }
+      ],
+      "claims": [
+        {
+          "id": "W-01",
+          "claim": "The CDC recommends 7 or more hours of daily sleep for adults aged 18–60, 7–9 hours for adults aged 61–64, and 7–8 hours for adults aged 65 and older, with recommended hours changing across age groups.",
+          "source": 0,
+          "sourceIds": [
+            "W-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-02",
+          "claim": "Quality sleep means uninterrupted and refreshing sleep; getting quality sleep is not just about how many hours you sleep but how well you sleep.",
+          "source": 0,
+          "sourceIds": [
+            "W-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-03",
+          "claim": "Mayo Clinic recommends going to bed and getting up at the same time every day, including weekends, to reinforce the body's sleep-wake cycle, and advises avoiding heavy or large meals within a couple of hours of bedtime.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-04",
+          "claim": "Mayo Clinic advises that if you don't fall asleep within about 20 minutes of going to bed, you should leave the bedroom and do something relaxing, returning to bed when tired, while maintaining the sleep schedule and wake-up time.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-05",
+          "claim": "Matt Walker recommends a bedroom temperature of around 65°F (about 18°C), explaining that the body needs to drop its core temperature by roughly 2–3°F to initiate and maintain sleep; this is framed as optimal for most people, not a universal rule.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3",
+            "W-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-06",
+          "claim": "Matt Walker emphasizes regularity — going to bed and waking at the same time regardless of weekday or weekend — as anchoring and improving both the quantity and quality of sleep.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-07",
+          "claim": "A TED series piece recommends darkness in the evening to trigger melatonin release, suggesting dimming lights and avoiding screens in the last hour before bed, with eye masks or blackout shades as options.",
+          "source": 3,
+          "sourceIds": [
+            "W-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-08",
+          "claim": "The recommendation to get out of bed if unable to sleep appears in two supplied sources with slightly different thresholds — Mayo Clinic says about 20 minutes, the TED series piece says about 25 minutes — so the publishable fact is the general practice, not a single precise cutoff.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2",
+            "W-SRC-4"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        }
+      ],
+      "toneNotes": [
+        "No diagnosis, no moralizing, no individualized advice.",
+        "Individual variation kept visible: age bands shift the target; temperature guidance is 'most people.'",
+        "The 20- vs 25-minute discrepancy is surfaced rather than smoothed over."
+      ],
+      "tags": [
+        "sleep",
+        "sleep-hygiene",
+        "cdc",
+        "mayo-clinic",
+        "general-wellbeing"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "f61fb4e0-28c9-4926-bf92-22887b16bb69",
+        "credits": 2,
+        "search_mode": "timeless-official-fallback"
+      }
+    },
+    {
+      "id": "pantry-012",
+      "deskId": "pantry",
+      "desk": "The Pantry",
+      "icon": "◒",
+      "issue": "012",
+      "version": "1.0.0",
+      "date": "SEP 03 · 2026",
+      "publishedAt": "2026-09-03T19:18:09.656Z",
+      "color": "#f1cf69",
+      "title": "The Two-Hour Clock: Leftover Storage That Actually Holds Up",
+      "kicker": "Pantry Desk",
+      "dek": "USDA food-safety guidance on Thanksgiving leftovers is some of the most practical reading in the kitchen: a firm two-hour window, a clearly defined Danger Zone, and a four-day refrigerator limit. Here is the guidance, plainly stated, with the honest caveat that no edition can tell you whether the container in your fridge is safe without knowing its history.",
+      "readTime": "3 min read",
+      "validity": "365 days",
+      "expires": "2027-09-03",
+      "confidence": "High",
+      "scope": "Food safety",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "The core rule is simple and worth committing to memory: refrigerate or freeze leftovers within two hours of cooking, or within one hour if the room is hotter than 90°F. Bacteria multiply quickly between 40°F and 140°F, the range USDA FSIS calls the Danger Zone, and the clock starts the moment food leaves the heat.",
+        "If food is being actively held above 140°F, the two-hour clock does not apply, which is why a warming tray or chafing dish buys you time that a countertop does not.",
+        "Cooling speed matters as much as the deadline. Carve the turkey and divide everything, appetizers and sides included, into smaller portions in covered, shallow containers so the cold reaches the center quickly.",
+        "On the calendar: FSIS guidance puts Thanksgiving leftovers at up to four days in the refrigerator, or until the Monday after the holiday. The freezer extends enjoyment rather than safety, keeping leftovers at best quality for two to six months.",
+        "One thing this edition will not do is rule on the leftovers already in your fridge. Storage duration, temperature, and handling history are not things a publication can know, so when in doubt, ask the USDA Meat and Poultry Hotline at 1-888-MPHotline (1-888-674-6854), staffed by food safety experts weekdays from 10 a.m. to 6 p.m. Eastern time."
+      ],
+      "pullquote": "The freezer extends enjoyment rather than safety: leftovers keep at best quality for two to six months, but the four-day refrigerator rule is the one that governs the week after the holiday.",
+      "sources": [
+        {
+          "id": "P-SRC-1",
+          "name": "Welcome, HelloFresh Customers! | Food Safety and Inspection Service",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/HelloFresh",
+          "checked": "2026-09-03"
+        },
+        {
+          "id": "P-SRC-2",
+          "name": "askFSIS",
+          "publisher": "ask.fsis.usda.gov",
+          "url": "https://ask.fsis.usda.gov/",
+          "checked": "2026-09-03"
+        },
+        {
+          "id": "P-SRC-3",
+          "name": "USDA Electronic Consumer Complaint Form - Welcome",
+          "publisher": "foodcomplaint.fsis.usda.gov",
+          "url": "https://foodcomplaint.fsis.usda.gov/eccf",
+          "checked": "2026-09-03"
+        },
+        {
+          "id": "P-SRC-4",
+          "name": "INGREDIENT TEMPERATURE GUIDELINES FOR BAKING | room temperature ingredients vs cold ingredients",
+          "publisher": "youtube.com",
+          "url": "https://www.youtube.com/watch?v=e4H7h4Bz9-Q",
+          "checked": "2026-09-03"
+        },
+        {
+          "id": "P-SRC-5",
+          "name": "Risk Assessment of E. coli O157:H7 in Ground Beef | Food Safety and Inspection Service",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/node/2003",
+          "checked": "2026-09-03"
+        }
+      ],
+      "claims": [
+        {
+          "id": "P-01",
+          "claim": "Perishable leftovers, including turkey, appetizers, and side dishes, should be refrigerated or frozen within two hours of cooking, or within one hour if air temperature is above 90°F; food held above 140°F is exempt from the two-hour clock.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-007:P-01",
+              "reason": "P-SRC-1 independently states the same two-hour/one-hour rule and the above-140°F exemption that the prior claim recorded."
+            },
+            {
+              "type": "confirms",
+              "target_id": "pantry-007:P-05",
+              "reason": "P-SRC-1 independently supports the never-exceed-2-hours (1 hour above 90°F) limit for perishable food."
+            }
+          ]
+        },
+        {
+          "id": "P-02",
+          "claim": "The Danger Zone is 40°F to 140°F, the temperature range in which foodborne-illness-causing bacteria grow rapidly.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-007:P-02",
+              "reason": "P-SRC-1 independently states the same 40°F–140°F Danger Zone definition."
+            }
+          ]
+        },
+        {
+          "id": "P-03",
+          "claim": "Divide leftovers, including carved turkey, into smaller portions and refrigerate or freeze them in covered shallow containers so they cool more quickly.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-007:P-03",
+              "reason": "P-SRC-1 independently supports the shallow-container, smaller-portion cooling practice."
+            }
+          ]
+        },
+        {
+          "id": "P-04",
+          "claim": "FSIS guidance states Thanksgiving leftovers are safe in the refrigerator for up to four days, or until the Monday after Thanksgiving, and that frozen leftovers remain at best quality for two to six months.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-05",
+          "claim": "The USDA Meat and Poultry Hotline (1-888-MPHotline / 1-888-674-6854) answers consumer questions on safe storage, handling, and preparation of meat, poultry, and egg products, and is staffed by food safety experts weekdays from 10 a.m. to 6 p.m. Eastern time; FSIS also operates an Electronic Consumer Complaint Reporting Form for incidents involving USDA-regulated products.",
+          "source": 1,
+          "sourceIds": [
+            "P-SRC-2",
+            "P-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-06",
+          "claim": "This edition makes no determination about whether any specific leftover or food item is safe to eat: the packets supply general time and temperature rules but no storage history, temperature log, or handling record for any specific food, so the rules above cannot be applied to any particular container without that history.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "boundary",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Keep the tone practical and calm; the two-hour rule is a habit, not a scare.",
+        "State the four-day and freezer-quality windows exactly as FSIS does, without rounding or extrapolation.",
+        "Be explicit that the publication cannot judge the safety of a specific dish without its storage history; route uncertainty to the hotline rather than guessing.",
+        "Do not treat the baking-temperature video (P-SRC-4) or the E. coli risk assessment (P-SRC-5) as household food-safety guidance; they are outside this edition's scope."
+      ],
+      "tags": [
+        "leftovers",
+        "food-safety",
+        "USDA-FSIS",
+        "danger-zone",
+        "refrigeration",
+        "freezing",
+        "thanksgiving",
+        "hotline"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "4b1216f9-abc4-49dc-8116-458f14c680bc",
+        "credits": 2,
+        "search_mode": "timeless-official-fallback"
+      }
+    },
+    {
+      "id": "culture-010",
+      "deskId": "culture",
+      "desk": "Culture Desk",
+      "icon": "✺",
+      "issue": "010",
+      "version": "1.0.0",
+      "date": "SEP 03 · 2026",
+      "publishedAt": "2026-09-03T12:53:52.513Z",
+      "color": "#67d6c0",
+      "title": "Velvet Signal — Proposed Edition culture-010 (Desk: Culture)",
+      "kicker": "The Provenance Premium",
+      "dek": "A custom 1997 Ferrari 550 Maranello linked to Michael Jordan resurfaces after roughly 25 years out of sight, with a pre-sale estimate that runs far above the book value for the model. The gap between those numbers is the cultural signal worth watching.",
+      "readTime": "3 min read",
+      "validity": "14 days",
+      "expires": "2026-09-17",
+      "confidence": "Mixed",
+      "scope": "Culture signals",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Here is the object and the timeline, plainly: Michael Jordan's custom 1997 Ferrari 550 Maranello — chassis 108712 — spent roughly a quarter century out of sight after he sold it. It was located in early 2026, and Joopiter will run online bidding September 15 through 30, with a pre-sale estimate of $700,000 to $1,300,000. [C-SRC-4]",
+        "Now the arithmetic that makes this a cultural story rather than a car story: Hagerty values a typical 1997 550 Maranello at under $300,000. Motor1 reads the gap directly — much of the price rests on Jordan's ownership and the paperwork behind it, with the car also described as linked to the Air Jordan XIV. That makes it a bridge object, sitting between sneaker culture and collector-car culture, and priced accordingly. [C-SRC-4]",
+        "What is actually observed here is a pricing spread and one outlet's framing of it. Why bidders pay a provenance premium — nostalgia, scarcity, the pull of sneaker history, auction theater — is not established by this coverage, and we won't declare a single reason as the meaning. The estimate is also a pre-auction guess, not a verdict; the market's real answer arrives with the hammer. [C-SRC-4]",
+        "Scope note: this entry describes observed coverage as of September 2, 2026, before the auction opens. It makes no claim about any reader's taste, identity, or collecting habits, and it treats the 'provenance premium' as a description of this one sale, not a universal law of value. Cultural and market signals move fast — re-check within 7 to 14 days, ideally once bidding closes. [C-SRC-4]"
+      ],
+      "pullquote": "Hagerty values a 1997 550 Maranello at under $300,000; Joopiter's estimate for Jordan's car starts at $700,000. The difference is the paperwork. [C-SRC-4]",
+      "sources": [
+        {
+          "id": "C-SRC-1",
+          "name": "Crypto Price Today - Bitcoin Pulls Back Near $79K While Apeing Locks In September 8 for Its Upcoming Crypto Presale - markets.businessinsider.com",
+          "publisher": "markets.businessinsider.com",
+          "url": "https://markets.businessinsider.com/news/stocks/crypto-price-today---bitcoin-pulls-back-near-79k-while-apeing-locks-in-september-8-for-its-upcoming-crypto-presale-1036514343",
+          "checked": "2026-09-03",
+          "publishedAt": "Wed, 02 Sep 2026 07:34:39 GMT"
+        },
+        {
+          "id": "C-SRC-2",
+          "name": "This Crossword Will Have You Shivering With Antici... - BuzzFeed",
+          "publisher": "buzzfeed.com",
+          "url": "https://www.buzzfeed.com/amanda_webber/crossword-september-2-2026",
+          "checked": "2026-09-03",
+          "publishedAt": "Wed, 02 Sep 2026 14:46:01 GMT"
+        },
+        {
+          "id": "C-SRC-3",
+          "name": "‘Derogatory’ fliers targeting Armenian community found near Glendale elementary school - Los Angeles Times",
+          "publisher": "latimes.com",
+          "url": "https://www.latimes.com/california/story/2026-08-29/derogatory-flyers-targeting-armenian-community-found-near-glendale-elementary-school",
+          "checked": "2026-09-03",
+          "publishedAt": "Sat, 29 Aug 2026 19:03:38 GMT"
+        },
+        {
+          "id": "C-SRC-4",
+          "name": "Michael Jordan’s Lost Ferrari Has Appeared, And It’s Headed To Auction - Motor1.com",
+          "publisher": "motor1.com",
+          "url": "https://www.motor1.com/news/806827/michael-jordan-lost-ferrari-heads/",
+          "checked": "2026-09-03",
+          "publishedAt": "Wed, 02 Sep 2026 07:14:00 GMT"
+        },
+        {
+          "id": "C-SRC-5",
+          "name": "Laura Loomer Brands Another Democrat a ‘Ghetto Black Communist B****’ - Newsweek",
+          "publisher": "newsweek.com",
+          "url": "https://www.newsweek.com/laura-loomer-lamonica-mciver-nixon-backlash-12398878",
+          "checked": "2026-09-03",
+          "publishedAt": "Thu, 03 Sep 2026 10:42:00 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "C-01",
+          "claim": "Michael Jordan's custom 1997 Ferrari 550 Maranello, chassis 108712, was located in early 2026 after roughly 25 years out of sight following his sale of it, and Joopiter will hold online bidding September 15–30, 2026.",
+          "source": 3,
+          "sourceIds": [
+            "C-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-02",
+          "claim": "Joopiter's pre-sale estimate for the Ferrari is $700,000 to $1,300,000, while Hagerty values a typical 1997 550 Maranello at under $300,000.",
+          "source": 3,
+          "sourceIds": [
+            "C-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-03",
+          "claim": "Motor1 attributes the gap between the auction estimate and the standard valuation to Jordan's ownership and the provenance paperwork behind the car.",
+          "source": 3,
+          "sourceIds": [
+            "C-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-04",
+          "claim": "The Ferrari is described as linked to the Air Jordan XIV sneaker.",
+          "source": 3,
+          "sourceIds": [
+            "C-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-05",
+          "claim": "Why buyers pay a provenance premium in collectibles markets, and how bidders will actually value this specific car, is not established by the supplied packets; the $700,000–$1,300,000 figure is a pre-auction estimate, not a realized price, and no single motivation for the premium should be treated as its universal meaning.",
+          "source": 3,
+          "sourceIds": [
+            "C-SRC-4"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        },
+        {
+          "id": "C-06",
+          "claim": "This entry describes observed coverage as of the source publication date of 2 September 2026, before the September 15–30 auction; it makes no claim about any individual reader's identity or about a universal rule of collectible value, and it should be re-checked within 7–14 days, particularly once auction results are known.",
+          "source": 3,
+          "sourceIds": [
+            "C-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Explains a fast-moving collectibles-culture signal with observed facts and a visible estimate-versus-market ambiguity.",
+        "No universal meaning declared; no reader identity claims made.",
+        "Validity window set to 14 days, ending after auction bidding opens so results can be folded into the next edition.",
+        "No relationship to prior Oreogate, Magic: The Gathering, or Canadian Resistance Army claims is established by the supplied packets; empty relationship arrays are intentional."
+      ],
+      "tags": [
+        "collectibles",
+        "auctions",
+        "provenance",
+        "sneaker-culture",
+        "michael-jordan"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "de8a5498-273d-416b-ab7b-8ca00c16b10e",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "wellbeing-017",
+      "deskId": "wellbeing",
+      "desk": "Wellbeing",
+      "icon": "☾",
+      "issue": "017",
+      "version": "1.0.0",
+      "date": "SEP 03 · 2026",
+      "publishedAt": "2026-09-03T12:52:00.003Z",
+      "color": "#a993ff",
+      "title": "Velvet Signal — Wellbeing Draft 017",
+      "kicker": "wellbeing · proposed edition — not yet delivered",
+      "dek": "A proposed issue and its machine-readable claim ledger. The packets this week are mostly secondhand summaries and one app-store pitch, so the edition leans on what they can actually support and flags the rest.",
+      "readTime": "3 min read",
+      "validity": "180 days",
+      "expires": "2027-03-02",
+      "confidence": "Mixed",
+      "scope": "General wellbeing",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "This draft covers habit formation. Nothing in the packets comes from a public-health body; the strongest material is a Wikipedia summary of peer-reviewed work and a transcript of an expert conversation, so claims are attributed rather than asserted as settled science.",
+        "An earlier packet on vendor self-descriptions (wellbeing-015:W-03) set the pattern used here: the (Not Boring) Habits app's '60 repetitions' pitch is reported as marketing, marked needs-review, and not treated as evidence.",
+        "No relationships were drawn to prior claims. The prior ledger covers sleep, rest, insomnia, and movement guidelines; nothing in this week's packets independently proves a link to those specific rules, and shared desk or vocabulary is not a relationship."
+      ],
+      "pullquote": "A habit is the part of the day that runs without you.",
+      "sources": [
+        {
+          "id": "W-SRC-1",
+          "name": "Habits Guide: How to Build Good Habits and Break Bad Ones",
+          "publisher": "jamesclear.com",
+          "url": "https://jamesclear.com/habits",
+          "checked": "2026-09-03"
+        },
+        {
+          "id": "W-SRC-2",
+          "name": "The Science of Making & Breaking Habits: How to Change Your Life in 1 Month",
+          "publisher": "youtube.com",
+          "url": "https://www.youtube.com/watch?v=8dHEG7WxR4c",
+          "checked": "2026-09-03"
+        },
+        {
+          "id": "W-SRC-3",
+          "name": "Habit - Wikipedia",
+          "publisher": "en.wikipedia.org",
+          "url": "https://en.wikipedia.org/wiki/Habit",
+          "checked": "2026-09-03"
+        },
+        {
+          "id": "W-SRC-4",
+          "name": "‎(Not Boring) Habits App - App Store",
+          "publisher": "apps.apple.com",
+          "url": "https://apps.apple.com/us/app/not-boring-habits/id1593891243",
+          "checked": "2026-09-03"
+        },
+        {
+          "id": "W-SRC-5",
+          "name": "About - Zen Habits Website",
+          "publisher": "zenhabits.net",
+          "url": "https://zenhabits.net/about",
+          "checked": "2026-09-03"
+        }
+      ],
+      "claims": [
+        {
+          "id": "W-01",
+          "claim": "Habits are routines of behavior repeated regularly that tend to occur subconsciously, and habitual behavior often goes unnoticed by the person performing it because routine tasks require little self-analysis.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-02",
+          "claim": "Two supplied secondary sources give slightly different estimates of how much daily behavior is habitual: a habits guide citing Duke University researchers puts the figure at about 40 percent of behaviors on any given day, while a Wikipedia summary of a 2002 daily experience study by habit researcher Wendy Wood and colleagues reports approximately 43 percent. The two figures are close but not identical, and both reach the editors secondhand, so the range — not a single number — is the publishable fact.",
+          "source": 0,
+          "sourceIds": [
+            "W-SRC-1",
+            "W-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "medium"
+        },
+        {
+          "id": "W-03",
+          "claim": "Old habits are hard to break and new habits are hard to form, and new behaviors can become automatic through the process of habit formation.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-04",
+          "claim": "In a conversation on making and breaking habits, scaling an intended habit down to a minimal version — ten push-ups instead of a hundred, reading one page instead of a yearly book count — is described as lowering the activation energy and effort required, making the behavior easier to begin and to complete on low-motivation days. This is attributed expert framing, not a trial result.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "medium"
+        },
+        {
+          "id": "W-05",
+          "claim": "The same conversation argues that because high and low performers often share the same goals, daily habits and systems — rather than the goal itself — are what differentiate outcomes, while outcomes are also attributed to factors including genetic ability, talent, coaching, strategy, and how much sleep a person got the night before. The inclusion of sleep, talent, and coaching keeps individual variation visible: the framing is not that systems guarantee results.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "medium"
+        },
+        {
+          "id": "W-06",
+          "claim": "The App Store listing for the (Not Boring) Habits app markets a method in which a new habit needs 60 repetitions to stick and in which missing a day or breaking a streak is treated as unimportant; the listing also self-describes as 'science-backed.' As app-store marketing copy, this is a vendor self-description rather than verified evidence, and the underlying 60-repetition figure cannot be confirmed from the supplied packet.",
+          "source": 3,
+          "sourceIds": [
+            "W-SRC-4"
+          ],
+          "status": "needs-review",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Voice: warm, lucid, stylish, specific. No hype words, no diagnosis, no moralizing about willpower.",
+        "Framing: habits as structure, not virtue. Smallness is presented as engineering, not weakness.",
+        "Uncertainty is a feature of the piece, not a footnote: the twoautopilot percentages, the secondhand nature of the sources, and the app's marketing claim are all shown to the reader."
+      ],
+      "tags": [
+        "habits",
+        "behavior change",
+        "automaticity",
+        "wellbeing",
+        "consumer apps",
+        "uncertainty visible"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "5d3c20d3-2a58-4a82-9bac-6da82f57d54a",
+        "credits": 2,
+        "search_mode": "timeless-official-fallback"
+      }
+    },
+    {
+      "id": "pantry-011",
+      "deskId": "pantry",
+      "desk": "The Pantry",
+      "icon": "◒",
+      "issue": "011",
+      "version": "1.0.0",
+      "date": "SEP 03 · 2026",
+      "publishedAt": "2026-09-03T12:50:09.358Z",
+      "color": "#f1cf69",
+      "title": "The Pantry Ledger: Warm-Weather Risk, a Rewritten Policy Book, and Three Recalls to Know",
+      "kicker": "Pantry Desk · Food-Safety Context, Not Verdicts",
+      "dek": "FSIS is tidying decades-old labeling policy, flagging the summer risk curve, and announcing recalls that touch deli counters, pickled ready-to-eat products, and pantry-distributed canned soup. Here is what changed, what it means for your kitchen, and — as always — what we refuse to guess at.",
+      "readTime": "3 min read",
+      "validity": "180 days",
+      "expires": "2027-03-02",
+      "confidence": "Mixed",
+      "scope": "Food safety",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Summer is when the math turns against casual food handling. FSIS's own seasonal messaging notes that foodborne illness spikes in warm months because bacteria multiply quickly in the heat, and that outdoor cooking adds risk layers indoor kitchens don't have. The practical takeaway is not panic; it is respecting the clock and the cooler when you cook outside.",
+        "On the policy side, FSIS is amending its Policy Book, removing outdated entries like the \"SOUJOUK (TK)\" provision following Petition 25-01. The agency stopped adding new guidance to the book in 2013 but continues to amend or remove items to stay consistent with current regulations. This is housekeeping, not a new kitchen rule — but it matters if you read labels closely.",
+        "Two recall notices deserve pantry attention. Indus Foods, LLC DBA Gangothri Foods of Austin, Texas is recalling roughly 1,626 pounds of ready-to-eat pickled goat and chicken products produced without the benefit of inspection. Separately, FSIS issued a public health alert for headcheese deli meat products that may be contaminated with Listeria, tied to Crawford Sausage Co. and Daisy Brand headcheese bearing a \"USE BY\" date of \"MAR 26 2026.\"",
+        "The canned condensed chicken noodle soup recall we covered last cycle is independently confirmed by this cycle's packets: about 4,300 pounds imported from Canada without import reinspection, produced February 4, 2026, bearing \"EST. 142,\" and distributed to food banks and pantry locations in Oklahoma. If your pantry matches those identifiers, check the full FSIS notice before using the product.",
+        "Our standing rule holds: none of these packets tells us the storage history of the food in your kitchen, so we make no judgment about whether any specific item is safe. When in doubt, the guidance is to check the official notice — not to taste and see."
+      ],
+      "pullquote": "Foodborne illness spikes during warm months, when bacteria multiply quickly in the heat, and outdoor cooking adds layers of risk that indoor kitchens don't.",
+      "sources": [
+        {
+          "id": "P-SRC-1",
+          "name": "Constituent Update - May 22, 2026 | Food Safety and Inspection Service",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/news-events/news-press-releases/constituent-update-may-22-2026",
+          "checked": "2026-09-03"
+        },
+        {
+          "id": "P-SRC-2",
+          "name": "Constituent Update - May 8, 2026 | Food Safety and Inspection Service",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/news-events/news-press-releases/constituent-update-may-8-2026",
+          "checked": "2026-09-03"
+        },
+        {
+          "id": "P-SRC-3",
+          "name": "Recalls & Public Health Alerts | Food Safety and Inspection Service",
+          "publisher": "fsis.usda.gov",
+          "url": "https://www.fsis.usda.gov/recalls?keywords=hot+dogs&page=0",
+          "checked": "2026-09-03"
+        },
+        {
+          "id": "P-SRC-4",
+          "name": "Indus Foods, LLC DBA Gangothri Foods Recalls Ready-To-Eat Pickled Goat and Chicken Products Produced Without Benefit of Inspection | Food Safety and Inspection Service",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/recalls-alerts/indus-foods-llc-dba-gangothri-foods-recalls-ready-eat-pickled-goat-and-chicken",
+          "checked": "2026-09-03"
+        },
+        {
+          "id": "P-SRC-5",
+          "name": "BCI Foods, Inc. Recalls Chicken Noodle Soup Product Imported without the Benefit of Import Reinspection | Food Safety and Inspection Service",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/recalls-alerts/bci-foods-inc--recalls-chicken-noodle-soup-product-imported-without-benefit-import",
+          "checked": "2026-09-03"
+        }
+      ],
+      "claims": [
+        {
+          "id": "P-01",
+          "claim": "FSIS stopped adding new policy guidance to its Policy Book in 2013 but continues to amend or remove items as necessary to remain consistent with agency policies and regulations; it removed the outdated \"SOUJOUK (TK)\" entry following Petition 25-01, whose full text and FSIS's response are available on the FSIS website.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-02",
+          "claim": "FSIS notes that foodborne illness spikes during warm months, when bacteria multiply quickly in the heat, and that outdoor cooking adds layers of risk that indoor kitchens do not have.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-03",
+          "claim": "FSIS Notice 20-26 announces the availability of FSIS food safety guidance for egg products plants, and the Library of Export Requirements has been updated for FSIS products, with complete information available at the FSIS Import & Export Library.",
+          "source": 1,
+          "sourceIds": [
+            "P-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-04",
+          "claim": "On May 5, FSIS Administrator Dr. Justin Ransom provided a regulatory update at the National Turkey Federation Technical and Regulatory Committee Meeting in Washington, D.C., highlighting the agency's food safety strategy with a focus on next steps for Salmonella policy.",
+          "source": 1,
+          "sourceIds": [
+            "P-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-05",
+          "claim": "FSIS issued a public health alert (PHA-05092026-01) for headcheese deli meat products that may be contaminated with Listeria, associated with Crawford Sausage Co., Inc.; the recalls listing also references Daisy Brand Meat Products headcheese packed or sliced in retail delis with a \"USE BY\" date of \"MAR 26 2026\" under a Class I recall. The excerpted packet is fragmented, so the precise linkage between the alert, the recall number, and the product identifiers needs confirmation against the full FSIS notice.",
+          "source": 2,
+          "sourceIds": [
+            "P-SRC-3"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        },
+        {
+          "id": "P-06",
+          "claim": "On August 17, 2026, FSIS announced that Indus Foods, LLC, doing business as Gangothri Foods, an Austin, Texas firm, is recalling approximately 1,626 pounds of ready-to-eat pickled goat and chicken products that were produced without the benefit of inspection.",
+          "source": 3,
+          "sourceIds": [
+            "P-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-07",
+          "claim": "On July 23, 2026, BCI Foods, Inc., importer of record located in Saint-Hyacinthe, Quebec, Canada, recalled approximately 4,300 pounds of canned condensed chicken noodle soup imported from Canada without the benefit of import reinspection; the product was produced February 4, 2026, bears Canadian establishment number \"EST. 142\" on the can, and was distributed to food banks and food pantry locations in Oklahoma. The problem was discovered when the firm notified FSIS the product was not presented for import reinspection.",
+          "source": 4,
+          "sourceIds": [
+            "P-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-009:P-01",
+              "reason": "This cycle's packet independently restates the same recall announcement: importer, poundage, date, and the missing import reinspection basis."
+            },
+            {
+              "type": "confirms",
+              "target_id": "pantry-009:P-02",
+              "reason": "The packet independently supports the production date, EST. 142 establishment number, and Oklahoma food bank and pantry distribution."
+            },
+            {
+              "type": "confirms",
+              "target_id": "pantry-009:P-03",
+              "reason": "The packet independently supports how the problem was discovered: the firm notified FSIS the product was not presented for import reinspection."
+            }
+          ]
+        },
+        {
+          "id": "P-08",
+          "claim": "No packet in this edition supplies time, temperature, or storage history for any specific food, so this edition makes no determination about whether any specific food item is safe; readers holding product matching any recall or alert identifiers should consult the full FSIS notice before use.",
+          "source": 2,
+          "sourceIds": [
+            "P-SRC-3",
+            "P-SRC-4",
+            "P-SRC-5"
+          ],
+          "status": "boundary",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Practical and calm: explain the summer risk curve without alarming readers who cook outdoors regularly.",
+        "Never infer safety or unsafety of a specific food when storage history is unknown; point readers to the full official notices instead.",
+        "Keep the Policy Book item framed as agency housekeeping, not a new kitchen rule.",
+        "Flag the fragmented headcheese alert excerpt honestly rather than smoothing over the ambiguity."
+      ],
+      "tags": [
+        "food-safety",
+        "fsis",
+        "recalls",
+        "pantry",
+        "listeria",
+        "deli-meat",
+        "canned-goods",
+        "outdoor-cooking"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "2397cd62-d624-4f38-801a-acbfaacbfabc",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "wellbeing-016",
+      "deskId": "wellbeing",
+      "desk": "Wellbeing",
+      "icon": "☾",
+      "issue": "016",
+      "version": "1.0.0",
+      "date": "SEP 03 · 2026",
+      "publishedAt": "2026-09-03T04:26:00.855Z",
+      "color": "#a993ff",
+      "title": "Velvet Signal — Wellbeing Desk, Proposed Edition",
+      "kicker": "General wellbeing · No diagnosis, no prescriptions",
+      "dek": "Why 'get more rest' may not be the universal advice it sounds like.",
+      "readTime": "3 min read",
+      "validity": "180 days",
+      "expires": "2027-03-02",
+      "confidence": "Mixed",
+      "scope": "General wellbeing",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Rest has a halo. It is the advice we give when we don't know what else to suggest — take it easy, lie down, recharge. A recent systematic scoping review complicates that picture in a useful way: researchers set out to map how 'wakeful rest' is actually operationalized and measured in daily life, comparing adults with long-term conditions and adults without them [W-SRC-2].",
+        "The headline finding is a matter of degree, not a reversal. Rest can support day-to-day functioning, but the review notes that excessive rest may worsen physical symptoms and disability [W-SRC-2]. In other words, rest behaves less like a virtue and more like a dose: helpful within a range that varies from person to person, and harder to get right the more we treat it as one-size-fits-all. The authors conclude that tailored guidance on optimal rest is essential for maximizing health benefits — and, notably, that the field still lacks comprehensive tools for measuring rest in the first place [W-SRC-2].",
+        "That measurement gap is worth sitting with. If researchers disagree on what counts as rest, a generic prescription — 'rest more' — deserves skepticism. One included study encouraged participants to build two 1-hour rest periods into their day, lying down to relieve back strain and promote recovery [W-SRC-2], but the supplied material does not establish who that applied to or whether it generalizes. Individual variation is the whole story here: the right pattern of rest may look different for someone managing a long-term condition than for someone who is not.",
+        "The honest takeaway is modest and we think better for it: rest is worth taking seriously as part of wellbeing, more of it is not automatically better, and anyone wondering what their own optimal balance looks like should treat that as a question for them and their clinician — not a line in a newsletter.",
+        "This edition summarizes published research for general interest. It is not medical advice and does not replace individualized professional care."
+      ],
+      "pullquote": "Rest behaves less like a virtue and more like a dose.",
+      "sources": [
+        {
+          "id": "W-SRC-1",
+          "name": "Recommendations for Lifestyle Physical Activity and Exercise During the Perinatal Period: A Narrative Review",
+          "publisher": "pmc.ncbi.nlm.nih.gov",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12785493",
+          "checked": "2026-09-03"
+        },
+        {
+          "id": "W-SRC-2",
+          "name": "How is wakeful rest operationalized and measured in daily life among adults with and without long‐term conditions? A systematic scoping review",
+          "publisher": "pmc.ncbi.nlm.nih.gov",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13001139",
+          "checked": "2026-09-03"
+        },
+        {
+          "id": "W-SRC-3",
+          "name": "Managing Stress | Mental Health - CDC",
+          "publisher": "cdc.gov",
+          "url": "https://www.cdc.gov/mental-health/living-with/index.html",
+          "checked": "2026-09-03"
+        },
+        {
+          "id": "W-SRC-4",
+          "name": "Self-care for health and well-being",
+          "publisher": "who.int",
+          "url": "https://www.who.int/news-room/fact-sheets/detail/self-care-health-interventions",
+          "checked": "2026-09-03"
+        },
+        {
+          "id": "W-SRC-5",
+          "name": "Influence of physical activity on perceived stress and mental health in university students: a systematic review - PMC",
+          "publisher": "pmc.ncbi.nlm.nih.gov",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12827587",
+          "checked": "2026-09-03"
+        }
+      ],
+      "claims": [
+        {
+          "id": "W-01",
+          "claim": "A systematic scoping review examined how wakeful rest is operationalized and measured in daily life among adults with and without long-term conditions.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-02",
+          "claim": "The review reports that while rest may support functioning, excessive rest may worsen physical symptoms and disability.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "medium"
+        },
+        {
+          "id": "W-03",
+          "claim": "The review concludes that tailored guidance on optimal rest is essential for maximizing health benefits, and highlights the need for further research on comprehensive tools to measure rest.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-04",
+          "claim": "One study included in the review encouraged participants to include two 1-hour rest periods in their daily routines, during which they were encouraged to lie down to relieve back strain and promote recovery.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "needs-review",
+          "confidence": "low"
+        }
+      ],
+      "toneNotes": [
+        "Warm, lucid, specific: frame rest as a dose, not a virtue.",
+        "Keep individual variation visible — explicitly compare adults with and without long-term conditions.",
+        "No diagnosis, moralizing, or individualized medical advice; direct personal questions to a clinician.",
+        "Do not overstate: the source is a scoping review mapping the literature, not a prescription for how much rest anyone needs."
+      ],
+      "tags": [
+        "rest",
+        "recovery",
+        "scoping-review",
+        "individual-variation"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "04caf046-2456-4b54-9797-fc1edce19004",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "pantry-010",
+      "deskId": "pantry",
+      "desk": "The Pantry",
+      "icon": "◒",
+      "issue": "010",
+      "version": "1.0.0",
+      "date": "SEP 03 · 2026",
+      "publishedAt": "2026-09-03T04:22:33.600Z",
+      "color": "#f1cf69",
+      "title": "A Quiet Shelf: No New Kitchen Rules This Cycle",
+      "kicker": "Velvet Signal — Pantry Desk, proposed edition pantry-010",
+      "dek": "Every packet that arrived for this cycle is either off-topic or non-authoritative for kitchen food safety, so this edition changes nothing in the safety ledger — and says so plainly.",
+      "readTime": "3 min read",
+      "validity": "180 days",
+      "expires": "2027-03-02",
+      "confidence": "High",
+      "scope": "Food safety",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "We read all five source packets for this cycle, and none of them is a food-safety update. The closest thing to an official document, P-SRC-1, is an Ohio Administrative Code rule about food-assistance verification paperwork, effective April 1, 2026 — administrative process for benefits applications, not guidance on storing, heating, or judging food in your kitchen. The remaining packets are baseball box scores (P-SRC-2, P-SRC-3), a social media feed (P-SRC-4), and a gaming video page (P-SRC-5).",
+        "That means no new storage windows, temperature rules, or handling instructions are issued this cycle, and the standing safety ledger is neither amended nor extended. We are not restating or revising prior entries here; they remain on the books exactly as published, and this edition simply adds no new rules on top of them.",
+        "It also means we make no call on whether any specific food is safe. That discipline is not filler — it is the desk's core rule. When a food's time, temperature, or storage history is unknown, no storage window can tell you whether that particular item is safe to eat, and this cycle's packets give us no reason to revisit that posture.",
+        "One note for readers following the recent canned chicken noodle soup recall: nothing in this cycle's packets adds to, corrects, or closes out that story. If you are holding product that matches the recall identifiers, the full recall notice — not this edition — is your reference for what to do.",
+        "Why publish a quiet edition at all? Because an honest ledger is more useful than a busy one. When a cycle produces no authoritative guidance, the right move is to record that clearly so future claims aren't accidentally built on noise."
+      ],
+      "pullquote": "No packet in this cycle is a food-safety source, so the pantry ledger gains no new rules — and loses none.",
+      "sources": [
+        {
+          "id": "P-SRC-1",
+          "name": "Rule 5101:4-2-09 - Ohio Administrative Code",
+          "publisher": "codes.ohio.gov",
+          "url": "https://codes.ohio.gov/ohio-administrative-code/rule-5101:4-2-09",
+          "checked": "2026-09-03"
+        },
+        {
+          "id": "P-SRC-2",
+          "name": "MLB Gameday: Mariners 8, Red Sox 3 Final Score (09/02/2026)",
+          "publisher": "mlb.com",
+          "url": "https://www.mlb.com/gameday/mariners-vs-red-sox/2026/09/02/824717/final",
+          "checked": "2026-09-03"
+        },
+        {
+          "id": "P-SRC-3",
+          "name": "MLB Gameday: White Sox 5, Astros 1 Final Score (09/01/2026)",
+          "publisher": "mlb.com",
+          "url": "https://www.mlb.com/gameday/white-sox-vs-astros/2026/09/01/824148/play/55",
+          "checked": "2026-09-03"
+        },
+        {
+          "id": "P-SRC-4",
+          "name": "RUGERRED#09 (@real_rugerred09)",
+          "publisher": "instagram.com",
+          "url": "https://www.instagram.com/real_rugerred09?hl=en",
+          "checked": "2026-09-03"
+        },
+        {
+          "id": "P-SRC-5",
+          "name": "Class of '09 | LUNCH TABLE BEATS",
+          "publisher": "youtube.com",
+          "url": "https://www.youtube.com/watch?v=MW75Yo0zdLM",
+          "checked": "2026-09-03"
+        }
+      ],
+      "claims": [
+        {
+          "id": "P-01",
+          "claim": "No source packet supplied for this cycle contains kitchen food-safety guidance. P-SRC-1 is an Ohio Administrative Code rule on food-assistance verification procedure; P-SRC-2 and P-SRC-3 are MLB game pages; P-SRC-4 is a social media profile; P-SRC-5 is a gaming video page.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1",
+            "P-SRC-2",
+            "P-SRC-3",
+            "P-SRC-4",
+            "P-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-02",
+          "claim": "Ohio Administrative Code rule 5101:4-2-09, titled 'Food assistance: verification procedure,' is effective April 1, 2026, sits in the food-assistance application-process chapter, and concerns benefits verification rather than household food safety or food storage.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-03",
+          "claim": "No new storage, temperature, or handling rules are issued this cycle, and no determination is made about the safety of any specific food, because no packet supplies evidence about time, temperature, or storage history for any food item.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1",
+            "P-SRC-2",
+            "P-SRC-3",
+            "P-SRC-4",
+            "P-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-04",
+          "claim": "This cycle's packets add nothing to the previously reported canned condensed chicken noodle soup recall; no packet in this cycle references the recall, its disposition instructions, or any related illness reports.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1",
+            "P-SRC-2",
+            "P-SRC-3",
+            "P-SRC-4",
+            "P-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Explanation of the empty-result decision is foregrounded so the human reader understands why the issue is short.",
+        "No new food-safety rule is asserted anywhere in this edition; prior-claim facts are referenced but never restated as new facts."
+      ],
+      "tags": [
+        "pantry",
+        "food-safety",
+        "no-new-guidance",
+        "ledger-hygiene"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "4bea78d8-62d4-4bf7-b265-9d419ee33641",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "wellbeing-015",
+      "deskId": "wellbeing",
+      "desk": "Wellbeing",
+      "icon": "☾",
+      "issue": "015",
+      "version": "1.0.0",
+      "date": "SEP 02 · 2026",
+      "publishedAt": "2026-09-02T19:29:29.361Z",
+      "color": "#a993ff",
+      "title": "Velvet Signal — wellbeing-015 (proposed)",
+      "kicker": "Desk: wellbeing · General guidance only · Not medical advice",
+      "dek": "A quiet issue: this cycle's packets couldn't support a general-wellbeing update, so we're publishing what they do show — and clearly marking what we won't claim.",
+      "readTime": "3 min read",
+      "validity": "90 days",
+      "expires": "2026-12-01",
+      "confidence": "Medium",
+      "scope": "General wellbeing",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Most weeks, this desk publishes one practical, source-backed wellbeing takeaway. This week we're publishing a held note instead, because the packets that arrived couldn't carry one. That's not a failure of the desk's curiosity — it's the system working. Our rules require every factual claim to trace to a supplied source, and most of this cycle's packets trace to almost nothing.",
+        "Here's what came in, honestly assessed. An NHLBI Health Topics page on thrombocytopenia arrived as navigation chrome — menus and breadcrumbs, no substantive guidance text (W-SRC-1). A Merriam-Webster entry for the word 'official' arrived, which is exactly what it sounds like (W-SRC-4). A proteomics dataset table arrived, rich in acetylation sites and empty in reader relevance (W-SRC-5). Two packets carried real, quotable sentences: the BioData Catalyst platform, which describes itself as accelerating reproducible biomedical research to help prevent, diagnose, and treat heart, lung, blood, and sleep conditions (W-SRC-3); and Reputable Health, a vendor site describing study designs that pair continuous wearable data from consumer devices with at-home lab biomarker testing and validated surveys (W-SRC-2).",
+        "We logged both of those, with flags. The Reputable Health material is marketing copy from a company selling research services to supplement and functional-food formulators — it's a useful window into how real-world wellness evidence gets built, but it is not public-health guidance, and we won't present it as such. Individual variation is precisely why that matters: any finding about sleep, stress, or recovery measured on a study population says nothing certain about your sleep, your stress, or your recovery.",
+        "What this issue is not: a diagnosis, a recommendation, or a substitute for professional care. If you have questions about a blood or sleep-related condition — including anything you've read in a headline this week — the right move is a conversation with a clinician, not a newsletter.",
+        "Readers who want substantive general guidance in the meantime: our recent issues on sleep duration, screen light before bed, napping, and insomnia definitions remain on the record, sourced to NHLBI material. Those claims stand on their original evidence; nothing in this cycle's packets strengthens or overturns them, so we're leaving every prior claim untouched."
+      ],
+      "pullquote": "A quiet issue is still an issue: the absence of supportable claims is itself information, and we'd rather show you the gap than paper over it.",
+      "sources": [
+        {
+          "id": "W-SRC-1",
+          "name": "Thrombocytopenia",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/health/thrombocytopenia",
+          "checked": "2026-09-02"
+        },
+        {
+          "id": "W-SRC-2",
+          "name": "Home - Reputable Health",
+          "publisher": "reputable.health",
+          "url": "https://reputable.health/",
+          "checked": "2026-09-02"
+        },
+        {
+          "id": "W-SRC-3",
+          "name": "Home | BDC",
+          "publisher": "biodatacatalyst.nhlbi.nih.gov",
+          "url": "https://biodatacatalyst.nhlbi.nih.gov/",
+          "checked": "2026-09-02"
+        },
+        {
+          "id": "W-SRC-4",
+          "name": "OFFICIAL Definition & Meaning",
+          "publisher": "merriam-webster.com",
+          "url": "https://www.merriam-webster.com/dictionary/official",
+          "checked": "2026-09-02"
+        },
+        {
+          "id": "W-SRC-5",
+          "name": "IMCD Acetylome",
+          "publisher": "esbl.nhlbi.nih.gov",
+          "url": "https://esbl.nhlbi.nih.gov/Databases/IMCDAcetylation",
+          "checked": "2026-09-02"
+        }
+      ],
+      "claims": [
+        {
+          "id": "W-01",
+          "claim": "BioData Catalyst (BDC) is described on its homepage as accelerating reproducible biomedical research to drive scientific advances that can help prevent, diagnose, and treat heart, lung, blood, and sleep conditions.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-02",
+          "claim": "Reputable Health, a research-services vendor, describes study designs that combine continuous wearable biometrics from Oura, Apple Watch, and Whoop, at-home blood and saliva biomarker testing processed through CLIA labs, and validated survey instruments including PSQI, PSS, and PROMIS.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "medium"
+        },
+        {
+          "id": "W-03",
+          "claim": "Reputable Health describes its client base as research sponsors and ingredient developers studying supplements and functional foods targeting sleep, stress, cognition, energy, recovery, metabolism, and longevity; as a vendor's self-description, this indicates who the platform serves but does not constitute evidence for any wellness claim.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "medium"
+        },
+        {
+          "id": "W-04",
+          "claim": "An NHLBI Health Topics page on thrombocytopenia exists, but the supplied excerpt contains only site navigation and no substantive guidance content, so no wellbeing-relevant claim about thrombocytopenia can be published from this packet.",
+          "source": 0,
+          "sourceIds": [
+            "W-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "medium"
+        }
+      ],
+      "toneNotes": [
+        "Keep the dek plain and unapologetic — a thin cycle handled well builds more trust than a padded one.",
+        "Do not editorialize about thrombocytopenia itself; the packet supports only the page's existence.",
+        "Never restate prior claims (sleep hours, insomnia definitions) as new facts this cycle; reference them by issue number only.",
+        "Retain the standing not-medical-advice line and the explicit invitation to consult a clinician."
+      ],
+      "tags": [
+        "wellbeing",
+        "editorial-transparency",
+        "source-quality",
+        "no-update"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "7b547aef-12c8-4cf5-bb77-f62d8829f36d",
+        "credits": 2,
+        "search_mode": "timeless-official-fallback"
+      }
+    },
+    {
+      "id": "pantry-009",
+      "deskId": "pantry",
+      "desk": "The Pantry",
+      "icon": "◒",
+      "issue": "009",
+      "version": "1.0.0",
+      "date": "SEP 02 · 2026",
+      "publishedAt": "2026-09-02T19:27:07.844Z",
+      "color": "#f1cf69",
+      "title": "Check the Can: A Soup Recall Reaches Oklahoma Pantry Shelves",
+      "kicker": "pantry",
+      "dek": "FSIS announced a recall of canned condensed chicken noodle soup that skipped import reinspection — and some of it landed in food banks and pantries in Oklahoma. Here's how to check your shelves, and what we deliberately won't guess at.",
+      "readTime": "3 min read",
+      "validity": "180 days",
+      "expires": "2027-03-01",
+      "confidence": "Mixed",
+      "scope": "Food safety",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "The news, plainly: On July 23, 2026, the USDA's Food Safety and Inspection Service announced that BCI Foods, Inc. — the importer of record, located in Saint-Hyacinthe, Quebec — is recalling approximately 4,300 pounds of canned condensed chicken noodle soup. The reason is procedural, not a reported outbreak: the product was imported from Canada without the benefit of import reinspection. FSIS learned of the problem when the firm itself notified the agency that the soup had not been presented for that reinspection [P-SRC-4].",
+        "Why this one lands on the pantry desk: This isn't a recall that stayed in warehouses. The affected soup was distributed to food banks and food pantry locations in Oklahoma [P-SRC-4]. If you stock a pantry shelf, volunteer at a distribution site, or simply keep condensed chicken noodle soup in the cupboard, this is worth two minutes of your time.",
+        "How to identify the product: The recalled soup was produced on February 4, 2026, and bears the Canadian establishment number \"EST. 142\" printed on the can [P-SRC-4]. Check the can itself — the establishment number and production date are the identifiers that matter, not the brand name on your shopping list.",
+        "What we won't tell you: The packet we're working from does not include disposal or return instructions for the recalled soup, and it does not report any confirmed illnesses. We won't fill those gaps with assumption. If you find a can matching the identifiers above, consult the full FSIS recall notice before deciding what to do with it — and as always, don't taste-test a question you can answer by reading a label [P-SRC-4].",
+        "The quiet takeaway: Import reinspection is one of those invisible checkpoints most of us never think about, and this recall is a reminder that the system sometimes catches its own gaps — here, because the importer self-reported. The practical habit it reinforces is a simple one: when a recall touches shelf-stable goods, the can's printed identifiers, not your memory of when you bought it, are the source of truth."
+      ],
+      "pullquote": "When a recall touches shelf-stable goods, the can's printed identifiers — not your memory of when you bought it — are the source of truth.",
+      "sources": [
+        {
+          "id": "P-SRC-1",
+          "name": "Constituent Update - May 22, 2026 | Food Safety and Inspection Service",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/news-events/news-press-releases/constituent-update-may-22-2026",
+          "checked": "2026-09-02"
+        },
+        {
+          "id": "P-SRC-2",
+          "name": "Recalls & Public Health Alerts | Food Safety and Inspection Service",
+          "publisher": "fsis.usda.gov",
+          "url": "https://www.fsis.usda.gov/recalls?keywords=hot+dogs&page=0",
+          "checked": "2026-09-02"
+        },
+        {
+          "id": "P-SRC-3",
+          "name": "4 Steps of Food Safety: Top Rules for Safe Food Preparation",
+          "publisher": "foodready.ai",
+          "url": "https://foodready.ai/blog/top-4-rules-for-safe-food-preparation",
+          "checked": "2026-09-02"
+        },
+        {
+          "id": "P-SRC-4",
+          "name": "BCI Foods, Inc. Recalls Chicken Noodle Soup Product Imported without the Benefit of Import Reinspection | Food Safety and Inspection Service",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/recalls-alerts/bci-foods-inc--recalls-chicken-noodle-soup-product-imported-without-benefit-import",
+          "checked": "2026-09-02"
+        },
+        {
+          "id": "P-SRC-5",
+          "name": "2025 US Public Health Service Guidelines for the Management of Occupational Exposures to Human Immunodeficiency Virus and Recommendations for Post-exposure Prophylaxis in Healthcare Settings",
+          "publisher": "stacks.cdc.gov",
+          "url": "https://stacks.cdc.gov/view/cdc/183609",
+          "checked": "2026-09-02"
+        }
+      ],
+      "claims": [
+        {
+          "id": "P-01",
+          "claim": "On July 23, 2026, FSIS announced that BCI Foods, Inc., the importer of record located in Saint-Hyacinthe, Quebec, Canada, is recalling approximately 4,300 pounds of canned condensed chicken noodle soup that was imported from Canada without the benefit of import reinspection.",
+          "source": 3,
+          "sourceIds": [
+            "P-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-02",
+          "claim": "The recalled canned condensed chicken noodle soup was produced on February 4, 2026, bears the Canadian establishment number \"EST. 142\" printed on the can, and was distributed to food banks and food pantry locations in Oklahoma.",
+          "source": 3,
+          "sourceIds": [
+            "P-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-03",
+          "claim": "The recall problem was discovered when the firm notified FSIS that the canned chicken soup product imported from Canada was not presented for FSIS import reinspection.",
+          "source": 3,
+          "sourceIds": [
+            "P-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-04",
+          "claim": "The available source packet does not include consumer or pantry disposition instructions (such as return, discard, or refund guidance) for the recalled soup, nor does it report any confirmed illnesses; readers holding product matching the recall identifiers should consult the full FSIS recall notice before use.",
+          "source": 3,
+          "sourceIds": [
+            "P-SRC-4"
+          ],
+          "status": "needs-review",
+          "confidence": "low"
+        }
+      ],
+      "toneNotes": [
+        "Non-alarmist framing: the recall stems from a missing import reinspection step, not a reported outbreak; the edition states only what the packet supports.",
+        "Deliberately refuses to rule any specific can safe or unsafe — identification is by printed identifiers, and disposition guidance is flagged needs-review because the packet omits it.",
+        "No relationships asserted to prior storage-window or Danger Zone claims: a recall event is not evidence about storage durations, temperatures, or handling rules, so empty relationship arrays are correct."
+      ],
+      "tags": [
+        "food-safety",
+        "recall",
+        "fsis",
+        "canned-goods",
+        "food-pantries",
+        "oklahoma"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "b5b36b09-3001-4a04-a16a-b747ae519f67",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
     {
       "id": "culture-009",
       "deskId": "culture",
@@ -4933,169 +6288,6 @@
       }
     },
     {
-      "id": "wellbeing-006",
-      "deskId": "wellbeing",
-      "desk": "Wellbeing",
-      "icon": "☾",
-      "issue": "006",
-      "version": "1.0.0",
-      "date": "AUG 30 · 2026",
-      "publishedAt": "2026-08-30T05:24:13.089Z",
-      "color": "#a993ff",
-      "title": "The case for writing your sleep down",
-      "kicker": "Wellbeing",
-      "dek": "NHLBI's printable sleep diary turns vague tiredness into a pattern you can actually see — and, if you choose, bring to a doctor.",
-      "readTime": "3 min read",
-      "validity": "180 days",
-      "expires": "2027-02-26",
-      "confidence": "High",
-      "scope": "General wellbeing",
-      "editor": "OpenRouter · GLM 5.3 Flash",
-      "inputPolicy": "Scheduled Tavily source packets",
-      "editorial": [
-        "Most of us know roughly how much we slept last night. Far fewer of us can say how we slept this month, or what we drank, took, or scrolled on the nights we slept badly. The National Heart, Lung, and Blood Institute offers a quietly practical answer: a printable sleep diary for recording the quality and quantity of your sleep, your use of medicines, alcohol, and caffeinated drinks, and how sleepy you feel during the day (W-SRC-5).",
-        "The value is in the columns you wouldn't think to track. Caffeine at 4 p.m., a glass of wine, a new medication — each lands in the same record as your bedtime and your morning grogginess, which is what makes patterns visible. NHLBI's suggestion is refreshingly low-tech: fill it in, then bring it with you to review with your doctor (W-SRC-5). It's a record, not a diagnosis.",
-        "It's also worth knowing that habits are only one branch of the map. NHLBI's treatment overview describes devices, therapies, medicines, and procedures for sleep disorders, with healthy sleep habits as the foundation and light therapy listed among the therapies (W-SRC-3). If your diary shows a stubborn pattern, that's information worth acting on — not a verdict.",
-        "One more distinction the institute draws that resists one-size-fits-all advice: there is a difference between the sleep you need to feel awake and the sleep you need to be healthy (W-SRC-4). Your diary is how you find your own line between the two. Individual sleep needs vary, and a week of honest notes will tell you more about yours than any general guideline."
-      ],
-      "pullquote": "A record, not a diagnosis.",
-      "sources": [
-        {
-          "id": "W-SRC-1",
-          "name": "En resumen: su guía para un sueño saludable (In Brief: Your Guide to Healthy Sleep (Spanish) | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/es/resources/en-resumen-su-guia-para-un-sueno-saludable-brief-your-guide-healthy-sleep-spanish",
-          "checked": "2026-08-30"
-        },
-        {
-          "id": "W-SRC-2",
-          "name": "Sleep Deprivation and Deficiency - Healthy Sleep Habits | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits",
-          "checked": "2026-08-30"
-        },
-        {
-          "id": "W-SRC-3",
-          "name": "Sleep Disorder Treatments - Sleep Disorder Treatments | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/health/sleep-disorder-treatments",
-          "checked": "2026-08-30"
-        },
-        {
-          "id": "W-SRC-4",
-          "name": "Sleep Brochure | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/resources/sleep-brochure",
-          "checked": "2026-08-30"
-        },
-        {
-          "id": "W-SRC-5",
-          "name": "Sleep Diary | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/resources/sleep-diary",
-          "checked": "2026-08-30"
-        }
-      ],
-      "claims": [
-        {
-          "id": "W-01",
-          "claim": "NHLBI offers a printable sleep diary for recording the quality and quantity of your sleep, your use of medicines, alcohol, and caffeinated drinks, and how sleepy you feel during the day.",
-          "source": 4,
-          "sourceIds": [
-            "W-SRC-5"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "W-02",
-          "claim": "NHLBI suggests bringing the completed sleep diary with you to review the information with your doctor.",
-          "source": 4,
-          "sourceIds": [
-            "W-SRC-5"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "W-03",
-          "claim": "NHLBI describes multiple approaches to treating sleep disorders, including devices, therapies, medicines, and procedures, alongside healthy sleep habits.",
-          "source": 2,
-          "sourceIds": [
-            "W-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "W-04",
-          "claim": "Light therapy is listed among the therapies NHLBI names for sleep disorder treatment.",
-          "source": 2,
-          "sourceIds": [
-            "W-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "W-05",
-          "claim": "NHLBI distinguishes between the amount of sleep needed to feel awake and the amount needed to be healthy.",
-          "source": 3,
-          "sourceIds": [
-            "W-SRC-4"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-003:W-06",
-              "reason": "New NHLBI brochure source independently supports the same distinction recorded in the prior claim."
-            }
-          ]
-        },
-        {
-          "id": "W-06",
-          "claim": "NHLBI advises making sure you give yourself enough time to sleep, noting that with enough sleep each night people may find they are happier and more productive during the day, and that sleep is often the first thing busy people squeeze out of their schedules.",
-          "source": 1,
-          "sourceIds": [
-            "W-SRC-2"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-004:W-01",
-              "reason": "The healthy sleep habits page independently supports the same guidance about making time for sleep."
-            },
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-004:W-02",
-              "reason": "The same page independently supports the happiness and productivity framing."
-            }
-          ]
-        }
-      ],
-      "toneNotes": [
-        "No diagnosis, moralizing, or individualized medical advice; the diary is framed as a record to review with a doctor, per W-SRC-5.",
-        "Individual variation kept visible via the awake-versus-healthy sleep distinction (W-SRC-4).",
-        "No relationship asserted between the diary claims and prior screen-time or napping claims; shared topic alone is not a relationship."
-      ],
-      "tags": [
-        "sleep",
-        "self-tracking",
-        "general-wellbeing"
-      ],
-      "generated": true,
-      "scout": {
-        "provider": "tavily",
-        "request_id": "95c8647a-80e2-431d-b037-65c6a68ff4f8",
-        "credits": 2,
-        "search_mode": "timeless-official-fallback"
-      }
-    },
-    {
       "id": "model-watch-008",
       "deskId": "model-watch",
       "desk": "Model Watch",
@@ -5864,234 +7056,6 @@
       }
     },
     {
-      "id": "wellbeing-005",
-      "deskId": "wellbeing",
-      "desk": "Wellbeing",
-      "icon": "☾",
-      "issue": "005",
-      "version": "1.0.0",
-      "date": "AUG 29 · 2026",
-      "publishedAt": "2026-08-29T07:04:43.188Z",
-      "color": "#a993ff",
-      "title": "wellbeing-005 — The sleep-hygiene audit",
-      "kicker": "wellbeing",
-      "dek": "Habits drift. NHLBI's advice: put your sleep setup and evening routine on a periodic review cycle, not a one-time fix.",
-      "readTime": "3 min read",
-      "validity": "180 days",
-      "expires": "2027-02-25",
-      "confidence": "Medium",
-      "scope": "General wellbeing",
-      "editor": "OpenRouter · GLM 5.3 Flash",
-      "inputPolicy": "Scheduled Tavily source packets",
-      "editorial": [
-        "Sleep hygiene isn't a certificate you earn once. The National Heart, Lung, and Blood Institute frames it as something worth periodically taking stock of — the sleep environment you've built and the nighttime habits you've accumulated over the years [W-SRC-4]. The framing matters: what worked last season may have quietly stopped working.",
-        "The most common drift is luminous and pocket-sized. Artificial light from screens — phones, laptops, televisions — can signal the brain that it's time to be awake, and that exposure can translate into shorter sleep and irregular schedules in both children and adults [W-SRC-4]. In a study partly funded by NHLBI, smartphone use before bed was associated with shorter sleep duration than normal and worse sleep quality during the night [W-SRC-4].",
-        "One concrete, low-cost adjustment the experts suggest: power down devices at least 30 minutes before getting into bed [W-SRC-4]. It's a starting point for an audit, not a verdict on your evenings.",
-        "Individual variation is real here. Daytime napping may boost alertness and performance, but adults should nap no more than 20 minutes — and if falling asleep at night is a struggle, limit naps or move them earlier in the afternoon [W-SRC-3]. For preschool-age children, napping is normal and promotes healthy growth and development [W-SRC-3]. Same behavior, different guidance, depending on who you are.",
-        "This is general public-health guidance, not individualized medical advice. NHLBI's sleep resources also cover recognizing sleep disorders such as insomnia and sleep apnea, avoiding dangerous drowsy driving, and coping with jet lag and nighttime shift work [W-SRC-2, W-SRC-1]. Persistent sleep concerns belong with a professional."
-      ],
-      "pullquote": "It pays to periodically take stock of your sleep hygiene — the sleep environment you've created and the nighttime habits you've adopted over the years. [W-SRC-4]",
-      "sources": [
-        {
-          "id": "W-SRC-1",
-          "name": "En resumen: su guía para un sueño saludable (In Brief: Your Guide to Healthy Sleep (Spanish) | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/es/resources/en-resumen-su-guia-para-un-sueno-saludable-brief-your-guide-healthy-sleep-spanish",
-          "checked": "2026-08-29"
-        },
-        {
-          "id": "W-SRC-2",
-          "name": "Your Guide to Healthy Sleep | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/resources/your-guide-healthy-sleep",
-          "checked": "2026-08-29"
-        },
-        {
-          "id": "W-SRC-3",
-          "name": "Sleep Deprivation and Deficiency - Healthy Sleep Habits | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits",
-          "checked": "2026-08-29"
-        },
-        {
-          "id": "W-SRC-4",
-          "name": "Sweet dreams: Researchers explore link between sleep and health | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/news/2018/sweet-dreams-researchers-explore-link-between-sleep-and-health",
-          "checked": "2026-08-29"
-        },
-        {
-          "id": "W-SRC-5",
-          "name": "Sleep Brochure | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/resources/sleep-brochure",
-          "checked": "2026-08-29"
-        }
-      ],
-      "claims": [
-        {
-          "id": "W-01",
-          "claim": "NHLBI advises periodically taking stock of your \"sleep hygiene\" — the sleep environment you've created and the nighttime habits you've adopted over the years.",
-          "source": 3,
-          "sourceIds": [
-            "W-SRC-4"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "W-02",
-          "claim": "Artificial light from screens — cell phones, laptops, and televisions — can signal the brain that it's time to be awake, and this light exposure can translate into a loss of sleep duration and irregular sleep schedules in both children and adults.",
-          "source": 3,
-          "sourceIds": [
-            "W-SRC-4"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-004:W-05",
-              "reason": "New packet W-SRC-4 independently supports the same screen-light rule."
-            },
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-003:W-03",
-              "reason": "New packet independently supports the same screen-light rule."
-            }
-          ]
-        },
-        {
-          "id": "W-03",
-          "claim": "In a study partly funded by NHLBI, smartphone use before bed was associated with shorter sleep duration than normal and worse sleep quality during the night.",
-          "source": 3,
-          "sourceIds": [
-            "W-SRC-4"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-004:W-06",
-              "reason": "New packet independently supports the same study finding."
-            },
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-003:W-04",
-              "reason": "New packet independently supports the same study finding."
-            }
-          ]
-        },
-        {
-          "id": "W-04",
-          "claim": "Experts suggest sleep quality can be enhanced by powering down devices at least 30 minutes before getting into bed.",
-          "source": 3,
-          "sourceIds": [
-            "W-SRC-4"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-004:W-07",
-              "reason": "New packet independently supports the same expert suggestion."
-            },
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-003:W-05",
-              "reason": "New packet independently supports the same expert suggestion."
-            }
-          ]
-        },
-        {
-          "id": "W-05",
-          "claim": "Daytime napping may boost alertness and performance; adults should nap for no more than 20 minutes, and those with trouble falling asleep at night should limit naps or take them earlier in the afternoon.",
-          "source": 2,
-          "sourceIds": [
-            "W-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-004:W-08",
-              "reason": "New packet independently supports the same nap guidance."
-            },
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-003:W-02",
-              "reason": "New packet independently supports the same nap guidance."
-            }
-          ]
-        },
-        {
-          "id": "W-06",
-          "claim": "Napping in preschool-age children is normal and promotes healthy growth and development.",
-          "source": 2,
-          "sourceIds": [
-            "W-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "W-07",
-          "claim": "Making time to sleep will help protect your health and well-being now and in the future.",
-          "source": 2,
-          "sourceIds": [
-            "W-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-004:W-01",
-              "reason": "New packet independently supports the same guidance."
-            },
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-003:W-01",
-              "reason": "New packet independently supports the same guidance."
-            }
-          ]
-        },
-        {
-          "id": "W-08",
-          "claim": "NHLBI's sleep resources cover avoiding dangerous drowsy driving, coping with jet lag and nighttime shift work, and overviews of sleep disorders such as insomnia and sleep apnea.",
-          "source": 1,
-          "sourceIds": [
-            "W-SRC-2",
-            "W-SRC-1"
-          ],
-          "status": "verified",
-          "confidence": "medium"
-        }
-      ],
-      "toneNotes": [
-        "No diagnosis, moralizing, or individualized medical advice; persistent sleep concerns are pointed toward professional care.",
-        "Individual variation kept visible via the child-vs-adult napping contrast and the 'starting point, not verdict' framing.",
-        "All factual claims cite only supplied packet IDs; prior claims used solely as relationship targets."
-      ],
-      "tags": [
-        "sleep",
-        "sleep-hygiene",
-        "screens",
-        "napping",
-        "public-health-guidance"
-      ],
-      "generated": true,
-      "scout": {
-        "provider": "tavily",
-        "request_id": "2e4eb828-24e9-4176-ae16-c1d9f99479cb",
-        "credits": 2,
-        "search_mode": "timeless-official-fallback"
-      }
-    },
-    {
       "id": "model-watch-006",
       "deskId": "model-watch",
       "desk": "Model Watch",
@@ -6471,172 +7435,6 @@
       }
     },
     {
-      "id": "wellbeing-004",
-      "deskId": "wellbeing",
-      "desk": "Wellbeing",
-      "icon": "☾",
-      "issue": "004",
-      "version": "1.0.0",
-      "date": "AUG 28 · 2026",
-      "publishedAt": "2026-08-28T20:12:32.271Z",
-      "color": "#a993ff",
-      "title": "The Case for a Softer Landing Into Sleep",
-      "kicker": "Wellbeing",
-      "dek": "A federal sleep guide offers refreshingly unglamorous advice: protect your sleep time, dim the screens, and keep naps short. Here's what the evidence-backed basics actually say.",
-      "readTime": "3 min read",
-      "validity": "180 days",
-      "expires": "2027-02-24",
-      "confidence": "High",
-      "scope": "General wellbeing",
-      "editor": "OpenRouter · GLM 5.3 Flash",
-      "inputPolicy": "Scheduled Tavily source packets",
-      "editorial": [
-        "Sleep is easy to deprioritize. The National Heart, Lung, and Blood Institute (NHLBI) notes that sleep is often the first thing busy people squeeze out of their schedules, and it suggests the opposite approach: give yourself enough time to sleep, since adequate rest may leave you happier and more productive during the day [W-SRC-3].",
-        "The mechanism matters, too. NHLBI explains that internal body clocks running on roughly 24-hour cycles regulate when you feel awake and ready for sleep, and that these clocks are influenced by light, darkness, and your sleep schedule. Skimping on sleep quantity or quality, the agency says, raises risk for heart and respiratory problems and affects metabolism and the ability to think clearly and focus [W-SRC-5].",
-        "One of the most practical updates concerns screens. Artificial light from phones, laptops, and televisions can signal the brain that it's time to be awake, and research partly funded by NHLBI found that smartphone use before bed is associated with shorter sleep duration and worse sleep quality. Experts cited by NHLBI suggest powering down devices at least 30 minutes before bed [W-SRC-4].",
-        "If you nap, the guidance is specific: daytime napping may boost alertness and performance, but adults should nap for no more than 20 minutes, and if you have trouble falling asleep at night, limit naps or take them earlier in the afternoon [W-SRC-3].",
-        "A note on individual variation: these are general public-health habits, not a prescription. NHLBI's materials also cover sleep disorders such as insomnia, sleep apnea, restless legs syndrome, and narcolepsy, plus drowsy driving and shift work [W-SRC-2]. If sleep problems persist, that's a conversation for a healthcare professional, not a newsletter."
-      ],
-      "pullquote": "Sleep is often the first thing that busy people squeeze out of their schedules. [W-SRC-3]",
-      "sources": [
-        {
-          "id": "W-SRC-1",
-          "name": "En resumen: su guía para un sueño saludable (In Brief: Your Guide to Healthy Sleep (Spanish) | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/es/resources/en-resumen-su-guia-para-un-sueno-saludable-brief-your-guide-healthy-sleep-spanish",
-          "checked": "2026-08-28"
-        },
-        {
-          "id": "W-SRC-2",
-          "name": "Your Guide to Healthy Sleep | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/resources/your-guide-healthy-sleep",
-          "checked": "2026-08-28"
-        },
-        {
-          "id": "W-SRC-3",
-          "name": "Sleep Deprivation and Deficiency - Healthy Sleep Habits",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits",
-          "checked": "2026-08-28"
-        },
-        {
-          "id": "W-SRC-4",
-          "name": "Sweet dreams: Researchers explore link between sleep and health | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/news/2018/sweet-dreams-researchers-explore-link-between-sleep-and-health",
-          "checked": "2026-08-28"
-        },
-        {
-          "id": "W-SRC-5",
-          "name": "How Sleep Works - How Sleep Works | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/health/sleep",
-          "checked": "2026-08-28"
-        }
-      ],
-      "claims": [
-        {
-          "id": "W-01",
-          "claim": "Sleep is often the first thing busy people cut from their schedules, and NHLBI advises making time for sleep to protect health and well-being.",
-          "source": 2,
-          "sourceIds": [
-            "W-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "W-02",
-          "claim": "With enough sleep each night, people may find they are happier and more productive during the day.",
-          "source": 2,
-          "sourceIds": [
-            "W-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "W-03",
-          "claim": "Internal body clocks with cycles of approximately 24 hours regulate wakefulness and sleep readiness, influenced by light, darkness, and sleep schedules.",
-          "source": 4,
-          "sourceIds": [
-            "W-SRC-5"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "W-04",
-          "claim": "Not getting enough sleep or enough quality sleep raises risk for heart and respiratory problems and affects metabolism and the ability to think clearly and focus.",
-          "source": 4,
-          "sourceIds": [
-            "W-SRC-5"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "W-05",
-          "claim": "Artificial light from screens can signal the brain that it's time to be awake, potentially reducing sleep duration and regularity in children and adults.",
-          "source": 3,
-          "sourceIds": [
-            "W-SRC-4"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "W-06",
-          "claim": "A study partly funded by NHLBI found smartphone use before bed is associated with shorter sleep duration and worse sleep quality.",
-          "source": 3,
-          "sourceIds": [
-            "W-SRC-4"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "W-07",
-          "claim": "Experts suggest powering down devices at least 30 minutes before bed to enhance sleep quality.",
-          "source": 3,
-          "sourceIds": [
-            "W-SRC-4"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "W-08",
-          "claim": "Adults should nap no more than 20 minutes; those with trouble falling asleep at night should limit naps or take them earlier in the afternoon.",
-          "source": 2,
-          "sourceIds": [
-            "W-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        }
-      ],
-      "toneNotes": [
-        "No diagnosis, moralizing, or individualized medical advice; persistent sleep problems should prompt consultation with a healthcare professional.",
-        "Individual variation kept visible: guidance framed as general public-health habits, with sleep disorders and shift work acknowledged as out of scope for this edition [W-SRC-2]."
-      ],
-      "tags": [
-        "sleep",
-        "wellbeing",
-        "sleep-hygiene",
-        "screens",
-        "naps"
-      ],
-      "generated": true,
-      "scout": {
-        "provider": "tavily",
-        "request_id": "22c4e0d9-55d5-4ec1-96cc-aad7550b8cce",
-        "credits": 2,
-        "search_mode": "timeless-official-fallback"
-      }
-    },
-    {
       "id": "model-watch-005",
       "deskId": "model-watch",
       "desk": "Model Watch",
@@ -6951,174 +7749,6 @@
         "request_id": "6a95904d-2279-49d3-8d17-498bb5e65782",
         "credits": 1,
         "search_mode": "bounded"
-      }
-    },
-    {
-      "id": "wellbeing-003",
-      "deskId": "wellbeing",
-      "desk": "Wellbeing",
-      "icon": "☾",
-      "issue": "003",
-      "version": "1.0.0",
-      "date": "AUG 28 · 2026",
-      "publishedAt": "2026-08-28T12:05:32.380Z",
-      "color": "#a993ff",
-      "title": "Sleep Hygiene: Small Adjustments, Real Returns",
-      "kicker": "Wellbeing",
-      "dek": "A refresher on healthy sleep habits from the National Heart, Lung, and Blood Institute — why timing, environment, and device use matter, and why the right routine varies from person to person.",
-      "readTime": "3 min read",
-      "validity": "180 days",
-      "expires": "2027-02-24",
-      "confidence": "Medium",
-      "scope": "General wellbeing",
-      "editor": "OpenRouter · GLM 5.3 Flash",
-      "inputPolicy": "Scheduled Tavily source packets",
-      "editorial": [
-        "Sleep is easy to deprioritize. The National Heart, Lung, and Blood Institute (NHLBI) notes that sleep is often the first thing busy people cut from their schedules, and recommends protecting time for it as a foundation for health and wellbeing [W-SRC-3].",
-        "NHLBI's guidance centers on a few practical habits: give yourself enough time to sleep; keep naps short (no more than 20 minutes for adults) and earlier in the afternoon if nighttime sleep is a struggle; and power down screens at least 30 minutes before bed, since artificial light from phones, laptops, and TVs can signal the brain that it's time to be awake [W-SRC-3][W-SRC-4].",
-        "A study partly funded by NHLBI found that smartphone use before bed is associated with shorter sleep duration and worse sleep quality — a correlation, not a proven cause, but one consistent with other research [W-SRC-4].",
-        "Individual variation matters. What 'enough sleep' means differs from person to person, and NHLBI distinguishes between the sleep needed to feel awake and the sleep needed to be healthy [W-SRC-5]. Persistent sleep problems — such as insomnia, sleep apnea, or restless legs syndrome — are recognized sleep disorders, not personal failings, and are worth discussing with a healthcare professional [W-SRC-2][W-SRC-4]."
-      ],
-      "pullquote": "Sleep is often the first thing that busy people squeeze out of their schedules. Making time to sleep will help you protect your health and well-being now and in the future. — NHLBI [W-SRC-3]",
-      "sources": [
-        {
-          "id": "W-SRC-1",
-          "name": "En resumen: su guía para un sueño saludable (In Brief: Your Guide to Healthy Sleep (Spanish) | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/es/resources/en-resumen-su-guia-para-un-sueno-saludable-brief-your-guide-healthy-sleep-spanish",
-          "checked": "2026-08-28"
-        },
-        {
-          "id": "W-SRC-2",
-          "name": "Your Guide to Healthy Sleep | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/resources/your-guide-healthy-sleep",
-          "checked": "2026-08-28"
-        },
-        {
-          "id": "W-SRC-3",
-          "name": "Sleep Deprivation and Deficiency - Healthy Sleep Habits | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits",
-          "checked": "2026-08-28"
-        },
-        {
-          "id": "W-SRC-4",
-          "name": "Sweet dreams: Researchers explore link between sleep and health | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/news/2018/sweet-dreams-researchers-explore-link-between-sleep-and-health",
-          "checked": "2026-08-28"
-        },
-        {
-          "id": "W-SRC-5",
-          "name": "Sleep Brochure | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/resources/sleep-brochure",
-          "checked": "2026-08-28"
-        }
-      ],
-      "claims": [
-        {
-          "id": "W-01",
-          "claim": "Sleep is often the first thing busy people cut from their schedules, and making time for it supports health and wellbeing.",
-          "source": 2,
-          "sourceIds": [
-            "W-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "W-02",
-          "claim": "For adults, NHLBI recommends limiting naps to no more than 20 minutes, and taking them earlier in the afternoon if falling asleep at night is difficult.",
-          "source": 2,
-          "sourceIds": [
-            "W-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "W-03",
-          "claim": "Artificial light from screens (phones, laptops, TVs) can signal the brain that it's time to be awake, potentially reducing sleep duration and regularity.",
-          "source": 3,
-          "sourceIds": [
-            "W-SRC-4"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "W-04",
-          "claim": "A study partly funded by NHLBI found smartphone use before bed is associated with shorter sleep duration and worse sleep quality.",
-          "source": 3,
-          "sourceIds": [
-            "W-SRC-4"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "W-05",
-          "claim": "Experts suggest powering down devices at least 30 minutes before bed to support sleep quality.",
-          "source": 3,
-          "sourceIds": [
-            "W-SRC-4"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "W-06",
-          "claim": "There is a difference between the amount of sleep needed to feel awake and the amount needed to be healthy.",
-          "source": 4,
-          "sourceIds": [
-            "W-SRC-5"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "W-07",
-          "claim": "Insomnia, sleep apnea, restless legs syndrome, and narcolepsy are recognized sleep disorders.",
-          "source": 1,
-          "sourceIds": [
-            "W-SRC-2",
-            "W-SRC-4"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "W-08",
-          "claim": "The exact amount of sleep each individual needs varies from person to person.",
-          "source": 4,
-          "sourceIds": [
-            "W-SRC-5"
-          ],
-          "status": "verified",
-          "confidence": "medium"
-        }
-      ],
-      "toneNotes": [
-        "No diagnosis, no moralizing, no individualized medical advice.",
-        "Frame the smartphone-sleep link as an association, not proven causation.",
-        "Keep individual variation visible throughout.",
-        "Point readers toward professional care for persistent sleep problems without being prescriptive."
-      ],
-      "tags": [
-        "sleep",
-        "wellbeing",
-        "sleep hygiene",
-        "public health",
-        "NHLBI"
-      ],
-      "generated": true,
-      "scout": {
-        "provider": "tavily",
-        "request_id": "a4b641c8-f91a-4aad-8438-710390b083ed",
-        "credits": 2,
-        "search_mode": "timeless-official-fallback"
       }
     },
     {
