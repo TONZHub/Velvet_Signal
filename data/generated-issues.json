@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-03T19:19:48.399Z",
+  "generated_at": "2026-09-04T19:00:10.631Z",
   "desks": {
     "maker": {
       "fingerprint": "0cc8fedf33a49e7969a8b06f1cc6850a811ab979bfabf84ac8353ae840a6de08",
@@ -9,31 +9,1283 @@
       "tavily_request_id": "a5af2bc6-7c97-43fa-83c4-5256eb89c86a"
     },
     "model-watch": {
-      "fingerprint": "bc5f38d5ba591e3de84eed11827739117a6f54f491fb628c79d6b352f9699f28",
-      "latest_patch_id": "model-watch-013",
-      "published_at": "2026-09-02T12:46:12.480Z",
-      "tavily_request_id": "2d48180e-1ad7-4738-b3b2-3e3504fe3beb"
+      "fingerprint": "e69774d4af521eb561daa8b3ff43813af637cb36b1be5a214927a36a2d572c81",
+      "latest_patch_id": "model-watch-014",
+      "published_at": "2026-09-04T04:35:04.654Z",
+      "tavily_request_id": "f5688680-ee5a-455d-842d-d43cb5408803"
     },
     "culture": {
-      "fingerprint": "e3fa1f8f25ef0f62fc6ac0e02694a9439b6106a3ef4f20d92f045d6370984fb1",
-      "latest_patch_id": "culture-010",
-      "published_at": "2026-09-03T12:53:52.513Z",
-      "tavily_request_id": "de8a5498-273d-416b-ab7b-8ca00c16b10e"
+      "fingerprint": "ec49174b930561a931ac29789e077923e4cc7f9b787387d115733cbb120a89d8",
+      "latest_patch_id": "culture-012",
+      "published_at": "2026-09-04T19:00:10.631Z",
+      "tavily_request_id": "33e800fe-8cb0-4841-9f70-ce5ee353a0a0"
     },
     "pantry": {
-      "fingerprint": "760eb52aa7d9fd85a2ffc00c1a973ec700960044a477fcf65e389403ff5d5e94",
-      "latest_patch_id": "pantry-012",
-      "published_at": "2026-09-03T19:18:09.656Z",
-      "tavily_request_id": "4b1216f9-abc4-49dc-8116-458f14c680bc"
+      "fingerprint": "655d267a93df998c4fa5563ff8d340582a9b208e2168875b389a3f1edaa97a19",
+      "latest_patch_id": "pantry-014",
+      "published_at": "2026-09-04T18:59:25.055Z",
+      "tavily_request_id": "ce7559ab-7f7b-4ba8-bab8-0fd8c3ce6cc7"
     },
     "wellbeing": {
-      "fingerprint": "eec216a6eee16a02b9bccc0503e94837fea1e9d19522efbabe54e2f00579a1e9",
-      "latest_patch_id": "wellbeing-018",
-      "published_at": "2026-09-03T19:19:48.399Z",
-      "tavily_request_id": "f61fb4e0-28c9-4926-bf92-22887b16bb69"
+      "fingerprint": "e94f9b772702d1c264e99ec0d3616bf556076dcd8f9dba27147ba9e0e1ebca69",
+      "latest_patch_id": "wellbeing-021",
+      "published_at": "2026-09-04T18:59:47.097Z",
+      "tavily_request_id": "1d219cc1-3e9b-4bfc-b6ee-f6829dcbd422"
     }
   },
   "issues": [
+    {
+      "id": "culture-012",
+      "deskId": "culture",
+      "desk": "Culture Desk",
+      "icon": "✺",
+      "issue": "012",
+      "version": "1.0.0",
+      "date": "SEP 04 · 2026",
+      "publishedAt": "2026-09-04T19:00:10.631Z",
+      "color": "#67d6c0",
+      "title": "The Invisible Text in Your Inbox",
+      "kicker": "Culture Desk",
+      "dek": "A trick once used to attack AI agents has found a second life in spam — and it works because of what you can't see.",
+      "readTime": "3 min read",
+      "validity": "10 days",
+      "expires": "2026-09-14",
+      "confidence": "Mixed",
+      "scope": "Culture signals",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "ASCII smuggling started as a security researcher's trick: a block of 128 Unicode tags that mimic ASCII almost perfectly, with one major difference — the characters they encode are readable by computers but almost completely invisible to humans [C-SRC-2].",
+        "The technique was once used to hide malicious prompts in attacks on AI agents. Now spammers have adopted it to evade email filters designed to flag unwanted mass messages [C-SRC-2].",
+        "The mechanics are simple and a little eerie. Filters search for text like dollar amounts or the words \"credit\" and \"term.\" Sprinkle invisible characters into the middle of \"funding,\" and a filter may read \"fun\" and \"ding\" instead [C-SRC-2].",
+        "What makes this a cultural signal rather than just a security note is the shift in who's using it. A technique that lived in AI-attack writeups has moved into ordinary commercial mail — a reminder that the tools of adversarial tech don't stay put [C-SRC-2].",
+        "One boundary worth keeping: the packets show spammers adopting the technique, not that every strange-looking email is smuggling. Observed use is not universal meaning, and nothing here says anything about any reader's inbox or habits."
+      ],
+      "pullquote": "The characters they encode are readable by computers but, by design, almost completely invisible to humans.",
+      "sources": [
+        {
+          "id": "C-SRC-1",
+          "name": "20 Years Later, This Grand Theft Auto Quote Remains Undefeated in Gaming History - Polygon.com",
+          "publisher": "polygon.com",
+          "url": "https://www.polygon.com/gta-san-andreas-best-quote/",
+          "checked": "2026-09-04",
+          "publishedAt": "Thu, 03 Sep 2026 23:00:14 GMT"
+        },
+        {
+          "id": "C-SRC-2",
+          "name": "Once popular for attacking AI, ASCII smuggling is embraced by spammers - Ars Technica",
+          "publisher": "arstechnica.com",
+          "url": "https://arstechnica.com/security/2026/09/once-popular-for-attacking-ai-ascii-smuggling-is-embraced-by-spammers/",
+          "checked": "2026-09-04",
+          "publishedAt": "Fri, 04 Sep 2026 17:18:12 GMT"
+        },
+        {
+          "id": "C-SRC-3",
+          "name": "Crypto Price Today - Bitcoin Pulls Back Near $79K While Apeing Locks In September 8 for Its Upcoming Crypto Presale - markets.businessinsider.com",
+          "publisher": "markets.businessinsider.com",
+          "url": "https://markets.businessinsider.com/news/stocks/crypto-price-today---bitcoin-pulls-back-near-79k-while-apeing-locks-in-september-8-for-its-upcoming-crypto-presale-1036514343",
+          "checked": "2026-09-04",
+          "publishedAt": "Wed, 02 Sep 2026 07:34:39 GMT"
+        },
+        {
+          "id": "C-SRC-4",
+          "name": "This Crossword Will Have You Shivering With Antici... - BuzzFeed",
+          "publisher": "buzzfeed.com",
+          "url": "https://www.buzzfeed.com/amanda_webber/crossword-september-2-2026",
+          "checked": "2026-09-04",
+          "publishedAt": "Wed, 02 Sep 2026 14:46:01 GMT"
+        },
+        {
+          "id": "C-SRC-5",
+          "name": "‘Derogatory’ fliers targeting Armenian community found near Glendale elementary school - Los Angeles Times",
+          "publisher": "latimes.com",
+          "url": "https://www.latimes.com/california/story/2026-08-29/derogatory-flyers-targeting-armenian-community-found-near-glendale-elementary-school",
+          "checked": "2026-09-04",
+          "publishedAt": "Sat, 29 Aug 2026 19:03:38 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "C-01",
+          "claim": "ASCII smuggling is a technique involving a block of 128 Unicode tags that mimic a portion of ASCII almost perfectly, encoding characters readable by computers but almost completely invisible to humans by design.",
+          "source": 1,
+          "sourceIds": [
+            "C-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-02",
+          "claim": "ASCII smuggling was once used to hide malicious prompts in attacks on AI agents.",
+          "source": 1,
+          "sourceIds": [
+            "C-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-03",
+          "claim": "Spammers have adopted ASCII smuggling to evade email filters designed to flag unwanted messages used in mass campaigns.",
+          "source": 1,
+          "sourceIds": [
+            "C-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-04",
+          "claim": "Spammers embed invisible Unicode text so that filters searching for terms like dollar amounts, \"credit,\" and \"term\" may misread words — for example, reading \"fun\" and \"ding\" instead of \"funding.\"",
+          "source": 1,
+          "sourceIds": [
+            "C-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-05",
+          "claim": "The packets establish observed adoption by spammers as of 4 September 2026; they do not establish the prevalence of the technique across email platforms, whether filters have responded, or any universal meaning of the signal, and no inference about any reader's inbox or habits is warranted. Re-check within 7–14 days.",
+          "source": 1,
+          "sourceIds": [
+            "C-SRC-2"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        }
+      ],
+      "toneNotes": [
+        "Keep the explanation concrete: the \"funding\" → \"fun\"/\"ding\" example carries the piece.",
+        "Avoid security-hype framing; the desk is culture, so the story is about a technique migrating between communities.",
+        "Do not imply the reader's email is affected; observed use only."
+      ],
+      "tags": [
+        "ascii-smuggling",
+        "spam",
+        "ai-agents",
+        "unicode",
+        "email-filters"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "33e800fe-8cb0-4841-9f70-ce5ee353a0a0",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "wellbeing-021",
+      "deskId": "wellbeing",
+      "desk": "Wellbeing",
+      "icon": "☾",
+      "issue": "021",
+      "version": "1.0.0",
+      "date": "SEP 04 · 2026",
+      "publishedAt": "2026-09-04T18:59:47.097Z",
+      "color": "#a993ff",
+      "title": "Apple's Health App Adds Perimenopause Cycle Tracking: A General Wellbeing Update",
+      "kicker": "wellbeing",
+      "dek": "A software update now flags cycle patterns that may suggest perimenopause and lets you log symptoms — a tool for noticing your body, not a diagnosis.",
+      "readTime": "3 min read",
+      "validity": "180 days",
+      "expires": "2027-03-03",
+      "confidence": "Mixed",
+      "scope": "General wellbeing",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Apple's WWDC 2026 announcement included a quiet but meaningful addition to the Health app: Cycle Tracking now supports perimenopause and menopause. The app can notify you when your cycle patterns are suggestive of perimenopause, and it lets you log related symptoms and read educational information about what's happening with your body [W-SRC-4].",
+        "Why does this matter? Perimenopause — the transition before menopause — is often experienced as confusing, scattered changes rather than a single clear event. A tool that notices pattern shifts and turns them into language you can bring to a doctor changes the texture of that experience. The framing in the announcement is careful: the goal is to help you \"be better prepared to talk to your doctor\" [W-SRC-4]. That's a tool for preparation, not a verdict.",
+        "It's worth being precise about what this is and isn't. The app flags patterns that are *suggestive* of perimenopause — suggestive, not diagnostic. Individual variation is the whole story here: cycle patterns differ widely from person to person, and the same pattern can mean different things in different bodies. The educational content and symptom logging are supports for a conversation with a clinician, not substitutes for one.",
+        "One more note on scope: this is a feature announcement from a product event, not a clinical study or a public-health guideline. We're reporting what the source says the feature does and how it's framed — the notification, the symptom logging, the educational content — and treating the underlying clinical performance of the feature as outside what these packets can verify.",
+        "If you use an iPhone and track your cycle, this may simply show up in your Health app. If you don't, the general takeaway still holds: when a tool helps you notice and describe changes in your own body, it can make the conversation with a professional more concrete — and the professional stays in the loop."
+      ],
+      "pullquote": "You can be notified when your cycle patterns are suggestive of perimenopause. Log your related symptoms and read educational information so you can understand more about what's going on with your body and be better prepared to talk to your doctor.",
+      "sources": [
+        {
+          "id": "W-SRC-1",
+          "name": "[PDF] Executive Order 2026-05 - Commonwealth of Pennsylvania",
+          "publisher": "pa.gov",
+          "url": "https://www.pa.gov/content/dam/copapwp-pagov/en/governor/documents/eo2026_05_protecting%20pennsylvania%20consumers%20from%20data%20center%20impacts_final_executed.pdf",
+          "checked": "2026-09-04"
+        },
+        {
+          "id": "W-SRC-2",
+          "name": "2026 UIL Physical Form",
+          "publisher": "uiltexas.org",
+          "url": "https://www.uiltexas.org/files/athletics/PrePhysFormRvsd2026.pdf",
+          "checked": "2026-09-04"
+        },
+        {
+          "id": "W-SRC-3",
+          "name": "NVD-CVE-2026-60137 - National Vulnerability Database",
+          "publisher": "nvd.nist.gov",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-60137",
+          "checked": "2026-09-04"
+        },
+        {
+          "id": "W-SRC-4",
+          "name": "Apple WWDC 2026 June 8: Introducing Siri AI and more",
+          "publisher": "youtube.com",
+          "url": "https://www.youtube.com/watch?v=hF8swzNR1-o",
+          "checked": "2026-09-04"
+        },
+        {
+          "id": "W-SRC-5",
+          "name": "[PDF] Safe Harbor for the Credit for Carbon Oxide Sequestration under ...",
+          "publisher": "irs.gov",
+          "url": "https://www.irs.gov/pub/irs-drop/n-26-01.pdf",
+          "checked": "2026-09-04"
+        }
+      ],
+      "claims": [
+        {
+          "id": "W-01",
+          "claim": "Apple's WWDC 2026 announcement (June 8, 2026) introduced perimenopause and menopause support in the Health app's Cycle Tracking feature.",
+          "source": 3,
+          "sourceIds": [
+            "W-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-02",
+          "claim": "The Cycle Tracking feature can notify users when their cycle patterns are suggestive of perimenopause.",
+          "source": 3,
+          "sourceIds": [
+            "W-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-03",
+          "claim": "The feature allows users to log perimenopause-related symptoms and read educational information about the changes, with the stated purpose of helping users be better prepared to talk to their doctor.",
+          "source": 3,
+          "sourceIds": [
+            "W-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-04",
+          "claim": "The feature is framed as a tool for noticing and describing cycle changes to support a conversation with a clinician, not as a diagnostic instrument; the announcement's own language uses \"suggestive of perimenopause\" rather than diagnostic terminology.",
+          "source": 3,
+          "sourceIds": [
+            "W-SRC-4"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        },
+        {
+          "id": "W-05",
+          "claim": "The announcement also states that research shows social interaction, academics, physical activity, and sleep are essential for healthy child development, and that kids under 18 using personal devices benefit from age-based protections guided by adult supervision, with access for those under 13 limited and expanded when a child is ready.",
+          "source": 3,
+          "sourceIds": [
+            "W-SRC-4"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        }
+      ],
+      "toneNotes": [
+        "Keep the distinction between 'suggestive' and 'diagnostic' visible throughout — it's the editorial spine of this piece.",
+        "Individual variation stays visible: cycle patterns differ widely, and the same pattern can mean different things in different bodies.",
+        "No diagnosis, no moralizing, no individualized medical advice. The doctor conversation is the destination, and the app is the map, not the destination.",
+        "The child-development and device-protection material in W-SRC-4 is adjacent to the desk's scope; it's captured as a claim for the ledger but kept out of the editorial to keep the piece focused on one useful update."
+      ],
+      "tags": [
+        "wellbeing",
+        "perimenopause",
+        "cycle tracking",
+        "health apps",
+        "Apple",
+        "digital health",
+        "individual variation"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "1d219cc1-3e9b-4bfc-b6ee-f6829dcbd422",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "pantry-014",
+      "deskId": "pantry",
+      "desk": "The Pantry",
+      "icon": "◒",
+      "issue": "014",
+      "version": "1.0.0",
+      "date": "SEP 04 · 2026",
+      "publishedAt": "2026-09-04T18:59:25.055Z",
+      "color": "#f1cf69",
+      "title": "The Two-Hour Clock, Reissued: Thanksgiving Leftovers, the Danger Zone, and Where This Edition Stops",
+      "kicker": "Pantry",
+      "dek": "FSIS's HelloFresh welcome page restates the leftover rules we published last cycle. We re-verify them against this cycle's packets, keep the hotline and complaint channels on file, and decline — again — to rule on any specific container in your fridge.",
+      "readTime": "3 min read",
+      "validity": "365 days",
+      "expires": "2027-09-04",
+      "confidence": "High",
+      "scope": "Food safety",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "The pantry desk has seen this page before. P-SRC-1 is the same FSIS HelloFresh welcome packet that anchored pantry-012, and its substance is unchanged: refrigerate leftovers within two hours of cooking, within one hour when the air tops 90°F, and expect four refrigerator days or two-to-six months of best quality from the freezer [P-SRC-1]. We are re-issuing these rules as confirmed rather than treating them as news, because a rule worth keeping is worth re-checking against the current packet set.",
+        "The mechanics matter as much as the clock. Bacteria multiply fastest between 40°F and 140°F — the Danger Zone — which is why the two-hour window exists at all [P-SRC-1]. And the window is only as good as the cooling: dividing leftovers, including carved turkey, into smaller portions in covered shallow containers helps them chill quickly enough for the timeline to hold [P-SRC-1].",
+        "Two channels stay on file. The Meat and Poultry Hotline (1-888-MPHotline) answers consumer questions on safe storage, handling, and preparation of meat, poultry, and egg products, staffed by food safety experts weekdays 10 a.m. to 6 p.m. Eastern [P-SRC-2, P-SRC-3]. For incidents — illness, foreign objects, mislabeling, off taste, color, or appearance involving USDA-regulated products — FSIS's Electronic Consumer Complaint Reporting Form feeds analysts who identify and respond to consumer food safety issues [P-SRC-3].",
+        "Where this edition stops: nothing in this cycle's packets supplies a temperature log, storage history, or handling record for any specific food. The four-day and two-to-six-month windows assume the stated temperatures were actually held, and we will not infer whether any particular container is safe without that history [P-SRC-1]. If you have a specific question about a specific item, the hotline exists for exactly that [P-SRC-2].",
+        "One packet is set aside. P-SRC-4 is cooking-technique commentary — an air-fryer wing episode in which the presenter himself notes that raw uncovered poultry poses a potential danger — and P-SRC-5 is a historical risk assessment of E. coli O157:H7 in ground beef. Neither supplies a household storage rule, so neither is used as a factual basis for a claim in this edition."
+      ],
+      "pullquote": "The windows assume the stated temperatures were actually held — and no packet can vouch for your fridge.",
+      "sources": [
+        {
+          "id": "P-SRC-1",
+          "name": "Welcome, HelloFresh Customers! | Food Safety and Inspection Service",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/HelloFresh",
+          "checked": "2026-09-04"
+        },
+        {
+          "id": "P-SRC-2",
+          "name": "askFSIS",
+          "publisher": "ask.fsis.usda.gov",
+          "url": "https://ask.fsis.usda.gov/",
+          "checked": "2026-09-04"
+        },
+        {
+          "id": "P-SRC-3",
+          "name": "USDA Electronic Consumer Complaint Form - Welcome",
+          "publisher": "foodcomplaint.fsis.usda.gov",
+          "url": "https://foodcomplaint.fsis.usda.gov/eccf",
+          "checked": "2026-09-04"
+        },
+        {
+          "id": "P-SRC-4",
+          "name": "Alton Brown Cooks Food | Episode 35: Fry Some Air - YouTube",
+          "publisher": "youtube.com",
+          "url": "https://www.youtube.com/watch?v=yC11-UGlMho",
+          "checked": "2026-09-04"
+        },
+        {
+          "id": "P-SRC-5",
+          "name": "Risk Assessment of E. coli O157:H7 in Ground Beef | Food Safety and Inspection Service",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/node/2003",
+          "checked": "2026-09-04"
+        }
+      ],
+      "claims": [
+        {
+          "id": "P-01",
+          "claim": "Perishable leftovers, including turkey, appetizers, and side dishes, should be stored within two hours of cooking, or within one hour if air temperature is above 90°F; food held above 140°F is exempt from the two-hour clock.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-012:P-01",
+              "reason": "This cycle's packet independently restates the same two-hour/one-hour rule, independently supporting the prior claim."
+            }
+          ]
+        },
+        {
+          "id": "P-02",
+          "claim": "The Danger Zone is 40°F to 140°F, the temperature range in which foodborne-illness-causing bacteria grow rapidly.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-012:P-02",
+              "reason": "P-SRC-1 restates the same 40°F–140°F Danger Zone definition, independently supporting the prior claim."
+            }
+          ]
+        },
+        {
+          "id": "P-03",
+          "claim": "Divide leftovers, including carved turkey, into smaller portions and refrigerate or freeze them in covered shallow containers so they cool more quickly.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-012:P-03",
+              "reason": "P-SRC-1 restates the shallow-container cooling guidance, independently supporting the prior claim."
+            }
+          ]
+        },
+        {
+          "id": "P-04",
+          "claim": "FSIS guidance states Thanksgiving leftovers are safe in the refrigerator for up to four days, or until the Monday after Thanksgiving, and that frozen leftovers remain at best quality for two to six months.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-012:P-04",
+              "reason": "P-SRC-1 restates the four-day refrigerator window and two-to-six-month freezer quality window, independently supporting the prior claim."
+            }
+          ]
+        },
+        {
+          "id": "P-05",
+          "claim": "The USDA Meat and Poultry Hotline (1-888-MPHotline / 1-888-674-6854) answers consumer questions on safe storage, handling, and preparation of meat, poultry, and egg products, and is staffed by food safety experts weekdays from 10 a.m. to 6 p.m. Eastern time; FSIS also operates an Electronic Consumer Complaint Reporting Form for incidents involving USDA-regulated products.",
+          "source": 1,
+          "sourceIds": [
+            "P-SRC-2",
+            "P-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-012:P-05",
+              "reason": "This cycle's packets independently supply the hotline scope, staffing hours, and complaint-form description, independently supporting the prior claim."
+            }
+          ]
+        },
+        {
+          "id": "P-06",
+          "claim": "This edition makes no determination about whether any specific leftover or food item is safe to eat: the packets supply general time and temperature rules but no storage history, temperature log, or handling record for any specific food, so the rules above cannot be applied to any particular container without that history.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-012:P-06",
+              "reason": "The same evidentiary limitation holds in this cycle — general rules, no per-item history — independently supporting the prior scope limitation."
+            }
+          ]
+        },
+        {
+          "id": "P-07",
+          "claim": "The remaining packets in this cycle supply cooking-technique commentary and a historical pathogen risk assessment, not household storage rules: an air-fryer wing episode in which the presenter acknowledges that raw uncovered poultry poses a potential danger (P-SRC-4), and a retrospective risk assessment of E. coli O157:H7 in ground beef (P-SRC-5). Neither is used as a factual basis for a safety rule in this edition.",
+          "source": 3,
+          "sourceIds": [
+            "P-SRC-4",
+            "P-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Re-verification framing: the desk treats a repeat packet as a chance to re-check, not to re-report.",
+        "The no-determination claim is the edition's spine — keep it in the prose and the ledger, identically worded in spirit.",
+        "Set-aside packets are named and why, so the agent can audit the exclusion."
+      ],
+      "tags": [
+        "food-safety",
+        "leftovers",
+        "FSIS",
+        "Danger Zone",
+        "hotline",
+        "no-determination"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "ce7559ab-7f7b-4ba8-bab8-0fd8c3ce6cc7",
+        "credits": 2,
+        "search_mode": "timeless-official-fallback"
+      }
+    },
+    {
+      "id": "wellbeing-020",
+      "deskId": "wellbeing",
+      "desk": "Wellbeing",
+      "icon": "☾",
+      "issue": "020",
+      "version": "1.0.0",
+      "date": "SEP 04 · 2026",
+      "publishedAt": "2026-09-04T12:49:52.217Z",
+      "color": "#a993ff",
+      "title": "The Afternoon Coffee Curfew",
+      "kicker": "One small wellbeing update, clearly sourced",
+      "dek": "The cup that rescues your afternoon may still be working at midnight. One source's argument for a clear caffeine cut-off time — and why we're flagging the evidence as secondhand.",
+      "readTime": "3 min read",
+      "validity": "180 days",
+      "expires": "2027-03-03",
+      "confidence": "Mixed",
+      "scope": "General wellbeing",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "There's a particular kind of afternoon negotiation most of us know: the slump arrives, the coffee answers, and then bedtime comes and sleep feels thinner than it should. A supplied source this cycle makes a specific, testable suggestion about that loop — give caffeine a hard curfew, at least six hours before bed.",
+        "The reasoning offered is pharmacological: caffeine, the source says, has a half-life of roughly five to six hours. A 4 p.m. cup, on that math, leaves about half the dose circulating at 9 p.m. — and possibly a quarter of it past midnight. The source cites a 2013 study that tested caffeine at three timings before bed (right before, 3 hours before, and 6 hours before) and found that even the 6-hour dose significantly disrupted sleep.",
+        "Why the caveat matters: that study reaches us secondhand, through a self-improvement video rather than a public-health body or the paper itself. We're publishing the recommendation as attributed guidance and marking the study and half-life figures as needing review — not because they're implausible, but because our packets don't let us verify them directly. If a public-health source lands on this desk, we'll firm the claim up or replace it.",
+        "Two things keep this honest. First, the source frames this as one person's adopted habit — 'one habit I started recently' — not a universal prescription. Caffeine sensitivity and sleep needs vary person to person, and a six-hour curfew is a starting point to test, not a rule to obey. Second, the same source offers a gentler reframe worth keeping: the afternoon crash isn't a failure, it's a signal.",
+        "If a six-hour curfew sounds ambitious, habit research in our packets suggests starting smaller: scale the change down to its easiest version so it survives low-motivation days. A cutoff you actually keep beats a strict one you abandon by Thursday. As always, this is general wellbeing context, not individualized medical advice — if sleep problems persist, a professional is the right door."
+      ],
+      "pullquote": "The coffee that can save your afternoon can also sabotage your next morning.",
+      "sources": [
+        {
+          "id": "W-SRC-1",
+          "name": "9 Boring Habits That Will Put You Ahead of 99% of People",
+          "publisher": "youtube.com",
+          "url": "https://www.youtube.com/watch?v=LXaFHI_2Hus",
+          "checked": "2026-09-04"
+        },
+        {
+          "id": "W-SRC-2",
+          "name": "Habits Guide: How to Build Good Habits and Break Bad Ones",
+          "publisher": "jamesclear.com",
+          "url": "https://jamesclear.com/habits",
+          "checked": "2026-09-04"
+        },
+        {
+          "id": "W-SRC-3",
+          "name": "How to Meditate Daily - Zen Habits Website",
+          "publisher": "zenhabits.net",
+          "url": "https://zenhabits.net/meditate",
+          "checked": "2026-09-04"
+        },
+        {
+          "id": "W-SRC-4",
+          "name": "The Science of Making & Breaking Habits: How to Change ...",
+          "publisher": "youtube.com",
+          "url": "https://www.youtube.com/watch?v=8dHEG7WxR4c",
+          "checked": "2026-09-04"
+        },
+        {
+          "id": "W-SRC-5",
+          "name": "A Guide to Developing the Self-Discipline Habit - Zen Habits Website",
+          "publisher": "zenhabits.net",
+          "url": "https://zenhabits.net/self-discipline",
+          "checked": "2026-09-04"
+        }
+      ],
+      "claims": [
+        {
+          "id": "W-01",
+          "claim": "According to the source, a 2013 study tested caffeine at three timings before bed — right before sleep, 3 hours before, and 6 hours before — and found that caffeine taken even 6 hours before bedtime significantly disrupted sleep.",
+          "source": 0,
+          "sourceIds": [
+            "W-SRC-1"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        },
+        {
+          "id": "W-02",
+          "claim": "The source reports that caffeine has a half-life of about 5–6 hours, meaning a cup of coffee at 4 p.m. would leave roughly half the caffeine circulating at 9 p.m. and possibly a quarter of it after midnight.",
+          "source": 0,
+          "sourceIds": [
+            "W-SRC-1"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        },
+        {
+          "id": "W-03",
+          "claim": "The source's practical recommendation is a clear cut-off time for caffeine, at least 6 hours before bedtime, framed as a way to protect sleep and avoid waking tired and groggy; it is presented as one person's adopted habit rather than a universal prescription.",
+          "source": 0,
+          "sourceIds": [
+            "W-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-04",
+          "claim": "The source frames the afternoon energy dip as a signal rather than a personal failure and attributes to Nathaniel Kleitman, described as the father of modern sleep research, the discovery that the brain cycles beyond nighttime; the supplied excerpt is truncated, so the full description of those cycles is not available for verification.",
+          "source": 0,
+          "sourceIds": [
+            "W-SRC-1"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        },
+        {
+          "id": "W-05",
+          "claim": "A conversation on making and breaking habits presents scaling a desired habit down to a minimal version — ten push-ups instead of a hundred, one page instead of a yearly book target — as lowering the activation energy and effort required, making the behavior easier to begin and complete; this is attributed expert framing, not trial evidence.",
+          "source": 3,
+          "sourceIds": [
+            "W-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Deskmeter: the desk prefers authoritative public-health sources; W-SRC-1 is a self-improvement video, so all study-specific figures are flagged needs-review and the edition leans on attribution rather than assertion.",
+        "The W-SRC-4 scaling claim restates the same source behind wellbeing-017:W-04, a prior claim. Because it is the same source rather than independent confirmation, no confirms relationship is asserted; the prior claim remains a reference target only.",
+        "No relationship was drawn between the caffeine claims and prior sleep-hygiene claims (CDC, Mayo Clinic, Matt Walker): shared topic, but the packets do not establish that any prior claim is confirmed, narrowed, replaced, or contradicted."
+      ],
+      "tags": [
+        "wellbeing",
+        "sleep",
+        "caffeine",
+        "habits",
+        "individual-variation"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "c6b2fb01-0394-4f6b-9fc4-9e67ccf2a01d",
+        "credits": 2,
+        "search_mode": "timeless-official-fallback"
+      }
+    },
+    {
+      "id": "pantry-013",
+      "deskId": "pantry",
+      "desk": "The Pantry",
+      "icon": "◒",
+      "issue": "013",
+      "version": "1.0.0",
+      "date": "SEP 04 · 2026",
+      "publishedAt": "2026-09-04T12:46:22.361Z",
+      "color": "#f1cf69",
+      "title": "Velvet Signal — Pantry Desk, Proposed Edition pantry-013",
+      "kicker": "Human milk storage windows, straight from the source",
+      "dek": "One authoritative update this cycle, and it earns the whole edition: La Leche League International's storage guidelines for human milk, which turn three temperatures into a handful of clocks any pumping parent can actually keep.",
+      "readTime": "3 min read",
+      "validity": "365 days",
+      "expires": "2027-09-04",
+      "confidence": "High",
+      "scope": "Food safety",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "One authoritative update made the cut this cycle, and it is a quietly practical one: La Leche League International's guidelines for storing human milk (P-SRC-1). The guidance is essentially a set of clocks keyed to temperature, and once you see the shape of it, it is easy to carry around.",
+        "For freshly pumped or expressed milk, the windows are: up to 4 hours at room temperature of 77°F (25°C) or colder, up to 4 days in a refrigerator at 40°F (4°C), and in a freezer at 0°F (-18°C) or colder, within 6 months is best with up to 12 months acceptable (P-SRC-1).",
+        "Thawed, previously frozen milk runs on shorter clocks: 1 to 2 hours at room temperature of 77°F (25°C) or colder, up to 1 day (24 hours) in the refrigerator, and — the rule that matters most — never refreeze human milk after it has completely thawed (P-SRC-1).",
+        "If a baby did not finish the bottle, the leftover milk gets one clock regardless of where it is stored: use it within 2 hours after the baby is finished feeding (P-SRC-1).",
+        "Two clarifications from the same source round it out. First, the type of freezer is irrelevant: the CDC's storage guidelines depend on the freezer's temperature, not whether it is a chest unit or the compartment over the fridge, and they specify freezing at 0°F (-17.8°C) or less — so if your refrigerator freezer actually holds that temperature, the same guideline applies (P-SRC-1). Second, expressed milk can be kept in a shared refrigerator at work or daycare: the CDC and OSHA agree that human milk is not among the body fluids that require special handling or storage in a separate container (CDC, 2023) (P-SRC-1). LLLI also addresses milk stored during thrush, but that section is cut off in our packet, so we make no claim about it here (P-SRC-1)."
+      ],
+      "pullquote": "The freezer guideline follows the thermometer, not the appliance.",
+      "sources": [
+        {
+          "id": "P-SRC-1",
+          "name": "Storing Human Milk - La Leche League International",
+          "publisher": "llli.org",
+          "url": "https://llli.org/breastfeeding-info/storing-human-milk",
+          "checked": "2026-09-04"
+        },
+        {
+          "id": "P-SRC-2",
+          "name": "INGREDIENT TEMPERATURE GUIDELINES FOR BAKING | room temperature ingredients vs cold ingredients",
+          "publisher": "youtube.com",
+          "url": "https://www.youtube.com/watch?v=e4H7h4Bz9-Q",
+          "checked": "2026-09-04"
+        },
+        {
+          "id": "P-SRC-3",
+          "name": "Alton Brown Cooks Food | Episode 35: Fry Some Air - YouTube",
+          "publisher": "youtube.com",
+          "url": "https://www.youtube.com/watch?v=yC11-UGlMho",
+          "checked": "2026-09-04"
+        },
+        {
+          "id": "P-SRC-4",
+          "name": "I Tested 7 Ways to Store Strawberries & the Best Stays So Fresh | The Kitchn",
+          "publisher": "thekitchn.com",
+          "url": "https://www.thekitchn.com/the-best-method-storing-fresh-strawberries-23048250",
+          "checked": "2026-09-04"
+        },
+        {
+          "id": "P-SRC-5",
+          "name": "We Tried Every Pickle—Here's the Best | Food & Wine",
+          "publisher": "youtube.com",
+          "url": "https://www.youtube.com/watch?v=0whUubZpvsc",
+          "checked": "2026-09-04"
+        }
+      ],
+      "claims": [
+        {
+          "id": "P-01",
+          "claim": "Freshly pumped or expressed human milk keeps up to 4 hours at room temperature of 77°F (25°C) or colder, up to 4 days in a refrigerator at 40°F (4°C), and in a freezer at 0°F (-18°C) or colder is best within 6 months with up to 12 months acceptable.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-02",
+          "claim": "Thawed, previously frozen human milk keeps 1 to 2 hours at room temperature of 77°F (25°C) or colder and up to 1 day (24 hours) in the refrigerator, and human milk that has completely thawed must never be refrozen.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-03",
+          "claim": "Human milk leftover from a feeding, when the baby did not finish the bottle, should be used within 2 hours after the baby is finished feeding, for all storage temperatures.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-04",
+          "claim": "Expressed human milk may be kept in a common refrigerator at the workplace or in a day care center; the CDC and OSHA agree that human milk is not among the body fluids that require special handling or storage in a separate container (CDC, 2023).",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-05",
+          "claim": "Human milk storage guidelines depend on the temperature of the freezer, not the type of freezer; guidelines specify freezing at 0°F (-17.8°C) or less, and the same guideline applies to a refrigerator freezer that meets that temperature.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-06",
+          "claim": "This edition makes no determination about whether any specific container of stored milk is safe to use: the source packet supplies general time and temperature windows but no storage history, temperature log, or handling record for any specific milk, and the windows assume the stated temperatures were actually held. The packet also cuts off mid-answer on milk expressed during thrush, so no claim is made on that question.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-012:P-06",
+              "reason": "This cycle's packets independently support the same editorial rule as pantry-012:P-06: no safety determination for a specific food when storage history is missing."
+            }
+          ]
+        },
+        {
+          "id": "P-07",
+          "claim": "The remaining packets in this cycle supply cooking technique or tasting commentary, not authoritative safety guidance: ingredient temperature for baking texture (P-SRC-2), air-fryer wing preparation in which the presenter acknowledges that raw uncovered poultry poses a potential danger (P-SRC-3), a strawberry hot-water-bath storage test attributed to Harold McGee (P-SRC-4), and a shelf-stable versus refrigerated pickle tasting (P-SRC-5). None is used as a factual basis for a safety rule in this edition.",
+          "source": 1,
+          "sourceIds": [
+            "P-SRC-2",
+            "P-SRC-3",
+            "P-SRC-4",
+            "P-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Non-alarmist framing: the guidance is a set of clocks, not a warning.",
+        "The no-determination rule is stated plainly in both editions so the human read and the machine patch agree.",
+        "The P-SRC-1 excerpt breaks off mid-sentence on the thrush question; that gap is disclosed rather than filled from background knowledge.",
+        "No relationships were drawn to prior leftover, Danger Zone, or recall claims: similar time spans (such as the 2-hour leftover clock) are coincidence of wording, not the same rule."
+      ],
+      "tags": [
+        "pantry",
+        "human-milk",
+        "storage",
+        "cold-chain",
+        "no-determination"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "16cea1cd-50a4-451b-88c1-6a3e1ef24951",
+        "credits": 2,
+        "search_mode": "timeless-official-fallback"
+      }
+    },
+    {
+      "id": "culture-011",
+      "deskId": "culture",
+      "desk": "Culture Desk",
+      "icon": "✺",
+      "issue": "011",
+      "version": "1.0.0",
+      "date": "SEP 04 · 2026",
+      "publishedAt": "2026-09-04T04:40:29.295Z",
+      "color": "#67d6c0",
+      "title": "Ah Shit, Here We Go Again: The Oldest New Meme",
+      "kicker": "Culture",
+      "dek": "A 2004 video game line is doing fresh work in 2026 — as a delay joke, a political prop, and a reminder that memes outlive their original context.",
+      "readTime": "3 min read",
+      "validity": "10 days",
+      "expires": "2026-09-14",
+      "confidence": "Mixed",
+      "scope": "Culture signals",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Some lines refuse to retire. Polygon reports that a quote from the opening sequence of Grand Theft Auto: San Andreas — a game that sold more than 27 million copies — has become an internet meme sensation more than two decades after release [C-SRC-1]. The packet does not name the line itself, so we won't either; what's documented is the quote's afterlife, not its exact wording.",
+        "The observed uses are specific. In the Grand Theft Auto community on Reddit, the quote became a common way to express frustration about the multiple delays to Grand Theft Auto 6 [C-SRC-1]. That's a joke about waiting — pointed, but affectionate in the way fan communities usually are.",
+        "Then the context shifted. In March 2026, White House officials used the San Andreas line in a video posted to X [C-SRC-1]. The packet records the use, not the reaction to it, so we'll note the fact and leave the interpretation where the evidence leaves it: a fan-community delay joke was picked up by a government's communications apparatus, and what that means depends on who's doing the quoting.",
+        "That's the honest read. The same words can carry fan frustration, political messaging, or plain nostalgia depending on who deploys them and where. Polygon's framing — that players in 2004 likely couldn't have foreseen the line's second life — is itself a caution against declaring a single meaning now [C-SRC-1]. A meme this old has outlived every context that produced it; assuming the next one will match is how you get caught flat-footed.",
+        "One housekeeping note: the packet's publication date is September 3, 2026, and its March 2026 reference is already in the past as we write. We're treating the timeline as reported, not verified independently."
+      ],
+      "pullquote": "A meme this old has outlived every context that produced it; assuming the next use will match is how you get caught flat-footed.",
+      "sources": [
+        {
+          "id": "C-SRC-1",
+          "name": "20 Years Later, This Grand Theft Auto Quote Remains Undefeated in Gaming History - Polygon.com",
+          "publisher": "polygon.com",
+          "url": "https://www.polygon.com/gta-san-andreas-best-quote/",
+          "checked": "2026-09-04",
+          "publishedAt": "Thu, 03 Sep 2026 23:00:14 GMT"
+        },
+        {
+          "id": "C-SRC-2",
+          "name": "‘Derogatory’ fliers targeting Armenian community found near Glendale elementary school - Los Angeles Times",
+          "publisher": "latimes.com",
+          "url": "https://www.latimes.com/california/story/2026-08-29/derogatory-flyers-targeting-armenian-community-found-near-glendale-elementary-school",
+          "checked": "2026-09-04",
+          "publishedAt": "Sat, 29 Aug 2026 19:03:38 GMT"
+        },
+        {
+          "id": "C-SRC-3",
+          "name": "This Crossword Will Have You Shivering With Antici... - BuzzFeed",
+          "publisher": "buzzfeed.com",
+          "url": "https://www.buzzfeed.com/amanda_webber/crossword-september-2-2026",
+          "checked": "2026-09-04",
+          "publishedAt": "Wed, 02 Sep 2026 14:46:01 GMT"
+        },
+        {
+          "id": "C-SRC-4",
+          "name": "Crypto Price Today - Bitcoin Pulls Back Near $79K While Apeing Locks In September 8 for Its Upcoming Crypto Presale - markets.businessinsider.com",
+          "publisher": "markets.businessinsider.com",
+          "url": "https://markets.businessinsider.com/news/stocks/crypto-price-today---bitcoin-pulls-back-near-79k-while-apeing-locks-in-september-8-for-its-upcoming-crypto-presale-1036514343",
+          "checked": "2026-09-04",
+          "publishedAt": "Wed, 02 Sep 2026 07:34:39 GMT"
+        },
+        {
+          "id": "C-SRC-5",
+          "name": "Michael Jordan’s Lost Ferrari Has Appeared, And It’s Headed To Auction - Motor1.com",
+          "publisher": "motor1.com",
+          "url": "https://www.motor1.com/news/806827/michael-jordan-lost-ferrari-heads/",
+          "checked": "2026-09-04",
+          "publishedAt": "Wed, 02 Sep 2026 07:14:00 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "C-01",
+          "claim": "A quote from the opening sequence of Grand Theft Auto: San Andreas became an internet meme sensation more than two decades after the game's 2004 release, per Polygon.",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-02",
+          "claim": "Grand Theft Auto: San Andreas has sold more than 27 million copies, and the franchise's popularity that year elevated it into a cultural phenomenon.",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-03",
+          "claim": "On Reddit, the San Andreas quote became a common way for the Grand Theft Auto community to express frustration about the multiple delays to Grand Theft Auto 6.",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-04",
+          "claim": "In March 2026, White House officials used the San Andreas line in a video posted to X.",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-05",
+          "claim": "The specific wording of the quote is not provided in the supplied packet; the meme's meaning in any given use — fan frustration, political messaging, or nostalgia — is not established as universal, and no inference about any reader's identity or familiarity with the meme is warranted.",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "needs-review",
+          "confidence": "high"
+        },
+        {
+          "id": "C-06",
+          "claim": "This entry describes observed usage as of the source publication date of 3 September 2026; cultural signals shift quickly, so it should be re-checked within 7–14 days.",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Keep the unnamed quote unnamed — the packet doesn't supply the wording, and inventing it would break the fact chain.",
+        "Hold the March 2026 White House use as an observed fact, not a verdict; the packet gives no reaction data.",
+        "No relationship links to prior claims: the Ferrari, Oreogate, MTG, and trade-war packets don't touch this one, and shared desk membership is not evidence."
+      ],
+      "tags": [
+        "gaming",
+        "memes",
+        "grand-theft-auto",
+        "internet-culture"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "fa7bc6ed-818c-44b5-ba33-ffbf7ef528c9",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "wellbeing-019",
+      "deskId": "wellbeing",
+      "desk": "Wellbeing",
+      "icon": "☾",
+      "issue": "019",
+      "version": "1.0.0",
+      "date": "SEP 04 · 2026",
+      "publishedAt": "2026-09-04T04:39:52.104Z",
+      "color": "#a993ff",
+      "title": "The Night Shift of Light: Dimming Your Way to Better Sleep",
+      "kicker": "Wellbeing",
+      "dek": "Two trusted sources converge on a simple evening rule: less light, more regularity, and a cooler room. Here's what the evidence actually says — and where it stays quiet.",
+      "readTime": "3 min read",
+      "validity": "120 days",
+      "expires": "2027-01-02",
+      "confidence": "High",
+      "scope": "General wellbeing",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "If you've ever found yourself wide awake at 3 a.m., the culprit may not be caffeine or stress but the overhead light you flipped on after dinner. Huberman Lab's sleep toolkit advises avoiding bright lights — especially bright overhead ones — between 10 p.m. and 4 a.m., with a simple rule: use only as much artificial lighting as is necessary to move about safely at night. Candlelight and moonlight are fine. Blue blockers can help a bit, but the guidance is still to dim the lights [W-SRC-1].",
+        "A TED series piece by sleep researcher Matt Walker frames the same principle from a different angle: we are a \"dark-deprived society,\" and darkness in the evening is what triggers melatonin release, the hormone that helps regulate healthy sleep timing. In the last hour before bed, the advice is to step away from screens and dim down half the lights in the house — with eye masks or blackout shades as optional reinforcements [W-SRC-4].",
+        "The two sources agree on the direction — less light in the evening — but differ in emphasis. Huberman's guidance is specific about timing (10 p.m. to 4 a.m.) and explicitly notes that bright lights of all colors, not just blue, are a problem for the circadian system [W-SRC-1]. Walker's framing is about the last hour before bed and the melatonin mechanism [W-SRC-4]. Neither is wrong; they're describing the same principle at different resolutions.",
+        "Regularity is the other half of the picture. Walker calls it \"king\" — going to bed and waking at the same time, weekday or weekend, anchors sleep and improves both quantity and quality [W-SRC-3]. Huberman adds a nuance: wake at the same time each day and go to sleep when you first feel sleepy, warning that pushing through that late-evening drowsiness is one reason people wake at 3 a.m. and can't fall back asleep [W-SRC-1].",
+        "Temperature rounds out the trio. Walker recommends aiming for a bedroom around 65°F (about 18°C), explaining that the body needs to drop its core temperature by roughly 2–3°F to initiate and maintain sleep — and that most people find it easier to fall asleep in a room that's too cold than too hot [W-SRC-3]. He frames this as optimal for most people, not a universal rule [W-SRC-3]. The CDC's guidance on sleep quality — that it's about how well you sleep, not just how long — is a useful reminder that these are levers, not prescriptions [W-SRC-2]. Individual variation is real: shift workers, travelers, and anyone with a diagnosed sleep disorder should treat general guidance as a starting point, not a substitute for professional care [W-SRC-1][W-SRC-2]."
+      ],
+      "pullquote": "Regularity is king, and it will anchor your sleep and improve the quantity and the quality of that sleep.",
+      "sources": [
+        {
+          "id": "W-SRC-1",
+          "name": "Toolkit for Sleep - Huberman Lab",
+          "publisher": "hubermanlab.com",
+          "url": "https://www.hubermanlab.com/newsletter/toolkit-for-sleep",
+          "checked": "2026-09-04"
+        },
+        {
+          "id": "W-SRC-2",
+          "name": "About Sleep | Sleep | CDC",
+          "publisher": "cdc.gov",
+          "url": "https://www.cdc.gov/sleep/about/index.html",
+          "checked": "2026-09-04"
+        },
+        {
+          "id": "W-SRC-3",
+          "name": "Sleep Is Your Superpower | Matt Walker | TED",
+          "publisher": "youtube.com",
+          "url": "https://www.youtube.com/watch?v=5MuIMqhT8DM",
+          "checked": "2026-09-04"
+        },
+        {
+          "id": "W-SRC-4",
+          "name": "6 tips for better sleep | Sleeping with Science, a TED series",
+          "publisher": "youtube.com",
+          "url": "https://www.youtube.com/watch?v=t0kACis_dJE",
+          "checked": "2026-09-04"
+        },
+        {
+          "id": "W-SRC-5",
+          "name": "Sleep Better Tonight | 10-Minute Bedtime Flow",
+          "publisher": "youtube.com",
+          "url": "https://www.youtube.com/watch?v=3OsBElyha7Y",
+          "checked": "2026-09-04"
+        }
+      ],
+      "claims": [
+        {
+          "id": "W-01",
+          "claim": "Huberman Lab's sleep toolkit advises avoiding bright lights — especially bright overhead lights — between 10 p.m. and 4 a.m., using only as much artificial lighting as necessary to move about safely at night; candlelight and moonlight are fine, blue blockers can help a bit, but lights should still be dimmed, and bright lights of all colors are described as a problem for the circadian system.",
+          "source": 0,
+          "sourceIds": [
+            "W-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-02",
+          "claim": "A TED series piece by Matt Walker recommends darkness in the evening to trigger melatonin release, advising that in the last hour before bed you stay away from screens and dim down half the lights in the house, with eye masks or blackout shades as options.",
+          "source": 3,
+          "sourceIds": [
+            "W-SRC-4"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-018:W-07",
+              "reason": "Both describe the same evening-darkness/melatonin guidance from the same TED series source, independently supported by the new packet."
+            }
+          ]
+        },
+        {
+          "id": "W-03",
+          "claim": "Matt Walker recommends a bedroom temperature of around 65°F (about 18°C), explaining that the body needs to drop its core temperature by roughly 2–3°F to initiate and maintain sleep, and frames this as optimal for most people rather than a universal rule.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-018:W-05",
+              "reason": "The new packet independently supports the same temperature guidance attributed to the same speaker."
+            }
+          ]
+        },
+        {
+          "id": "W-04",
+          "claim": "Matt Walker emphasizes regularity — going to bed and waking at the same time regardless of weekday or weekend — as anchoring and improving both the quantity and quality of sleep.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-018:W-06",
+              "reason": "The new packet independently supports the same regularity guidance attributed to the same speaker."
+            }
+          ]
+        },
+        {
+          "id": "W-05",
+          "claim": "Huberman Lab advises waking at the same time each day and going to sleep when you first start to feel sleepy, warning that pushing through the sleepy late-evening feeling and going to sleep too late (for you) is one reason people wake at 3 a.m. and can't fall back asleep.",
+          "source": 0,
+          "sourceIds": [
+            "W-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-06",
+          "claim": "The CDC states that quality sleep means uninterrupted and refreshing sleep, and that getting quality sleep is not just about how many hours you sleep but how well you sleep.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-018:W-02",
+              "reason": "The new packet independently supports the same CDC quality-of-sleep framing."
+            }
+          ]
+        },
+        {
+          "id": "W-07",
+          "claim": "The CDC's recommended daily sleep hours change by age group: 7 or more hours for adults 18–60, 7–9 hours for adults 61–64, and 7–8 hours for adults 65 and older.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-018:W-01",
+              "reason": "The new packet independently supports the same CDC age-graded sleep-hours table."
+            }
+          ]
+        },
+        {
+          "id": "W-08",
+          "claim": "Huberman Lab advises limiting daytime naps to less than 90 minutes, or not napping at all, noting that the author personally tends to nap 30–45 minutes most afternoons but never longer.",
+          "source": 0,
+          "sourceIds": [
+            "W-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Keep the 10 p.m.–4 a.m. window attributed to Huberman specifically, since Walker's framing is the last hour before bed — the two windows are related but not identical.",
+        "The temperature claim is framed as optimal for most people, not a universal rule; preserve that hedge in any downstream use.",
+        "The nap guidance is attributed to Huberman's personal practice plus his stated rule; it is not a public-health recommendation and should not be presented as one.",
+        "No relationship was drawn between the Huberman light-timing window and the Walker last-hour-before-bed guidance: same topic, different windows, and the packets do not establish that one narrows or replaces the other."
+      ],
+      "tags": [
+        "sleep",
+        "circadian",
+        "light exposure",
+        "sleep hygiene",
+        "wellbeing"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "0bf66525-78b3-4106-bd7a-e9383fd82684",
+        "credits": 2,
+        "search_mode": "timeless-official-fallback"
+      }
+    },
+    {
+      "id": "model-watch-014",
+      "deskId": "model-watch",
+      "desk": "Model Watch",
+      "icon": "⌁",
+      "issue": "014",
+      "version": "1.0.0",
+      "date": "SEP 04 · 2026",
+      "publishedAt": "2026-09-04T04:35:04.654Z",
+      "color": "#ff719f",
+      "title": "Playco's 50% fewer manual fixes with GPT-6 Astra: what a customer story can and cannot tell you",
+      "kicker": "Model Watch",
+      "dek": "One vendor case study claims half the manual fixes for game prototyping. It is a real signal about agentic building workflows — and a reminder that customer stories are not release notes.",
+      "readTime": "3 min read",
+      "validity": "60 days",
+      "expires": "2026-11-03",
+      "confidence": "Mixed",
+      "scope": "AI models and agent interfaces",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "This week's most consequential item for builders is not a spec sheet. It is a customer story: Playco reports that using GPT-6 Astra, the team built three themed game prototypes from a single grey box foundation, with most working on the first take, and cut manual fixes by 50% compared with the previous model. The claim is directional, not benchmarked — but for anyone wiring agents into creative build loops, 'fewer manual fixes per iteration' is the metric that actually costs time.",
+        "The honest caveat: this is a vendor-published case study, not primary release notes. It names the model and the outcome but does not state availability, pricing, context limits, or when GPT-6 Astra reached general availability. Treat the 50% figure as one team's reported experience, not a guaranteed result.",
+        "Also in the packet: Gilbert + Tobin's account of scaling AI with CEO-led governance and human accountability, reporting active usage among enabled ChatGPT users at more than twice the firm's typical adoption rate for other tools. It is a governance story rather than a model change, so it stays in the reading pile rather than the ledger."
+      ],
+      "pullquote": "With GPT-6 Astra, Playco reports 50% fewer manual fixes.",
+      "sources": [
+        {
+          "id": "MW-SRC-1",
+          "name": "Playco cut manual fixes 50% prototyping games with GPT-6 Astra - OpenAI",
+          "publisher": "openai.com",
+          "url": "https://openai.com/index/playco-game-prototyping-with-astra/",
+          "checked": "2026-09-04",
+          "publishedAt": "Thu, 03 Sep 2026 18:01:35 GMT"
+        },
+        {
+          "id": "MW-SRC-2",
+          "name": "How law firm Gilbert + Tobin governs and scales AI with OpenAI - OpenAI",
+          "publisher": "openai.com",
+          "url": "https://openai.com/index/gilbert-tobin",
+          "checked": "2026-09-04",
+          "publishedAt": "Wed, 02 Sep 2026 01:34:21 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "MW-01",
+          "claim": "Per OpenAI's customer story, Playco used GPT-6 Astra to build three themed game prototypes from one unthemed grey box prototype created from simple primitives, with most prototypes working on the first take.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "MW-02",
+          "claim": "Per OpenAI's customer story, Playco reports 50% fewer manual fixes using GPT-6 Astra compared with the previous model, in the context of building Playbot, an AI-powered IDE for professional game developers.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "MW-03",
+          "claim": "The OpenAI customer story about Playco and GPT-6 Astra does not state the model's availability boundaries, pricing, context limits, or general-availability date; the 50% figure is a single team's reported outcome rather than an independently verified benchmark.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "needs-review",
+          "confidence": "high"
+        },
+        {
+          "id": "MW-04",
+          "claim": "Per OpenAI's customer story, Gilbert + Tobin reports active usage among enabled ChatGPT users at more than twice the adoption rate the firm typically sees for other tools, attributed to CEO-led commitment, rigorous governance, and human accountability.",
+          "source": 1,
+          "sourceIds": [
+            "MW-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Lead with the workflow outcome (fewer manual fixes), not the model name.",
+        "Keep the customer-story caveat visible in both the human edition and the ledger.",
+        "Do not imply GPT-6 Astra availability or pricing; the packet does not support it."
+      ],
+      "tags": [
+        "model-watch",
+        "GPT-6 Astra",
+        "OpenAI",
+        "customer story",
+        "agent workflows",
+        "game prototyping",
+        "Gilbert + Tobin",
+        "AI governance"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "f5688680-ee5a-455d-842d-d43cb5408803",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
     {
       "id": "wellbeing-018",
       "deskId": "wellbeing",
@@ -4850,229 +6102,6 @@
       }
     },
     {
-      "id": "wellbeing-009",
-      "deskId": "wellbeing",
-      "desk": "Wellbeing",
-      "icon": "☾",
-      "issue": "009",
-      "version": "1.0.0",
-      "date": "AUG 31 · 2026",
-      "publishedAt": "2026-08-31T05:38:55.708Z",
-      "color": "#a993ff",
-      "title": "A Sleep-Hygiene Tune-Up: Screens, Naps, and Giving Sleep Its Time Back",
-      "kicker": "Wellbeing",
-      "dek": "NHLBI's sleep guidance points to two small, adjustable habits — when the screens go dark and how long the afternoon nap runs — that shape how the night goes.",
-      "readTime": "3 min read",
-      "validity": "180 days",
-      "expires": "2027-02-27",
-      "confidence": "High",
-      "scope": "General wellbeing",
-      "editor": "OpenRouter · GLM 5.3 Flash",
-      "inputPolicy": "Scheduled Tavily source packets",
-      "editorial": [
-        "Sleep hygiene sounds clinical, but the idea behind it is simple: the environment you've built and the habits you've kept around bedtime quietly set the terms for the night. The National Heart, Lung, and Blood Institute suggests periodically taking stock of both — and a good place to start, they say, is the screens [W-SRC-3].",
-        "Artificial light from phones, laptops, and televisions can signal the brain that it's time to be awake. That exposure can translate into lost sleep and irregular schedules, in children and adults alike [W-SRC-3]. The evidence isn't just theoretical: in a study partly funded by NHLBI, smartphone use before bed was associated with shorter sleep than usual and worse sleep quality during the night [W-SRC-3]. The practical suggestion from experts is modest and specific — power devices down at least 30 minutes before getting into bed [W-SRC-3].",
-        "Daytime habits matter too. A nap can boost alertness and performance, and NHLBI's guidance treats napping as a legitimate tool rather than a failure of willpower [W-SRC-2]. The boundaries are worth knowing: adults should keep naps to no more than 20 minutes, and if falling asleep at night is a struggle, limiting naps or moving them earlier in the afternoon may help [W-SRC-2]. For preschool-age children, napping is normal and supports healthy growth and development — a reminder that sleep guidance is not one-size-fits-all [W-SRC-2].",
-        "Underneath all of it sits a scheduling question. Sleep is often the first thing busy people squeeze out of their days, and NHLBI's advice is to give yourself enough time to sleep in the first place — with enough of it, people may find they're happier and more productive during the day [W-SRC-2].",
-        "None of this is a diagnosis or a treatment plan. These are general habits drawn from public-health guidance, and individual sleep needs and circumstances vary. If sleep problems persist or worry you, that's a conversation for a clinician — NHLBI's own materials point readers toward professional evaluation for sleep disorders [W-SRC-1]."
-      ],
-      "pullquote": "Power devices down at least 30 minutes before getting into bed — a small boundary with a measurable rationale behind it.",
-      "sources": [
-        {
-          "id": "W-SRC-1",
-          "name": "Your Guide to Healthy Sleep | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/resources/your-guide-healthy-sleep",
-          "checked": "2026-08-31"
-        },
-        {
-          "id": "W-SRC-2",
-          "name": "Sleep Deprivation and Deficiency - Healthy Sleep Habits",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits",
-          "checked": "2026-08-31"
-        },
-        {
-          "id": "W-SRC-3",
-          "name": "Sweet dreams: Researchers explore link between sleep and health | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/news/2018/sweet-dreams-researchers-explore-link-between-sleep-and-health",
-          "checked": "2026-08-31"
-        },
-        {
-          "id": "W-SRC-4",
-          "name": "En resumen: su guía para un sueño saludable (In Brief",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/es/resources/en-resumen-su-guia-para-un-sueno-saludable-brief-your-guide-healthy-sleep-spanish",
-          "checked": "2026-08-31"
-        },
-        {
-          "id": "W-SRC-5",
-          "name": "Sleep Brochure | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/resources/sleep-brochure",
-          "checked": "2026-08-31"
-        }
-      ],
-      "claims": [
-        {
-          "id": "W-01",
-          "claim": "Artificial light from screens — cell phones, laptops, and televisions — can signal the brain that it's time to be awake, and this light exposure can translate into a loss of sleep duration and irregular sleep schedules in both children and adults.",
-          "source": 2,
-          "sourceIds": [
-            "W-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-005:W-02",
-              "reason": "The newly supplied NHLBI packet independently states the same screen-light finding."
-            }
-          ]
-        },
-        {
-          "id": "W-02",
-          "claim": "In a study partly funded by NHLBI, smartphone use before bed was associated with shorter sleep duration than normal and worse sleep quality during the night.",
-          "source": 2,
-          "sourceIds": [
-            "W-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-005:W-03",
-              "reason": "The supplied packet restates the same study finding."
-            }
-          ]
-        },
-        {
-          "id": "W-03",
-          "claim": "Experts suggest sleep quality can be enhanced by powering down devices at least 30 minutes before getting into bed.",
-          "source": 2,
-          "sourceIds": [
-            "W-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-005:W-04",
-              "reason": "The supplied packet independently supports the same 30-minute power-down guidance."
-            }
-          ]
-        },
-        {
-          "id": "W-04",
-          "claim": "Napping during the day may boost alertness and performance.",
-          "source": 1,
-          "sourceIds": [
-            "W-SRC-2"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-008:W-01",
-              "reason": "The supplied NHLBI packet states the same napping benefit."
-            }
-          ]
-        },
-        {
-          "id": "W-05",
-          "claim": "Adults should nap for no more than 20 minutes.",
-          "source": 1,
-          "sourceIds": [
-            "W-SRC-2"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-008:W-02",
-              "reason": "The supplied packet restates the same adult nap-duration limit."
-            }
-          ]
-        },
-        {
-          "id": "W-06",
-          "claim": "People who have trouble falling asleep at night should limit naps or take them earlier in the afternoon.",
-          "source": 1,
-          "sourceIds": [
-            "W-SRC-2"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-008:W-03",
-              "reason": "The supplied packet independently supports the same conditional nap guidance."
-            }
-          ]
-        },
-        {
-          "id": "W-07",
-          "claim": "Napping in preschool-age children is normal and promotes healthy growth and development.",
-          "source": 1,
-          "sourceIds": [
-            "W-SRC-2"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-008:W-04",
-              "reason": "The supplied packet restates the same pediatric napping guidance."
-            }
-          ]
-        },
-        {
-          "id": "W-08",
-          "claim": "Sleep is often the first thing busy people squeeze out of their schedules, and making time to sleep may help people feel happier and more productive during the day while protecting health and well-being.",
-          "source": 1,
-          "sourceIds": [
-            "W-SRC-2"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-006:W-06",
-              "reason": "The supplied packet independently states the same time-for-sleep guidance."
-            }
-          ]
-        }
-      ],
-      "toneNotes": [
-        "No diagnosis, moralizing, or individualized medical advice; individual variation is stated explicitly.",
-        "The synthesis that screen timing and nap timing are two adjustable levers is editorial framing, not a sourced claim, so it appears in the edition body only and is not entered into the ledger as a fact.",
-        "All ledger claims are confirmations of prior claims by newly supplied packets; no replaces, narrows, or conflicts relationships were proven by this packet set."
-      ],
-      "tags": [
-        "sleep",
-        "sleep-hygiene",
-        "screens",
-        "napping",
-        "public-health-guidance"
-      ],
-      "generated": true,
-      "scout": {
-        "provider": "tavily",
-        "request_id": "00be4a9a-6b73-44c4-b98d-372acb386749",
-        "credits": 2,
-        "search_mode": "timeless-official-fallback"
-      }
-    },
-    {
       "id": "model-watch-010",
       "deskId": "model-watch",
       "desk": "Model Watch",
@@ -5375,159 +6404,6 @@
         "request_id": "aafea9e9-6431-49d7-8659-a8aa60885898",
         "credits": 1,
         "search_mode": "bounded"
-      }
-    },
-    {
-      "id": "wellbeing-008",
-      "deskId": "wellbeing",
-      "desk": "Wellbeing",
-      "icon": "☾",
-      "issue": "008",
-      "version": "1.0.0",
-      "date": "AUG 30 · 2026",
-      "publishedAt": "2026-08-30T19:20:38.586Z",
-      "color": "#a993ff",
-      "title": "The 20-Minute Nap Window",
-      "kicker": "Wellbeing · Sleep habits",
-      "dek": "NHLBI's guidance on daytime napping is refreshingly specific — and it comes with a built-in caveat for anyone whose nights are already a struggle.",
-      "readTime": "3 min read",
-      "validity": "180 days",
-      "expires": "2027-02-26",
-      "confidence": "High",
-      "scope": "General wellbeing",
-      "editor": "OpenRouter · GLM 5.3 Flash",
-      "inputPolicy": "Scheduled Tavily source packets",
-      "editorial": [
-        "If your afternoons have a dip in them, a nap can be a legitimate tool, not a guilty one. The National Heart, Lung, and Blood Institute notes that napping during the day may boost your alertness and performance — with a clear boundary attached: adults should nap for no more than 20 minutes [W-SRC-3].",
-        "The individual variation here matters, and NHLBI names it directly. If you have trouble falling asleep at night, the guidance is to limit naps or take them earlier in the afternoon [W-SRC-3]. A nap that restores one person's focus can quietly erode another person's night, so the right nap length and timing is genuinely personal.",
-        "Age changes the picture, too. Napping in preschool-age children is normal and promotes healthy growth and development — a reminder that what counts as good sleep hygiene for an adult is not a universal rule [W-SRC-3].",
-        "As always, this is general public-health guidance, not individualized medical advice. If sleep problems persist or worry you, that's a conversation for a clinician, not a newsletter."
-      ],
-      "pullquote": "Adults should nap for no more than 20 minutes — and if nights are already difficult, earlier or shorter is the move.",
-      "sources": [
-        {
-          "id": "W-SRC-1",
-          "name": "En resumen: su guía para un sueño saludable (In Brief: Your Guide to Healthy Sleep (Spanish) | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/es/resources/en-resumen-su-guia-para-un-sueno-saludable-brief-your-guide-healthy-sleep-spanish",
-          "checked": "2026-08-30"
-        },
-        {
-          "id": "W-SRC-2",
-          "name": "Your Guide to Healthy Sleep | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/resources/your-guide-healthy-sleep",
-          "checked": "2026-08-30"
-        },
-        {
-          "id": "W-SRC-3",
-          "name": "Sleep Deprivation and Deficiency - Healthy Sleep Habits",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits",
-          "checked": "2026-08-30"
-        },
-        {
-          "id": "W-SRC-4",
-          "name": "Sweet dreams: Researchers explore link between sleep and health | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/news/2018/sweet-dreams-researchers-explore-link-between-sleep-and-health",
-          "checked": "2026-08-30"
-        },
-        {
-          "id": "W-SRC-5",
-          "name": "Sleep Brochure | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/resources/sleep-brochure",
-          "checked": "2026-08-30"
-        }
-      ],
-      "claims": [
-        {
-          "id": "W-01",
-          "claim": "Napping during the day may boost alertness and performance.",
-          "source": 2,
-          "sourceIds": [
-            "W-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-005:W-05",
-              "reason": "W-SRC-3 independently supports the alertness-and-performance portion of the same napping rule."
-            }
-          ]
-        },
-        {
-          "id": "W-02",
-          "claim": "Adults should nap for no more than 20 minutes.",
-          "source": 2,
-          "sourceIds": [
-            "W-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-005:W-05",
-              "reason": "W-SRC-3 independently supports the 20-minute cap in the same napping rule."
-            }
-          ]
-        },
-        {
-          "id": "W-03",
-          "claim": "People who have trouble falling asleep at night should limit naps or take them earlier in the afternoon.",
-          "source": 2,
-          "sourceIds": [
-            "W-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-005:W-05",
-              "reason": "W-SRC-3 independently supports the conditional guidance within the same napping rule."
-            }
-          ]
-        },
-        {
-          "id": "W-04",
-          "claim": "Napping in preschool-age children is normal and promotes healthy growth and development.",
-          "source": 2,
-          "sourceIds": [
-            "W-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-005:W-06",
-              "reason": "W-SRC-3 independently supports the same rule about preschool-age napping."
-            }
-          ]
-        }
-      ],
-      "toneNotes": [
-        "No diagnosis, moralizing, or individualized medical advice; a clinician referral is included for persistent sleep problems.",
-        "Individual variation is kept visible: nap timing and length depend on the person, and children's napping follows different norms.",
-        "All factual claims trace to a single authoritative public-health source (NHLBI) supplied in this issue's packets."
-      ],
-      "tags": [
-        "sleep",
-        "napping",
-        "wellbeing",
-        "public-health-guidance"
-      ],
-      "generated": true,
-      "scout": {
-        "provider": "tavily",
-        "request_id": "3c596cc9-acac-47a3-9481-6007710f6e51",
-        "credits": 2,
-        "search_mode": "timeless-official-fallback"
       }
     },
     {
@@ -5834,162 +6710,6 @@
         "request_id": "02379bca-8590-4bfd-b327-e6b66642838c",
         "credits": 1,
         "search_mode": "bounded"
-      }
-    },
-    {
-      "id": "wellbeing-007",
-      "deskId": "wellbeing",
-      "desk": "Wellbeing",
-      "icon": "☾",
-      "issue": "007",
-      "version": "1.0.0",
-      "date": "AUG 30 · 2026",
-      "publishedAt": "2026-08-30T13:51:42.614Z",
-      "color": "#a993ff",
-      "title": "Velvet Signal — Wellbeing Draft",
-      "kicker": "wellbeing",
-      "dek": "One useful general-wellbeing update, drawn only from the supplied NHLBI source packets. General guidance, not individualized medical advice.",
-      "readTime": "3 min read",
-      "validity": "180 days",
-      "expires": "2027-02-26",
-      "confidence": "Mixed",
-      "scope": "General wellbeing",
-      "editor": "OpenRouter · GLM 5.3 Flash",
-      "inputPolicy": "Scheduled Tavily source packets",
-      "editorial": [
-        "Sleep guidance is easier to act on when it arrives in the language you think in. The National Heart, Lung, and Blood Institute publishes a Spanish-language, easy-to-read fact sheet — \"En resumen: su guía para un sueño saludable\" — that condenses the critical messages of its fuller English guide, \"Your Guide to Healthy Sleep,\" into a single readable page [W-SRC-1].",
-        "The fact sheet covers practical ground: tips on getting enough sleep, information on sleep and driving, how to treat jet lag, and an introduction to sleep disorders [W-SRC-1]. If you have been relying on machine-translated health pages, this is an authoritative alternative written in Spanish from the start.",
-        "It sits inside a wider set of NHLBI sleep resources. The institute's flagship guide addresses types of sleep, common sleep myths, practical tips for adequate sleep, and coping with jet lag and nighttime shift work [W-SRC-4]. Its research reporting names the common sleep problems it covers — insomnia, sleep apnea, restless legs syndrome, and narcolepsy [W-SRC-3].",
-        "A note on scope: these are general public-health materials, updated at different times (the Spanish fact sheet dates to 2013 [W-SRC-1]), and sleep needs vary from person to person. Nothing here diagnoses anything or replaces a conversation with a clinician — it is a well-sourced starting point, in whichever language serves you best."
-      ],
-      "pullquote": "An authoritative sleep guide, written in Spanish from the start — not translated as an afterthought.",
-      "sources": [
-        {
-          "id": "W-SRC-1",
-          "name": "En resumen: su guía para un sueño saludable (In Brief: Your Guide to Healthy Sleep (Spanish) | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/es/resources/en-resumen-su-guia-para-un-sueno-saludable-brief-your-guide-healthy-sleep-spanish",
-          "checked": "2026-08-30"
-        },
-        {
-          "id": "W-SRC-2",
-          "name": "Sleep Deprivation and Deficiency - Healthy Sleep Habits | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits",
-          "checked": "2026-08-30"
-        },
-        {
-          "id": "W-SRC-3",
-          "name": "Sweet dreams: Researchers explore link between sleep and health | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/news/2018/sweet-dreams-researchers-explore-link-between-sleep-and-health",
-          "checked": "2026-08-30"
-        },
-        {
-          "id": "W-SRC-4",
-          "name": "Your Guide to Healthy Sleep | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/resources/your-guide-healthy-sleep",
-          "checked": "2026-08-30"
-        },
-        {
-          "id": "W-SRC-5",
-          "name": "Sleep Brochure | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/resources/sleep-brochure",
-          "checked": "2026-08-30"
-        }
-      ],
-      "claims": [
-        {
-          "id": "W-01",
-          "claim": "NHLBI publishes a Spanish-language, easy-to-read fact sheet titled \"En resumen: su guía para un sueño saludable\" that summarizes the critical messages of its English publication \"Your Guide to Healthy Sleep.\"",
-          "source": 0,
-          "sourceIds": [
-            "W-SRC-1"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "W-02",
-          "claim": "The Spanish-language fact sheet includes tips on getting enough sleep, information on sleep and driving, guidance on treating jet lag, and discussion of sleep disorders, and was updated in 2013.",
-          "source": 0,
-          "sourceIds": [
-            "W-SRC-1"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-005:W-08",
-              "reason": "Independently supports that NHLBI sleep resources cover drowsy driving, jet lag, and sleep disorder overviews."
-            }
-          ]
-        },
-        {
-          "id": "W-03",
-          "claim": "NHLBI's guide \"Your Guide to Healthy Sleep\" covers types of sleep, common sleep myths, practical tips for getting adequate sleep, and coping with jet lag and nighttime shift work.",
-          "source": 3,
-          "sourceIds": [
-            "W-SRC-4"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-005:W-08",
-              "reason": "Independently supports that NHLBI resources address jet lag and nighttime shift work."
-            }
-          ]
-        },
-        {
-          "id": "W-04",
-          "claim": "NHLBI identifies insomnia, sleep apnea, restless legs syndrome, and narcolepsy as common sleep problems.",
-          "source": 2,
-          "sourceIds": [
-            "W-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "W-05",
-          "claim": "NHLBI's \"Sleep Brochure\" distinguishes between the sleep needed to feel awake and the sleep needed to be healthy, and describes the difference between healthy breathing and obstructed breathing in sleep apnea.",
-          "source": 4,
-          "sourceIds": [
-            "W-SRC-5"
-          ],
-          "status": "needs-review",
-          "confidence": "medium",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-006:W-05",
-              "reason": "Independently supports the awake-versus-healthy sleep distinction from a second source packet."
-            }
-          ]
-        }
-      ],
-      "toneNotes": [
-        "No diagnosis, moralizing, or individualized medical advice; individual variation in sleep needs is stated explicitly.",
-        "The 2013 update date of the Spanish fact sheet is surfaced so readers can judge currency for themselves.",
-        "All facts trace to the supplied NHLBI packets; no outside knowledge introduced."
-      ],
-      "tags": [
-        "sleep",
-        "health-literacy",
-        "spanish-language-resources",
-        "NHLBI"
-      ],
-      "generated": true,
-      "scout": {
-        "provider": "tavily",
-        "request_id": "6beac4f8-fe3d-4754-a0db-93066ac01347",
-        "credits": 2,
-        "search_mode": "timeless-official-fallback"
       }
     },
     {
@@ -8252,173 +8972,6 @@
       }
     },
     {
-      "id": "pantry-002",
-      "deskId": "pantry",
-      "desk": "The Pantry",
-      "icon": "◒",
-      "issue": "002",
-      "version": "1.0.0",
-      "date": "AUG 27 · 2026",
-      "publishedAt": "2026-08-27T13:49:59.590Z",
-      "color": "#f1cf69",
-      "title": "The Leftover Ledger: A Calm Guide to What Keeps and What Goes",
-      "kicker": "Pantry",
-      "dek": "USDA cold-storage windows, the two-hour rule, and a weekly fridge ritual — practical guidance for leftovers without guesswork.",
-      "readTime": "3 min read",
-      "validity": "365 days",
-      "expires": "2027-08-27",
-      "confidence": "High",
-      "scope": "Food safety",
-      "editor": "OpenRouter · GLM 5.3 Flash",
-      "inputPolicy": "Scheduled Tavily source packets",
-      "editorial": [
-        "Leftovers are one of the most common points of kitchen uncertainty: the container in the back of the fridge with no label and no story. The USDA's Food Safety and Inspection Service offers unusually clear, specific guidance here — not vague warnings, but actual day counts for cooked leftovers, raw meats, deli items, and more. This edition turns those numbers into a practical rhythm for your kitchen.",
-        "The core numbers are simple. Cooked leftovers keep 3 to 4 days in the refrigerator or 3 to 4 months in the freezer (P-SRC-2). Raw poultry and ground meats are shorter-lived: 1 to 2 days in the fridge (P-SRC-1). Deli salads, store-cooked entrees, and casseroles fall in the 3-to-5-day range (P-SRC-1). These are validity windows, not judgment calls — when the storage history is unknown, the guidance is to discard rather than guess.",
-        "The two-hour rule is the other anchor. Perishable food left at room temperature longer than 2 hours should be discarded — 1 hour if the room is above 90°F (P-SRC-3). Above 40°F and below 140°F is the 'Danger Zone' where bacteria multiply quickly (P-SRC-4). Reheat leftovers to 165°F, checking with a thermometer in several places (P-SRC-4).",
-        "Cooling matters as much as storage. Divide large batches — soup, roasts, turkey — into shallow containers or smaller pieces so food reaches 40°F or below quickly (P-SRC-2). Wrap well or use airtight containers to keep bacteria out and moisture in (P-SRC-2).",
-        "Finally, a weekly ritual: once a week, go through the fridge and discard perishables past their window (P-SRC-1). An open box of baking soda on a shelf keeps things smelling fresh (P-SRC-1). This is not alarmism — it is a small, repeatable habit that replaces uncertainty with a known answer."
-      ],
-      "pullquote": "Cooked leftovers: 3 to 4 days refrigerated, 3 to 4 months frozen. Raw poultry and ground meats: 1 to 2 days. When the clock is unknown, discard — don't guess.",
-      "sources": [
-        {
-          "id": "P-SRC-1",
-          "name": "Refrigeration & Food Safety | Food Safety and Inspection Service",
-          "publisher": "fsis.usda.gov",
-          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/refrigeration",
-          "checked": "2026-08-27"
-        },
-        {
-          "id": "P-SRC-2",
-          "name": "Leftovers and Food Safety | Food Safety and Inspection Service",
-          "publisher": "fsis.usda.gov",
-          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/leftovers-and-food-safety",
-          "checked": "2026-08-27"
-        },
-        {
-          "id": "P-SRC-3",
-          "name": "Safe Handling of Take-Out Foods | Food Safety and Inspection Service",
-          "publisher": "fsis.usda.gov",
-          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-handling-take-out-foods",
-          "checked": "2026-08-27"
-        },
-        {
-          "id": "P-SRC-4",
-          "name": "Keep Food Safe from Kickoff to Leftovers | Food Safety and Inspection Service",
-          "publisher": "fsis.usda.gov",
-          "url": "http://www.fsis.usda.gov/news-events/news-press-releases/keep-food-safe-kickoff-leftovers",
-          "checked": "2026-08-27"
-        },
-        {
-          "id": "P-SRC-5",
-          "name": "Keep Food Safe! Food Safety Basics | Food Safety and Inspection Service",
-          "publisher": "fsis.usda.gov",
-          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/steps-keep-food-safe",
-          "checked": "2026-08-27"
-        }
-      ],
-      "claims": [
-        {
-          "id": "P-01",
-          "claim": "Cooked leftovers can be kept in the refrigerator for 3 to 4 days or frozen for 3 to 4 months.",
-          "source": 1,
-          "sourceIds": [
-            "P-SRC-2"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "P-02",
-          "claim": "Raw poultry and ground meats keep 1 to 2 days in the refrigerator.",
-          "source": 0,
-          "sourceIds": [
-            "P-SRC-1"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "P-03",
-          "claim": "Perishable foods left at room temperature longer than 2 hours should be discarded; 1 hour if air temperature is above 90°F.",
-          "source": 2,
-          "sourceIds": [
-            "P-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "P-04",
-          "claim": "The Danger Zone is 40°F to 140°F, where bacteria multiply quickly; perishable foods should not sit in this range more than two hours.",
-          "source": 3,
-          "sourceIds": [
-            "P-SRC-4"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "P-05",
-          "claim": "Leftovers should be reheated to 165°F, checked with a food thermometer in several places.",
-          "source": 3,
-          "sourceIds": [
-            "P-SRC-4"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "P-06",
-          "claim": "Large amounts of food should be divided into shallow containers or smaller pieces to cool rapidly to 40°F or below.",
-          "source": 1,
-          "sourceIds": [
-            "P-SRC-2"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "P-07",
-          "claim": "Leftovers should be wrapped well or sealed in airtight containers to keep bacteria out, retain moisture, and prevent odor transfer.",
-          "source": 1,
-          "sourceIds": [
-            "P-SRC-2"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "P-08",
-          "claim": "Once a week, discard perishable foods that should no longer be eaten.",
-          "source": 0,
-          "sourceIds": [
-            "P-SRC-1"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        }
-      ],
-      "toneNotes": [
-        "Non-alarmist: present windows as practical rhythms, not warnings.",
-        "Never infer safety of a specific food with unknown history — always default to discard.",
-        "Prefer 180–365 day validity for this edition since the underlying USDA guidance is stable and non-fast-moving."
-      ],
-      "tags": [
-        "food-safety",
-        "leftovers",
-        "refrigeration",
-        "usda-fsis",
-        "pantry"
-      ],
-      "generated": true,
-      "scout": {
-        "provider": "tavily",
-        "request_id": "343eadf0-e9e5-4da9-8191-a37756f3b048",
-        "credits": 2,
-        "search_mode": "timeless-official-fallback"
-      }
-    },
-    {
       "id": "model-watch-003",
       "deskId": "model-watch",
       "desk": "Model Watch",
@@ -8686,168 +9239,6 @@
       "scout": {
         "provider": "tavily",
         "request_id": "f240560d-f720-4385-9f52-f2bc8062e23a",
-        "credits": 1,
-        "search_mode": "bounded"
-      }
-    },
-    {
-      "id": "model-watch-002",
-      "deskId": "model-watch",
-      "desk": "Model Watch",
-      "icon": "⌁",
-      "issue": "002",
-      "version": "1.0.0",
-      "date": "AUG 27 · 2026",
-      "publishedAt": "2026-08-27T13:44:34.450Z",
-      "color": "#ff719f",
-      "title": "Velvet Signal — Proposed Edition",
-      "kicker": "model-watch",
-      "dek": "A cybersecurity-tuned frontier model widens its defender program, an open-weight multimodal model lands with day-0 support, and a live MCP connector bug is worth watching before you ship.",
-      "readTime": "3 min read",
-      "validity": "60 days",
-      "expires": "2026-10-26",
-      "confidence": "Mixed",
-      "scope": "AI models and agent interfaces",
-      "editor": "OpenRouter · GLM 5.3 Flash",
-      "inputPolicy": "Scheduled Tavily source packets",
-      "editorial": [
-        "OpenAI expanded its Daybreak program and released GPT-5.6-Cyber, a cybersecurity-specific model described as trained to reduce refusals on higher-risk tasks, with two access tiers for approved defenders [MW-SRC-1]. For security teams and agent builders, the refusal posture is the story: a model explicitly tuned to say yes more often on cyber work changes what defenders can automate, and what guardrails they must rebuild around it. Both items are dated August 11, 2026 in the source roundup [MW-SRC-1]. Because these details arrive via a secondary news digest rather than OpenAI's primary release notes, treat specifics as needs-review until confirmed against official documentation.",
-        "Meta released Muse Glimmer, a 30B open-weight multimodal model under Apache 2.0, described as a local, agentic model with day-0 support across major inference libraries according to Hugging Face and developer Simon Willison [MW-SRC-1]. A permissively licensed, locally runnable agentic model at 30B lowers the barrier for builders who need agent behavior without sending data to a hosted API. As with the lead item, this is sourced from a news roundup, so exact availability boundaries need-review against the primary model card.",
-        "Agent-interface watch item: OpenAI Developer Community users report 424 Failed Dependency errors when connecting the Stripe remote MCP connector, occurring during tools/list or connector registration, with reports beginning Monday, August 27, 2026 around 6 pm CET [MW-SRC-3]. The reporter suggests the fault lies in the OpenAI MCP proxy runtime rather than Stripe's endpoint, but that attribution is unconfirmed; related forum threads show a pattern of similar 424 and TaskGroup errors on custom connectors [MW-SRC-3]. If your agents depend on MCP connector registration, verify your integrations before relying on new connections this week.",
-        "License hygiene note: a community GGUF conversion, Baekpica/Qwen3.8-Flash-Next-Mixed-Quant-SSD-PLE-GGUF, states its converted weights remain governed by the original Qwen Community License 1.0 and explicitly claims no Apache-2.0 license [MW-SRC-5]. A useful reminder that quantized or repackaged artifacts inherit upstream terms, and that a permissive-sounding repo name is not a license grant."
-      ],
-      "pullquote": "A model explicitly tuned to reduce refusals on higher-risk cyber tasks changes what defenders can automate, and what guardrails they must rebuild around it.",
-      "sources": [
-        {
-          "id": "MW-SRC-1",
-          "name": "The Current — AI news, and what it means for you - RiverfrontAI",
-          "publisher": "riverfrontai.com",
-          "url": "https://riverfrontai.com/journal",
-          "checked": "2026-08-27",
-          "publishedAt": "Thu, 27 Aug 2026 02:00:00 GMT"
-        },
-        {
-          "id": "MW-SRC-2",
-          "name": "AI Signal Daily | Cloud Intelligence™ - DoiT",
-          "publisher": "doit.com",
-          "url": "https://www.doit.com/ai-daily",
-          "checked": "2026-08-27",
-          "publishedAt": "Thu, 27 Aug 2026 08:00:00 GMT"
-        },
-        {
-          "id": "MW-SRC-3",
-          "name": "424 Failed Dependency error when connecting to Stripe remote MCP connector - Bugs - OpenAI Developer Community",
-          "publisher": "community.openai.com",
-          "url": "https://community.openai.com/t/424-failed-dependency-error-when-connecting-to-stripe-remote-mcp-connector/1392967",
-          "checked": "2026-08-27",
-          "publishedAt": "Thu, 27 Aug 2026 09:45:05 GMT"
-        },
-        {
-          "id": "MW-SRC-4",
-          "name": "Kleinunternehmen",
-          "publisher": "openai.com",
-          "url": "https://openai.com/de-DE/business/why-openai/small-business",
-          "checked": "2026-08-27",
-          "publishedAt": "Wed, 26 Aug 2026 13:00:00 GMT"
-        },
-        {
-          "id": "MW-SRC-5",
-          "name": "Baekpica/Qwen3.8-Flash-Next-Mixed ... - Hugging Face",
-          "publisher": "huggingface.co",
-          "url": "https://huggingface.co/Baekpica/Qwen3.8-Flash-Next-Mixed-Quant-SSD-PLE-GGUF",
-          "checked": "2026-08-27",
-          "publishedAt": "Wed, 26 Aug 2026 20:12:23 GMT"
-        }
-      ],
-      "claims": [
-        {
-          "id": "MW-01",
-          "claim": "OpenAI released GPT-5.6-Cyber, a cybersecurity-specific model trained to reduce refusals on higher-risk tasks.",
-          "source": 0,
-          "sourceIds": [
-            "MW-SRC-1"
-          ],
-          "status": "needs-review",
-          "confidence": "medium"
-        },
-        {
-          "id": "MW-02",
-          "claim": "OpenAI expanded the Daybreak program with two access tiers for approved defenders.",
-          "source": 0,
-          "sourceIds": [
-            "MW-SRC-1"
-          ],
-          "status": "needs-review",
-          "confidence": "medium"
-        },
-        {
-          "id": "MW-03",
-          "claim": "The GPT-5.6-Cyber release and Daybreak expansion were dated August 11, 2026 in the source roundup.",
-          "source": 0,
-          "sourceIds": [
-            "MW-SRC-1"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "MW-04",
-          "claim": "Meta released Muse Glimmer, a 30B open-weight multimodal model under Apache 2.0, described as local and agentic with day-0 support across major inference libraries per Hugging Face and Simon Willison.",
-          "source": 0,
-          "sourceIds": [
-            "MW-SRC-1"
-          ],
-          "status": "needs-review",
-          "confidence": "medium"
-        },
-        {
-          "id": "MW-05",
-          "claim": "OpenAI Developer Community users report 424 Failed Dependency errors during tools/list or connector registration for the Stripe remote MCP connector, beginning August 27, 2026 around 6 pm CET.",
-          "source": 2,
-          "sourceIds": [
-            "MW-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "MW-06",
-          "claim": "The 424 errors are attributed by the reporter to the OpenAI MCP proxy runtime rather than Stripe's endpoint; this attribution is unconfirmed by OpenAI.",
-          "source": 2,
-          "sourceIds": [
-            "MW-SRC-3"
-          ],
-          "status": "needs-review",
-          "confidence": "low"
-        },
-        {
-          "id": "MW-07",
-          "claim": "The Baekpica/Qwen3.8-Flash-Next-Mixed-Quant-SSD-PLE-GGUF artifact states its weights remain governed by Qwen Community License 1.0 and claims no Apache-2.0 license.",
-          "source": 4,
-          "sourceIds": [
-            "MW-SRC-5"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        }
-      ],
-      "toneNotes": [
-        "Lead with the Daybreak/GPT-5.6-Cyber expansion as the most consequential change for builders and agent users, but flag that primary release notes were not among the supplied packets.",
-        "Keep the MCP 424 bug framed as a live, community-reported issue with unconfirmed root cause; do not state OpenAI has acknowledged it.",
-        "Preserve exact names, versions, dates, and license terms verbatim throughout."
-      ],
-      "tags": [
-        "GPT-5.6-Cyber",
-        "Daybreak",
-        "Muse Glimmer",
-        "MCP",
-        "open-weights",
-        "licensing"
-      ],
-      "generated": true,
-      "scout": {
-        "provider": "tavily",
-        "request_id": "b27e0e24-f882-4be4-b85e-b2abc808f323",
         "credits": 1,
         "search_mode": "bounded"
       }
