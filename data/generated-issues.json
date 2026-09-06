@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-06T04:40:58.412Z",
+  "generated_at": "2026-09-06T18:20:39.103Z",
   "desks": {
     "maker": {
       "fingerprint": "fbce5594c8106f549e21f4ed2d022a938add0279e64c03b2718df313c136b4e4",
@@ -10,30 +10,1005 @@
     },
     "model-watch": {
       "fingerprint": "e69774d4af521eb561daa8b3ff43813af637cb36b1be5a214927a36a2d572c81",
-      "latest_patch_id": "model-watch-014",
-      "published_at": "2026-09-04T04:35:04.654Z",
-      "tavily_request_id": "f5688680-ee5a-455d-842d-d43cb5408803"
+      "latest_patch_id": "model-watch-016",
+      "published_at": "2026-09-06T18:17:30.137Z",
+      "tavily_request_id": "d28e49e1-e465-4f6e-9237-23f6324c31fa"
     },
     "culture": {
-      "fingerprint": "253edec4f5bad41cb3233334f59e8d2b0a3f28f785d8c6d2236913105c6c2d21",
-      "latest_patch_id": "culture-014",
-      "published_at": "2026-09-06T04:40:58.412Z",
-      "tavily_request_id": "c5d95d91-1a27-480d-aa5b-292da27d8210"
+      "fingerprint": "2c8ec1f4bc6f81af1eb05628bac7e7bd5fbbd3b6d980ecf4470fa4a2e6f363ce",
+      "latest_patch_id": "culture-015",
+      "published_at": "2026-09-06T12:17:55.659Z",
+      "tavily_request_id": "27ccfe20-afc1-40e9-b8d4-63444484fe11"
     },
     "pantry": {
-      "fingerprint": "2ce3399d7afe4f98ebcf327771cee574d5a757707fbac72ef6354b04c8b9e0e5",
-      "latest_patch_id": "pantry-017",
-      "published_at": "2026-09-06T04:39:42.742Z",
-      "tavily_request_id": "eff04e7d-ca2b-4f16-98a5-645033548aa6"
+      "fingerprint": "d1692ddb7ef8b2c9e911dec1bba43842095eb81a663fcfc6cb547a85fabb833c",
+      "latest_patch_id": "pantry-018",
+      "published_at": "2026-09-06T18:18:43.165Z",
+      "tavily_request_id": "65ed90a1-4272-4156-9a1d-4f9bb80070de"
     },
     "wellbeing": {
-      "fingerprint": "16f3a828550af8a782cf198935efed52a11cc92833a5e7de3295d8c58414d0c4",
-      "latest_patch_id": "wellbeing-023",
-      "published_at": "2026-09-06T04:40:08.628Z",
-      "tavily_request_id": "f4b94a8f-66f2-48e9-8927-b8a0961adf6e"
+      "fingerprint": "5bf72050baccc32a3c6735aebe174dd04c975afbca2fb784fbf5f691d0668db9",
+      "latest_patch_id": "wellbeing-025",
+      "published_at": "2026-09-06T18:20:39.103Z",
+      "tavily_request_id": "c2d2badd-af99-4c32-9b57-1eb9972cf057"
     }
   },
   "issues": [
+    {
+      "id": "wellbeing-025",
+      "deskId": "wellbeing",
+      "desk": "Wellbeing",
+      "icon": "☾",
+      "issue": "025",
+      "version": "1.0.0",
+      "date": "SEP 06 · 2026",
+      "publishedAt": "2026-09-06T18:20:39.103Z",
+      "color": "#a993ff",
+      "title": "Velvet Signal — Proposed Edition wellbeing-025",
+      "kicker": "Wellbeing Desk",
+      "dek": "This week's wellbeing desk stays with habits, but changes the question: not \"what should I aim for?\" but \"what do I actually run every day?\" The strongest packet available is a recorded conversation between Andrew Huberman and James Clear, and its most transferable idea is about goals vs. systems — with honest fine print about everything else that shapes a result. As ever: general context, not diagnosis, not a substitute for professional care.",
+      "readTime": "3 min read",
+      "validity": "120 days",
+      "expires": "2027-01-04",
+      "confidence": "Mixed",
+      "scope": "General wellbeing",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "The source packets this week are practitioner and self-help materials rather than public-health bodies, so every claim below is attributed and several are flagged needs-review. The NHLBI packet (W-SRC-4) contained only portal boilerplate — login help, site index, no health content — so nothing was extracted from it. The Zen Habits about page (W-SRC-5) was likewise content-free for our purposes.",
+        "Individual variation is kept visible throughout: the same conversation that argues for systems explicitly names genetics, talent, coaching, strategy, and even last night's sleep as factors no routine can standardize.",
+        "Why this matters: goal-setting is the default self-improvement frame, and it quietly fails people who hold identical goals to people who succeed. Reframing toward the daily system is a lens change, not a promise — and the source itself says so."
+      ],
+      "pullquote": "If the winners and the losers have the same goals, the goal cannot be the thing that makes the difference in their performance. — as quoted in W-SRC-3",
+      "sources": [
+        {
+          "id": "W-SRC-1",
+          "name": "Habits Guide: How to Build Good Habits and Break Bad Ones",
+          "publisher": "jamesclear.com",
+          "url": "https://jamesclear.com/habits",
+          "checked": "2026-09-06"
+        },
+        {
+          "id": "W-SRC-2",
+          "name": "Keystone Habits: The Simple Way to Improve All Aspects of Your Life",
+          "publisher": "jamesclear.com",
+          "url": "https://jamesclear.com/keystone-habits",
+          "checked": "2026-09-06"
+        },
+        {
+          "id": "W-SRC-3",
+          "name": "The Science of Making & Breaking Habits: How to Change Your Life in 1 Month",
+          "publisher": "youtube.com",
+          "url": "https://www.youtube.com/watch?v=8dHEG7WxR4c",
+          "checked": "2026-09-06"
+        },
+        {
+          "id": "W-SRC-4",
+          "name": "NHLBI eCONNECT",
+          "publisher": "econnect.nhlbi.nih.gov",
+          "url": "https://econnect.nhlbi.nih.gov/",
+          "checked": "2026-09-06"
+        },
+        {
+          "id": "W-SRC-5",
+          "name": "About - Zen Habits Website",
+          "publisher": "zenhabits.net",
+          "url": "https://zenhabits.net/about",
+          "checked": "2026-09-06"
+        }
+      ],
+      "claims": [
+        {
+          "id": "W-01",
+          "claim": "In the Huberman–Clear conversation, the argument is made that winners and losers in a domain often hold the same goals, so the goal cannot be what differentiates performance; the differentiator offered is the system — the person's daily habits.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        },
+        {
+          "id": "W-02",
+          "claim": "The same conversation names factors beyond habit that shape outcomes in any domain — genetic ability, talent, coaching, strategy, and how much sleep a person got the night before — framing the daily system as one input among several rather than a guarantee of results.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-03",
+          "claim": "Saving money is cited in the conversation as an example of a distinct category of habits that are \"things that you basically don't do\" — habits of omission. The supplied excerpt is truncated before the explanation completes, so only the category label and the saving-money example are supported.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3"
+          ],
+          "status": "needs-review",
+          "confidence": "low"
+        },
+        {
+          "id": "W-04",
+          "claim": "James Clear's habits guide frames repeated daily thought and action as ultimately forming the person you are, the things you believe, and the personality you portray. This is the author's framing of habit formation in a popular self-help guide, not a measured effect; individual outcomes will vary.",
+          "source": 0,
+          "sourceIds": [
+            "W-SRC-1"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        }
+      ],
+      "toneNotes": [
+        "Keep the goals-vs-systems distinction framed as an argument from a recorded conversation, not as established research findings.",
+        "Do not convert the sleep mention in W-SRC-3 into sleep guidance; it is a passing list item about performance variation, and the desk's sleep facts live in wellbeing-023 claims, which are reference-only targets here.",
+        "No moralizing about productivity or self-optimization; the edition explains a lens, it does not prescribe a life."
+      ],
+      "tags": [
+        "wellbeing",
+        "habits",
+        "systems-vs-goals",
+        "keystone-habits",
+        "needs-review"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "c2d2badd-af99-4c32-9b57-1eb9972cf057",
+        "credits": 2,
+        "search_mode": "timeless-official-fallback"
+      }
+    },
+    {
+      "id": "pantry-018",
+      "deskId": "pantry",
+      "desk": "The Pantry",
+      "icon": "◒",
+      "issue": "018",
+      "version": "1.0.0",
+      "date": "SEP 06 · 2026",
+      "publishedAt": "2026-09-06T18:18:43.165Z",
+      "color": "#f1cf69",
+      "title": "Leftover math you can trust",
+      "kicker": "Velvet Signal — Pantry Desk",
+      "dek": "FSIS's Thanksgiving-leftovers guidance is back in the packet stream: the two-hour clock, the four-day fridge window, and a freezer range that's about quality, not safety.",
+      "readTime": "3 min read",
+      "validity": "365 days",
+      "expires": "2027-09-06",
+      "confidence": "High",
+      "scope": "Food safety",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "The holiday container in the back of your fridge doesn't come with a timestamp, and neither FSIS nor this edition will pretend otherwise. What the source packets do give us is a clean set of general rules — and rules are only useful if you know exactly what they don't decide. Below, the clock, the temperatures, and the honest boundary of the guidance.",
+        "One housekeeping note: two of this cycle's packets — an FSIS privacy-policy page (P-SRC-3) and a technical risk assessment of E. coli O157:H7 in ground beef (P-SRC-5) — are not household safety guidance and are not used as a factual basis for any rule here.",
+        "practical_guidance_heading_text_value"
+      ],
+      "pullquote": "The freezer window is a quality guideline, not a safety cutoff.",
+      "sources": [
+        {
+          "id": "P-SRC-1",
+          "name": "Welcome, HelloFresh Customers! | Food Safety and Inspection Service",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/HelloFresh",
+          "checked": "2026-09-06"
+        },
+        {
+          "id": "P-SRC-2",
+          "name": "askFSIS",
+          "publisher": "ask.fsis.usda.gov",
+          "url": "https://ask.fsis.usda.gov/",
+          "checked": "2026-09-06"
+        },
+        {
+          "id": "P-SRC-3",
+          "name": "Privacy Program | Food Safety and Inspection Service",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/privacy-policy",
+          "checked": "2026-09-06"
+        },
+        {
+          "id": "P-SRC-4",
+          "name": "USDA Electronic Consumer Complaint Form - Welcome",
+          "publisher": "foodcomplaint.fsis.usda.gov",
+          "url": "https://foodcomplaint.fsis.usda.gov/eccf",
+          "checked": "2026-09-06"
+        },
+        {
+          "id": "P-SRC-5",
+          "name": "Risk Assessment of E. coli O157:H7 in Ground Beef | Food Safety and Inspection Service",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/node/2003",
+          "checked": "2026-09-06"
+        }
+      ],
+      "claims": [
+        {
+          "id": "P-01",
+          "claim": "FSIS guidance states Thanksgiving leftovers are safe in the refrigerator for up to four days, or until the Monday after Thanksgiving; leftovers stored in the freezer remain of best quality for up to two to six months. The freezer window is a quality guideline, not a safety cutoff.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-017:P-03",
+              "reason": "The same FSIS HelloFresh page independently supports the identical four-day refrigerator window and the two-to-six-month freezer quality guideline already on the ledger."
+            }
+          ]
+        },
+        {
+          "id": "P-02",
+          "claim": "Perishable leftovers, including appetizers, side dishes, and the turkey, should be stored within two hours of cooking, or within one hour if air temperature is above 90°F; food being held above 140°F is exempt from the two-hour clock.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-017:P-01",
+              "reason": "P-SRC-1 independently restates the same two-hour/one-hour storage rule with the same above-140°F holding exemption already confirmed last cycle."
+            }
+          ]
+        },
+        {
+          "id": "P-03",
+          "claim": "The Danger Zone is 40°F to 140°F, the temperature range in which foodborne-illness-causing bacteria grow rapidly.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-017:P-02",
+              "reason": "P-SRC-1 independently defines the same Danger Zone boundaries already on the ledger."
+            }
+          ]
+        },
+        {
+          "id": "P-04",
+          "claim": "Divide leftovers into smaller portions, including carving the turkey, and refrigerate or freeze them in covered shallow containers so they cool more quickly.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-017:P-04",
+              "reason": "P-SRC-1 independently supports the same shallow-container cooling guidance already confirmed last cycle."
+            }
+          ]
+        },
+        {
+          "id": "P-05",
+          "claim": "The USDA Meat and Poultry Hotline (1-888-MPHotline / 1-888-674-6854) is staffed by food safety experts weekdays from 10 a.m. to 6 p.m. Eastern time and answers consumer questions about the safe storage, handling, and preparation of meat, poultry, and egg products; FSIS also operates an Electronic Consumer Complaint Reporting Form for incidents such as illness, foreign object, injury, allergic reaction, mislabeling, and off taste, color, or appearance involving meat, poultry, and processed egg products regulated by USDA FSIS.",
+          "source": 3,
+          "sourceIds": [
+            "P-SRC-4",
+            "P-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-017:P-05",
+              "reason": "P-SRC-4 independently supplies the hotline number, staffing hours, and the complaint-form description, and P-SRC-2 independently confirms the hotline's scope, matching the ledger entry from last cycle."
+            }
+          ]
+        },
+        {
+          "id": "P-06",
+          "claim": "This edition makes no determination about whether any specific leftover or food item is safe to eat: the packets supply general time and temperature rules but no storage history, temperature log, or handling record for any particular item, so the rules above cannot be applied to any specific container without that history.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-017:P-06",
+              "reason": "This cycle's packets again contain only general rules and no item-specific storage history, independently confirming the same scope limitation recorded last cycle."
+            }
+          ]
+        },
+        {
+          "id": "P-07",
+          "claim": "The remaining packets in this cycle are not authoritative household safety guidance and are not used as a factual basis for any rule: an FSIS privacy-program page describing privacy policies, cookies, and breach-reporting contacts (P-SRC-3), and a technical FSIS risk assessment of E. coli O157:H7 in ground beef covering pathogen history and regulatory testing programs (P-SRC-5).",
+          "source": 2,
+          "sourceIds": [
+            "P-SRC-3",
+            "P-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Lead with what the reader can do tonight, not with alarm.",
+        "Keep the freezer-versus-refrigerator distinction explicit; readers routinely treat the quality window as a safety deadline.",
+        "Never name a specific container or dish as safe or unsafe — the packets contain no storage history."
+      ],
+      "tags": [
+        "leftovers",
+        "food-safety",
+        "storage",
+        "FSIS"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "65ed90a1-4272-4156-9a1d-4f9bb80070de",
+        "credits": 2,
+        "search_mode": "timeless-official-fallback"
+      }
+    },
+    {
+      "id": "model-watch-016",
+      "deskId": "model-watch",
+      "desk": "Model Watch",
+      "icon": "⌁",
+      "issue": "016",
+      "version": "1.0.0",
+      "date": "SEP 06 · 2026",
+      "publishedAt": "2026-09-06T18:17:30.137Z",
+      "color": "#ff719f",
+      "title": "Model Watch — proposed edition",
+      "kicker": "model-watch",
+      "dek": "GPT-6 Astra in the hands of one game studio, and a law firm's adoption math — both worth reading, neither a spec sheet.",
+      "readTime": "3 min read",
+      "validity": "60 days",
+      "expires": "2026-11-05",
+      "confidence": "High",
+      "scope": "AI models and agent interfaces",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "The most consequential item this cycle is the Playco and GPT-6 Astra story: a customer-facing account of agentic coding behavior in a real production workflow, building Playbot, an AI-powered IDE for professional game developers [MW-SRC-1]. Playco reports using GPT-6 Astra to build three themed game prototypes from a single unthemed grey box prototype created from simple primitives, with most prototypes working on the first take, and 50% fewer manual fixes than with the previous model [MW-SRC-1].",
+        "Treat the 50% figure as a single team's reported outcome, not an independently verified benchmark [MW-SRC-1]. The story does not state GPT-6 Astra's availability boundaries, pricing, context limits, or general-availability date [MW-SRC-1].",
+        "The companion story on Gilbert + Tobin is an adoption and governance datapoint rather than a model change: the firm reports active usage among enabled ChatGPT users at more than twice the adoption rate it typically sees for other tools, attributed to CEO-led commitment, rigorous governance, and human accountability [MW-SRC-2].",
+        "Both sources are customer stories published on OpenAI's site, not primary release notes or official model documentation. Desk guidance calls for release-note-grade sourcing, so these claims are recorded as reported outcomes with their boundaries stated, and the missing specification details are flagged for review rather than inferred."
+      ],
+      "pullquote": "Playco reports 50% fewer manual fixes using GPT-6 Astra compared with the previous model — a single team's reported outcome, not a benchmark. [MW-SRC-1]",
+      "sources": [
+        {
+          "id": "MW-SRC-1",
+          "name": "Playco cut manual fixes 50% prototyping games with GPT-6 Astra - OpenAI",
+          "publisher": "openai.com",
+          "url": "https://openai.com/index/playco-game-prototyping-with-astra/",
+          "checked": "2026-09-06",
+          "publishedAt": "Thu, 03 Sep 2026 18:01:35 GMT"
+        },
+        {
+          "id": "MW-SRC-2",
+          "name": "How law firm Gilbert + Tobin governs and scales AI with OpenAI - OpenAI",
+          "publisher": "openai.com",
+          "url": "https://openai.com/index/gilbert-tobin",
+          "checked": "2026-09-06",
+          "publishedAt": "Wed, 02 Sep 2026 01:34:21 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "MW-01",
+          "claim": "Per OpenAI's customer story published September 3, 2026, Playco used GPT-6 Astra to build three themed game prototypes from one unthemed grey box prototype created from simple primitives, with most prototypes working on the first take.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "model-watch-014:MW-01",
+              "reason": "The current packet independently restates the same fact from the same primary source."
+            }
+          ]
+        },
+        {
+          "id": "MW-02",
+          "claim": "Per OpenAI's customer story published September 3, 2026, Playco reports 50% fewer manual fixes using GPT-6 Astra compared with the previous model, in the context of building Playbot, an AI-powered IDE for professional game developers.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "model-watch-014:MW-02",
+              "reason": "The current packet independently restates the same fact from the same primary source."
+            }
+          ]
+        },
+        {
+          "id": "MW-03",
+          "claim": "The OpenAI customer story about Playco and GPT-6 Astra does not state the model's availability boundaries, pricing, context limits, or general-availability date; the 50% figure is a single team's reported outcome rather than an independently verified benchmark.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "model-watch-014:MW-03",
+              "reason": "The current packet independently restates the same fact from the same primary source."
+            }
+          ]
+        },
+        {
+          "id": "MW-04",
+          "claim": "Per OpenAI's customer story published September 2, 2026, Gilbert + Tobin reports active usage among enabled ChatGPT users at more than twice the adoption rate the firm typically sees for other tools, attributed to CEO-led commitment, rigorous governance, and human accountability.",
+          "source": 1,
+          "sourceIds": [
+            "MW-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "model-watch-014:MW-04",
+              "reason": "The current packet independently restates the same fact from the same primary source."
+            }
+          ]
+        },
+        {
+          "id": "MW-05",
+          "claim": "Both source packets this cycle are OpenAI customer stories, not primary release notes or official model documentation, and the supplied excerpts do not specify the full product deployment, timeline, or availability boundaries for either story.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1",
+            "MW-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "model-watch-013:MW-01",
+              "reason": "This cycle's packets, like the prior cycle's, supply customer stories rather than vendor release notes or official model documentation."
+            }
+          ]
+        }
+      ],
+      "toneNotes": [
+        "Preserved exact names: GPT-6 Astra, Playco, Playbot, Gilbert + Tobin.",
+        "Preserved exact dates: stories published September 3, 2026 [MW-SRC-1] and September 2, 2026 [MW-SRC-2].",
+        "Flagged that both sources are customer stories rather than release-note-grade primary documentation.",
+        "No experimental-status or availability claims inferred; those fields remain unstated in the packets."
+      ],
+      "tags": [
+        "gpt-6-astra",
+        "openai",
+        "playco",
+        "gilbert-tobin",
+        "agentic-coding",
+        "adoption",
+        "customer-story"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "d28e49e1-e465-4f6e-9237-23f6324c31fa",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "culture-015",
+      "deskId": "culture",
+      "desk": "Culture Desk",
+      "icon": "✺",
+      "issue": "015",
+      "version": "1.0.0",
+      "date": "SEP 06 · 2026",
+      "publishedAt": "2026-09-06T12:17:55.659Z",
+      "color": "#67d6c0",
+      "title": "Ah Shit, Here We Go Again: The San Andreas Line That Won't Quit",
+      "kicker": "Culture Desk",
+      "dek": "Twenty-two years after Grand Theft Auto: San Andreas shipped, a single line from its opening sequence keeps resurfacing — as fan frustration, as political messaging, as shorthand for a feeling. What the record shows, and what it doesn't.",
+      "readTime": "3 min read",
+      "validity": "10 days",
+      "expires": "2026-09-16",
+      "confidence": "High",
+      "scope": "Culture signals",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Some memes burn bright and vanish. Others become infrastructure. Polygon's retrospective on Grand Theft Auto: San Andreas documents the second kind: a quote from the game's 2004 opening sequence that found new life more than a decade after release and has stayed in circulation ever since.",
+        "The observed uses are strikingly different in register. On Reddit, the Grand Theft Auto community deploys the line as a running expression of frustration about the repeated delays to Grand Theft Auto 6 — a joke about waiting that doubles as a complaint. In March 2026, White House officials used the same line in a video posted to X, pulling a gaming in-joke into official political messaging.",
+        "That range is the story. The same words can read as fan exasperation, nostalgia, or political signaling depending on who says them and where. The packet doesn't tell us the meme's meaning in any single instance, and it doesn't quote the line itself — so we're describing a pattern of use, not decoding a fixed message.",
+        "One caution worth keeping: recognizing a meme is not the same as being fluent in it, and seeing coverage of it says nothing about any particular reader. This is a signal to watch, not a label to wear.",
+        "Given how quickly meme contexts shift, treat this as a 10-day window: if the line resurfaces in a new context before mid-September, the picture may already have moved."
+      ],
+      "pullquote": "The same words can read as fan exasperation, nostalgia, or political signaling depending on who says them and where.",
+      "sources": [
+        {
+          "id": "C-SRC-1",
+          "name": "20 Years Later, This Grand Theft Auto Quote Remains Undefeated in Gaming History - Polygon.com",
+          "publisher": "polygon.com",
+          "url": "https://www.polygon.com/gta-san-andreas-best-quote/",
+          "checked": "2026-09-06",
+          "publishedAt": "Thu, 03 Sep 2026 23:00:14 GMT"
+        },
+        {
+          "id": "C-SRC-2",
+          "name": "This Crossword Will Have You Shivering With Antici... - BuzzFeed",
+          "publisher": "buzzfeed.com",
+          "url": "https://www.buzzfeed.com/amanda_webber/crossword-september-2-2026",
+          "checked": "2026-09-06",
+          "publishedAt": "Wed, 02 Sep 2026 14:46:01 GMT"
+        },
+        {
+          "id": "C-SRC-3",
+          "name": "Crypto Price Today - Bitcoin Pulls Back Near $79K While Apeing Locks In September 8 for Its Upcoming Crypto Presale - markets.businessinsider.com",
+          "publisher": "markets.businessinsider.com",
+          "url": "https://markets.businessinsider.com/news/stocks/crypto-price-today---bitcoin-pulls-back-near-79k-while-apeing-locks-in-september-8-for-its-upcoming-crypto-presale-1036514343",
+          "checked": "2026-09-06",
+          "publishedAt": "Wed, 02 Sep 2026 07:34:39 GMT"
+        },
+        {
+          "id": "C-SRC-4",
+          "name": "Michael Jordan’s Lost Ferrari Has Appeared, And It’s Headed To Auction - Motor1.com",
+          "publisher": "motor1.com",
+          "url": "https://www.motor1.com/news/806827/michael-jordan-lost-ferrari-heads/",
+          "checked": "2026-09-06",
+          "publishedAt": "Wed, 02 Sep 2026 07:14:00 GMT"
+        },
+        {
+          "id": "C-SRC-5",
+          "name": "Laura Loomer Brands Another Democrat a ‘Ghetto Black Communist B****’ - Newsweek",
+          "publisher": "newsweek.com",
+          "url": "https://www.newsweek.com/laura-loomer-lamonica-mciver-nixon-backlash-12398878",
+          "checked": "2026-09-06",
+          "publishedAt": "Thu, 03 Sep 2026 10:42:00 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "C-01",
+          "claim": "A quote from the opening sequence of Grand Theft Auto: San Andreas became an internet meme sensation more than two decades after the game's 2004 release, finding new life more than a decade after launch, per Polygon.",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "culture-011:C-01",
+              "reason": "The new Polygon packet independently supports the same meme-longevity claim recorded in the prior entry."
+            }
+          ]
+        },
+        {
+          "id": "C-02",
+          "claim": "Grand Theft Auto: San Andreas has sold more than 27 million copies, and the franchise's popularity that year elevated it into a cultural phenomenon.",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "culture-011:C-02",
+              "reason": "The new packet restates the same sales and cultural-phenomenon figures, independently supporting the prior claim."
+            }
+          ]
+        },
+        {
+          "id": "C-03",
+          "claim": "On Reddit, the San Andreas quote became a common way for the Grand Theft Auto community to express frustration about the multiple delays to Grand Theft Auto 6.",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "culture-011:C-03",
+              "reason": "The new packet independently supports the same observation about Reddit usage around GTA 6 delays."
+            }
+          ]
+        },
+        {
+          "id": "C-04",
+          "claim": "In March 2026, White House officials used the San Andreas line in a video posted to X, after the meme's popularity had made its way back to the Grand Theft Auto community.",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "culture-011:C-04",
+              "reason": "The new packet independently supports the same March 2026 White House usage observation."
+            }
+          ]
+        },
+        {
+          "id": "C-05",
+          "claim": "The supplied packet does not quote the specific wording of the line, and its meaning in any given use — fan frustration, political messaging, or nostalgia — is not established as universal; no inference about any reader's familiarity with the meme or identity is warranted.",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "boundary",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "culture-011:C-05",
+              "reason": "The new packet likewise omits the quote's wording and supports the same boundary against universal-meaning and identity inferences."
+            }
+          ]
+        },
+        {
+          "id": "C-06",
+          "claim": "This entry describes observed usage as of the source publication date of September 3, 2026; meme contexts shift quickly, so it should be re-checked within 7–14 days (by roughly September 10–17, 2026) before treating the line's current usage as durable.",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "boundary",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Keep the observed-uses framing: Reddit frustration and White House messaging are documented uses, not a definition of the meme.",
+        "Do not state or paraphrase the quote itself — the packet never provides its wording.",
+        "Avoid any implication that recognizing the meme says something about the reader.",
+        "Flag the ambiguity between fan in-joke and political messaging rather than resolving it.",
+        "Hold the 10-day re-check window; meme usage can pivot fast."
+      ],
+      "tags": [
+        "gta-san-andreas",
+        "memes",
+        "gaming-culture",
+        "gta-6-delays",
+        "internet-language",
+        "meme-longevity"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "27ccfe20-afc1-40e9-b8d4-63444484fe11",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "wellbeing-024",
+      "deskId": "wellbeing",
+      "desk": "Wellbeing",
+      "icon": "☾",
+      "issue": "024",
+      "version": "1.0.0",
+      "date": "SEP 06 · 2026",
+      "publishedAt": "2026-09-06T12:17:13.635Z",
+      "color": "#a993ff",
+      "title": "Velvet Signal — Wellbeing Draft, Issue 024",
+      "kicker": "wellbeing",
+      "dek": "A proposed edition on identity-based habits and the case for starting smaller than feels reasonable — with the keystone-habit cascade held at arm's length until the evidence earns it.",
+      "readTime": "3 min read",
+      "validity": "180 days",
+      "expires": "2027-03-05",
+      "confidence": "Mixed",
+      "scope": "General wellbeing",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Open with the number: habits are the small decisions and actions you repeat every day, and researchers at Duke University — as cited in James Clear's habits guide — put about 40 percent of daily behavior in that category (W-SRC-1). Note plainly that this is a popular treatment citing research, not the research itself, and that 40 percent is an aggregate figure; the true share varies from person to person and day to day.",
+        "Introduce the identity inversion: rather than asking what outcome you want, ask who you wish to become, and treat each repetition of a habit as a way of embodying that identity (W-SRC-3, W-SRC-5). Emphasize that the identity is chosen by the reader — this is where individual variation lives, and why no single identity prescription fits everyone.",
+        "Bring in the scaling-down move: ten push-ups instead of a hundred, one page instead of thirty books a year, because the smaller version has a lower activation energy and is easier to begin (W-SRC-3). Pair it with the small-win ladders from Clear's identity piece: fifty extra steps a day compounding toward ten thousand, one paragraph a day toward a writing identity (W-SRC-5). Flag in prose that these are expert framings and worked examples, not trial evidence.",
+        "Present keystone habits with visible uncertainty: the claim that one routine — exercise, in Clear's telling — cascades into better eating, better sleep, and clearer focus is supported in the packet only by Clear's personal anecdote about his own experience (W-SRC-2). Mark it needs-review and say so in the prose: it may be true for him and may generalize, but it is not established here as a universal rule.",
+        "Close without moralizing: smaller isn't a consolation prize, it's a design choice. No diagnosis, no prescription, no replacement for professional care."
+      ],
+      "pullquote": "\"Who is the type of person that could lose 40 lbs? Well, maybe it's the type of person who doesn't miss workouts.\" — from the supplied habits conversation (W-SRC-3)",
+      "sources": [
+        {
+          "id": "W-SRC-1",
+          "name": "Habits Guide: How to Build Good Habits and Break Bad Ones",
+          "publisher": "jamesclear.com",
+          "url": "https://jamesclear.com/habits",
+          "checked": "2026-09-06"
+        },
+        {
+          "id": "W-SRC-2",
+          "name": "Keystone Habits: The Simple Way to Improve All Aspects of Your Life",
+          "publisher": "jamesclear.com",
+          "url": "https://jamesclear.com/keystone-habits",
+          "checked": "2026-09-06"
+        },
+        {
+          "id": "W-SRC-3",
+          "name": "The Science of Making & Breaking Habits: How to Change Your Life in 1 Month",
+          "publisher": "youtube.com",
+          "url": "https://www.youtube.com/watch?v=8dHEG7WxR4c",
+          "checked": "2026-09-06"
+        },
+        {
+          "id": "W-SRC-4",
+          "name": "About - Zen Habits Website",
+          "publisher": "zenhabits.net",
+          "url": "https://zenhabits.net/about",
+          "checked": "2026-09-06"
+        },
+        {
+          "id": "W-SRC-5",
+          "name": "Identity-Based Habits: How to Actually Stick to Your Goals This Year",
+          "publisher": "jamesclear.com",
+          "url": "https://jamesclear.com/identity-based-habits",
+          "checked": "2026-09-06"
+        }
+      ],
+      "claims": [
+        {
+          "id": "W-01",
+          "claim": "Habits are the small decisions you make and actions you perform every day, and researchers at Duke University — as cited by James Clear's habits guide — attribute roughly 40 percent of daily behaviors to habits; the figure is an aggregate from a popular secondary source, so individual shares will vary.",
+          "source": 0,
+          "sourceIds": [
+            "W-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-02",
+          "claim": "An identity-based approach to habits inverts the usual framing: instead of targeting an outcome (a number on a scale, a word count), a person first asks who they wish to become — the type of person who doesn't miss workouts, who writes daily — and treats each completed habit as a way of embodying that identity.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3",
+            "W-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-03",
+          "claim": "Scaling a desired habit down to a minimal version — ten push-ups instead of a hundred, one page instead of an annual book target — lowers the activation energy and effort required, making the behavior easier to begin and complete on a given day.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-020:W-05",
+              "reason": "This week's packet independently states the same scaling-down rule (ten push-ups vs. one hundred, one page vs. thirty books) as an expert framing, independently supporting the prior claim."
+            }
+          ]
+        },
+        {
+          "id": "W-04",
+          "claim": "Identity-based habits are paired with deliberately small wins: buying a pedometer and adding fifty steps a day until the practice compounds toward ten thousand daily steps, writing one paragraph a day toward a daily-writing identity, doing push-ups on set weekdays toward a never-miss-a-workout identity — worked examples of starting small rather than trial evidence.",
+          "source": 4,
+          "sourceIds": [
+            "W-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-05",
+          "claim": "Keystone habits are routines that lead to a cascade of other actions; James Clear offers his own exercise routine as an example, reporting that when he worked out he wanted to eat better, slept better, and thought more clearly afterward. This is a personal anecdote offered as illustration, not controlled evidence, and whether the cascade holds for any given individual is unknown.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "needs-review",
+          "confidence": "low"
+        }
+      ],
+      "toneNotes": [
+        "Keep 'individual variation' present in every section: the 40 percent figure is an average, the identity is reader-chosen, the keystone cascade is anecdotal.",
+        "The Zen Habits about-page packet (W-SRC-4) was reviewed and deliberately set aside — it describes the site's mission and author but contains no citable general-wellbeing fact.",
+        "No new sleep claims were made this issue despite adjacent prior claims; the packets don't independently support them, so no relationships were drawn to wellbeing-022 or wellbeing-023."
+      ],
+      "tags": [
+        "habits",
+        "identity",
+        "behavior-change",
+        "keystone-habits"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "4a5c79a9-2040-448f-880b-a9ea84f72c07",
+        "credits": 2,
+        "search_mode": "timeless-official-fallback"
+      }
+    },
+    {
+      "id": "model-watch-015",
+      "deskId": "model-watch",
+      "desk": "Model Watch",
+      "icon": "⌁",
+      "issue": "015",
+      "version": "1.0.0",
+      "date": "SEP 06 · 2026",
+      "publishedAt": "2026-09-06T12:11:43.814Z",
+      "color": "#ff719f",
+      "title": "The System Cards Turn to Sabotage: GPT-6 Astra and Claude Mythos 5.1 Get Evaluated as Agents",
+      "kicker": "Model Watch",
+      "dek": "This cycle's primary documents are two frontier system cards, and both spend their pages on the same question: what happens when a model can browse, act, and be attacked. OpenAI details a simulated message board designed to tempt GPT-6 Astra into misbehavior and a refreshed cyber safety posture it calls necessary for a 'cyber critical model.' Anthropic's card for Claude Fable 5.1 and Claude Mythos 5.1 documents browser-use agent attacks and positions Mythos 5.1 at the AI R&D frontier. Neither card, in the excerpts supplied, states pricing, availability, or general-availability dates — so treat this as a safety-posture briefing, not a launch announcement.",
+      "readTime": "3 min read",
+      "validity": "45 days",
+      "expires": "2026-10-21",
+      "confidence": "High",
+      "scope": "AI models and agent interfaces",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "The most consequential material this cycle isn't a release — it's the paperwork around one. OpenAI's GPT-6 Astra system card describes an evaluation where the agent faces a simulated message board, stored in a local browser cache with no Internet access, prepopulated with instructions encouraging it to disclose private information, promise future favors, or approve illicit access. That's a deliberate test of whether a model acts safely when the environment itself is hostile — a scenario any builder wiring agents into real inboxes and browsers should recognize.",
+        "The policy layer moved too. OpenAI states it updated its safety policy to better account for frontier agentic cyber risks, and that since the GPT-5.5 launch it has added semi-synthetic agentic environments designed to teach models not just to respond safely but to act safely. The card also notes strengthened cyber safeguards across the stack and an updated Trusted Access for Cyber program, framed as mitigation for the risks of a 'cyber critical model' — with expert-led testing of Astra against hardened browser and OS targets, plus third-party testing with Irregular.",
+        "Anthropic's system card for Claude Fable 5.1 and Claude Mythos 5.1 runs parallel: Section 5.2.2.3 covers browser use agents, where attacks were first generated by testing, and the card assesses Mythos 5.1 as advancing the frontier with AI R&D capabilities comparable to or slightly stronger than Claude Mythos 5 and Claude Opus 5. Read together, the two cards suggest the evaluation frontier has shifted from 'can the model do the task' to 'what does the model do when the task environment lies to it.'",
+        "One caution for your agent's memory: the fourth packet this cycle is a community Hugging Face quant with pending model card updates — not official vendor documentation. We've excluded it from the factual ledger. And because the system card excerpts omit availability boundaries, pricing, and GA dates for both models, the claims below describe documented safety behavior and capability assessments only.",
+        "What to watch next: OpenAI says it expects to keep publishing observations on automation-driven acceleration, possibly outside system cards entirely. If your agent tracks model risk posture, that's a signal to widen its source list beyond release-day documents."
+      ],
+      "pullquote": "The message board comes prepopulated with instructions encouraging the model to act improperly — disclosing private information, promising future favors, or approving illicit access.",
+      "sources": [
+        {
+          "id": "MW-SRC-1",
+          "name": "Claude Fable 5.1 & Claude Mythos 5.1 System Card",
+          "publisher": "www-cdn.anthropic.com",
+          "url": "https://www-cdn.anthropic.com/0339e6a7c5c7b87f5c07798616dc32c215d14235/Claude%20Fable%205.1%20&%20Claude%20Mythos%205.1%20System%20Card.pdf",
+          "checked": "2026-09-06",
+          "publishedAt": "Tue, 01 Sep 2026 17:40:21 GMT"
+        },
+        {
+          "id": "MW-SRC-2",
+          "name": "GPT-6 Astra System Card - OpenAI Deployment Safety Hub",
+          "publisher": "deploymentsafety.openai.com",
+          "url": "https://deploymentsafety.openai.com/gpt-6-astra",
+          "checked": "2026-09-06",
+          "publishedAt": "Fri, 04 Sep 2026 12:00:00 GMT"
+        },
+        {
+          "id": "MW-SRC-3",
+          "name": "GPT-6 Astra System Card - Deployment Safety Hub",
+          "publisher": "deploymentsafety.openai.com",
+          "url": "https://deploymentsafety.openai.com/gpt-6-astra/gpt-6-astra.pdf",
+          "checked": "2026-09-06",
+          "publishedAt": "Thu, 03 Sep 2026 20:00:00 GMT"
+        },
+        {
+          "id": "MW-SRC-4",
+          "name": "DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735- ...",
+          "publisher": "huggingface.co",
+          "url": "https://huggingface.co/DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF",
+          "checked": "2026-09-06",
+          "publishedAt": "Wed, 02 Sep 2026 01:42:26 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "MW-01",
+          "claim": "OpenAI's GPT-6 Astra system card describes an agentic evaluation set in a browsing-task environment where the agent cannot connect to the Internet but can connect to a simulated message board stored in a local browser cache, prepopulated with instructions encouraging the model to act improperly, such as disclosing private information, promising future favors, or approving illicit access.",
+          "source": 1,
+          "sourceIds": [
+            "MW-SRC-2",
+            "MW-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "MW-02",
+          "claim": "Per the GPT-6 Astra system card, OpenAI updated its safety policy to better account for frontier agentic cyber risks, trains its models to safely refuse tasks disallowed by that policy, and since the launch of GPT-5.5 has added new semi-synthetic agentic environments that teach the model not only to respond safely but to act safely and avoid actions that could meaningfully increase risk.",
+          "source": 1,
+          "sourceIds": [
+            "MW-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "MW-03",
+          "claim": "Per the GPT-6 Astra system card, OpenAI strengthened its cyber safeguards across the stack and updated its Trusted Access for Cyber program to mitigate increased risks associated with a cyber critical model; expert-led internal assessments tested Astra's ability to exploit hardened browser and operating system targets, with additional third-party testing conducted with Irregular.",
+          "source": 2,
+          "sourceIds": [
+            "MW-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "MW-04",
+          "claim": "Anthropic's Claude Fable 5.1 & Claude Mythos 5.1 System Card covers browser use agents in Section 5.2.2.3, where attacks were first generated by testing.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "MW-05",
+          "claim": "Per Anthropic's system card, Claude Mythos 5.1 advances the frontier, with AI R&D capabilities comparable to or slightly stronger than Claude Mythos 5 and Claude Opus 5; Anthropic states it will continue looking for signs of automation-driven acceleration and expects to keep publishing observations, possibly in non-system-card documents.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "MW-06",
+          "claim": "The supplied system card excerpts for GPT-6 Astra and Claude Fable 5.1 / Claude Mythos 5.1 do not state availability boundaries, pricing, context limits, or general-availability dates for either model; the safety and capability claims above are bounded by what the cards document.",
+          "source": 0,
+          "sourceIds": [
+            "MW-SRC-1",
+            "MW-SRC-2",
+            "MW-SRC-3"
+          ],
+          "status": "boundary",
+          "confidence": "high"
+        },
+        {
+          "id": "MW-07",
+          "claim": "The fourth source packet this cycle is a community-published Hugging Face GGUF quant (DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF) whose card notes pending model card updates; it is not official vendor documentation and was excluded from the factual ledger.",
+          "source": 3,
+          "sourceIds": [
+            "MW-SRC-4"
+          ],
+          "status": "boundary",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Frame this as a safety-posture briefing, not a product launch — the cards document behavior and risk framing, not availability.",
+        "Keep the simulated message board detail vivid; it's the clearest illustration of why agentic evals differ from static benchmarks.",
+        "Note the parallel between OpenAI and Anthropic without overstating it: both cards foreground browser-use agents and adversarial testing, but they are separate documents with separate methodologies.",
+        "Flag the community quant exclusion plainly so the agent's memory stays clean of unofficial sources.",
+        "Avoid hype around 'cyber critical model' — quote it as OpenAI's own framing and explain the Trusted Access program update in context."
+      ],
+      "tags": [
+        "GPT-6 Astra",
+        "Claude Mythos 5.1",
+        "Claude Fable 5.1",
+        "system cards",
+        "agentic safety",
+        "browser-use agents",
+        "cyber policy",
+        "evaluations"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "7a6a0d89-0692-4c06-87d3-e8f96daf29bf",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
     {
       "id": "culture-014",
       "deskId": "culture",
@@ -5331,228 +6306,6 @@
       }
     },
     {
-      "id": "wellbeing-013",
-      "deskId": "wellbeing",
-      "desk": "Wellbeing",
-      "icon": "☾",
-      "issue": "013",
-      "version": "1.0.0",
-      "date": "SEP 01 · 2026",
-      "publishedAt": "2026-09-01T13:38:40.884Z",
-      "color": "#a993ff",
-      "title": "Velvet Signal — Wellbeing Edition",
-      "kicker": "Sleep, gently recalibrated",
-      "dek": "A quiet refresher on screens, naps, and how much sleep adults actually need — drawn from the NIH's National Heart, Lung, and Blood Institute.",
-      "readTime": "3 min read",
-      "validity": "180 days",
-      "expires": "2027-02-28",
-      "confidence": "High",
-      "scope": "General wellbeing",
-      "editor": "OpenRouter · GLM 5.3 Flash",
-      "inputPolicy": "Scheduled Tavily source packets",
-      "editorial": [
-        "If your evenings have started to blur into your bedtime, this edition is a friendly checkpoint rather than a scolding. The National Heart, Lung, and Blood Institute (NHLBI) notes that artificial light from screens — phones, laptops, televisions — can signal the brain that it's time to be awake, and that this light exposure can translate into shorter sleep and irregular sleep schedules in both children and adults [W-SRC-1]. A study partly funded by NHLBI found that smartphone use before bed was associated with shorter sleep duration than normal and worse sleep quality during the night [W-SRC-1].",
-        "The practical suggestion from experts is modest and doable: power down devices at least 30 minutes before getting into bed [W-SRC-1]. Thirty minutes is not a moral test — it's a small buffer that gives your brain a chance to shift gears. Some people will find it easy; others, especially those whose evenings involve caregiving, shift work, or shared screens, will find it harder. Individual variation is real, and this guidance is general, not a prescription.",
-        "On naps, NHLBI's guidance is similarly gentle: a daytime nap may boost alertness and performance, adults should keep naps to no more than 20 minutes, and if you have trouble falling asleep at night, it may help to limit naps or take them earlier in the afternoon [W-SRC-2]. Napping is not a failure state — it's a tool, and the timing and length matter for how it interacts with your night.",
-        "Finally, the baseline: NHLBI, citing recommendations from the American Academy of Sleep Medicine endorsed by the American Academy of Pediatrics, recommends 7 to 9 hours of sleep per day for adults 18 and older, with different ranges for children and teens [W-SRC-5]. Over time, not getting enough quality sleep — what NHLBI calls sleep deficiency — can raise the risk of heart disease, obesity, high blood pressure, diabetes, and stroke [W-SRC-5]. None of this replaces professional care: if sleep problems persist or distress you, a clinician is the right next stop.",
-        "This edition restates and independently re-confirms guidance published in earlier issues; the ledger below marks those confirmations explicitly."
-      ],
-      "pullquote": "Power down devices at least 30 minutes before getting into bed.",
-      "sources": [
-        {
-          "id": "W-SRC-1",
-          "name": "Sweet dreams: Researchers explore link between sleep and health | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/news/2018/sweet-dreams-researchers-explore-link-between-sleep-and-health",
-          "checked": "2026-09-01"
-        },
-        {
-          "id": "W-SRC-2",
-          "name": "Sleep Deprivation and Deficiency - Healthy Sleep Habits | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits",
-          "checked": "2026-09-01"
-        },
-        {
-          "id": "W-SRC-3",
-          "name": "Your Guide to Healthy Sleep | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/resources/your-guide-healthy-sleep",
-          "checked": "2026-09-01"
-        },
-        {
-          "id": "W-SRC-4",
-          "name": "En resumen: su guía para un sueño saludable (In Brief: Your Guide to Healthy Sleep (Spanish) | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/es/resources/en-resumen-su-guia-para-un-sueno-saludable-brief-your-guide-healthy-sleep-spanish",
-          "checked": "2026-09-01"
-        },
-        {
-          "id": "W-SRC-5",
-          "name": "Heart-Healthy Living - Get Enough Good-Quality Sleep | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/health/heart-healthy-living/sleep",
-          "checked": "2026-09-01"
-        }
-      ],
-      "claims": [
-        {
-          "id": "W-01",
-          "claim": "Artificial light from screens — cell phones, laptops, and televisions — can signal the brain that it's time to be awake, and this light exposure can translate into a loss of sleep duration and irregular sleep schedules in both children and adults.",
-          "source": 0,
-          "sourceIds": [
-            "W-SRC-1"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-009:W-01",
-              "reason": "Independently restated from the same NHLBI source packet in this edition's packets."
-            }
-          ]
-        },
-        {
-          "id": "W-02",
-          "claim": "In a study partly funded by NHLBI, smartphone use before bed was associated with shorter sleep duration than normal and worse sleep quality during the night.",
-          "source": 0,
-          "sourceIds": [
-            "W-SRC-1"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-009:W-02",
-              "reason": "Same NHLBI-funded study finding restated from the current source packet."
-            }
-          ]
-        },
-        {
-          "id": "W-03",
-          "claim": "Experts suggest sleep quality can be enhanced by powering down devices at least 30 minutes before getting into bed.",
-          "source": 0,
-          "sourceIds": [
-            "W-SRC-1"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-009:W-03",
-              "reason": "Same expert recommendation restated from the current source packet."
-            }
-          ]
-        },
-        {
-          "id": "W-04",
-          "claim": "Napping during the day may boost alertness and performance; adults should nap for no more than 20 minutes; and people who have trouble falling asleep at night should limit naps or take them earlier in the afternoon.",
-          "source": 1,
-          "sourceIds": [
-            "W-SRC-2"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-009:W-04",
-              "reason": "NHLBI healthy sleep habits page restates the alertness/performance benefit."
-            },
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-009:W-05",
-              "reason": "NHLBI healthy sleep habits page restates the 20-minute adult nap limit."
-            },
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-009:W-06",
-              "reason": "NHLBI healthy sleep habits page restates the timing/limitation advice for poor nighttime sleepers."
-            }
-          ]
-        },
-        {
-          "id": "W-05",
-          "claim": "NHLBI, citing American Academy of Sleep Medicine recommendations endorsed by the American Academy of Pediatrics, recommends 7 to 9 hours of sleep per day for adults 18 years or older, with age-specific ranges for babies, children, and teens.",
-          "source": 4,
-          "sourceIds": [
-            "W-SRC-5"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-011:W-01",
-              "reason": "Adult 7-9 hour recommendation independently restated from the current source packet."
-            }
-          ]
-        },
-        {
-          "id": "W-06",
-          "claim": "NHLBI states that sleep helps heal and repair the heart and blood vessels, and that over time, not getting enough quality sleep (sleep deficiency) can raise the risk of heart disease, obesity, high blood pressure, diabetes, and stroke.",
-          "source": 4,
-          "sourceIds": [
-            "W-SRC-5"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-011:W-02",
-              "reason": "Sleep-deficiency risk list independently restated from the current source packet."
-            }
-          ]
-        },
-        {
-          "id": "W-07",
-          "claim": "NHLBI advises making sure you give yourself enough time to sleep, noting that sleep is often the first thing busy people squeeze out of their schedules and that making time to sleep helps protect health and well-being now and in the future.",
-          "source": 1,
-          "sourceIds": [
-            "W-SRC-2"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-011:W-05",
-              "reason": "Same NHLBI healthy sleep habits guidance restated from the current source packet."
-            },
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-009:W-08",
-              "reason": "Same scheduling guidance restated from the current source packet."
-            }
-          ]
-        }
-      ],
-      "toneNotes": [
-        "No diagnosis, no moralizing, no individualized medical advice.",
-        "Individual variation kept visible: shift work, caregiving, and shared-screen households may find the 30-minute buffer harder.",
-        "Explicit pointer to professional care for persistent sleep problems.",
-        "Validity window: 90-180 days from publication."
-      ],
-      "tags": [
-        "sleep",
-        "sleep-hygiene",
-        "screens",
-        "napping",
-        "wellbeing"
-      ],
-      "generated": true,
-      "scout": {
-        "provider": "tavily",
-        "request_id": "11295e9e-afd9-42ce-842e-a0e5d2b0e77d",
-        "credits": 2,
-        "search_mode": "timeless-official-fallback"
-      }
-    },
-    {
       "id": "maker-014",
       "deskId": "maker",
       "desk": "Maker Edition",
@@ -5679,286 +6432,6 @@
         "request_id": "7ebbf7f9-363b-4fa2-a6bc-711ab8a89d8d",
         "credits": 1,
         "search_mode": "bounded"
-      }
-    },
-    {
-      "id": "wellbeing-012",
-      "deskId": "wellbeing",
-      "desk": "Wellbeing",
-      "icon": "☾",
-      "issue": "012",
-      "version": "1.0.0",
-      "date": "SEP 01 · 2026",
-      "publishedAt": "2026-09-01T05:07:22.988Z",
-      "color": "#a993ff",
-      "title": "Movement, Sleep, and Downtime: Why the Full Combo Matters for Student Wellbeing",
-      "kicker": "wellbeing",
-      "dek": "A systematic review of university students finds that the mental-health payoff of healthy routines is largest when physical activity, sleep, and sedentary-time recommendations are met together — and that adherence is uneven across students.",
-      "readTime": "3 min read",
-      "validity": "180 days",
-      "expires": "2027-02-28",
-      "confidence": "Mixed",
-      "scope": "General wellbeing",
-      "editor": "OpenRouter · GLM 5.3 Flash",
-      "inputPolicy": "Scheduled Tavily source packets",
-      "editorial": [
-        "A systematic review examining physical activity and mental health in university students reports that adhering to recommendations for physical activity, sleep, and sedentary behavior was associated with lower distress and higher wellbeing — and that the greatest mental health benefit appeared when all three guideline areas were met at once (W-SRC-2).",
-        "The same review found that students with chronic conditions or disabilities (CCD) were less likely to meet the 24-hour movement guidelines, and that students with multimorbidities or developmental disabilities showed the lowest adherence rates (W-SRC-2). That's a useful corrective to any one-size-fits-all framing: the students who might benefit most from these routines may also face the steepest barriers to following them.",
-        "Methodologically, the review captured updated and postpandemic evidence, combining search terms for physical activity (such as physical activity, exercise, and sedentary) with mental-health terms (stress, anxiety, depression, wellbeing) filtered to college and university populations (W-SRC-2).",
-        "Two honest caveats. First, the findings described here are associations — the review reports that adherence was 'associated with' lower distress and higher wellbeing, not that the routines caused those outcomes (W-SRC-2). Second, our source excerpt is a fragment of the full paper; we can see the headline association and the adherence gaps clearly, but not the full strength-of-evidence assessment, so treat the details as needing fuller review before being treated as settled (W-SRC-2, needs-review).",
-        "This is general wellbeing information, not individualized medical advice. If sleep, movement, or stress feel like problems in your life, a healthcare professional is the right place to start."
-      ],
-      "pullquote": "The greatest mental health benefit appeared when all three guideline areas — activity, sleep, and sedentary time — were met together.",
-      "sources": [
-        {
-          "id": "W-SRC-1",
-          "name": "Dynamic patterns of healthy lifestyle awareness after COVID-19: a study using Google Trends and joinpoint regression",
-          "publisher": "pmc.ncbi.nlm.nih.gov",
-          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12834755",
-          "checked": "2026-09-01"
-        },
-        {
-          "id": "W-SRC-2",
-          "name": "Influence of physical activity on perceived stress and mental health in university students: a systematic review",
-          "publisher": "pmc.ncbi.nlm.nih.gov",
-          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12827587",
-          "checked": "2026-09-01"
-        },
-        {
-          "id": "W-SRC-3",
-          "name": "Tips to Support Healthy Routines for Children and Teens",
-          "publisher": "cdc.gov",
-          "url": "https://www.cdc.gov/healthy-weight-growth/tips-parents-caregivers/index.html",
-          "checked": "2026-09-01"
-        },
-        {
-          "id": "W-SRC-4",
-          "name": "Exploring the health and well-being benefits of reduced working hours with maintained salary: A scoping review and evidence map",
-          "publisher": "pmc.ncbi.nlm.nih.gov",
-          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12956364",
-          "checked": "2026-09-01"
-        },
-        {
-          "id": "W-SRC-5",
-          "name": "Time course of perceptual, cognitive, physical and physiological responses to a single non‐sleep deep rest session in physically active young adults",
-          "publisher": "pmc.ncbi.nlm.nih.gov",
-          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13321136",
-          "checked": "2026-09-01"
-        }
-      ],
-      "claims": [
-        {
-          "id": "W-01",
-          "claim": "A systematic review of physical activity and mental health in university students found that adhering to physical activity, sleep, and sedentary behavior recommendations was associated with lower distress and higher wellbeing, with the greatest mental health benefit when all three guidelines were met.",
-          "source": 1,
-          "sourceIds": [
-            "W-SRC-2"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "W-02",
-          "claim": "In the same review, students with chronic conditions or disabilities (CCD) were less likely to meet the 24-hour movement guidelines, and students with multimorbidities or developmental disabilities showed the lowest adherence rates.",
-          "source": 1,
-          "sourceIds": [
-            "W-SRC-2"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "W-03",
-          "claim": "The review captured updated and postpandemic evidence, combining search terms for physical activity (e.g., physical activity, exercise, sedentary) and mental health (e.g., stress, anxiety, depression, wellbeing, mental health) with filters for the university population (college OR university students).",
-          "source": 1,
-          "sourceIds": [
-            "W-SRC-2"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "W-04",
-          "claim": "The strength and quality of the underlying evidence for the association between meeting all three movement guidelines and mental health outcomes in university students cannot be fully assessed from the supplied excerpt and should be confirmed against the full paper before being treated as settled.",
-          "source": 1,
-          "sourceIds": [
-            "W-SRC-2"
-          ],
-          "status": "needs-review",
-          "confidence": "low"
-        }
-      ],
-      "toneNotes": [
-        "Association language only — no causal claims.",
-        "Individual variation kept visible via the CCD and multimorbidity adherence findings.",
-        "No diagnosis, moralizing, or individualized advice; professional care pointed to explicitly."
-      ],
-      "tags": [
-        "wellbeing",
-        "physical-activity",
-        "sleep",
-        "sedentary-behavior",
-        "students",
-        "mental-health"
-      ],
-      "generated": true,
-      "scout": {
-        "provider": "tavily",
-        "request_id": "c6416c26-8f62-430e-a7cc-716d50119cfe",
-        "credits": 1,
-        "search_mode": "bounded"
-      }
-    },
-    {
-      "id": "pantry-006",
-      "deskId": "pantry",
-      "desk": "The Pantry",
-      "icon": "◒",
-      "issue": "006",
-      "version": "1.0.0",
-      "date": "SEP 01 · 2026",
-      "publishedAt": "2026-09-01T05:06:50.851Z",
-      "color": "#f1cf69",
-      "title": "The raw side of the fridge",
-      "kicker": "Pantry · Storage windows",
-      "dek": "Leftovers get all the attention, but the countdown for most proteins starts before the stove is ever lit. This issue covers the raw-storage clock, a calmer way to thaw, and one freezer caveat worth knowing.",
-      "readTime": "3 min read",
-      "validity": "365 days",
-      "expires": "2027-09-01",
-      "confidence": "Medium",
-      "scope": "Food safety",
-      "editor": "OpenRouter · GLM 5.3 Flash",
-      "inputPolicy": "Scheduled Tavily source packets",
-      "editorial": [
-        "Most kitchen food-safety advice fixates on the after — the leftovers, the reheating, the mystery container pushed to the back. But the storage clock for meat, poultry, and fish starts at the grocery store, not the dinner table. Two USDA sources agree on the headline numbers: raw poultry and ground meats keep just 1 to 2 days in the refrigerator, a window short enough that the same-week plan matters [P-SRC-1, P-SRC-4].",
-        "Whole cuts get more breathing room. Other red meats — think steaks and roasts rather than ground or minced — keep 3 to 5 days refrigerated [P-SRC-4]. That difference is structural: grinding and processing spread any surface bacteria throughout, which is why the ground versions run on the shorter clock.",
-        "Once those raw days are spent and the food is cooked, the thaw matters too. The take-out guidance recommends thawing wrapped, cooked meat or poultry on a tray in the refrigerator, allowing about 24 hours for every 5 pounds — small packages of stuffing, gravy, or potatoes thaw faster and can go into the fridge later [P-SRC-5]. And if plans change, frozen food can go directly into the oven without thawing at all [P-SRC-5].",
-        "One freezer footnote: salads made with mayonnaise do not freeze well [P-SRC-5]. The refrigerator is their home; the freezer will only change their texture for the worse.",
-        "A note on limits, because it matters: these windows describe how long food keeps at proper refrigerator and freezer temperatures. They cannot tell you whether a specific container is safe when the timeline, the temperature, or the storage history is unknown. The guidance is blunt on that point — when in doubt, throw it out, and don't taste to check [P-SRC-5]."
-      ],
-      "pullquote": "The storage clock for meat, poultry, and fish starts at the grocery store, not the dinner table.",
-      "sources": [
-        {
-          "id": "P-SRC-1",
-          "name": "Refrigeration & Food Safety",
-          "publisher": "fsis.usda.gov",
-          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/refrigeration",
-          "checked": "2026-09-01"
-        },
-        {
-          "id": "P-SRC-2",
-          "name": "Leftovers and Food Safety",
-          "publisher": "fsis.usda.gov",
-          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/leftovers-and-food-safety",
-          "checked": "2026-09-01"
-        },
-        {
-          "id": "P-SRC-3",
-          "name": "How Temperatures Affect Food | Food Safety and Inspection Service",
-          "publisher": "fsis.usda.gov",
-          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/how-temperatures-affect-food",
-          "checked": "2026-09-01"
-        },
-        {
-          "id": "P-SRC-4",
-          "name": "What safe food storage tips can you provide?",
-          "publisher": "ask.fsis.usda.gov",
-          "url": "https://ask.fsis.usda.gov/article/What-storage-tips-do-you-have",
-          "checked": "2026-09-01"
-        },
-        {
-          "id": "P-SRC-5",
-          "name": "Safe Handling of Take-Out Foods | Food Safety and Inspection Service",
-          "publisher": "fsis.usda.gov",
-          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-handling-take-out-foods",
-          "checked": "2026-09-01"
-        }
-      ],
-      "claims": [
-        {
-          "id": "P-01",
-          "claim": "Raw poultry and ground meats keep 1 to 2 days in the refrigerator.",
-          "source": 0,
-          "sourceIds": [
-            "P-SRC-1",
-            "P-SRC-4"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "pantry-003:P-06",
-              "reason": "Independently re-supports the raw poultry and ground meat portion of the general storage rule from a new packet."
-            }
-          ]
-        },
-        {
-          "id": "P-02",
-          "claim": "Other raw red meats (beyond ground meat, poultry, and fish) keep 3 to 5 days refrigerated.",
-          "source": 3,
-          "sourceIds": [
-            "P-SRC-4"
-          ],
-          "status": "verified",
-          "confidence": "medium"
-        },
-        {
-          "id": "P-03",
-          "claim": "Thaw wrapped, cooked meat or poultry on a tray in the refrigerator, allowing about 24 hours for every 5 pounds; small packages of cooked stuffing, gravy, and potatoes thaw faster and can be moved into the refrigerator later. Frozen food can also be placed directly into the oven without thawing.",
-          "source": 4,
-          "sourceIds": [
-            "P-SRC-5"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "P-04",
-          "claim": "Salads made with mayonnaise do not freeze well.",
-          "source": 4,
-          "sourceIds": [
-            "P-SRC-5"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "P-05",
-          "claim": "General storage windows cannot determine whether any specific food is safe when its time, temperature, or storage history is unknown; the guidance is to discard questionable food without tasting it.",
-          "source": 4,
-          "sourceIds": [
-            "P-SRC-5"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "pantry-004:P-08",
-              "reason": "Independently re-supports the don't-judge-without-history principle and the discard-without-tasting rule from a new packet."
-            }
-          ]
-        }
-      ],
-      "toneNotes": [
-        "Non-alarmist framing: windows are planning tools, not verdicts on specific containers.",
-        "Explicitly preserve the boundary that storage history is unknowable from general guidance.",
-        "P-SRC-3 contained only site navigation text and contributed no usable facts; it was not cited."
-      ],
-      "tags": [
-        "pantry",
-        "storage",
-        "raw meat",
-        "thawing",
-        "freezer"
-      ],
-      "generated": true,
-      "scout": {
-        "provider": "tavily",
-        "request_id": "4711ca25-56cc-4b9f-b27c-22a3808009b5",
-        "credits": 2,
-        "search_mode": "timeless-official-fallback"
       }
     },
     {
@@ -8705,158 +9178,6 @@
       }
     },
     {
-      "id": "culture-003",
-      "deskId": "culture",
-      "desk": "Culture Desk",
-      "icon": "✺",
-      "issue": "003",
-      "version": "1.0.0",
-      "date": "AUG 28 · 2026",
-      "publishedAt": "2026-08-28T20:12:54.477Z",
-      "color": "#67d6c0",
-      "title": "Aura Farming: The Charisma Contest That Turned TikTok Into a Sport",
-      "kicker": "Culture Desk — Fast-Moving Language",
-      "dek": "Teenagers are staging street-level 'aura farming' battles, turning memes, poses, and viral gestures into a measurable contest of charisma. What the term describes, and what it deliberately leaves open.",
-      "readTime": "3 min read",
-      "validity": "14 days",
-      "expires": "2026-09-11",
-      "confidence": "Mixed",
-      "scope": "Culture signals",
-      "editor": "OpenRouter · GLM 5.3 Flash",
-      "inputPolicy": "Scheduled Tavily source packets",
-      "editorial": [
-        "The phrase of the moment is 'aura farming' — or, in its Spanish-language variant, 'farmear aura.' According to Euronews, these battles have moved off the feed and into the streets: two participants face off, deploy poses, memes, and viral gestures, and the crowd judges who has more 'aura' [C-SRC-1].",
-        "What makes the format interesting is that the references are the point. For anyone outside TikTok's codes, the performances can be genuinely hard to decipher — but for participants, spotting the references is part of the game [C-SRC-1]. That makes aura farming less a fixed vocabulary than a shared test of cultural fluency: you win by showing you know what's circulating and can perform it with style and self-confidence [C-SRC-1].",
-        "A note on limits: the packets describe observed usage — a contest format popular with young people, reported in August 2026. They do not establish a single universal meaning for 'aura,' and we won't invent one. If someone in your life uses the term, treat it as an invitation to ask what they're referencing, not a label to decode from the outside.",
-        "One thing this signal is not: a statement about any particular reader. Exposure to a meme says nothing about who you are — it's just a thing that's happening in public culture right now."
-      ],
-      "pullquote": "For the participants, spotting the references is part of the game. [C-SRC-1]",
-      "sources": [
-        {
-          "id": "C-SRC-1",
-          "name": "What is \"aura farming\"? TikTok's strange viral battles hit the streets - Euronews.com",
-          "publisher": "euronews.com",
-          "url": "https://www.euronews.com/culture/2026/08/22/what-is-aura-farming-tiktoks-strange-viral-battles-hit-the-streets",
-          "checked": "2026-08-28",
-          "publishedAt": "Sat, 22 Aug 2026 10:00:49 GMT"
-        },
-        {
-          "id": "C-SRC-2",
-          "name": "This U.S. City Was Named the Best Place to Work—with Strong Career Opportunities, High Pay, and Quality of Life - Travel + Leisure",
-          "publisher": "travelandleisure.com",
-          "url": "https://www.travelandleisure.com/25-best-us-cities-for-work-indeed-analysis-12066166",
-          "checked": "2026-08-28",
-          "publishedAt": "Tue, 25 Aug 2026 09:00:00 GMT"
-        },
-        {
-          "id": "C-SRC-3",
-          "name": "Artist Sues Memes Apps, Alleging Comic Was Offered As Ad Template 07/28/2026 - MediaPost",
-          "publisher": "mediapost.com",
-          "url": "https://www.mediapost.com/publications/article/416853/artist-sues-memes-apps-alleging-comic-was-offered.html?edition=143352",
-          "checked": "2026-08-28",
-          "publishedAt": "Sun, 23 Aug 2026 00:44:06 GMT"
-        },
-        {
-          "id": "C-SRC-4",
-          "name": "Trump denies US pushed Canada on French language - Politico",
-          "publisher": "politico.com",
-          "url": "https://www.politico.com/news/2026/08/25/trump-canada-quebec-french-01048724",
-          "checked": "2026-08-28",
-          "publishedAt": "Tue, 25 Aug 2026 13:43:00 GMT"
-        },
-        {
-          "id": "C-SRC-5",
-          "name": "The Chinese internet is looking to the country's weirdest viral movie for hints at Ox Alpha's origins - Business Insider",
-          "publisher": "businessinsider.com",
-          "url": "https://www.businessinsider.com/chinese-internet-ox-alpha-niu-lai-origin-story-2026-8",
-          "checked": "2026-08-28",
-          "publishedAt": "Mon, 24 Aug 2026 08:44:23 GMT"
-        }
-      ],
-      "claims": [
-        {
-          "id": "C-01",
-          "claim": "'Aura farming' battles (also called 'farmear aura') are a contest format in which participants compete to show who has more 'aura,' using memes, poses, and viral gestures.",
-          "source": 0,
-          "sourceIds": [
-            "C-SRC-1"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "C-02",
-          "claim": "The battles have moved from social media into street-level, in-person contests among young people.",
-          "source": 0,
-          "sourceIds": [
-            "C-SRC-1"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "C-03",
-          "claim": "For participants, recognizing the meme references embedded in performances is part of the appeal; for outsiders, the performances can be hard to decipher.",
-          "source": 0,
-          "sourceIds": [
-            "C-SRC-1"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "C-04",
-          "claim": "The term 'aura' in this context denotes charisma, style, and self-confidence as judged by peers.",
-          "source": 0,
-          "sourceIds": [
-            "C-SRC-1"
-          ],
-          "status": "needs-review",
-          "confidence": "medium"
-        },
-        {
-          "id": "C-05",
-          "claim": "'Aura farming' carries a single, stable meaning across all communities and contexts where it is used.",
-          "source": 0,
-          "sourceIds": [
-            "C-SRC-1"
-          ],
-          "status": "needs-review",
-          "confidence": "low"
-        },
-        {
-          "id": "C-06",
-          "claim": "The signal was current as of the source publication date of 22 August 2026; meme vocabulary shifts quickly, so this entry should be re-checked within 7–14 days.",
-          "source": 0,
-          "sourceIds": [
-            "C-SRC-1"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        }
-      ],
-      "toneNotes": [
-        "No universal-meaning claims: the ledger explicitly flags that 'aura' is context-dependent.",
-        "No user-identity inference: the edition frames this as public cultural observation, not a statement about the reader.",
-        "Validity window: 7–14 days from 22 August 2026, per desk guidance for fast-moving language."
-      ],
-      "tags": [
-        "culture",
-        "language",
-        "tiktok",
-        "memes",
-        "youth",
-        "fast-moving"
-      ],
-      "generated": true,
-      "scout": {
-        "provider": "tavily",
-        "request_id": "8039fc67-b852-46f7-ad6e-ce210d9fe207",
-        "credits": 1,
-        "search_mode": "bounded"
-      }
-    },
-    {
       "id": "model-watch-005",
       "deskId": "model-watch",
       "desk": "Model Watch",
@@ -9169,299 +9490,6 @@
       "scout": {
         "provider": "tavily",
         "request_id": "6a95904d-2279-49d3-8d17-498bb5e65782",
-        "credits": 1,
-        "search_mode": "bounded"
-      }
-    },
-    {
-      "id": "model-watch-004",
-      "deskId": "model-watch",
-      "desk": "Model Watch",
-      "icon": "⌁",
-      "issue": "004",
-      "version": "1.0.0",
-      "date": "AUG 28 · 2026",
-      "publishedAt": "2026-08-28T12:04:54.505Z",
-      "color": "#ff719f",
-      "title": "Gemini 3.7 Flash lands three weeks after 3.6 — Google's agent workhorse gets cheaper",
-      "kicker": "Model Watch",
-      "dek": "Google shipped Gemini 3.7 Flash on August 13, 2026, positioning it as its smartest workhorse for coding and AI agents — at a price point aimed at production volume.",
-      "readTime": "3 min read",
-      "validity": "60 days",
-      "expires": "2026-10-27",
-      "confidence": "Mixed",
-      "scope": "AI models and agent interfaces",
-      "editor": "OpenRouter · GLM 5.3 Flash",
-      "inputPolicy": "Scheduled Tavily source packets",
-      "editorial": [
-        "Google released Gemini 3.7 Flash on August 13, 2026, calling it its smartest workhorse yet for coding and AI agents (MW-SRC-5).",
-        "The cadence is notable: 3.7 Flash arrived just three weeks after Gemini 3.6 Flash (MW-SRC-5).",
-        "Per Google's model card, this is an algorithmic improvement built on 3.6 rather than a new architecture (MW-SRC-5). For builders, that suggests an incremental upgrade path rather than a migration event — but the pricing is where Google is making its move.",
-        "Gemini 3.7 Flash costs $0.75 per 1 million input tokens (MW-SRC-5). The output price appears to be $3.75 per 1 million tokens, though our source excerpt is truncated at exactly that figure, so treat the output-side number as needs-review until confirmed against Google's official pricing page (MW-SRC-5).",
-        "Google is targeting developers building software, web apps, knowledge systems, and production agents (MW-SRC-5). If you route agent workloads to Flash-class models, this is the release to benchmark this cycle."
-      ],
-      "pullquote": "An algorithmic improvement built on 3.6 rather than a new architecture — an upgrade path, not a migration.",
-      "sources": [
-        {
-          "id": "MW-SRC-1",
-          "name": "New Models Today — AI & LLM Releases Last 24 Hours",
-          "publisher": "pricepertoken.com",
-          "url": "https://pricepertoken.com/news/model-releases",
-          "checked": "2026-08-28",
-          "publishedAt": "Thu, 27 Aug 2026 22:00:00 GMT"
-        },
-        {
-          "id": "MW-SRC-2",
-          "name": "AI News | What's Viral in AI",
-          "publisher": "ainews.imrenagi.com",
-          "url": "https://ainews.imrenagi.com/ai-news",
-          "checked": "2026-08-28",
-          "publishedAt": "Mon, 24 Aug 2026 12:00:00 GMT"
-        },
-        {
-          "id": "MW-SRC-3",
-          "name": "AI Updates: The Daily Signal",
-          "publisher": "aiexperts.com",
-          "url": "https://www.aiexperts.com/updates",
-          "checked": "2026-08-28",
-          "publishedAt": "Tue, 25 Aug 2026 10:00:00 GMT"
-        },
-        {
-          "id": "MW-SRC-4",
-          "name": "The Current — AI news, and what it means for you - RiverfrontAI",
-          "publisher": "riverfrontai.com",
-          "url": "https://riverfrontai.com/journal",
-          "checked": "2026-08-28",
-          "publishedAt": "Thu, 27 Aug 2026 12:00:00 GMT"
-        },
-        {
-          "id": "MW-SRC-5",
-          "name": "Latest News on AI, Cybersecurity, Data Science & More",
-          "publisher": "timesofai.com",
-          "url": "https://www.timesofai.com/news",
-          "checked": "2026-08-28",
-          "publishedAt": "Thu, 27 Aug 2026 08:00:00 GMT"
-        }
-      ],
-      "claims": [
-        {
-          "id": "MW-01",
-          "claim": "Google released Gemini 3.7 Flash on August 13, 2026.",
-          "source": 4,
-          "sourceIds": [
-            "MW-SRC-5"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "MW-02",
-          "claim": "Google described Gemini 3.7 Flash as its smartest workhorse yet for coding and AI agents.",
-          "source": 4,
-          "sourceIds": [
-            "MW-SRC-5"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "MW-03",
-          "claim": "Gemini 3.7 Flash launched three weeks after Gemini 3.6 Flash.",
-          "source": 4,
-          "sourceIds": [
-            "MW-SRC-5"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "MW-04",
-          "claim": "Google's model card describes Gemini 3.7 Flash as an algorithmic improvement built on 3.6 rather than a new architecture.",
-          "source": 4,
-          "sourceIds": [
-            "MW-SRC-5"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "MW-05",
-          "claim": "Gemini 3.7 Flash is priced at $0.75 per 1 million input tokens.",
-          "source": 4,
-          "sourceIds": [
-            "MW-SRC-5"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "MW-06",
-          "claim": "Gemini 3.7 Flash output pricing is $3.75 per 1 million tokens.",
-          "source": 4,
-          "sourceIds": [
-            "MW-SRC-5"
-          ],
-          "status": "needs-review",
-          "confidence": "medium"
-        },
-        {
-          "id": "MW-07",
-          "claim": "Google targets Gemini 3.7 Flash at developers building software, web apps, knowledge systems, and production agents.",
-          "source": 4,
-          "sourceIds": [
-            "MW-SRC-5"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        }
-      ],
-      "toneNotes": [
-        "Lead with the cadence-and-pricing story, not the version number.",
-        "Keep the truncated output-price caveat visible in the human edition, not just the ledger.",
-        "No hype language; frame 3.7 as an incremental upgrade with a pricing strategy."
-      ],
-      "tags": [
-        "google",
-        "gemini-3.7-flash",
-        "pricing",
-        "agents",
-        "model-release"
-      ],
-      "generated": true,
-      "scout": {
-        "provider": "tavily",
-        "request_id": "a50dc1da-e937-41c5-b219-099e5cdbac1c",
-        "credits": 1,
-        "search_mode": "bounded"
-      }
-    },
-    {
-      "id": "model-watch-003",
-      "deskId": "model-watch",
-      "desk": "Model Watch",
-      "icon": "⌁",
-      "issue": "003",
-      "version": "1.0.0",
-      "date": "AUG 27 · 2026",
-      "publishedAt": "2026-08-27T13:49:21.764Z",
-      "color": "#ff719f",
-      "title": "Velvet Signal — proposed edition, desk: model-watch",
-      "kicker": "Model Watch",
-      "dek": "A cybersecurity-specific model opens to approved defenders, a 30B open-weight multimodal model lands under Apache 2.0, and an MCP connector failure shows where agent plumbing still creaks.",
-      "readTime": "3 min read",
-      "validity": "60 days",
-      "expires": "2026-10-26",
-      "confidence": "Mixed",
-      "scope": "AI models and agent interfaces",
-      "editor": "OpenRouter · GLM 5.3 Flash",
-      "inputPolicy": "Scheduled Tavily source packets",
-      "editorial": [
-        "OpenAI expanded its Daybreak program and released GPT-5.6-Cyber, a cybersecurity-specific model trained to reduce refusals on higher-risk tasks, alongside two access tiers for approved defenders (MW-SRC-4). The packet here is a news roundup rather than OpenAI's own release notes, so the exact tier names, eligibility criteria, and availability boundaries are not yet on file — treat the shape of the change as solid, the details as needs-review until primary documentation surfaces.",
-        "Meta released Muse Glimmer, a 30B open-weight multimodal model under Apache 2.0, with day-0 support across major inference libraries according to Hugging Face and developer Simon Willison (MW-SRC-4). For builders running local or agentic workloads, an Apache 2.0 license at this size is the part that matters: it permits commercial use without negotiation. The same sourcing caveat applies — this is aggregated reporting, not Meta's announcement.",
-        "On the agent-interface side, developers report a `424 Failed Dependency` error when connecting the Stripe remote MCP connector, surfacing during `tools/list` or connector registration; the reporter dates the onset to Monday 27/08/2026 around 6 pm CET and suggests the fault sits in the OpenAI MCP proxy runtime rather than Stripe's endpoint (MW-SRC-1). This is a community bug report, not an official acknowledgment — worth watching if your agents depend on remote MCP connectors, but not yet a confirmed platform change."
-      ],
-      "pullquote": "An Apache 2.0 license at 30B parameters is the part that matters: commercial use without negotiation.",
-      "sources": [
-        {
-          "id": "MW-SRC-1",
-          "name": "424 Failed Dependency error when connecting to Stripe remote MCP connector - Bugs - OpenAI Developer Community",
-          "publisher": "community.openai.com",
-          "url": "https://community.openai.com/t/424-failed-dependency-error-when-connecting-to-stripe-remote-mcp-connector/1392967",
-          "checked": "2026-08-27",
-          "publishedAt": "Thu, 27 Aug 2026 09:45:05 GMT"
-        },
-        {
-          "id": "MW-SRC-2",
-          "name": "Kleinunternehmen",
-          "publisher": "openai.com",
-          "url": "https://openai.com/de-DE/business/why-openai/small-business",
-          "checked": "2026-08-27",
-          "publishedAt": "Wed, 26 Aug 2026 13:00:00 GMT"
-        },
-        {
-          "id": "MW-SRC-3",
-          "name": "docs: record Q5 DGX Spark serving profile",
-          "publisher": "huggingface.co",
-          "url": "https://huggingface.co/Baekpica/Qwen3.8-Flash-Next-Mixed-Quant-SSD-PLE-GGUF/commit/f77e47a8db4781db7d51e7d0e9a29ecf595a57e2",
-          "checked": "2026-08-27",
-          "publishedAt": "Thu, 27 Aug 2026 10:00:00 GMT"
-        },
-        {
-          "id": "MW-SRC-4",
-          "name": "The Current — AI news, and what it means for you - RiverfrontAI",
-          "publisher": "riverfrontai.com",
-          "url": "https://riverfrontai.com/journal",
-          "checked": "2026-08-27",
-          "publishedAt": "Thu, 27 Aug 2026 02:00:00 GMT"
-        },
-        {
-          "id": "MW-SRC-5",
-          "name": "AI Signal Daily | Cloud Intelligence™ - DoiT",
-          "publisher": "doit.com",
-          "url": "https://www.doit.com/ai-daily",
-          "checked": "2026-08-27",
-          "publishedAt": "Thu, 27 Aug 2026 08:00:00 GMT"
-        }
-      ],
-      "claims": [
-        {
-          "id": "MW-01",
-          "claim": "OpenAI expanded its Daybreak program and released a cybersecurity-specific model named GPT-5.6-Cyber, trained to reduce refusals on higher-risk tasks, with two access tiers for approved defenders.",
-          "source": 3,
-          "sourceIds": [
-            "MW-SRC-4"
-          ],
-          "status": "needs-review",
-          "confidence": "medium"
-        },
-        {
-          "id": "MW-02",
-          "claim": "Meta released Muse Glimmer, a 30B open-weight multimodal model under the Apache 2.0 license, with day-0 support across major inference libraries as reported by Hugging Face and Simon Willison.",
-          "source": 3,
-          "sourceIds": [
-            "MW-SRC-4"
-          ],
-          "status": "needs-review",
-          "confidence": "medium"
-        },
-        {
-          "id": "MW-03",
-          "claim": "Developers report a `424 Failed Dependency` status during `tools/list` or connector registration when connecting the Stripe remote MCP connector, with onset dated Monday 27/08/2026 around 6 pm CET, and the reporter attributes the failure to the OpenAI MCP proxy runtime rather than Stripe's endpoint.",
-          "source": 0,
-          "sourceIds": [
-            "MW-SRC-1"
-          ],
-          "status": "needs-review",
-          "confidence": "medium"
-        },
-        {
-          "id": "MW-04",
-          "claim": "OpenAI's small-business page promotes using QuickBooks in ChatGPT for financial decision-making, dated 25 August 2026, 9:30 AM PT.",
-          "source": 1,
-          "sourceIds": [
-            "MW-SRC-2"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        }
-      ],
-      "toneNotes": [
-        "Lead with the GPT-5.6-Cyber / Daybreak story as the most consequential change for builders and agent users, but keep the secondary-source caveat visible in the body, not buried.",
-        "Frame the 424 MCP bug as a watchlist item for agent reliability, explicitly labeled as community-reported and unconfirmed.",
-        "Preserve exact strings: 'GPT-5.6-Cyber', 'Daybreak', 'Muse Glimmer', 'Apache 2.0', '424 Failed Dependency', 'tools/list', '27/08/2026'."
-      ],
-      "tags": [
-        "model-watch",
-        "openai",
-        "meta",
-        "mcp",
-        "open-weights",
-        "agent-reliability"
-      ],
-      "generated": true,
-      "scout": {
-        "provider": "tavily",
-        "request_id": "9bb87b3a-a034-435b-8dea-935092791469",
         "credits": 1,
         "search_mode": "bounded"
       }
