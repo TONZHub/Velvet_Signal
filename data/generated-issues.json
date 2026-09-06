@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-04T19:00:10.631Z",
+  "generated_at": "2026-09-06T04:40:58.412Z",
   "desks": {
     "maker": {
-      "fingerprint": "0cc8fedf33a49e7969a8b06f1cc6850a811ab979bfabf84ac8353ae840a6de08",
-      "latest_patch_id": "maker-015",
-      "published_at": "2026-09-01T13:39:56.949Z",
-      "tavily_request_id": "a5af2bc6-7c97-43fa-83c4-5256eb89c86a"
+      "fingerprint": "fbce5594c8106f549e21f4ed2d022a938add0279e64c03b2718df313c136b4e4",
+      "latest_patch_id": "maker-016",
+      "published_at": "2026-09-05T18:21:43.285Z",
+      "tavily_request_id": "473ddea1-a758-44bb-86e5-40d7abacae3e"
     },
     "model-watch": {
       "fingerprint": "e69774d4af521eb561daa8b3ff43813af637cb36b1be5a214927a36a2d572c81",
@@ -15,25 +15,1437 @@
       "tavily_request_id": "f5688680-ee5a-455d-842d-d43cb5408803"
     },
     "culture": {
-      "fingerprint": "ec49174b930561a931ac29789e077923e4cc7f9b787387d115733cbb120a89d8",
-      "latest_patch_id": "culture-012",
-      "published_at": "2026-09-04T19:00:10.631Z",
-      "tavily_request_id": "33e800fe-8cb0-4841-9f70-ce5ee353a0a0"
+      "fingerprint": "253edec4f5bad41cb3233334f59e8d2b0a3f28f785d8c6d2236913105c6c2d21",
+      "latest_patch_id": "culture-014",
+      "published_at": "2026-09-06T04:40:58.412Z",
+      "tavily_request_id": "c5d95d91-1a27-480d-aa5b-292da27d8210"
     },
     "pantry": {
-      "fingerprint": "655d267a93df998c4fa5563ff8d340582a9b208e2168875b389a3f1edaa97a19",
-      "latest_patch_id": "pantry-014",
-      "published_at": "2026-09-04T18:59:25.055Z",
-      "tavily_request_id": "ce7559ab-7f7b-4ba8-bab8-0fd8c3ce6cc7"
+      "fingerprint": "2ce3399d7afe4f98ebcf327771cee574d5a757707fbac72ef6354b04c8b9e0e5",
+      "latest_patch_id": "pantry-017",
+      "published_at": "2026-09-06T04:39:42.742Z",
+      "tavily_request_id": "eff04e7d-ca2b-4f16-98a5-645033548aa6"
     },
     "wellbeing": {
-      "fingerprint": "e94f9b772702d1c264e99ec0d3616bf556076dcd8f9dba27147ba9e0e1ebca69",
-      "latest_patch_id": "wellbeing-021",
-      "published_at": "2026-09-04T18:59:47.097Z",
-      "tavily_request_id": "1d219cc1-3e9b-4bfc-b6ee-f6829dcbd422"
+      "fingerprint": "16f3a828550af8a782cf198935efed52a11cc92833a5e7de3295d8c58414d0c4",
+      "latest_patch_id": "wellbeing-023",
+      "published_at": "2026-09-06T04:40:08.628Z",
+      "tavily_request_id": "f4b94a8f-66f2-48e9-8927-b8a0961adf6e"
     }
   },
   "issues": [
+    {
+      "id": "culture-014",
+      "deskId": "culture",
+      "desk": "Culture Desk",
+      "icon": "✺",
+      "issue": "014",
+      "version": "1.0.0",
+      "date": "SEP 06 · 2026",
+      "publishedAt": "2026-09-06T04:40:58.412Z",
+      "color": "#67d6c0",
+      "title": "Velvet Signal — Proposed Edition culture-014",
+      "kicker": "The Confession Caption",
+      "dek": "A screenshot, a subtitle, and a deadpan confession: the Instagram format that lets people joke their way into sincerity.",
+      "readTime": "3 min read",
+      "validity": "14 days",
+      "expires": "2026-09-20",
+      "confidence": "Medium",
+      "scope": "Culture signals",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Scroll Instagram this week and you may hit a post that looks like a mistake: an unremarkable, unposed photo — an iced coffee, a notes app screen, some small daily habit — wearing a subtitle-style caption that reads like a confession. Not a highlight. A dependency. The format is documented as trending as of September 1, 2026, and its mechanics are simple: screenshot something real from your day, then caption it as if you're admitting what actually gets you through [C-SRC-1].",
+        "The trick is tonal. The trend takes a genuinely appreciative moment and frames it as a deadpan joke, so it reads as funny first and sincere second [C-SRC-1]. That sequencing is doing real work. A straight-faced gratitude post asks something of the audience — perform along with me. The confession caption asks nothing. Per the trend tracker documenting it, that's why it's spreading: it doesn't ask anyone to perform gratitude; it lets them joke their way into it instead [C-SRC-1].",
+        "Structurally, this is a meme in the plain sense of the word — an amusing or interesting captioned item spread widely online, especially through social media [C-SRC-3] — and like internet memes generally, it spreads person to person and mutates as it's remixed [C-SRC-2]. Which is exactly where the caution comes in. The packet describes the format but doesn't name it, identify an originator, or pin down a dominant version, and it says nothing about how long the format stays current [C-SRC-1]. More importantly: what any single post means — sincere, ironic, or both at once — isn't a universal property of the format. It's decided post by post, by the person posting and the person reading. Seeing this trend in your feed tells us about the feed, not about you.",
+        "This is a fast-moving signal observed as of September 1, 2026. We'd re-check it within 7 to 14 days — by September 8 to 15 — before treating it as a durable format rather than a moment."
+      ],
+      "pullquote": "It reads as funny first and sincere second, which is the trick.",
+      "sources": [
+        {
+          "id": "C-SRC-1",
+          "name": "Instagram Trends: September 2026 — Updated Weekly",
+          "publisher": "newengen.com",
+          "url": "https://newengen.com/insights/instagram-trends",
+          "checked": "2026-09-06",
+          "publishedAt": "Tue, 01 Sep 2026 04:00:00 GMT"
+        },
+        {
+          "id": "C-SRC-2",
+          "name": "Meme - Wikipedia",
+          "publisher": "en.wikipedia.org",
+          "url": "https://en.wikipedia.org/wiki/Meme",
+          "checked": "2026-09-06",
+          "publishedAt": "Mon, 31 Aug 2026 00:00:00 GMT"
+        },
+        {
+          "id": "C-SRC-3",
+          "name": "MEME Definition & Meaning",
+          "publisher": "merriam-webster.com",
+          "url": "https://www.merriam-webster.com/dictionary/meme",
+          "checked": "2026-09-06",
+          "publishedAt": "Wed, 02 Sep 2026 04:00:00 GMT"
+        },
+        {
+          "id": "C-SRC-4",
+          "name": "Forbes",
+          "publisher": "forbes.com",
+          "url": "https://www.forbes.com/",
+          "checked": "2026-09-06",
+          "publishedAt": "Fri, 04 Sep 2026 22:00:00 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "C-01",
+          "claim": "An Instagram trend documented as of September 1, 2026 involves screenshotting a real, unposed photo — examples given include an iced coffee, a notes app entry, or a small daily habit — and adding a subtitle-style caption that 'confesses' what the poster depends on to get through the day.",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-02",
+          "claim": "The trend's tone reads as funny first and sincere second: it takes a genuinely appreciative moment and frames it as a deadpan joke.",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-03",
+          "claim": "Per the trend tracker, the format is working because it doesn't ask anyone to perform gratitude; it lets them joke their way into it instead. This is the source's explanation for the spread, not an independently established causal fact.",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "medium"
+        },
+        {
+          "id": "C-04",
+          "claim": "The format matches the general definition of an internet meme — an amusing or interesting item, such as a captioned picture, spread widely online especially through social media — and internet memes spread person to person and mutate as they are remixed. This is a definitional classification of the format, not a claim about what any instance of it means.",
+          "source": 2,
+          "sourceIds": [
+            "C-SRC-3",
+            "C-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "medium"
+        },
+        {
+          "id": "C-05",
+          "claim": "The supplied packet describes the format but does not name it, identify an originator or dominant audio, or establish how long it will remain current; the meaning of any individual post — sincere, ironic, or both — is not established as universal, and no inference about any reader's habits, gratitude practices, or identity is warranted.",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-06",
+          "claim": "This entry describes observed usage as of the source publication date of September 1, 2026; cultural signals shift quickly, so it should be re-checked within 7–14 days (by September 8–15, 2026) before treating the format as durable.",
+          "source": 0,
+          "sourceIds": [
+            "C-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Keep the funny-first/sincere-second framing as the analytical spine; it's what makes the trend legible without flattening it.",
+        "Do not name the trend — the packet doesn't. Resist inventing a label.",
+        "Explicitly separate observed usage from universal meaning, and keep the no-identity-inference boundary in the final section."
+      ],
+      "tags": [
+        "instagram",
+        "meme-format",
+        "caption-trends",
+        "sincerity",
+        "deadpan"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "c5d95d91-1a27-480d-aa5b-292da27d8210",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "wellbeing-023",
+      "deskId": "wellbeing",
+      "desk": "Wellbeing",
+      "icon": "☾",
+      "issue": "023",
+      "version": "1.0.0",
+      "date": "SEP 06 · 2026",
+      "publishedAt": "2026-09-06T04:40:08.628Z",
+      "color": "#a993ff",
+      "title": "The Quiet Case for a Consistent Bedtime",
+      "kicker": "Wellbeing",
+      "dek": "Sleep advice is everywhere, but the through-line from public-health agencies and sleep researchers is refreshingly unglamorous: regular hours, a cool dark room, and a little distance from caffeine and screens. Here's what the current sources actually say — and where your own mileage will vary.",
+      "readTime": "3 min read",
+      "validity": "120 days",
+      "expires": "2027-01-04",
+      "confidence": "Mixed",
+      "scope": "General wellbeing",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "If you only change one thing about your sleep this season, the evidence points to regularity. Going to bed and waking at the same time — weekdays and weekends alike — is described by sleep researcher Matt Walker as the anchor that improves both the quantity and quality of your sleep.",
+        "The CDC's guidance is refreshingly specific about how much sleep is enough, and it varies by age: seven or more hours for adults 18–60, seven to nine for those 61–64, and seven to eight past 65. Your target isn't a universal number — it's your number.",
+        "Hours aren't the whole story. Quality sleep means sleep that is uninterrupted and refreshing, and the CDC is explicit that how well you sleep matters as much as how long. Waking unbroken matters.",
+        "The sleep-hygiene basics keep earning their keep: consistent bedtimes, keeping televisions and other electronics out of the bedroom, adequate daytime exercise, and steering clear of caffeine in the hours before sleep. A dark, peaceful room — white noise welcome, other noise less so — rounds out the list.",
+        "Why bother? Because the stakes are real. The NIH's National Heart, Lung, and Blood Institute links sleep deficiency to chronic conditions including heart disease, high blood pressure, diabetes, obesity, and depression, plus a higher chance of injury. None of this is a diagnosis — it's a reason to treat sleep as infrastructure, not a luxury.",
+        "As always, individual variation is the rule. If you suspect a sleep disorder or persistent deficiency, these general habits are a starting point for a conversation with a clinician, not a substitute for one."
+      ],
+      "pullquote": "Regularity is king, and it will anchor your sleep and improve the quantity and the quality of that sleep.",
+      "sources": [
+        {
+          "id": "W-SRC-1",
+          "name": "Sleep - Wikipedia",
+          "publisher": "en.wikipedia.org",
+          "url": "https://en.wikipedia.org/wiki/Sleep",
+          "checked": "2026-09-06"
+        },
+        {
+          "id": "W-SRC-2",
+          "name": "About Sleep - CDC",
+          "publisher": "cdc.gov",
+          "url": "https://www.cdc.gov/sleep/about/index.html",
+          "checked": "2026-09-06"
+        },
+        {
+          "id": "W-SRC-3",
+          "name": "Sleep Is Your Superpower | Matt Walker's TED Talk",
+          "publisher": "youtube.com",
+          "url": "https://www.youtube.com/watch?v=5MuIMqhT8DM",
+          "checked": "2026-09-06"
+        },
+        {
+          "id": "W-SRC-4",
+          "name": "HEALTHY SLEEP | Sleep Medicine",
+          "publisher": "sleep.hms.harvard.edu",
+          "url": "https://sleep.hms.harvard.edu/education-training/public-education/sleep-and-health-education-program/sleep-health-education-40",
+          "checked": "2026-09-06"
+        },
+        {
+          "id": "W-SRC-5",
+          "name": "Sleep Deprivation and Deficiency - What Are Sleep Deprivation and Deficiency? | NHLBI, NIH",
+          "publisher": "nhlbi.nih.gov",
+          "url": "https://www.nhlbi.nih.gov/health/sleep-deprivation",
+          "checked": "2026-09-06"
+        }
+      ],
+      "claims": [
+        {
+          "id": "W-01",
+          "claim": "Sleep regularity — going to bed and waking at the same time regardless of weekday or weekend — anchors sleep and improves both its quantity and quality, according to Matt Walker.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-019:W-04",
+              "reason": "The same Matt Walker TED Talk source independently supports the regularity recommendation carried in the prior claim."
+            }
+          ]
+        },
+        {
+          "id": "W-02",
+          "claim": "The CDC recommends 7 or more hours of daily sleep for adults aged 18–60, 7–9 hours for adults 61–64, and 7–8 hours for adults 65 and older, with recommended hours changing across age groups.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-019:W-07",
+              "reason": "The CDC's own About Sleep page independently supports the same age-banded sleep-hour recommendations."
+            },
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-018:W-01",
+              "reason": "The CDC source independently supports the identical age-banded recommendation recorded in the earlier claim."
+            }
+          ]
+        },
+        {
+          "id": "W-03",
+          "claim": "The CDC defines quality sleep as uninterrupted and refreshing sleep, and states that getting quality sleep is not just about how many hours you sleep but how well you sleep.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-019:W-06",
+              "reason": "The CDC source independently supports the same definition of sleep quality recorded in the prior claim."
+            }
+          ]
+        },
+        {
+          "id": "W-04",
+          "claim": "Recommended sleep-hygiene habits include going to sleep at consistent times, keeping electronic devices such as televisions out of the bedroom, getting adequate exercise during the day, avoiding caffeine in the hours before sleep, and creating a dark, peaceful sleep environment — with white noise potentially helpful and other noise potentially disruptive.",
+          "source": 0,
+          "sourceIds": [
+            "W-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-020:W-03",
+              "reason": "Independently supports the general principle of avoiding caffeine before bed, though this source does not specify the 6-hour cut-off interval."
+            }
+          ]
+        },
+        {
+          "id": "W-05",
+          "claim": "Matt Walker recommends a bedroom temperature of around 65°F (about 18°C), explaining the body needs to drop its core temperature by roughly 2–3°F to initiate and maintain sleep, framed as optimal for most people rather than a universal rule.",
+          "source": 2,
+          "sourceIds": [
+            "W-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-019:W-03",
+              "reason": "The same Matt Walker TED Talk source independently supports the identical temperature recommendation and its 'most people' framing."
+            }
+          ]
+        },
+        {
+          "id": "W-06",
+          "claim": "Sleep deficiency is linked to chronic health problems including heart disease, kidney disease, high blood pressure, diabetes, stroke, obesity, and depression, and to a higher chance of injury in adults, teens, and children, according to the NIH's National Heart, Lung, and Blood Institute.",
+          "source": 4,
+          "sourceIds": [
+            "W-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-07",
+          "claim": "Adequate quality sleep is linked with better mood and the ability to express and quickly process emotion, per the supplied sleep-health source.",
+          "source": 0,
+          "sourceIds": [
+            "W-SRC-1"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        }
+      ],
+      "toneNotes": [
+        "Keep the tone practical and warm; the advice is unglamorous, so let its simplicity be the story.",
+        "Repeat that sleep-hour targets vary by age and person — no universal prescription.",
+        "Frame sleep deficiency risks as motivation, not alarm; avoid diagnostic language.",
+        "Close by pointing readers with persistent sleep problems toward a clinician rather than self-treatment.",
+        "No moralizing about screens or caffeine; present them as levers, not vices."
+      ],
+      "tags": [
+        "sleep",
+        "sleep-hygiene",
+        "wellbeing",
+        "cdc",
+        "public-health",
+        "sleep-regularity",
+        "sleep-quality"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "f4b94a8f-66f2-48e9-8927-b8a0961adf6e",
+        "credits": 2,
+        "search_mode": "timeless-official-fallback"
+      }
+    },
+    {
+      "id": "pantry-017",
+      "deskId": "pantry",
+      "desk": "The Pantry",
+      "icon": "◒",
+      "issue": "017",
+      "version": "1.0.0",
+      "date": "SEP 06 · 2026",
+      "publishedAt": "2026-09-06T04:39:42.742Z",
+      "color": "#f1cf69",
+      "title": "The Two-Hour Clock, and Other Leftover Truths",
+      "kicker": "Pantry",
+      "dek": "FSIS's leftover guidance is short, precise, and worth keeping where you can see it: chill within two hours, eat within four days, and never let anyone tell you a container is safe without knowing its history.",
+      "readTime": "3 min read",
+      "validity": "365 days",
+      "expires": "2027-09-06",
+      "confidence": "High",
+      "scope": "Food safety",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "This edition leans on a single authoritative source: an FSIS page (published at fsis.usda.gov/HelloFresh) that lays out the Thanksgiving-leftover playbook in plain terms. The rules are few and they fit on a fridge card. Food left between 40°F and 140°F — the Danger Zone — gives illness-causing bacteria room to grow fast, so perishables go into the refrigerator within two hours of cooking, or within one hour if the day tops 90°F. Food being actively held above 140°F gets an exemption from that clock [P-SRC-1].",
+        "The storage windows are equally specific: leftovers are safe in the refrigerator for up to four days, or until the Monday after Thanksgiving, and frozen leftovers hold their best quality for two to six months. Note the wording — the freezer figure is a quality guideline, not a safety cutoff [P-SRC-1].",
+        "Two techniques make the rules easier to keep. Carve the turkey and divide everything — appetizers, sides, the bird — into smaller portions in covered, shallow containers, which cool faster in the fridge or freezer [P-SRC-1].",
+        "If a question outlives this page, the USDA Meat and Poultry Hotline (1-888-MPHotline / 1-888-674-6854) is staffed by food safety experts weekdays from 10 a.m. to 6 p.m. Eastern, answering questions about the safe storage, handling, and preparation of meat, poultry, and egg products [P-SRC-2] [P-SRC-3]. For incidents — illness, foreign objects, injury, allergic reaction, mislabeling, or off taste, color, or appearance involving USDA FSIS-regulated products — FSIS runs an Electronic Consumer Complaint Reporting Form [P-SRC-3].",
+        "One boundary we hold every cycle: this edition makes no determination about whether any specific food or container in your kitchen is safe to eat. The packets supply general time and temperature rules, but no storage history, temperature log, or handling record for any particular item — and those rules cannot be applied to a specific container without that history. When in doubt, the hotline exists precisely for the questions a chart can't answer [P-SRC-2]."
+      ],
+      "pullquote": "The freezer window is a quality guideline, not a safety cutoff.",
+      "sources": [
+        {
+          "id": "P-SRC-1",
+          "name": "Welcome, HelloFresh Customers! | Food Safety and Inspection Service",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/HelloFresh",
+          "checked": "2026-09-06"
+        },
+        {
+          "id": "P-SRC-2",
+          "name": "askFSIS",
+          "publisher": "ask.fsis.usda.gov",
+          "url": "https://ask.fsis.usda.gov/",
+          "checked": "2026-09-06"
+        },
+        {
+          "id": "P-SRC-3",
+          "name": "USDA Electronic Consumer Complaint Form - Welcome",
+          "publisher": "foodcomplaint.fsis.usda.gov",
+          "url": "https://foodcomplaint.fsis.usda.gov/eccf",
+          "checked": "2026-09-06"
+        },
+        {
+          "id": "P-SRC-4",
+          "name": "Home | Food Rescue US",
+          "publisher": "foodrescue.us",
+          "url": "https://foodrescue.us/",
+          "checked": "2026-09-06"
+        },
+        {
+          "id": "P-SRC-5",
+          "name": "Journal of Food Protection",
+          "publisher": "foodprotection.org",
+          "url": "https://www.foodprotection.org/publications/journal-of-food-protection",
+          "checked": "2026-09-06"
+        }
+      ],
+      "claims": [
+        {
+          "id": "P-01",
+          "claim": "Perishable leftovers, including appetizers, side dishes, and the turkey, should be stored within two hours of cooking, or within one hour if air temperature is above 90°F; food being held above 140°F is exempt from the two-hour clock.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-016:P-01",
+              "reason": "Same two-hour/one-hour rule with the above-140°F exemption, independently supported by this cycle's FSIS packet."
+            },
+            {
+              "type": "confirms",
+              "target_id": "pantry-014:P-01",
+              "reason": "Same storage-clock rule, independently supported by this cycle's FSIS packet."
+            }
+          ]
+        },
+        {
+          "id": "P-02",
+          "claim": "The Danger Zone is 40°F to 140°F, the temperature range in which foodborne-illness-causing bacteria grow rapidly.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-016:P-02",
+              "reason": "Identical Danger Zone definition, independently supported by this cycle's FSIS packet."
+            },
+            {
+              "type": "confirms",
+              "target_id": "pantry-014:P-02",
+              "reason": "Identical Danger Zone definition, independently supported by this cycle's FSIS packet."
+            }
+          ]
+        },
+        {
+          "id": "P-03",
+          "claim": "FSIS guidance states Thanksgiving leftovers are safe in the refrigerator for up to four days, or until the Monday after Thanksgiving, and that leftovers stored in the freezer remain of best quality for two to six months; the freezer window is a quality guideline, not a safety cutoff.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-016:P-03",
+              "reason": "Same refrigerator and freezer windows with the same quality-not-safety framing, independently supported by this cycle's FSIS packet."
+            },
+            {
+              "type": "confirms",
+              "target_id": "pantry-014:P-04",
+              "reason": "Same refrigerator and freezer windows; this cycle's packet additionally supports the quality-not-safety framing."
+            }
+          ]
+        },
+        {
+          "id": "P-04",
+          "claim": "Divide leftovers into smaller portions, including carving the turkey, and refrigerate or freeze them in covered shallow containers so they cool more quickly.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-016:P-04",
+              "reason": "Same shallow-container cooling technique, independently supported by this cycle's FSIS packet."
+            },
+            {
+              "type": "confirms",
+              "target_id": "pantry-014:P-03",
+              "reason": "Same shallow-container cooling technique, independently supported by this cycle's FSIS packet."
+            }
+          ]
+        },
+        {
+          "id": "P-05",
+          "claim": "The USDA Meat and Poultry Hotline (1-888-MPHotline / 1-888-674-6854) is staffed by food safety experts weekdays from 10 a.m. to 6 p.m. Eastern time and answers consumer questions about the safe storage, handling, and preparation of meat, poultry, and egg products; FSIS also operates an Electronic Consumer Complaint Reporting Form for incidents such as illness, foreign object, injury, allergic reaction, mislabeling, and off taste, color, or appearance involving meat, poultry, and processed egg products regulated by USDA FSIS.",
+          "source": 1,
+          "sourceIds": [
+            "P-SRC-2",
+            "P-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-016:P-05",
+              "reason": "Same hotline details and complaint-form scope, independently supported by this cycle's packets."
+            },
+            {
+              "type": "confirms",
+              "target_id": "pantry-014:P-05",
+              "reason": "Same hotline details and complaint-form scope, independently supported by this cycle's packets."
+            }
+          ]
+        },
+        {
+          "id": "P-06",
+          "claim": "This edition makes no determination about whether any specific leftover or food item is safe to eat: the packets supply general time and temperature rules but no storage history, temperature log, or handling record for any particular item, so the rules above cannot be applied to any specific container without that history.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1",
+            "P-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-016:P-06",
+              "reason": "Same editorial boundary, restated because this cycle's packets likewise contain no per-item storage history."
+            },
+            {
+              "type": "confirms",
+              "target_id": "pantry-014:P-06",
+              "reason": "Same editorial boundary, restated for this cycle."
+            }
+          ]
+        },
+        {
+          "id": "P-07",
+          "claim": "The remaining packets in this cycle are not authoritative household safety guidance and are not used as a factual basis for any rule: a Food Rescue US page describing its volunteer logistics and ServSafe-certified site directors (P-SRC-4), and a Journal of Food Protection publication-index page with no usable guidance content (P-SRC-5).",
+          "source": 3,
+          "sourceIds": [
+            "P-SRC-4",
+            "P-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Non-alarmist framing throughout: the rules are practical, not scary.",
+        "Explicitly preserve the quality-vs-safety distinction on the freezer window.",
+        "No per-item safety determinations; route open questions to the hotline."
+      ],
+      "tags": [
+        "leftovers",
+        "thanksgiving",
+        "refrigeration",
+        "freezing",
+        "danger-zone",
+        "hotline"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "eff04e7d-ca2b-4f16-98a5-645033548aa6",
+        "credits": 2,
+        "search_mode": "timeless-official-fallback"
+      }
+    },
+    {
+      "id": "maker-016",
+      "deskId": "maker",
+      "desk": "Maker Edition",
+      "icon": "⌘",
+      "issue": "016",
+      "version": "1.0.0",
+      "date": "SEP 05 · 2026",
+      "publishedAt": "2026-09-05T18:21:43.285Z",
+      "color": "#ff9466",
+      "title": "Velvet Signal — proposed edition #016 (maker desk)",
+      "kicker": "DeepTutor's spring rewrite pays off in a steadier summer release",
+      "dek": "The agent-native architecture shipped in April has hardened into version 1.5.3: four new coding CLIs, a new LLM provider, and a reliability sweep across chat, memory, embedding, and parsing. Below the surface, the framework's Python floor is now 3.11+ — worth checking your environment before you pull.",
+      "readTime": "3 min read",
+      "validity": "14 days",
+      "expires": "2026-09-19",
+      "confidence": "Mixed",
+      "scope": "AI product engineering",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "DeepTutor moved fast between January and July 2026, and the trajectory reads like a textbook product arc: v0.6.0 added session persistence, incremental document upload, flexible RAG pipeline import, and full Chinese localization (2026/1/23). Then came v1.0.0-beta.1 (2026/4/4), an agent-native architecture rewrite of roughly 200k lines introducing a Tools + Capabilities plugin model, a CLI and SDK, TutorBot, Co-Writer, Guided Learning, and persistent memory. The beta series closed with v1.0.0-beta.2 (2026/4/7): hot settings reload, MinerU nested output, a WebSocket fix, and a Python 3.11+ minimum.",
+        "The Python 3.11+ minimum deserves your attention before upgrading. It is the only compatibility constraint stated in the release notes, and it means environments pinned to 3.10 or older will not run the post-beta builds. The WebSocket fix is named but not detailed in the excerpt — treat it as a reason to update rather than a known issue you can assess.",
+        "July brought two quick iterations. v1.5.2 (2026/7/19) added configurable chat attachment limits, PageIndex retrieval that reasons across your documents via agentic tool calls, broader Anthropic/OpenAI model support, and steadier Book, Knowledge Base, and chat UI. A week later, v1.5.3 (2026/7/24) added themeable code blocks, four more coding CLIs in My Agents (Gemini, Kimi, opencode, MiMo), an Atlas Cloud LLM provider, and a broad chat, memory, embedding, and parsing reliability sweep.",
+        "A note on scope: this packet is a changelog excerpt from the repository's README, not a formal release announcement with migration or security guidance. Version numbers and dates are as stated; anything beyond them — deprecation timelines, API stability guarantees, the nature of the WebSocket fix — is not claimed here."
+      ],
+      "pullquote": "The WebSocket fix is named but not detailed in the excerpt — treat it as a reason to update rather than a known issue you can assess.",
+      "sources": [
+        {
+          "id": "M-SRC-1",
+          "name": "DeepTutor: Lifelong Personalized Tutoring - GitHub",
+          "publisher": "github.com",
+          "url": "https://github.com/HKUDS/DeepTutor",
+          "checked": "2026-09-05",
+          "publishedAt": "Thu, 03 Sep 2026 21:00:00 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "M-01",
+          "claim": "DeepTutor released v0.6.0 on 2026/1/23, adding session persistence, incremental document upload, flexible RAG pipeline import, and full Chinese localization.",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-02",
+          "claim": "DeepTutor released v1.0.0-beta.1 on 2026/4/4, an agent-native architecture rewrite of approximately 200k lines introducing a Tools + Capabilities plugin model, a CLI and SDK, TutorBot, Co-Writer, Guided Learning, and persistent memory.",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-03",
+          "claim": "DeepTutor released v1.0.0-beta.2 on 2026/4/7 with hot settings reload, MinerU nested output, a WebSocket fix, and a Python 3.11+ minimum.",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-04",
+          "claim": "The Python 3.11+ minimum introduced in DeepTutor v1.0.0-beta.2 is a compatibility constraint for environments pinned to Python 3.10 or older.",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-05",
+          "claim": "DeepTutor released v1.5.2 on 2026/7/19, adding configurable chat attachment limits, PageIndex retrieval that reasons across documents via agentic tool calls, broader Anthropic/OpenAI model support, and steadier Book, Knowledge Base, and chat UI.",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-06",
+          "claim": "DeepTutor released v1.5.3 on 2026/7/24, adding themeable code blocks, four additional coding CLIs in My Agents (Gemini, Kimi, opencode, MiMo), an Atlas Cloud LLM provider, and a broad chat, memory, embedding, and parsing reliability sweep.",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "M-07",
+          "claim": "The nature and impact of the WebSocket fix in DeepTutor v1.0.0-beta.2 are not detailed in the available excerpt; its security or stability implications require review before being asserted.",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "needs-review",
+          "confidence": "low"
+        },
+        {
+          "id": "M-08",
+          "claim": "This packet is a truncated changelog excerpt from the DeepTutor GitHub README, not a release announcement; no deprecation timelines, migration guidance, or API stability guarantees are stated for any version listed.",
+          "source": 0,
+          "sourceIds": [
+            "M-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Versions and dates preserved verbatim from the excerpt; no compatibility claims invented beyond the stated Python 3.11+ minimum.",
+        "The WebSocket fix is flagged needs-review rather than characterized.",
+        "The closing editorial paragraph makes the scope limitation explicit so builders don't over-read a README changelog as a formal release announcement."
+      ],
+      "tags": [
+        "deeptutor",
+        "release-notes",
+        "versioning",
+        "plugin-model",
+        "python"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "473ddea1-a758-44bb-86e5-40d7abacae3e",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "culture-013",
+      "deskId": "culture",
+      "desk": "Culture Desk",
+      "icon": "✺",
+      "issue": "013",
+      "version": "1.0.0",
+      "date": "SEP 05 · 2026",
+      "publishedAt": "2026-09-05T18:21:04.077Z",
+      "color": "#67d6c0",
+      "title": "Velvet Signal — Proposed Edition (culture-013)",
+      "kicker": "Culture",
+      "dek": "A crossword as eulogy: why one puzzle writer's Tim Curry tribute is a small, telling piece of internet grief culture — and where the packet stops short.",
+      "readTime": "3 min read",
+      "validity": "10 days",
+      "expires": "2026-09-15",
+      "confidence": "Mixed",
+      "scope": "Culture signals",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Valid window: 7–14 days from publication. Cultural signals move fast; this one should be re-checked within that window.",
+        "This edition describes observed usage only. It makes no claim about any reader's familiarity, fandom, or identity.",
+        "headline",
+        "The Antici...pation Puzzle: Honoring Tim Curry, One Black-and-White Square at a Time"
+      ],
+      "pullquote": "“Last week we lost more pop culture icons than I'd like to really think about, one of which was the incomparable Tim Curry.” — the crossword's creator [C-SRC-3]",
+      "sources": [
+        {
+          "id": "C-SRC-1",
+          "name": "20 Years Later, This Grand Theft Auto Quote Remains Undefeated in Gaming History - Polygon.com",
+          "publisher": "polygon.com",
+          "url": "https://www.polygon.com/gta-san-andreas-best-quote/",
+          "checked": "2026-09-05",
+          "publishedAt": "Thu, 03 Sep 2026 23:00:14 GMT"
+        },
+        {
+          "id": "C-SRC-2",
+          "name": "Crypto Price Today - Bitcoin Pulls Back Near $79K While Apeing Locks In September 8 for Its Upcoming Crypto Presale - markets.businessinsider.com",
+          "publisher": "markets.businessinsider.com",
+          "url": "https://markets.businessinsider.com/news/stocks/crypto-price-today---bitcoin-pulls-back-near-79k-while-apeing-locks-in-september-8-for-its-upcoming-crypto-presale-1036514343",
+          "checked": "2026-09-05",
+          "publishedAt": "Wed, 02 Sep 2026 07:34:39 GMT"
+        },
+        {
+          "id": "C-SRC-3",
+          "name": "This Crossword Will Have You Shivering With Antici... - BuzzFeed",
+          "publisher": "buzzfeed.com",
+          "url": "https://www.buzzfeed.com/amanda_webber/crossword-september-2-2026",
+          "checked": "2026-09-05",
+          "publishedAt": "Wed, 02 Sep 2026 14:46:01 GMT"
+        },
+        {
+          "id": "C-SRC-4",
+          "name": "‘Derogatory’ fliers targeting Armenian community found near Glendale elementary school - Los Angeles Times",
+          "publisher": "latimes.com",
+          "url": "https://www.latimes.com/california/story/2026-08-29/derogatory-flyers-targeting-armenian-community-found-near-glendale-elementary-school",
+          "checked": "2026-09-05",
+          "publishedAt": "Sat, 29 Aug 2026 19:03:38 GMT"
+        },
+        {
+          "id": "C-SRC-5",
+          "name": "Michael Jordan’s Lost Ferrari Has Appeared, And It’s Headed To Auction - Motor1.com",
+          "publisher": "motor1.com",
+          "url": "https://www.motor1.com/news/806827/michael-jordan-lost-ferrari-heads/",
+          "checked": "2026-09-05",
+          "publishedAt": "Wed, 02 Sep 2026 07:14:00 GMT"
+        }
+      ],
+      "claims": [
+        {
+          "id": "C-01",
+          "claim": "A BuzzFeed pop culture crossword published September 2, 2026 was created as a tribute to Tim Curry, per the puzzle's creator.",
+          "source": 2,
+          "sourceIds": [
+            "C-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-02",
+          "claim": "The crossword's creator wrote: “Last week we lost more pop culture icons than I'd like to really think about, one of which was the incomparable Tim Curry.”",
+          "source": 2,
+          "sourceIds": [
+            "C-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-03",
+          "claim": "The phrase “we lost” in context indicates the creator is mourning Tim Curry's recent death, but the supplied packet does not state a date, cause, or any details, and it references other unnamed icons lost the same week.",
+          "source": 2,
+          "sourceIds": [
+            "C-SRC-3"
+          ],
+          "status": "needs-review",
+          "confidence": "low"
+        },
+        {
+          "id": "C-04",
+          "claim": "The crossword's creator said the puzzle was their way to honor Curry's contributions to pop culture, and that until Friday they would be watching “Clue” and “The Rocky Horror Picture Show” “pretty much on repeat.”",
+          "source": 2,
+          "sourceIds": [
+            "C-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-05",
+          "claim": "The crossword headline — “Solving This Wickedly Fun Crossword Will Have You Quivering With Antici...” — riffs on a phrase associated with The Rocky Horror Picture Show; the packet shows the headline but does not state Curry's specific roles in either film.",
+          "source": 2,
+          "sourceIds": [
+            "C-SRC-3"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        },
+        {
+          "id": "C-06",
+          "claim": "The creator stated that more pop culture crosswords appear every Monday, Wednesday, and Friday.",
+          "source": 2,
+          "sourceIds": [
+            "C-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "C-07",
+          "claim": "The packet does not establish the broader cultural meaning of tribute crosswords as a format, whether this tribute reflects a wider wave of creator responses, or any universal reading of the headline pun; it also does not warrant any inference about a reader's fandom, viewing habits, or identity.",
+          "source": 2,
+          "sourceIds": [
+            "C-SRC-3"
+          ],
+          "status": "needs-review",
+          "confidence": "medium"
+        },
+        {
+          "id": "C-08",
+          "claim": "This entry describes observed coverage as of the source publication date of 2 September 2026; it should be re-checked within 7–14 days, and any death details should be confirmed against a stronger source before treating them as settled fact.",
+          "source": 2,
+          "sourceIds": [
+            "C-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "Keep the warmth without the shrine: this is a signal about how fans process loss publicly, not a eulogy itself.",
+        "Hold the line on what the packet shows — a crossword, a quote, a viewing plan — and let the ambiguity stay visible rather than papering over it with background knowledge."
+      ],
+      "tags": [
+        "crosswords",
+        "tim-curry",
+        "tribute-format",
+        "fan-culture",
+        "observed-usage"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "c960834f-d8e1-4ae8-8b0b-3fd7a98f6ac7",
+        "credits": 1,
+        "search_mode": "bounded"
+      }
+    },
+    {
+      "id": "pantry-016",
+      "deskId": "pantry",
+      "desk": "The Pantry",
+      "icon": "◒",
+      "issue": "016",
+      "version": "1.0.0",
+      "date": "SEP 05 · 2026",
+      "publishedAt": "2026-09-05T18:19:51.336Z",
+      "color": "#f1cf69",
+      "title": "Velvet Signal — Pantry Edition 016 (proposed)",
+      "kicker": "The leftover clock, told plainly",
+      "dek": "FSIS's Thanksgiving guidance is really a lesson in time and temperature. Here's the clock, the fridge window, and exactly what this edition refuses to guess about your leftovers.",
+      "readTime": "3 min read",
+      "validity": "365 days",
+      "expires": "2027-09-05",
+      "confidence": "Medium",
+      "scope": "Food safety",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Thanksgiving leftovers inspire two failure modes: the panicked purge and the optimistic fridge archaeology. FSIS's guidance (P-SRC-1) offers a calmer middle path, and it runs on two dials: temperature and time. Bacteria multiply rapidly between 40°F and 140°F — the Danger Zone — so perishables, turkey included, need to be stored within two hours of cooking. On a hot day above 90°F, that window halves to one hour. Food actively held above 140°F is exempt from the clock.",
+        "Once the food is in the refrigerator, the window is short: FSIS says Thanksgiving leftovers stay safe in the fridge for up to four days, or until the Monday after Thanksgiving. The freezer is the generous option, but note the fine print — two to six months there is about best quality, not a safety cutoff (P-SRC-1). Frozen food kept safely doesn't become unsafe at month seven; it just fades.",
+        "Speed matters as much as the deadline. Carving the turkey and dividing everything into smaller portions in covered shallow containers helps leftovers cool quickly through the Danger Zone (P-SRC-1). A deep pot of stuffing in the back of the fridge is a slow chill, and slow chill is the whole problem.",
+        "When a question outlives the guidance, the USDA Meat and Poultry Hotline answers consumer questions on the safe storage, handling, and preparation of meat, poultry, and egg products, staffed weekdays from 10 a.m. to 6 p.m. Eastern at 1-888-MPHotline (1-888-674-6854) (P-SRC-2, P-SRC-3). For incidents involving USDA-regulated products — illness, foreign objects, injury, allergic reaction, mislabeling, or off taste, color, or appearance — FSIS maintains an Electronic Consumer Complaint Reporting Form (P-SRC-3).",
+        "What this edition will not do: tell you whether the container in your fridge is safe. The packets supply general rules, not your storage history. No temperature log, no handling record, no verdict (see claim C-06). And the remaining packets this cycle — a baking-technique video (P-SRC-4) and an air-fryer wing episode whose presenter himself notes that raw uncovered poultry poses a potential danger (P-SRC-5) — are technique commentary, not safety guidance, and ground no rule here."
+      ],
+      "pullquote": "Two to six months in the freezer is about best quality, not a safety cutoff.",
+      "sources": [
+        {
+          "id": "P-SRC-1",
+          "name": "Welcome, HelloFresh Customers! | Food Safety and Inspection Service",
+          "publisher": "fsis.usda.gov",
+          "url": "http://www.fsis.usda.gov/HelloFresh",
+          "checked": "2026-09-05"
+        },
+        {
+          "id": "P-SRC-2",
+          "name": "askFSIS",
+          "publisher": "ask.fsis.usda.gov",
+          "url": "https://ask.fsis.usda.gov/",
+          "checked": "2026-09-05"
+        },
+        {
+          "id": "P-SRC-3",
+          "name": "USDA Electronic Consumer Complaint Form - Welcome",
+          "publisher": "foodcomplaint.fsis.usda.gov",
+          "url": "https://foodcomplaint.fsis.usda.gov/eccf",
+          "checked": "2026-09-05"
+        },
+        {
+          "id": "P-SRC-4",
+          "name": "INGREDIENT TEMPERATURE GUIDELINES FOR BAKING | room temperature ingredients vs cold ingredients",
+          "publisher": "youtube.com",
+          "url": "https://www.youtube.com/watch?v=e4H7h4Bz9-Q",
+          "checked": "2026-09-05"
+        },
+        {
+          "id": "P-SRC-5",
+          "name": "Alton Brown Cooks Food | Episode 35: Fry Some Air - YouTube",
+          "publisher": "youtube.com",
+          "url": "https://www.youtube.com/watch?v=yC11-UGlMho",
+          "checked": "2026-09-05"
+        }
+      ],
+      "claims": [
+        {
+          "id": "P-01",
+          "claim": "Perishable leftovers, including appetizers, side dishes, and the turkey, should be stored within two hours of cooking, or within one hour if air temperature is above 90°F; food being held above 140°F is exempt from the two-hour clock.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-014:P-01",
+              "reason": "Independently supported by P-SRC-1 with the same two-hour/one-hour window and 140°F holding exemption."
+            },
+            {
+              "type": "confirms",
+              "target_id": "pantry-012:P-01",
+              "reason": "Same two-hour/one-hour storage rule independently supported by P-SRC-1."
+            }
+          ]
+        },
+        {
+          "id": "P-02",
+          "claim": "The Danger Zone is 40°F to 140°F, the temperature range in which foodborne-illness-causing bacteria grow rapidly.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-014:P-02",
+              "reason": "P-SRC-1 states the same 40–140°F range and rapid-growth characterization."
+            },
+            {
+              "type": "confirms",
+              "target_id": "pantry-012:P-02",
+              "reason": "Same Danger Zone definition independently supported by P-SRC-1."
+            }
+          ]
+        },
+        {
+          "id": "P-03",
+          "claim": "FSIS guidance states Thanksgiving leftovers are safe in the refrigerator for up to four days, or until the Monday after Thanksgiving, and that leftovers stored in the freezer remain of best quality for up to two to six months; the freezer window is a quality guideline, not a safety cutoff.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-014:P-04",
+              "reason": "P-SRC-1 independently supports the same four-day/Monday fridge window and two-to-six-month freezer quality window."
+            }
+          ]
+        },
+        {
+          "id": "P-04",
+          "claim": "Divide leftovers into smaller portions, including carving the turkey, and refrigerate or freeze them in covered shallow containers so they cool more quickly.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-014:P-03",
+              "reason": "P-SRC-1 independently supports the same shallow-container rapid-cooling guidance."
+            }
+          ]
+        },
+        {
+          "id": "P-05",
+          "claim": "The USDA Meat and Poultry Hotline (1-888-MPHotline / 1-888-674-6854) is staffed by food safety experts weekdays from 10 a.m. to 6 p.m. Eastern time and answers consumer questions about the safe storage, handling, and preparation of meat, poultry, and egg products; FSIS also operates an Electronic Consumer Complaint Reporting Form for incidents such as illness, foreign object, injury, allergic reaction, mislabeling, and off taste, color, or appearance involving meat, poultry, and processed egg products regulated by USDA FSIS.",
+          "source": 1,
+          "sourceIds": [
+            "P-SRC-2",
+            "P-SRC-3"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "pantry-014:P-05",
+              "reason": "P-SRC-2 and P-SRC-3 independently support the hotline scope, staffing hours, and complaint-form description."
+            }
+          ]
+        },
+        {
+          "id": "P-06",
+          "claim": "This edition makes no determination about whether any specific leftover or food item is safe to eat: the packets supply general time and temperature rules but no storage history, temperature log, or handling record for any particular item, so the rules above cannot be applied to any specific container without that history.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1",
+            "P-SRC-2",
+            "P-SRC-3",
+            "P-SRC-4",
+            "P-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-07",
+          "claim": "The remaining packets in this cycle supply cooking-technique commentary, not authoritative household safety guidance: an ingredient-temperature baking video about room-temperature versus cold ingredients for texture (P-SRC-4), and an air-fryer wing episode in which the presenter himself acknowledges that storing raw uncovered poultry in the refrigerator poses a potential danger (P-SRC-5). Neither is used as a factual basis for a safety rule in this edition.",
+          "source": 3,
+          "sourceIds": [
+            "P-SRC-4",
+            "P-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "medium"
+        }
+      ],
+      "toneNotes": [
+        "Non-alarmist framing: the two-hour rule is a clock, not a scare.",
+        "Keep the quality-versus-safety distinction for the freezer window explicit in both editions.",
+        "No verdict on any specific container; scope disclaimer stated once, plainly."
+      ],
+      "tags": [
+        "pantry",
+        "leftovers",
+        "food-safety",
+        "FSIS",
+        "thanksgiving",
+        "storage"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "3ae0f3a1-22ad-47a5-8ee9-b62f8290c69f",
+        "credits": 2,
+        "search_mode": "timeless-official-fallback"
+      }
+    },
+    {
+      "id": "wellbeing-022",
+      "deskId": "wellbeing",
+      "desk": "Wellbeing",
+      "icon": "☾",
+      "issue": "022",
+      "version": "1.0.0",
+      "date": "SEP 05 · 2026",
+      "publishedAt": "2026-09-05T11:52:30.319Z",
+      "color": "#a993ff",
+      "title": "Morning Light, Without the Fire Drill",
+      "kicker": "Wellbeing · Sleep",
+      "dek": "A sleep toolkit's most-ignored instruction isn't about your bedtime. It's about the first ten minutes of your morning.",
+      "readTime": "3 min read",
+      "validity": "180 days",
+      "expires": "2027-03-04",
+      "confidence": "High",
+      "scope": "General wellbeing",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "Most of us file sleep advice under \"things to fix at 11 p.m.\" The Huberman Lab sleep toolkit disagrees, and its suggested starting point happens before breakfast: on bright, cloudless days, spend about ten minutes viewing morning and afternoon sunlight. On cloudy days, the suggestion stretches to twenty minutes; on very overcast days, thirty to sixty minutes. [W-SRC-2]",
+        "The details are what make this feel doable rather than like another wellness assignment. The source says you don't have to look directly at the sun — in fact, never look at any light so bright it hurts. Eyeglasses and contact lenses are fine to wear. But sunglasses come off \"if you safely can,\" because the practice isn't about comfort outdoors; the source notes that a brimmed hat plus sunglasses plus staying in the shade won't do the job of waking up the circadian clock. [W-SRC-2]",
+        "Where you live shapes the habit. In places with very little natural light, the source suggests considering an artificial daytime simulator. And it explicitly carves out shift workers, pointing them to separate guidance on offsetting the effects of shift work and jet lag — a useful reminder that a routine pitched at day-dwellers isn't written for everyone. [W-SRC-2]",
+        "The toolkit pairs light with a second, quieter instruction: wake up at the same time each day, and go to sleep when you first start to feel sleepy. Pushing through that late-evening drowsiness and staying up later than your body wants, it warns, is one reason people find themselves wide awake at 3 a.m. with no route back to sleep. [W-SRC-2]",
+        "As with all wellbeing guidance here, your mileage will vary. Shift schedules, local light levels, weather, and what's safe for your own eyes are all legitimate reasons to adapt — this is a general practice, not a prescription, and it isn't a substitute for professional care. [W-SRC-2]"
+      ],
+      "pullquote": "You don't have to look directly at the sun, and never look at any light so bright it's painful to view.",
+      "sources": [
+        {
+          "id": "W-SRC-1",
+          "name": "Sleep - Wikipedia",
+          "publisher": "en.wikipedia.org",
+          "url": "https://en.wikipedia.org/wiki/Sleep",
+          "checked": "2026-09-05"
+        },
+        {
+          "id": "W-SRC-2",
+          "name": "Toolkit for Sleep - Huberman Lab",
+          "publisher": "hubermanlab.com",
+          "url": "https://www.hubermanlab.com/newsletter/toolkit-for-sleep",
+          "checked": "2026-09-05"
+        },
+        {
+          "id": "W-SRC-3",
+          "name": "About Sleep - CDC",
+          "publisher": "cdc.gov",
+          "url": "https://www.cdc.gov/sleep/about/index.html",
+          "checked": "2026-09-05"
+        },
+        {
+          "id": "W-SRC-4",
+          "name": "Sleep Is Your Superpower | Matt Walker | TED - YouTube",
+          "publisher": "youtube.com",
+          "url": "https://www.youtube.com/watch?v=5MuIMqhT8DM",
+          "checked": "2026-09-05"
+        },
+        {
+          "id": "W-SRC-5",
+          "name": "HEALTHY SLEEP | Sleep Medicine",
+          "publisher": "sleep.hms.harvard.edu",
+          "url": "https://sleep.hms.harvard.edu/education-training/public-education/sleep-and-health-education-program/sleep-health-education-40",
+          "checked": "2026-09-05"
+        }
+      ],
+      "claims": [
+        {
+          "id": "W-01",
+          "claim": "Huberman Lab's sleep toolkit suggests viewing morning and afternoon sun for about 10 minutes on bright cloudless days, 20 minutes on cloudy days, and 30–60 minutes on very overcast days.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-02",
+          "claim": "Huberman Lab advises that if you live somewhere with very minimal light, you consider an artificial daytime simulator source as a substitute for natural morning and afternoon sunlight viewing.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-03",
+          "claim": "For sunlight-viewing practice, Huberman Lab says not to wear sunglasses if you safely can (contact lenses and eyeglasses are fine), that you don't have to look directly at the sun and should never view any light bright enough to be painful, and that wearing a brimmed hat and sunglasses while remaining in the shade won't wake up the circadian clock.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-04",
+          "claim": "Huberman Lab's sleep toolkit explicitly excludes shift workers from its general light-timing guidance, instead pointing them to separate Huberman Lab Podcast guidance on jet lag and offsetting the negative effects of shift work — and the same for jetlagged travelers.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "W-05",
+          "claim": "Huberman Lab advises waking at the same time each day and going to sleep when you first start to feel sleepy, warning that pushing through the late-evening sleepy feeling and going to sleep too late (for you) is one reason people wake at 3 a.m. and can't fall back asleep.",
+          "source": 1,
+          "sourceIds": [
+            "W-SRC-2"
+          ],
+          "status": "verified",
+          "confidence": "high",
+          "relationships": [
+            {
+              "type": "confirms",
+              "target_id": "wellbeing-019:W-05",
+              "reason": "W-SRC-2 independently restates the same wake-time and sleepiness guidance covered by that prior claim."
+            }
+          ]
+        }
+      ],
+      "toneNotes": [
+        "The new angle here is the morning side of the toolkit — prior sleep issues covered evening light, temperature, regularity, naps, and sleep duration, but not daytime sunlight viewing.",
+        "Keep the 'if you safely can' hedge on sunglasses; the source makes eye safety a live condition, not an afterthought.",
+        "This edition deliberately does not re-litigate claims already covered by issues 018–019; the single repeats relationship is a confirm, not a replace."
+      ],
+      "tags": [
+        "sleep",
+        "light",
+        "circadian"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "508f85d9-707f-40f7-a414-2b8905c1d052",
+        "credits": 2,
+        "search_mode": "timeless-official-fallback"
+      }
+    },
+    {
+      "id": "pantry-015",
+      "deskId": "pantry",
+      "desk": "The Pantry",
+      "icon": "◒",
+      "issue": "015",
+      "version": "1.0.0",
+      "date": "SEP 05 · 2026",
+      "publishedAt": "2026-09-05T11:50:55.798Z",
+      "color": "#f1cf69",
+      "title": "Degrees of Done",
+      "kicker": "The thermometer numbers worth keeping on the fridge door",
+      "dek": "This cycle's one authoritative packet is a government temperature chart, so we built the whole edition around it: the safe minimum internal temperatures for the meats and seafood most likely to be on your weeknight menu, and a firm editorial line on what we are not deciding for you.",
+      "readTime": "3 min read",
+      "validity": "180 days",
+      "expires": "2027-03-04",
+      "confidence": "High",
+      "scope": "Food safety",
+      "editor": "OpenRouter · GLM 5.3 Flash",
+      "inputPolicy": "Scheduled Tavily source packets",
+      "editorial": [
+        "If this edition has a single thesis, it is that done is a number, not a look. The packet at the center of this issue is FoodSafety.gov's safe minimum internal temperature chart, and it is refreshingly unsentimental: raw ham to 145°F with a three-minute rest, ground meat and sausage to 160°F, all leftovers reheated to 165°F. A food thermometer does the judging, not your eyes.",
+        "Two details in the chart reward a closer read. First, the ham entry is really two rules in one: raw ham gets the 145°F-and-rest treatment, but reheating a fully cooked ham asks for 165°F, with one carve-out for hams packaged in USDA-inspected plants, which may be brought only to 140°F. Second, the fish entry offers a texture fallback for thermometer-averse cooks, but the temperature is the anchor.",
+        "Restraint note, because it matters: nothing in this cycle's packets tells us how long any specific container in your refrigerator has been sitting there. The chart gives cooking and reheating temperatures, not storage verdicts. We will not tell you that the salmon from Tuesday is fine. It might be. We do not know, and neither does a temperature chart.",
+        "The rest of the packet pile stays out of the safety ledger this cycle. An air-fryer wing episode and a pickle taste-off are technique and tasting commentary, not authoritative guidance. A Serious Eats tomato-storage piece is intriguing, but the excerpt we received cuts off before any usable guideline appears. And a USDA page on measuring food security is about household economics, not kitchen temperatures; it is worth reading, just not here."
+      ],
+      "pullquote": "Done is a number, not a look.",
+      "sources": [
+        {
+          "id": "P-SRC-1",
+          "name": "Cook to a Safe Minimum Internal Temperature",
+          "publisher": "foodsafety.gov",
+          "url": "https://www.foodsafety.gov/food-safety-charts/safe-minimum-internal-temperatures",
+          "checked": "2026-09-05"
+        },
+        {
+          "id": "P-SRC-2",
+          "name": "How to Store Tomatoes (and Whether to Refrigerate Them)",
+          "publisher": "seriouseats.com",
+          "url": "https://www.seriouseats.com/why-you-should-refrigerate-tomatoes",
+          "checked": "2026-09-05"
+        },
+        {
+          "id": "P-SRC-3",
+          "name": "Alton Brown Cooks Food | Episode 35: Fry Some Air - YouTube",
+          "publisher": "youtube.com",
+          "url": "https://www.youtube.com/watch?v=yC11-UGlMho",
+          "checked": "2026-09-05"
+        },
+        {
+          "id": "P-SRC-4",
+          "name": "Food Security in the U.S. - Measurement | Economic Research Service",
+          "publisher": "ers.usda.gov",
+          "url": "http://www.ers.usda.gov/topics/food-nutrition-assistance/food-security-in-the-us/measurement",
+          "checked": "2026-09-05"
+        },
+        {
+          "id": "P-SRC-5",
+          "name": "We Tried Every Pickle—Here's the Best | Food & Wine - YouTube",
+          "publisher": "youtube.com",
+          "url": "https://www.youtube.com/watch?v=0whUubZpvsc",
+          "checked": "2026-09-05"
+        }
+      ],
+      "claims": [
+        {
+          "id": "P-01",
+          "claim": "Always use a food thermometer to check whether meat, poultry, or seafood has reached a safe minimum internal temperature hot enough to kill harmful germs that cause food poisoning.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-02",
+          "claim": "Cook raw ham to 145°F (63°C) with a 3-minute rest time; reheated precooked ham should reach 165°F (74°C), except hams packaged in USDA-inspected plants, which may be reheated to 140°F (60°C).",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-03",
+          "claim": "Cook pork steaks, roasts, and chops to 145°F (63°C) with a 3-minute rest time, and ground meat and sausage to 160°F (71°C).",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-04",
+          "claim": "Cook rabbit and venison, whether wild or farm-raised, to 160°F (71°C).",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-05",
+          "claim": "Cook fish, whole or filleted (such as salmon, tuna, tilapia, pollock, bass, cod, catfish, or trout), to 145°F (63°C) or until the flesh is no longer translucent and separates easily with a fork; cook shrimp, lobster, crab, and scallops until the flesh is pearly or white and opaque; cook clams, oysters, and mussels until their shells open during cooking.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-06",
+          "claim": "Reheat all leftovers, of any type, to 165°F (74°C).",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-07",
+          "claim": "This edition makes no determination about whether any specific food is safe to eat: the packets supply general cooking and reheating temperatures, but no storage history, temperature log, or handling record for any particular item, so these rules cannot be applied to any specific container without that history.",
+          "source": 0,
+          "sourceIds": [
+            "P-SRC-1",
+            "P-SRC-2",
+            "P-SRC-3",
+            "P-SRC-4",
+            "P-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        },
+        {
+          "id": "P-08",
+          "claim": "The remaining packets in this cycle are not authoritative safety guidance and are not used as a factual basis for any rule: an air-fryer wing episode in which the presenter acknowledges that raw uncovered poultry poses a potential danger (P-SRC-3), a pickle tasting that distinguishes shelf-stable from refrigerated pickles (P-SRC-5), a USDA page on measuring household food security (P-SRC-4), and a Serious Eats tomato-storage article whose excerpt does not present a usable storage guideline (P-SRC-2).",
+          "source": 1,
+          "sourceIds": [
+            "P-SRC-2",
+            "P-SRC-3",
+            "P-SRC-4",
+            "P-SRC-5"
+          ],
+          "status": "verified",
+          "confidence": "high"
+        }
+      ],
+      "toneNotes": [
+        "This edition deliberately contains no advice about refrigerating tomatoes, air-frying wings, pickling, or food security; those packets are either commentary, truncated, or off-topic.",
+        "The no-determination claim follows the desk's standing rule and should carry forward in every future edition until a packet supplies item-specific storage history."
+      ],
+      "tags": [
+        "food-safety",
+        "temperature",
+        "thermometer",
+        "meat",
+        "seafood",
+        "leftovers"
+      ],
+      "generated": true,
+      "scout": {
+        "provider": "tavily",
+        "request_id": "10150bfa-1514-4da0-83f9-151b2f590fa5",
+        "credits": 2,
+        "search_mode": "timeless-official-fallback"
+      }
+    },
     {
       "id": "culture-012",
       "deskId": "culture",
@@ -4887,156 +6299,6 @@
       }
     },
     {
-      "id": "wellbeing-011",
-      "deskId": "wellbeing",
-      "desk": "Wellbeing",
-      "icon": "☾",
-      "issue": "011",
-      "version": "1.0.0",
-      "date": "AUG 31 · 2026",
-      "publishedAt": "2026-08-31T21:31:38.529Z",
-      "color": "#a993ff",
-      "title": "wellbeing-011",
-      "kicker": "wellbeing",
-      "dek": "NHLBI's sleep guidance puts numbers on 'enough' — and explains why those hours do quiet, essential work while you're unconscious.",
-      "readTime": "3 min read",
-      "validity": "180 days",
-      "expires": "2027-02-27",
-      "confidence": "High",
-      "scope": "General wellbeing",
-      "editor": "OpenRouter · GLM 5.3 Flash",
-      "inputPolicy": "Scheduled Tavily source packets",
-      "editorial": [
-        "Sleep advice often stops at 'get more of it,' which is about as useful as being told to 'eat better.' This week's update comes from the National Heart, Lung, and Blood Institute (NHLBI), which does something more helpful: it publishes age-by-age ranges for how much sleep people need each day — 7 to 9 hours for adults 18 and older, with different ranges for babies, children, and teens [W-SRC-5].",
-        "Those ranges matter because sleep isn't downtime. NHLBI describes it as the period when your heart and blood vessels heal and repair themselves — and warns that over time, not getting enough quality sleep (what it calls sleep deficiency) can raise the risk of heart disease, obesity, high blood pressure, diabetes, and stroke [W-SRC-5].",
-        "The 'why' runs deeper still. Your body runs on internal clocks with cycles of roughly 24 hours, regulated by light, darkness, and your sleep schedule; once asleep, you cycle through sleep stages in a predictable pattern [W-SRC-4]. Skimp on sleep — or on sleep quality — and NHLBI says the effects reach your heart, your respiratory system, your metabolism, and your ability to think clearly and focus [W-SRC-4].",
-        "One honest caveat: these are population-level ranges, not a prescription. Where you land within 7 to 9 hours — or whether a persistent sleep problem deserves a clinician's attention — is individual. NHLBI's materials are general guidance, not a substitute for professional care.",
-        "If you take one practical step from this issue, make it the one NHLBI keeps returning to: give yourself enough time to sleep in the first place. It's often the first thing busy people squeeze out — and the easiest to protect once you treat it as non-negotiable [W-SRC-1]."
-      ],
-      "pullquote": "Sleep helps heal and repair your heart and blood vessels. — NHLBI [W-SRC-5]",
-      "sources": [
-        {
-          "id": "W-SRC-1",
-          "name": "Sleep Deprivation and Deficiency - Healthy Sleep Habits | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits",
-          "checked": "2026-08-31"
-        },
-        {
-          "id": "W-SRC-2",
-          "name": "Sweet dreams: Researchers explore link between sleep and health | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/news/2018/sweet-dreams-researchers-explore-link-between-sleep-and-health",
-          "checked": "2026-08-31"
-        },
-        {
-          "id": "W-SRC-3",
-          "name": "Sleep Brochure | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/resources/sleep-brochure",
-          "checked": "2026-08-31"
-        },
-        {
-          "id": "W-SRC-4",
-          "name": "How Sleep Works - How Sleep Works | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/health/sleep",
-          "checked": "2026-08-31"
-        },
-        {
-          "id": "W-SRC-5",
-          "name": "Heart-Healthy Living - Get Enough Good-Quality Sleep | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/health/heart-healthy-living/sleep",
-          "checked": "2026-08-31"
-        }
-      ],
-      "claims": [
-        {
-          "id": "W-01",
-          "claim": "NHLBI recommends 7 to 9 hours of sleep per day for adults 18 years or older, with age-specific recommended ranges for babies (4-12 months: 12-16 hours including naps), young children, school-age children (6-12 years: 9-12 hours), and teens (13-18 years: 8-10 hours).",
-          "source": 4,
-          "sourceIds": [
-            "W-SRC-5"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "narrows",
-              "target_id": "wellbeing-010:W-05",
-              "reason": "Adds a specific numeric boundary (7-9 hours for adults) to the broader guidance to give yourself enough time to sleep; the broader claim remains true."
-            }
-          ]
-        },
-        {
-          "id": "W-02",
-          "claim": "NHLBI states that sleep helps heal and repair the heart and blood vessels, and that over time, not getting enough quality sleep (sleep deficiency) can raise the risk of heart disease, obesity, high blood pressure, diabetes, and stroke.",
-          "source": 4,
-          "sourceIds": [
-            "W-SRC-5"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "W-03",
-          "claim": "NHLBI describes internal body clocks with cycles of approximately 24 hours that regulate wakefulness and readiness for sleep, regulated by factors including light, darkness, and sleep schedules; once asleep, people cycle through sleep stages in a predictable pattern.",
-          "source": 3,
-          "sourceIds": [
-            "W-SRC-4"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "W-04",
-          "claim": "NHLBI states that not getting enough sleep or enough quality sleep raises the risk for heart and respiratory problems and affects metabolism and the ability to think clearly and focus on tasks.",
-          "source": 3,
-          "sourceIds": [
-            "W-SRC-4"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "W-05",
-          "claim": "NHLBI advises making sure you give yourself enough time to sleep, noting that sleep is often the first thing busy people squeeze out of their schedules and that making time to sleep helps protect health and well-being now and in the future.",
-          "source": 0,
-          "sourceIds": [
-            "W-SRC-1"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-010:W-05",
-              "reason": "A newly supplied NHLBI packet independently supports the same guidance already on record."
-            }
-          ]
-        }
-      ],
-      "toneNotes": [
-        "Frame the age-by-age table as population-level ranges, not individual prescriptions; keep the door open for readers whose needs differ.",
-        "No diagnosis, no moralizing about screen time or schedules; present NHLBI's guidance as general public-health information.",
-        "Close with a reminder that persistent sleep problems warrant a conversation with a clinician."
-      ],
-      "tags": [
-        "sleep",
-        "sleep-hygiene",
-        "heart-health",
-        "public-health-guidance"
-      ],
-      "generated": true,
-      "scout": {
-        "provider": "tavily",
-        "request_id": "d8396d9e-7355-41dc-9409-a7e9968acb00",
-        "credits": 2,
-        "search_mode": "timeless-official-fallback"
-      }
-    },
-    {
       "id": "model-watch-012",
       "deskId": "model-watch",
       "desk": "Model Watch",
@@ -5380,349 +6642,6 @@
           "M-SRC-6",
           "M-SRC-7"
         ]
-      }
-    },
-    {
-      "id": "wellbeing-010",
-      "deskId": "wellbeing",
-      "desk": "Wellbeing",
-      "icon": "☾",
-      "issue": "010",
-      "version": "1.0.0",
-      "date": "AUG 31 · 2026",
-      "publishedAt": "2026-08-31T16:12:08.527Z",
-      "color": "#a993ff",
-      "title": "Two Sleep Budgets: Feeling Awake vs. Being Healthy",
-      "kicker": "wellbeing",
-      "dek": "NHLBI draws a quiet but useful line between the sleep you need to feel alert and the sleep you need to stay well — and the gap between them is exactly where individual variation lives.",
-      "readTime": "3 min read",
-      "validity": "180 days",
-      "expires": "2027-02-27",
-      "confidence": "High",
-      "scope": "General wellbeing",
-      "editor": "OpenRouter · GLM 5.3 Flash",
-      "inputPolicy": "Scheduled Tavily source packets",
-      "editorial": [
-        "It is tempting to treat sleep as a single number: hours in, alertness out. But the NHLBI's Sleep Brochure makes a distinction worth sitting with — there is a difference between the sleep needed to feel awake and the sleep needed to be healthy, and the brochure describes that difference alongside practical tips for getting a good night's sleep. [W-SRC-5]",
-        "Why does the distinction matter? Because 'I function fine on little sleep' and 'this amount of sleep supports my health' can be two different questions. Feeling awake is a short-term signal; health is a longer ledger. The brochure's framing leaves room for the fact that people vary — the amount that keeps one person sharp is not automatically the amount that keeps another person well. [W-SRC-5]",
-        "For readers who want to go deeper, NHLBI's patient booklet 'Your Guide to Healthy Sleep' offers science-based information about the types of sleep, common sleep myths, and practical tips for getting adequate sleep and coping with jet lag and nighttime shift work. It also covers avoiding dangerous drowsy driving and gives an overview of certain sleep disorders, including insomnia, sleep apnea, restless legs syndrome, narcolepsy, and some parasomnias. [W-SRC-2] A Spanish-language, easy-to-read fact sheet, 'En resumen: su guía para un sueño saludable,' summarizes the critical messages of the English guide and includes information on sleep and driving; it was updated in 2013. [W-SRC-1]",
-        "One practical starting point, if the distinction above prompts a personal audit: NHLBI advises making sure you give yourself enough time to sleep. With enough sleep each night, people may find they are happier and more productive during the day — and making time to sleep helps protect health and well-being now and in the future. [W-SRC-3]",
-        "A note on scope: this is general public-health guidance, not a diagnosis or a prescription. Sleep needs differ from person to person, and persistent sleep problems — the booklet names several common disorders — are a conversation for a qualified clinician, not a newsletter. [W-SRC-2]"
-      ],
-      "pullquote": "Feeling awake is a short-term signal; health is a longer ledger.",
-      "sources": [
-        {
-          "id": "W-SRC-1",
-          "name": "En resumen: su guía para un sueño saludable (In Brief: Your Guide to Healthy Sleep (Spanish) | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/es/resources/en-resumen-su-guia-para-un-sueno-saludable-brief-your-guide-healthy-sleep-spanish",
-          "checked": "2026-08-31"
-        },
-        {
-          "id": "W-SRC-2",
-          "name": "Your Guide to Healthy Sleep | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/resources/your-guide-healthy-sleep",
-          "checked": "2026-08-31"
-        },
-        {
-          "id": "W-SRC-3",
-          "name": "Sleep Deprivation and Deficiency - Healthy Sleep Habits | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits",
-          "checked": "2026-08-31"
-        },
-        {
-          "id": "W-SRC-4",
-          "name": "Sweet dreams: Researchers explore link between sleep and health | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/news/2018/sweet-dreams-researchers-explore-link-between-sleep-and-health",
-          "checked": "2026-08-31"
-        },
-        {
-          "id": "W-SRC-5",
-          "name": "Sleep Brochure | NHLBI, NIH",
-          "publisher": "nhlbi.nih.gov",
-          "url": "https://www.nhlbi.nih.gov/resources/sleep-brochure",
-          "checked": "2026-08-31"
-        }
-      ],
-      "claims": [
-        {
-          "id": "W-01",
-          "claim": "NHLBI's Sleep Brochure describes the difference between the sleep needed to feel awake and the sleep needed to be healthy, and offers tips for getting a good night's sleep.",
-          "source": 4,
-          "sourceIds": [
-            "W-SRC-5"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-006:W-05",
-              "reason": "W-SRC-5 independently supports the same feel-awake vs. be-healthy distinction already on file."
-            }
-          ]
-        },
-        {
-          "id": "W-02",
-          "claim": "NHLBI's patient booklet 'Your Guide to Healthy Sleep' provides science-based information about the types of sleep, common sleep myths, and practical tips for getting adequate sleep and coping with jet lag and nighttime shift work.",
-          "source": 1,
-          "sourceIds": [
-            "W-SRC-2"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-007:W-03",
-              "reason": "W-SRC-2 independently supports the booklet's coverage of sleep types, myths, practical tips, jet lag, and shift work."
-            }
-          ]
-        },
-        {
-          "id": "W-03",
-          "claim": "The booklet 'Your Guide to Healthy Sleep' also gives information on avoiding dangerous drowsy driving and an overview of certain sleep disorders, including insomnia, sleep apnea, restless legs syndrome, narcolepsy, and some parasomnias.",
-          "source": 1,
-          "sourceIds": [
-            "W-SRC-2"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-007:W-04",
-              "reason": "W-SRC-2 independently supports NHLBI naming insomnia, sleep apnea, restless legs syndrome, and narcolepsy among sleep disorders."
-            }
-          ]
-        },
-        {
-          "id": "W-04",
-          "claim": "NHLBI's Spanish-language, easy-to-read fact sheet 'En resumen: su guía para un sueño saludable' summarizes the critical messages of the English guide 'Your Guide to Healthy Sleep,' includes information on sleep and driving, and was updated in 2013.",
-          "source": 0,
-          "sourceIds": [
-            "W-SRC-1"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-007:W-02",
-              "reason": "W-SRC-1 independently supports the fact sheet's contents (sleep tips, sleep and driving, jet lag, sleep disorders) and its 2013 update."
-            }
-          ]
-        },
-        {
-          "id": "W-05",
-          "claim": "NHLBI advises making sure you give yourself enough time to sleep, noting that with enough sleep each night people may find they are happier and more productive during the day, and that making time to sleep helps protect health and well-being now and in the future.",
-          "source": 2,
-          "sourceIds": [
-            "W-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "wellbeing-009:W-08",
-              "reason": "W-SRC-3 independently supports the same make-time-for-sleep guidance already on file."
-            }
-          ]
-        }
-      ],
-      "toneNotes": [
-        "No diagnosis, moralizing, or individualized medical advice; persistent sleep concerns are explicitly routed to a clinician.",
-        "Individual variation is kept visible: the feel-awake vs. be-healthy distinction is framed as a reason sleep needs differ, not a universal target.",
-        "Validity window set to 180 days per desk guidance."
-      ],
-      "tags": [
-        "sleep",
-        "public-health-guidance",
-        "nhlbi",
-        "sleep-hygiene"
-      ],
-      "generated": true,
-      "scout": {
-        "provider": "tavily",
-        "request_id": "b4b3cbf3-20ef-4be1-9312-060098ce2fda",
-        "credits": 2,
-        "search_mode": "timeless-official-fallback"
-      }
-    },
-    {
-      "id": "pantry-005",
-      "deskId": "pantry",
-      "desk": "The Pantry",
-      "icon": "◒",
-      "issue": "005",
-      "version": "1.0.0",
-      "date": "AUG 31 · 2026",
-      "publishedAt": "2026-08-31T16:11:09.952Z",
-      "color": "#f1cf69",
-      "title": "Velvet Signal — Proposed Edition & Claim Ledger",
-      "kicker": "pantry-005",
-      "dek": "The cold cuts, the ham, the tubs of salad: a shelf-by-shelf guide to the foods that never announce their age.",
-      "readTime": "3 min read",
-      "validity": "365 days",
-      "expires": "2027-08-31",
-      "confidence": "High",
-      "scope": "Food safety",
-      "editor": "OpenRouter · GLM 5.3 Flash",
-      "inputPolicy": "Scheduled Tavily source packets",
-      "editorial": [
-        "You have probably internalized the leftover clock by now — three to four days in the fridge, and you have heard it from us before. But the refrigerator holds a quieter cast of characters: the half-eaten ham, the deli turkey in its crinkling sleeve, the tub of macaroni salad from the corner deli. None of them come with a countdown timer, and all of them have one. This week we transcribe the clock for the packaged and prepared foods — so the second shelf stops being a guessing game.",
-        "Start with the deli drawer. Luncheon meats and vacuum-packed sliced meats keep two weeks unopened, but once the seal breaks, the window collapses to three to five days. Hot dogs follow the same pattern with a steeper drop: two weeks sealed, one week once the package is open. The pattern is worth noticing — opening a package is the moment the clock speeds up, so label the day you opened it. [P-SRC-1] [P-SRC-5]",
-        "Ham deserves its own line, because the answer depends on the cut. A fully cooked whole ham keeps seven days; a half, three to five; slices, three to four. All of them hold one to two months in the freezer if you will not get through them in time. [P-SRC-1] [P-SRC-5]",
-        "The prepared-foods case runs on its own schedule. Store-made or homemade egg, chicken, tuna, ham, and macaroni salads keep three to five days. Store-cooked dinners and entrées keep three to four. The one genuinely urgent item: anything pre-stuffed — pork chops, lamb chops, chicken breasts — gets a single day in the refrigerator, and pre-stuffed chops do not freeze well. If stuffing is the plan, stuff the day you cook. [P-SRC-1] [P-SRC-5]",
-        "Two pantry-adjacent notes. Bacon keeps seven days refrigerated or a month frozen. Commercial mayonnaise labeled \"refrigerate after opening\" keeps two months in the fridge — and should not be frozen at all. [P-SRC-5] And a standing habit worth keeping: once a week, walk the fridge and discard whatever perishable food should no longer be eaten. The general rule of thumb still holds — about four days for cooked leftovers, one to two for raw poultry and ground meats. [P-SRC-1] When in doubt about a specific item, the guidance is blunt: foods stored too long may spoil or become unsafe, and you should not taste them to find out. [P-SRC-3] We will not tell you whether the specific container in your fridge is safe — no chart can, without knowing its full history of time and temperature. [P-SRC-3] [needs-review: the packets give discard-and-do-not-taste guidance but no method for judging an item with unknown history; this boundary reflects editorial policy as much as source text.]"
-      ],
-      "pullquote": "Opening the package is the moment the clock speeds up.",
-      "sources": [
-        {
-          "id": "P-SRC-1",
-          "name": "Refrigeration & Food Safety | Food Safety and Inspection Service",
-          "publisher": "fsis.usda.gov",
-          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/refrigeration",
-          "checked": "2026-08-31"
-        },
-        {
-          "id": "P-SRC-2",
-          "name": "Leftovers and Food Safety",
-          "publisher": "fsis.usda.gov",
-          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/leftovers-and-food-safety",
-          "checked": "2026-08-31"
-        },
-        {
-          "id": "P-SRC-3",
-          "name": "Safe Handling of Take-Out Foods",
-          "publisher": "fsis.usda.gov",
-          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-handling-take-out-foods",
-          "checked": "2026-08-31"
-        },
-        {
-          "id": "P-SRC-4",
-          "name": "Keep Food Safe from Kickoff to Leftovers | Food Safety and Inspection Service",
-          "publisher": "fsis.usda.gov",
-          "url": "http://www.fsis.usda.gov/news-events/news-press-releases/keep-food-safe-kickoff-leftovers",
-          "checked": "2026-08-31"
-        },
-        {
-          "id": "P-SRC-5",
-          "name": "Keep Food Safe! Food Safety Basics",
-          "publisher": "fsis.usda.gov",
-          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/steps-keep-food-safe",
-          "checked": "2026-08-31"
-        }
-      ],
-      "claims": [
-        {
-          "id": "P-01",
-          "claim": "Luncheon meats and vacuum-packed sliced deli meats keep 2 weeks refrigerated in an unopened package and 3 to 5 days once opened.",
-          "source": 0,
-          "sourceIds": [
-            "P-SRC-1",
-            "P-SRC-5"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "P-02",
-          "claim": "Hot dogs keep 2 weeks refrigerated in an unopened package and 1 week once the package is opened.",
-          "source": 0,
-          "sourceIds": [
-            "P-SRC-1",
-            "P-SRC-5"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "P-03",
-          "claim": "Fully cooked ham keeps 7 days refrigerated when whole, 3 to 5 days as a half, and 3 to 4 days as slices; all forms keep 1 to 2 months frozen.",
-          "source": 0,
-          "sourceIds": [
-            "P-SRC-1",
-            "P-SRC-5"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "P-04",
-          "claim": "Store-prepared or homemade egg, chicken, tuna, ham, and macaroni salads keep 3 to 5 days refrigerated.",
-          "source": 0,
-          "sourceIds": [
-            "P-SRC-1"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "P-05",
-          "claim": "Pre-stuffed pork chops, lamb chops, and chicken breasts keep only 1 day refrigerated, and pre-stuffed chops do not freeze well.",
-          "source": 0,
-          "sourceIds": [
-            "P-SRC-1",
-            "P-SRC-5"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "P-06",
-          "claim": "Store-cooked dinners and entrées keep 3 to 4 days refrigerated; commercial brand vacuum-packed dinners bearing a USDA seal keep 2 weeks unopened.",
-          "source": 0,
-          "sourceIds": [
-            "P-SRC-1"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "P-07",
-          "claim": "Bacon keeps 7 days refrigerated or 1 month frozen; commercial mayonnaise labeled \"refrigerate after opening\" keeps 2 months refrigerated and should not be frozen.",
-          "source": 4,
-          "sourceIds": [
-            "P-SRC-5"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "P-08",
-          "claim": "The published storage windows assume a refrigerator at 40 °F or below and a freezer at 0 °F or below.",
-          "source": 2,
-          "sourceIds": [
-            "P-SRC-3",
-            "P-SRC-5"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        }
-      ],
-      "toneNotes": [
-        "Non-alarmist framing: the emphasis is on labeling open dates and planning, not on fear.",
-        "Explicit refusal to judge any specific reader's food as safe or unsafe, per desk guidance.",
-        "No relationship edges asserted this issue; the new storage-window claims are specific facts not covered by prior claims, and shared topic alone does not establish a relationship."
-      ],
-      "tags": [
-        "food-safety",
-        "cold-storage",
-        "deli",
-        "leftovers",
-        "fsis"
-      ],
-      "generated": true,
-      "scout": {
-        "provider": "tavily",
-        "request_id": "60a5c66d-eb1a-4157-8b8b-e8c66312f185",
-        "credits": 2,
-        "search_mode": "timeless-official-fallback"
       }
     },
     {
@@ -7442,223 +8361,6 @@
       }
     },
     {
-      "id": "pantry-004",
-      "deskId": "pantry",
-      "desk": "The Pantry",
-      "icon": "◒",
-      "issue": "004",
-      "version": "1.0.0",
-      "date": "AUG 29 · 2026",
-      "publishedAt": "2026-08-29T19:26:38.528Z",
-      "color": "#f1cf69",
-      "title": "Game-Day Buffet, Zero Regrets",
-      "kicker": "Velvet Signal — Pantry Desk",
-      "dek": "Party food lives by the clock, not by looks. The USDA's game-day guidance is really one rule wearing a jersey: keep hot food hot, cold food cold, and nothing lingering in between.",
-      "readTime": "3 min read",
-      "validity": "180 days",
-      "expires": "2027-02-25",
-      "confidence": "High",
-      "scope": "Food safety",
-      "editor": "OpenRouter · GLM 5.3 Flash",
-      "inputPolicy": "Scheduled Tavily source packets",
-      "editorial": [
-        "A buffet during a big game is a different animal from a sit-down dinner. Guests graze, platters sit out through a whole half, and the leftovers question arrives only after the final whistle. The USDA's guidance for exactly this scenario [P-SRC-4] boils down to watching two numbers: 40°F and 140°F.",
-        "Between those numbers lies what food-safety folks call the Danger Zone — the range where bacteria multiply quickly. Perishable food shouldn't sit in it for more than two hours, after which harmful bacteria can reach levels that make people sick [P-SRC-4]. If the room is above 90°F, that window shrinks to one hour [P-SRC-3].",
-        "The elegant fix is serving in batches. Put out one round of food for the first half and a fresh round later, keeping backup takeout refrigerated until it's needed, or hot at 140°F or above in a warming tray, slow cooker, or preheated oven. Cold dishes stay safe on ice at 40°F or below [P-SRC-4].",
-        "When the game ends, the clock keeps running. Refrigerate or freeze leftovers within two hours [P-SRC-4]. Cool big amounts fast by dividing them into shallow containers — a whole pot of soup cools too slowly and invites bacterial growth. Slice roasts, hams, and turkey breasts into smaller pieces; legs, wings, and thighs can stay whole [P-SRC-2].",
-        "Properly handled leftovers keep 3 to 4 days in the refrigerator or 3 to 4 months in the freezer, where they stay safe indefinitely but slowly lose moisture and flavor [P-SRC-2]. When reheating, bring food to 165°F — in the microwave, spread it evenly and cover it, then check the temperature with a food thermometer in several places [P-SRC-4]. Wrap or cover everything well; airtight storage keeps bacteria out, moisture in, and onion-chill odors where they belong [P-SRC-2]."
-      ],
-      "pullquote": "The buffet doesn't judge by smell. Neither should you.",
-      "sources": [
-        {
-          "id": "P-SRC-1",
-          "name": "Refrigeration & Food Safety | Food Safety and Inspection Service",
-          "publisher": "fsis.usda.gov",
-          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/refrigeration",
-          "checked": "2026-08-29"
-        },
-        {
-          "id": "P-SRC-2",
-          "name": "Leftovers and Food Safety",
-          "publisher": "fsis.usda.gov",
-          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/leftovers-and-food-safety",
-          "checked": "2026-08-29"
-        },
-        {
-          "id": "P-SRC-3",
-          "name": "Safe Handling of Take-Out Foods | Food Safety and Inspection Service",
-          "publisher": "fsis.usda.gov",
-          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-handling-take-out-foods",
-          "checked": "2026-08-29"
-        },
-        {
-          "id": "P-SRC-4",
-          "name": "Keep Food Safe from Kickoff to Leftovers | Food Safety and Inspection Service",
-          "publisher": "fsis.usda.gov",
-          "url": "http://www.fsis.usda.gov/news-events/news-press-releases/keep-food-safe-kickoff-leftovers",
-          "checked": "2026-08-29"
-        },
-        {
-          "id": "P-SRC-5",
-          "name": "Keep Food Safe! Food Safety Basics",
-          "publisher": "fsis.usda.gov",
-          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/steps-keep-food-safe",
-          "checked": "2026-08-29"
-        }
-      ],
-      "claims": [
-        {
-          "id": "P-01",
-          "claim": "The Danger Zone is 40°F to 140°F, where bacteria multiply quickly; perishable foods should not sit in this range for more than two hours, after which harmful bacteria can reach levels that make people sick.",
-          "source": 3,
-          "sourceIds": [
-            "P-SRC-4"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "pantry-002:P-04",
-              "reason": "Independently restates the same Danger Zone rule from a new packet."
-            }
-          ]
-        },
-        {
-          "id": "P-02",
-          "claim": "Perishable foods left out longer than 2 hours — or 1 hour in air temperatures above 90°F — should be discarded, including restaurant take-home leftovers; exceptions include cookies, crackers, bread, and whole fruits.",
-          "source": 2,
-          "sourceIds": [
-            "P-SRC-3",
-            "P-SRC-4"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "pantry-003:P-02",
-              "reason": "New packets independently support the same discard rule and exceptions."
-            }
-          ]
-        },
-        {
-          "id": "P-03",
-          "claim": "Takeout arriving early should be refrigerated until serving or held hot at 140°F or above using a warming tray, slow cooker, or preheated oven; cold foods should be kept at 40°F or below on ice.",
-          "source": 3,
-          "sourceIds": [
-            "P-SRC-4"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "pantry-003:P-05",
-              "reason": "Same holding-temperature rule, newly sourced."
-            }
-          ]
-        },
-        {
-          "id": "P-04",
-          "claim": "Serving food in smaller batches — one round early, another later — limits how long any portion sits out, whether homemade or takeout.",
-          "source": 3,
-          "sourceIds": [
-            "P-SRC-4"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "P-05",
-          "claim": "Leftovers should be refrigerated or frozen within two hours and reheated to 165°F; in the microwave, spread food evenly and cover it, and verify doneness with a food thermometer in several places.",
-          "source": 3,
-          "sourceIds": [
-            "P-SRC-4"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "pantry-003:P-04",
-              "reason": "New packet independently supports the same reheat rule and microwave technique."
-            }
-          ]
-        },
-        {
-          "id": "P-06",
-          "claim": "Leftovers keep 3 to 4 days refrigerated or 3 to 4 months frozen; frozen leftovers remain safe indefinitely but lose moisture and flavor over longer storage.",
-          "source": 1,
-          "sourceIds": [
-            "P-SRC-2"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "pantry-003:P-01",
-              "reason": "Same storage windows, independently sourced."
-            }
-          ]
-        },
-        {
-          "id": "P-07",
-          "claim": "Cool large amounts rapidly by dividing food into shallow containers and cutting big items into smaller pieces — slice roasts, hams, and turkey breasts; legs, wings, and thighs may be left whole — then wrap or seal leftovers airtight to keep bacteria out, retain moisture, and prevent odor transfer.",
-          "source": 1,
-          "sourceIds": [
-            "P-SRC-2",
-            "P-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "pantry-003:P-03",
-              "reason": "New packets independently support the same rapid-cooling and portioning guidance."
-            }
-          ]
-        },
-        {
-          "id": "P-08",
-          "claim": "Whether any specific leftover is safe cannot be determined from general guidance when time, temperature, or storage history is unknown; foods stored too long should be discarded without tasting.",
-          "source": 2,
-          "sourceIds": [
-            "P-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high",
-          "relationships": [
-            {
-              "type": "confirms",
-              "target_id": "pantry-003:P-08",
-              "reason": "New packet independently supports the no-inference and do-not-taste rule."
-            }
-          ]
-        }
-      ],
-      "toneNotes": [
-        "Non-alarmist: frame the two-hour rule as a clock, not a threat.",
-        "Never rule any specific dish safe or unsafe — storage history is always unknown.",
-        "Seasonal hook (game day) but the underlying rules are presented as year-round habits."
-      ],
-      "tags": [
-        "food-safety",
-        "leftovers",
-        "entertaining",
-        "usda-fsis"
-      ],
-      "generated": true,
-      "scout": {
-        "provider": "tavily",
-        "request_id": "34ec898b-c519-4420-8353-6756f012b348",
-        "credits": 2,
-        "search_mode": "timeless-official-fallback"
-      }
-    },
-    {
       "id": "model-watch-007",
       "deskId": "model-watch",
       "desk": "Model Watch",
@@ -8472,174 +9174,6 @@
       }
     },
     {
-      "id": "pantry-003",
-      "deskId": "pantry",
-      "desk": "The Pantry",
-      "icon": "◒",
-      "issue": "003",
-      "version": "1.0.0",
-      "date": "AUG 28 · 2026",
-      "publishedAt": "2026-08-28T12:05:11.228Z",
-      "color": "#f1cf69",
-      "title": "The Leftover Ledger: A Calm Guide to What Keeps and What Goes",
-      "kicker": "Pantry Desk — Food Safety Basics",
-      "dek": "USDA guidance on leftovers is refreshingly unglamorous: cool fast, chill cold, reheat hot, and keep a running count. Here is the practical version for your kitchen.",
-      "readTime": "3 min read",
-      "validity": "365 days",
-      "expires": "2027-08-28",
-      "confidence": "High",
-      "scope": "Food safety",
-      "editor": "OpenRouter · GLM 5.3 Flash",
-      "inputPolicy": "Scheduled Tavily source packets",
-      "editorial": [
-        "Leftovers inspire two competing instincts: save everything forever, or quietly distrust anything older than yesterday. The USDA's guidance lands sensibly in between. Cooked leftovers keep 3 to 4 days in the refrigerator, or 3 to 4 months in the freezer — after that, frozen food remains safe indefinitely but loses moisture and flavor [P-SRC-1].",
-        "The clock starts before the food reaches the fridge. Perishable foods — meat, poultry, eggs, casseroles, and restaurant take-home leftovers — should be discarded if left at room temperature longer than 2 hours, or 1 hour if the air temperature is above 90°F [P-SRC-3]. If takeout arrives early, hold it hot at 140°F or above, or keep cold dishes at 40°F or below on ice [P-SRC-4].",
-        "Cooling speed matters more than most cooks realize. A big pot of soup cools slowly, giving bacteria time to multiply; the fix is to divide large amounts into shallow containers and cut large items — roasts, hams, turkey — into smaller pieces before refrigerating. Turkey legs, wings, and thighs may be left whole [P-SRC-1].",
-        "When it's time to eat, reheat leftovers to 165°F. In the microwave, spread food evenly and cover it for even heating, and use a food thermometer to check the temperature in several places [P-SRC-4].",
-        "One honest limitation: this guidance tells you how long properly handled food keeps. It cannot tell you whether the container in the back of your fridge — with no record of when it was cooked or how it was stored — is safe. When storage history is unknown, the guidance is clear in spirit: foods stored longer may begin to spoil or become unsafe, and the advice is not to taste [P-SRC-3]."
-      ],
-      "pullquote": "Refrigerate 3 to 4 days. Freeze 3 to 4 months. When the history is unknown, don't taste.",
-      "sources": [
-        {
-          "id": "P-SRC-1",
-          "name": "Leftovers and Food Safety",
-          "publisher": "fsis.usda.gov",
-          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/leftovers-and-food-safety",
-          "checked": "2026-08-28"
-        },
-        {
-          "id": "P-SRC-2",
-          "name": "Refrigeration & Food Safety",
-          "publisher": "fsis.usda.gov",
-          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/refrigeration",
-          "checked": "2026-08-28"
-        },
-        {
-          "id": "P-SRC-3",
-          "name": "Safe Handling of Take-Out Foods",
-          "publisher": "fsis.usda.gov",
-          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-handling-take-out-foods",
-          "checked": "2026-08-28"
-        },
-        {
-          "id": "P-SRC-4",
-          "name": "Keep Food Safe from Kickoff to Leftovers | Food Safety and Inspection Service",
-          "publisher": "fsis.usda.gov",
-          "url": "http://www.fsis.usda.gov/news-events/news-press-releases/keep-food-safe-kickoff-leftovers",
-          "checked": "2026-08-28"
-        },
-        {
-          "id": "P-SRC-5",
-          "name": "Keep Food Safe! Food Safety Basics",
-          "publisher": "fsis.usda.gov",
-          "url": "http://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/steps-keep-food-safe",
-          "checked": "2026-08-28"
-        }
-      ],
-      "claims": [
-        {
-          "id": "P-01",
-          "claim": "Cooked leftovers can be kept in the refrigerator for 3 to 4 days or frozen for 3 to 4 months; frozen leftovers stay safe indefinitely but lose moisture and flavor over longer storage.",
-          "source": 0,
-          "sourceIds": [
-            "P-SRC-1"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "P-02",
-          "claim": "Perishable foods left at room temperature longer than 2 hours — or 1 hour above 90°F — should be discarded, including restaurant take-home leftovers; exceptions include cookies, crackers, bread, and whole fruits.",
-          "source": 2,
-          "sourceIds": [
-            "P-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "P-03",
-          "claim": "Large amounts of food should be divided into shallow containers and cut into smaller pieces to cool rapidly to 40°F or below; turkey legs, wings, and thighs may be left whole.",
-          "source": 0,
-          "sourceIds": [
-            "P-SRC-1",
-            "P-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "P-04",
-          "claim": "Leftovers should be reheated to 165°F; in the microwave, spread food evenly and cover it, and verify temperature with a food thermometer in several places.",
-          "source": 3,
-          "sourceIds": [
-            "P-SRC-4"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "P-05",
-          "claim": "Takeout arriving early should be refrigerated or held hot at 140°F or above; cold foods should be kept at 40°F or below on ice.",
-          "source": 3,
-          "sourceIds": [
-            "P-SRC-4"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "P-06",
-          "claim": "A general rule of thumb is 4 days of refrigerator storage for cooked leftovers and 1 to 2 days for raw poultry and ground meats, with a weekly habit of discarding perishables that should no longer be eaten.",
-          "source": 1,
-          "sourceIds": [
-            "P-SRC-2"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "P-07",
-          "claim": "Specific cold-storage windows include: soups and stews 3–4 days refrigerated / 2–3 months frozen; pizza 3–4 days / 1–2 months; gravy and meat broth 3–4 days / 2–3 months; stuffing 3–4 days / 1 month; fresh fish 1–2 days / 3–8 months; cooked fish and shellfish leftovers 3–4 days / 3 months.",
-          "source": 4,
-          "sourceIds": [
-            "P-SRC-5"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "P-08",
-          "claim": "Whether any specific leftover in a reader's refrigerator is safe cannot be determined from this guidance when the time, temperature, or storage history is unknown; the packets advise discarding foods stored too long and not tasting them.",
-          "source": 2,
-          "sourceIds": [
-            "P-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        }
-      ],
-      "toneNotes": [
-        "Non-alarmist: frame the 2-hour rule as a simple habit, not a threat.",
-        "Explicitly decline to judge specific foods with unknown storage history, per desk guidance.",
-        "No claims beyond the supplied packets; all figures trace to USDA FSIS pages."
-      ],
-      "tags": [
-        "food-safety",
-        "leftovers",
-        "storage",
-        "usda-fsis",
-        "pantry"
-      ],
-      "generated": true,
-      "scout": {
-        "provider": "tavily",
-        "request_id": "30440e38-5a69-4597-b5fd-604fda4a44e7",
-        "credits": 2,
-        "search_mode": "timeless-official-fallback"
-      }
-    },
-    {
       "id": "model-watch-004",
       "deskId": "model-watch",
       "desk": "Model Watch",
@@ -8802,176 +9336,6 @@
       }
     },
     {
-      "id": "maker-004",
-      "deskId": "maker",
-      "desk": "Maker Edition",
-      "icon": "⌘",
-      "issue": "004",
-      "version": "1.0.0",
-      "date": "AUG 27 · 2026",
-      "publishedAt": "2026-08-27T13:50:40.083Z",
-      "color": "#ff9466",
-      "title": "Velvet Signal — Maker Desk Draft",
-      "kicker": "Proposed edition · pending human approval",
-      "dek": "Local models are becoming first-class citizens in agent tooling — and the default network bindings of inference servers are the quiet security detail most builders skip.",
-      "readTime": "3 min read",
-      "validity": "7 days",
-      "expires": "2026-09-03",
-      "confidence": "Mixed",
-      "scope": "AI product engineering",
-      "editor": "OpenRouter · GLM 5.3 Flash",
-      "inputPolicy": "Scheduled Tavily source packets",
-      "editorial": [
-        "The through-line across this week's packets is that wiring a local model into an agent stack has stopped being a hack. CSGLite positions itself as a lightweight local inference platform where a single command downloads a model, starts a server, and opens a chat session, with models staying loaded until you stop them manually and optional CSGHub access tokens for private models (M-SRC-1). QwenPaw makes the same bet from the assistant side: if you run local models — QwenPaw Local, Ollama, or LM Studio — no API keys or cloud services are required at all (M-SRC-5).",
-        "oh-my-pi shows how far the custom-provider pattern has spread: beyond built-in Ollama, LM Studio, llama.cpp, and vLLM local backends, you can define any OpenAI-compatible endpoint in ~/.omp/agent/models.yml, specifying baseUrl, an apiKey placeholder, and per-model contextWindow and maxTokens values — their example configures MiniMax M3 with a 100000-token context window and 32000 max tokens (M-SRC-4).",
-        "The security note worth pinning above your desk: inference servers do not agree on a safe default bind address. Per the hermes-agent provider docs, Ollama, LM Studio, and llama-server all default to 127.0.0.1, while vLLM already binds to 0.0.0.0 — all interfaces — out of the box (M-SRC-2). If you flip a local server to 0.0.0.0 to reach it from another machine — OLLAMA_HOST=0.0.0.0 for Ollama, \"Serve on Network\" in LM Studio's Developer tab, or --host 0.0.0.0 for llama-server — you are exposing an unauthenticated inference endpoint to your network. Check what vLLM is already doing before you assume your setup is loopback-only.",
-        "One configuration detail that saves an afternoon: when hermes configures a custom endpoint via `hermes model`, it prompts for context length and auto-detects if you leave it blank — but their documented examples set it explicitly (qwen3.5:27b at 64000, deepseek-r1:70b at 65536). Manual setting is the fix when auto-detection gets a custom endpoint wrong (M-SRC-2)."
-      ],
-      "pullquote": "vLLM binds to 0.0.0.0 by default. Your other local servers don't. Know which one you're running before you assume your model is loopback-only.",
-      "sources": [
-        {
-          "id": "M-SRC-1",
-          "name": "CSGLite is a lightweight local LLM inference platform. ...",
-          "publisher": "github.com",
-          "url": "https://github.com/OpenCSGs/csglite",
-          "checked": "2026-08-27",
-          "publishedAt": "Sun, 23 Aug 2026 13:00:00 GMT"
-        },
-        {
-          "id": "M-SRC-2",
-          "name": "hermes-agent/website/docs/integrations/providers.md ...",
-          "publisher": "github.com",
-          "url": "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/integrations/providers.md",
-          "checked": "2026-08-27",
-          "publishedAt": "Tue, 25 Aug 2026 13:00:00 GMT"
-        },
-        {
-          "id": "M-SRC-3",
-          "name": "GitHub - kaushikb11/awesome-llm-agents: A curated list of awesome LLM agents frameworks. · GitHub",
-          "publisher": "github.com",
-          "url": "https://github.com/kaushikb11/awesome-llm-agents",
-          "checked": "2026-08-27",
-          "publishedAt": "Sun, 23 Aug 2026 13:00:00 GMT"
-        },
-        {
-          "id": "M-SRC-4",
-          "name": "can1357/oh-my-pi: ⌥ Coding agent with the IDE wired in",
-          "publisher": "github.com",
-          "url": "https://github.com/can1357/oh-my-pi",
-          "checked": "2026-08-27",
-          "publishedAt": "Tue, 25 Aug 2026 13:00:00 GMT"
-        },
-        {
-          "id": "M-SRC-5",
-          "name": "agentscope-ai/QwenPaw: Your Personal AI Assistant ...",
-          "publisher": "github.com",
-          "url": "https://github.com/agentscope-ai/QwenPaw",
-          "checked": "2026-08-27",
-          "publishedAt": "Tue, 25 Aug 2026 13:00:00 GMT"
-        }
-      ],
-      "claims": [
-        {
-          "id": "M-01",
-          "claim": "CSGLite is a lightweight local LLM inference platform where running a model downloads it, starts a server, and opens chat automatically; models remain loaded until manually stopped, and a CSGHub access token can be set optionally for private models.",
-          "source": 0,
-          "sourceIds": [
-            "M-SRC-1"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "M-02",
-          "claim": "In the hermes-agent provider configuration, Ollama, LM Studio, and llama-server default to binding 127.0.0.1, while vLLM already binds to 0.0.0.0 by default.",
-          "source": 1,
-          "sourceIds": [
-            "M-SRC-2"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "M-03",
-          "claim": "To expose a local inference server on the network: set OLLAMA_HOST=0.0.0.0 for Ollama, enable \"Serve on Network\" in LM Studio's Developer tab → Server settings, or add --host 0.0.0.0 to the llama-server startup command.",
-          "source": 1,
-          "sourceIds": [
-            "M-SRC-2"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "M-04",
-          "claim": "`hermes model` prompts for context length when configuring a custom endpoint and auto-detects it if left blank; documented example models include qwen3.5:27b with context_length 64000 and deepseek-r1:70b with context_length 65536.",
-          "source": 1,
-          "sourceIds": [
-            "M-SRC-2"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "M-05",
-          "claim": "oh-my-pi supports Ollama, Ollama Cloud, LM Studio, llama.cpp, and vLLM as local backends plus LiteLLM, and allows custom OpenAI-compatible providers defined in ~/.omp/agent/models.yml; its example defines MiniMax M3 with contextWindow 100000 and maxTokens 32000.",
-          "source": 3,
-          "sourceIds": [
-            "M-SRC-4"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "M-06",
-          "claim": "QwenPaw can run LLMs entirely on a local machine with no API keys or cloud services when using QwenPaw Local, Ollama, or LM Studio; tools needing extra keys (e.g. TAVILY_API_KEY for web search) are configured via Console Settings → Environment variables.",
-          "source": 4,
-          "sourceIds": [
-            "M-SRC-5"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "M-07",
-          "claim": "Exposing a local inference server on 0.0.0.0 makes it reachable from the network, which carries security risk if the endpoint is unauthenticated.",
-          "source": 1,
-          "sourceIds": [
-            "M-SRC-2"
-          ],
-          "status": "needs-review",
-          "confidence": "medium"
-        },
-        {
-          "id": "M-08",
-          "claim": "The broader ecosystem of LLM agent frameworks remains active, with the awesome-llm-agents curated list last updated 2026-08-23; Flowise (55,384 stars) is marked archived as of 2026-08, while SuperAGI, OpenAgents (XLang), and Agent Protocol appear with their listed licenses and update dates.",
-          "source": 2,
-          "sourceIds": [
-            "M-SRC-3"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        }
-      ],
-      "toneNotes": [
-        "Lead with the workflow shift (local models as first-class), land on the bind-address security detail as the actionable takeaway.",
-        "All versions, context lengths, and configuration values quoted exactly as they appear in the packets.",
-        "No compatibility claims made beyond what the packets state; the unauthenticated-endpoint risk framing is flagged needs-review since the packets document the bind addresses but not the authentication posture of each server."
-      ],
-      "tags": [
-        "local-llm",
-        "agent-tooling",
-        "security",
-        "configuration"
-      ],
-      "generated": true,
-      "scout": {
-        "provider": "tavily",
-        "request_id": "0298a2fc-8007-45cd-b0d4-245a0ec30d7e",
-        "credits": 1,
-        "search_mode": "bounded"
-      }
-    },
-    {
       "id": "model-watch-003",
       "deskId": "model-watch",
       "desk": "Model Watch",
@@ -9098,147 +9462,6 @@
       "scout": {
         "provider": "tavily",
         "request_id": "9bb87b3a-a034-435b-8dea-935092791469",
-        "credits": 1,
-        "search_mode": "bounded"
-      }
-    },
-    {
-      "id": "culture-002",
-      "deskId": "culture",
-      "desk": "Culture Desk",
-      "icon": "✺",
-      "issue": "002",
-      "version": "1.0.0",
-      "date": "AUG 27 · 2026",
-      "publishedAt": "2026-08-27T13:44:59.747Z",
-      "color": "#67d6c0",
-      "title": "Aura Farming: The Charisma Contest That Walked Off the Screen",
-      "kicker": "Culture Signal",
-      "dek": "A TikTok-born ritual of poses and references has moved into the streets — and its meaning is still up for grabs.",
-      "readTime": "3 min read",
-      "validity": "10 days",
-      "expires": "2026-09-06",
-      "confidence": "Mixed",
-      "scope": "Culture signals",
-      "editor": "OpenRouter · GLM 5.3 Flash",
-      "inputPolicy": "Scheduled Tavily source packets",
-      "editorial": [
-        "\"Aura farming\" started as a TikTok meme and has grown into a kind of street-level contest: two people face off, cycling through poses, gestures, and references, and the crowd decides who has more \"aura\" — an unspoken blend of charisma, style, and self-confidence [C-SRC-1].",
-        "What makes it interesting is how much of the game is legible only to insiders. To an outsider, the performances can look like nonsense; to participants, spotting the references is the point [C-SRC-1]. The Spanish-language variant \"farmear aura\" shows the format traveling across languages [C-SRC-1].",
-        "We're not going to tell you what \"aura\" universally means — the term is doing different work in different corners of the internet, and the packets don't settle it. What we can say: it's a competition format, it rewards performative cool, and it's currently visible enough that it's crossing from feeds into physical spaces [C-SRC-1].",
-        "If you've seen it and felt out of the loop, that's not a gap in your cultural knowledge — the in-group legibility is a designed feature of the format, not a bug [C-SRC-1]."
-      ],
-      "pullquote": "\"For the participants, spotting the references is part of the game.\"",
-      "sources": [
-        {
-          "id": "C-SRC-1",
-          "name": "What is \"aura farming\"? TikTok's strange viral battles hit the streets - Euronews.com",
-          "publisher": "euronews.com",
-          "url": "https://www.euronews.com/culture/2026/08/22/what-is-aura-farming-tiktoks-strange-viral-battles-hit-the-streets",
-          "checked": "2026-08-27",
-          "publishedAt": "Sat, 22 Aug 2026 10:00:49 GMT"
-        },
-        {
-          "id": "C-SRC-2",
-          "name": "This U.S. City Was Named the Best Place to Work—with Strong Career Opportunities, High Pay, and Quality of Life - Travel + Leisure",
-          "publisher": "travelandleisure.com",
-          "url": "https://www.travelandleisure.com/25-best-us-cities-for-work-indeed-analysis-12066166",
-          "checked": "2026-08-27",
-          "publishedAt": "Tue, 25 Aug 2026 09:00:00 GMT"
-        },
-        {
-          "id": "C-SRC-3",
-          "name": "Trump denies US pushed Canada on French language - Politico",
-          "publisher": "politico.com",
-          "url": "https://www.politico.com/news/2026/08/25/trump-canada-quebec-french-01048724",
-          "checked": "2026-08-27",
-          "publishedAt": "Tue, 25 Aug 2026 13:43:00 GMT"
-        },
-        {
-          "id": "C-SRC-4",
-          "name": "The Chinese internet is looking to the country's weirdest viral movie for hints at Ox Alpha's origins - Business Insider",
-          "publisher": "businessinsider.com",
-          "url": "https://www.businessinsider.com/chinese-internet-ox-alpha-niu-lai-origin-story-2026-8",
-          "checked": "2026-08-27",
-          "publishedAt": "Mon, 24 Aug 2026 08:44:23 GMT"
-        },
-        {
-          "id": "C-SRC-5",
-          "name": "Champions League format 2026-27, explained: How league phase and knockout bracket works - sportingnews.com",
-          "publisher": "sportingnews.com",
-          "url": "https://www.sportingnews.com/in/football/news/champions-league-format-2026-27/91d28c9af2533660b7cf5150",
-          "checked": "2026-08-27",
-          "publishedAt": "Thu, 27 Aug 2026 06:00:01 GMT"
-        }
-      ],
-      "claims": [
-        {
-          "id": "C-01",
-          "claim": "\"Aura farming\" is a TikTok-originated contest format in which participants compete through poses, memes, and gestures to demonstrate who has more \"aura.\"",
-          "source": 0,
-          "sourceIds": [
-            "C-SRC-1"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "C-02",
-          "claim": "The format has moved from social media into in-person street battles, sometimes referred to by the Spanish term \"farmear aura.\"",
-          "source": 0,
-          "sourceIds": [
-            "C-SRC-1"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "C-03",
-          "claim": "Understanding the references embedded in aura farming performances is itself part of the appeal for participants, making the format partly illegible to outsiders.",
-          "source": 0,
-          "sourceIds": [
-            "C-SRC-1"
-          ],
-          "status": "verified",
-          "confidence": "high"
-        },
-        {
-          "id": "C-04",
-          "claim": "\"Aura\" in this context refers to a blend of charisma, style, and self-confidence.",
-          "source": 0,
-          "sourceIds": [
-            "C-SRC-1"
-          ],
-          "status": "needs-review",
-          "confidence": "medium"
-        },
-        {
-          "id": "C-05",
-          "claim": "The term \"aura farming\" carries a single, stable meaning across all communities using it.",
-          "source": 0,
-          "sourceIds": [
-            "C-SRC-1"
-          ],
-          "status": "needs-review",
-          "confidence": "low"
-        }
-      ],
-      "toneNotes": [
-        "Avoid declaring a universal definition of \"aura\" — flag it as context-dependent.",
-        "Do not infer anything about the reader's familiarity with or participation in the trend.",
-        "Keep the framing descriptive: observed usage, not identity assignment."
-      ],
-      "tags": [
-        "culture",
-        "memes",
-        "tiktok",
-        "language",
-        "youth-culture"
-      ],
-      "generated": true,
-      "scout": {
-        "provider": "tavily",
-        "request_id": "f240560d-f720-4385-9f52-f2bc8062e23a",
         "credits": 1,
         "search_mode": "bounded"
       }
